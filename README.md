@@ -36,7 +36,7 @@
 - `validation/`：验收脚本，部分脚本使用原开发目录结构，执行前需按实际路径配置。
 - `licenses/`：随产品整理的第三方许可证。
 
-这是 2.3.0 发布源码快照，当前 Git 仓库不含数 GB 的预构建运行环境，也不承诺克隆后无需准备即可构建完整安装包。完整上游源码与适配补丁随 Release 的 `适配源码与补丁.zip` 提供。构建脚本沿用 `work/native` 等原开发目录约定，需结合源码包中的交接说明准备依赖。请勿将个人授权凭证、签名私钥或用户工程提交到仓库。
+这是 2.3.0 发布源码快照，当前 Git 仓库不含数 GB 的预构建运行环境，也不承诺克隆后无需准备即可构建完整安装包。完整上游源码与适配补丁随 Release 的 `Source-and-Patches.zip` 提供。构建脚本沿用 `work/native` 等原开发目录约定，需结合源码包中的交接说明准备依赖。请勿将个人授权凭证、签名私钥或用户工程提交到仓库。
 
 Mixly 上游为 [Mixly Team@BNU](https://gitee.com/bnu_mixly/mixly4)，固定基线及恢复模块提交见 [UPSTREAM.json](distribution-source/mixly4/UPSTREAM.json)。本次未加入 MixMO / Android App 制作模块，独立 App Inventor 继续保留。
 
