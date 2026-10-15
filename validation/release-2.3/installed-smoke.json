@@ -1,0 +1,99 @@
+{
+  "ok": true,
+  "existingGrantCopiedWithoutActivation": true,
+  "tests": [
+    {
+      "test": "unactivated installed executable",
+      "ok": true,
+      "exitCode": 4
+    },
+    {
+      "test": "activated Core/AppEngine health",
+      "ok": true,
+      "startupSeconds": 2.844
+    },
+    {
+      "test": "installed same-origin authenticated USB enumeration",
+      "ok": true,
+      "deviceCount": 0,
+      "realDeviceInstallTested": false
+    },
+    {
+      "test": "installed managed BuildServer health",
+      "ok": true
+    },
+    {
+      "test": "installed activated launcher graceful stop",
+      "ok": true,
+      "exitCode": 0
+    },
+    {
+      "test": "fresh environment/run 3.8.9",
+      "ok": true,
+      "seconds": 0.137
+    },
+    {
+      "test": "repeated run 3.8.9",
+      "ok": true,
+      "seconds": 0.167
+    },
+    {
+      "test": "installed Tkinter/Turtle/Pygame native windows 3.8.9",
+      "ok": true,
+      "seconds": 1.415
+    },
+    {
+      "test": "fresh environment/run 3.13.16",
+      "ok": true,
+      "seconds": 0.086
+    },
+    {
+      "test": "repeated run 3.13.16",
+      "ok": true,
+      "seconds": 0.076
+    },
+    {
+      "test": "installed Tkinter/Turtle/Pygame native windows 3.13.16",
+      "ok": true,
+      "seconds": 1.342
+    },
+    {
+      "test": "fresh C++ compile/run",
+      "ok": true,
+      "seconds": 0.343
+    },
+    {
+      "test": "C++ unchanged dependency cache run",
+      "ok": true,
+      "seconds": 0.313
+    },
+    {
+      "test": "installed verified HTTPS package search",
+      "ok": true
+    },
+    {
+      "test": "installed Python3.8 pip HTTPS via Tsinghua",
+      "ok": true,
+      "seconds": 1.341
+    },
+    {
+      "test": "installed Python3.13 pip HTTPS via Tsinghua",
+      "ok": true,
+      "seconds": 0.893
+    },
+    {
+      "test": "project dependency prepared for reinstall preservation",
+      "ok": true
+    },
+    {
+      "test": "installed browser Mixly readiness, four-board catalog and serial enumeration",
+      "ok": true
+    },
+    {
+      "test": "installed three Arduino cores compile",
+      "ok": true,
+      "run": true,
+      "realBoardUploadTested": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "ok": true,
+  "existingGrantCopiedWithoutActivation": true,
+  "tests": [
+    {
+      "test": "reinstalled 3.8 project/custom dependencies still import",
+      "ok": true,
+      "seconds": 0.246
+    },
+    {
+      "test": "installed browser Mixly readiness, four-board catalog and serial enumeration",
+      "ok": true
+    },
+    {
+      "test": "installed three Arduino cores compile",
+      "ok": true,
+      "run": true,
+      "realBoardUploadTested": false
+    }
+  ]
+}

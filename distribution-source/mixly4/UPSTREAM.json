@@ -1,0 +1,7 @@
+{
+  "source": "https://gitee.com/bnu_mixly/mixly4",
+  "commit": "d1141e0fd73255f8705983d2252e8b049119dac1",
+  "restoredArduinoESP32Commit": "7241435d8bd50543f884e8ff9cb67956cf8e3652",
+  "restoredArduinoESP8266Commit": "7241435d8bd50543f884e8ff9cb67956cf8e3652",
+  "androidAppIncluded": false
+}

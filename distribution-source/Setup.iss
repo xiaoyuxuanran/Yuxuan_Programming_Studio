@@ -2,7 +2,7 @@
 [Setup]
 AppId={{D394BCE3-729B-427F-A3EB-52885E97ED62}
 AppName={#AppName}
-AppVersion=2.2.0
+AppVersion=2.3.0
 SetupArchitecture=x64
 AppPublisher=Yuxuan Programming Studio
 DefaultDirName={userpf}\AppInventorOffline
@@ -15,6 +15,7 @@ OutputDir=..\outputs
 OutputBaseFilename=AppInventor-Offline-Setup-x64
 Compression=lzma2/normal
 SolidCompression=yes
+LZMANumBlockThreads=8
 WizardStyle=modern
 SetupIconFile=native\resources\brand.ico
 DisableProgramGroupPage=yes
@@ -30,7 +31,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts:"
 
 [Files]
-Source: "native\*"; DestDir: "{app}"; Excludes: "server\war\WEB-INF\authkey\*,server\war\WEB-INF\keystore\*,server\war\WEB-INF\appengine-generated\*,AppInventor-2.*-*.exe,LayoutCheck.exe,*\__pycache__\*"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "native\*"; DestDir: "{app}"; Excludes: "server\war\WEB-INF\authkey\*,server\war\WEB-INF\keystore\*,server\war\WEB-INF\appengine-generated\*,mixly\runtime\*,mixly\src\*,AppInventor-2.*-*.exe,LayoutCheck.exe,*\__pycache__\*"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\AppInventor.exe"; WorkingDir: "{app}"
