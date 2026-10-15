@@ -4,7 +4,12 @@
 
 ## 下载与安装
 
-请在本仓库 **Releases** 页面下载 `AppInventor-Offline-Setup-x64.exe`。当前版本为 **2.3.0**。
+请在 [Releases 发布页面](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases)下载安装包。当前版本为 **2.3.0**。
+
+| 版本 | Mixly 界面 | 下载 |
+| --- | --- | --- |
+| **2.3.0（最新）** | Mixly 4 本机网页工作台，含 MixVM 仿真 | [完整安装包](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.0/AppInventor-Offline-Setup-x64.exe) · [发布说明](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.3.0) |
+| 2.2.0 | 旧 Mixly 2 桌面界面 | [完整安装包](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.2.0/AppInventor-Offline-Setup-x64.exe) · [发布说明](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.2.0) |
 
 安装包包含所需运行环境，无需另装 WSL、Python、C++ 编译器或 Java。第一次使用须联网激活；激活后可在授权有效期内离线使用，联网时会校验授权状态。仓库和发布附件不包含激活码或已激活凭证。
 
