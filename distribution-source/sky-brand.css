@@ -1,0 +1,8 @@
+/* Brand-only accents: component previews and Blockly category colors retain their meaning. */
+html body {background:#f0f9ff !important;background-image:none !important;}
+.ode-Logo {content:url('../images/brand-logo.png') !important;width:42px !important;height:42px !important;object-fit:contain !important;border-radius:50%;margin:0 14px !important;}
+.ode-TopPanel,.ode-TopPanelPanel {background:#fff !important;background-image:none !important;border-bottom:1px solid #bae6fd !important;}
+.ode-TextButton,.ode-Button,.gwt-TabBarItem-selected {border-color:#38bdf8 !important;}
+.ode-TextButton:hover,.ode-Button:hover {background:#bae6fd !important;}
+.ode-ProjectNameLabel {color:#12344a !important;}
+input:focus-visible,button:focus-visible,[role=button]:focus-visible {outline:2px solid #0284c7;outline-offset:2px;}

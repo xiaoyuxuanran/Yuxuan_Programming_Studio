@@ -1,0 +1,25 @@
+{
+  "suiteVersion": "2.1.0",
+  "source": "https://gitee.com/mixly2/mixly2.0_src",
+  "tag": "2.0-rc4",
+  "commit": "a7d91f1e3c621a3132fb8ea38c92877bb0834830",
+  "runtime": "Electron 19.0.6, official Mixly Windows distribution",
+  "environments": [
+    "arduino_avr",
+    "arduino_esp8266",
+    "micropython_esp32",
+    "arduino_esp32"
+  ],
+  "cloudLibraries": "Official Mixly2 HTTPS catalogs; user libraries live in per-user data",
+  "drivers": "Official manufacturer download pages; no silent driver installation",
+  "windowsRuntimeSource": "https://gitee.com/mixly2/mixly2.0-win32-x64",
+  "windowsRuntimeCommit": "d1bb6950c91f3b8f68d571188393b3d6b6603eb7",
+  "arduinoLibrariesSource": "https://gitee.com/mixly2/arduino-libs",
+  "arduinoLibrariesCommit": "2b7ca7d23afec725d23f80b3d995d4cf5fa57a01",
+  "arduinoCli": "0.35.3",
+  "cores": {
+    "avr": "1.8.6",
+    "esp8266": "3.1.2",
+    "esp32": "2.0.17"
+  }
+}

@@ -1,0 +1,680 @@
+{
+  "sourceJarSha256": "c6b7b5e62abc2c93427706968ebe4251b3355e55bb4b7e6b4f612ec02e96869f",
+  "entries": [
+    {
+      "resource": "files/AndroidRuntime.jar",
+      "sha256": "e2ff0c7005ce1069c184b273e4bca15371e2ab29e659dec6a3e9139eac7f7376",
+      "bytes": 2090859
+    },
+    {
+      "resource": "files/Barcode.jar",
+      "sha256": "d19b7141560494c3727b360f1660b6d027b0ed05f3787ffa7c32d329a5e69307",
+      "bytes": 80244
+    },
+    {
+      "resource": "files/CommonVersion.jar",
+      "sha256": "c068fbefdae88acf5e8adf5e1b366b9939067f82769f09043bd774e58d0337f6",
+      "bytes": 2987
+    },
+    {
+      "resource": "files/LaunchScreenTemplate.storyboard",
+      "sha256": "375c5f7267fcc2839395e803031c524d401ae7355e23a9209ec8c1f54dbacc9a",
+      "bytes": 3045
+    },
+    {
+      "resource": "files/QRGenerator.jar",
+      "sha256": "c9dd47556f909639db1518b2e6e5bf0215c2c8c7d98ba00d20d8f17a8ae286bb",
+      "bytes": 449685
+    },
+    {
+      "resource": "files/aars.txt",
+      "sha256": "5f84cbac30d7feb027a108a240fb5fdbfbef69123442fbd1ad3883b2b373f4f5",
+      "bytes": 563
+    },
+    {
+      "resource": "files/acra-4.4.0.jar",
+      "sha256": "882410992523d092aa610dbc55d4ffa863187d11b4247f5d970d417ad7927b9d",
+      "bytes": 99184
+    },
+    {
+      "resource": "files/android.jar",
+      "sha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a",
+      "bytes": 27768026
+    },
+    {
+      "resource": "files/androidsvg.jar",
+      "sha256": "69ddb2aaa524d010a3d14bd33fa7f2887f47bfffde0c2fa36f5b15005c03289d",
+      "bytes": 185715
+    },
+    {
+      "resource": "files/annotation-experimental.aar",
+      "sha256": "d3338b99e43cdac5f923ca1ff42d74e298b3975ca8f5f7ce3d90a32256626db9",
+      "bytes": 30724
+    },
+    {
+      "resource": "files/annotation-experimental.jar",
+      "sha256": "e336cd523d2a2ca31beb09047bf5a774f1d12bf124a2e38c86a75434d967ab51",
+      "bytes": 6282
+    },
+    {
+      "resource": "files/annotation.jar",
+      "sha256": "0baae9755f7caf52aa80cd04324b91ba93af55d4d1d17dcc9a7b53d99ef7c016",
+      "bytes": 25378
+    },
+    {
+      "resource": "files/appcompat.aar",
+      "sha256": "711c802808911ba40741f61b25dfc9522fc915edd63fcb40cfb3972824b1f1c6",
+      "bytes": 416985
+    },
+    {
+      "resource": "files/appcompat.jar",
+      "sha256": "34d154a9266a922fac793c62d5b327170447db1df7a87f0e35e4effd9ed9a57a",
+      "bytes": 721107
+    },
+    {
+      "resource": "files/arm64-v8a/libjingle_peerconnection_so.so",
+      "sha256": "7a2f62ece51c691ac1a922768299afe00480cf6e23c88bd70a57c3b29e646b2c",
+      "bytes": 6567672
+    },
+    {
+      "resource": "files/armeabi-v7a/libjingle_peerconnection_so.so",
+      "sha256": "9816739d6886e1114881183ca68f6c5dc6ead6ed9f0291171e27b5eaf6c75f0f",
+      "bytes": 4057384
+    },
+    {
+      "resource": "files/asynclayoutinflater.aar",
+      "sha256": "88b58e59b555d49643b94ccc270a530f5aa6619b649f656584c432f912cfdcc6",
+      "bytes": 2139
+    },
+    {
+      "resource": "files/asynclayoutinflater.jar",
+      "sha256": "36d61846b729b781999791d370ff2fee72e62b7325620fcd8c0031ba17635a57",
+      "bytes": 6879
+    },
+    {
+      "resource": "files/cardview.aar",
+      "sha256": "e856e01df4a9bd6e966457196d74d8b508c814c4dba1f4de3a8754edd84b6a53",
+      "bytes": 6369
+    },
+    {
+      "resource": "files/cardview.jar",
+      "sha256": "fef1d927f66709190194be794021238af265dc41bc1721cd04d85f2556e5a89c",
+      "bytes": 21655
+    },
+    {
+      "resource": "files/collection.jar",
+      "sha256": "9c8d117b5c2bc120a1cdfeb857e05b495b16c36013570372a708f7827e3ac9f9",
+      "bytes": 41692
+    },
+    {
+      "resource": "files/commons-math3.jar",
+      "sha256": "1e56d7b058d28b65abd256b8458e3885b674c1d588fa43cd7d1cbb9c7ef2b308",
+      "bytes": 2213560
+    },
+    {
+      "resource": "files/commons-pool.jar",
+      "sha256": "04641751f1cf036f488856f92f545fe3a3a55701ccb003870b3dc3ea67ff147b",
+      "bytes": 107063
+    },
+    {
+      "resource": "files/compass.svg",
+      "sha256": "5e809fb57fbaddfe22a74813f6fca48494d031b4c22cd8edb182348225311feb",
+      "bytes": 3045
+    },
+    {
+      "resource": "files/constraintlayout-solver.jar",
+      "sha256": "965c177e64fbd81bd1d27b402b66ef9d7bc7b5cb5f718044bf7a453abc542045",
+      "bytes": 121203
+    },
+    {
+      "resource": "files/constraintlayout.aar",
+      "sha256": "45a18e62a757abd653e794a704cc873f7f0a685bb57c8533525afaf8bcd472ea",
+      "bytes": 4046
+    },
+    {
+      "resource": "files/constraintlayout.jar",
+      "sha256": "6571d46924b60ab5d44875d84c66f17d66e56191fd485a9f4566a53a75ff1671",
+      "bytes": 62245
+    },
+    {
+      "resource": "files/coordinatorlayout.aar",
+      "sha256": "ebce619068edf5539216aaa6cdf7c5020758e6c0844e8e7c697c29cbb732f539",
+      "bytes": 5530
+    },
+    {
+      "resource": "files/coordinatorlayout.jar",
+      "sha256": "c4c45d05b7559bea09ba313ee759fe275f065ecada96027bcd6ab85b13f1e105",
+      "bytes": 41317
+    },
+    {
+      "resource": "files/core-common.jar",
+      "sha256": "4b80b337779b526e64b0ee0ca9e0df43b808344d145f8e9b1c42a134dac57ad8",
+      "bytes": 11249
+    },
+    {
+      "resource": "files/core-runtime.aar",
+      "sha256": "e0cd064c5c3f4501d941b3f12bb0dcd01f4eba4f9756f76930b324402c9c30fe",
+      "bytes": 734
+    },
+    {
+      "resource": "files/core-runtime.jar",
+      "sha256": "cdb7378ed68dd9635d74d002830b8dadd5d76838ca84071cd0ecef14b5524b2f",
+      "bytes": 5717
+    },
+    {
+      "resource": "files/core.aar",
+      "sha256": "717641c2ada3f4bd97f1b29104e27dd156e1369b8a4f0b65e9d43f9eed2fbe0b",
+      "bytes": 70649
+    },
+    {
+      "resource": "files/core.jar",
+      "sha256": "8a0ecdeb687d2127c412b20683888258995367f579e050000bbfaa646b578ee7",
+      "bytes": 1152261
+    },
+    {
+      "resource": "files/cursoradapter.aar",
+      "sha256": "6413b1ce431630abf699b3ea82b131e90cd4db8489a3a1fb8b545cd858b5677b",
+      "bytes": 731
+    },
+    {
+      "resource": "files/cursoradapter.jar",
+      "sha256": "f99bc7e162bffaa6273973606e4cb89fd21c7cd95fb4f5a33c72ee8939bd7d31",
+      "bytes": 11504
+    },
+    {
+      "resource": "files/customview.aar",
+      "sha256": "4a4f7491049a71f27dedce2f2a4ae6f918c3539f6d4575ce967a35db1c89b305",
+      "bytes": 2133
+    },
+    {
+      "resource": "files/customview.jar",
+      "sha256": "319f904d5ee4b9fa9d4f0755fcc8549a0dd9a576510648e3e31afe10c2cf8fc0",
+      "bytes": 33627
+    },
+    {
+      "resource": "files/documentfile.aar",
+      "sha256": "c7acddf10ea1a3639aaef735b824d574448c51d78976d0decf40a300a9411cf8",
+      "bytes": 731
+    },
+    {
+      "resource": "files/documentfile.jar",
+      "sha256": "976c8663263f4fadf584a7d39a5504d9bcc60e855733f25fd4ecb079d78de206",
+      "bytes": 11278
+    },
+    {
+      "resource": "files/drawerlayout.aar",
+      "sha256": "2f1504f949e29fe46338adf4ad0e168a9a494053782a05a1032c40372892e1f7",
+      "bytes": 3033
+    },
+    {
+      "resource": "files/drawerlayout.jar",
+      "sha256": "2b4ee0b3f947a2605babbbf9f6a334db3bcec4a72f811a097ef4fbcd72eb0ce7",
+      "bytes": 31413
+    },
+    {
+      "resource": "files/dynamicanimation.jar",
+      "sha256": "7ebe731639d6a84c35e9b093d732088fc20a5b2d7cadb721831247e91159df28",
+      "bytes": 38168
+    },
+    {
+      "resource": "files/firebase.jar",
+      "sha256": "bad972e8ebd0cd66af70df97bd71b88b808a64bc0250fb702ae906d063ff4add",
+      "bytes": 2236723
+    },
+    {
+      "resource": "files/fragment.aar",
+      "sha256": "4d2a0e83904a8e22b24293eb05c24901b6e201ce3d1abd04f74ebc63a1cc4bee",
+      "bytes": 2905
+    },
+    {
+      "resource": "files/fragment.jar",
+      "sha256": "4a9630cbdbf599d3b690264cd6d4433ec81619eaa2de8c576e8a107f79707750",
+      "bytes": 166094
+    },
+    {
+      "resource": "files/fusiontables.jar",
+      "sha256": "ea5f1dab9959190052a1609320a4316e1c516f28def826b0f3c43131a6c57007",
+      "bytes": 67192
+    },
+    {
+      "resource": "files/google-api-client-android2-beta.jar",
+      "sha256": "e949826ce815c14f52afa00c5f6a0121dfddf172173b3ceb26faaa8be2d610b5",
+      "bytes": 2879
+    },
+    {
+      "resource": "files/google-api-client-jackson2.jar",
+      "sha256": "b86e3bdd3b6504741b90de51f06b2236cedfedd0069f942b22adb0b60553de4a",
+      "bytes": 2698
+    },
+    {
+      "resource": "files/google-api-client.jar",
+      "sha256": "885554b2b7d2e26b218e8db5ccf78d6ca0f0c21570439f7a8224b8d960373f70",
+      "bytes": 205702
+    },
+    {
+      "resource": "files/google-http-client-android2-beta.jar",
+      "sha256": "dd1d663f56dd5a2984b5f7c6947e767cde6b51a3511692021655a9436ad3f859",
+      "bytes": 2059
+    },
+    {
+      "resource": "files/google-http-client-android3-beta.jar",
+      "sha256": "82fec9dcc9db854426519280d9651409a742970e1d07e38d32c98251e80c80c4",
+      "bytes": 8752
+    },
+    {
+      "resource": "files/google-http-client-jackson2.jar",
+      "sha256": "c017bf2848085968888acdf42f552f3b56598a5ee13f5bac11d72b28f24d4acc",
+      "bytes": 8491
+    },
+    {
+      "resource": "files/google-http-client.jar",
+      "sha256": "e0c891cd9e4ac914f973e969bf887661f8ff9105afc92edfff1fed411b484fca",
+      "bytes": 286405
+    },
+    {
+      "resource": "files/google-oauth-client-java6.jar",
+      "sha256": "4e18a9cb770719f28eeefdb821b2c534fab14edfa0488f72d991796d79f0cce3",
+      "bytes": 14857
+    },
+    {
+      "resource": "files/google-oauth-client-jetty.jar",
+      "sha256": "006e746d2b4cf58d14d4b1241c5ffe118ee6f753f2f1957aa08bc22bcc5a73ec",
+      "bytes": 8543
+    },
+    {
+      "resource": "files/google-oauth-client.jar",
+      "sha256": "76570013a593ae052b3ea2332dfa43673a2d36328dd81b1c94984fbc6bcb62c1",
+      "bytes": 66779
+    },
+    {
+      "resource": "files/googlesheets.jar",
+      "sha256": "a26f1085d7fffdd68398f4828320ddfeab12aa4827ccf4ced18d0aadac5fb664",
+      "bytes": 232429
+    },
+    {
+      "resource": "files/grpc-context.jar",
+      "sha256": "41426f8fa5b5ff6e8cf5d6a7a6e7b1175350bc8c8e11f352e0622e00f99c4a02",
+      "bytes": 30072
+    },
+    {
+      "resource": "files/gson-2.1.jar",
+      "sha256": "35c94198255e95f6f11501eb4b3d43a5276bfdd142ab7c904722e69bff51f69e",
+      "bytes": 180110
+    },
+    {
+      "resource": "files/guava.jar",
+      "sha256": "686404f2d1d4d221911f96bd627ff60dac2226a5dfa6fb8ba517073eb97ec0ef",
+      "bytes": 2603938
+    },
+    {
+      "resource": "files/http-legacy.jar",
+      "sha256": "080dbc08a8a0d449e6f0fd7fb8c31c9aee692977241420d11f4ab0dc950a8504",
+      "bytes": 300895
+    },
+    {
+      "resource": "files/httpmime.jar",
+      "sha256": "b31046b52e7543db59254a679d9a5804baaf3f3586acd41a26827c03db9caee4",
+      "bytes": 37276
+    },
+    {
+      "resource": "files/interpolator.aar",
+      "sha256": "98814c02a8618bee5f2ba7a489bc987e53505e942a4055336f64e788115b1470",
+      "bytes": 730
+    },
+    {
+      "resource": "files/interpolator.jar",
+      "sha256": "041d65e8566445b97a2ae741227ce05ab6783c783a83e6fb173d8abc9eabd55b",
+      "bytes": 7661
+    },
+    {
+      "resource": "files/jackson-core.jar",
+      "sha256": "754184022345800c2d066eceeaf2f7a88a7c2aaeae23eb1c76ef598854aa9157",
+      "bytes": 206797
+    },
+    {
+      "resource": "files/jars.txt",
+      "sha256": "b2f22a08f0c4627371d7f1fb37aa0b163b1a7b3e1bcd62433f7f36cd87483960",
+      "bytes": 658
+    },
+    {
+      "resource": "files/jedis.jar",
+      "sha256": "3f89f85e6e15bcd1e573771ddab0c1dbc69f755c9e126add35e9983bc92514d3",
+      "bytes": 671555
+    },
+    {
+      "resource": "files/jetty-util.jar",
+      "sha256": "9b974ce2b99f48254b76126337dc45b21226f383aaed616f59780adaf167c047",
+      "bytes": 177131
+    },
+    {
+      "resource": "files/jetty.jar",
+      "sha256": "21091d3a9c1349f640fdc421504a604c040ed89087ecc12afbe32353326ed4e5",
+      "bytes": 539912
+    },
+    {
+      "resource": "files/json.jar",
+      "sha256": "d9c1ef3ba8ee77b7075a1b343bf03c1eb405d89b349d246689feafef3797912a",
+      "bytes": 70846
+    },
+    {
+      "resource": "files/jts.jar",
+      "sha256": "528b0c585b4233cd3f3d8a049eb26e468006c339b690f0c3808f093d59211d9d",
+      "bytes": 812896
+    },
+    {
+      "resource": "files/kawa.jar",
+      "sha256": "5fb2440edfefa42d8599b16624ebc5713ba989494c99f4eb7baff62f01b631a3",
+      "bytes": 2384673
+    },
+    {
+      "resource": "files/leaflet.css",
+      "sha256": "0b7e09279dea7c5b0122747baf037baa9cb1bb5d77a9daf8393a08b2b5aae4b4",
+      "bytes": 10186
+    },
+    {
+      "resource": "files/leaflet.js",
+      "sha256": "52a2a77120ab571907e73dd09e830627ff7c613548f8b6957948d7c7f4ad25de",
+      "bytes": 137208
+    },
+    {
+      "resource": "files/legacy-support-core-ui.aar",
+      "sha256": "09cb82ac4ce12842daf87625e3ce73d6a3b3c497b2c08db39dd6dfbfee689d63",
+      "bytes": 2394
+    },
+    {
+      "resource": "files/legacy-support-core-ui.jar",
+      "sha256": "7eeb161e8d06f465eb4a0c32e35175626d0f22318efd0cb647db72690563a448",
+      "bytes": 9867
+    },
+    {
+      "resource": "files/legacy-support-core-utils.aar",
+      "sha256": "0631346f05d3022c5ced3294d1f56201cc34ddd65bf7613b1b7dcd3db1a8a77d",
+      "bytes": 2136
+    },
+    {
+      "resource": "files/legacy-support-core-utils.jar",
+      "sha256": "f9cef016ce1819cf2646d022d67bdc7211c6e60d5fc8f399db944b026916542e",
+      "bytes": 2042
+    },
+    {
+      "resource": "files/lifecycle-common.jar",
+      "sha256": "7bad7a188804adea6fa1f35d5ef99b705f20bd93ecadde484760ff86b535fefc",
+      "bytes": 20306
+    },
+    {
+      "resource": "files/lifecycle-livedata-core.aar",
+      "sha256": "d4bff32b90c6ffe0d6731eef965844a179563c92cff21c0d9f6959bb3b2bc0f3",
+      "bytes": 739
+    },
+    {
+      "resource": "files/lifecycle-livedata-core.jar",
+      "sha256": "50a4454f41fc0e23f8c729710eeb0bf48d427fc1bc0c131396ed624140952785",
+      "bytes": 8645
+    },
+    {
+      "resource": "files/lifecycle-livedata.aar",
+      "sha256": "77662fe068cd7b4d3c10a59d0cc3f76b035c9a2ded4fffab18823eed041920db",
+      "bytes": 736
+    },
+    {
+      "resource": "files/lifecycle-livedata.jar",
+      "sha256": "4b278b784d0718a33c677f18e9ff50b044ec0329a2e1d5d9f93a6d8a8f6fc767",
+      "bytes": 10245
+    },
+    {
+      "resource": "files/lifecycle-runtime.aar",
+      "sha256": "60efd0dafcbd6ac30d367210d145fb9fdc6127057c68e94d6d9965d469cb7f15",
+      "bytes": 1010
+    },
+    {
+      "resource": "files/lifecycle-runtime.jar",
+      "sha256": "14ec31f2b5f8d3eb1db1fb664035e3ee44b7f8f3fa91c072b6ccc41cd478b1df",
+      "bytes": 9055
+    },
+    {
+      "resource": "files/lifecycle-viewmodel.aar",
+      "sha256": "1b461d765c074dc7593421ccf12499a3340c7c471e00ec36b4b3d73a6e2af757",
+      "bytes": 958
+    },
+    {
+      "resource": "files/lifecycle-viewmodel.jar",
+      "sha256": "fb34a59fa31f3831e93a0d3e9cf82c2f289ee3ff3cef7185a3c7a421cbcc471a",
+      "bytes": 7053
+    },
+    {
+      "resource": "files/loader.aar",
+      "sha256": "29d0c56fb7b5822debe922ebf7c1d90b534ec716709114765fbd68b94c516163",
+      "bytes": 2130
+    },
+    {
+      "resource": "files/loader.jar",
+      "sha256": "1f75b3cb79621362c3b9adba7d3f98eb81ccec3c9e0927bedbb97575c5537751",
+      "bytes": 35177
+    },
+    {
+      "resource": "files/localbroadcastmanager.aar",
+      "sha256": "06f70f14d79a23a2c0765c432e6f5f96f44090949d7334e0e7a26b5fd7046e3d",
+      "bytes": 736
+    },
+    {
+      "resource": "files/localbroadcastmanager.jar",
+      "sha256": "0ef151b4191734878dec89f7c2a088f9e0b0022cb2a92acc3331539e77eb1ff3",
+      "bytes": 6875
+    },
+    {
+      "resource": "files/location.png",
+      "sha256": "2f6592b2435ca6ee290a7940a7405beb46d469b5b5ec47315154c3faaa418731",
+      "bytes": 5636
+    },
+    {
+      "resource": "files/manifest.plist",
+      "sha256": "f2b5dc0ddf8f8fd336326d2e708acd7e0e5c691d8d232193e950f3c8ae3fcce0",
+      "bytes": 1202
+    },
+    {
+      "resource": "files/marker.svg",
+      "sha256": "44c03361d6a19ccc7ca7a17134828d452d7f48d78908f13e797d792191159bb2",
+      "bytes": 510
+    },
+    {
+      "resource": "files/mpandroidchart.jar",
+      "sha256": "26018e6656e622c871dfc2082c903922afec3f6dc9ae135cb998819e81983bda",
+      "bytes": 396096
+    },
+    {
+      "resource": "files/opencensus-contrib-http-util.jar",
+      "sha256": "387e26dc1dff89af3aa19ec4fa780d8b23b0ea0c1b7e115a2f00b5f7278c54ec",
+      "bytes": 23422
+    },
+    {
+      "resource": "files/opencensus.jar",
+      "sha256": "accf897bc8e4ec4dd28707c428712ea349b357b120f8bb565d43c3b27a7ae728",
+      "bytes": 351670
+    },
+    {
+      "resource": "files/osmdroid.aar",
+      "sha256": "8358f1d7af5f05c0f57288c8d75402f2f1bafac33373ca5744d976d8ce53a064",
+      "bytes": 217874
+    },
+    {
+      "resource": "files/osmdroid.jar",
+      "sha256": "17deb85871e8414b7be718bcb16d116e1281b11a7c4e1039ce711195aadc19d7",
+      "bytes": 455290
+    },
+    {
+      "resource": "files/physicaloid.jar",
+      "sha256": "518bbf941865997062d8b38a615d1d67cf78754581ca7c01d278c2097d367123",
+      "bytes": 124578
+    },
+    {
+      "resource": "files/print.aar",
+      "sha256": "470b71ed155d61b702157ca8d00ec56ef316acfaad96cfdde3be89b2f31155aa",
+      "bytes": 1326
+    },
+    {
+      "resource": "files/print.jar",
+      "sha256": "5bfd0937dfca3e7ba522a996d37d0e3ec514ac829a1131de5e8d4aa2594361f9",
+      "bytes": 15476
+    },
+    {
+      "resource": "files/protobuf-java-3.0.0.jar",
+      "sha256": "a1e7d6b3efc1703c7c8f1b15ecf8757f17d0ac41f32c9a48481a5caf638c55db",
+      "bytes": 1304430
+    },
+    {
+      "resource": "files/recyclerview.aar",
+      "sha256": "30947ac3c127faebc506d9227946b284e299de669dae4b9aa9dccc876bee3013",
+      "bytes": 5970
+    },
+    {
+      "resource": "files/recyclerview.jar",
+      "sha256": "2b2e665d9dcf205bbc88b7a0fcc45324117f0ab8b29912f87cc6c9bd4ff6ea34",
+      "bytes": 377521
+    },
+    {
+      "resource": "files/runtime.scm",
+      "sha256": "503e5ddcd80392dc00cdfc40d001853c3628a03ffa2ee80639708556f92f2679",
+      "bytes": 167255
+    },
+    {
+      "resource": "files/simple_components.json",
+      "sha256": "5a79bd0731e658129364c81854e977ce4c382eecc037c60df7c2c1392e017368",
+      "bytes": 646366
+    },
+    {
+      "resource": "files/simple_components.txt",
+      "sha256": "c6197adac6a07b0de2544352ae4751b4e0349d8e5db7f82f130bd1a1b915495a",
+      "bytes": 5766
+    },
+    {
+      "resource": "files/simple_components_build_info.json",
+      "sha256": "9c473578e9670659f8b7637a1c92e3ff10b7c7ef848b5b84bd4cb86d4a144b3c",
+      "bytes": 42844
+    },
+    {
+      "resource": "files/slidingpanelayout.aar",
+      "sha256": "3590e5bfadea18ed751c58e84a0eaf2a2c80dcc7adcb272224caa6800b717569",
+      "bytes": 2137
+    },
+    {
+      "resource": "files/slidingpanelayout.jar",
+      "sha256": "83cb7f18b3ee8eb615a86d40750d0df95d473412a9d2dcbedc012c4515f69ae0",
+      "bytes": 23137
+    },
+    {
+      "resource": "files/swiperefreshlayout.aar",
+      "sha256": "8b8878f9cd6cba142188e68693e70366c89bdae479d43ad6d3b74471d6adde5a",
+      "bytes": 2604
+    },
+    {
+      "resource": "files/swiperefreshlayout.jar",
+      "sha256": "0c5dbb776937eb1d63e84c520baccb465c27cd1d7323932d591a29e8ed95026c",
+      "bytes": 33871
+    },
+    {
+      "resource": "files/twitter4j.jar",
+      "sha256": "20ad5eed9f6eaa4383b44ba74fd4743f79f37edead3cd52f31116d3505906093",
+      "bytes": 288608
+    },
+    {
+      "resource": "files/twitter4jmedia.jar",
+      "sha256": "8864d02071392584b5572f62a0b9a4a91e6367b7019e5fe7af24aebce77320db",
+      "bytes": 27771
+    },
+    {
+      "resource": "files/vectordrawable-animated.aar",
+      "sha256": "35ba08e68d498285eea6d78ed38ec01a2e5444946a24ab3cd8c16694ae989ef5",
+      "bytes": 2985
+    },
+    {
+      "resource": "files/vectordrawable-animated.jar",
+      "sha256": "10159e3453034a9fa8fdd5062162febf227d54b7a85b147605e583bca6be7636",
+      "bytes": 34247
+    },
+    {
+      "resource": "files/vectordrawable.aar",
+      "sha256": "b2d77869ba290c926fc0d9f741f3c7a2330d09ff8d9bb87ea9dfd4f3afae5158",
+      "bytes": 2135
+    },
+    {
+      "resource": "files/vectordrawable.jar",
+      "sha256": "0e6bdac9c0870309407dd76971ad7221b3259a5c08df8e25571e90959dc45529",
+      "bytes": 33157
+    },
+    {
+      "resource": "files/versionedparcelable.aar",
+      "sha256": "edb2404ed551b193f6de07928019209fdc855d43760eb9ded3c5508763c6a2e6",
+      "bytes": 1751
+    },
+    {
+      "resource": "files/versionedparcelable.jar",
+      "sha256": "08e9b4d29dc8f1030e82864ca8655a14f048df93689d463aa3e5a3bf7cc269bd",
+      "bytes": 28132
+    },
+    {
+      "resource": "files/viewpager.aar",
+      "sha256": "9957f5f33f0064ce4cb46dc43ce9e9e2a33e0b114483f9a385cbf3eaa820058a",
+      "bytes": 2131
+    },
+    {
+      "resource": "files/viewpager.jar",
+      "sha256": "14f7429cff9f2f50421a36b237a1de35d8a2c8deffcbe1e0163c6e51a2defe56",
+      "bytes": 55298
+    },
+    {
+      "resource": "files/webrtc.jar",
+      "sha256": "19f1390a32c3808f59e2075219f26014dfc336a46b5f385d25861b2b409ab33e",
+      "bytes": 1016792
+    },
+    {
+      "resource": "files/x86_64/libjingle_peerconnection_so.so",
+      "sha256": "bdb5d23fa5b7839d93c951f4ef6c32b1ec42c3c457d7828530856fda84c357b8",
+      "bytes": 7708528
+    },
+    {
+      "resource": "files/ya.png",
+      "sha256": "7a413ddc6eec42f33506f6af137c30297eb18e311018816f4ed6ceeca2b269e8",
+      "bytes": 72415
+    },
+    {
+      "resource": "tools/apksigner.jar",
+      "sha256": "00ef9948f843fe395d2440ae3ef41405b8040a6d5d46493bd1902ac0ee6deae7",
+      "bytes": 1074241
+    },
+    {
+      "resource": "tools/bundletool.jar",
+      "sha256": "72d930df2b692347abcfa787d2dcfe4d08c19812ab7aedbc8db5546aa4fcb7a2",
+      "bytes": 26723056
+    },
+    {
+      "resource": "tools/d8.jar",
+      "sha256": "305622ad00535684534eb8f742cbf5e628a9abc09d8ea4d39d1babb95bf0cee5",
+      "bytes": 16614740
+    },
+    {
+      "resource": "tools/dx.jar",
+      "sha256": "d450da407185b8ba47463288f4c0054138c0d4be7a8b95db10c87f1077f4e5c4",
+      "bytes": 991427
+    },
+    {
+      "resource": "tools/windows/aapt",
+      "sha256": "db0ba2050b8f6b37185d2ba458d6e25b565aefa3f3b96040adf0a82c3469ce3c",
+      "bytes": 1646880
+    },
+    {
+      "resource": "tools/windows/aapt2",
+      "sha256": "cbfe5deda5f7074ce47b6f33818b456ee8046a076a11af13e29c837d3c80c564",
+      "bytes": 4740896
+    },
+    {
+      "resource": "tools/windows/libwinpthread-1.dll",
+      "sha256": "e5b49f9953b0406ed9cb55aba2fe14d1aa81ce7dbef53560383b1ebf3a4d7f51",
+      "bytes": 96544
+    },
+    {
+      "resource": "tools/windows/zipalign",
+      "sha256": "aa2475ce201962b871fb8daec020da03fd6292c9c1f422cd0fe2e39b20d4f673",
+      "bytes": 818976
+    }
+  ]
+}

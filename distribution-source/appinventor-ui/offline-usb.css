@@ -1,0 +1,19 @@
+#yx-usb-entry{float:left;margin:6px 5px;padding:5px 12px;border:1px solid #7dd3fc;border-radius:7px;background:#e0f2fe;color:#075985;font:600 13px 'Segoe UI','Microsoft YaHei',sans-serif;line-height:22px;cursor:pointer;white-space:nowrap}
+#yx-usb-entry:hover,#yx-usb-entry.yx-usb-busy{background:#0284c7;color:#fff}
+#yx-usb-panel{position:fixed;z-index:1100;top:56px;right:16px;width:min(510px,calc(100vw - 32px));max-height:calc(100vh - 78px);overflow:auto;box-sizing:border-box;padding:18px;background:#fff;color:#12344a;border:1px solid #bae6fd;border-radius:14px;box-shadow:0 15px 50px #0c4a6e30;font:14px/1.6 'Segoe UI','Microsoft YaHei',sans-serif}
+#yx-usb-panel[hidden]{display:none!important}
+#yx-usb-panel *{box-sizing:border-box}
+.yx-usb-title{display:flex;align-items:center;justify-content:space-between;font-size:19px}
+#yx-usb-close{font-size:24px;padding:0 10px;border:0;background:transparent;color:#45677d}
+.yx-usb-help{color:#52758b;margin:12px 0;font-size:13px}
+.yx-usb-controls{display:flex;gap:8px;margin:6px 0 12px;flex-wrap:wrap}
+#yx-usb-devices{flex:1;min-width:170px;max-width:100%;padding:8px;border:1px solid #badbee;border-radius:7px;color:#12344a;background:#f8fcff;font:inherit}
+#yx-usb-panel button{cursor:pointer;font:inherit;border-radius:7px;min-height:35px}
+#yx-usb-refresh,#yx-usb-logs{border:1px solid #badbee;background:#f0f9ff;color:#075985;padding:6px 11px}
+#yx-usb-run{border:1px solid #0284c7;background:#0284c7;color:#fff;padding:6px 15px;font-weight:600}
+#yx-usb-panel button:disabled{opacity:.5;cursor:default}
+#yx-usb-status{padding:10px;border-radius:7px;background:#f0f9ff;overflow-wrap:anywhere;font-size:13px;margin:8px 0}
+#yx-usb-status.yx-usb-error{color:#b42318;background:#fff1f0}
+#yx-usb-output{margin:12px 0;min-height:125px;max-height:300px;overflow:auto;background:#f5f9fd;border:1px solid #d8e8f3;border-radius:7px;padding:12px;color:#29485d;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.7 Consolas,'Microsoft YaHei',monospace}
+.yx-usb-footer{display:flex;align-items:center;gap:12px;flex-wrap:wrap;color:#52758b;font-size:12px}
+@media(max-height:600px){#yx-usb-output{max-height:160px}.yx-usb-help{margin:7px 0}}

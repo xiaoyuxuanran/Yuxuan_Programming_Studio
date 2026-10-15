@@ -1,0 +1,11 @@
+--- explorer/commands/WaitForBuildResultCommand.java
++++ explorer/commands/WaitForBuildResultCommand.java
+@@ -39,7 +39,7 @@
+ 
+   // The build target
+   private final String target;
+-  private static final int WAIT_INTERVAL_MILLIS = 10000;
++  private static final int WAIT_INTERVAL_MILLIS = 1000;
+   private final String buildRequestTime;
+ 
+   /**

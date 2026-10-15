@@ -1,0 +1,17 @@
+# Local builds, dependencies and user data
+.vs/
+.idea/
+__pycache__/
+*.pyc
+node_modules/
+outputs/
+work/
+native/
+*.log
+.env
+.env.*
+*.pfx
+*.p12
+*.jks
+*.key
+device-license.bin

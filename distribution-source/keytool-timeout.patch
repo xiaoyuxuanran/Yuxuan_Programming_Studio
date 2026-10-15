@@ -1,0 +1,11 @@
+--- ProjectBuilder.java
++++ ProjectBuilder.java
+@@ -419,7 +419,7 @@
+     };
+ 
+     if (Execution.execute(null, keytoolCommandline, System.out, System.err,
+-        Execution.Timeout.SHORT)) {
++        Execution.Timeout.LONG)) {
+       if (keyStoreFile.length() > 0) {
+         return keyStoreFile.getAbsolutePath();
+       }

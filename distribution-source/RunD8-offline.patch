@@ -1,0 +1,214 @@
+--- tasks/android/RunD8.java
++++ tasks/android/RunD8.java
+@@ -15,6 +15,14 @@
+ import java.io.FileNotFoundException;
+ import java.io.FileOutputStream;
+ import java.io.IOException;
++import java.io.InputStream;
++import java.nio.charset.StandardCharsets;
++import java.nio.file.StandardCopyOption;
++import java.nio.file.AtomicMoveNotSupportedException;
++import java.security.MessageDigest;
++import java.security.NoSuchAlgorithmException;
++import java.util.Arrays;
++import java.util.zip.Adler32;
+ import java.io.PrintStream;
+ import java.nio.file.FileSystems;
+ import java.nio.file.FileVisitResult;
+@@ -38,22 +46,23 @@
+     Set<String> mainDexClasses = new HashSet<>();
+     final List<File> inputs = new ArrayList<>();
+     try {
+-      recordForMainDex(context.getPaths().getClassesDir(), mainDexClasses);
+-      inputs.add(preDexLibrary(context, recordForMainDex(
++      final String environment = environmentFingerprint(context);
++      recordIfNeeded(context.getPaths().getClassesDir(), mainDexClasses);
++      inputs.add(preDexLibrary(context, environment, recordIfNeeded(
+           new File(context.getResources().getSimpleAndroidRuntimeJar()), mainDexClasses)));
+-      inputs.add(preDexLibrary(context, recordForMainDex(
++      inputs.add(preDexLibrary(context, environment, recordIfNeeded(
+           new File(context.getResources().getKawaRuntime()), mainDexClasses)));
+ 
+       final Set<String> criticalJars = getCriticalJars(context);
+ 
+       for (String jar : criticalJars) {
+-        inputs.add(preDexLibrary(context, recordForMainDex(
++        inputs.add(preDexLibrary(context, environment, recordIfNeeded(
+             new File(context.getResource(jar)), mainDexClasses)));
+       }
+ 
+       // Only include ACRA for the companion app
+       if (context.isForCompanion()) {
+-        inputs.add(preDexLibrary(context, recordForMainDex(
++        inputs.add(preDexLibrary(context, environment, recordIfNeeded(
+             new File(context.getResources().getAcraRuntime()), mainDexClasses)));
+       }
+ 
+@@ -61,12 +70,12 @@
+         if (criticalJars.contains(jar)) {  // already covered above
+           continue;
+         }
+-        inputs.add(preDexLibrary(context, new File(context.getResource(jar))));
++        inputs.add(preDexLibrary(context, environment, new File(context.getResource(jar))));
+       }
+ 
+       // Add the rest of the libraries in any order
+       for (String lib : context.getComponentInfo().getUniqueLibsNeeded()) {
+-        inputs.add(preDexLibrary(context, new File(lib)));
++        inputs.add(preDexLibrary(context, environment, new File(lib)));
+       }
+ 
+       // Add extension libraries
+@@ -176,7 +185,7 @@
+       throws IOException {
+     List<String> arguments = new ArrayList<>();
+     List<String> javaArgs = new ArrayList<>();
+-    arguments.add("java");
++    arguments.add(new File(System.getProperty("java.home"), "bin/java").getAbsolutePath());
+     javaArgs.add("-Xmx" + context.getChildProcessRam() + "M");
+     javaArgs.add("-Xss8m");
+     javaArgs.add("-cp");
+@@ -210,7 +219,7 @@
+     File javaArgsFile = new File(context.getPaths().getTmpDir(), "d8arguments.txt");
+     try (PrintStream ps = new PrintStream(new FileOutputStream(javaArgsFile))) {
+       for (String arg : javaArgs) {
+-        ps.println(arg);
++        ps.println("\"" + arg.replace("\\", "\\\\").replace("\"", "\\\"") + "\"");
+       }
+     }
+     arguments.add("@" + javaArgsFile.getAbsolutePath());
+@@ -236,21 +245,123 @@
+    * @return the path of the library to use as an input to the downstream d8 process
+    * @throws IOException if the d8 process fails due to an I/O issue
+    */
+-  private static File preDexLibrary(AndroidCompilerContext context, File input) throws IOException {
++  private static File recordIfNeeded(File input, Set<String> mainDexClasses) throws IOException {
++    // The Proguard-rule branch never uses the discovered class-name list.
++    return USE_D8_PROGUARD_RULES ? input : recordForMainDex(input, mainDexClasses);
++  }
++
++  private static String sha256(File file) throws IOException {
++    try {
++      MessageDigest digest = MessageDigest.getInstance("SHA-256");
++      try (InputStream in = Files.newInputStream(file.toPath())) {
++        byte[] buffer = new byte[65536];
++        int count;
++        while ((count = in.read(buffer)) != -1) {
++          digest.update(buffer, 0, count);
++        }
++      }
++      return hex(digest.digest());
++    } catch (NoSuchAlgorithmException e) {
++      throw new IOException(e);
++    }
++  }
++
++  private static String sha256(String value) throws IOException {
++    try {
++      return hex(MessageDigest.getInstance("SHA-256").digest(value.getBytes(StandardCharsets.UTF_8)));
++    } catch (NoSuchAlgorithmException e) {
++      throw new IOException(e);
++    }
++  }
++
++  private static String hex(byte[] value) {
++    StringBuilder result = new StringBuilder(value.length * 2);
++    for (byte b : value) {
++      result.append(String.format("%02x", b & 0xff));
++    }
++    return result.toString();
++  }
++
++  private static String environmentFingerprint(AndroidCompilerContext context) throws IOException {
++    // A library's dex depends on its contents, the exact D8/Android libraries and min-api.
++    // Do not accept the legacy cache, which keyed only on the input JAR.
++    return sha256("yuxuan-d8-intermediate-v2\n"
++        + sha256(new File(context.getResources().getD8Jar())) + "\n"
++        + sha256(new File(context.getResources().getAndroidRuntime())) + "\n"
++        + AndroidBuildUtils.computeMinSdk(context) + "\n");
++  }
++
++  private static boolean validDex(File file) {
++    try {
++      byte[] bytes = Files.readAllBytes(file.toPath());
++      if (bytes.length < 112 || bytes[0] != 'd' || bytes[1] != 'e' || bytes[2] != 'x'
++          || bytes[3] != '\n' || bytes[7] != 0) {
++        return false;
++      }
++      long declaredSize = ((long) bytes[32] & 255) | (((long) bytes[33] & 255) << 8)
++          | (((long) bytes[34] & 255) << 16) | (((long) bytes[35] & 255) << 24);
++      if (declaredSize != bytes.length) {
++        return false;
++      }
++      MessageDigest digest = MessageDigest.getInstance("SHA-1");
++      digest.update(bytes, 32, bytes.length - 32);
++      if (!Arrays.equals(Arrays.copyOfRange(bytes, 12, 32), digest.digest())) {
++        return false;
++      }
++      Adler32 checksum = new Adler32();
++      checksum.update(bytes, 12, bytes.length - 12);
++      long declaredChecksum = ((long) bytes[8] & 255) | (((long) bytes[9] & 255) << 8)
++          | (((long) bytes[10] & 255) << 16) | (((long) bytes[11] & 255) << 24);
++      return declaredChecksum == checksum.getValue();
++    } catch (IOException | NoSuchAlgorithmException e) {
++      return false;
++    }
++  }
++
++  private static File preDexLibrary(AndroidCompilerContext context, String environment, File input)
++      throws IOException {
+     synchronized (PREDEX_CACHE) {
+       File cacheDir = new File(context.getDexCacheDir());
+-      File dexedLib = getDexFileName(input, cacheDir);
+-      if (dexedLib.isFile()) {
+-        context.getReporter().info(String.format("Using pre-dexed %1$s <- %2$s",
+-            dexedLib.getName(), input));
+-      } else {
+-        boolean success = runD8(context, Collections.singleton(input), null,
+-            context.getDexCacheDir(), dexedLib.getName());
+-        if (!success) {
++      Files.createDirectories(cacheDir.toPath());
++      String filename = "dex-v2-" + sha256(environment + "\n" + sha256(input)) + ".dex";
++      File dexedLib = new File(cacheDir, filename);
++      if (validDex(dexedLib)) {
++        context.getReporter().info(String.format("Using pre-dexed %1$s <- %2$s", filename, input));
++        return dexedLib;
++      }
++      String seedDir = System.getProperty("appinventor.dexSeedDir");
++      if (seedDir != null) {
++        File seed = new File(seedDir, filename);
++        if (validDex(seed)) {
++          context.getReporter().info(String.format("Using bundled pre-dexed %1$s <- %2$s", filename, input));
++          return seed;
++        }
++      }
++      // A private scratch directory and atomic publication prevent a killed/interrupted
++      // compiler from leaving a partial dex that the next build mistakes for a cache hit.
++      Path scratch = Files.createTempDirectory(cacheDir.toPath(), "predex-");
++      try {
++        boolean success = runD8(context, Collections.singleton(input), null, scratch.toString(), filename);
++        File generated = scratch.resolve(filename).toFile();
++        if (!success || !validDex(generated)) {
+           return input;
+         }
+-      }
+-      return dexedLib;
++        try {
++          Files.move(generated.toPath(), dexedLib.toPath(),
++              StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
++        } catch (AtomicMoveNotSupportedException e) {
++          Files.move(generated.toPath(), dexedLib.toPath(), StandardCopyOption.REPLACE_EXISTING);
++        }
++        return dexedLib;
++      } finally {
++        File[] leftovers = scratch.toFile().listFiles();
++        if (leftovers != null) {
++          for (File file : leftovers) {
++            Files.deleteIfExists(file.toPath());
++          }
++        }
++        Files.deleteIfExists(scratch);
++      }
+     }
+   }
+ }

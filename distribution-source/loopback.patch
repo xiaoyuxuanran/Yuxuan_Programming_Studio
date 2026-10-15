@@ -1,0 +1,13 @@
+--- /home/yuxuan/appinventor-dev/appinventor-sources/appinventor/buildserver/src/com/google/appinventor/buildserver/BuildServer.java
++++ BuildServer.java (local runtime overlay)
+@@ -874,8 +874,8 @@
+ 
+     int port = commandLineOptions.port;
+     final ResourceConfig rc = new ResourceConfig(BuildServer.class);
+-    GrizzlyHttpServerFactory.createHttpServer(URI.create("http://0.0.0.0:" + port + "/"), rc);
+-    String hostAddress = InetAddress.getLocalHost().getHostAddress();
++    GrizzlyHttpServerFactory.createHttpServer(URI.create("http://127.0.0.1:" + port + "/"), rc);
++    String hostAddress = "127.0.0.1";
+     LOG.info("App Inventor Build Server - Version: " + GitBuildId.getVersion());
+     LOG.info("App Inventor Build Server - Git Fingerprint: " + GitBuildId.getFingerprint());
+     LOG.info("Running at: http://" + hostAddress + ":" + port + "/buildserver");

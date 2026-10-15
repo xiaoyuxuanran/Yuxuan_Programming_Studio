@@ -1,0 +1,1259 @@
+{
+  "format": "yuxuan-d8-intermediate-v2",
+  "d8Sha256": "305622ad00535684534eb8f742cbf5e628a9abc09d8ea4d39d1babb95bf0cee5",
+  "androidSha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a",
+  "minApis": [
+    14,
+    19
+  ],
+  "entries": [
+    {
+      "resource": "files/AndroidRuntime.jar",
+      "inputSha256": "e2ff0c7005ce1069c184b273e4bca15371e2ab29e659dec6a3e9139eac7f7376",
+      "minApi": 14,
+      "file": "dex-v2-e5c5f8d03d43b86af44ec617535ad541daad7d29f86d0d2727e61afa1b6392f3.dex",
+      "dexSha256": "ef7e766a3f22679840185d02126ac97cef9d06abe343812fbed0390d1b927c21",
+      "bytes": 1853528
+    },
+    {
+      "resource": "files/Barcode.jar",
+      "inputSha256": "d19b7141560494c3727b360f1660b6d027b0ed05f3787ffa7c32d329a5e69307",
+      "minApi": 14,
+      "file": "dex-v2-b0cfb5b56fccb266cca69a24d8537555a6e4dcef36fef93b5e462cfff42fd7bf.dex",
+      "dexSha256": "810919076cea378fdd1cf3ba88b85047078d1e92023fd8af34e5cb74078e4488",
+      "bytes": 77852
+    },
+    {
+      "resource": "files/CommonVersion.jar",
+      "inputSha256": "c068fbefdae88acf5e8adf5e1b366b9939067f82769f09043bd774e58d0337f6",
+      "minApi": 14,
+      "file": "dex-v2-2e4bcfcb99f17724f8c2d28f3d60016804d9f5bbee6be8dc8ae44c95ed7e9212.dex",
+      "dexSha256": "c071b90197689fb834aad73cb900d7c59253df55cf58c85784979f5ad480d032",
+      "bytes": 2876
+    },
+    {
+      "resource": "files/QRGenerator.jar",
+      "inputSha256": "c9dd47556f909639db1518b2e6e5bf0215c2c8c7d98ba00d20d8f17a8ae286bb",
+      "minApi": 14,
+      "file": "dex-v2-d0c56cd1f80a120fed49edcf14c4091d2d5795b8cd0e89ce4d016d3c06caec8a.dex",
+      "dexSha256": "c1db8c9c0b9a8d43e94f06983b07bfe542ec90c39d0b1e418d11df489c094e54",
+      "bytes": 400576
+    },
+    {
+      "resource": "files/acra-4.4.0.jar",
+      "inputSha256": "882410992523d092aa610dbc55d4ffa863187d11b4247f5d970d417ad7927b9d",
+      "minApi": 14,
+      "file": "dex-v2-4294b5ac922b32691090b3f4d8638e07f11af233676a87acf7030bb51f9b78c6.dex",
+      "dexSha256": "a556b57155e10b12d557ad6e77af188238cbebbdc0519224dbed78ebcb824406",
+      "bytes": 99824
+    },
+    {
+      "resource": "files/androidsvg.jar",
+      "inputSha256": "69ddb2aaa524d010a3d14bd33fa7f2887f47bfffde0c2fa36f5b15005c03289d",
+      "minApi": 14,
+      "file": "dex-v2-3f4761d1e0a75420d13e6808250dba43fe198020259b6d7e6432a49acce710ce.dex",
+      "dexSha256": "959c2cf3b5cbc0fb860f279fd8c05a19ff47f46dc0afeead17b839f283db785e",
+      "bytes": 195288
+    },
+    {
+      "resource": "files/annotation-experimental.jar",
+      "inputSha256": "e336cd523d2a2ca31beb09047bf5a774f1d12bf124a2e38c86a75434d967ab51",
+      "minApi": 14,
+      "file": "dex-v2-84472e4f63055271f76162b04e093295708f0abef9dddca06342c950c1c1dd92.dex",
+      "dexSha256": "10203ffe36e0314fdc46e7188d949c9b54e2b9c7eeaa311f996436a2e9fcbc89",
+      "bytes": 5332
+    },
+    {
+      "resource": "files/annotation.jar",
+      "inputSha256": "0baae9755f7caf52aa80cd04324b91ba93af55d4d1d17dcc9a7b53d99ef7c016",
+      "minApi": 14,
+      "file": "dex-v2-16590d8393aebc24bd38b1d31c6f76e80180706a0a9560d13be75d790e7520b4.dex",
+      "dexSha256": "27a4c9fac5824df7dc05eced13def6857284035547897a41554180447a9f0424",
+      "bytes": 9724
+    },
+    {
+      "resource": "files/appcompat.jar",
+      "inputSha256": "34d154a9266a922fac793c62d5b327170447db1df7a87f0e35e4effd9ed9a57a",
+      "minApi": 14,
+      "file": "dex-v2-e0c4ac3b491733f84e58ca852bfabe78125e81b73c2dad577f80c54b45d28750.dex",
+      "dexSha256": "eb57d8521a17cc83a85b792a85caab4177af9e4b4c645246d759248ac554a5c5",
+      "bytes": 629236
+    },
+    {
+      "resource": "files/asynclayoutinflater.jar",
+      "inputSha256": "36d61846b729b781999791d370ff2fee72e62b7325620fcd8c0031ba17635a57",
+      "minApi": 14,
+      "file": "dex-v2-d5445ddb5f272a8cd0f5e04ab38584d04ee70dc77837108aae386a421863065b.dex",
+      "dexSha256": "85b2b592a6532a091198acfddcd9a6831530fea485484d3a12e89beb3e33b4c4",
+      "bytes": 6136
+    },
+    {
+      "resource": "files/cardview.jar",
+      "inputSha256": "fef1d927f66709190194be794021238af265dc41bc1721cd04d85f2556e5a89c",
+      "minApi": 14,
+      "file": "dex-v2-40efd3078eef5af24c350e4638989a3a5af9738d06fc7053347d18877bf56ad7.dex",
+      "dexSha256": "b1e9e5bca1dcbc582ce209de679ffe87fad7dcb6cf48982e899022ed35ea59a1",
+      "bytes": 24404
+    },
+    {
+      "resource": "files/collection.jar",
+      "inputSha256": "9c8d117b5c2bc120a1cdfeb857e05b495b16c36013570372a708f7827e3ac9f9",
+      "minApi": 14,
+      "file": "dex-v2-c18ebc7648f071b73ac49f44ebee3221d196c22c8d799b027986a12e9ff4235a.dex",
+      "dexSha256": "b4d2dec317056b542d57d15602e8e8e9fd1c591ee2eec28f087b6fe5e2a3c2d0",
+      "bytes": 45372
+    },
+    {
+      "resource": "files/commons-math3.jar",
+      "inputSha256": "1e56d7b058d28b65abd256b8458e3885b674c1d588fa43cd7d1cbb9c7ef2b308",
+      "minApi": 14,
+      "file": "dex-v2-35d574456cc1abf24f27da88eb424dbf16ff9bb5a56ca6f2893a4a0ef5864c41.dex",
+      "dexSha256": "90820c268850de8bcc9d9a2ba18b60e11cf241daeac22697af48c7fe2b6d08b9",
+      "bytes": 2102536
+    },
+    {
+      "resource": "files/commons-pool.jar",
+      "inputSha256": "04641751f1cf036f488856f92f545fe3a3a55701ccb003870b3dc3ea67ff147b",
+      "minApi": 14,
+      "file": "dex-v2-22011c0b3af7a65cbb32fc024e80c6bb68c7857ab57bc4553d6e5896e3cd5c30.dex",
+      "dexSha256": "2070544e987744b0fc65c43e8f85abb37d00030de6b0cbb4b3c624f2320288f2",
+      "bytes": 104456
+    },
+    {
+      "resource": "files/constraintlayout-solver.jar",
+      "inputSha256": "965c177e64fbd81bd1d27b402b66ef9d7bc7b5cb5f718044bf7a453abc542045",
+      "minApi": 14,
+      "file": "dex-v2-ed2bbbf517008780005b6b8f835bc91e4bf8c9c38e5aa739fc5efd65fdf1f51d.dex",
+      "dexSha256": "50e35e3af89b69112730f7b5fc8b5904a1e60570c22c2b23acd1be43bebd3f11",
+      "bytes": 142936
+    },
+    {
+      "resource": "files/constraintlayout.jar",
+      "inputSha256": "6571d46924b60ab5d44875d84c66f17d66e56191fd485a9f4566a53a75ff1671",
+      "minApi": 14,
+      "file": "dex-v2-ff253051a6e60b0237ef53a08fa4c68a390f5a51e4afef2b58731c671844a7b9.dex",
+      "dexSha256": "bf3619e3b94554d73db9d4f6305fa1d43631dba7db95a82c995b2165f6a65ae0",
+      "bytes": 86420
+    },
+    {
+      "resource": "files/coordinatorlayout.jar",
+      "inputSha256": "c4c45d05b7559bea09ba313ee759fe275f065ecada96027bcd6ab85b13f1e105",
+      "minApi": 14,
+      "file": "dex-v2-62cd9c28453ad0789a6658cd161cc4bd224aff53dde5034277214ab1563f77b3.dex",
+      "dexSha256": "7bd7e8816b8c40c182eb81c8bd18a871efa9f977461d62954e81cf4d339dc914",
+      "bytes": 53612
+    },
+    {
+      "resource": "files/core-common.jar",
+      "inputSha256": "4b80b337779b526e64b0ee0ca9e0df43b808344d145f8e9b1c42a134dac57ad8",
+      "minApi": 14,
+      "file": "dex-v2-b77e8e14cf9d2abf87c499ae621dbda876d4e811d8b8bcbf98e38716521d870a.dex",
+      "dexSha256": "8e48d88a1c4d7fc194c9d7ab3c1cc68b5b31d155c4f2cbdfc2fe71b8edd25175",
+      "bytes": 10632
+    },
+    {
+      "resource": "files/core-runtime.jar",
+      "inputSha256": "cdb7378ed68dd9635d74d002830b8dadd5d76838ca84071cd0ecef14b5524b2f",
+      "minApi": 14,
+      "file": "dex-v2-dd0400f422d3fd2a1112afcbe324ae73f71e65c51ad8b9bd17c04d0a1b138738.dex",
+      "dexSha256": "146fb7575e35fc642539c2a0c62c4f7d11441ae88435c4c9251853ad6f26e85f",
+      "bytes": 4820
+    },
+    {
+      "resource": "files/core.jar",
+      "inputSha256": "8a0ecdeb687d2127c412b20683888258995367f579e050000bbfaa646b578ee7",
+      "minApi": 14,
+      "file": "dex-v2-29d2a5ab9dc1f935a105efd530cc84beda1eb8ba6047bf4a59dcc6708dd19abe.dex",
+      "dexSha256": "f07ff8e507f9659969866284933d2c4576d6e04b3e5d77337f0d2b712d2fbbe9",
+      "bytes": 1057424
+    },
+    {
+      "resource": "files/cursoradapter.jar",
+      "inputSha256": "f99bc7e162bffaa6273973606e4cb89fd21c7cd95fb4f5a33c72ee8939bd7d31",
+      "minApi": 14,
+      "file": "dex-v2-1f9a3314f59a80ab5aa117a9bfbedaa113b4278e908413bdc798847010169276.dex",
+      "dexSha256": "286b99d9072633fd651884126ad129003ec58c1c74ef03a942c141548d07af61",
+      "bytes": 11720
+    },
+    {
+      "resource": "files/customview.jar",
+      "inputSha256": "319f904d5ee4b9fa9d4f0755fcc8549a0dd9a576510648e3e31afe10c2cf8fc0",
+      "minApi": 14,
+      "file": "dex-v2-27482f125ab669de65642b6a6baf4a2f9a817e87274bb380d651b61693b3507b.dex",
+      "dexSha256": "c180c56b612fe0a2fc97e279222fa62777ee9ba6b7267f7bcde3643642dcf61b",
+      "bytes": 43136
+    },
+    {
+      "resource": "files/documentfile.jar",
+      "inputSha256": "976c8663263f4fadf584a7d39a5504d9bcc60e855733f25fd4ecb079d78de206",
+      "minApi": 14,
+      "file": "dex-v2-c7a3ce77727190f01f75112e3fda677541d1a9d23413089c1cbad55688a973de.dex",
+      "dexSha256": "420a7ba785f898ac93fc2bdd6a6949da20273c717a84ec8f07e91206866d190f",
+      "bytes": 12552
+    },
+    {
+      "resource": "files/drawerlayout.jar",
+      "inputSha256": "2b4ee0b3f947a2605babbbf9f6a334db3bcec4a72f811a097ef4fbcd72eb0ce7",
+      "minApi": 14,
+      "file": "dex-v2-d5a46dfbdf2e910b43689219cd84ef310e941040415eb5cc554bd0aae7ef67d2.dex",
+      "dexSha256": "25dbfc3c490f3d3ebebe18c2d804d1ca1adf975a5315d1bcfe29df4c6870a579",
+      "bytes": 39920
+    },
+    {
+      "resource": "files/dynamicanimation.jar",
+      "inputSha256": "7ebe731639d6a84c35e9b093d732088fc20a5b2d7cadb721831247e91159df28",
+      "minApi": 14,
+      "file": "dex-v2-d9dc3beefbbb84214cbb5a31d991dda85d4b36b23907e9c881855c8a2118be30.dex",
+      "dexSha256": "913a6f6d0e3e1a4892d987fc3df518719e148a026a647a47a3d3d180ae2c2913",
+      "bytes": 30512
+    },
+    {
+      "resource": "files/firebase.jar",
+      "inputSha256": "bad972e8ebd0cd66af70df97bd71b88b808a64bc0250fb702ae906d063ff4add",
+      "minApi": 14,
+      "file": "dex-v2-dee5bda7e5279bb8b3af8ea2f10d5fe6644416765b4be8e90df65293f5687c76.dex",
+      "dexSha256": "de5ba4dd057904159060a38489910be843a7f12846ebc5006b26ac49d4dd898f",
+      "bytes": 1798168
+    },
+    {
+      "resource": "files/fragment.jar",
+      "inputSha256": "4a9630cbdbf599d3b690264cd6d4433ec81619eaa2de8c576e8a107f79707750",
+      "minApi": 14,
+      "file": "dex-v2-1953e979100e64a448cb07df2eb0476528093644f650b93ba70976e33ed98bb1.dex",
+      "dexSha256": "e6e017513cd0cd92e44c6ba5503d986b1d0f4b535e88a6e7ba94631d22dff900",
+      "bytes": 180264
+    },
+    {
+      "resource": "files/fusiontables.jar",
+      "inputSha256": "ea5f1dab9959190052a1609320a4316e1c516f28def826b0f3c43131a6c57007",
+      "minApi": 14,
+      "file": "dex-v2-43b0e6d95dfd4bb4184a5b93c5b5481c81f41451771f00a821d32257f79c73f6.dex",
+      "dexSha256": "c3d380b7d5943143fb48aa7e997f3629b3d4ed98ec589a4682ffd6f879b903ef",
+      "bytes": 52076
+    },
+    {
+      "resource": "files/google-api-client-android2-beta.jar",
+      "inputSha256": "e949826ce815c14f52afa00c5f6a0121dfddf172173b3ceb26faaa8be2d610b5",
+      "minApi": 14,
+      "file": "dex-v2-a2b444dfd4beede2e6317a95620fd8a984c727e2d40dc14fa455f38e189cc7e0.dex",
+      "dexSha256": "debd9a7fd590042301399ac9501c3c43a2e136f5d66c8f0b716acf1e9d499c54",
+      "bytes": 1912
+    },
+    {
+      "resource": "files/google-api-client-jackson2.jar",
+      "inputSha256": "b86e3bdd3b6504741b90de51f06b2236cedfedd0069f942b22adb0b60553de4a",
+      "minApi": 14,
+      "file": "dex-v2-38b4651c663b5b843b7f624c3212bc1a81afefe9c740c2c30a2726c7337a255d.dex",
+      "dexSha256": "19890432202a703f0b77e3d0b02cb6eecd0ee6e590ffea985116c21a48876f57",
+      "bytes": 1676
+    },
+    {
+      "resource": "files/google-api-client.jar",
+      "inputSha256": "885554b2b7d2e26b218e8db5ccf78d6ca0f0c21570439f7a8224b8d960373f70",
+      "minApi": 14,
+      "file": "dex-v2-ca42ff7fbaefe1653d30d712cc40b0d69b35b9fa4742819a60b9c0fb93016b0c.dex",
+      "dexSha256": "32e35fddd91c400b4b44fc5dbfebc169cbc1898a71d67c67cd464e59e512418b",
+      "bytes": 150316
+    },
+    {
+      "resource": "files/google-http-client-android2-beta.jar",
+      "inputSha256": "dd1d663f56dd5a2984b5f7c6947e767cde6b51a3511692021655a9436ad3f859",
+      "minApi": 14,
+      "file": "dex-v2-dd911e8e46c2bb898f3dd641dd81bb50f2f03175b9859c41424f3cfc0b2f91ce.dex",
+      "dexSha256": "b6bd2e3e7c25dd4e047f00a8c6ce4b1931e82c7fddabe163cafe17fbe63c56fd",
+      "bytes": 1128
+    },
+    {
+      "resource": "files/google-http-client-android3-beta.jar",
+      "inputSha256": "82fec9dcc9db854426519280d9651409a742970e1d07e38d32c98251e80c80c4",
+      "minApi": 14,
+      "file": "dex-v2-144b27d45c877d9c8fb9e294fc80d395c1479eaf9815745491a425a90c582d64.dex",
+      "dexSha256": "4a7125d155ab6359796bdd5314ca6db60fbaa553013c9a4c52c2db1e42347bdb",
+      "bytes": 11000
+    },
+    {
+      "resource": "files/google-http-client-jackson2.jar",
+      "inputSha256": "c017bf2848085968888acdf42f552f3b56598a5ee13f5bac11d72b28f24d4acc",
+      "minApi": 14,
+      "file": "dex-v2-64547ba425ce615a35b1b94bd9534dc3d1bac3a32219c602d528a0c0a49584d3.dex",
+      "dexSha256": "a4f725e252849be9e47606bc0f38521e64d94ea1a6867add0936a5ed22f2e4b4",
+      "bytes": 8360
+    },
+    {
+      "resource": "files/google-http-client.jar",
+      "inputSha256": "e0c891cd9e4ac914f973e969bf887661f8ff9105afc92edfff1fed411b484fca",
+      "minApi": 14,
+      "file": "dex-v2-1bc9339aa795f3e8ce4235045f5147816dad109cc5badf9b75fecc7807cf1513.dex",
+      "dexSha256": "79b7f6268842997cb3a15ea9db564c03595059531082c5b11a90cd81b01b59a8",
+      "bytes": 254708
+    },
+    {
+      "resource": "files/google-oauth-client-java6.jar",
+      "inputSha256": "4e18a9cb770719f28eeefdb821b2c534fab14edfa0488f72d991796d79f0cce3",
+      "minApi": 14,
+      "file": "dex-v2-88afd8270d665ffd2b98ea89e0281d3adfaf0eb3e4eca6965a2b38a48a0d44b9.dex",
+      "dexSha256": "9b909163c38c69067703feffbd57d88a95cb321fcfa0156999e12a1f332f8d76",
+      "bytes": 13040
+    },
+    {
+      "resource": "files/google-oauth-client-jetty.jar",
+      "inputSha256": "006e746d2b4cf58d14d4b1241c5ffe118ee6f753f2f1957aa08bc22bcc5a73ec",
+      "minApi": 14,
+      "file": "dex-v2-9b957164e0542bc7eba25f8b1703542235e94f4321f31d89bc08eb381b6a69e9.dex",
+      "dexSha256": "c8090f74938c92e0c26e762445ebccc4fe54ca37bab01ca203800631e3cffc3f",
+      "bytes": 6088
+    },
+    {
+      "resource": "files/google-oauth-client.jar",
+      "inputSha256": "76570013a593ae052b3ea2332dfa43673a2d36328dd81b1c94984fbc6bcb62c1",
+      "minApi": 14,
+      "file": "dex-v2-2d9c3e12e4a95ed74b4c2f59e597d7db7262f242988c8a8501f6510f3fe28b53.dex",
+      "dexSha256": "efabd78e12ff0f8a26d3d743f97a7786ea3bdf40caf526c631c5739facc55dfc",
+      "bytes": 60196
+    },
+    {
+      "resource": "files/googlesheets.jar",
+      "inputSha256": "a26f1085d7fffdd68398f4828320ddfeab12aa4827ccf4ced18d0aadac5fb664",
+      "minApi": 14,
+      "file": "dex-v2-b10f7721de3f4b589a5d0a9d37053bb945936b1ce49d6f49b8338b35aa319a81.dex",
+      "dexSha256": "21950173942536e5147b7a0c286222bbd1040a5fa79a864b639e7b1431576e28",
+      "bytes": 264288
+    },
+    {
+      "resource": "files/grpc-context.jar",
+      "inputSha256": "41426f8fa5b5ff6e8cf5d6a7a6e7b1175350bc8c8e11f352e0622e00f99c4a02",
+      "minApi": 14,
+      "file": "dex-v2-115cd4ae1128ac680bf4d3d3515c6449810509413095a6499b705e0d4e9152d6.dex",
+      "dexSha256": "b213c16cfd6f53a784a6d75cb6221c43bd34193d563e3696d5151c931211aa70",
+      "bytes": 28668
+    },
+    {
+      "resource": "files/gson-2.1.jar",
+      "inputSha256": "35c94198255e95f6f11501eb4b3d43a5276bfdd142ab7c904722e69bff51f69e",
+      "minApi": 14,
+      "file": "dex-v2-2455c988674e8fd3173473285d784e2d3f7e9fa907dc97db450c17a133e4a791.dex",
+      "dexSha256": "1bd8cfc6f065c5cadf1067734ea9dfa80853f4151ce7a1dee5dc5cd1c1cbfadd",
+      "bytes": 146496
+    },
+    {
+      "resource": "files/guava.jar",
+      "inputSha256": "686404f2d1d4d221911f96bd627ff60dac2226a5dfa6fb8ba517073eb97ec0ef",
+      "minApi": 14,
+      "file": "dex-v2-209edf66ed9795e79e862e5aa070314c03f2102246c41ab5cc637347f8171298.dex",
+      "dexSha256": "e28009c46a73da20c697c9d8766d2ebb3706d51cd710d6eca2eaa5320848f7b0",
+      "bytes": 2135004
+    },
+    {
+      "resource": "files/http-legacy.jar",
+      "inputSha256": "080dbc08a8a0d449e6f0fd7fb8c31c9aee692977241420d11f4ab0dc950a8504",
+      "minApi": 14,
+      "file": "dex-v2-f90010ab560f29ef41db93531accf2cfaf2f8e683681bf27eeab71717cd5a5a1.dex",
+      "dexSha256": "579e40555595209a405e9ba82b32f5b3a121407c29094d71a58efe671d2d204a",
+      "bytes": 240236
+    },
+    {
+      "resource": "files/httpmime.jar",
+      "inputSha256": "b31046b52e7543db59254a679d9a5804baaf3f3586acd41a26827c03db9caee4",
+      "minApi": 14,
+      "file": "dex-v2-d07955c5ecfdc1ae33482739014a1fc00f061fc900f3ab63292a99fb31e26b7f.dex",
+      "dexSha256": "d984c9de9093535208090a986169fcf91beb504ccf4758aa46267b6116a8c792",
+      "bytes": 25024
+    },
+    {
+      "resource": "files/interpolator.jar",
+      "inputSha256": "041d65e8566445b97a2ae741227ce05ab6783c783a83e6fb173d8abc9eabd55b",
+      "minApi": 14,
+      "file": "dex-v2-d31521341b061e5fe22b6c2873375091983d35d565236ce1c1d4ac7a3927eb99.dex",
+      "dexSha256": "2836c4003d1d13b4f28612b10d0f5510d918a061619b1cd57f37e5e042a3cff6",
+      "bytes": 4632
+    },
+    {
+      "resource": "files/jackson-core.jar",
+      "inputSha256": "754184022345800c2d066eceeaf2f7a88a7c2aaeae23eb1c76ef598854aa9157",
+      "minApi": 14,
+      "file": "dex-v2-d97f9c743495233c789886101930f2adeff70941c22f44372c36cfb2aa668c4f.dex",
+      "dexSha256": "5bc75ce6e4b119a7db58fd65b2fc0f86aed50f43e58c9e2f6aa77f073809e997",
+      "bytes": 231504
+    },
+    {
+      "resource": "files/jedis.jar",
+      "inputSha256": "3f89f85e6e15bcd1e573771ddab0c1dbc69f755c9e126add35e9983bc92514d3",
+      "minApi": 14,
+      "file": "dex-v2-8e85a77fd1f7734c26410c0668c6e67d8d343d470d5d8806fe9ea835ddf3f6a1.dex",
+      "dexSha256": "694eccaf8864807532fd8c4138e03e9231426838bdb501cdb56d2277e17058fa",
+      "bytes": 576328
+    },
+    {
+      "resource": "files/jetty-util.jar",
+      "inputSha256": "9b974ce2b99f48254b76126337dc45b21226f383aaed616f59780adaf167c047",
+      "minApi": 14,
+      "file": "dex-v2-60c256b9a8e9ebca298105cdaf5c86c18a5bd73f77b8608c12cfa1f46d12f3cf.dex",
+      "dexSha256": "d3b35ff3c0ca1aace531d103edf49bd0b3e02b95e2b0f16db0d70e0528ad02a2",
+      "bytes": 180696
+    },
+    {
+      "resource": "files/jetty.jar",
+      "inputSha256": "21091d3a9c1349f640fdc421504a604c040ed89087ecc12afbe32353326ed4e5",
+      "minApi": 14,
+      "file": "dex-v2-421c21c38631534b00528e16c12cf10832dcd0259741be937ef667d0ef1e5133.dex",
+      "dexSha256": "c5a6bd531169b31ad2ac2abb03bac907964c73098e1eed8e5c1d9602cb514dff",
+      "bytes": 559200
+    },
+    {
+      "resource": "files/json.jar",
+      "inputSha256": "d9c1ef3ba8ee77b7075a1b343bf03c1eb405d89b349d246689feafef3797912a",
+      "minApi": 14,
+      "file": "dex-v2-400c319b17f3282bb09d6f3110d3208bc86efb3264f8f3d7f203b36b5b90f007.dex",
+      "dexSha256": "6123b1e9f3677722bfde466ce471e083fc336f6dc0e3508121d0eca05d8cb6c5",
+      "bytes": 70024
+    },
+    {
+      "resource": "files/jts.jar",
+      "inputSha256": "528b0c585b4233cd3f3d8a049eb26e468006c339b690f0c3808f093d59211d9d",
+      "minApi": 14,
+      "file": "dex-v2-95d4e5032fc4aed87f2bc78477fdc0fe862d59a5a081759b79afcea16e6c89e7.dex",
+      "dexSha256": "30086c7833410e0a8a0a3a5a2ae0b1ddf48c05e3647dcb8076b3e67200d6f7e0",
+      "bytes": 663188
+    },
+    {
+      "resource": "files/kawa.jar",
+      "inputSha256": "5fb2440edfefa42d8599b16624ebc5713ba989494c99f4eb7baff62f01b631a3",
+      "minApi": 14,
+      "file": "dex-v2-b1d9beeb1e93d51aa9c7d223eeb0b1340f79792fa5fe8e8ba12070ae4d0cd0ea.dex",
+      "dexSha256": "00c5757faa36d5038a37a4ece5f57ddfec8015ba8e87bb1764db5e98dbb0365d",
+      "bytes": 2269292
+    },
+    {
+      "resource": "files/legacy-support-core-ui.jar",
+      "inputSha256": "7eeb161e8d06f465eb4a0c32e35175626d0f22318efd0cb647db72690563a448",
+      "minApi": 14,
+      "file": "dex-v2-75b1c0f7003b4d91bd94455f14fc7cc6318dc2242c53296498c39b907e8b3480.dex",
+      "dexSha256": "fedeffcc52bbd5bb229064179d7cedaf3cc88a4c262d9aeb0b3675bfcd857dac",
+      "bytes": 11368
+    },
+    {
+      "resource": "files/legacy-support-core-utils.jar",
+      "inputSha256": "f9cef016ce1819cf2646d022d67bdc7211c6e60d5fc8f399db944b026916542e",
+      "minApi": 14,
+      "file": "dex-v2-cd1fec741d4d9831deb03ce6fba989a1d1c3f8b2af054604cef7b14282dc3691.dex",
+      "dexSha256": "19443c94f70ee145893c13d766707c5a175389f29c0487247db9773e15dbd76f",
+      "bytes": 2928
+    },
+    {
+      "resource": "files/lifecycle-common.jar",
+      "inputSha256": "7bad7a188804adea6fa1f35d5ef99b705f20bd93ecadde484760ff86b535fefc",
+      "minApi": 14,
+      "file": "dex-v2-ae620a3fa2da0401fabe7fde0726a706605caac9425e1f5ca585ccdfb1167a15.dex",
+      "dexSha256": "43036b7bcfdee19230470712e5f1f4d6f6cfc1493b357249c02a01e8450788f1",
+      "bytes": 18236
+    },
+    {
+      "resource": "files/lifecycle-livedata-core.jar",
+      "inputSha256": "50a4454f41fc0e23f8c729710eeb0bf48d427fc1bc0c131396ed624140952785",
+      "minApi": 14,
+      "file": "dex-v2-5493eb488b33185fd2f51f43d92551792d06199db77fb5b2ec95360bf58cfb44.dex",
+      "dexSha256": "90cc2392ba7db6184de151d1411747cb19e96a20f3b41b9a4b8bc6cdac96484d",
+      "bytes": 9212
+    },
+    {
+      "resource": "files/lifecycle-livedata.jar",
+      "inputSha256": "4b278b784d0718a33c677f18e9ff50b044ec0329a2e1d5d9f93a6d8a8f6fc767",
+      "minApi": 14,
+      "file": "dex-v2-2a76a0d3173da3024f0dd35a93163e5b5e1b7846745f86d3d0b68566d90d28bd.dex",
+      "dexSha256": "ed37e9089ee5c9baef8004c08c794108738c312c00f5a441b708e920d3919a28",
+      "bytes": 9400
+    },
+    {
+      "resource": "files/lifecycle-runtime.jar",
+      "inputSha256": "14ec31f2b5f8d3eb1db1fb664035e3ee44b7f8f3fa91c072b6ccc41cd478b1df",
+      "minApi": 14,
+      "file": "dex-v2-644d6310b4a3b9ad6abe9862d85c23de702dce32237580b1528af5d985f3fe6b.dex",
+      "dexSha256": "4a4b70fb88224e2882e9ad67f443290a06aa81a0021d70990d8661193f2cc8ea",
+      "bytes": 11352
+    },
+    {
+      "resource": "files/lifecycle-viewmodel.jar",
+      "inputSha256": "fb34a59fa31f3831e93a0d3e9cf82c2f289ee3ff3cef7185a3c7a421cbcc471a",
+      "minApi": 14,
+      "file": "dex-v2-86f9ddcad54ab2a032771c6d253c058d2449599dc17901a962bebb0d1d2aa621.dex",
+      "dexSha256": "3b2caf884cbae5fbad85b2c46b8f35497056b9e2d1d91220a7eb65641b3554fe",
+      "bytes": 6064
+    },
+    {
+      "resource": "files/loader.jar",
+      "inputSha256": "1f75b3cb79621362c3b9adba7d3f98eb81ccec3c9e0927bedbb97575c5537751",
+      "minApi": 14,
+      "file": "dex-v2-3338306ce70ec322b050737ec206a3a5c6aa43e0de28e5a3f6533847d9b823b4.dex",
+      "dexSha256": "e073fd07ade4c6513523aa8d78a6c27695770bddac3406f3dfc3a1e1428e637d",
+      "bytes": 36996
+    },
+    {
+      "resource": "files/localbroadcastmanager.jar",
+      "inputSha256": "0ef151b4191734878dec89f7c2a088f9e0b0022cb2a92acc3331539e77eb1ff3",
+      "minApi": 14,
+      "file": "dex-v2-c2fea2896c210d2726706ddfc1929e2c2222d43daf1c43e705d7a93bacfb9b3d.dex",
+      "dexSha256": "542e7d816447764e2bdfb8a37d07635c0075d7037f6f1df7a4c40353367f5d18",
+      "bytes": 7924
+    },
+    {
+      "resource": "files/mpandroidchart.jar",
+      "inputSha256": "26018e6656e622c871dfc2082c903922afec3f6dc9ae135cb998819e81983bda",
+      "minApi": 14,
+      "file": "dex-v2-2f04d6d06e464133bc6dbd27fed24cae4b6345d84de2f5b890d99bb76ce4b148.dex",
+      "dexSha256": "66b6e4a98fc6ec1410377da5202797803e95effb977e3d0fa3f74697a05e197c",
+      "bytes": 362624
+    },
+    {
+      "resource": "files/opencensus-contrib-http-util.jar",
+      "inputSha256": "387e26dc1dff89af3aa19ec4fa780d8b23b0ea0c1b7e115a2f00b5f7278c54ec",
+      "minApi": 14,
+      "file": "dex-v2-b2509b713a453cd2dacc25578454573aa83ead3eb6c6339e607ee69e07d8b26d.dex",
+      "dexSha256": "350391f39fcaf785720ccb6e1ec2db3ad605a0cecde749626d18cd48c975cd8d",
+      "bytes": 26880
+    },
+    {
+      "resource": "files/opencensus.jar",
+      "inputSha256": "accf897bc8e4ec4dd28707c428712ea349b357b120f8bb565d43c3b27a7ae728",
+      "minApi": 14,
+      "file": "dex-v2-cf0be21c5fde995b87c80b1c33d6b46ac5d03ebecd7bc034444a92317fc2bfb1.dex",
+      "dexSha256": "b4538b3b81853de2066925724e70826a542776c647bc038f59f021fe05cc9e32",
+      "bytes": 240460
+    },
+    {
+      "resource": "files/osmdroid.jar",
+      "inputSha256": "17deb85871e8414b7be718bcb16d116e1281b11a7c4e1039ce711195aadc19d7",
+      "minApi": 14,
+      "file": "dex-v2-a0d500099d0529e626492bbc3fe82e73a1306ee6f6246e39ca6eaa723660577a.dex",
+      "dexSha256": "17a5dfbe763c158f06d5ef060cf92b3bed53c2dc0ee09dcc1b513457daa68c00",
+      "bytes": 387344
+    },
+    {
+      "resource": "files/physicaloid.jar",
+      "inputSha256": "518bbf941865997062d8b38a615d1d67cf78754581ca7c01d278c2097d367123",
+      "minApi": 14,
+      "file": "dex-v2-5cb05f55d97ba3faa4a3c5be415a8dc57850552a5ef1f6441ea67c5fed056253.dex",
+      "dexSha256": "957beaefa339267eae4b91b10a0c22d68b1f1998b4dce204865d478485ed680d",
+      "bytes": 121488
+    },
+    {
+      "resource": "files/print.jar",
+      "inputSha256": "5bfd0937dfca3e7ba522a996d37d0e3ec514ac829a1131de5e8d4aa2594361f9",
+      "minApi": 14,
+      "file": "dex-v2-d671394e565af157fcc9bb8ad919e6e51de37760ee61e3124f668eb316833c17.dex",
+      "dexSha256": "7d4aedb9de5ceb2708f61ef6a148f5a348ebb1f39db3f283bbff075b14b44132",
+      "bytes": 16156
+    },
+    {
+      "resource": "files/protobuf-java-3.0.0.jar",
+      "inputSha256": "a1e7d6b3efc1703c7c8f1b15ecf8757f17d0ac41f32c9a48481a5caf638c55db",
+      "minApi": 14,
+      "file": "dex-v2-26b4a32ef3badb08c6103c88d13c4eb22156892ae736720bc139e7c1c82e3aba.dex",
+      "dexSha256": "f1d5406a7e39018b75e67e2921769e93b8d7c03bfbc0d1ce27e946674f960280",
+      "bytes": 1245816
+    },
+    {
+      "resource": "files/recyclerview.jar",
+      "inputSha256": "2b2e665d9dcf205bbc88b7a0fcc45324117f0ab8b29912f87cc6c9bd4ff6ea34",
+      "minApi": 14,
+      "file": "dex-v2-8bdbbea29d5e06a2ca4476feda212601dbebb664804171a978cfb1f87fe2cea4.dex",
+      "dexSha256": "e10b540934b7d216bf271cc20bb3d8354141f13cdf33ad714fbbd922b0efc341",
+      "bytes": 363312
+    },
+    {
+      "resource": "files/slidingpanelayout.jar",
+      "inputSha256": "83cb7f18b3ee8eb615a86d40750d0df95d473412a9d2dcbedc012c4515f69ae0",
+      "minApi": 14,
+      "file": "dex-v2-f116348f6e6b9bd9b5c0e9176181ee3240d2706b47e50103095c2b0f2c30b169.dex",
+      "dexSha256": "67e745a85fc0dbfe8af1fe5c8e16e5ee42ca6d482e41adc783415ab303e2a070",
+      "bytes": 29416
+    },
+    {
+      "resource": "files/swiperefreshlayout.jar",
+      "inputSha256": "0c5dbb776937eb1d63e84c520baccb465c27cd1d7323932d591a29e8ed95026c",
+      "minApi": 14,
+      "file": "dex-v2-ee37a4b5ff141a9268cd947222764b9de4fe0ccdf8762e06a4f95649d16c921d.dex",
+      "dexSha256": "8038ac1d377891783dd8d7878b8edf3d88056a7fceb17facb46abfce1a3451df",
+      "bytes": 38540
+    },
+    {
+      "resource": "files/twitter4j.jar",
+      "inputSha256": "20ad5eed9f6eaa4383b44ba74fd4743f79f37edead3cd52f31116d3505906093",
+      "minApi": 14,
+      "file": "dex-v2-26b7f04dbe2b56852588a3dadad89db349c1f5623b3259e8977c3ee21bb8b052.dex",
+      "dexSha256": "47c9c22d3d52e597969bbb07ac8a2cfa2c20e49ba4431593cae9ba9cb8b6678f",
+      "bytes": 338272
+    },
+    {
+      "resource": "files/twitter4jmedia.jar",
+      "inputSha256": "8864d02071392584b5572f62a0b9a4a91e6367b7019e5fe7af24aebce77320db",
+      "minApi": 14,
+      "file": "dex-v2-c2ea368c910db587678e3f6cfea0267c6158ffd07c9e977971b0e7cd3f31bde9.dex",
+      "dexSha256": "a40f3f38698a59229496d2fdb33a52682b1ceefafad4b2413bf7b48b7a08cacf",
+      "bytes": 21168
+    },
+    {
+      "resource": "files/vectordrawable-animated.jar",
+      "inputSha256": "10159e3453034a9fa8fdd5062162febf227d54b7a85b147605e583bca6be7636",
+      "minApi": 14,
+      "file": "dex-v2-9315b85d9f236169d43d0eeb7869ecbb53f5f355f4010c8c21b4878ad158229b.dex",
+      "dexSha256": "3c82cc6c2967665dde73f445177a9537615a8d56b0391d21a78c5c0a4fa56eba",
+      "bytes": 40632
+    },
+    {
+      "resource": "files/vectordrawable.jar",
+      "inputSha256": "0e6bdac9c0870309407dd76971ad7221b3259a5c08df8e25571e90959dc45529",
+      "minApi": 14,
+      "file": "dex-v2-bba77912cffec99a983af0b12496a42ebd6d69990a82ae4be372eedc44cae3a5.dex",
+      "dexSha256": "a51d5a5d676e458b9b6f69039b2108aec866577903fa2eabfa0a1adcd84a1e14",
+      "bytes": 41316
+    },
+    {
+      "resource": "files/versionedparcelable.jar",
+      "inputSha256": "08e9b4d29dc8f1030e82864ca8655a14f048df93689d463aa3e5a3bf7cc269bd",
+      "minApi": 14,
+      "file": "dex-v2-c24e117fd96fe0a31cba80a7fa8803ba814f43d4052d9fc52cae0c44ba7ed9c7.dex",
+      "dexSha256": "4863e6c016f2a882a9a02db11c3f998ad733c8dfa48c5e36a1bfd0b47e3383ad",
+      "bytes": 34212
+    },
+    {
+      "resource": "files/viewpager.jar",
+      "inputSha256": "14f7429cff9f2f50421a36b237a1de35d8a2c8deffcbe1e0163c6e51a2defe56",
+      "minApi": 14,
+      "file": "dex-v2-0d3738bc11230010c7fc16d29d2a4684e400bce6eb3cc0b2f6402d32f187b079.dex",
+      "dexSha256": "ce55c4ebf3c2a42efd027178604e8c0abc9922b26e2bfdb860121204eeffe021",
+      "bytes": 62996
+    },
+    {
+      "resource": "files/webrtc.jar",
+      "inputSha256": "19f1390a32c3808f59e2075219f26014dfc336a46b5f385d25861b2b409ab33e",
+      "minApi": 14,
+      "file": "dex-v2-615bf3e3546f61f6c709f5376aa1a2a50d2370bd2a206699590ea6dd7aab8b1d.dex",
+      "dexSha256": "ee8aeb590e2c62db98975a3d12a6fa96230e37a64b06516734f54b2a5be9558f",
+      "bytes": 459076
+    },
+    {
+      "resource": "files/AndroidRuntime.jar",
+      "inputSha256": "e2ff0c7005ce1069c184b273e4bca15371e2ab29e659dec6a3e9139eac7f7376",
+      "minApi": 19,
+      "file": "dex-v2-ea8f255561ab500bef40328a26c1e7a2d278e4db4fe1f422e40f14706216bc5b.dex",
+      "dexSha256": "92c615e2cbf7b1db317a7aca832398db0647a04250dfa79329a7b9446a3f61a4",
+      "bytes": 1851260
+    },
+    {
+      "resource": "files/Barcode.jar",
+      "inputSha256": "d19b7141560494c3727b360f1660b6d027b0ed05f3787ffa7c32d329a5e69307",
+      "minApi": 19,
+      "file": "dex-v2-50e40e9da6aad3ddd6d10058a53f4cb1941caef8729da788f45ae4ede10d156b.dex",
+      "dexSha256": "ba8f481ef395b2f1721ef5366bd70ee0b385e0383ff28d18f14b14e9b0f164f0",
+      "bytes": 77572
+    },
+    {
+      "resource": "files/CommonVersion.jar",
+      "inputSha256": "c068fbefdae88acf5e8adf5e1b366b9939067f82769f09043bd774e58d0337f6",
+      "minApi": 19,
+      "file": "dex-v2-441ee21ba8c052be4cf15ebbeaa24ca3d39631d28826bdae91d08c5509b15e62.dex",
+      "dexSha256": "eceea45c5017f82cfe82d0e3075f97f6d6b886e60d369c0f3f1d50908b8c5426",
+      "bytes": 2860
+    },
+    {
+      "resource": "files/QRGenerator.jar",
+      "inputSha256": "c9dd47556f909639db1518b2e6e5bf0215c2c8c7d98ba00d20d8f17a8ae286bb",
+      "minApi": 19,
+      "file": "dex-v2-ac14875f31548bb2f167a2681ce86d565e3e96aa4b61bb4635fbb2e437e3a7bc.dex",
+      "dexSha256": "eb71e8d399fd8476b242053093c485118b742882805ba4d994e821965bb04d83",
+      "bytes": 399700
+    },
+    {
+      "resource": "files/acra-4.4.0.jar",
+      "inputSha256": "882410992523d092aa610dbc55d4ffa863187d11b4247f5d970d417ad7927b9d",
+      "minApi": 19,
+      "file": "dex-v2-2081d85a4d989348cda15efa3cd48f93aa2723eaf0d830b7ef92cc5523f69c37.dex",
+      "dexSha256": "87b06c740c18c5f3814ef12a9abd7e6acd87ef6131cc99f2394b580ea2338a16",
+      "bytes": 99644
+    },
+    {
+      "resource": "files/androidsvg.jar",
+      "inputSha256": "69ddb2aaa524d010a3d14bd33fa7f2887f47bfffde0c2fa36f5b15005c03289d",
+      "minApi": 19,
+      "file": "dex-v2-d588212807ca095572cda74ba907f9f2ad028ae45cc92dc7584a1b3685a8509f.dex",
+      "dexSha256": "df93c4eae196937a0082ecc7a6a0765b9dc0aff83c1ac24ce8f1d15d3aa69b9c",
+      "bytes": 195216
+    },
+    {
+      "resource": "files/annotation-experimental.jar",
+      "inputSha256": "e336cd523d2a2ca31beb09047bf5a774f1d12bf124a2e38c86a75434d967ab51",
+      "minApi": 19,
+      "file": "dex-v2-e375e8ac52206e45d21530dcc50486afcd4d32842582de2b87d5b310f5ccaef7.dex",
+      "dexSha256": "3b0b4f1c8690f67a4f3bae89ebb36f7ff787023878a99f6d5fb269a57fc0ff5e",
+      "bytes": 5328
+    },
+    {
+      "resource": "files/annotation.jar",
+      "inputSha256": "0baae9755f7caf52aa80cd04324b91ba93af55d4d1d17dcc9a7b53d99ef7c016",
+      "minApi": 19,
+      "file": "dex-v2-3ade019e94371da7226943a7f81b116602866aefaaac208cd67cdab9a0b73bdb.dex",
+      "dexSha256": "8db5ff52fc549c16a3fd6695249f4dd8803c5d4e2cf1fa1cdce9c5b3501ae890",
+      "bytes": 9720
+    },
+    {
+      "resource": "files/appcompat.jar",
+      "inputSha256": "34d154a9266a922fac793c62d5b327170447db1df7a87f0e35e4effd9ed9a57a",
+      "minApi": 19,
+      "file": "dex-v2-8234d4ec5e28c26b7204983fb2a02efa4930cc89577d54eb1ca90460cab211aa.dex",
+      "dexSha256": "c96f7c6d5805b0cdee626b577589175d864c16bba17c55a82dc7d222954b4238",
+      "bytes": 628392
+    },
+    {
+      "resource": "files/asynclayoutinflater.jar",
+      "inputSha256": "36d61846b729b781999791d370ff2fee72e62b7325620fcd8c0031ba17635a57",
+      "minApi": 19,
+      "file": "dex-v2-bc111c3760758f30c577fae435a284f7f1c9e78607473682d2b269da9ad9aa66.dex",
+      "dexSha256": "eeb8462c385a2888fa9412175f03c1142669b39800f9d33b40b65373ae5e5cca",
+      "bytes": 6116
+    },
+    {
+      "resource": "files/cardview.jar",
+      "inputSha256": "fef1d927f66709190194be794021238af265dc41bc1721cd04d85f2556e5a89c",
+      "minApi": 19,
+      "file": "dex-v2-5810912b936fe22e98fa6039e17c9d74139aa8892073d3e35d02ef4324409057.dex",
+      "dexSha256": "d397f1956eef4edca49b32ccd01faa9d17996f6d7be3b08cda45d55dfca375ab",
+      "bytes": 24376
+    },
+    {
+      "resource": "files/collection.jar",
+      "inputSha256": "9c8d117b5c2bc120a1cdfeb857e05b495b16c36013570372a708f7827e3ac9f9",
+      "minApi": 19,
+      "file": "dex-v2-fd434f051ef1e68567ced7f5186a6802749b175da64603ca228485ba4f319576.dex",
+      "dexSha256": "af875f1a43d633fac5d95f8e117a174350cc1511bcb5fc640476d1f205d5c284",
+      "bytes": 45368
+    },
+    {
+      "resource": "files/commons-math3.jar",
+      "inputSha256": "1e56d7b058d28b65abd256b8458e3885b674c1d588fa43cd7d1cbb9c7ef2b308",
+      "minApi": 19,
+      "file": "dex-v2-05cd4632f5188f8ef7041ed73241b1dae529825e94083c9f7ca467ba75a3b16d.dex",
+      "dexSha256": "1d09c3352520c1bfd8d64098de793246bc7bcb5924adeaa83938de4e52bd10ff",
+      "bytes": 2102532
+    },
+    {
+      "resource": "files/commons-pool.jar",
+      "inputSha256": "04641751f1cf036f488856f92f545fe3a3a55701ccb003870b3dc3ea67ff147b",
+      "minApi": 19,
+      "file": "dex-v2-19ec19592a94c93f62c6762223aad8a2cdd43592e8208a9cbc52b69d3b8f9916.dex",
+      "dexSha256": "58c39563e4dcc429cd1243a1dad6f75178b518788ecae5a80423143d70f104a3",
+      "bytes": 104452
+    },
+    {
+      "resource": "files/constraintlayout-solver.jar",
+      "inputSha256": "965c177e64fbd81bd1d27b402b66ef9d7bc7b5cb5f718044bf7a453abc542045",
+      "minApi": 19,
+      "file": "dex-v2-ef7b49b63cf6a82e4d84d71d4f5793f12bb66b5e3bc11dfc5a078a7fe992a899.dex",
+      "dexSha256": "8939f975c5c8418f05359c59f03c1d540a75f5c5732ff4658606aa6b02338bf6",
+      "bytes": 142932
+    },
+    {
+      "resource": "files/constraintlayout.jar",
+      "inputSha256": "6571d46924b60ab5d44875d84c66f17d66e56191fd485a9f4566a53a75ff1671",
+      "minApi": 19,
+      "file": "dex-v2-d3b5df73f3fe1cf2cb66cb7bde4e60b9668cddf7c1770edd3efb22720bcb9f3a.dex",
+      "dexSha256": "dffc2e8a2f7d92991b25ce9c8bf745fabe53d28e26e3a030c673cf42c936d454",
+      "bytes": 85980
+    },
+    {
+      "resource": "files/coordinatorlayout.jar",
+      "inputSha256": "c4c45d05b7559bea09ba313ee759fe275f065ecada96027bcd6ab85b13f1e105",
+      "minApi": 19,
+      "file": "dex-v2-dee3dad5601795083d08d2486ac7dbe2ac23685baa9067da88267acdb852ab36.dex",
+      "dexSha256": "352db77ff586fd892ad38f6a8cb8bd40c03dbc639a8ab9c44d2dc37093f9719f",
+      "bytes": 53608
+    },
+    {
+      "resource": "files/core-common.jar",
+      "inputSha256": "4b80b337779b526e64b0ee0ca9e0df43b808344d145f8e9b1c42a134dac57ad8",
+      "minApi": 19,
+      "file": "dex-v2-f0f19f3737a36631989b1c1315929c6ebccc9e4b47eccd60c0b5d37b97053ce9.dex",
+      "dexSha256": "c35255bcb4de26cccf33a7495b383c9b73d48cb7a3faac759c928208e5aa1cab",
+      "bytes": 10628
+    },
+    {
+      "resource": "files/core-runtime.jar",
+      "inputSha256": "cdb7378ed68dd9635d74d002830b8dadd5d76838ca84071cd0ecef14b5524b2f",
+      "minApi": 19,
+      "file": "dex-v2-51344acbb24993f00058b38b0d76a97db9ee7cbcf946d44bebb1ed6ef7d49b2c.dex",
+      "dexSha256": "d3877b4de9022dbe0dce36fa17b867c9c8d7ee53fb75ee8593dbb365c9d323b8",
+      "bytes": 4816
+    },
+    {
+      "resource": "files/core.jar",
+      "inputSha256": "8a0ecdeb687d2127c412b20683888258995367f579e050000bbfaa646b578ee7",
+      "minApi": 19,
+      "file": "dex-v2-00403208d84d4c5c3a6ff35cc61ace028064b7b60dd105b575899d51d4fe3010.dex",
+      "dexSha256": "aaf72d3ae873fd4d85cb205a7bd39e2bb007301862a8b9a9d5ea9d7faf7b0013",
+      "bytes": 1045652
+    },
+    {
+      "resource": "files/cursoradapter.jar",
+      "inputSha256": "f99bc7e162bffaa6273973606e4cb89fd21c7cd95fb4f5a33c72ee8939bd7d31",
+      "minApi": 19,
+      "file": "dex-v2-353974b827c8684d65d88c7ce0b0e64e1684361d0fb05e60f418b8f81532f6c3.dex",
+      "dexSha256": "0dca7e66502804b8770de41c8959ed114cf7657df7d1d62f6f8ceaddb9992050",
+      "bytes": 11716
+    },
+    {
+      "resource": "files/customview.jar",
+      "inputSha256": "319f904d5ee4b9fa9d4f0755fcc8549a0dd9a576510648e3e31afe10c2cf8fc0",
+      "minApi": 19,
+      "file": "dex-v2-c9c9462c66e0a0dc658d0f816d5451f263f26dc39f75c7046103edd481b1ccbf.dex",
+      "dexSha256": "f01e9a3083592c4843183642b745555628837a3005facb77047ce51cb6c05269",
+      "bytes": 43132
+    },
+    {
+      "resource": "files/documentfile.jar",
+      "inputSha256": "976c8663263f4fadf584a7d39a5504d9bcc60e855733f25fd4ecb079d78de206",
+      "minApi": 19,
+      "file": "dex-v2-2e93f6a359c93db4090220cfc26c2700f5bc767ea8ee6fe740ec01cec566777b.dex",
+      "dexSha256": "230a9bba7d1ba80e05c5a2e46d0e2e5fd2255cbfbfb319b0f66959a7f639ce5b",
+      "bytes": 12512
+    },
+    {
+      "resource": "files/drawerlayout.jar",
+      "inputSha256": "2b4ee0b3f947a2605babbbf9f6a334db3bcec4a72f811a097ef4fbcd72eb0ce7",
+      "minApi": 19,
+      "file": "dex-v2-186ef4cf0e3df00e00436d87e971ddf5eb90d5ef4189d156cd03eb14cbee1752.dex",
+      "dexSha256": "0f83110f2dd06c7c250e9b456d66432d5095ba63a5afbf5a22794c886ac10c8c",
+      "bytes": 39896
+    },
+    {
+      "resource": "files/dynamicanimation.jar",
+      "inputSha256": "7ebe731639d6a84c35e9b093d732088fc20a5b2d7cadb721831247e91159df28",
+      "minApi": 19,
+      "file": "dex-v2-cad88484a8716928de364d94a58f1e5984072def53d1c43cb465d7b195df4420.dex",
+      "dexSha256": "7f8114a6d79eb38a722dc8816b56458235213cccb1e3a24309239c2e99e4c363",
+      "bytes": 30424
+    },
+    {
+      "resource": "files/firebase.jar",
+      "inputSha256": "bad972e8ebd0cd66af70df97bd71b88b808a64bc0250fb702ae906d063ff4add",
+      "minApi": 19,
+      "file": "dex-v2-5cebca6c5f4927a86eab7a17245b8254f9e8e0f9b05c814e156ba7638549603d.dex",
+      "dexSha256": "d193da2f587d85b640448db77d7b9bda93059799223810583a784829b41ef45a",
+      "bytes": 1797608
+    },
+    {
+      "resource": "files/fragment.jar",
+      "inputSha256": "4a9630cbdbf599d3b690264cd6d4433ec81619eaa2de8c576e8a107f79707750",
+      "minApi": 19,
+      "file": "dex-v2-8856857f44b976181a4c78b1c3af8d6d6b65beeb1eaedd36419fa2769ec398f5.dex",
+      "dexSha256": "cb7b9cb55e6575fbcfedbdcd4bde478a902cf84cf777e578e10f4281e7a4a963",
+      "bytes": 180248
+    },
+    {
+      "resource": "files/fusiontables.jar",
+      "inputSha256": "ea5f1dab9959190052a1609320a4316e1c516f28def826b0f3c43131a6c57007",
+      "minApi": 19,
+      "file": "dex-v2-65592bd2d9799e4c539bb5654e7e5b9a973a50bf844d82f8dad5f62e1d67f045.dex",
+      "dexSha256": "68b998d0c2d581cffd6108c2484deca959f2c17f1955fc36d61f05bbad2e982f",
+      "bytes": 52072
+    },
+    {
+      "resource": "files/google-api-client-android2-beta.jar",
+      "inputSha256": "e949826ce815c14f52afa00c5f6a0121dfddf172173b3ceb26faaa8be2d610b5",
+      "minApi": 19,
+      "file": "dex-v2-2dab7b2583557489274e8e1af19a91d13e4a04ac771a4fadc958d3fcd00c9739.dex",
+      "dexSha256": "fab169d0fe10e769580258e8a2f59a7bf408a159315acb439ee84626ab282646",
+      "bytes": 1896
+    },
+    {
+      "resource": "files/google-api-client-jackson2.jar",
+      "inputSha256": "b86e3bdd3b6504741b90de51f06b2236cedfedd0069f942b22adb0b60553de4a",
+      "minApi": 19,
+      "file": "dex-v2-1ce08007d34d9d2d744d654350ea81146e58f669bc65735fe9484f1539ba1317.dex",
+      "dexSha256": "c9292162eef27b6d6529a22266d978b76eedd7a7fbb548e0dbe544e6637e91b4",
+      "bytes": 1672
+    },
+    {
+      "resource": "files/google-api-client.jar",
+      "inputSha256": "885554b2b7d2e26b218e8db5ccf78d6ca0f0c21570439f7a8224b8d960373f70",
+      "minApi": 19,
+      "file": "dex-v2-5b5bfdcdbc818bfa18d38eeb39521e05b8e9d127238ffa3ae0186ebb678ebe5f.dex",
+      "dexSha256": "255ce74d9e911bfd4f4b3838902ec3a643b6fe2d1e807ab1662899268f094e48",
+      "bytes": 150292
+    },
+    {
+      "resource": "files/google-http-client-android2-beta.jar",
+      "inputSha256": "dd1d663f56dd5a2984b5f7c6947e767cde6b51a3511692021655a9436ad3f859",
+      "minApi": 19,
+      "file": "dex-v2-fdd42da82fbc79505d5a929996ec39cea5b16d7292e2b3fd7f94eb3e40ac725c.dex",
+      "dexSha256": "02d4e48feeeb362d0174738f9fcb8374f16490dc44e39abdb70a6c8f597c6e13",
+      "bytes": 1112
+    },
+    {
+      "resource": "files/google-http-client-android3-beta.jar",
+      "inputSha256": "82fec9dcc9db854426519280d9651409a742970e1d07e38d32c98251e80c80c4",
+      "minApi": 19,
+      "file": "dex-v2-271f80e23991b24d5432f2f739b632f69c014806b6ecb74eb026973e4e5af516.dex",
+      "dexSha256": "eb45f825324f0831906084487fae85016d9f5e4895b762f986489b8eb647ca85",
+      "bytes": 10996
+    },
+    {
+      "resource": "files/google-http-client-jackson2.jar",
+      "inputSha256": "c017bf2848085968888acdf42f552f3b56598a5ee13f5bac11d72b28f24d4acc",
+      "minApi": 19,
+      "file": "dex-v2-db9bab90fe7af7343161c99e6eb04a75ecc8d3d0bb064dc13c26eea1bd017244.dex",
+      "dexSha256": "409adff67e4721db409bd7746be5b585230d090984f86108ea55c7ed29816a82",
+      "bytes": 8356
+    },
+    {
+      "resource": "files/google-http-client.jar",
+      "inputSha256": "e0c891cd9e4ac914f973e969bf887661f8ff9105afc92edfff1fed411b484fca",
+      "minApi": 19,
+      "file": "dex-v2-10e1f87073bd041f29c80bb2866f9b99cf090b7039d587825afc24a63fa7326f.dex",
+      "dexSha256": "d652f98d319d0da1b3104b3560671ebedb6f5f994461b016d4935c4fd0d33927",
+      "bytes": 253996
+    },
+    {
+      "resource": "files/google-oauth-client-java6.jar",
+      "inputSha256": "4e18a9cb770719f28eeefdb821b2c534fab14edfa0488f72d991796d79f0cce3",
+      "minApi": 19,
+      "file": "dex-v2-1e59f83637439a39b97a887195175af1b4b2631a8be6c2e71c883af37698f544.dex",
+      "dexSha256": "f139584145c1cfa2456681d205dc0ac77171a60cc63de2b622dda5f28c430a55",
+      "bytes": 13036
+    },
+    {
+      "resource": "files/google-oauth-client-jetty.jar",
+      "inputSha256": "006e746d2b4cf58d14d4b1241c5ffe118ee6f753f2f1957aa08bc22bcc5a73ec",
+      "minApi": 19,
+      "file": "dex-v2-429e65a157b4f013457bc1718e234a42f0dd7bf9ba0e3d59ec87fa4bfe8c3bcc.dex",
+      "dexSha256": "db2a7f8969b3863995050d3e80ece6602b138288f9634bf447acded0929c02fb",
+      "bytes": 6084
+    },
+    {
+      "resource": "files/google-oauth-client.jar",
+      "inputSha256": "76570013a593ae052b3ea2332dfa43673a2d36328dd81b1c94984fbc6bcb62c1",
+      "minApi": 19,
+      "file": "dex-v2-f83fb8eb6f62fe77df4ea690958997ee0f0edd656bd2e3d3bb85d042f09e3d7c.dex",
+      "dexSha256": "11835766ed38a8bbd7b1fb7133f48f51a688eaacb9b9131e253f6ef5aa0e1aa9",
+      "bytes": 60192
+    },
+    {
+      "resource": "files/googlesheets.jar",
+      "inputSha256": "a26f1085d7fffdd68398f4828320ddfeab12aa4827ccf4ced18d0aadac5fb664",
+      "minApi": 19,
+      "file": "dex-v2-5cefba1eaa6ff66ccb4256172a621fca8b99c430ac1e02f9a88aeb39ecae9c7a.dex",
+      "dexSha256": "1dbd7ed2f66a625feca96f7d6ff57e610607243f3be61239a334a9d7d69660af",
+      "bytes": 264284
+    },
+    {
+      "resource": "files/grpc-context.jar",
+      "inputSha256": "41426f8fa5b5ff6e8cf5d6a7a6e7b1175350bc8c8e11f352e0622e00f99c4a02",
+      "minApi": 19,
+      "file": "dex-v2-6c0886ccee3e2da04136fa2bc711787c4cb6a469eb7c4af4c332cb04f3787a9d.dex",
+      "dexSha256": "e197e1a450e4b2081403f5579258307c202f3f06bfe833e260dd908b27ef8955",
+      "bytes": 28664
+    },
+    {
+      "resource": "files/gson-2.1.jar",
+      "inputSha256": "35c94198255e95f6f11501eb4b3d43a5276bfdd142ab7c904722e69bff51f69e",
+      "minApi": 19,
+      "file": "dex-v2-b1bd659f0be7e51ce93014d6fc5928a0aa358f6c395c700c9dfd9bfde0f9795a.dex",
+      "dexSha256": "5a28e0ab08cb59da2c91ffc8f7d73328beea06b07918fd56bae6d5240603ccba",
+      "bytes": 146492
+    },
+    {
+      "resource": "files/guava.jar",
+      "inputSha256": "686404f2d1d4d221911f96bd627ff60dac2226a5dfa6fb8ba517073eb97ec0ef",
+      "minApi": 19,
+      "file": "dex-v2-5afbdf8890560f69c5e04863c0e80e8dbaf8b878977e6724d338dedd62ea605c.dex",
+      "dexSha256": "336d5c0d13eb3e7cf10c60d48fce411e3e80ce58b9a2220608e42c35b2d53def",
+      "bytes": 2134988
+    },
+    {
+      "resource": "files/http-legacy.jar",
+      "inputSha256": "080dbc08a8a0d449e6f0fd7fb8c31c9aee692977241420d11f4ab0dc950a8504",
+      "minApi": 19,
+      "file": "dex-v2-047a60d11ac4d58c4d2ae4dc277eaf9ad392f673bb5dbc63ef721495c125f60a.dex",
+      "dexSha256": "827ee1b772c40d52add75e7ac01761f9fe25e8a2493a08ff9b988a57ed00417b",
+      "bytes": 240232
+    },
+    {
+      "resource": "files/httpmime.jar",
+      "inputSha256": "b31046b52e7543db59254a679d9a5804baaf3f3586acd41a26827c03db9caee4",
+      "minApi": 19,
+      "file": "dex-v2-e1dbf37b1a1ba924fc73371e1967e5e2c60c473593be28b98d3bb2b499962aad.dex",
+      "dexSha256": "ef23e9379eab682703d1029f183e0241d9f70afbc79188039427ee6035a79580",
+      "bytes": 25020
+    },
+    {
+      "resource": "files/interpolator.jar",
+      "inputSha256": "041d65e8566445b97a2ae741227ce05ab6783c783a83e6fb173d8abc9eabd55b",
+      "minApi": 19,
+      "file": "dex-v2-4215917fb123ff22ad16b053dabd147ae597b181357d1a3a423c19d21ee70594.dex",
+      "dexSha256": "5137cf13abfc987a79d89392df82666c175b75372f2a48ce8925f6ca06ab5a29",
+      "bytes": 4616
+    },
+    {
+      "resource": "files/jackson-core.jar",
+      "inputSha256": "754184022345800c2d066eceeaf2f7a88a7c2aaeae23eb1c76ef598854aa9157",
+      "minApi": 19,
+      "file": "dex-v2-82de3b6b8e564924cc4780b61c524b8a4cda6611f434ab44f01e094bfb6eabcb.dex",
+      "dexSha256": "6ed2e61488d7ffc758eaa1e1cc011e8fd40924dfa4c1d143722add5684de0ee5",
+      "bytes": 231400
+    },
+    {
+      "resource": "files/jedis.jar",
+      "inputSha256": "3f89f85e6e15bcd1e573771ddab0c1dbc69f755c9e126add35e9983bc92514d3",
+      "minApi": 19,
+      "file": "dex-v2-adacce0383b9b50c3cdf4e1900dc21cb349272db6bd02a2a22daaf1530dfec64.dex",
+      "dexSha256": "9cf213581a84c2f639d16a6b505fd8be045179e4198ef5a4632353999243eaf8",
+      "bytes": 575972
+    },
+    {
+      "resource": "files/jetty-util.jar",
+      "inputSha256": "9b974ce2b99f48254b76126337dc45b21226f383aaed616f59780adaf167c047",
+      "minApi": 19,
+      "file": "dex-v2-c50548a5e935ad940fdbdf9a2c0d751a987bd275af03b2ecec65fd03b64f57b9.dex",
+      "dexSha256": "a88d202255b9d3bbc4d411a84522574bbb0aab27fb597c0ab017422f135e733c",
+      "bytes": 180668
+    },
+    {
+      "resource": "files/jetty.jar",
+      "inputSha256": "21091d3a9c1349f640fdc421504a604c040ed89087ecc12afbe32353326ed4e5",
+      "minApi": 19,
+      "file": "dex-v2-68e1b97fc304b59c5c84b906fc68aeb26d96283ece19d81ae962ecdf9c6aa163.dex",
+      "dexSha256": "fbb9f4104522c035b2ea490d55d679cd5ca394da127a24c674a736f12d66dee4",
+      "bytes": 558760
+    },
+    {
+      "resource": "files/json.jar",
+      "inputSha256": "d9c1ef3ba8ee77b7075a1b343bf03c1eb405d89b349d246689feafef3797912a",
+      "minApi": 19,
+      "file": "dex-v2-9352fb6fb8362c3883411aa8bb999e39d408950ac34c1720ab9a8c5a25927b7f.dex",
+      "dexSha256": "a6ced3c6809261934e5f84700794e91ddac72f22853711934778fa4d8c946fb7",
+      "bytes": 70020
+    },
+    {
+      "resource": "files/jts.jar",
+      "inputSha256": "528b0c585b4233cd3f3d8a049eb26e468006c339b690f0c3808f093d59211d9d",
+      "minApi": 19,
+      "file": "dex-v2-9d4d15fcb6578f89aa2b0a464f609b47ceb30cb260dd99c9b136fa75ce37a985.dex",
+      "dexSha256": "4542ff15f6a8f7d3bdf384326c5a5cf479b4c442f7f14bdc562385d0aedc949e",
+      "bytes": 663104
+    },
+    {
+      "resource": "files/kawa.jar",
+      "inputSha256": "5fb2440edfefa42d8599b16624ebc5713ba989494c99f4eb7baff62f01b631a3",
+      "minApi": 19,
+      "file": "dex-v2-f99d8dfdac6e5d254720c4e8ac0eb31727b9e5a3268bcc3999a91ce31d617a2a.dex",
+      "dexSha256": "d8eeba0ea1d3f24d68c5a3b7fb0947aa2e23eaf6583700d3c05e9bb1660f6a26",
+      "bytes": 2268064
+    },
+    {
+      "resource": "files/legacy-support-core-ui.jar",
+      "inputSha256": "7eeb161e8d06f465eb4a0c32e35175626d0f22318efd0cb647db72690563a448",
+      "minApi": 19,
+      "file": "dex-v2-ad61c81ee1434cd91504841179cc2ee55c33a0a76463d364765020e897d4b204.dex",
+      "dexSha256": "dbc460ed1efdfdfc586a6d496d18484c22ef7ceb8278012d374031f018f60701",
+      "bytes": 10296
+    },
+    {
+      "resource": "files/legacy-support-core-utils.jar",
+      "inputSha256": "f9cef016ce1819cf2646d022d67bdc7211c6e60d5fc8f399db944b026916542e",
+      "minApi": 19,
+      "file": "dex-v2-4b52f67ab7a9efca6c3db88e9541c354421a96f5226f7b27264f6ed7edd169ef.dex",
+      "dexSha256": "b6c60b2dd63ed986392d43592a4adbe5619f95d9e8ef543c65f79d93b7296358",
+      "bytes": 2924
+    },
+    {
+      "resource": "files/lifecycle-common.jar",
+      "inputSha256": "7bad7a188804adea6fa1f35d5ef99b705f20bd93ecadde484760ff86b535fefc",
+      "minApi": 19,
+      "file": "dex-v2-65d73346d3e61471169bf9fc5eb4db999f27390ae04679ab5ac3ee4483d91f06.dex",
+      "dexSha256": "2808780a24c458df6ed1d586246f6237f656ca10e441d3f930a1cccf94957d67",
+      "bytes": 18232
+    },
+    {
+      "resource": "files/lifecycle-livedata-core.jar",
+      "inputSha256": "50a4454f41fc0e23f8c729710eeb0bf48d427fc1bc0c131396ed624140952785",
+      "minApi": 19,
+      "file": "dex-v2-fddf244e7f58d95c1303735727d39c970ddd42f945daf3d8ed2fad4cf9804b7b.dex",
+      "dexSha256": "76221e7e875668fce051b9e07d72818210f4cde1a34848aa2bf31db9ccabe645",
+      "bytes": 9208
+    },
+    {
+      "resource": "files/lifecycle-livedata.jar",
+      "inputSha256": "4b278b784d0718a33c677f18e9ff50b044ec0329a2e1d5d9f93a6d8a8f6fc767",
+      "minApi": 19,
+      "file": "dex-v2-765bf16aaed5bb78e0939ae911e67c0a92d374942932efd5b9edc7cb9c67a7d3.dex",
+      "dexSha256": "1bbe35d02d3701bd93cd3babfd868117eb961d7f4c19d79378073eb427bfef86",
+      "bytes": 9396
+    },
+    {
+      "resource": "files/lifecycle-runtime.jar",
+      "inputSha256": "14ec31f2b5f8d3eb1db1fb664035e3ee44b7f8f3fa91c072b6ccc41cd478b1df",
+      "minApi": 19,
+      "file": "dex-v2-24769bbd188d0c4608ff74a6948a7b894203c77c19f6c29911b229018c8579bb.dex",
+      "dexSha256": "476facbde9364e39202035eca5b0060e95b688f883ba37e1a0d98ff2f4a49133",
+      "bytes": 11348
+    },
+    {
+      "resource": "files/lifecycle-viewmodel.jar",
+      "inputSha256": "fb34a59fa31f3831e93a0d3e9cf82c2f289ee3ff3cef7185a3c7a421cbcc471a",
+      "minApi": 19,
+      "file": "dex-v2-03b570320208bc2c96f8b96773a020ecc97cdbfc54d29ac7cb8fd3f370ec79c3.dex",
+      "dexSha256": "34d7d026777d1c19f4e17d229e86be65302e6dbfded8411c4d6ad25a02f13d90",
+      "bytes": 6060
+    },
+    {
+      "resource": "files/loader.jar",
+      "inputSha256": "1f75b3cb79621362c3b9adba7d3f98eb81ccec3c9e0927bedbb97575c5537751",
+      "minApi": 19,
+      "file": "dex-v2-c97b9540443f67c0df488b5994d8d33cb1ddaa29d01205642aa416f768f8b534.dex",
+      "dexSha256": "34c200c33b51f52ecc136dacd5b3a62b7b935d554ffe5f0d0a9fc6d7aa6a66a3",
+      "bytes": 36992
+    },
+    {
+      "resource": "files/localbroadcastmanager.jar",
+      "inputSha256": "0ef151b4191734878dec89f7c2a088f9e0b0022cb2a92acc3331539e77eb1ff3",
+      "minApi": 19,
+      "file": "dex-v2-41b341a522af86e846e2e07a49dac13fc0cf18e1ee9fd4d7909c28d163d160c5.dex",
+      "dexSha256": "933f59b274f39b63ff678b4a9f0309f6fdc88ac28d8051a9801b7ac6c3ef14b4",
+      "bytes": 7920
+    },
+    {
+      "resource": "files/mpandroidchart.jar",
+      "inputSha256": "26018e6656e622c871dfc2082c903922afec3f6dc9ae135cb998819e81983bda",
+      "minApi": 19,
+      "file": "dex-v2-db9e883673840466b99a7172211d070bb798ec698b62896ab7cefff66179798b.dex",
+      "dexSha256": "2ee9d03ccf1fae7152dcfd59ed06aa99968b96ad5ecc9a623174394882f741ac",
+      "bytes": 362504
+    },
+    {
+      "resource": "files/opencensus-contrib-http-util.jar",
+      "inputSha256": "387e26dc1dff89af3aa19ec4fa780d8b23b0ea0c1b7e115a2f00b5f7278c54ec",
+      "minApi": 19,
+      "file": "dex-v2-c57dd63d8922a5539389586682b471a83e1adfa80e4a7af787311d03efd39f9c.dex",
+      "dexSha256": "5afb7a1bc5b2861ad5ed4a49d7dd4dd2f997f0435f570527458c2004adaf9d2a",
+      "bytes": 26876
+    },
+    {
+      "resource": "files/opencensus.jar",
+      "inputSha256": "accf897bc8e4ec4dd28707c428712ea349b357b120f8bb565d43c3b27a7ae728",
+      "minApi": 19,
+      "file": "dex-v2-1afac689e404319d567340362db97aaa80a537c52db330e7b70c27d5b2272496.dex",
+      "dexSha256": "7d0a09efd8b06caf885e7c9d4feb2bdbfb13f4345a6b9e9fad64a9f2571949a5",
+      "bytes": 240456
+    },
+    {
+      "resource": "files/osmdroid.jar",
+      "inputSha256": "17deb85871e8414b7be718bcb16d116e1281b11a7c4e1039ce711195aadc19d7",
+      "minApi": 19,
+      "file": "dex-v2-1524d1f9db422e046c1b71fc1fdf29842044cc3379e6d627ef6fd09f0f68dc5b.dex",
+      "dexSha256": "60b206276eecd58288eb42e8ecbddde0b75922713989eb0200ce38673f2fe047",
+      "bytes": 386888
+    },
+    {
+      "resource": "files/physicaloid.jar",
+      "inputSha256": "518bbf941865997062d8b38a615d1d67cf78754581ca7c01d278c2097d367123",
+      "minApi": 19,
+      "file": "dex-v2-86aef55d7c63666734564e034c6650d094568d0da7bccbe714692c7523c146f3.dex",
+      "dexSha256": "17f0106dfd9941d26555a84aec5a6ea982012bc3094aaf2d263da80ac9851416",
+      "bytes": 120832
+    },
+    {
+      "resource": "files/print.jar",
+      "inputSha256": "5bfd0937dfca3e7ba522a996d37d0e3ec514ac829a1131de5e8d4aa2594361f9",
+      "minApi": 19,
+      "file": "dex-v2-aead053e45b36185b37411a1f14a587ae621be6d3ed11c5499629138db55342e.dex",
+      "dexSha256": "8b6400e5acd547bc839b44b3cd97e48aeae9dd3bd09ca7c1002e54c74259ecc8",
+      "bytes": 16088
+    },
+    {
+      "resource": "files/protobuf-java-3.0.0.jar",
+      "inputSha256": "a1e7d6b3efc1703c7c8f1b15ecf8757f17d0ac41f32c9a48481a5caf638c55db",
+      "minApi": 19,
+      "file": "dex-v2-f174d1ce098ad5c46fc79e981aeaddfa78b725802c05253631b8cf3ef49d7032.dex",
+      "dexSha256": "cf7215b2a1724ef0c94d16737052358ffdf212e4f5a4a585722dfe0c5d9ab393",
+      "bytes": 1245160
+    },
+    {
+      "resource": "files/recyclerview.jar",
+      "inputSha256": "2b2e665d9dcf205bbc88b7a0fcc45324117f0ab8b29912f87cc6c9bd4ff6ea34",
+      "minApi": 19,
+      "file": "dex-v2-65204678b78605533c2f18f5d4a997238d41cc78b99a19a794fe3232897eb708.dex",
+      "dexSha256": "4a0d12dfa1712339fd81071930a22467628c78f6a6b77f6dfff9428d66efe4d7",
+      "bytes": 363248
+    },
+    {
+      "resource": "files/slidingpanelayout.jar",
+      "inputSha256": "83cb7f18b3ee8eb615a86d40750d0df95d473412a9d2dcbedc012c4515f69ae0",
+      "minApi": 19,
+      "file": "dex-v2-89f7967480f9027fa8354ad84f2fe88834bd8ef9288e57ad35ccdacdabd6ca3f.dex",
+      "dexSha256": "9cefb5d9e71f0d73ce1a0da484cf33ea3a2ad9b452d2c345896d3a280ef43179",
+      "bytes": 28268
+    },
+    {
+      "resource": "files/swiperefreshlayout.jar",
+      "inputSha256": "0c5dbb776937eb1d63e84c520baccb465c27cd1d7323932d591a29e8ed95026c",
+      "minApi": 19,
+      "file": "dex-v2-13927f2c785d1fb03f564953a319847d4c61fa759122480f3a08d0f69f8d05a1.dex",
+      "dexSha256": "43889331e525d3a627cd03b912293e030a25c0df05f48c060c2a8b3b9b000153",
+      "bytes": 38536
+    },
+    {
+      "resource": "files/twitter4j.jar",
+      "inputSha256": "20ad5eed9f6eaa4383b44ba74fd4743f79f37edead3cd52f31116d3505906093",
+      "minApi": 19,
+      "file": "dex-v2-8a4872df1bf9f81d4b83210aaba84e92772421993462623d62ef9fe091d51d1d.dex",
+      "dexSha256": "ad205e9a75ee1ede4f7c7b344ae1bb998233e9ad8d790a89d84d95bcdbf5f101",
+      "bytes": 336208
+    },
+    {
+      "resource": "files/twitter4jmedia.jar",
+      "inputSha256": "8864d02071392584b5572f62a0b9a4a91e6367b7019e5fe7af24aebce77320db",
+      "minApi": 19,
+      "file": "dex-v2-9771d8c6c9876dbde3522abbf9e530fd31e74404d5252af3385684e6d686cfa7.dex",
+      "dexSha256": "700c0bef950be53d8e4a4904a9ea5d241456d96dfd68fedf5c59d61e686327bf",
+      "bytes": 21164
+    },
+    {
+      "resource": "files/vectordrawable-animated.jar",
+      "inputSha256": "10159e3453034a9fa8fdd5062162febf227d54b7a85b147605e583bca6be7636",
+      "minApi": 19,
+      "file": "dex-v2-bae9c5a951ca3b4dbb351585b8c9223bfc024ba1b436a60616cdd3d42eab375e.dex",
+      "dexSha256": "af337d7da5363dcd8ca7c8dced7a7b565383be45fe62147f5781eeb86df79d11",
+      "bytes": 40628
+    },
+    {
+      "resource": "files/vectordrawable.jar",
+      "inputSha256": "0e6bdac9c0870309407dd76971ad7221b3259a5c08df8e25571e90959dc45529",
+      "minApi": 19,
+      "file": "dex-v2-225b84d7f49f9d9d9bd2dd8ff6598fd4e3a8743844359ff56b8f98ca016ab5bd.dex",
+      "dexSha256": "280a9009ab649f98cf2651dbd559e415484409eea87ffc30dc7c3fd4f612af06",
+      "bytes": 41296
+    },
+    {
+      "resource": "files/versionedparcelable.jar",
+      "inputSha256": "08e9b4d29dc8f1030e82864ca8655a14f048df93689d463aa3e5a3bf7cc269bd",
+      "minApi": 19,
+      "file": "dex-v2-40e73bef7bf26c2d3220e19d9e5ae8b8d3d0c09b329969ed7121c7bfc30bfda1.dex",
+      "dexSha256": "743f6fbbda9e65e1e412ca975568c8a0be4fafa701ce99a32337f57265e04c3e",
+      "bytes": 34208
+    },
+    {
+      "resource": "files/viewpager.jar",
+      "inputSha256": "14f7429cff9f2f50421a36b237a1de35d8a2c8deffcbe1e0163c6e51a2defe56",
+      "minApi": 19,
+      "file": "dex-v2-20c5d208da2ce45079eed2718eb4604e515d8c4e42a2589745cdff6f65491828.dex",
+      "dexSha256": "e3e91bb7adc54911482ef8321219ac97d34aaaa9ca3cc972692a514a582cacd3",
+      "bytes": 62992
+    },
+    {
+      "resource": "files/webrtc.jar",
+      "inputSha256": "19f1390a32c3808f59e2075219f26014dfc336a46b5f385d25861b2b409ab33e",
+      "minApi": 19,
+      "file": "dex-v2-d7856b6887a1935f67eabd6cea755b562e0ef40e09d095967190e7e92442e89d.dex",
+      "dexSha256": "663053fe7e696d9f0828ca8ac82a5b32156fb4226896ff812004b4ab5afa491a",
+      "bytes": 458796
+    }
+  ]
+}

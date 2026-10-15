@@ -1,0 +1,3 @@
+ 本软件使用了Electron,Node.JS,Blockly,Skulpt,Arduino,Micropython,CircuitPython,ESP-IDF,Arduino-cli,Arduino-ESP32，,Arduino-ESP8266等一大堆开源软件，用户在使用是必须遵守上述开源软件各种的License，除此以外，除非与上述协议冲突，否则，任何使用本代码的用户和组织在修改后必须保留Mixly这一软件名称及作者信息，但可以使用Mixly4XXX这样的名字，XXX就是使用者自己的名字。
+
+  This software uses a large number of open source software such as Electron, Node.JS, Blockly, Skulpt, Arduino, Micropython,CircuitPython, ESP-IDF, Arduino-cli, Arduino-ESP32, Arduino-ESP8266, etc. The user must comply with the above open source software's Licenses, in addition, Unless it conflicts with the above Licenses, any user or organization using this code must retain the name of the Software and author information after modification, but may use a name such as Mixly4XXX, which is the user's own name.

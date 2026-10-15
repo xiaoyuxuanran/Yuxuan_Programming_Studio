@@ -1,0 +1,52 @@
+--- ProjectBuilder.java
++++ ProjectBuilder.java
+@@ -47,6 +47,7 @@
+ import java.util.Map;
+ import java.util.Set;
+ import java.util.concurrent.Executors;
++import java.util.concurrent.ExecutorService;
+ import java.util.concurrent.Future;
+ import java.util.concurrent.TimeUnit;
+ import java.util.concurrent.TimeoutException;
+@@ -79,7 +80,7 @@
+   private static final int MAX_COMPILER_MESSAGE_LENGTH = 160;
+   private static final String SEPARATOR = File.separator;
+ 
+-  private static final int MAX_BUILD_TIMEOUT_SECONDS = 60 * 5; // 5 minutes
++  private static final int MAX_BUILD_TIMEOUT_SECONDS = 60 * 15; // Bounded cold/extension build budget
+ 
+   // Project folder prefixes
+   // TODO(user): These constants are (or should be) also defined in
+@@ -208,7 +209,8 @@
+         // Invoke YoungAndroid compiler
+         Compiler<?, ?> compiler = factory.makeCompiler(context);
+ 
+-        Future<Boolean> executor = Executors.newSingleThreadExecutor().submit(compiler);
++        ExecutorService buildExecutor = Executors.newSingleThreadExecutor();
++        Future<Boolean> executor = buildExecutor.submit(compiler);
+ 
+         boolean success;
+         try {
+@@ -219,9 +221,12 @@
+             success = executor.get(MAX_BUILD_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+           }
+         } catch (TimeoutException e) {
++          executor.cancel(true);
+           LOG.severe("Build has timed out");
+-          context.getReporter().error("Build has timed out");
++          context.getReporter().error("Build has timed out (15 minute limit)");
+           success = false;
++        } finally {
++          buildExecutor.shutdownNow();
+         }
+ 
+         statReporter.stopBuild(compiler, success);
+@@ -419,7 +424,7 @@
+     };
+ 
+     if (Execution.execute(null, keytoolCommandline, System.out, System.err,
+-        Execution.Timeout.SHORT)) {
++        Execution.Timeout.LONG)) {
+       if (keyStoreFile.length() > 0) {
+         return keyStoreFile.getAbsolutePath();
+       }

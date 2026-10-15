@@ -1,0 +1,86 @@
+--- context/Resources.java
++++ context/Resources.java
+@@ -12,6 +12,11 @@
+ import java.awt.image.BufferedImage;
+ import java.io.File;
+ import java.io.IOException;
++import java.io.InputStream;
++import java.nio.file.Path;
++import java.security.MessageDigest;
++import java.security.NoSuchAlgorithmException;
++import java.util.Properties;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Objects;
+@@ -64,6 +69,11 @@
+       try {
+         File file = RESOURCES.get(resourcePath);
+         if (file == null || !file.exists()) {
++          file = bundledResource(resourcePath);
++          if (file != null) {
++            RESOURCES.put(resourcePath, file);
++            return file.getAbsolutePath();
++          }
+           String basename = PathUtil.basename(resourcePath);
+           StringBuilder prefix;
+           String suffix;
+@@ -95,6 +105,59 @@
+         System.out.println("[ERROR] " + e.getMessage());
+         return null;
+       }
++    }
++  }
++
++  private static Properties seedManifest;
++
++  private static File bundledResource(String resourcePath) {
++    String folder = System.getProperty("appinventor.resourceSeedDir");
++    if (folder == null || !(resourcePath.startsWith("/files/") || resourcePath.startsWith("/tools/"))) {
++      return null;
++    }
++    try {
++      Path base = new File(folder).toPath().toAbsolutePath().normalize();
++      Path path = base.resolve(resourcePath.substring(1)).normalize();
++      if (!path.startsWith(base)) {
++        return null;
++      }
++      // Old Windows AAPT cannot read ZIP resources on a Unicode path. Its existing
++      // temp extraction receives the Core's ASCII DOS-drive alias and stays reliable.
++      if (System.getProperty("os.name").startsWith("Windows")) {
++        if (path.toString().length() >= 200) {
++          return null;
++        }
++        for (char c : path.toString().toCharArray()) {
++          if (c > 127) {
++            return null;
++          }
++        }
++      }
++      if (seedManifest == null) {
++        seedManifest = new Properties();
++        try (InputStream in = java.nio.file.Files.newInputStream(base.resolve("manifest.properties"))) {
++          seedManifest.load(in);
++        }
++      }
++      String expected = seedManifest.getProperty(resourcePath.substring(1));
++      if (expected == null || !java.nio.file.Files.isRegularFile(path)) {
++        return null;
++      }
++      MessageDigest digest = MessageDigest.getInstance("SHA-256");
++      try (InputStream in = java.nio.file.Files.newInputStream(path)) {
++        byte[] buffer = new byte[65536];
++        int count;
++        while ((count = in.read(buffer)) != -1) {
++          digest.update(buffer, 0, count);
++        }
++      }
++      StringBuilder actual = new StringBuilder();
++      for (byte b : digest.digest()) {
++        actual.append(String.format("%02x", b & 255));
++      }
++      return expected.equals(actual.toString()) ? path.toFile() : null;
++    } catch (IOException | NoSuchAlgorithmException | IllegalArgumentException e) {
++      return null;  // Missing/corrupt seed always falls back to the original JAR resource.
+     }
+   }
+ 

@@ -1,0 +1,10 @@
+--- TopToolbar.java
++++ TopToolbar.java
+@@ -121,6 +121,7 @@
+     isAvailable = !oneProjectMode && hasWriteAccess;
+ 
+     bindUI();
++    com.google.appinventor.client.actions.OfflineUsbAction.register();
+     if (iamChromebook) {
+       RootPanel.getBodyElement().addClassName("onChromebook");
+     }

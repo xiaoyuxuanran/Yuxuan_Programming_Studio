@@ -1,0 +1,11 @@
+--- YoungAndroidProjectService.java
++++ YoungAndroidProjectService.java
+@@ -857,7 +857,7 @@
+       }
+     } else {
+       // TODO(user): Figure out how to make this more generic
+-      return "localhost:8888";
++      return StringUtils.isNullOrEmpty(appengineHost.get()) ? "localhost:8888" : appengineHost.get();
+     }
+   }
+ 

@@ -1,0 +1,28 @@
+羽轩代码工作区第三方资源
+
+CPython 3.8.9 / 3.13.16: Python Software Foundation License.
+官方 NuGet Windows 运行时：https://api.nuget.org/v3-flatcontainer/python/
+官方完整标准库与 Tcl/Tk 组件：https://www.python.org/ftp/python/3.8.9/amd64/ 和 https://www.python.org/ftp/python/3.13.16/amd64/
+各 Python 目录保留 LICENSE.txt；Tcl/Tk 许可位于各运行时 tcl 目录。
+
+LLVM-MinGW 20260922 (LLVM 23.1.2): runtime/llvm-mingw/LICENSE.TXT。
+官方来源：https://github.com/mstorsjo/llvm-mingw/releases/tag/20260922
+官方 ZIP SHA256: e3ad77d117a4bea19a7a3b333341824d79a5a371004a10e25b8504e7b3047666
+
+Monaco Editor 0.57.0: MIT, studio/Monaco-LICENSE.txt。
+官方仓库：https://github.com/microsoft/monaco-editor
+npm 下载已按 registry 元数据 SHA512 校验。
+
+Pygame 2.6.1: GNU Lesser General Public License 2.1。
+对应源码完整归档：resources/distribution-source/pygame-2.6.1.tar.gz。
+来源：https://pypi.org/project/pygame/2.6.1/
+源码 SHA256: 56fb02ead529cee00d415c3e007f75e0780c655909aaa8e8bf616ee09c9feb1ea6a
+cp38 Windows wheel SHA256: 818b4eaec9c4acb6ac64805d4ca8edd4062bebca77bd815c18739fe2842c97e9
+cp313 Windows wheel SHA256: 813af4fba5d0b2cb8e58f5d95f7910295c34067dcc290d34f1be59c48bd1ea6a
+Pygame 与 SDL 等附属许可在 resources/licenses/pygame 中；允许按 LGPL 条款替换本地 Python 包和动态库。
+
+pip 24.3.1 离线 wheel: MIT。
+SHA256: 3790624780082365f47549d032f3770eeb2b1e8bd1f7b2e02dace1afa361b4ed
+来源：https://pypi.org/project/pip/24.3.1/
+
+品牌 logo 由用户提供，非上述开源项目官方标识。

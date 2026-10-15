@@ -1,0 +1,30 @@
+--- util/Execution.java
++++ util/Execution.java
+@@ -133,8 +133,12 @@
+       }
+     }
+ 
++    Process process = null;
+     try {
+-      Process process = Runtime.getRuntime().exec(command, null, workingDir);
++      if (Thread.currentThread().isInterrupted()) {
++        return false;
++      }
++      process = Runtime.getRuntime().exec(command, null, workingDir);
+       // Prevent any interactive shell from waiting for input
+       process.getOutputStream().close();
+       new RedirectStreamHandler(new PrintWriter(out, true), process.getInputStream());
+@@ -151,6 +155,13 @@
+       }
+ 
+       return process.exitValue() == 0;
++    } catch (InterruptedException e) {
++      if (process != null) {
++        process.destroyForcibly();
++      }
++      Thread.currentThread().interrupt();
++      err.println("Process stopped because the build was cancelled");
++      return false;
+     } catch (Exception e) {
+       LOG.log(Level.WARNING, "____Execution failure: ", e);
+       return false;

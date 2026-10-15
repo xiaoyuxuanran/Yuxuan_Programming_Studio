@@ -1,0 +1,20 @@
+--- explorer/commands/ShowProgressBarCommand.java
++++ explorer/commands/ShowProgressBarCommand.java
+@@ -122,7 +122,7 @@
+       } else if (DOWNLOAD_TO_PHONE_ACTION.equals(serviceName)) {
+         labelContent = "<br />" + MESSAGES.apkInstalledToPhone();
+       } else {
+-        labelContent = "<br />" + MESSAGES.waitingForBarcode();
++        labelContent = "<br />" + MESSAGES.preparingFinalPackage();
+       }
+     } else {
+       try {
+@@ -148,7 +148,7 @@
+           } else if (DOWNLOAD_TO_PHONE_ACTION.equals(serviceName)) {
+             labelContent = "<br />" + MESSAGES.apkInstalledToPhone();
+           } else {
+-            labelContent = "<br />" + MESSAGES.waitingForBarcode();
++            labelContent = "<br />" + MESSAGES.preparingFinalPackage();
+           }
+         }
+       } catch (NumberFormatException e) {

@@ -1,0 +1,9 @@
+离线授权升级：将 jihuo 文件夹中的 api.php、core.php、offline-products.php 覆盖到现有网站的 jihuo 目录。
+保留现有 storage 目录及服务端签名密钥，不要使用测试服务器的 storage。
+此升级仅对 my_computer 产品发放签名离线授权，其余产品维持原来的短期在线凭证协议。
+验证地址：https://www.yuxuan-blog.top/jihuo/api.php?action=capabilities
+成功响应应包含 offlineProtocol=yuxuan-offline-license-v1 和 offlineProducts=[my_computer]。
+首次使用必须联网激活。激活后在授权有效期内允许离线启动；联网验证明确返回撤销、禁用或不存在时，将停止授权并清除原离线凭证。
+临时网络故障或服务端不可用不等同于撤销，已签名且尚未过期的授权仍可使用。
+expires 是许可证的真实到期时间，永久授权为 null；客户端显示到期日期并按本地时间及记录的已使用时间检查。
+完全离线时无法获知服务端刚发生的撤销，只能检查已签名的有效期。客户端的本地记录可防简单回拨时间，不能防止具有本机管理权限的恶意篡改。

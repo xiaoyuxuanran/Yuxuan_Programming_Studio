@@ -1,0 +1,45 @@
+--- explorer/commands/ShowBarcodeCommand.java
++++ explorer/commands/ShowBarcodeCommand.java
+@@ -172,41 +172,8 @@
+       // Container > Left
+       container.add(left);
+ 
+-      // The Android App Bundle should only be used to publish the app through Google Play Store. Thus,
+-      // it does not make sense to provide a QR code which the user might think they can scan and directly
+-      // install in the phone directly.
+-      if (!isAab) {
+-        // Container > Right
+-        VerticalPanel right = new VerticalPanel();
+-
+-        // Container > Right > Barcode
+-        HTML barcodeQrcode = new HTML("<center>" + BlocklyPanel.getQRCode(appInstallUrl) + "</center>");
+-        barcodeQrcode.addStyleName("download-barcode");
+-        right.add(barcodeQrcode);
+-
+-        // Container > Right
+-        container.add(right);
+-      }
+-
+-      // Container
++      // Desktop APK export keeps a local download only; USB testing has its own Run action.
+       contentPanel.add(container);
+-
+-      // Warning
+-      // The warning label is added only in APK files, as there is no QR code for the AAB. It is supposed that
+-      // users download the bundle just when they get it.
+-      if (!isAab) {
+-        HorizontalPanel warningPanel = new HorizontalPanel();
+-        warningPanel.setHorizontalAlignment(HorizontalPanel.ALIGN_LEFT);
+-        HTML warningLabel = new HTML(MESSAGES.barcodeWarning2(
+-            "<a href=\"" + "http://appinventor.mit.edu/explore/ai2/share.html" +
+-                "\" target=\"_blank\">",
+-            "</a>"));
+-        warningLabel.setWordWrap(true);
+-        warningLabel.setWidth("400px");  // set width to get the text to wrap
+-        warningLabel.getElement().getStyle().setMarginTop(10, Style.Unit.PX);
+-        warningPanel.add(warningLabel);
+-        contentPanel.add(warningPanel);
+-      }
+ 
+       // OK button
+       ClickHandler buttonHandler = new ClickHandler() {
