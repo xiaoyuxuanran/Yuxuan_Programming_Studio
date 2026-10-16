@@ -48,3 +48,4 @@ for ident, label, image in [('arduino_esp32', 'Arduino ESP32', 'esp32_compressed
 (UP / 'boards.json').write_text(json.dumps(boards, ensure_ascii=False, indent=2), encoding='utf-8')
 (HERE / 'UPSTREAM.json').write_text(json.dumps({'source': 'https://gitee.com/bnu_mixly/mixly4', 'commit': PIN, 'restoredArduinoESP32Commit': ESP32_PIN, 'restoredArduinoESP8266Commit': ESP32_PIN, 'androidAppIncluded': False}, ensure_ascii=False, indent=2), encoding='utf-8')
 print('Prepared Mixly 4 with both official Arduino ESP32 and ESP8266 modules restored.')
+subprocess.run([__import__('sys').executable, str(HERE / 'fix-bluetooth.py')], check=True)

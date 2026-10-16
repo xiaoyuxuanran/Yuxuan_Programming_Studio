@@ -1,0 +1,23 @@
+[
+  {
+    "name": "MqttTCP",
+    "type": "co.com.dendritas.MqttTCP.MqttTCP",
+    "version": "1",
+    "file": "MqttTCP.aix",
+    "sha256": "4fb315d710b6c8511612ff3e66c192ebee927a6b8a5c63240c9b20ff0a26124f"
+  },
+  {
+    "name": "BluetoothLE",
+    "type": "edu.mit.appinventor.ble.BluetoothLE",
+    "version": "20230728",
+    "file": "BluetoothLE.aix",
+    "sha256": "f5980729638a46af14e8a79e2a7498026190d136167eaeb5e0789cc41a51cefb"
+  },
+  {
+    "name": "ClientSocketAI2Ext",
+    "type": "com.gmail.at.moicjarod.ClientSocketAI2Ext",
+    "version": "4",
+    "file": "ClientSocketAI2Ext.aix",
+    "sha256": "ef085073d0991bb9644b68bd1a0faea8e9ab60131bb6e215cddc2c3a9a877815"
+  }
+]

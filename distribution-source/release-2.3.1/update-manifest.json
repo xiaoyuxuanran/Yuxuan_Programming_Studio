@@ -1,0 +1,277 @@
+{
+  "base": "2.3.0",
+  "version": "2.3.1",
+  "files": [
+    {
+      "path": "AppInventor.exe",
+      "oldSHA256": "3b91c510a0e7ed4c415c19137a7713652237036d0e12c1eac03d2eed3b5a044e",
+      "sha256": "a1ba9f94a9cb92e89d31504ac60db23ed5d9aab7711d6038828e8cc0be847561",
+      "bytes": 239616
+    },
+    {
+      "path": "resources/build-version.txt",
+      "oldSHA256": "42bb5c4420c6d42107baed61e687b7d394f398f6032e41bd04aa07c0c5be8e42",
+      "sha256": "87955d1974c510d21353d2a303730f1d8997900537c0da5bf32ec2bed041f4cb",
+      "bytes": 31
+    },
+    {
+      "path": "resources/CHANGELOG.txt",
+      "oldSHA256": null,
+      "sha256": "27852d668d68f95db7a338764c97bdb7f30fa4e4891169b362a9d8a1daa34ecb",
+      "bytes": 1165
+    },
+    {
+      "path": "resources/使用说明.txt",
+      "oldSHA256": "37ca371a9258814dfe8d5846e33382ec0c9169ec193436c9464fce76dcf21d8f",
+      "sha256": "9c4acc88414bc402675b7d2d7ee2bbb283b2345611e265000a1ee80b7a0842f5",
+      "bytes": 12376
+    },
+    {
+      "path": "server/war/ode/aiblockly-0.nocache.js",
+      "oldSHA256": "58a947677b6670cb57b24ccbb66f1b19d509330ea77d9841851ddcbb670000b7",
+      "sha256": "71f566a16ed17191b7bbacf400e9817a4f02326c7b8530487d3635d5c30aab8f",
+      "bytes": 2324150
+    },
+    {
+      "path": "server/war/ode/E97340308F1F48B574240B7028CF9424.cache.js",
+      "oldSHA256": null,
+      "sha256": "6dfdcc973fdd93ce381d8a778854b04edf4f0ad5bea19cc3f4c7309dd861de5c",
+      "bytes": 14194145
+    },
+    {
+      "path": "server/war/ode/ode.nocache.js",
+      "oldSHA256": "50e6254ff9df8a596c83cadb1708e196996190bf8ad430a732dd75142bd94fb5",
+      "sha256": "ec9ef624ac103080fc8b5e5f23c8db638b17675c645c5f23f46677e0744f8b57",
+      "bytes": 14878
+    },
+    {
+      "path": "server/war/WEB-INF/classes/bundled-extensions/BluetoothLE.aix",
+      "oldSHA256": null,
+      "sha256": "f5980729638a46af14e8a79e2a7498026190d136167eaeb5e0789cc41a51cefb",
+      "bytes": 199357
+    },
+    {
+      "path": "server/war/WEB-INF/classes/bundled-extensions/ClientSocketAI2Ext.aix",
+      "oldSHA256": null,
+      "sha256": "ef085073d0991bb9644b68bd1a0faea8e9ab60131bb6e215cddc2c3a9a877815",
+      "bytes": 17536
+    },
+    {
+      "path": "server/war/WEB-INF/classes/bundled-extensions/MqttTCP.aix",
+      "oldSHA256": null,
+      "sha256": "4fb315d710b6c8511612ff3e66c192ebee927a6b8a5c63240c9b20ff0a26124f",
+      "bytes": 571599
+    },
+    {
+      "path": "server/war/WEB-INF/classes/com/google/appinventor/server/BundledExtensions.class",
+      "oldSHA256": null,
+      "sha256": "ed0567d76f29a7c13631ff2e9a59793fe2b4ee4758f02b20996ab906c1cf354d",
+      "bytes": 5620
+    },
+    {
+      "path": "server/war/WEB-INF/classes/com/google/appinventor/server/project/youngandroid/YoungAndroidProjectService$1.class",
+      "oldSHA256": "49cfc3dad0719d965cfdebab1b9ba694da18e984f299671c58eaf15291df35d4",
+      "sha256": "5cc6b97cf7143f166e341e04365fb5f14d44ac40d816fa6028cb4ac4b0156618",
+      "bytes": 1163
+    },
+    {
+      "path": "server/war/WEB-INF/classes/com/google/appinventor/server/project/youngandroid/YoungAndroidProjectService.class",
+      "oldSHA256": "19b13d7a076d27528eab9cb00b0cc1c5d14274d09d65f2183364bac290518d93",
+      "sha256": "b1a748ce6481546c3fcd2515567c198a1e6f8db15b00f324c9630585c7f0ed6e",
+      "bytes": 28750
+    },
+    {
+      "path": "server/war/static/images/quality/BluetoothLE.png",
+      "oldSHA256": null,
+      "sha256": "482b5b4bf752da9b2fd555ef6256ed2b789f5714733e2232a47954f3af983e07",
+      "bytes": 567
+    },
+    {
+      "path": "server/war/static/images/quality/ClientSocketAI2Ext.png",
+      "oldSHA256": null,
+      "sha256": "5937074ce1577ffb10a521b795509695ea78189b74d65fec0fd91033728d9760",
+      "bytes": 484
+    },
+    {
+      "path": "server/war/static/images/quality/MqttTCP.png",
+      "oldSHA256": null,
+      "sha256": "aa7b91c298c8a841e9563c068d346f4044326ad7e1f8b768a544f08ae26a0d02",
+      "bytes": 675
+    },
+    {
+      "path": "server/war/ode/deferredjs/E97340308F1F48B574240B7028CF9424/1.cache.js",
+      "oldSHA256": null,
+      "sha256": "4a146884d34bd78f07bd6bec1559fa68b3b5e4b3554ba3060f8d384451734d65",
+      "bytes": 43020
+    },
+    {
+      "path": "server/war/ode/deferredjs/E97340308F1F48B574240B7028CF9424/2.cache.js",
+      "oldSHA256": null,
+      "sha256": "cc82023739fd1464ea05c1d9bae1180f7117a68118058b8f9c46585af91e3a64",
+      "bytes": 631
+    },
+    {
+      "path": "server/war/ode/deferredjs/E97340308F1F48B574240B7028CF9424/3.cache.js",
+      "oldSHA256": null,
+      "sha256": "ce3468ebcfd152f19555d587074574fe6539bff1faf3b5145e28130460d0951c",
+      "bytes": 831059
+    },
+    {
+      "path": "resources/distribution-source/Setup.iss",
+      "oldSHA256": "0b1b665e3a44bae8aa030287f9f4a7d81940241fd86afbe2d14983637a896c66",
+      "sha256": "b654dec263b0a426acb51846ebc5a16a3d17c1691abb44506eff675d56cbfebc",
+      "bytes": 1635
+    },
+    {
+      "path": "resources/distribution-source/SuiteLauncher.cs",
+      "oldSHA256": "5b045bb47133a1bff74fa105d82737daaf71b162cae17f90cccd2af7b3bbd7a0",
+      "sha256": "5b9937b92b2afc318460b50808ab7f31914cba74933c53fe43906499b32310ed",
+      "bytes": 19715
+    },
+    {
+      "path": "resources/distribution-source/SuiteUpdates.cs",
+      "oldSHA256": null,
+      "sha256": "4ff7f9a3837bf2a1bc71bc15ad607b4e5a2a9aa6b1521ea5c0610afe0652646b",
+      "bytes": 11090
+    },
+    {
+      "path": "resources/distribution-source/mixly4/fix-bluetooth.py",
+      "oldSHA256": null,
+      "sha256": "85f1aa7c09449c498544ca44a8dad96eb00adb96a5a4886f68fa8a15ff775ae2",
+      "bytes": 4707
+    },
+    {
+      "path": "resources/distribution-source/mixly4/prepare-build.py",
+      "oldSHA256": null,
+      "sha256": "f0ab2f118d20f43ce4b6a250fb76f5bab35e2dd573ff2ac1a2aee045a8b23ea8",
+      "bytes": 3104
+    },
+    {
+      "path": "resources/distribution-source/mixly4/stage-web.py",
+      "oldSHA256": null,
+      "sha256": "e930fc2cbeef94a9f865797fe2cd1fa5d20a648a5bbbb9670e9420b3172d98da",
+      "bytes": 4539
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/BundledExtensions.java",
+      "oldSHA256": null,
+      "sha256": "c468f1aeac7a02c217dd2736385b1010116026eb55d36f57412bbc8d495726a3",
+      "bytes": 3119
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/CHANGELOG.txt",
+      "oldSHA256": null,
+      "sha256": "27852d668d68f95db7a338764c97bdb7f30fa4e4891169b362a9d8a1daa34ecb",
+      "bytes": 1165
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/patch-appinventor.py",
+      "oldSHA256": null,
+      "sha256": "0b8ce778308a033051e21baff4b585ecca11499513c0e78a9aad962446a207d3",
+      "bytes": 7332
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/prepare-extensions.py",
+      "oldSHA256": null,
+      "sha256": "d2a328c6dc03b4aaee48d759990d0c8bdbf22fdd88bf74f3cbfe131dd62b0240",
+      "bytes": 2551
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/prepare-package.py",
+      "oldSHA256": null,
+      "sha256": "d81056c0ba4aee032798052edcb0ecb75073fd8c4f2408b8f31e1951a6e74594",
+      "bytes": 5511
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/stage-appinventor.py",
+      "oldSHA256": null,
+      "sha256": "d6624748d14fe5c2612f592d95d2340846be89d71c2cf619c723f4fe32056994",
+      "bytes": 1020
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/AbstractPalettePanel.java",
+      "oldSHA256": null,
+      "sha256": "181077a4a6a8b111504baa35269e313d0e09b76e15729206f36a480b18bc8ce4",
+      "bytes": 21037
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/BaseComponentFactory.java",
+      "oldSHA256": null,
+      "sha256": "9741f7e917ad6cd652acd21d8487ad594a7c10ab9eac3d1261bd37b1c4b7c062",
+      "bytes": 14522
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/BlockSelectorBox.java",
+      "oldSHA256": null,
+      "sha256": "0ee6dfda05bad8d67a08359bff95b3b9e08776b1c9b7110b6351dfab94b2f5e4",
+      "bytes": 10502
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/workspace_svg.js",
+      "oldSHA256": null,
+      "sha256": "8eb2565d55e6e69845d434241386006fab406600f9ef3a429087d54fd7fa9d17",
+      "bytes": 31845
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/YoungAndroidProjectService.java",
+      "oldSHA256": null,
+      "sha256": "8b921c75bbbefe623f6d38e2a36bec94fec05f73f400c0e90695b88e40fa984c",
+      "bytes": 47691
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/bundled-extensions/BluetoothLE.aix",
+      "oldSHA256": null,
+      "sha256": "f5980729638a46af14e8a79e2a7498026190d136167eaeb5e0789cc41a51cefb",
+      "bytes": 199357
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/bundled-extensions/catalog.json",
+      "oldSHA256": null,
+      "sha256": "66d54e0e572c0461e18974ac3e28f81bd7c73aa672d1464387c621c765708591",
+      "bytes": 697
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/bundled-extensions/ClientSocketAI2Ext.aix",
+      "oldSHA256": null,
+      "sha256": "ef085073d0991bb9644b68bd1a0faea8e9ab60131bb6e215cddc2c3a9a877815",
+      "bytes": 17536
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/bundled-extensions/MqttTCP.aix",
+      "oldSHA256": null,
+      "sha256": "4fb315d710b6c8511612ff3e66c192ebee927a6b8a5c63240c9b20ff0a26124f",
+      "bytes": 571599
+    },
+    {
+      "path": "mixly/web/site/editor/boards/index.html",
+      "oldSHA256": "9e394c9a3821446105f9892c620aa50affb4f4520ad4467f1f35eed9573ba081",
+      "sha256": "7ee33c84379e24216ba7c0aac8b5fb52429f51917f5fb71ff3a88df61966502e",
+      "bytes": 1774
+    },
+    {
+      "path": "mixly/web/site/editor/common/main.js",
+      "oldSHA256": "54b0c3b1fb52c7d9933a3f87171d79fd47d5aabc9616818fa0eaf839bb4c0c05",
+      "sha256": "1d0314a5a5d3655728c62f9efc3032d7a689e8bf074b06fa6bb48ff4a8e08add",
+      "bytes": 9433
+    },
+    {
+      "path": "mixly/web/site/editor/boards/default/arduino_esp32/index.xml",
+      "oldSHA256": "2d5df0fa01b63eba989d33ba0214814c205432b6430f53a85ca02d7383e8098a",
+      "sha256": "c4916c435599acf928d1770cb424c55992efd4cca3c98499f9f425cd862d4b3c",
+      "bytes": 1440
+    },
+    {
+      "path": "mixly/web/site/editor/boards/default/arduino_esp32/main.bundle.8e97eb3b.js",
+      "oldSHA256": null,
+      "sha256": "1595d78f3ea8925b7c7e2d57a92565afda7aeab8074b7e2cd2e4bd3d0158b3d6",
+      "bytes": 1203306
+    },
+    {
+      "path": "mixly/web/site/editor/boards/default/arduino_esp32/xml/esp32.xml",
+      "oldSHA256": "afeb6293a0799bf4a5288109875d479a87e75f4b4dc60c0d55f026b396a22bb7",
+      "sha256": "37398eb533aff8a01dc88641cefe7af4e0e7735e35ef9d19e41a6b0530a4f9b7",
+      "bytes": 102049
+    }
+  ],
+  "totalBytes": 20785098
+}

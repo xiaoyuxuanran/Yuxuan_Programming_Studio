@@ -9,7 +9,7 @@ NATIVE = HERE.parent / 'native'
 DEST = NATIVE / 'mixly/web'
 SITE = DEST / 'site'
 VENDOR = SITE / 'editor'
-VERSION = 'yuxuan-2.3.0-web-1'
+VERSION = 'yuxuan-2.3.1-web-1'
 
 
 def copytree(source, target, extra=()):
@@ -73,7 +73,7 @@ for source_root, label in [(UP / 'node_modules', 'build'), (UP / 'common/modules
                     target = licenses / label / key / file.name
                     target.parent.mkdir(parents=True, exist_ok=True)
                     shutil.copy2(file, target)
-report = {'version': '2.3.0', 'hardwareEnvironments': sorted(allowed), 'androidAppIncluded': False,
+report = {'version': '2.3.1', 'hardwareEnvironments': sorted(allowed), 'androidAppIncluded': False,
           'files': sum(1 for f in DEST.rglob('*') if f.is_file()),
           'bytes': sum(f.stat().st_size for f in DEST.rglob('*') if f.is_file())}
 (HERE / 'stage-result.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')

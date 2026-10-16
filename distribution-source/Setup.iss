@@ -2,7 +2,7 @@
 [Setup]
 AppId={{D394BCE3-729B-427F-A3EB-52885E97ED62}
 AppName={#AppName}
-AppVersion=2.3.0
+AppVersion=2.3.1
 SetupArchitecture=x64
 AppPublisher=Yuxuan Programming Studio
 DefaultDirName={userpf}\AppInventorOffline
