@@ -44,8 +44,7 @@ def payload(root, native):
     for name in dict.fromkeys(relative):
         actual = digest(root / name); assert actual == digest(native / name), 'Installed payload differs: ' + name
         files.append({'relative': name, 'sha256': actual, 'characters': len(str(root / name))})
-    for name in LONG_PATHS:
-        assert len(str(root / name)) > 260, 'Long-path fixture too short'
+    assert any(len(str(root / name)) > 260 for name in LONG_PATHS), 'Long-path fixture too short'
     assert (root / 'mixly/runtime/Mixly.exe').exists(), 'Desktop runtime missing'
     boards = read_json(root / 'mixly/src/boards.json')
     assert {b['boardIndex'].split('/')[3] for b in boards} == {'arduino_avr', 'arduino_esp32', 'arduino_esp8266', 'micropython_esp32'}

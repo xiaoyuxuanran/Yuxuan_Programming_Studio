@@ -44,8 +44,8 @@
     },
     {
       "name": "Source-and-Patches.zip",
-      "size": 21071399,
-      "digest": "sha256:2d375c8526501eeda7dbfa88fd67cb2e6a5f8fe9570ba128aba73daac5ad5c82",
+      "size": 21071398,
+      "digest": "sha256:cdd98a6dd382968b526f8a357cec974f90a431212535333a1bfefc0c7ed05275",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.3/Source-and-Patches.zip",
       "mirrors": [
         "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.3/Source-and-Patches.zip"
