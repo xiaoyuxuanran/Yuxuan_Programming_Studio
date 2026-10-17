@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Linq;
@@ -11,11 +11,11 @@ using System.Security.Cryptography;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 
-[assembly:System.Reflection.AssemblyVersion("2.3.2.0")]
-[assembly:System.Reflection.AssemblyFileVersion("2.3.2.0")]
+[assembly:System.Reflection.AssemblyVersion("2.3.3.0")]
+[assembly:System.Reflection.AssemblyFileVersion("2.3.3.0")]
 
 internal static partial class Suite {
-  internal const string ProductVersion="2.3.2";
+  internal const string ProductVersion="2.3.3";
   internal const string ReleasesPage="https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases";
   internal const string GiteeReleasesPage="https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases";
   static string pendingInstaller;

@@ -1,0 +1,109 @@
+{
+  "base": "2.3.2",
+  "version": "2.3.3",
+  "totalBytes": 417726,
+  "files": [
+    {
+      "path": "AppInventor.exe",
+      "oldSHA256": "4a83a6f1f5da1dca60f97e517cc62cd8541c9d0f6764be3172077f292e3911f2",
+      "sha256": "5f4b68a95b9ff8ba331acba3da82fe833356c70841581726a12769d907ccfe58",
+      "bytes": 241152
+    },
+    {
+      "path": "resources/build-version.txt",
+      "oldSHA256": "ae609c9438dc0c6c08eabff9eb1eec5b2292c2597cf28778c4d7242c41b4b847",
+      "sha256": "f4c803aea0c05f6e0694387a802d60c278e1626812cf52629a1686fbb41864a4",
+      "bytes": 37
+    },
+    {
+      "path": "resources/CHANGELOG.txt",
+      "oldSHA256": "552823f98afa01e33dd0881b7d522481f64adb575c618710453099dd734642b7",
+      "sha256": "b9403a3e85c9e3945e3b3597e546b3084a068a4a95aac136fd158748e333ed78",
+      "bytes": 2791
+    },
+    {
+      "path": "resources/使用说明.txt",
+      "oldSHA256": "e045a2603d2075f8276d9e78aa52306dfeaa3de0976f8ed5d432d30963178249",
+      "sha256": "d758c8a655c604c9ed08815578d78805630e3af383202e16148997b42baab3c4",
+      "bytes": 12829
+    },
+    {
+      "path": "studio/index.html",
+      "oldSHA256": "3727b9e1cdaf39e62f52455b049ed609a89841197505313c7b0e04feb8e35cd7",
+      "sha256": "ac0db5e6680210aa09875c41e5d29fdc89693fd8d2166516394116d5314ff284",
+      "bytes": 5849
+    },
+    {
+      "path": "studio/server.py",
+      "oldSHA256": "6a79acd7e4e4c01f0b82dd572fd64ceddb239242554d0fd9d916901f6f9376a3",
+      "sha256": "4870a0a1b5951e7d8cee7b6041c0d146bc5f63e76a49df11f670312a7c1f4456",
+      "bytes": 26051
+    },
+    {
+      "path": "studio/studio.css",
+      "oldSHA256": "5389b7e9fadef81bf4379c79cb623943f0c6fa258e599761b624f58f1f46e522",
+      "sha256": "3baba29f15f6381933896f2b8c203387950b5c04c8bf2ab6d3570ccfd4b2dea3",
+      "bytes": 10456
+    },
+    {
+      "path": "studio/studio.js",
+      "oldSHA256": "6ba80072134fb98c99a9a4080d4aa9394c03ae48c196c8bb964341a9987cb899",
+      "sha256": "f4d77649c3461d25e33f48c122a50fcc0571df7eb084e82f7356b124762daea3",
+      "bytes": 21050
+    },
+    {
+      "path": "resources/distribution-source/Setup.iss",
+      "oldSHA256": "910c0a7163efbaa99cd86bccb495142fbd694e984ae599684a9cd31e736f23ba",
+      "sha256": "a9f3d626a2d45b99e192e9dc89646b46f2b5f719a62228120d4f61e4da14462b",
+      "bytes": 1622
+    },
+    {
+      "path": "resources/distribution-source/SuiteUpdates.cs",
+      "oldSHA256": "feb3e2dbd6f8334671db53b9e211caf15b1bd8e153c815b67cb8d59cf23d2633",
+      "sha256": "e009c792de161b022f383b352770db491acd2904a2acb59338acb53fd4a2ffa5",
+      "bytes": 11093
+    },
+    {
+      "path": "resources/distribution-source/studio/index.html",
+      "oldSHA256": "3727b9e1cdaf39e62f52455b049ed609a89841197505313c7b0e04feb8e35cd7",
+      "sha256": "ac0db5e6680210aa09875c41e5d29fdc89693fd8d2166516394116d5314ff284",
+      "bytes": 5849
+    },
+    {
+      "path": "resources/distribution-source/studio/server.py",
+      "oldSHA256": "6a79acd7e4e4c01f0b82dd572fd64ceddb239242554d0fd9d916901f6f9376a3",
+      "sha256": "4870a0a1b5951e7d8cee7b6041c0d146bc5f63e76a49df11f670312a7c1f4456",
+      "bytes": 26051
+    },
+    {
+      "path": "resources/distribution-source/studio/studio.css",
+      "oldSHA256": "5389b7e9fadef81bf4379c79cb623943f0c6fa258e599761b624f58f1f46e522",
+      "sha256": "3baba29f15f6381933896f2b8c203387950b5c04c8bf2ab6d3570ccfd4b2dea3",
+      "bytes": 10456
+    },
+    {
+      "path": "resources/distribution-source/studio/studio.js",
+      "oldSHA256": "6ba80072134fb98c99a9a4080d4aa9394c03ae48c196c8bb964341a9987cb899",
+      "sha256": "f4d77649c3461d25e33f48c122a50fcc0571df7eb084e82f7356b124762daea3",
+      "bytes": 21050
+    },
+    {
+      "path": "使用说明.txt",
+      "oldSHA256": null,
+      "sha256": "d758c8a655c604c9ed08815578d78805630e3af383202e16148997b42baab3c4",
+      "bytes": 12829
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.3/CHANGELOG.txt",
+      "oldSHA256": null,
+      "sha256": "b9403a3e85c9e3945e3b3597e546b3084a068a4a95aac136fd158748e333ed78",
+      "bytes": 2791
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.3/prepare-package.py",
+      "oldSHA256": null,
+      "sha256": "87d07bf74c46ab5f9cabc184fd34f5b6a7951649db34e04a74fc01d9620906ca",
+      "bytes": 5770
+    }
+  ]
+}

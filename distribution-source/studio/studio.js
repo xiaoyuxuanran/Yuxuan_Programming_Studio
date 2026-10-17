@@ -2,6 +2,7 @@
 const $ = id => document.getElementById(id);
 const token = location.hash.slice(1);
 let state, current, editor, active, selected = '', selectedFolder = false, jobId, polling, theme = 'light';
+let fontSize = 14, sidebarVisible = true, packagePanelSelected = false, viewPreferenceWrite = Promise.resolve();
 let mode = new URLSearchParams(location.search).get('mode') === 'cpp' ? 'cpp' : 'python';
 const files = new Map();
 async function api(path, body) {
@@ -16,6 +17,33 @@ function promptText(title, hint, value = '', label = '名称') {
   return new Promise(resolve => { const dialog = $('promptDialog'); $('promptTitle').textContent = title; $('promptHint').textContent = hint; $('promptLabel').textContent = label; $('promptValue').value = value; dialog.returnValue = 'cancel'; dialog.onclose = () => resolve(dialog.returnValue === 'ok' ? $('promptValue').value.trim() : null); dialog.showModal(); $('promptValue').focus(); $('promptValue').select(); });
 }
 function applyTheme(value) { theme = value; document.documentElement.dataset.theme = value; $('theme').textContent = value === 'light' ? '☀ Light' : '☾ Dark'; if (window.monaco) monaco.editor.setTheme(value === 'light' ? 'vs' : 'vs-dark'); }
+function applyFontSize(value) {
+  fontSize = Number.isInteger(value) ? Math.max(10,Math.min(32,value)) : 14;
+  editor?.updateOptions({fontSize});
+  document.documentElement.style.setProperty('--editor-font-size',fontSize + 'px');
+  $('fontReset').textContent = fontSize + ' px';
+  $('fontSmaller').disabled = fontSize === 10; $('fontLarger').disabled = fontSize === 32;
+}
+function applySidebarVisibility(value) {
+  sidebarVisible = value !== false; $('sidebar').hidden = !sidebarVisible;
+  $('toggleSidebar').setAttribute('aria-expanded',String(sidebarVisible));
+  const label = (sidebarVisible ? '隐藏':'显示') + '侧边栏 (Ctrl+B)';
+  $('toggleSidebar').title = label; $('toggleSidebar').setAttribute('aria-label',label);
+  $('filesPanel').classList.toggle('active',sidebarVisible && !packagePanelSelected);
+  $('packagesPanel').classList.toggle('active',sidebarVisible && packagePanelSelected);
+  editor?.layout();
+}
+function persistViewPreferences() {
+  const preferences = {editorFontSize:fontSize,sidebarVisible};
+  viewPreferenceWrite = viewPreferenceWrite.catch(()=>{}).then(()=>api('preferences',preferences));
+  return viewPreferenceWrite;
+}
+function changeFontSize(value) { applyFontSize(value); return persistViewPreferences(); }
+function toggleSidebar() { applySidebarVisibility(!sidebarVisible); return persistViewPreferences(); }
+function togglePanel(packages) {
+  if(sidebarVisible && packagePanelSelected === packages) return toggleSidebar();
+  showPanel(packages); applySidebarVisibility(true); return persistViewPreferences();
+}
 function renderTabs() {
   $('tabs').replaceChildren();
   for (const [path, f] of files) { const tab = document.createElement('button'); tab.className = 'fileTab' + (active === path ? ' active':''); tab.setAttribute('role','tab'); tab.setAttribute('aria-selected',active === path); tab.title = path; tab.append(document.createTextNode((f.dirty ? '● ' : '') + path.split('/').pop())); const close = document.createElement('span'); close.className = 'close'; close.textContent = ' ×'; close.setAttribute('aria-label','关闭文件'); close.onclick = e => { e.stopPropagation(); guarded(async () => { if(f.dirty) await saveFile(path); const wasActive = active === path; files.delete(path); f.model.dispose(); if(wasActive) { active = undefined; editor.setModel(null); const next = files.keys().next().value; if(next) activate(next); } renderTabs(); })(); }; tab.append(close); tab.onclick = () => activate(path); $('tabs').append(tab); }
@@ -34,7 +62,7 @@ async function refreshTree() {
 async function selectProject(id) { await saveAll(); for(const f of files.values()) f.model.dispose(); files.clear(); active = undefined; selected = ''; selectedFolder = false; editor.setModel(null); current = state.projects.find(p => p.id === id); $('project').value = id; $('projectTitle').textContent = current.name; $('projectPath').textContent = current.path; $('pythonVersion').value = current.python; updateRuntime(); renderTabs(); const nodes = await refreshTree(); const first = nodes.find(n => !n.folder && n.name === (mode === 'python' ? 'main.py' : 'main.cpp')) || nodes.find(n => !n.folder); if(first) await openFile(first.path); }
 function updateRuntime() { $('runtimeStatus').textContent = mode === 'python' ? 'Python ' + $('pythonVersion').value + ' · 项目独立环境' : 'Clang++ · C++17'; }
 async function selectMode(value) { await saveAll(); mode = value; $('mode').value = mode; $('workspaceLabel').textContent = mode === 'python' ? 'Python Workspace' : 'C++ Workspace'; $('pythonVersion').hidden = mode !== 'python'; $('packagesPanel').hidden = mode !== 'python'; showPanel(false); const projects = state.projects.filter(p => p.mode === mode); $('project').replaceChildren(); for(const p of projects) { const option = document.createElement('option'); option.value = p.id; option.textContent = p.name; $('project').append(option); } $('projectCount').textContent = projects.length; if(projects.length) await selectProject(projects[0].id); else { const p = await api('project/create',{name:(mode === 'python' ? 'Python' : 'C++') + ' 项目 ' + Date.now().toString().slice(-6),mode}); state.projects.push(p); await selectMode(mode); } }
-function showPanel(packages) { $('projectPanel').hidden = packages; $('packagePanel').hidden = !packages; $('filesPanel').classList.toggle('active',!packages); $('packagesPanel').classList.toggle('active',packages); }
+function showPanel(packages) { packagePanelSelected = packages; $('projectPanel').hidden = packages; $('packagePanel').hidden = !packages; applySidebarVisibility(sidebarVisible); }
 async function startJob(id) { jobId = id; clearTimeout(polling); let cursor = 0; $('output').textContent = ''; $('run').disabled = true; $('stop').disabled = false; $('runStatus').textContent = '运行中';
   async function poll() { try { const data = await api('job?id=' + id + '&cursor=' + cursor); if(jobId !== id) return; cursor = data.cursor; const output = $('output'); const atBottom = output.scrollHeight - output.scrollTop - output.clientHeight < 50; output.textContent += data.output; if(atBottom) output.scrollTop = output.scrollHeight; $('runTitle').textContent = data.title; $('runStatus').textContent = data.running ? '运行中 · ' + data.elapsed + 's' : '退出码 ' + data.code; if(data.running) polling = setTimeout(poll,250); else { $('run').disabled = false; $('stop').disabled = true; jobId = null; } } catch(e) { toast(e.message); $('run').disabled = false; $('stop').disabled = true; jobId = null; } } await poll(); }
 async function run() { if(jobId) throw new Error('请先停止或等待当前任务结束'); if(!active) throw new Error('请先选择代码文件'); await saveAll(); const data = await api('run',{project:current.id,path:active,version:$('pythonVersion').value}); await startJob(data.id); }
@@ -47,10 +75,10 @@ function setupCompletions() {
 }
 async function initialize() {
   if(!token) throw new Error('请通过羽轩启动器打开代码工作区');
-  state = await api('state'); applyTheme(state.theme || 'light');
+  state = await api('state'); applyTheme(state.theme || 'light'); applyFontSize(state.editorFontSize); applySidebarVisibility(state.sidebarVisible);
   require.config({paths:{vs:'vs'}});
   await new Promise((resolve,reject) => require(['vs/editor/editor.main'],resolve,reject));
-  $('editor').replaceChildren(); editor = monaco.editor.create($('editor'),{theme:theme === 'light' ? 'vs':'vs-dark',editContext:false,automaticLayout:true,fontSize:14,fontFamily:'Consolas, "Cascadia Code", monospace',minimap:{enabled:false},scrollBeyondLastLine:false,padding:{top:18},tabSize:4,insertSpaces:true,wordWrap:'off',model:null});
+  $('editor').replaceChildren(); editor = monaco.editor.create($('editor'),{theme:theme === 'light' ? 'vs':'vs-dark',editContext:false,automaticLayout:true,fontSize,mouseWheelZoom:false,fontFamily:'Consolas, "Cascadia Code", monospace',minimap:{enabled:false},scrollBeyondLastLine:false,padding:{top:18},tabSize:4,insertSpaces:true,wordWrap:'off',model:null});
   editor.onDidChangeCursorPosition(e => $('position').textContent = '行 ' + e.position.lineNumber + '，列 ' + e.position.column);
   editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS,guarded(saveAll)); editor.addCommand(monaco.KeyCode.F5,guarded(run)); editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,guarded(run)); setupCompletions();
   $('save').onclick = guarded(async () => { await saveAll(); toast('所有文件已保存'); }); $('run').onclick = guarded(run);
@@ -59,7 +87,21 @@ async function initialize() {
   $('theme').onclick = guarded(async () => { const next = theme === 'light' ? 'dark':'light'; await api('preferences',{theme:next}); applyTheme(next); });
   $('mode').onchange = guarded(() => selectMode($('mode').value)); $('project').onchange = guarded(() => selectProject($('project').value));
   $('pythonVersion').onchange = guarded(async () => { await api('version',{project:current.id,version:$('pythonVersion').value}); current.python = $('pythonVersion').value; updateRuntime(); });
-  $('filesPanel').onclick = () => showPanel(false); $('packagesPanel').onclick = () => showPanel(true);
+  $('fontSmaller').onclick = guarded(()=>changeFontSize(fontSize - 1)); $('fontLarger').onclick = guarded(()=>changeFontSize(fontSize + 1)); $('fontReset').onclick = guarded(()=>changeFontSize(14));
+  $('toggleSidebar').onclick = guarded(toggleSidebar);
+  $('filesPanel').onclick = guarded(()=>togglePanel(false)); $('packagesPanel').onclick = guarded(()=>togglePanel(true));
+  document.addEventListener('keydown',e=>{
+    if(!(e.ctrlKey || e.metaKey) || e.altKey || e.isComposing) return;
+    let action;
+    if(e.code === 'Equal' || e.code === 'NumpadAdd') action = ()=>changeFontSize(fontSize + 1);
+    else if(e.code === 'Minus' || e.code === 'NumpadSubtract') action = ()=>changeFontSize(fontSize - 1);
+    else if(e.code === 'Digit0' || e.code === 'Numpad0') action = ()=>changeFontSize(14);
+    else if(e.code === 'KeyB' && !e.shiftKey) action = toggleSidebar;
+    if(action) { e.preventDefault(); e.stopPropagation(); guarded(action)(); }
+  },true);
+  $('editor').addEventListener('wheel',e=>{
+    if((e.ctrlKey || e.metaKey) && e.deltaY !== 0) { e.preventDefault(); e.stopPropagation(); guarded(()=>changeFontSize(fontSize + (e.deltaY < 0 ? 1:-1)))(); }
+  },{passive:false,capture:true});
   $('searchPackage').onclick = guarded(searchPackage); $('packageQuery').onkeydown = e => { if(e.key === 'Enter') guarded(searchPackage)(); };
   document.querySelectorAll('[data-package]').forEach(button => button.onclick = guarded(async () => { $('packageQuery').value = button.dataset.package; await searchPackage(); }));
   $('refresh').onclick = guarded(refreshTree);

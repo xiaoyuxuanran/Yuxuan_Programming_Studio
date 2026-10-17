@@ -298,8 +298,14 @@ class Handler(BaseHTTPRequestHandler):
             elif url=='/api/project/open':
                 folder=Path(body['path']);result=add_project(folder.name,body['mode'],folder)
             elif url=='/api/preferences':
+                if 'editorFontSize' in body and (type(body['editorFontSize']) is not int or not 10 <= body['editorFontSize'] <= 32):
+                    raise ValueError('代码字号必须为 10–32 的整数')
+                if 'sidebarVisible' in body and type(body['sidebarVisible']) is not bool:
+                    raise ValueError('侧边栏显示设置无效')
                 with LOCK:
                     if body.get('theme') in {'light','dark'}:STATE['theme']=body['theme']
+                    for key in ('editorFontSize','sidebarVisible'):
+                        if key in body:STATE[key]=body[key]
                     save_state();result={'ok':True}
             elif url=='/api/version':
                 if body['version'] not in VERSIONS:raise ValueError('Python 版本无效')
