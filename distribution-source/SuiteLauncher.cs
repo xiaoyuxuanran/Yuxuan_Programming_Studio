@@ -56,16 +56,16 @@ internal static partial class Suite {
     if(!closing){Browse(aiUrl);Update("App Inventor 已打开 · 默认使用旧布局");}
   }
   static void MixlyCommand(string command) {
-    var r=(HttpWebRequest)WebRequest.Create(mixlyUrl+"api/"+command);r.Proxy=null;r.Timeout=3000;r.Method="POST";r.Headers["X-Suite-Token"]=mixlyToken;r.ContentType="application/json";var bytes=Encoding.UTF8.GetBytes("{}");r.ContentLength=bytes.Length;using(var stream=r.GetRequestStream())stream.Write(bytes,0,bytes.Length);using(var response=r.GetResponse()){}
+    var r=(HttpWebRequest)WebRequest.Create(mixlyUrl+command);r.Proxy=null;r.Timeout=3000;r.Method="POST";r.Headers["X-Suite-Token"]=mixlyToken;r.ContentLength=0;using(var response=r.GetResponse()){}
   }
   static void StartMixly() {
     if(mixly==null||mixly.HasExited){
       Update("正在启动 Mixly 硬件编程……");string folder=Path.Combine(data,"mixly");Directory.CreateDirectory(folder);string running=Path.Combine(folder,"mixly-running.json");if(File.Exists(running))File.Delete(running);
-      mixlyToken=RandomToken();mixly=Spawn(Path.Combine(root,"runtime/python3.13.16/python.exe"),"-X utf8 "+Q(Path.Combine(root,"mixly/web/server.py"))+" --data "+Q(folder)+" --token "+mixlyToken);mixlyUrl=null;var timer=Stopwatch.StartNew();
+      string runtime=Path.Combine(root,"mixly/runtime");mixlyToken=RandomToken();mixly=Spawn(Path.Combine(runtime,"Mixly.exe"),"--data-dir "+Q(folder)+" --suite-token "+mixlyToken,runtime);mixlyUrl=null;var timer=Stopwatch.StartNew();
       while(timer.Elapsed.TotalSeconds<90&&!closing){if(mixly.HasExited)throw new Exception("Mixly 启动失败，请重试。");try{var info=new JavaScriptSerializer().DeserializeObject(File.ReadAllText(running)) as System.Collections.Generic.Dictionary<string,object>;string address="http://127.0.0.1:"+info["port"]+"/";if(Get(address+"health").Contains("YuxuanMixly")){mixlyUrl=address;break;}}catch{}Thread.Sleep(200);}
       if(mixlyUrl==null&&!closing)throw new Exception("Mixly 首次启动超时，请重试。");
-    }
-    if(!closing){Browse(mixlyUrl+"#"+mixlyToken);Update("Mixly 网页版已打开 · 四类开发板、仿真、云端库与串口调试");}
+    }else MixlyCommand("focus");
+    if(!closing)Update("Mixly 已打开 · 四类开发板、云端库、串口调试与驱动下载");
   }
   static void Launch(string mode) {
     if(!licensed){ShowActivation("请先激活软件。");return;}
@@ -74,7 +74,7 @@ internal static partial class Suite {
   }
   static void StopTools() {
     lock(gate) {
-      if(mixly!=null&&!mixly.HasExited){try{if(mixlyUrl!=null)MixlyCommand("shutdown");}catch{}if(!mixly.WaitForExit(10000)){try{mixly.Kill();mixly.WaitForExit(3000);}catch{}}}
+      if(mixly!=null&&!mixly.HasExited){try{if(mixlyUrl!=null)MixlyCommand("shutdown");}catch{}while(!mixly.WaitForExit(1000)){Update("请在 Mixly 中保存项目并关闭窗口，以完成退出……");}}
       if(studio!=null&&!studio.HasExited) {try{var r=(HttpWebRequest)WebRequest.Create(studioUrl+"api/shutdown");r.Proxy=null;r.Timeout=3000;r.Method="POST";r.Headers["X-Studio-Token"]=token;r.ContentType="application/json";var bytes=Encoding.UTF8.GetBytes("{}");r.ContentLength=bytes.Length;using(var stream=r.GetRequestStream())stream.Write(bytes,0,bytes.Length);using(var response=r.GetResponse()){}studio.WaitForExit(10000);}catch{} }
       // Core clears stale requests while starting; repeat so an early stop survives that cleanup.
       if(core!=null&&!core.HasExited){try{File.WriteAllText(Path.Combine(data,"stop.request"),"");while(!core.WaitForExit(1000)){File.WriteAllText(Path.Combine(data,"stop.request"),"");Update("正在保存 App Inventor 项目，等待正在进行的构建结束……");}}catch{}}
@@ -104,7 +104,7 @@ internal static partial class Suite {
         headings.SizeChanged+=(s,e)=>{int width=Math.Max(1,headings.ClientSize.Width-headings.Padding.Horizontal);foreach(var label in new[]{headingTitle,tagline,licenseInfo})if(label.MaximumSize.Width!=width)label.MaximumSize=new Size(width,0);};header.Controls.Add(headings,1,0);layout.Controls.Add(header,0,0);
         var updates=new FlowLayoutPanel{AutoSize=true,Dock=DockStyle.Top,Margin=new Padding(0,9,0,0),WrapContents=true};updates.Controls.Add(new Label{Text="v"+ProductVersion,AutoSize=true,Margin=new Padding(0,7,12,0),ForeColor=Color.FromArgb(96,138,168)});foreach(bool checkUpdate in new[]{false,true}){bool checkNow=checkUpdate;var updateButton=new Button{Text=checkNow?"检查更新":"更新日志",AutoSize=true,Height=30,FlatStyle=FlatStyle.Flat,BackColor=Color.White,ForeColor=Color.FromArgb(43,97,135),Margin=new Padding(0,0,8,0)};updateButton.FlatAppearance.BorderColor=Color.FromArgb(196,219,236);updateButton.Click+=(s,e)=>ShowUpdates(checkNow);updates.Controls.Add(updateButton);}headings.Controls.Add(updates,0,3);
         var cards=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=2,RowCount=2,Margin=new Padding(0)};for(int i=0;i<2;i++){cards.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,50));cards.RowStyles.Add(new RowStyle(SizeType.Percent,50));}layout.Controls.Add(cards,0,1);
-        choices=new[]{Card(cards,"App Inventor","可视化 Android 应用开发","经典布局 · 蓝白主题 · 本机 APK 构建",0,0,"ai"),Card(cards,"Mixly 网页编程","AVR / ESP8266 / ESP32 / Python ESP32","仿真平台 · 云端库 · 串口调试 · 驱动下载",1,0,"mixly"),Card(cards,"Python","脚本、绘图与图形窗口","3.8.9 / 3.13.16 · 清华源 pip · 图形库",0,1,"python"),Card(cards,"C++","编辑、编译与运行一键完成","内置 Clang++ · 项目文件树 · Light / Dark",1,1,"cpp")};
+        choices=new[]{Card(cards,"App Inventor","可视化 Android 应用开发","经典布局 · 蓝白主题 · 本机 APK 构建",0,0,"ai"),Card(cards,"Mixly 桌面编程","AVR / ESP8266 / ESP32 / Python ESP32","云端库 · 串口调试 · 驱动下载",1,0,"mixly"),Card(cards,"Python","脚本、绘图与图形窗口","3.8.9 / 3.13.16 · 清华源 pip · 图形库",0,1,"python"),Card(cards,"C++","编辑、编译与运行一键完成","内置 Clang++ · 项目文件树 · Light / Dark",1,1,"cpp")};
         foreach(var choice in choices)choice.Enabled=false;
         var footer=new TableLayoutPanel{Dock=DockStyle.Top,AutoSize=true,AutoSizeMode=AutoSizeMode.GrowAndShrink,MinimumSize=new Size(0,66),ColumnCount=3,RowCount=1,Padding=new Padding(7,15,7,0)};footer.RowStyles.Add(new RowStyle(SizeType.AutoSize));footer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));footer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,130));footer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,138));layout.Controls.Add(footer,0,2);
         status=new Label{Dock=DockStyle.Fill,Margin=new Padding(0),Text="准备就绪 · 选择任意工具开始",Font=new Font("Microsoft YaHei UI",9),ForeColor=Color.FromArgb(76,111,138),TextAlign=ContentAlignment.MiddleLeft};footer.Controls.Add(status,0,0);

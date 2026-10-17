@@ -26,7 +26,7 @@ copytree(desktop/'locales',runtime/'locales')
 app=runtime/'resources/app';app.mkdir(parents=True,exist_ok=True)
 copytree(desktop/'resources/app/node_modules',app/'node_modules')
 for name in ('suite-main.js','preload.js','compiler-paths.py','sdk-junction.ps1'):shutil.copy2(here/name,app/name)
-(app/'package.json').write_text(json.dumps({'name':'Mixly4Yuxuan','version':'2.1.0','description':'Mixly 2.0 rc4 integrated into Yuxuan programming suite','main':'main.js','author':'Mixly development team; Yuxuan suite adaptation'},ensure_ascii=False,indent=2),encoding='utf-8')
+(app/'package.json').write_text(json.dumps({'name':'Mixly4Yuxuan','version':'2.3.2','description':'Mixly 2.0 rc4 integrated into Yuxuan programming suite','main':'main.js','author':'Mixly development team; Yuxuan suite adaptation'},ensure_ascii=False,indent=2),encoding='utf-8')
 main=upstream.joinpath('main.js').read_text(encoding='utf-8')
 main="const suite = require('./suite-main.js');\n"+main
 main=main.replace("process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';",'')
@@ -94,7 +94,7 @@ patch('common/modules/mixly-modules/electron/file.js',"path.resolve(app.getAppPa
 # Make official archive URLs use TLS if an upstream catalog still uses HTTP.
 patch('common/modules/mixly-modules/electron/cloud-download.js','return new Promise((resolve, reject) => {',"if (typeof url === 'string' && /^http:\\/\\/download\\.mixlylibs\\.cloud\\//i.test(url)) url=url.replace(/^http:/i,'https:');\n    return new Promise((resolve, reject) => {")
 copytree(here/'arduino-libs/arduino-cli/libraries',dest/'arduino-cli/libraries',('examples','example','tests','test','docs'))
-metadata={'suiteVersion':'2.1.0','source':'https://gitee.com/mixly2/mixly2.0_src','tag':'2.0-rc4','commit':'a7d91f1e3c621a3132fb8ea38c92877bb0834830','runtime':'Electron 19.0.6, official Mixly Windows distribution','environments':boards,'cloudLibraries':'Official Mixly2 HTTPS catalogs; user libraries live in per-user data','drivers':'Official manufacturer download pages; no silent driver installation'}
+metadata={'suiteVersion':'2.3.2','source':'https://gitee.com/mixly2/mixly2.0_src','tag':'2.0-rc4','commit':'a7d91f1e3c621a3132fb8ea38c92877bb0834830','runtime':'Electron 19.0.6, official Mixly Windows distribution','environments':boards,'cloudLibraries':'Official Mixly2 HTTPS catalogs; user libraries live in per-user data','drivers':'Official manufacturer download pages; no silent driver installation'}
 metadata.update({
     'windowsRuntimeSource':'https://gitee.com/mixly2/mixly2.0-win32-x64',
     'windowsRuntimeCommit':'d1bb6950c91f3b8f68d571188393b3d6b6603eb7',
@@ -105,3 +105,6 @@ metadata.update({
 })
 (dest/'UPSTREAM.json').write_text(json.dumps(metadata,ensure_ascii=False,indent=2),encoding='utf-8')
 print('Staged Mixly rc4, four environments, official native runtime and Arduino libraries.')
+
+import runpy
+runpy.run_path(str(here/'fix-desktop.py'),run_name='__main__')

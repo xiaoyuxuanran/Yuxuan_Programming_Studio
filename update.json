@@ -1,54 +1,63 @@
 {
   "schema": 1,
-  "tag_name": "v2.3.1",
+  "tag_name": "v2.3.2",
   "draft": false,
   "prerelease": false,
-  "body": "羽轩编程工作台 **2.3.1**，Windows x64。\n\n### 本次更新\n\n1. 主页面新增“更新日志”和“检查更新”，可查看新版本内容、下载适用的增量包或完整安装包，SHA256 校验通过后保存并退出再升级。\n2. App Inventor 新增“优质扩展”：**MqttTCP、BluetoothLE、ClientSocketAI2Ext**，无需手动导入；采用本地图标，已有同名/同类型扩展优先保留。\n3. App Inventor 已有积木可拖到左侧模块区域删除，支持撤销。\n4. Mixly Arduino ESP32 通信分类恢复蓝牙初始化、数据检测、读取和发送字节，新增发送文本/换行；修复读取类型、默认名称及生成代码优先级。SPP 仅支持经典 ESP32，不支持 ESP32-C3 / S3。\n\n### 增量升级\n\n**本版本提供真正的 2.3.0 → 2.3.1 增量包，不含整套运行环境。**\n\n- 已安装完整 **2.3.0**：保存工程并退出，运行 `Yuxuan-Programming-Studio-Update-2.3.0-to-2.3.1.exe`，选择原安装目录。项目、第三方依赖和激活信息保留。\n- 首次安装或当前为 **2.2.0**：先安装 [2.3.0 完整版本](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.3.0)，再应用本增量包。\n- 安装前核对基础文件，拒绝空目录或不匹配的版本；允许再次运行修复同一版本。卸载记录与原安装合并。\n- 2.3.0 尚无检查更新按钮，需要手动运行这次增量包；升级后可通过主页面检查后续更新。\n\n### Gitee 镜像\n\n[Gitee 分版本下载](https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases)。更新检查和安装包下载优先 Gitee，失败时回退 GitHub，两边均校验 SHA256。Gitee 单附件限制 100 MB，2.3.1 增量包和本版源码直接托管于 Gitee；2.2.0 / 2.3.0 的完整安装包继续使用各版本页面中的 GitHub 链接。\n\n### 附件\n\n- `Yuxuan-Programming-Studio-Update-2.3.0-to-2.3.1.exe`：增量升级包。\n- `Source-and-Patches.zip`：本版平台源码、适配补丁、新增扩展与构建说明；完整上游基线源码沿用 2.3.0 的源码附件。\n- `User-Guide.txt`、`UPGRADE.md`、`CHANGELOG.txt`：使用、升级说明及日志。\n- `SHA256SUMS.txt`：附件校验值。\n- `update.json`：公开的版本、大小、SHA256 和镜像下载清单，供软件检查更新。\n\n已验证扩展自动出现、添加和本地图标，真实生成包含三个扩展的 APK；已验证实际鼠标拖拽删除及撤销、ESP32 蓝牙积木生成和本机编译。实体手机与开发板蓝牙/MQTT/Socket 通信未测试。2.2.0 本次保持原样。\n",
-  "html_url": "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.3.1",
+  "body": "羽轩编程工作台 **2.3.2**，Windows x64。\n\n### 本次更新\n\n1. Mixly 恢复为 2.2.0 同款 **2.0-rc4 桌面客户端**，无仿真入口；保留 AVR、ESP8266、Python ESP32、Arduino ESP32。\n2. 修复退出重开或刷新时积木被复制并隐藏到后方；代码视图也会同时保留积木、手写代码及文件路径。\n3. 串口调试弹窗新增明显的 **关闭 ×** 按钮，支持键盘聚焦，保留原收发与绘图模块。\n4. 保留云端库与驱动下载；官方主站不可用时使用米思齐官方 HTTPS Gitee 云库备用源。\n5. 保留 2.3.1 的经典 ESP32 蓝牙修复，以及 App Inventor 优质扩展、积木拖拽删除和主页面更新入口。修复旧 GCC 在较长安装目录下缺少标准库头文件的问题。\n\n### 选择匹配的更新包\n\n- **2.2.0 → 2.3.2**：`Yuxuan-Programming-Studio-Update-2.2.0-to-2.3.2.exe`，直接升级，无需中间版本。\n- **2.3.1 → 2.3.2**：`Yuxuan-Programming-Studio-Update-2.3.1-to-2.3.2.exe`，包含切回桌面版需要补齐的客户端文件。\n- 2.3.0 先升级到 2.3.1，再使用对应更新包。首次安装先安装完整 2.2.0，再使用本版直升包。\n- 保存工程并退出，选择原安装目录。更新包检查基础文件；项目、第三方依赖和激活信息保留，可重复安装修复本版，卸载记录合并。\n\n**从 Mixly 网页版切回前，请先另存 `.mix`，升级后在桌面版打开。** 浏览器草稿及扩展数据保留，但网页扩展需要使用兼容的桌面版本。\n\n### 下载与附件\n\n[Gitee 下载](https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.3.2) · [GitHub 备用](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.3.2)。软件检查及下载更新优先 Gitee，失败回退 GitHub；均校验 SHA256。\n\n除两个更新包外，附件提供 `Source-and-Patches.zip`、`User-Guide.txt`、`UPGRADE.md`、`CHANGELOG.txt`、`SHA256SUMS.txt` 和 `update.json`。完整上游源码基线沿用 2.2.0 / 2.3.0 的发布附件。\n\n已验证重复恢复与进程重启、四类编辑器及云库目录、AVR 实际库导入、AVR / ESP8266 / ESP32 本机编译、经典 ESP32 蓝牙编译、串口模拟回显和弹窗关闭。两个升级路径均以原版实际安装为基础，核对程序文件、重复更新、用户数据保留及合并卸载。未连接实体开发板或 Android 手机。\n",
+  "html_url": "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.3.2",
   "assets": [
     {
-      "name": "Yuxuan-Programming-Studio-Update-2.3.0-to-2.3.1.exe",
-      "size": 6345662,
-      "digest": "sha256:411a7946c827f6631fe09d97091755f7740819fd2793c6d8589c0def7e6b476b",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.1/Yuxuan-Programming-Studio-Update-2.3.0-to-2.3.1.exe",
+      "name": "Yuxuan-Programming-Studio-Update-2.2.0-to-2.3.2.exe",
+      "size": 5712328,
+      "digest": "sha256:648b6f5543be34793d2b2b103221a9403a014f9164ff06c4e74055239223013a",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.2/Yuxuan-Programming-Studio-Update-2.2.0-to-2.3.2.exe",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.1/Yuxuan-Programming-Studio-Update-2.3.0-to-2.3.1.exe"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.2/Yuxuan-Programming-Studio-Update-2.2.0-to-2.3.2.exe"
+      ]
+    },
+    {
+      "name": "Yuxuan-Programming-Studio-Update-2.3.1-to-2.3.2.exe",
+      "size": 104800027,
+      "digest": "sha256:cac3cb60ef72d53b5dea65037c7e18a5d4d8638819548be364fe13aaa6bcf999",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.2/Yuxuan-Programming-Studio-Update-2.3.1-to-2.3.2.exe",
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.2/Yuxuan-Programming-Studio-Update-2.3.1-to-2.3.2.exe"
       ]
     },
     {
       "name": "CHANGELOG.txt",
-      "size": 1165,
-      "digest": "sha256:27852d668d68f95db7a338764c97bdb7f30fa4e4891169b362a9d8a1daa34ecb",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.1/CHANGELOG.txt",
+      "size": 2094,
+      "digest": "sha256:552823f98afa01e33dd0881b7d522481f64adb575c618710453099dd734642b7",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.2/CHANGELOG.txt",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.1/CHANGELOG.txt"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.2/CHANGELOG.txt"
       ]
     },
     {
       "name": "Source-and-Patches.zip",
-      "size": 19733108,
-      "digest": "sha256:57a9620d981c78d1e07bdea0dda61b31ea850df91dbe181b7f5c1dee7e08f363",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.1/Source-and-Patches.zip",
+      "size": 20372804,
+      "digest": "sha256:ed1a4154d0ad55dbc3f0db91a547a518bbf9d159527c6a400087f13d68561baa",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.2/Source-and-Patches.zip",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.1/Source-and-Patches.zip"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.2/Source-and-Patches.zip"
       ]
     },
     {
       "name": "UPGRADE.md",
-      "size": 1185,
-      "digest": "sha256:cabf74f173e23b3657d6d4ce57e83161932983d09e2e6642c47e1073561f859f",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.1/UPGRADE.md",
+      "size": 1626,
+      "digest": "sha256:d24a75d6ef82526f073f6643548d39bdbf8c2f77cab74c39ba20fe124d70a01f",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.2/UPGRADE.md",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.1/UPGRADE.md"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.2/UPGRADE.md"
       ]
     },
     {
       "name": "User-Guide.txt",
-      "size": 12376,
-      "digest": "sha256:9c4acc88414bc402675b7d2d7ee2bbb283b2345611e265000a1ee80b7a0842f5",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.1/User-Guide.txt",
+      "size": 12306,
+      "digest": "sha256:e045a2603d2075f8276d9e78aa52306dfeaa3de0976f8ed5d432d30963178249",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.2/User-Guide.txt",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.1/User-Guide.txt"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.2/User-Guide.txt"
       ]
     }
   ]

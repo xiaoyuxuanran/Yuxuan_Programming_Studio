@@ -1,5 +1,5 @@
 """Avoid old GCC's Windows MAX_PATH limit in its internally expanded include paths."""
-import ctypes, json, pathlib, sys, subprocess
+import ctypes, json, pathlib, sys, subprocess, os, hashlib
 root = pathlib.Path(sys.argv[1])
 data = pathlib.Path(sys.argv[2]);data.mkdir(parents=True,exist_ok=True)
 def short_path(folder):
@@ -7,6 +7,7 @@ def short_path(folder):
     size = ctypes.windll.kernel32.GetShortPathNameW(str(folder),buf,len(buf))
     return (buf.value if size else str(folder)).replace('\\','/')
 compilers = {'arduino:avr':('arduino','avr-gcc'), 'esp8266:esp8266':('esp8266','xtensa-lx106-elf-gcc'), 'esp32:esp32':('esp32','xtensa-esp32-elf-gcc')}
+cache = pathlib.Path(os.environ.get('LOCALAPPDATA',str(data))) / 'YuxuanCompilerPaths' / hashlib.sha256(str(root.absolute()).lower().encode('utf-8')).hexdigest()[:12]
 paths = {};properties={}
 for key, (package, tool) in compilers.items():
     directory = root/'Arduino15/packages'/package/'tools'/tool
@@ -14,7 +15,13 @@ for key, (package, tool) in compilers.items():
     versions = sorted(directory.iterdir())
     if not versions: continue
     folder = str(versions[-1])
-    paths[key] = short_path(folder)+'/bin/'
+    # GCC expands its private C++ include paths before normalizing '..'. A short
+    # compiler.path alone can still exceed MAX_PATH inside BluetoothSerial.
+    alias_root=cache/package;alias_root.mkdir(parents=True,exist_ok=True)
+    alias=alias_root/'compiler'
+    if not alias.is_dir() or alias.resolve()!=pathlib.Path(folder).resolve():
+        subprocess.run(['powershell.exe','-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',str(pathlib.Path(__file__).with_name('sdk-junction.ps1')),'-DataRoot',str(alias_root),'-TargetPath',folder,'-AliasName','compiler'],check=True,capture_output=True)
+    paths[key] = short_path(alias)+'/bin/'
     properties[key]=[['compiler.path',paths[key]]]
 # ESP32 2.x expands hundreds of SDK include paths beyond Windows' command-line limit.
 # Put those flags in GCC's native response file instead of the process command line.

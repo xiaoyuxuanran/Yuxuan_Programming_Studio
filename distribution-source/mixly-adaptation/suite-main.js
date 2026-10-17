@@ -21,7 +21,7 @@ process.env.PYTHONPATH = path.join(root,'mixly/python-libs');
 delete process.env.PYTHONHOME;
 process.env.PYTHONUTF8 = '1';
 // Refresh shipped files only. User libraries and generated artifacts stay in place.
-const revision = '2.1.0-mixly-rc4-5';
+const revision = '2.3.2-desktop-rc4-5';
 const marker = path.join(data,'source-version.txt');
 if (!fs.existsSync(marker) || fs.readFileSync(marker,'utf8') !== revision) {
   const source = path.join(root,'mixly/src');
@@ -58,7 +58,7 @@ app.whenReady().then(()=>{
   if (!token) return;
   server=http.createServer((req,res)=>{
     const send=(status,obj)=>{res.writeHead(status,{'Content-Type':'application/json'});res.end(JSON.stringify(obj));};
-    if(req.method==='GET'&&req.url==='/health')return send(200,{app:'YuxuanMixly',version:'2.1.0'});
+    if(req.method==='GET'&&req.url==='/health')return send(200,{app:'YuxuanMixly',version:'2.3.2'});
     if(req.headers['x-suite-token']!==token)return send(403,{error:'Forbidden'});
     if(req.method==='POST'&&req.url==='/focus'){
       const wins=BrowserWindow.getAllWindows(); if(!wins.length&&openWindow)openWindow();else {if(wins[0].isMinimized())wins[0].restore();wins[0].show();wins[0].focus();}return send(200,{ok:true});

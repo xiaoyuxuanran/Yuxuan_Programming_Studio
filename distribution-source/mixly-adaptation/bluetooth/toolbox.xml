@@ -1,0 +1,8 @@
+<!-- data-yuxuan-bluetooth: classic ESP32 SPP -->
+  <label text="蓝牙串口 · 仅经典 ESP32（不含 C3 / S3）"></label>
+  <block type="serialBT_Init"><value name="CONTENT"><shadow type="text"><field name="TEXT">ESP32BT</field></shadow></value></block>
+  <block type="serialBT_available"></block>
+  <block type="serialBT_read"></block>
+  <block type="serialBT_write"><value name="CONTENT"><shadow type="math_number"><field name="NUM">65</field></shadow></value></block>
+  <block type="serialBT_print"><value name="CONTENT"><shadow type="text"><field name="TEXT">Hello ESP32</field></shadow></value></block>
+  

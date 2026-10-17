@@ -1,8 +1,9 @@
-param([Parameter(Mandatory=$true)][string]$DataRoot,[Parameter(Mandatory=$true)][string]$TargetPath)
+param([Parameter(Mandatory=$true)][string]$DataRoot,[Parameter(Mandatory=$true)][string]$TargetPath,[string]$AliasName='esp32sdk')
 $ErrorActionPreference='Stop'
 $root=[IO.Path]::GetFullPath($DataRoot)
 $target=[IO.Path]::GetFullPath($TargetPath)
-$alias=[IO.Path]::GetFullPath((Join-Path $root 'esp32sdk'))
+if($AliasName -notmatch '^[A-Za-z0-9_-]{1,40}$'){throw 'Invalid SDK alias name'}
+$alias=[IO.Path]::GetFullPath((Join-Path $root $AliasName))
 if([IO.Path]::GetDirectoryName($alias) -ne $root){throw 'SDK alias outside data root'}
 if(Test-Path -LiteralPath $alias){
   $item=Get-Item -LiteralPath $alias -Force

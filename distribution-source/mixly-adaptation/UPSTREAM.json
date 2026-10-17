@@ -1,5 +1,5 @@
 {
-  "suiteVersion": "2.1.0",
+  "suiteVersion": "2.3.2",
   "source": "https://gitee.com/mixly2/mixly2.0_src",
   "tag": "2.0-rc4",
   "commit": "a7d91f1e3c621a3132fb8ea38c92877bb0834830",
@@ -21,5 +21,10 @@
     "avr": "1.8.6",
     "esp8266": "3.1.2",
     "esp32": "2.0.17"
-  }
+  },
+  "interface": "desktop",
+  "fixes": [
+    "single-owner draft restore",
+    "visible accessible serial close button"
+  ]
 }
