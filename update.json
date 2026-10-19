@@ -18,28 +18,36 @@
       "size": 4450,
       "digest": "sha256:96b7b1ce64c461b6d5bd69df4d95a73f02dd5c42da34d50385a70c88abece590",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/CHANGELOG.txt",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.5/CHANGELOG.txt"
+      ]
     },
     {
       "name": "Source-and-Patches.zip",
       "size": 30364847,
       "digest": "sha256:1e7d0c809732b0d0aa811f8a10826b176835c9441fe4f3dc189323f419cbead5",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/Source-and-Patches.zip",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.5/Source-and-Patches.zip"
+      ]
     },
     {
       "name": "UPGRADE.md",
       "size": 727,
       "digest": "sha256:cea0596e8e672ffe7c0ed89c129b17eafd1a81e098141120b0fcad55da047ca3",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/UPGRADE.md",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.5/UPGRADE.md"
+      ]
     },
     {
       "name": "User-Guide.txt",
       "size": 1408,
       "digest": "sha256:142b5dc1297fa8ead6a6a477dd4ed2666ea78c06caeace0ec9adf1e741b3487d",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/User-Guide.txt",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.5/User-Guide.txt"
+      ]
     }
   ]
 }
