@@ -101,6 +101,8 @@
 <script src="static/js/sky-brand.js?v=sky3"></script>
 <link rel="stylesheet" href="static/css/offline-usb.css?v=usb3">
 <script src="static/js/offline-usb.js?v=usb3"></script>
+<link rel="stylesheet" href="static/css/teaching-projects.css?v=tpa3cddd8c042f">
+<script defer src="static/js/teaching-projects.js?v=tpa3cddd8c042f"></script>
 </head>
 
   <!-- ODE scripts -->

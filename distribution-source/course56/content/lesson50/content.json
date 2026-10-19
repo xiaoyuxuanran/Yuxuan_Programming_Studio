@@ -1,0 +1,778 @@
+{
+  "lesson": 50,
+  "title": "我的物联网小应用",
+  "projectName": "YXCourse50",
+  "exampleTitle": "软硬件综合状态面板",
+  "durationMinutes": 90,
+  "goals": [
+    "目标亮度是用户愿望。",
+    "断开后不把旧数据标为实时。",
+    "用测试记录验证我的物联网小应用的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "桌面灯控观察台：可靠TCP控制LED亮度，读取旋钮与按钮，保存设备地址并显示最近确认状态。",
+    "scope": "配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 复用49课序号协议。只有有效STATE更新ADC相对百分比及最近确认时间；超过10秒标旧数据。IP仅在成功连接后保存，重开恢复地址但不自动认为已连接。",
+    "components": [
+      {
+        "name": "HostBox",
+        "type": "TextBox",
+        "role": "设备地址"
+      },
+      {
+        "name": "ConnectButton",
+        "type": "Button",
+        "role": "连接"
+      },
+      {
+        "name": "DisconnectButton",
+        "type": "Button",
+        "role": "断开"
+      },
+      {
+        "name": "BrightnessSlider",
+        "type": "Slider",
+        "role": "目标亮度"
+      },
+      {
+        "name": "ApplyButton",
+        "type": "Button",
+        "role": "应用"
+      },
+      {
+        "name": "ReadButton",
+        "type": "Button",
+        "role": "更新状态"
+      },
+      {
+        "name": "FreshLabel",
+        "type": "Label",
+        "role": "最近确认时间和过时状态"
+      },
+      {
+        "name": "Socket",
+        "type": "ClientSocketAI2Ext",
+        "role": "可靠TCP"
+      },
+      {
+        "name": "LocalDB",
+        "type": "TinyDB",
+        "role": "保存地址"
+      },
+      {
+        "name": "PollClock",
+        "type": "Clock",
+        "role": "轮询连接状态并检查资料年龄"
+      }
+    ],
+    "logic": [
+      {
+        "event": "Screen1.Initialize",
+        "actions": [
+          "读取lastHost，已连接设假，提示主动连接并GET"
+        ]
+      },
+      {
+        "event": "ConnectButton.Click",
+        "actions": [
+          "保存地址；Connect"
+        ]
+      },
+      {
+        "event": "ApplyButton.Click",
+        "actions": [
+          "发送可靠命令(PWM,+round滑块值)"
+        ]
+      },
+      {
+        "event": "ReadButton.Click",
+        "actions": [
+          "发送可靠命令(GET)"
+        ]
+      },
+      {
+        "event": "Socket.DataReceived",
+        "actions": [
+          "v2组帧；匹配STATE后显示STATE"
+        ]
+      },
+      {
+        "event": "DisconnectButton.Click",
+        "actions": [
+          "关闭连接并清等待，不抹掉最后确认数据但标注非实时"
+        ]
+      },
+      {
+        "event": "PollClock.Timer",
+        "actions": [
+          "轮询ConnectionState；最近确认超过10秒则标旧数据"
+        ]
+      }
+    ],
+    "procedures": {
+      "处理载荷": "校验五字段STATE后更新确认值、ADC相对百分比和最近确认时间"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse50.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse50Class.aia：保留所有组件与协议参数、连接状态清理、数值边界、非本课重点过程和完整事件入口、扩展完整原始包与真实事件签名；补齐处理载荷过程。",
+    "starter": "YXCourse50Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补完整状态面板，先问再示范。",
+      "students": "按任务单完成：补完整状态面板。",
+      "checkpoint": "ADC百分比能叫准确湿度吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：阅读资料年龄检查，先问再示范。",
+      "students": "按任务单完成：阅读资料年龄检查。",
+      "checkpoint": "收到一个开灯OK能代替新STATE刷新全部传感器吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：核对重开与交付说明，先问再示范。",
+      "students": "按任务单完成：核对重开与交付说明。",
+      "checkpoint": "为什么不能把已连接真保存到TinyDB？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补完整状态面板",
+      "steps": [
+        "处理载荷为本课缺口，其余可靠通信已给。",
+        "验证五字段后再更新LED、PWM、ADC和按钮。",
+        "ADC百分比round(adc/4095×100)，按钮0为按下。",
+        "只有有效STATE保存最近确认时刻。"
+      ],
+      "question": "ADC百分比能叫准确湿度吗？",
+      "answer": "不能，只是旋钮相对读数，没有湿度传感器和校准。"
+    },
+    {
+      "title": "阅读资料年龄检查",
+      "steps": [
+        "PollClock.Timer已给，追踪SystemTime减最近确认。",
+        "超过10000ms时标记旧数据。",
+        "旧数值可以保留，但不称作正在实时更新。"
+      ],
+      "question": "收到一个开灯OK能代替新STATE刷新全部传感器吗？",
+      "answer": "不能，OK只确认对应命令，不含新的ADC或按钮测量。"
+    },
+    {
+      "title": "核对重开与交付说明",
+      "steps": [
+        "Initialize已给，只GetValue lastHost。",
+        "确认已连接初值假，未自动恢复上次通道。",
+        "教师测试成功连接、PWM128、GET与重开；未实测项目写待测。",
+        "提交接线表、协议说明和正常/错误测试记录。"
+      ],
+      "question": "为什么不能把已连接真保存到TinyDB？",
+      "answer": "连接是当前运行中的实际通道，历史布尔值不能证明现在已连接。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "连接、PWM128、GET",
+      "expected": "确认128，旋钮与按钮字段有效"
+    },
+    {
+      "action": "保存地址后重启APP",
+      "expected": "地址恢复，状态仍未连接"
+    },
+    {
+      "action": "10秒没有新确认",
+      "expected": "显示资料可能过时，旧值不消失"
+    }
+  ],
+  "misconceptions": [
+    [
+      "开机直接显示已连接",
+      "连接状态必须来自当前Socket.ConnectionState"
+    ],
+    [
+      "旧数据显示实时",
+      "按最近确认时刻计算资料年龄"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "为一个真实使用者重新设计面板，解释每个字段。"
+    },
+    {
+      "level": "拓展",
+      "task": "在不增加硬件的条件下增加亮度预设按钮。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "资料年龄从何时开始计算？",
+      "a": "最后一次收到并校验有效STATE的本机接收时刻。"
+    },
+    {
+      "q": "重开恢复了什么？",
+      "a": "上次成功连接的IP，不恢复有效连接状态。"
+    },
+    {
+      "q": "10秒后旧值必须清空吗？",
+      "a": "可以保留，但需明确标旧数据并提示重新GET。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#BluetoothClient 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetoothle 官方参考",
+      "url": "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetooth.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT wifi.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT gpio.html 官方参考",
+      "url": "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "我的物联网小应用",
+      "body": [
+        "软硬件综合状态面板",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "桌面灯控观察台：可靠TCP控制LED亮度，读取旋钮与按钮，保存设备地址并显示最近确认状态。 配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 复用49课序号协议。只有有效STATE更新ADC相对百分比及最近确认时间；超过10秒标旧数据。IP仅在成功连接后保存，重开恢复地址但不自动认为已连接。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "复用49课v2可靠协议，主页区分目标值与设备确认值。",
+        "设备IP保存在本地，启动只填入地址，不自动冒充已连接。",
+        "查询后展示ADC相对百分比和按钮状态，超过10秒无确认显示资料可能过时。"
+      ],
+      "notes": "演示：连接、PWM128、GET。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "目标亮度是用户愿望。",
+        "断开后不把旧数据标为实时。",
+        "用测试记录验证我的物联网小应用的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "桌面灯控观察台：可靠TCP控制LED亮度，读取旋钮与按钮，保存设备地址并显示最近确认状态。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "复用49课v2可靠协议，主页区分目标值与设备确认值。",
+        "设备IP保存在本地，启动只填入地址，不自动冒充已连接。",
+        "查询后展示ADC相对百分比和按钮状态，超过10秒无确认显示资料可能过时。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "设备地址",
+        "连接",
+        "断开",
+        "目标亮度"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "HostBox",
+          "TextBox",
+          "设备地址"
+        ],
+        [
+          "ConnectButton",
+          "Button",
+          "连接"
+        ],
+        [
+          "DisconnectButton",
+          "Button",
+          "断开"
+        ],
+        [
+          "BrightnessSlider",
+          "Slider",
+          "目标亮度"
+        ],
+        [
+          "ApplyButton",
+          "Button",
+          "应用"
+        ],
+        [
+          "ReadButton",
+          "Button",
+          "更新状态"
+        ]
+      ],
+      "columnWidths": [
+        300,
+        330,
+        522
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "已连接",
+          "假；必须核对当前实际连接"
+        ],
+        [
+          "接收缓存",
+          "空；保留半行，最多512字符"
+        ],
+        [
+          "有效应答",
+          "校验完整格式后才真"
+        ],
+        [
+          "日志",
+          "最多保留最近20条"
+        ],
+        [
+          "等待序号",
+          "0表示没有待确认命令"
+        ],
+        [
+          "重试次数",
+          "0或1；每次等待最多重试一次"
+        ]
+      ]
+    },
+    {
+      "title": "综合作品把数据含义讲清楚",
+      "body": [
+        "目标亮度是用户愿望。",
+        "确认亮度来自设备应答。",
+        "旋钮百分比是相对ADC量，不是准确电压。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "完成度包含异常和说明",
+      "body": [
+        "断开后不把旧数据标为实时。",
+        "地址可以保存，连接状态不能直接保存为真。",
+        "测试记录包含正常、边界与异常。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "有效STATE显示设备确认、相对ADC和按钮",
+        "PollClock同时核对连接与资料年龄",
+        "初始化只恢复上次IP，主动连接再GET"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：所有组件与协议参数；连接状态清理、数值边界、非本课重点过程和完整事件入口；扩展完整原始包与真实事件签名。学生任务：补齐处理载荷过程。",
+      "layout": "text"
+    },
+    {
+      "title": "状态字段与含义",
+      "body": [
+        "校验后显示ADC相对百分比。",
+        "有效STATE才记确认时间。"
+      ],
+      "notes": "处理载荷待补；不能把OK当成所有传感器刚更新。 实际截图对应：处理载荷。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 复用49课序号协议。只有有效STATE更新ADC相对百分比及最近确认时间；超过10秒标旧数据。IP仅在成功连接后保存，重开恢复地址但不自动认为已连接。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "处理载荷"
+    },
+    {
+      "title": "补完整状态面板",
+      "body": [
+        "处理载荷为本课缺口，其余可靠通信已给。",
+        "验证五字段后再更新LED、PWM、ADC和按钮。",
+        "ADC百分比round(adc/4095×100)，按钮0为按下。"
+      ],
+      "notes": "实践15分钟。ADC百分比能叫准确湿度吗？ 教师参考：不能，只是旋钮相对读数，没有湿度传感器和校准。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "连接与资料年龄",
+      "body": [
+        "轮询真实连接状态。",
+        "超过10秒标记旧状态。"
+      ],
+      "notes": "Timer已给，用具体时间差做手工追踪。 实际截图对应：PollClock.Timer。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 复用49课序号协议。只有有效STATE更新ADC相对百分比及最近确认时间；超过10秒标旧数据。IP仅在成功连接后保存，重开恢复地址但不自动认为已连接。",
+      "layout": "blocksTall",
+      "blockIndex": 2,
+      "captureTarget": "PollClock.Timer"
+    },
+    {
+      "title": "阅读资料年龄检查",
+      "body": [
+        "PollClock.Timer已给，追踪SystemTime减最近确认。",
+        "超过10000ms时标记旧数据。",
+        "旧数值可以保留，但不称作正在实时更新。"
+      ],
+      "notes": "实践15分钟。收到一个开灯OK能代替新STATE刷新全部传感器吗？ 教师参考：不能，OK只确认对应命令，不含新的ADC或按钮测量。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "启动只恢复地址",
+      "body": [
+        "读取lastHost，连接仍为假。",
+        "用户主动连接后GET。"
+      ],
+      "notes": "初始化已给，IP在成功连接后保存。 实际截图对应：Screen1.Initialize。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 复用49课序号协议。只有有效STATE更新ADC相对百分比及最近确认时间；超过10秒标旧数据。IP仅在成功连接后保存，重开恢复地址但不自动认为已连接。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "Screen1.Initialize"
+    },
+    {
+      "title": "核对重开与交付说明",
+      "body": [
+        "Initialize已给，只GetValue lastHost。",
+        "确认已连接初值假，未自动恢复上次通道。",
+        "教师测试成功连接、PWM128、GET与重开；未实测项目写待测。"
+      ],
+      "notes": "实践15分钟。为什么不能把已连接真保存到TinyDB？ 教师参考：连接是当前运行中的实际通道，历史布尔值不能证明现在已连接。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "连接、PWM128、GET",
+          "确认128，旋钮与按钮字段有效"
+        ],
+        [
+          "保存地址后重启APP",
+          "地址恢复，状态仍未连接"
+        ],
+        [
+          "10秒没有新确认",
+          "显示资料可能过时，旧值不消失"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "开机直接显示已连接",
+          "连接状态必须来自当前Socket.ConnectionState"
+        ],
+        [
+          "旧数据显示实时",
+          "按最近确认时刻计算资料年龄"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "连接、PWM128、GET",
+          "确认128，旋钮与按钮字段有效"
+        ],
+        [
+          "保存地址后重启APP",
+          "地址恢复，状态仍未连接"
+        ],
+        [
+          "10秒没有新确认",
+          "显示资料可能过时，旧值不消失"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "为一个真实使用者重新设计面板，解释每个字段。",
+        "在不增加硬件的条件下增加亮度预设按钮。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“连接、PWM128、GET”写下预测，再记录实际结果。",
+        "结合积木解释：综合作品把数据含义讲清楚。",
+        "改编并测试：为真实使用者重新设计面板，并解释各字段。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：10秒没有新确认。",
+        "说明：完成度包含异常和说明。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "资料年龄从何时开始计算？",
+        "重开恢复了什么？",
+        "10秒后旧值必须清空吗？"
+      ],
+      "notes": "1. 最后一次收到并校验有效STATE的本机接收时刻。\n2. 上次成功连接的IP，不恢复有效连接状态。\n3. 可以保留，但需明确标旧数据并提示重新GET。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "TextBox": "15",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "Label": "6",
+    "Slider": "3",
+    "Clock": "4",
+    "ClientSocketAI2Ext": "4",
+    "TinyDB": "3",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "所有组件与协议参数",
+    "连接状态清理、数值边界、非本课重点过程和完整事件入口",
+    "扩展完整原始包与真实事件签名"
+  ],
+  "actualClassroomTasks": [
+    "补齐处理载荷过程"
+  ],
+  "actualScreenshotGroups": [
+    "处理载荷",
+    "PollClock.Timer",
+    "Screen1.Initialize"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "已连接",
+      "连接中",
+      "连接开始",
+      "接收缓存",
+      "当前行",
+      "换行位置",
+      "最近命令",
+      "待选PWM",
+      "最近确认",
+      "接收字段",
+      "有效应答",
+      "日志",
+      "下个序号",
+      "等待序号",
+      "等待原文",
+      "发送时刻",
+      "重试次数",
+      "序号字段"
+    ],
+    "procedures": {
+      "整数范围": [
+        "值",
+        "下限",
+        "上限"
+      ],
+      "记录日志": [
+        "内容"
+      ],
+      "清理连接": [],
+      "处理载荷": [
+        "一行"
+      ],
+      "处理应答": [
+        "一行"
+      ],
+      "检查超时": [],
+      "发送命令": [
+        "命令"
+      ],
+      "接收分帧": [
+        "片段"
+      ],
+      "连接设备": []
+    },
+    "events": [
+      "AckClock.Timer",
+      "OnButton.Click",
+      "OffButton.Click",
+      "DisconnectButton.Click",
+      "BrightnessSlider.PositionChanged",
+      "ApplyButton.Click",
+      "ReadButton.Click",
+      "ConnectButton.Click",
+      "PollClock.Timer",
+      "Socket.DataReceived",
+      "Socket.RemoteConnectionClosed",
+      "Screen1.PermissionDenied",
+      "Screen1.ErrorOccurred",
+      "Screen1.Initialize"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "procedure": "处理载荷",
+      "args": [
+        "OK,LED,1"
+      ],
+      "expect": {
+        "StateLabel.Text": "设备确认：LED=1",
+        "global 有效应答": true
+      }
+    },
+    {
+      "procedure": "处理载荷",
+      "args": [
+        "STATE,1,128,2048,0"
+      ],
+      "expect": {
+        "global 有效应答": true
+      },
+      "contains": {
+        "StateLabel.Text": [
+          "PWM=128",
+          "ADC原始值=2048",
+          "按钮=按下"
+        ]
+      }
+    },
+    {
+      "procedure": "处理载荷",
+      "args": [
+        "STATE,1,128,9999,0"
+      ],
+      "expect": {
+        "global 有效应答": false
+      }
+    },
+    {
+      "procedure": "清理连接",
+      "expect": {
+        "global 已连接": false,
+        "global 接收缓存": "",
+        "OnButton.Enabled": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson50/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

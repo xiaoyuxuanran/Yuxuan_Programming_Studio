@@ -1,0 +1,729 @@
+{
+  "lesson": 25,
+  "title": "拍照与图片创作",
+  "projectName": "YXCourse25",
+  "exampleTitle": "本机照片与文字介绍卡",
+  "durationMinutes": 90,
+  "goals": [
+    "相机结果在AfterPicture到达。",
+    "只有非空结果才替换现有图片。",
+    "用测试记录验证拍照与图片创作的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "照片介绍卡：拍摄或选择一张照片，填写标题与说明，生成可阅读的介绍页。",
+    "scope": "本课在本机显示照片和文字，不上传。启动相机或选择器时保留旧作品；取消可能没有成功回调，不能靠等待回调锁定界面。实际URI和权限需设备验证。",
+    "components": [
+      {
+        "name": "PhotoImage",
+        "type": "Image",
+        "role": "显示当前照片"
+      },
+      {
+        "name": "CameraButton",
+        "type": "Button",
+        "role": "打开相机"
+      },
+      {
+        "name": "PhotoPicker",
+        "type": "ImagePicker",
+        "role": "从相册选图"
+      },
+      {
+        "name": "TitleBox",
+        "type": "TextBox",
+        "role": "照片标题"
+      },
+      {
+        "name": "CaptionBox",
+        "type": "TextBox",
+        "role": "说明"
+      },
+      {
+        "name": "ApplyButton",
+        "type": "Button",
+        "role": "生成介绍卡"
+      },
+      {
+        "name": "CardLabel",
+        "type": "Label",
+        "role": "显示标题与说明"
+      },
+      {
+        "name": "ResetButton",
+        "type": "Button",
+        "role": "清空作品"
+      },
+      {
+        "name": "Camera1",
+        "type": "Camera",
+        "role": "调用手机相机"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "操作、权限和输入校验反馈"
+      }
+    ],
+    "logic": [
+      {
+        "event": "CameraButton.Click",
+        "actions": [
+          "Camera1.TakePicture"
+        ]
+      },
+      {
+        "event": "Camera1.AfterPicture",
+        "actions": [
+          "显示图片(image)"
+        ]
+      },
+      {
+        "event": "PhotoPicker.AfterPicking",
+        "actions": [
+          "显示图片(PhotoPicker.Selection)"
+        ]
+      },
+      {
+        "event": "ApplyButton.Click",
+        "actions": [
+          "trim标题为空时StatusLabel提示请先输入照片标题；否则CardLabel←去空格标题+换行+去空格说明"
+        ]
+      },
+      {
+        "event": "ResetButton.Click",
+        "actions": [
+          "清空卡片"
+        ]
+      },
+      {
+        "event": "Screen1.PermissionDenied",
+        "actions": [
+          "提示相机权限被拒绝，可改用相册"
+        ]
+      },
+      {
+        "event": "Screen1.ErrorOccurred",
+        "actions": [
+          "显示错误提示，保留已有照片与卡片，不把异常当作清空"
+        ]
+      }
+    ],
+    "procedures": {
+      "显示图片(路径)": "若路径非空：图片路径←路径；PhotoImage.Picture←路径；显示已选择照片",
+      "清空卡片": "路径空；Picture空；标题说明和输出清空"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse25.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse25Class.aia：保留global 图片路径、显示图片、清空卡片、相机启动、重置及权限/异常反馈；添加Camera1.AfterPicture，使用image回调路径；添加PhotoPicker.AfterPicking，复用显示图片；添加ApplyButton.Click，校验非空标题并拼接说明。",
+    "starter": "YXCourse25Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补相机结果事件，先问再示范。",
+      "students": "按任务单完成：补相机结果事件。",
+      "checkpoint": "为什么TakePicture后不能立即显示本次结果？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：相册复用显示过程，先问再示范。",
+      "students": "按任务单完成：相册复用显示过程。",
+      "checkpoint": "取消为什么不等于清空？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补标题校验和介绍卡，先问再示范。",
+      "students": "按任务单完成：补标题校验和介绍卡。",
+      "checkpoint": "只清空CardLabel能叫清空作品吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补相机结果事件",
+      "steps": [
+        "Class已给相机启动、显示图片和清空卡片。",
+        "添加Camera1.AfterPicture。",
+        "把事件参数image传入显示图片，不提前猜测文件路径。"
+      ],
+      "question": "为什么TakePicture后不能立即显示本次结果？",
+      "answer": "拍摄在外部界面进行，新的image要等AfterPicture回调。"
+    },
+    {
+      "title": "相册复用显示过程",
+      "steps": [
+        "添加PhotoPicker.AfterPicking。",
+        "将PhotoPicker.Selection传给显示图片。",
+        "已有照片时打开相册后取消，检查旧图不被擦除。",
+        "对照显示图片内非空路径保护。"
+      ],
+      "question": "取消为什么不等于清空？",
+      "answer": "取消没有新的有效选择；只有非空结果替换旧图，清空由单独按钮执行。"
+    },
+    {
+      "title": "补标题校验和介绍卡",
+      "steps": [
+        "添加ApplyButton.Click，trim标题为空时只在StatusLabel提示。",
+        "有效时把标题、换行和说明连接到CardLabel。",
+        "生成后取消拍照，确认现有作品仍可使用。",
+        "重置后检查图、标题、说明和输出都已清空。"
+      ],
+      "question": "只清空CardLabel能叫清空作品吗？",
+      "answer": "不能，还要清图片路径、Picture、TitleBox和CaptionBox，避免旧素材残留。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "拍照后生成介绍卡",
+      "expected": "照片和文字同时可见"
+    },
+    {
+      "action": "已有照片时取消选图",
+      "expected": "旧图仍保留"
+    },
+    {
+      "action": "空标题生成；清空作品",
+      "expected": "先提示输入标题；清空后无旧图旧文字"
+    },
+    {
+      "action": "已有作品时取消相机",
+      "expected": "旧照片与文字保留，可以继续生成或清空"
+    }
+  ],
+  "misconceptions": [
+    [
+      "拍完照仍空白",
+      "检查AfterPicture使用image返回值"
+    ],
+    [
+      "照片被拉伸",
+      "关闭ScalePictureToFit，使用等比例缩放并检查控件宽高"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "为校园一处公共空间制作照片介绍卡。"
+    },
+    {
+      "level": "拓展",
+      "task": "增加拍摄日期字段，保持标题和正文的文字层级。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "相机和相册为什么能共用一个过程？",
+      "a": "两者最终都提供图片引用，显示图片处理共同的非空检查和Picture赋值。"
+    },
+    {
+      "q": "空标题时改写CardLabel会有什么问题？",
+      "a": "可能擦掉已有作品；本工程在StatusLabel提示并保留原卡片。"
+    },
+    {
+      "q": "取消相机没回调，界面如何继续用？",
+      "a": "启动时不清旧图且不锁界面，原作品和其他操作仍可用。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT media.html#Camera 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/media.html#Camera",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT media.html#ImagePicker 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/media.html#ImagePicker",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT userinterface.html#Image 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html#Image",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "拍照与图片创作",
+      "body": [
+        "本机照片与文字介绍卡",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "照片介绍卡：拍摄或选择一张照片，填写标题与说明，生成可阅读的介绍页。 本课在本机显示照片和文字，不上传。启动相机或选择器时保留旧作品；取消可能没有成功回调，不能靠等待回调锁定界面。实际URI和权限需设备验证。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "拍摄照片与相册选图共用一个显示过程。",
+        "拍照或选图取消时保留原照片。",
+        "标题不能为空；清空作品重置图片、标题与说明。"
+      ],
+      "notes": "演示：拍照后生成介绍卡。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "相机结果在AfterPicture到达。",
+        "只有非空结果才替换现有图片。",
+        "用测试记录验证拍照与图片创作的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "照片介绍卡：拍摄或选择一张照片，填写标题与说明，生成可阅读的介绍页。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "拍摄照片与相册选图共用一个显示过程。",
+        "拍照或选图取消时保留原照片。",
+        "标题不能为空；清空作品重置图片、标题与说明。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "显示当前照片",
+        "打开相机",
+        "从相册选图",
+        "照片标题"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "PhotoImage",
+          "Image",
+          "显示当前照片"
+        ],
+        [
+          "CameraButton",
+          "Button",
+          "打开相机"
+        ],
+        [
+          "PhotoPicker",
+          "ImagePicker",
+          "从相册选图"
+        ],
+        [
+          "TitleBox",
+          "TextBox",
+          "照片标题"
+        ],
+        [
+          "CaptionBox",
+          "TextBox",
+          "说明"
+        ],
+        [
+          "ApplyButton",
+          "Button",
+          "生成介绍卡"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "图片路径",
+          "初始为空；来自相机或相册"
+        ],
+        [
+          "image",
+          "AfterPicture的图片引用"
+        ],
+        [
+          "PhotoPicker.Selection",
+          "相册返回的图片引用"
+        ]
+      ]
+    },
+    {
+      "title": "获取图片与显示图片分开",
+      "body": [
+        "相机结果在AfterPicture到达。",
+        "选图结果在AfterPicking读取Selection。",
+        "Image.Picture使用有效路径。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "取消操作不等于删除作品",
+      "body": [
+        "只有非空结果才替换现有图片。",
+        "清空需要单独按钮。",
+        "拍照权限被拒绝时仍可选择其他方式。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "相机或相册：把非空结果交给显示图片",
+        "生成卡片：校验标题，再拼接说明",
+        "取消保留旧作；清空必须明确点击按钮"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：global 图片路径；显示图片、清空卡片；相机启动、重置及权限/异常反馈。学生任务：添加Camera1.AfterPicture，使用image回调路径；添加PhotoPicker.AfterPicking，复用显示图片；添加ApplyButton.Click，校验非空标题并拼接说明。",
+      "layout": "text"
+    },
+    {
+      "title": "拍摄后的回调",
+      "body": [
+        "将image参数传入显示图片。",
+        "拍摄完成后显示本次照片。"
+      ],
+      "notes": "只在AfterPicture里使用image。Class已给TakePicture入口，不要求再添加重复事件。 实际截图对应：Camera1.AfterPicture。本课在本机显示照片和文字，不上传。启动相机或选择器时保留旧作品；取消可能没有成功回调，不能靠等待回调锁定界面。实际URI和权限需设备验证。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "Camera1.AfterPicture"
+    },
+    {
+      "title": "补相机结果事件",
+      "body": [
+        "Class已给相机启动、显示图片和清空卡片。",
+        "添加Camera1.AfterPicture。",
+        "把事件参数image传入显示图片，不提前猜测文件路径。"
+      ],
+      "notes": "实践15分钟。为什么TakePicture后不能立即显示本次结果？ 教师参考：拍摄在外部界面进行，新的image要等AfterPicture回调。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "相册与共用过程",
+      "body": [
+        "读取Selection并调用同一显示过程。",
+        "选图能替换照片，取消不擦除旧图。"
+      ],
+      "notes": "显示图片为共用过程；空Selection不更新。系统URI不应手工改成电脑路径。 实际截图对应：PhotoPicker.AfterPicking。本课在本机显示照片和文字，不上传。启动相机或选择器时保留旧作品；取消可能没有成功回调，不能靠等待回调锁定界面。实际URI和权限需设备验证。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "PhotoPicker.AfterPicking"
+    },
+    {
+      "title": "相册复用显示过程",
+      "body": [
+        "添加PhotoPicker.AfterPicking。",
+        "将PhotoPicker.Selection传给显示图片。",
+        "已有照片时打开相册后取消，检查旧图不被擦除。"
+      ],
+      "notes": "实践15分钟。取消为什么不等于清空？ 教师参考：取消没有新的有效选择；只有非空结果替换旧图，清空由单独按钮执行。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "介绍卡与校验",
+      "body": [
+        "校验标题并拼接标题、换行、说明。",
+        "空标题提示；有效文字排版完整。"
+      ],
+      "notes": "标题提示写StatusLabel；有效输出写CardLabel。权限与异常反馈保留旧作，取消不是成功拍摄。 实际截图对应：ApplyButton.Click。本课在本机显示照片和文字，不上传。启动相机或选择器时保留旧作品；取消可能没有成功回调，不能靠等待回调锁定界面。实际URI和权限需设备验证。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "ApplyButton.Click"
+    },
+    {
+      "title": "补标题校验和介绍卡",
+      "body": [
+        "添加ApplyButton.Click，trim标题为空时只在StatusLabel提示。",
+        "有效时把标题、换行和说明连接到CardLabel。",
+        "生成后取消拍照，确认现有作品仍可使用。"
+      ],
+      "notes": "实践15分钟。只清空CardLabel能叫清空作品吗？ 教师参考：不能，还要清图片路径、Picture、TitleBox和CaptionBox，避免旧素材残留。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "拍照后生成介绍卡",
+          "照片和文字同时可见"
+        ],
+        [
+          "已有照片时取消选图",
+          "旧图仍保留"
+        ],
+        [
+          "空标题生成；清空作品",
+          "先提示输入标题；清空后无旧图旧文字"
+        ],
+        [
+          "已有作品时取消相机",
+          "旧照片与文字保留，可以继续生成或清空"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "拍完照仍空白",
+          "检查AfterPicture使用image返回值"
+        ],
+        [
+          "照片被拉伸",
+          "关闭ScalePictureToFit，使用等比例缩放并检查控件宽高"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "拍照后生成介绍卡",
+          "照片和文字同时可见"
+        ],
+        [
+          "已有照片时取消选图",
+          "旧图仍保留"
+        ],
+        [
+          "空标题生成；清空作品",
+          "先提示输入标题；清空后无旧图旧文字"
+        ],
+        [
+          "已有作品时取消相机",
+          "旧照片与文字保留，可以继续生成或清空"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "为校园一处公共空间制作照片介绍卡。",
+        "增加拍摄日期字段，保持标题和正文的文字层级。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“拍照后生成介绍卡”写下预测，再记录实际结果。",
+        "结合积木解释：获取图片与显示图片分开。",
+        "修改一条规则并添加一项边界测试：为校园一处公共空间制作照片介绍卡。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：空标题生成；清空作品。",
+        "说明：取消操作不等于删除作品。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "相机和相册为什么能共用一个过程？",
+        "空标题时改写CardLabel会有什么问题？",
+        "取消相机没回调，界面如何继续用？"
+      ],
+      "notes": "1. 两者最终都提供图片引用，显示图片处理共同的非空检查和Picture赋值。\n2. 可能擦掉已有作品；本工程在StatusLabel提示并保留原卡片。\n3. 启动时不清旧图且不锁界面，原作品和其他操作仍可用。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Image": "8",
+    "Button": "8",
+    "ImagePicker": "6",
+    "HorizontalArrangement": "4",
+    "TextBox": "15",
+    "VerticalArrangement": "4",
+    "Camera": "3",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "global 图片路径",
+    "显示图片、清空卡片",
+    "相机启动、重置及权限/异常反馈"
+  ],
+  "actualClassroomTasks": [
+    "添加Camera1.AfterPicture，使用image回调路径",
+    "添加PhotoPicker.AfterPicking，复用显示图片",
+    "添加ApplyButton.Click，校验非空标题并拼接说明"
+  ],
+  "actualScreenshotGroups": [
+    "Camera1.AfterPicture",
+    "PhotoPicker.AfterPicking",
+    "ApplyButton.Click"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "图片路径"
+    ],
+    "procedures": {
+      "显示图片": [
+        "路径"
+      ],
+      "清空卡片": []
+    },
+    "events": [
+      "CameraButton.Click",
+      "Camera1.AfterPicture",
+      "PhotoPicker.AfterPicking",
+      "ApplyButton.Click",
+      "ResetButton.Click",
+      "Screen1.PermissionDenied",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "event": "Camera1.AfterPicture",
+      "args": {
+        "image": "content://photo/7"
+      },
+      "expect": {
+        "global 图片路径": "content://photo/7",
+        "PhotoImage.Picture": "content://photo/7"
+      }
+    },
+    {
+      "set": {
+        "global 图片路径": "old",
+        "PhotoImage.Picture": "old",
+        "PhotoPicker.Selection": ""
+      },
+      "event": "PhotoPicker.AfterPicking",
+      "expect": {
+        "global 图片路径": "old",
+        "PhotoImage.Picture": "old"
+      }
+    },
+    {
+      "set": {
+        "TitleBox.Text": "  "
+      },
+      "event": "ApplyButton.Click",
+      "expect": {
+        "StatusLabel.Text": "请先输入照片标题"
+      }
+    },
+    {
+      "set": {
+        "TitleBox.Text": "我的植物",
+        "CaptionBox.Text": "今天长出了新叶。"
+      },
+      "event": "ApplyButton.Click",
+      "expect": {
+        "CardLabel.Text": "我的植物\n今天长出了新叶。"
+      }
+    },
+    {
+      "event": "ResetButton.Click",
+      "expect": {
+        "PhotoImage.Picture": "",
+        "TitleBox.Text": "",
+        "CaptionBox.Text": "",
+        "CardLabel.Text": ""
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson25/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

@@ -1,0 +1,610 @@
+{
+  "lesson": 2,
+  "title": "会互动的数字名片",
+  "projectName": "Course02Card",
+  "exampleTitle": "我的数字名片",
+  "durationMinutes": 90,
+  "goals": [
+    "用Image、Label和Button分别组织图像、信息与操作。",
+    "通过不同按钮的Click事件改变同一个InfoLabel.Text。",
+    "保护个人信息，制作一张别人能够自主操作的介绍卡。"
+  ],
+  "exampleSpec": {
+    "summary": "名片用虚构的“林小羽”和品牌标志头像介绍自己；“我的介绍”与“我的爱好”同时更新分类标题NameLabel及正文InfoLabel，“回到名片首页”恢复两处初始文字。",
+    "components": [
+      {
+        "name": "AvatarImage",
+        "type": "Image",
+        "role": "显示打包进工程的头像图片"
+      },
+      {
+        "name": "NameLabel",
+        "type": "Label",
+        "role": "显示姓名与当前介绍分类"
+      },
+      {
+        "name": "InfoLabel",
+        "type": "Label",
+        "role": "显示介绍、爱好或初始提示"
+      },
+      {
+        "name": "IntroButton",
+        "type": "Button",
+        "role": "显示自我介绍"
+      },
+      {
+        "name": "HobbyButton",
+        "type": "Button",
+        "role": "显示兴趣内容"
+      },
+      {
+        "name": "ResetButton",
+        "type": "Button",
+        "role": "恢复提示"
+      }
+    ],
+    "logic": [
+      {
+        "event": "IntroButton.Click",
+        "actions": [
+          "NameLabel.Text ← 林小羽｜关于我",
+          "InfoLabel.Text ← 大家好，我是林小羽。我喜欢提出问题，也喜欢把想法做成作品。"
+        ]
+      },
+      {
+        "event": "HobbyButton.Click",
+        "actions": [
+          "NameLabel.Text ← 林小羽｜我的爱好",
+          "InfoLabel.Text ← 我的爱好：画画、阅读和编程。我想做一个帮助同学的小工具。"
+        ]
+      },
+      {
+        "event": "ResetButton.Click",
+        "actions": [
+          "NameLabel.Text ← 林小羽｜创意小队",
+          "InfoLabel.Text ← 欢迎认识我！点击下面的按钮。"
+        ]
+      }
+    ],
+    "scope": "名片不填写真实电话、家庭地址或账号密码；本课不做登录、二维码或联网名片。图片使用随工程提供的用户提供的品牌标志头像或许可素材，不直接复制搜索图片。"
+  },
+  "versions": {
+    "answer": "Course02Card.aia：介绍、爱好、重置三个按钮事件完整。",
+    "class": "Course02CardClass.aia：界面、品牌标志头像与IntroButton.Click演示已给出；学生补HobbyButton.Click和ResetButton.Click，每个事件同步更新NameLabel与InfoLabel。",
+    "starter": "Course02CardStarter.aia：保留相同界面、头像及初始属性，无任何积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–3",
+      "teacher": "展示名片，让学生以访客身份探索。",
+      "students": "说出按钮、图片与信息的不同作用。",
+      "checkpoint": "能指出名片中一项适合公开的信息。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "4–8",
+      "teacher": "从第1课迁移事件，演示组件树与图片资源。",
+      "students": "导入Class版，找到AvatarImage和InfoLabel。",
+      "checkpoint": "图片路径对应工程媒体中的文件。"
+    },
+    {
+      "start": 25,
+      "end": 45,
+      "minutes": 20,
+      "slides": "9–12",
+      "teacher": "解读“我的介绍”事件，只示范一次属性设置。",
+      "students": "完成爱好按钮，反复切换介绍与爱好。",
+      "checkpoint": "两按钮改变同一InfoLabel。"
+    },
+    {
+      "start": 45,
+      "end": 60,
+      "minutes": 15,
+      "slides": "13–15",
+      "teacher": "引导学生独立完成重置，再做顺序预测。",
+      "students": "补重置事件，按不同顺序测试。",
+      "checkpoint": "重置恢复提示而非删除头像。"
+    },
+    {
+      "start": 60,
+      "end": 75,
+      "minutes": 15,
+      "slides": "16–19",
+      "teacher": "组织安全改编与可读性检查。",
+      "students": "替换公开昵称、爱好和许可素材，检查长文字。",
+      "checkpoint": "不出现真实联系方式；长文能读完整。"
+    },
+    {
+      "start": 75,
+      "end": 90,
+      "minutes": 15,
+      "slides": "20–24",
+      "teacher": "访客互测、介绍作品、出口题与导出。",
+      "students": "同伴独立操作，记录一处修改，导出AIA。",
+      "checkpoint": "说出事件与目标属性的对应关系。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "认出名片的组成",
+      "steps": [
+        "导入 Course02CardClass.aia，找到AvatarImage、InfoLabel及三个按钮。",
+        "选AvatarImage查看Picture，核对图片文件在媒体区存在。",
+        "阅读“我的介绍”按钮的积木，圈出目标组件与属性。"
+      ],
+      "question": "Picture里的文件名和InfoLabel.Text里的介绍文字，分别给哪个组件用？",
+      "answer": "Picture为Image提供图片资源；InfoLabel.Text是标签显示的文字。"
+    },
+    {
+      "title": "补全爱好按钮",
+      "steps": [
+        "从HobbyButton取出Click事件。",
+        "设置InfoLabel.Text为“我的爱好：画画、阅读和编程。我想做一个帮助同学的小工具。”或自己的公开兴趣。",
+        "同时设置NameLabel.Text为“林小羽｜我的爱好”，使分类标题和正文一致。",
+        "在运行环境交替点“我的介绍”和“我的爱好”，观察只有信息区变化。"
+      ],
+      "question": "为什么两个按钮可以设置同一个标签？",
+      "answer": "每个按钮的事件在被点击时执行，分别为同一标签写入新文字，最后一次设置决定当前显示。"
+    },
+    {
+      "title": "补重置并安全改编",
+      "steps": [
+        "添加ResetButton.Click，同时把InfoLabel.Text恢复“欢迎认识我！点击下面的按钮。”、NameLabel.Text恢复“林小羽｜创意小队”。",
+        "只使用昵称、公开兴趣和许可头像，避免真实联系方式。",
+        "测试长文字与不同点击顺序，然后导出AIA。"
+      ],
+      "question": "改了设计器里的初始提示，重置事件需要改吗？",
+      "answer": "需要同步；重置事件写入自己的文字值，不会自动读取原来的设计属性。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "首次启动",
+      "expected": "头像可见，信息区显示操作提示，三个按钮含义清楚。"
+    },
+    {
+      "action": "点我的介绍",
+      "expected": "信息区显示介绍，头像没有消失。"
+    },
+    {
+      "action": "点我的爱好，再点我的介绍",
+      "expected": "分别显示对应内容，最后显示介绍。"
+    },
+    {
+      "action": "任一内容后点重置",
+      "expected": "恢复初始提示，按钮仍然可用。"
+    },
+    {
+      "action": "把爱好改为较长的一句话",
+      "expected": "文字完整可读，没有重要内容被裁掉。"
+    }
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "补完爱好和重置，三条路径都可解释。"
+    },
+    {
+      "level": "提高",
+      "task": "为有兴趣了解你的新同学改写介绍，让信息简短且有层次。"
+    },
+    {
+      "level": "拓展",
+      "task": "增加一个“我的作品”按钮展示一项真实完成的作品；只发布适合公开的信息。"
+    }
+  ],
+  "misconceptions": [
+    [
+      "点爱好后按钮文字改变了",
+      "属性设置选成了HobbyButton.Text，应设置InfoLabel.Text。"
+    ],
+    [
+      "头像不显示",
+      "核对Picture文件名、大小写与媒体资源，不把本机绝对路径填作打包素材。"
+    ],
+    [
+      "文字变长后显示不全",
+      "检查标签宽度和高度，优先自动高度、适当留白，不只缩小字体。"
+    ],
+    [
+      "切换后正文变了但分类标题没变",
+      "检查是否遗漏NameLabel.Text设置；每个按钮都要同步处理标题和正文。"
+    ]
+  ],
+  "exitQuestions": [
+    {
+      "q": "两个按钮都设置InfoLabel.Text，最后屏幕由哪个事件决定？",
+      "a": "最近一次实际执行的设置决定当前文字。"
+    },
+    {
+      "q": "能否把家庭地址写到班级公开名片？为什么？",
+      "a": "不应把家庭地址等敏感信息放入公开名片；用昵称和公开兴趣表达自己。"
+    },
+    {
+      "q": "头像图片为什么要在工程媒体区存在？",
+      "a": "打包时工程需包含资源，才能在运行环境按Picture路径显示。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT用户界面组件参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html",
+      "use": "核对Image.Picture、Label.Text与按钮Click的作用。"
+    },
+    {
+      "title": "MIT布局组件参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/layout.html",
+      "use": "核对Arrangement对内部组件的排列方式。"
+    }
+  ],
+  "componentMetadata": {
+    "Button": "8",
+    "Label": "6",
+    "Image": "8",
+    "VerticalArrangement": "4",
+    "HorizontalArrangement": "4"
+  },
+  "slides": [
+    {
+      "title": "会互动的数字名片",
+      "body": [
+        "第2课 · 我的数字名片",
+        "图片、介绍和按钮共同讲述我是谁"
+      ],
+      "notes": "回顾第1课：按钮事件能改变标签。这节课把一条问候扩展为可选择的信息。示例使用虚构人物和用户提供的羽轩品牌标志头像，学生可安全改编。",
+      "layout": "text"
+    },
+    {
+      "title": "一位新同学打开名片",
+      "body": [
+        "他先想知道什么？",
+        "他会点哪个按钮？",
+        "哪些信息适合公开？"
+      ],
+      "notes": "先让学生作为访客体验完整卡片。收集“名字、爱好、作品”等需求，明确不收集电话、地址和密码。",
+      "layout": "question"
+    },
+    {
+      "title": "名片的三个功能证据",
+      "body": [
+        "我的介绍：显示介绍",
+        "我的爱好：显示兴趣",
+        "重置：恢复阅读提示"
+      ],
+      "notes": "展示三次点击，询问哪个区域始终不变。头像不必跟着每个事件改变，变化集中在InfoLabel能帮助学生理解组件作用。",
+      "layout": "text"
+    },
+    {
+      "title": "今天的90分钟",
+      "body": [
+        "从一条问候到多种信息"
+      ],
+      "notes": "按表执行，25分钟后应让学生开始补事件，不把美化占满课堂。75分钟后保留互测和保存。",
+      "layout": "table",
+      "table": [
+        [
+          "时间",
+          "任务"
+        ],
+        [
+          "0–10",
+          "访客体验"
+        ],
+        [
+          "10–25",
+          "图片与组件"
+        ],
+        [
+          "25–45",
+          "爱好事件"
+        ],
+        [
+          "45–60",
+          "重置与测试"
+        ],
+        [
+          "60–75",
+          "安全改编"
+        ],
+        [
+          "75–90",
+          "展示与保存"
+        ]
+      ]
+    },
+    {
+      "title": "一张卡片中的三种角色",
+      "body": [
+        "Image承载图片",
+        "Label承载信息",
+        "Button提供选择"
+      ],
+      "notes": "用纸卡片比喻：照片不会替你发出操作，按钮也不适合塞满介绍文字。要求学生用功能而不是外观判断组件。",
+      "layout": "text"
+    },
+    {
+      "title": "实际名片的组件设计",
+      "body": [
+        "头像在上方",
+        "信息区在中间",
+        "按钮让读者选择内容"
+      ],
+      "notes": "展示本课真实Designer截图，按组件树逐个点选。问学生：InfoLabel在哪，AvatarImage在哪。不能把截图当运行结果。",
+      "layout": "designer"
+    },
+    {
+      "title": "图片从哪里来？",
+      "body": [
+        "上传到工程媒体区",
+        "Picture填写工程中的文件名",
+        "图片和AIA一起导出"
+      ],
+      "notes": "演示查看媒体区，不要求从网络寻找头像。学校可选自绘头像；本机路径C盘某文件不能当成另一台手机也能读取的资源。",
+      "layout": "text"
+    },
+    {
+      "title": "名片的组件分工",
+      "body": [
+        "先找对象，再改属性"
+      ],
+      "notes": "阅读组件名与类型，为后面事件建立索引。NameLabel显示姓名与分类标题，InfoLabel显示正文；中文可见文字不受英文组件名影响。",
+      "layout": "table",
+      "table": [
+        [
+          "组件",
+          "类型",
+          "作用"
+        ],
+        [
+          "AvatarImage",
+          "Image",
+          "头像"
+        ],
+        [
+          "NameLabel",
+          "Label",
+          "姓名与分类标题"
+        ],
+        [
+          "InfoLabel",
+          "Label",
+          "介绍/爱好/提示"
+        ],
+        [
+          "IntroButton",
+          "Button",
+          "我的介绍"
+        ],
+        [
+          "HobbyButton",
+          "Button",
+          "我的爱好"
+        ],
+        [
+          "ResetButton",
+          "Button",
+          "恢复提示"
+        ]
+      ]
+    },
+    {
+      "title": "我的介绍按钮的演示事件",
+      "body": [
+        "IntroButton.Click",
+        "设置InfoLabel.Text",
+        "新文字是一段简短介绍",
+        "同步更新NameLabel的分类标题"
+      ],
+      "notes": "Class版已给出此事件。让学生逐行读出，不急于复制。截图对应完整工程的IntroButton.Click。 实际事件还会设置NameLabel.Text，分类标题与正文必须同步更新。",
+      "layout": "blocks",
+      "blockIndex": 1
+    },
+    {
+      "title": "一个信息区可以显示多种内容",
+      "body": [
+        "按钮决定何时更新",
+        "标签决定在哪里显示",
+        "文字块决定显示什么"
+      ],
+      "notes": "用三问法检查理解。切换内容是同一标签Text被改写，本课尚未涉及多页面或数据库。",
+      "layout": "text"
+    },
+    {
+      "title": "爱好按钮的学生任务",
+      "body": [
+        "新事件属于HobbyButton",
+        "新文字写在InfoLabel中",
+        "头像和其他按钮无需修改"
+      ],
+      "notes": "给学生独立制作时间。若学生照搬Intro事件而忘改事件组件，运行时一个按钮可能承担错误工作，提醒逐项核对。",
+      "layout": "text"
+    },
+    {
+      "title": "爱好按钮的目标逻辑",
+      "body": [
+        "HobbyButton.Click",
+        "InfoLabel.Text变成爱好内容",
+        "最后一次点击决定当前信息",
+        "同步更新NameLabel的分类标题"
+      ],
+      "notes": "截图用于任务完成后的对照，不在操作前直接投出答案。请学生用手指出与介绍事件的两个差别。 实际事件还会设置NameLabel.Text，分类标题与正文必须同步更新。",
+      "layout": "blocks",
+      "blockIndex": 2
+    },
+    {
+      "title": "重置按钮的目标逻辑",
+      "body": [
+        "ResetButton.Click",
+        "恢复“欢迎认识我！点击下面的按钮。”",
+        "保留头像与可点击按钮",
+        "同步更新NameLabel的分类标题"
+      ],
+      "notes": "先让学生独立完成，再显示截图。重置只负责信息文字，没有清空图片、重开Screen或删除工程。 实际事件还会设置NameLabel.Text，分类标题与正文必须同步更新。",
+      "layout": "blocks",
+      "blockIndex": 3
+    },
+    {
+      "title": "顺序改变，结果会怎样？",
+      "body": [
+        "先预测最后的信息，再点击验证"
+      ],
+      "notes": "答案：介绍→爱好显示爱好；爱好→介绍显示介绍；介绍→重置显示初始提示。让学生解释是最近执行的一次设置生效。",
+      "layout": "table",
+      "table": [
+        [
+          "点击顺序",
+          "最后的信息"
+        ],
+        [
+          "我的介绍→我的爱好",
+          "爱好内容"
+        ],
+        [
+          "我的爱好→我的介绍",
+          "自我介绍"
+        ],
+        [
+          "我的介绍→重置",
+          "初始提示"
+        ],
+        [
+          "重置→我的爱好",
+          "爱好内容"
+        ]
+      ]
+    },
+    {
+      "title": "一次完整的互测",
+      "body": [
+        "按钮与文字是否对应？",
+        "重置后还能继续选择吗？",
+        "图片始终可见吗？"
+      ],
+      "notes": "观察者按任务单逐项记录。运行未配置时标待测；可以先核对事件结构，但不可把所有运行行直接打钩。",
+      "layout": "text"
+    },
+    {
+      "title": "公开名片的信息边界",
+      "body": [
+        "可以：昵称、兴趣、作品",
+        "谨慎：真人照片与学校细节",
+        "不写：地址、密码、真实联系方式"
+      ],
+      "notes": "让学生判断三张信息卡。强调只公开自己愿意公开且有权使用的信息；他人照片需要许可，图片资源也要有使用权。",
+      "layout": "text"
+    },
+    {
+      "title": "读起来轻松的信息",
+      "body": [
+        "介绍用一两句话",
+        "按钮文字说明会出现什么",
+        "较长文字要检查换行"
+      ],
+      "notes": "教师把爱好故意改长，观察布局是否截断。优先检查标签自动高度、宽度和换行空间，不以极小字体解决所有问题。",
+      "layout": "text"
+    },
+    {
+      "title": "图片不见时的检查路径",
+      "body": [
+        "资源文件是否还在媒体区？",
+        "Picture是否写对文件名？",
+        "图片组件是否可见且有尺寸？"
+      ],
+      "notes": "按资源、路径、组件三个层次排查。示例照片不由联网URL加载，因此无需课堂网络获取头像。不要在错误信息没看清时反复上传同一文件。",
+      "layout": "text"
+    },
+    {
+      "title": "我的名片主题",
+      "body": [
+        "为谁介绍我？",
+        "我希望对方记住什么？",
+        "只改内容，也能形成新作品"
+      ],
+      "notes": "学生安全替换昵称与公开兴趣，可保留示例头像。提高组添加作品按钮时仍需写明对象和测试步骤。",
+      "layout": "text"
+    },
+    {
+      "title": "访客测试最有价值",
+      "body": [
+        "让同伴不听说明先操作",
+        "记录他犹豫的地方",
+        "把一条建议变成修改"
+      ],
+      "notes": "观察者不抢答。若对方把重置理解为删除名片，说明按钮Text可改成“回到提示”，而不是要求访客记住规则。",
+      "layout": "text"
+    },
+    {
+      "title": "我的名片说明",
+      "body": [
+        "这张名片介绍________",
+        "我用________按钮显示________",
+        "我保护个人信息的方法是________"
+      ],
+      "notes": "挑选两种不同主题分享，评价事件与内容是否一致。让学生提到一次测试而不是只朗读界面文字。",
+      "layout": "text"
+    },
+    {
+      "title": "出口题：两个按钮，一个信息区",
+      "body": [
+        "先点爱好，再点介绍，会显示什么？",
+        "Picture里为什么要有正确资源名？",
+        "怎样避免名片泄露隐私？"
+      ],
+      "notes": "参考：显示介绍；文件名让Image找到打包资源；用昵称、公开兴趣，避开地址联系方式等敏感信息。",
+      "layout": "question"
+    },
+    {
+      "title": "教师观察与分层",
+      "body": [
+        "功能4分：三个按钮分别正确",
+        "解释2分：最近一次Text设置",
+        "测试与保存各2分"
+      ],
+      "notes": "同时观察是否存在真实联系方式。隐私提醒应在学生公开前完成。尚无运行证据的行保持待测，图片能在Designer显示不能证明手机运行全部正常。",
+      "layout": "text"
+    },
+    {
+      "title": "下一课：会发声的伙伴",
+      "body": [
+        "从视觉反馈走向听觉反馈",
+        "按钮事件可以调用组件方法",
+        "参考：MIT用户界面与布局文档"
+      ],
+      "notes": "来源：https://ai2.appinventor.mit.edu/reference/components/userinterface.html；https://ai2.appinventor.mit.edu/reference/components/layout.html。下节使用本地提示音和语音，提示音不冒充真实动物录音。收齐学生AIA，保留个人改编。",
+      "layout": "text"
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson02/artifact-spec.json",
+  "actualScreenshotGroups": [
+    "IntroButton.Click",
+    "HobbyButton.Click",
+    "ResetButton.Click"
+  ],
+  "actualExpectedOutputs": [
+    {
+      "event": "IntroButton.Click",
+      "expect": {
+        "NameLabel.Text": "林小羽｜关于我"
+      }
+    },
+    {
+      "event": "HobbyButton.Click",
+      "expect": {
+        "NameLabel.Text": "林小羽｜我的爱好",
+        "InfoLabel.Text": "我的爱好：画画、阅读和编程。我想做一个帮助同学的小工具。"
+      }
+    },
+    {
+      "event": "ResetButton.Click",
+      "expect": {
+        "InfoLabel.Text": "欢迎认识我！点击下面的按钮。",
+        "NameLabel.Text": "林小羽｜创意小队"
+      }
+    }
+  ]
+}

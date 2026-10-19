@@ -1,0 +1,764 @@
+{
+  "lesson": 49,
+  "title": "让 TCP 通信更稳定",
+  "projectName": "YXCourse49",
+  "exampleTitle": "带序号确认与一次重试",
+  "durationMinutes": 90,
+  "goals": [
+    "一次回调可能只有半条消息。",
+    "等待12时收到11不能误清等待。",
+    "用测试记录验证让 TCP 通信更稳定的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "可靠指令面板：给LED与GET增加序号、应答、超时和受控重试，正确处理半包与连包。",
+    "scope": "配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 使用49-50可靠固件，格式seq|命令加LF，与v1固件不混用。等待1500ms只重发同一原文一次；再次超时报结果未确认，不等于设备未执行。",
+    "components": [
+      {
+        "name": "HostBox",
+        "type": "TextBox",
+        "role": "设备IP"
+      },
+      {
+        "name": "ConnectButton",
+        "type": "Button",
+        "role": "连接或重连"
+      },
+      {
+        "name": "OnButton",
+        "type": "Button",
+        "role": "可靠开灯"
+      },
+      {
+        "name": "OffButton",
+        "type": "Button",
+        "role": "可靠关灯"
+      },
+      {
+        "name": "ReadButton",
+        "type": "Button",
+        "role": "可靠GET"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "待确认、成功或超时"
+      },
+      {
+        "name": "Socket",
+        "type": "ClientSocketAI2Ext",
+        "role": "TCP扩展"
+      },
+      {
+        "name": "AckClock",
+        "type": "Clock",
+        "role": "100ms检查应答超时"
+      },
+      {
+        "name": "TimeClock",
+        "type": "Clock",
+        "role": "SystemTime读取"
+      }
+    ],
+    "logic": [
+      {
+        "event": "OnButton.Click",
+        "actions": [
+          "调用发送命令(LED,1)"
+        ]
+      },
+      {
+        "event": "OffButton.Click",
+        "actions": [
+          "调用发送命令(LED,0)"
+        ]
+      },
+      {
+        "event": "ReadButton.Click",
+        "actions": [
+          "调用发送命令(GET)"
+        ]
+      },
+      {
+        "event": "Socket.DataReceived",
+        "actions": [
+          "收到片段(data)"
+        ]
+      },
+      {
+        "event": "AckClock.Timer",
+        "actions": [
+          "调用检查超时"
+        ]
+      },
+      {
+        "event": "Socket.RemoteConnectionClosed",
+        "actions": [
+          "清等待与缓存，标记断开，禁止自动连续重连"
+        ]
+      }
+    ],
+    "procedures": {
+      "发送命令": "仅空闲时分配序号，保存原文和时间后发送",
+      "处理应答": "校验序号分隔与当前等待匹配，再校验载荷，成功才结束等待",
+      "检查超时": "1500ms后同原文最多重试一次，第二次超时报未确认"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse49.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse49Class.aia：保留所有组件与协议参数、连接状态清理、数值边界、非本课重点过程和完整事件入口、扩展完整原始包与真实事件签名；补齐处理应答过程；补齐检查超时过程。",
+    "starter": "YXCourse49Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：阅读发送过程并追踪序号，先问再示范。",
+      "students": "按任务单完成：阅读发送过程并追踪序号。",
+      "checkpoint": "TCP可靠为什么还需要应用层确认？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补匹配应答，先问再示范。",
+      "students": "按任务单完成：补匹配应答。",
+      "checkpoint": "等待12时收到11|OK,LED,1怎么办？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补最多一次重试，先问再示范。",
+      "students": "按任务单完成：补最多一次重试。",
+      "checkpoint": "超时后能直接显示设备没执行吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "阅读发送过程并追踪序号",
+      "steps": [
+        "发送命令已给，找到等待原文和发送时刻。",
+        "一次只留一个等待序号，其他按钮暂禁用。",
+        "用12|LED,1加LF手算请求和应答。"
+      ],
+      "question": "TCP可靠为什么还需要应用层确认？",
+      "answer": "字节有序传送不等于设备业务已经执行并被界面确认。"
+    },
+    {
+      "title": "补匹配应答",
+      "steps": [
+        "按一个竖线拆成两段并校验正整数序号。",
+        "只处理等于等待序号的载荷。",
+        "载荷有效才清等待、关AckClock并恢复按钮。",
+        "旧序号仅记日志，不清除当前等待。"
+      ],
+      "question": "等待12时收到11|OK,LED,1怎么办？",
+      "answer": "记录旧应答，不影响12号等待。"
+    },
+    {
+      "title": "补最多一次重试",
+      "steps": [
+        "当前连接且有等待，比较SystemTime差值。",
+        "达到1500ms且次数0才重发等待原文，次数设1。",
+        "再过1500ms仍无确认则停止等待并提示。",
+        "禁止重试时分配新序号或改变命令正文。"
+      ],
+      "question": "超时后能直接显示设备没执行吗？",
+      "answer": "不能，可能执行了但应答没确认，应显示结果未确认并用GET核对。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "分段12|OK,LE与D,1加LF",
+      "expected": "组合为一条12号应答"
+    },
+    {
+      "action": "同回调含11号与12号应答",
+      "expected": "只12清除当前等待"
+    },
+    {
+      "action": "等待超过两轮1500ms",
+      "expected": "恰好重发一次，随后显示未确认"
+    }
+  ],
+  "misconceptions": [
+    [
+      "两条回包只处理第一条",
+      "用while而非单次if提取完整行"
+    ],
+    [
+      "超时后频繁乱发",
+      "保存重试次数，只重发原文一次"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "增加PING延迟测量并记录往返时间。"
+    },
+    {
+      "level": "拓展",
+      "task": "设计断开后手动重连流程，旧等待序号不延续到新连接。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "重发时哪些内容必须不变？",
+      "a": "同一序号、同一正文与相同LF原文。"
+    },
+    {
+      "q": "固件收到重复请求怎样避免重复执行？",
+      "a": "同序号同命令返回缓存应答。"
+    },
+    {
+      "q": "匹配序号但载荷非法可以结束等待吗？",
+      "a": "不可以，载荷也须通过校验。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#BluetoothClient 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetoothle 官方参考",
+      "url": "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetooth.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT wifi.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT gpio.html 官方参考",
+      "url": "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "让 TCP 通信更稳定",
+      "body": [
+        "带序号确认与一次重试",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "可靠指令面板：给LED与GET增加序号、应答、超时和受控重试，正确处理半包与连包。 配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 使用49-50可靠固件，格式seq|命令加LF，与v1固件不混用。等待1500ms只重发同一原文一次；再次超时报结果未确认，不等于设备未执行。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "v2消息为序号|命令加LF，一次只允许一条待确认命令。",
+        "接收缓存循环处理所有完整行，残余半行留待下次。",
+        "匹配应答才清等待；1.5秒超时最多自动重发1次，失败后保留手动重连入口。"
+      ],
+      "notes": "演示：分段12|OK,LE与D,1加LF。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "一次回调可能只有半条消息。",
+        "等待12时收到11不能误清等待。",
+        "用测试记录验证让 TCP 通信更稳定的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "可靠指令面板：给LED与GET增加序号、应答、超时和受控重试，正确处理半包与连包。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "v2消息为序号|命令加LF，一次只允许一条待确认命令。",
+        "接收缓存循环处理所有完整行，残余半行留待下次。",
+        "匹配应答才清等待；1.5秒超时最多自动重发1次，失败后保留手动重连入口。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "设备IP",
+        "连接或重连",
+        "可靠开灯",
+        "可靠关灯"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "HostBox",
+          "TextBox",
+          "设备IP"
+        ],
+        [
+          "ConnectButton",
+          "Button",
+          "连接或重连"
+        ],
+        [
+          "OnButton",
+          "Button",
+          "可靠开灯"
+        ],
+        [
+          "OffButton",
+          "Button",
+          "可靠关灯"
+        ],
+        [
+          "ReadButton",
+          "Button",
+          "可靠GET"
+        ],
+        [
+          "StatusLabel",
+          "Label",
+          "待确认、成功或超时"
+        ]
+      ],
+      "columnWidths": [
+        300,
+        330,
+        522
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "已连接",
+          "假；必须核对当前实际连接"
+        ],
+        [
+          "接收缓存",
+          "空；保留半行，最多512字符"
+        ],
+        [
+          "有效应答",
+          "校验完整格式后才真"
+        ],
+        [
+          "日志",
+          "最多保留最近20条"
+        ],
+        [
+          "等待序号",
+          "0表示没有待确认命令"
+        ],
+        [
+          "重试次数",
+          "0或1；每次等待最多重试一次"
+        ]
+      ]
+    },
+    {
+      "title": "TCP保证字节有序，不提供消息边界",
+      "body": [
+        "一次回调可能只有半条消息。",
+        "也可能含两条或多条完整消息。",
+        "LF是本课程应用协议约定的边界。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "应答序号说明确认的是哪次请求",
+      "body": [
+        "等待12时收到11不能误清等待。",
+        "重发使用相同序号和同一正文。",
+        "固件缓存重复序号的结果，避免重复执行。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "只允许一条待确认命令，保存序号和原文",
+        "匹配序号且载荷有效才结束等待",
+        "一次重试仍超时就停止等待，提示用户核对"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：所有组件与协议参数；连接状态清理、数值边界、非本课重点过程和完整事件入口；扩展完整原始包与真实事件签名。学生任务：补齐处理应答过程；补齐检查超时过程。",
+      "layout": "text"
+    },
+    {
+      "title": "保存一次请求",
+      "body": [
+        "保存序号、原文与发送时刻。",
+        "等待期间不发另一条命令。"
+      ],
+      "notes": "发送命令已给，供阅读追踪与超时任务使用。 实际截图对应：发送命令。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 使用49-50可靠固件，格式seq|命令加LF，与v1固件不混用。等待1500ms只重发同一原文一次；再次超时报结果未确认，不等于设备未执行。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "发送命令"
+    },
+    {
+      "title": "阅读发送过程并追踪序号",
+      "body": [
+        "发送命令已给，找到等待原文和发送时刻。",
+        "一次只留一个等待序号，其他按钮暂禁用。",
+        "用12|LED,1加LF手算请求和应答。"
+      ],
+      "notes": "实践15分钟。TCP可靠为什么还需要应用层确认？ 教师参考：字节有序传送不等于设备业务已经执行并被界面确认。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "匹配序号与载荷",
+      "body": [
+        "旧序号不能清当前等待。",
+        "载荷完整合法才确认。"
+      ],
+      "notes": "处理应答待补，内部调用已给处理载荷。 实际截图对应：处理应答。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 使用49-50可靠固件，格式seq|命令加LF，与v1固件不混用。等待1500ms只重发同一原文一次；再次超时报结果未确认，不等于设备未执行。",
+      "layout": "blocksTall",
+      "blockIndex": 2,
+      "captureTarget": "处理应答"
+    },
+    {
+      "title": "补匹配应答",
+      "body": [
+        "按一个竖线拆成两段并校验正整数序号。",
+        "只处理等于等待序号的载荷。",
+        "载荷有效才清等待、关AckClock并恢复按钮。"
+      ],
+      "notes": "实践15分钟。等待12时收到11|OK,LED,1怎么办？ 教师参考：记录旧应答，不影响12号等待。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "只重试一次",
+      "body": [
+        "1500ms后重发同一原文。",
+        "再次超时停止并报未确认。"
+      ],
+      "notes": "检查超时待补，不能在每次Timer都无限发送。 实际截图对应：检查超时。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 使用49-50可靠固件，格式seq|命令加LF，与v1固件不混用。等待1500ms只重发同一原文一次；再次超时报结果未确认，不等于设备未执行。",
+      "layout": "blocksTall",
+      "blockIndex": 3,
+      "captureTarget": "检查超时"
+    },
+    {
+      "title": "补最多一次重试",
+      "body": [
+        "当前连接且有等待，比较SystemTime差值。",
+        "达到1500ms且次数0才重发等待原文，次数设1。",
+        "再过1500ms仍无确认则停止等待并提示。"
+      ],
+      "notes": "实践15分钟。超时后能直接显示设备没执行吗？ 教师参考：不能，可能执行了但应答没确认，应显示结果未确认并用GET核对。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "分段12|OK,LE与D,1加LF",
+          "组合为一条12号应答"
+        ],
+        [
+          "同回调含11号与12号应答",
+          "只12清除当前等待"
+        ],
+        [
+          "等待超过两轮1500ms",
+          "恰好重发一次，随后显示未确认"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "两条回包只处理第一条",
+          "用while而非单次if提取完整行"
+        ],
+        [
+          "超时后频繁乱发",
+          "保存重试次数，只重发原文一次"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "分段12|OK,LE与D,1加LF",
+          "组合为一条12号应答"
+        ],
+        [
+          "同回调含11号与12号应答",
+          "只12清除当前等待"
+        ],
+        [
+          "等待超过两轮1500ms",
+          "恰好重发一次，随后显示未确认"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加PING延迟测量并记录往返时间。",
+        "设计断开后手动重连流程，旧等待序号不延续到新连接。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“分段12|OK,LE与D,1加LF”写下预测，再记录实际结果。",
+        "结合积木解释：TCP保证字节有序，不提供消息边界。",
+        "修改一条规则并添加一项边界测试：增加PING延迟测量并记录往返时间。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：等待超过两轮1500ms。",
+        "说明：应答序号说明确认的是哪次请求。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "重发时哪些内容必须不变？",
+        "固件收到重复请求怎样避免重复执行？",
+        "匹配序号但载荷非法可以结束等待吗？"
+      ],
+      "notes": "1. 同一序号、同一正文与相同LF原文。\n2. 同序号同命令返回缓存应答。\n3. 不可以，载荷也须通过校验。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "TextBox": "15",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "Label": "6",
+    "Clock": "4",
+    "ClientSocketAI2Ext": "4",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "所有组件与协议参数",
+    "连接状态清理、数值边界、非本课重点过程和完整事件入口",
+    "扩展完整原始包与真实事件签名"
+  ],
+  "actualClassroomTasks": [
+    "补齐处理应答过程",
+    "补齐检查超时过程"
+  ],
+  "actualScreenshotGroups": [
+    "发送命令",
+    "处理应答",
+    "检查超时"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "已连接",
+      "连接中",
+      "连接开始",
+      "接收缓存",
+      "当前行",
+      "换行位置",
+      "最近命令",
+      "待选PWM",
+      "接收字段",
+      "有效应答",
+      "日志",
+      "下个序号",
+      "等待序号",
+      "等待原文",
+      "发送时刻",
+      "重试次数",
+      "序号字段"
+    ],
+    "procedures": {
+      "整数范围": [
+        "值",
+        "下限",
+        "上限"
+      ],
+      "记录日志": [
+        "内容"
+      ],
+      "清理连接": [],
+      "处理载荷": [
+        "一行"
+      ],
+      "处理应答": [
+        "一行"
+      ],
+      "检查超时": [],
+      "发送命令": [
+        "命令"
+      ],
+      "接收分帧": [
+        "片段"
+      ],
+      "连接设备": []
+    },
+    "events": [
+      "AckClock.Timer",
+      "OnButton.Click",
+      "OffButton.Click",
+      "DisconnectButton.Click",
+      "ReadButton.Click",
+      "ConnectButton.Click",
+      "PollClock.Timer",
+      "Socket.DataReceived",
+      "Socket.RemoteConnectionClosed",
+      "Screen1.PermissionDenied",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "procedure": "处理载荷",
+      "args": [
+        "OK,LED,1"
+      ],
+      "expect": {
+        "StateLabel.Text": "设备确认：LED=1",
+        "global 有效应答": true
+      }
+    },
+    {
+      "procedure": "处理载荷",
+      "args": [
+        "STATE,1,128,2048,0"
+      ],
+      "expect": {
+        "global 有效应答": true
+      },
+      "contains": {
+        "StateLabel.Text": [
+          "PWM=128",
+          "ADC原始值=2048",
+          "按钮=按下"
+        ]
+      }
+    },
+    {
+      "procedure": "处理载荷",
+      "args": [
+        "STATE,1,128,9999,0"
+      ],
+      "expect": {
+        "global 有效应答": false
+      }
+    },
+    {
+      "procedure": "清理连接",
+      "expect": {
+        "global 已连接": false,
+        "global 接收缓存": "",
+        "OnButton.Enabled": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson49/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

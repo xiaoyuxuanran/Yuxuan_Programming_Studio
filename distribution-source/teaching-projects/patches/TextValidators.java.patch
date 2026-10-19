@@ -1,0 +1,59 @@
+--- youngandroid/TextValidators.java
++++ youngandroid/TextValidators.java
+@@ -145,9 +145,9 @@
+    */
+   public static ProjectNameStatus checkNewFolderName(String folderName, ProjectFolder parent) {
+     // Check the format of the folder name
+-    if (!isValidIdentifier(folderName)) {
++    if (!isValidFolderName(folderName)) {
+       // TODO: Decide whether to use new strings
+-      Window.alert(MESSAGES.malformedProjectNameError());
++      Window.alert("文件夹名称不能为空、不能超过100个字符，也不能包含路径或文件保留字符。");
+       return ProjectNameStatus.INVALIDFORMAT;
+     }
+ 
+@@ -275,16 +275,22 @@
+     }
+   }
+ 
++  /** Folder labels are JSON UI data, not Java/YAIL identifiers or asset paths. */
++  public static boolean isValidFolderName(String name) {
++    if (name == null) return false;
++    String trimmed = name.trim();
++    if (trimmed.isEmpty() || trimmed.length() > 100 || ".".equals(trimmed) || "..".equals(trimmed)) return false;
++    String forbidden = "/\\:*?\"<>|";
++    for (int i = 0; i < trimmed.length(); i++) {
++      char c = trimmed.charAt(i);
++      if (c < 32 || c == 127 || forbidden.indexOf(c) >= 0) return false;
++    }
++    return true;
++  }
++
+   public static String getFolderErrorMessage(String folderName) {
+-    ValidationResult result = validateName(folderName);
+-    switch (result.error) {
+-      case FIRST_CHAR_NOT_LETTER:
+-        return MESSAGES.firstCharFolderNameError();
+-      case CONTAINS_INVALID_CHARS:
+-        return MESSAGES.invalidCharFolderNameError();
+-      default:
+-        return "";
+-    }
++    return isValidFolderName(folderName) ? "" :
++        "请输入1～100个字符的文件夹名称；可用中文，不能包含 / \\ : * ? \" < > | 等保留字符。";
+   }
+ 
+   public static String getWarningMessages(String filename) {
+@@ -297,11 +303,6 @@
+   }
+ 
+   public static String getFolderWarningMessages(String folderName) {
+-    ValidationResult result = validateName(folderName);
+-    if (result.error == NameValidationError.NONE && folderName.trim().length() > 0 && !folderName.matches("[A-Za-z][A-Za-z0-9_]*")) {
+-      return MESSAGES.whitespaceFolderNameError() + ". \n '" + result.modifiedName + "' will be used if continued.";
+-    } else {
+-      return "";
+-    }
++    return "";
+   }
+ }

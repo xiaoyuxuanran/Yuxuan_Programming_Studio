@@ -1,0 +1,734 @@
+{
+  "lesson": 18,
+  "title": "弹球与碰撞",
+  "projectName": "YXCourse18",
+  "exampleTitle": "反弹与目标命中练习",
+  "durationMinutes": 90,
+  "goals": [
+    "把EdgeReached提供的edge参数传给Bounce。",
+    "同时检查运行中和碰撞对象，只有目标碰撞计分。",
+    "补真正重置，并分开验证反弹、命中与暂停。"
+  ],
+  "exampleSpec": {
+    "summary": "运动弹球碰边反弹，运行中碰静止目标加1分并移动目标。暂停把速度设0；归零重开同时停止、清得分并恢复位置。",
+    "scope": "Class版已有变量、移动目标、刷新得分和按钮入口，重置已包含位置和停止，但缺得分清零。学生补EdgeReached、CollidedWith及这条清零，不需自己重写整套游戏。",
+    "components": [
+      {
+        "name": "GameCanvas",
+        "type": "Canvas",
+        "role": "弹球活动区域"
+      },
+      {
+        "name": "PlayBall",
+        "type": "Ball",
+        "role": "运动弹球"
+      },
+      {
+        "name": "TargetBall",
+        "type": "Ball",
+        "role": "静止目标"
+      },
+      {
+        "name": "StartButton",
+        "type": "Button",
+        "role": "开始暂停"
+      },
+      {
+        "name": "ResetButton",
+        "type": "Button",
+        "role": "归零重开"
+      },
+      {
+        "name": "ScoreLabel",
+        "type": "Label",
+        "role": "显示命中次数"
+      }
+    ],
+    "logic": [
+      {
+        "event": "PlayBall.EdgeReached",
+        "actions": [
+          "PlayBall.Bounce(edge)"
+        ]
+      },
+      {
+        "event": "PlayBall.CollidedWith",
+        "actions": [
+          "若运行中且other=TargetBall：得分+1；刷新得分；移动目标"
+        ]
+      },
+      {
+        "event": "StartButton.Click",
+        "actions": [
+          "运行中取反；Speed为5或0；更新按钮"
+        ]
+      },
+      {
+        "event": "ResetButton.Click",
+        "actions": [
+          "重置"
+        ]
+      }
+    ],
+    "procedures": {
+      "移动目标": "TargetBall.MoveTo(random整数20..Canvas.Width-50,random整数20..Canvas.Height-50)",
+      "刷新得分": "ScoreLabel.Text←命中次数与得分",
+      "重置": "Speed0；运行中false；得分0；Ball.MoveTo(30,60)；移动目标；刷新得分"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse18.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse18Class.aia：保留全部变量、移动目标、刷新得分、重置的位置与停止部分、初始化和两个按钮事件；添加PlayBall.EdgeReached，把edge传给Bounce；添加PlayBall.CollidedWith，运行中且other为TargetBall时计分；重置过程补上得分=0。",
+    "starter": "YXCourse18Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–3",
+      "teacher": "展示完整行为并收集预测，不先揭示全部答案。",
+      "students": "体验或纸面预测，列出本课规则。",
+      "checkpoint": "能描述输入、当前状态和反馈。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "4–10",
+      "teacher": "结合反弹使用实际边缘及实际组件树做短示范。",
+      "students": "定位组件与变量，手算一个具体例子。",
+      "checkpoint": "能用本课数值解释两个核心概念。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "11–13",
+      "teacher": "组织任务1：补上边缘反弹，先让学生写预测。",
+      "students": "按任务单完成第一项并检查实际结果。",
+      "checkpoint": "均按边缘反弹，命中次数不增加。"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务2：只给目标命中计分，用问题提示而非代做。",
+      "students": "修改对应逻辑，记录一次前后差异。",
+      "checkpoint": "能指认自己改变的具体积木。"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务3：补清零并回归测试及边界检查。",
+      "students": "补完规则，按测试表交换操作者。",
+      "checkpoint": "基础用例有结果或明确写待测。"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–21",
+      "teacher": "用常见故障帮助定位，再给个性改编时间。",
+      "students": "说明修改原因，以同一用例复测。",
+      "checkpoint": "改编不破坏基础规则。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "22–24",
+      "teacher": "组织一分钟展示、出口题和导出。",
+      "students": "提交个人AIA、任务单与测试证据。",
+      "checkpoint": "能解释一项规则和一条验证证据。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补上边缘反弹",
+      "steps": [
+        "导入Class版，添加PlayBall.EdgeReached。",
+        "调用PlayBall.Bounce，把事件参数edge接进去。",
+        "分别观察上、下、左、右边反弹，确认得分不变。"
+      ],
+      "question": "为什么把Heading固定设180不能处理所有边？",
+      "answer": "180只向左，不会根据实际碰边计算反射，上下边也会出错。"
+    },
+    {
+      "title": "只给目标命中计分",
+      "steps": [
+        "添加PlayBall.CollidedWith。",
+        "条件为运行中且other=TargetBall组件；通过后得分+1、刷新、移动目标。",
+        "测试目标命中与碰边，记录哪一种会加分。"
+      ],
+      "question": "为什么碰边不应通过CollidedWith计分？",
+      "answer": "碰边由EdgeReached处理；规则规定只有碰到指定TargetBall才命中，边缘不是目标。"
+    },
+    {
+      "title": "补清零并回归测试",
+      "steps": [
+        "找到已有重置过程，在刷新前设置得分为0。",
+        "加分后暂停，检查Speed0且分数保持。",
+        "点归零重开，确认小球停在起点、显示0，再重新开始。"
+      ],
+      "question": "重置已经移动回起点，还缺得分归0会怎样？",
+      "answer": "位置新了但旧得分仍保留，刷新会再次显示旧命中数。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "碰四条边",
+      "expected": "均按边缘反弹，命中次数不增加。"
+    },
+    {
+      "action": "运行中碰TargetBall",
+      "expected": "命中+1，目标换位置。"
+    },
+    {
+      "action": "暂停期间触发目标碰撞",
+      "expected": "分数保持，不计新命中。"
+    },
+    {
+      "action": "得分后归零重开",
+      "expected": "得分0、Speed0，小球回(30,60)。"
+    },
+    {
+      "action": "重置后再开始命中",
+      "expected": "从0正常累计，不残留上一局分数。"
+    }
+  ],
+  "misconceptions": [
+    [
+      "弹球到边粘住",
+      "检查是否添加EdgeReached并传edge。"
+    ],
+    [
+      "碰任意对象都加分",
+      "CollidedWith需要检查other为目标组件。"
+    ],
+    [
+      "暂停还在加分",
+      "计分条件遗漏运行中。"
+    ],
+    [
+      "新位置显示旧分数",
+      "重置要先清变量再刷新。"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成边缘反弹、目标计分与得分清零。"
+    },
+    {
+      "level": "提高",
+      "task": "调整初始Heading或Speed，记录命中体验但保留暂停规则。"
+    },
+    {
+      "level": "拓展",
+      "task": "添加第二种目标前先规定不同分值，并用other区分对象。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "Bounce需要哪个事件参数？",
+      "a": "EdgeReached的edge。"
+    },
+    {
+      "q": "other要与文字“TargetBall”比较吗？",
+      "a": "不是，与TargetBall组件引用比较。"
+    },
+    {
+      "q": "为什么暂停时还要保护计分逻辑？",
+      "a": "Speed0停止主动运动，但规则仍应明确只有运行状态允许计分，避免其他事件导致误计。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT animation 参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/animation.html",
+      "use": "核对本课相应积木或组件；具体接口以随课工程为准。"
+    },
+    {
+      "title": "MIT control 参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/control.html",
+      "use": "核对本课相应积木或组件；具体接口以随课工程为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "弹球与碰撞",
+      "body": [
+        "第18课 · 反弹与目标命中练习",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "运动弹球碰边反弹，运行中碰静止目标加1分并移动目标。暂停把速度设0；归零重开同时停止、清得分并恢复位置。 开场先体验作品并提出可观察问题，Class版的空缺与故障需先在教师教案核对。",
+      "layout": "text"
+    },
+    {
+      "title": "这次操作，结果会是什么？",
+      "body": [
+        "碰四条边",
+        "运行中碰TargetBall",
+        "先写预测，再观察实际"
+      ],
+      "notes": "均按边缘反弹，命中次数不增加。；命中+1，目标换位置。。先不展示积木。若无运行设备，保留纸面预测，实际运行栏明确写待测。",
+      "layout": "question"
+    },
+    {
+      "title": "今天的作品证据",
+      "body": [
+        "把EdgeReached提供的edge参数传给Bounce。",
+        "同时检查运行中和碰撞对象，只有目标碰撞计分。",
+        "补真正重置，并分开验证反弹、命中与暂停。"
+      ],
+      "notes": "把目标转为演示、解释与测试记录。基础规则优先，个人改编应在基础逻辑明确后进行。",
+      "layout": "text"
+    },
+    {
+      "title": "90分钟的学习路线",
+      "body": [
+        "每段示范后立即操作"
+      ],
+      "notes": "7段依次10、15、15、15、15、10、10分钟。根据设备轮换安排体验，不把无设备的预测写成实际运行成功。",
+      "layout": "table",
+      "table": [
+        [
+          "时间",
+          "活动"
+        ],
+        [
+          "0–10",
+          "体验与预测"
+        ],
+        [
+          "10–25",
+          "组件与核心概念"
+        ],
+        [
+          "25–40",
+          "任务一"
+        ],
+        [
+          "40–55",
+          "任务二"
+        ],
+        [
+          "55–70",
+          "任务三和边界"
+        ],
+        [
+          "70–80",
+          "排错、改编、互测"
+        ],
+        [
+          "80–90",
+          "展示与提交"
+        ]
+      ]
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "第17课到边会停在边缘附近",
+        "这次让引擎按实际边缘反弹",
+        "碰对象与碰画布边缘是两类事件"
+      ],
+      "notes": "把前课经验与本课新问题相连。请学生说出一个之前作品中的具体事件，再指出本课新增的数据或规则。",
+      "layout": "text"
+    },
+    {
+      "title": "本课工程的实际界面",
+      "body": [
+        "弹球活动区域",
+        "运动弹球",
+        "静止目标",
+        "开始暂停"
+      ],
+      "notes": "展示完整答案的真实Designer截图，按组件名定位操作、输入与反馈。组件设计器只呈现布局，不执行按钮事件。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件的分工",
+      "body": [],
+      "notes": "不要求记住英文拼写，但制作时必须核对对象名。输入框、标签与按钮承担不同工作。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "工作"
+        ],
+        [
+          "GameCanvas",
+          "Canvas",
+          "弹球活动区域"
+        ],
+        [
+          "PlayBall",
+          "Ball",
+          "运动弹球"
+        ],
+        [
+          "TargetBall",
+          "Ball",
+          "静止目标"
+        ],
+        [
+          "StartButton",
+          "Button",
+          "开始暂停"
+        ],
+        [
+          "ResetButton",
+          "Button",
+          "归零重开"
+        ],
+        [
+          "ScoreLabel",
+          "Label",
+          "显示命中次数"
+        ]
+      ]
+    },
+    {
+      "title": "程序需要记住或接收什么",
+      "body": [],
+      "notes": "区分运行变量、过程参数和界面文字。让学生在当前工程中找到每一项来源，不能把标签文字当作内部状态。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "含义"
+        ],
+        [
+          "得分",
+          "当前命中次数，初始0"
+        ],
+        [
+          "运行中",
+          "真才允许目标计分"
+        ],
+        [
+          "edge",
+          "本次碰到的边缘参数"
+        ],
+        [
+          "other",
+          "与弹球碰撞的组件对象"
+        ]
+      ]
+    },
+    {
+      "title": "反弹使用实际边缘",
+      "body": [
+        "EdgeReached提供edge",
+        "Bounce(edge)计算反射",
+        "不能每次固定改成同一Heading"
+      ],
+      "notes": "用不同墙面比喻反射。边缘参数应从事件取，不需要学生背诵各边编号；更不能总写180度。",
+      "layout": "text"
+    },
+    {
+      "title": "碰撞必须辨认对方",
+      "body": [
+        "other是组件引用",
+        "只处理other为TargetBall",
+        "暂停时即使事件出现也不计分"
+      ],
+      "notes": "比较组件对象与文字名字。other不是字符串“TargetBall”，应接目标组件引用块。条件还需运行中，避免暂停期间错误加分。",
+      "layout": "text"
+    },
+    {
+      "title": "从操作到结果的追踪",
+      "body": [],
+      "notes": "先遮住结果列让学生预测，再用当前规则逐步演算。Class版已有变量、移动目标、刷新得分和按钮入口，重置已包含位置和停止，但缺得分清零。学生补EdgeReached、CollidedWith及这条清零，不需自己重写整套游戏。",
+      "layout": "table",
+      "table": [
+        [
+          "事件/状态",
+          "条件",
+          "得分变化"
+        ],
+        [
+          "碰画布边",
+          "不属于目标命中",
+          "不变"
+        ],
+        [
+          "运行中碰目标",
+          "两条件为真",
+          "+1"
+        ],
+        [
+          "暂停时碰目标",
+          "运行中为假",
+          "不变"
+        ],
+        [
+          "归零重开",
+          "清变量后刷新",
+          "0"
+        ]
+      ]
+    },
+    {
+      "title": "实际边缘传给Bounce",
+      "body": [
+        "事件提供edge",
+        "调用Bounce(edge)",
+        "碰边不改分数"
+      ],
+      "notes": "完整答案只需短小事件。让学生从事件参数拖取edge，不写固定边编号。 对应实际截图组：PlayBall.EdgeReached。",
+      "layout": "blocks",
+      "blockIndex": 1
+    },
+    {
+      "title": "补上边缘反弹",
+      "body": [
+        "导入Class版，添加PlayBall.EdgeReached。",
+        "调用PlayBall.Bounce，把事件参数edge接进去。",
+        "分别观察上、下、左、右边反弹，确认得分不变。"
+      ],
+      "notes": "为什么把Heading固定设180不能处理所有边？ 参考：180只向左，不会根据实际碰边计算反射，上下边也会出错。 练习中先让学生独立操作，再结对核对；已给出的结构只读和验证，不强行重复搭建。",
+      "layout": "text"
+    },
+    {
+      "title": "运行中且碰到目标才命中",
+      "body": [
+        "检查两个条件",
+        "累计得分并刷新",
+        "立即移动目标"
+      ],
+      "notes": "目标移开有助于形成下一次新的接触，但不承诺所有极端重叠情形都被彻底消除。设备连续碰撞表现仍需实际观察。 对应实际截图组：PlayBall.CollidedWith。",
+      "layout": "blocks",
+      "blockIndex": 2
+    },
+    {
+      "title": "只给目标命中计分",
+      "body": [
+        "添加PlayBall.CollidedWith。",
+        "条件为运行中且other=TargetBall组件；通过后得分+1、刷新、移动目标。",
+        "测试目标命中与碰边，记录哪一种会加分。"
+      ],
+      "notes": "为什么碰边不应通过CollidedWith计分？ 参考：碰边由EdgeReached处理；规则规定只有碰到指定TargetBall才命中，边缘不是目标。 练习中先让学生独立操作，再结对核对；已给出的结构只读和验证，不强行重复搭建。",
+      "layout": "text"
+    },
+    {
+      "title": "重置同时处理数据与角色",
+      "body": [
+        "停止运动",
+        "得分归0",
+        "回到起点、移目标、刷新"
+      ],
+      "notes": "Class版已给大部分重置，缺的是得分清零。演示位置恢复但旧分未清的区别。 对应实际截图组：重置。",
+      "layout": "blocks",
+      "blockIndex": 3
+    },
+    {
+      "title": "补清零并回归测试",
+      "body": [
+        "找到已有重置过程，在刷新前设置得分为0。",
+        "加分后暂停，检查Speed0且分数保持。",
+        "点归零重开，确认小球停在起点、显示0，再重新开始。"
+      ],
+      "notes": "重置已经移动回起点，还缺得分归0会怎样？ 参考：位置新了但旧得分仍保留，刷新会再次显示旧命中数。 练习中先让学生独立操作，再结对核对；已给出的结构只读和验证，不强行重复搭建。",
+      "layout": "text"
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "交换操作者和观察者。先写预期，再记实际；有差异时写复现步骤，不只画一个勾号。未测试Android的项目标注待测。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "碰四条边",
+          "均按边缘反弹，命中次数不增加。"
+        ],
+        [
+          "运行中碰TargetBall",
+          "命中+1，目标换位置。"
+        ],
+        [
+          "暂停期间触发目标碰撞",
+          "分数保持，不计新命中。"
+        ],
+        [
+          "得分后归零重开",
+          "得分0、Speed0，小球回(30,60)。"
+        ],
+        [
+          "重置后再开始命中",
+          "从0正常累计，不残留上一局分数。"
+        ]
+      ]
+    },
+    {
+      "title": "故障的线索与定位",
+      "body": [],
+      "notes": "先复现一个具体差异，再检查表中对应位置，每次只改一项。Class版已有变量、移动目标、刷新得分和按钮入口，重置已包含位置和停止，但缺得分清零。学生补EdgeReached、CollidedWith及这条清零，不需自己重写整套游戏。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "先检查"
+        ],
+        [
+          "弹球到边粘住",
+          "检查是否添加EdgeReached并传edge。"
+        ],
+        [
+          "碰任意对象都加分",
+          "CollidedWith需要检查other为目标组件。"
+        ],
+        [
+          "暂停还在加分",
+          "计分条件遗漏运行中。"
+        ],
+        [
+          "新位置显示旧分数",
+          "重置要先清变量再刷新。"
+        ]
+      ]
+    },
+    {
+      "title": "我的一次有目的的改编",
+      "body": [
+        "只改变初始速度或方向中的一项，观察难度变化并保留所有测试。",
+        "先写新规则，再改程序",
+        "用同一个测试比较修改前后"
+      ],
+      "notes": "提高组完成：调整初始Heading或Speed，记录命中体验但保留暂停规则。 拓展组：添加第二种目标前先规定不同分值，并用other区分对象。 基础规则与测试不能省略。",
+      "layout": "text"
+    },
+    {
+      "title": "规则、预测与证据",
+      "body": [
+        "我修改的规则是________",
+        "操作________时，我预测________",
+        "实际________，所以我检查________"
+      ],
+      "notes": "对应任务单的空位。要求至少一个具体输入与结果；只写“正常”无法说明规则。没有运行设备时把实际结果栏写待测。",
+      "layout": "question"
+    },
+    {
+      "title": "一分钟作品分享",
+      "body": [
+        "我的作品给谁使用？",
+        "演示一条完整规则与一个边界",
+        "说明一次修改的理由和证据"
+      ],
+      "notes": "每组选择一条最能说明理解的路径。作者先演示再解释，同伴围绕规则给出具体建议，不只评价外观。",
+      "layout": "text"
+    },
+    {
+      "title": "出口题：说出原因",
+      "body": [
+        "Bounce需要哪个事件参数？",
+        "other要与文字“TargetBall”比较吗？",
+        "为什么暂停时还要保护计分逻辑？"
+      ],
+      "notes": "1. EdgeReached的edge。\n2. 不是，与TargetBall组件引用比较。\n3. Speed0停止主动运动，但规则仍应明确只有运行状态允许计分，避免其他事件导致误计。",
+      "layout": "question"
+    },
+    {
+      "title": "本课保存与下一步",
+      "body": [
+        "导出自己的AIA，保留测试记录",
+        "说明参考来源与个人改动",
+        "第19课接物游戏复用碰撞与坐标，已有完整案例沿用。"
+      ],
+      "notes": "来源：https://ai2.appinventor.mit.edu/reference/components/animation.html；https://ai2.appinventor.mit.edu/reference/blocks/control.html。本课程为独立编写，不是MIT官方编号课件。AIA为可编辑工程，APK为安装程序；是否导入、编译或实机验证以最终验证说明为准。",
+      "layout": "text"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Ball": "8",
+    "Canvas": "15",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "全部变量",
+    "移动目标、刷新得分",
+    "重置的位置与停止部分",
+    "初始化和两个按钮事件"
+  ],
+  "actualClassroomTasks": [
+    "添加PlayBall.EdgeReached，把edge传给Bounce",
+    "添加PlayBall.CollidedWith，运行中且other为TargetBall时计分",
+    "重置过程补上得分=0"
+  ],
+  "artifactSpec": "work/course56/aia/lesson18/artifact-spec.json",
+  "actualScreenshotGroups": [
+    "PlayBall.EdgeReached",
+    "PlayBall.CollidedWith",
+    "重置"
+  ],
+  "actualExpectedOutputs": [
+    {
+      "event": "PlayBall.EdgeReached",
+      "args": {
+        "edge": 3
+      },
+      "methods": [
+        "PlayBall.Bounce:3"
+      ],
+      "expect": {
+        "global 得分": 0
+      }
+    },
+    {
+      "set": {
+        "global 运行中": true
+      },
+      "event": "PlayBall.CollidedWith",
+      "args": {
+        "other": {
+          "component": "TargetBall"
+        }
+      },
+      "expect": {
+        "global 得分": 1,
+        "ScoreLabel.Text": "命中次数：1"
+      }
+    },
+    {
+      "set": {
+        "global 运行中": false,
+        "global 得分": 2
+      },
+      "event": "PlayBall.CollidedWith",
+      "args": {
+        "other": {
+          "component": "TargetBall"
+        }
+      },
+      "expect": {
+        "global 得分": 2
+      }
+    },
+    {
+      "set": {
+        "global 得分": 5
+      },
+      "event": "ResetButton.Click",
+      "expect": {
+        "global 得分": 0,
+        "PlayBall.Speed": 0,
+        "PlayBall.X": 30,
+        "PlayBall.Y": 60
+      }
+    }
+  ]
+}

@@ -1,0 +1,1414 @@
+{
+  "downloads": [
+    {
+      "lesson": 1,
+      "file": "Course01Hello.aia",
+      "bytes": 1797695
+    },
+    {
+      "lesson": 1,
+      "file": "Course01HelloClass.aia",
+      "bytes": 1797571
+    },
+    {
+      "lesson": 1,
+      "file": "Course01HelloStarter.aia",
+      "bytes": 1797140
+    },
+    {
+      "lesson": 1,
+      "file": "Lesson01-Slides.pptx",
+      "bytes": 322869
+    },
+    {
+      "lesson": 1,
+      "file": "Lesson01-Materials.zip",
+      "bytes": 15010386
+    },
+    {
+      "lesson": 2,
+      "file": "Course02Card.aia",
+      "bytes": 1798055
+    },
+    {
+      "lesson": 2,
+      "file": "Course02CardClass.aia",
+      "bytes": 1797862
+    },
+    {
+      "lesson": 2,
+      "file": "Course02CardStarter.aia",
+      "bytes": 1797340
+    },
+    {
+      "lesson": 2,
+      "file": "Lesson02-Slides.pptx",
+      "bytes": 405971
+    },
+    {
+      "lesson": 2,
+      "file": "Lesson02-Materials.zip",
+      "bytes": 15130649
+    },
+    {
+      "lesson": 3,
+      "file": "Course03Voice.aia",
+      "bytes": 1804753
+    },
+    {
+      "lesson": 3,
+      "file": "Course03VoiceClass.aia",
+      "bytes": 1804592
+    },
+    {
+      "lesson": 3,
+      "file": "Course03VoiceStarter.aia",
+      "bytes": 1804023
+    },
+    {
+      "lesson": 3,
+      "file": "Lesson03-Slides.pptx",
+      "bytes": 831753
+    },
+    {
+      "lesson": 3,
+      "file": "Lesson03-Materials.zip",
+      "bytes": 15698325
+    },
+    {
+      "lesson": 4,
+      "file": "Course04Story.aia",
+      "bytes": 9194543
+    },
+    {
+      "lesson": 4,
+      "file": "Course04StoryClass.aia",
+      "bytes": 9194382
+    },
+    {
+      "lesson": 4,
+      "file": "Course04StoryStarter.aia",
+      "bytes": 9193917
+    },
+    {
+      "lesson": 4,
+      "file": "Lesson04-Slides.pptx",
+      "bytes": 1233856
+    },
+    {
+      "lesson": 4,
+      "file": "Lesson04-Materials.zip",
+      "bytes": 60585804
+    },
+    {
+      "lesson": 5,
+      "file": "Course05Festival.aia",
+      "bytes": 1798386
+    },
+    {
+      "lesson": 5,
+      "file": "Course05FestivalClass.aia",
+      "bytes": 1798011
+    },
+    {
+      "lesson": 5,
+      "file": "Course05FestivalStarter.aia",
+      "bytes": 1797500
+    },
+    {
+      "lesson": 5,
+      "file": "Lesson05-Slides.pptx",
+      "bytes": 924483
+    },
+    {
+      "lesson": 5,
+      "file": "Lesson05-Materials.zip",
+      "bytes": 15798684
+    },
+    {
+      "lesson": 6,
+      "file": "Course06Clubs.aia",
+      "bytes": 1798359
+    },
+    {
+      "lesson": 6,
+      "file": "Course06ClubsClass.aia",
+      "bytes": 1797965
+    },
+    {
+      "lesson": 6,
+      "file": "Course06ClubsStarter.aia",
+      "bytes": 1797411
+    },
+    {
+      "lesson": 6,
+      "file": "Lesson06-Slides.pptx",
+      "bytes": 901180
+    },
+    {
+      "lesson": 6,
+      "file": "Lesson06-Materials.zip",
+      "bytes": 15804144
+    },
+    {
+      "lesson": 7,
+      "file": "YXCourse07.aia",
+      "bytes": 1797922
+    },
+    {
+      "lesson": 7,
+      "file": "YXCourse07Class.aia",
+      "bytes": 1797728
+    },
+    {
+      "lesson": 7,
+      "file": "YXCourse07Starter.aia",
+      "bytes": 1797175
+    },
+    {
+      "lesson": 7,
+      "file": "Lesson07-Slides.pptx",
+      "bytes": 736212
+    },
+    {
+      "lesson": 7,
+      "file": "Lesson07-Materials.zip",
+      "bytes": 13678486
+    },
+    {
+      "lesson": 8,
+      "file": "YXCourse08.aia",
+      "bytes": 1798271
+    },
+    {
+      "lesson": 8,
+      "file": "YXCourse08Class.aia",
+      "bytes": 1798137
+    },
+    {
+      "lesson": 8,
+      "file": "YXCourse08Starter.aia",
+      "bytes": 1797283
+    },
+    {
+      "lesson": 8,
+      "file": "Lesson08-Slides.pptx",
+      "bytes": 833945
+    },
+    {
+      "lesson": 8,
+      "file": "Lesson08-Materials.zip",
+      "bytes": 13861540
+    },
+    {
+      "lesson": 9,
+      "file": "YXCourse09.aia",
+      "bytes": 1798198
+    },
+    {
+      "lesson": 9,
+      "file": "YXCourse09Class.aia",
+      "bytes": 1798172
+    },
+    {
+      "lesson": 9,
+      "file": "YXCourse09Starter.aia",
+      "bytes": 1797260
+    },
+    {
+      "lesson": 9,
+      "file": "Lesson09-Slides.pptx",
+      "bytes": 890309
+    },
+    {
+      "lesson": 9,
+      "file": "Lesson09-Materials.zip",
+      "bytes": 13968261
+    },
+    {
+      "lesson": 10,
+      "file": "YXCourse10.aia",
+      "bytes": 1798681
+    },
+    {
+      "lesson": 10,
+      "file": "YXCourse10Class.aia",
+      "bytes": 1798553
+    },
+    {
+      "lesson": 10,
+      "file": "YXCourse10Starter.aia",
+      "bytes": 1797198
+    },
+    {
+      "lesson": 10,
+      "file": "Lesson10-Slides.pptx",
+      "bytes": 987680
+    },
+    {
+      "lesson": 10,
+      "file": "Lesson10-Materials.zip",
+      "bytes": 14171597
+    },
+    {
+      "lesson": 11,
+      "file": "YXCourse11.aia",
+      "bytes": 1798436
+    },
+    {
+      "lesson": 11,
+      "file": "YXCourse11Class.aia",
+      "bytes": 1798432
+    },
+    {
+      "lesson": 11,
+      "file": "YXCourse11Starter.aia",
+      "bytes": 1797207
+    },
+    {
+      "lesson": 11,
+      "file": "Lesson11-Slides.pptx",
+      "bytes": 912095
+    },
+    {
+      "lesson": 11,
+      "file": "Lesson11-Materials.zip",
+      "bytes": 14182095
+    },
+    {
+      "lesson": 12,
+      "file": "YXCourse12.aia",
+      "bytes": 1798894
+    },
+    {
+      "lesson": 12,
+      "file": "YXCourse12Class.aia",
+      "bytes": 1798242
+    },
+    {
+      "lesson": 12,
+      "file": "YXCourse12Starter.aia",
+      "bytes": 1797282
+    },
+    {
+      "lesson": 12,
+      "file": "Lesson12-Slides.pptx",
+      "bytes": 1089277
+    },
+    {
+      "lesson": 12,
+      "file": "Lesson12-Materials.zip",
+      "bytes": 14371891
+    },
+    {
+      "lesson": 13,
+      "file": "YXCourse13.aia",
+      "bytes": 1798480
+    },
+    {
+      "lesson": 13,
+      "file": "YXCourse13Class.aia",
+      "bytes": 1798600
+    },
+    {
+      "lesson": 13,
+      "file": "YXCourse13Starter.aia",
+      "bytes": 1797223
+    },
+    {
+      "lesson": 13,
+      "file": "Lesson13-Slides.pptx",
+      "bytes": 710832
+    },
+    {
+      "lesson": 13,
+      "file": "Lesson13-Materials.zip",
+      "bytes": 13619582
+    },
+    {
+      "lesson": 14,
+      "file": "YXCourse14.aia",
+      "bytes": 1797971
+    },
+    {
+      "lesson": 14,
+      "file": "YXCourse14Class.aia",
+      "bytes": 1798166
+    },
+    {
+      "lesson": 14,
+      "file": "YXCourse14Starter.aia",
+      "bytes": 1797201
+    },
+    {
+      "lesson": 14,
+      "file": "Lesson14-Slides.pptx",
+      "bytes": 774982
+    },
+    {
+      "lesson": 14,
+      "file": "Lesson14-Materials.zip",
+      "bytes": 13751420
+    },
+    {
+      "lesson": 15,
+      "file": "YXCourse15.aia",
+      "bytes": 1798405
+    },
+    {
+      "lesson": 15,
+      "file": "YXCourse15Class.aia",
+      "bytes": 1798016
+    },
+    {
+      "lesson": 15,
+      "file": "YXCourse15Starter.aia",
+      "bytes": 1797204
+    },
+    {
+      "lesson": 15,
+      "file": "Lesson15-Slides.pptx",
+      "bytes": 818619
+    },
+    {
+      "lesson": 15,
+      "file": "Lesson15-Materials.zip",
+      "bytes": 13824270
+    },
+    {
+      "lesson": 16,
+      "file": "YXCourse16.aia",
+      "bytes": 1798456
+    },
+    {
+      "lesson": 16,
+      "file": "YXCourse16Class.aia",
+      "bytes": 1798480
+    },
+    {
+      "lesson": 16,
+      "file": "YXCourse16Starter.aia",
+      "bytes": 1797216
+    },
+    {
+      "lesson": 16,
+      "file": "Lesson16-Slides.pptx",
+      "bytes": 963382
+    },
+    {
+      "lesson": 16,
+      "file": "Lesson16-Materials.zip",
+      "bytes": 14144466
+    },
+    {
+      "lesson": 17,
+      "file": "YXCourse17.aia",
+      "bytes": 1817878
+    },
+    {
+      "lesson": 17,
+      "file": "YXCourse17Class.aia",
+      "bytes": 1817585
+    },
+    {
+      "lesson": 17,
+      "file": "YXCourse17Starter.aia",
+      "bytes": 1815864
+    },
+    {
+      "lesson": 17,
+      "file": "Lesson17-Slides.pptx",
+      "bytes": 963101
+    },
+    {
+      "lesson": 17,
+      "file": "Lesson17-Materials.zip",
+      "bytes": 14217383
+    },
+    {
+      "lesson": 18,
+      "file": "YXCourse18.aia",
+      "bytes": 1798767
+    },
+    {
+      "lesson": 18,
+      "file": "YXCourse18Class.aia",
+      "bytes": 1798603
+    },
+    {
+      "lesson": 18,
+      "file": "YXCourse18Starter.aia",
+      "bytes": 1797256
+    },
+    {
+      "lesson": 18,
+      "file": "Lesson18-Slides.pptx",
+      "bytes": 827801
+    },
+    {
+      "lesson": 18,
+      "file": "Lesson18-Materials.zip",
+      "bytes": 13860372
+    },
+    {
+      "lesson": 19,
+      "file": "CatchApple19.aia",
+      "bytes": 61717
+    },
+    {
+      "lesson": 19,
+      "file": "CatchApple19Class.aia",
+      "bytes": 61013
+    },
+    {
+      "lesson": 19,
+      "file": "CatchApple19Starter.aia",
+      "bytes": 58884
+    },
+    {
+      "lesson": 19,
+      "file": "Lesson19-Slides.pptx",
+      "bytes": 2730153
+    },
+    {
+      "lesson": 19,
+      "file": "Lesson19-Materials.zip",
+      "bytes": 9508391
+    },
+    {
+      "lesson": 20,
+      "file": "YXCourse20.aia",
+      "bytes": 1857007
+    },
+    {
+      "lesson": 20,
+      "file": "YXCourse20Class.aia",
+      "bytes": 1857029
+    },
+    {
+      "lesson": 20,
+      "file": "YXCourse20Starter.aia",
+      "bytes": 1854150
+    },
+    {
+      "lesson": 20,
+      "file": "Lesson20-Slides.pptx",
+      "bytes": 951023
+    },
+    {
+      "lesson": 20,
+      "file": "Lesson20-Materials.zip",
+      "bytes": 14360646
+    },
+    {
+      "lesson": 21,
+      "file": "YXCourse21.aia",
+      "bytes": 4456385
+    },
+    {
+      "lesson": 21,
+      "file": "YXCourse21Class.aia",
+      "bytes": 4456058
+    },
+    {
+      "lesson": 21,
+      "file": "YXCourse21Starter.aia",
+      "bytes": 4453991
+    },
+    {
+      "lesson": 21,
+      "file": "Lesson21-Slides.pptx",
+      "bytes": 1316180
+    },
+    {
+      "lesson": 21,
+      "file": "Lesson21-Materials.zip",
+      "bytes": 27701979
+    },
+    {
+      "lesson": 22,
+      "file": "YXCourse22.aia",
+      "bytes": 1799276
+    },
+    {
+      "lesson": 22,
+      "file": "YXCourse22Class.aia",
+      "bytes": 1798807
+    },
+    {
+      "lesson": 22,
+      "file": "YXCourse22Starter.aia",
+      "bytes": 1797339
+    },
+    {
+      "lesson": 22,
+      "file": "Lesson22-Slides.pptx",
+      "bytes": 1086891
+    },
+    {
+      "lesson": 22,
+      "file": "Lesson22-Materials.zip",
+      "bytes": 14382729
+    },
+    {
+      "lesson": 23,
+      "file": "YXCourse23.aia",
+      "bytes": 1798791
+    },
+    {
+      "lesson": 23,
+      "file": "YXCourse23Class.aia",
+      "bytes": 1798314
+    },
+    {
+      "lesson": 23,
+      "file": "YXCourse23Starter.aia",
+      "bytes": 1797388
+    },
+    {
+      "lesson": 23,
+      "file": "Lesson23-Slides.pptx",
+      "bytes": 944550
+    },
+    {
+      "lesson": 23,
+      "file": "Lesson23-Materials.zip",
+      "bytes": 14084140
+    },
+    {
+      "lesson": 24,
+      "file": "YXCourse24.aia",
+      "bytes": 1799318
+    },
+    {
+      "lesson": 24,
+      "file": "YXCourse24Class.aia",
+      "bytes": 1799024
+    },
+    {
+      "lesson": 24,
+      "file": "YXCourse24Starter.aia",
+      "bytes": 1797258
+    },
+    {
+      "lesson": 24,
+      "file": "Lesson24-Slides.pptx",
+      "bytes": 876423
+    },
+    {
+      "lesson": 24,
+      "file": "Lesson24-Materials.zip",
+      "bytes": 13953631
+    },
+    {
+      "lesson": 25,
+      "file": "YXCourse25.aia",
+      "bytes": 1798893
+    },
+    {
+      "lesson": 25,
+      "file": "YXCourse25Class.aia",
+      "bytes": 1798528
+    },
+    {
+      "lesson": 25,
+      "file": "YXCourse25Starter.aia",
+      "bytes": 1797333
+    },
+    {
+      "lesson": 25,
+      "file": "Lesson25-Slides.pptx",
+      "bytes": 803598
+    },
+    {
+      "lesson": 25,
+      "file": "Lesson25-Materials.zip",
+      "bytes": 13805601
+    },
+    {
+      "lesson": 26,
+      "file": "YXCourse26.aia",
+      "bytes": 1798513
+    },
+    {
+      "lesson": 26,
+      "file": "YXCourse26Class.aia",
+      "bytes": 1798349
+    },
+    {
+      "lesson": 26,
+      "file": "YXCourse26Starter.aia",
+      "bytes": 1797271
+    },
+    {
+      "lesson": 26,
+      "file": "Lesson26-Slides.pptx",
+      "bytes": 810583
+    },
+    {
+      "lesson": 26,
+      "file": "Lesson26-Materials.zip",
+      "bytes": 13831949
+    },
+    {
+      "lesson": 27,
+      "file": "YXCourse27.aia",
+      "bytes": 1800256
+    },
+    {
+      "lesson": 27,
+      "file": "YXCourse27Class.aia",
+      "bytes": 1799773
+    },
+    {
+      "lesson": 27,
+      "file": "YXCourse27Starter.aia",
+      "bytes": 1797648
+    },
+    {
+      "lesson": 27,
+      "file": "Lesson27-Slides.pptx",
+      "bytes": 921572
+    },
+    {
+      "lesson": 27,
+      "file": "Lesson27-Materials.zip",
+      "bytes": 14043167
+    },
+    {
+      "lesson": 28,
+      "file": "YXCourse28.aia",
+      "bytes": 1799716
+    },
+    {
+      "lesson": 28,
+      "file": "YXCourse28Class.aia",
+      "bytes": 1799363
+    },
+    {
+      "lesson": 28,
+      "file": "YXCourse28Starter.aia",
+      "bytes": 1797465
+    },
+    {
+      "lesson": 28,
+      "file": "Lesson28-Slides.pptx",
+      "bytes": 971907
+    },
+    {
+      "lesson": 28,
+      "file": "Lesson28-Materials.zip",
+      "bytes": 14113725
+    },
+    {
+      "lesson": 29,
+      "file": "YXCourse29.aia",
+      "bytes": 1798427
+    },
+    {
+      "lesson": 29,
+      "file": "YXCourse29Class.aia",
+      "bytes": 1797964
+    },
+    {
+      "lesson": 29,
+      "file": "YXCourse29Starter.aia",
+      "bytes": 1797228
+    },
+    {
+      "lesson": 29,
+      "file": "Lesson29-Slides.pptx",
+      "bytes": 887942
+    },
+    {
+      "lesson": 29,
+      "file": "Lesson29-Materials.zip",
+      "bytes": 14184675
+    },
+    {
+      "lesson": 30,
+      "file": "YXCourse30.aia",
+      "bytes": 1798972
+    },
+    {
+      "lesson": 30,
+      "file": "YXCourse30Class.aia",
+      "bytes": 1798471
+    },
+    {
+      "lesson": 30,
+      "file": "YXCourse30Starter.aia",
+      "bytes": 1797229
+    },
+    {
+      "lesson": 30,
+      "file": "Lesson30-Slides.pptx",
+      "bytes": 963216
+    },
+    {
+      "lesson": 30,
+      "file": "Lesson30-Materials.zip",
+      "bytes": 14333552
+    },
+    {
+      "lesson": 31,
+      "file": "YXCourse31.aia",
+      "bytes": 1799378
+    },
+    {
+      "lesson": 31,
+      "file": "YXCourse31Class.aia",
+      "bytes": 1799073
+    },
+    {
+      "lesson": 31,
+      "file": "YXCourse31Starter.aia",
+      "bytes": 1797337
+    },
+    {
+      "lesson": 31,
+      "file": "Lesson31-Slides.pptx",
+      "bytes": 838361
+    },
+    {
+      "lesson": 31,
+      "file": "Lesson31-Materials.zip",
+      "bytes": 13880254
+    },
+    {
+      "lesson": 32,
+      "file": "YXCourse32.aia",
+      "bytes": 1799162
+    },
+    {
+      "lesson": 32,
+      "file": "YXCourse32Class.aia",
+      "bytes": 1798621
+    },
+    {
+      "lesson": 32,
+      "file": "YXCourse32Starter.aia",
+      "bytes": 1797214
+    },
+    {
+      "lesson": 32,
+      "file": "Lesson32-Slides.pptx",
+      "bytes": 1114988
+    },
+    {
+      "lesson": 32,
+      "file": "Lesson32-Materials.zip",
+      "bytes": 14636980
+    },
+    {
+      "lesson": 33,
+      "file": "YXCourse33.aia",
+      "bytes": 1799015
+    },
+    {
+      "lesson": 33,
+      "file": "YXCourse33Class.aia",
+      "bytes": 1798932
+    },
+    {
+      "lesson": 33,
+      "file": "YXCourse33Starter.aia",
+      "bytes": 1797329
+    },
+    {
+      "lesson": 33,
+      "file": "Lesson33-Slides.pptx",
+      "bytes": 1026064
+    },
+    {
+      "lesson": 33,
+      "file": "Lesson33-Materials.zip",
+      "bytes": 14240574
+    },
+    {
+      "lesson": 34,
+      "file": "YXCourse34.aia",
+      "bytes": 1799309
+    },
+    {
+      "lesson": 34,
+      "file": "YXCourse34Class.aia",
+      "bytes": 1798587
+    },
+    {
+      "lesson": 34,
+      "file": "YXCourse34Starter.aia",
+      "bytes": 1797232
+    },
+    {
+      "lesson": 34,
+      "file": "Lesson34-Slides.pptx",
+      "bytes": 1189191
+    },
+    {
+      "lesson": 34,
+      "file": "Lesson34-Materials.zip",
+      "bytes": 14776717
+    },
+    {
+      "lesson": 35,
+      "file": "YXCourse35.aia",
+      "bytes": 1801486
+    },
+    {
+      "lesson": 35,
+      "file": "YXCourse35Class.aia",
+      "bytes": 1799774
+    },
+    {
+      "lesson": 35,
+      "file": "YXCourse35Starter.aia",
+      "bytes": 1797707
+    },
+    {
+      "lesson": 35,
+      "file": "Lesson35-Slides.pptx",
+      "bytes": 1266184
+    },
+    {
+      "lesson": 35,
+      "file": "Lesson35-Materials.zip",
+      "bytes": 14917467
+    },
+    {
+      "lesson": 36,
+      "file": "YXCourse36.aia",
+      "bytes": 1799720
+    },
+    {
+      "lesson": 36,
+      "file": "YXCourse36Class.aia",
+      "bytes": 1799308
+    },
+    {
+      "lesson": 36,
+      "file": "YXCourse36Starter.aia",
+      "bytes": 1797398
+    },
+    {
+      "lesson": 36,
+      "file": "Lesson36-Slides.pptx",
+      "bytes": 963681
+    },
+    {
+      "lesson": 36,
+      "file": "Lesson36-Materials.zip",
+      "bytes": 14303841
+    },
+    {
+      "lesson": 37,
+      "file": "YXCourse37.aia",
+      "bytes": 1799267
+    },
+    {
+      "lesson": 37,
+      "file": "YXCourse37Class.aia",
+      "bytes": 1798701
+    },
+    {
+      "lesson": 37,
+      "file": "YXCourse37Starter.aia",
+      "bytes": 1797437
+    },
+    {
+      "lesson": 37,
+      "file": "Lesson37-Slides.pptx",
+      "bytes": 1056930
+    },
+    {
+      "lesson": 37,
+      "file": "Lesson37-Materials.zip",
+      "bytes": 14338957
+    },
+    {
+      "lesson": 38,
+      "file": "YXCourse38.aia",
+      "bytes": 1800153
+    },
+    {
+      "lesson": 38,
+      "file": "YXCourse38Class.aia",
+      "bytes": 1799429
+    },
+    {
+      "lesson": 38,
+      "file": "YXCourse38Starter.aia",
+      "bytes": 1797500
+    },
+    {
+      "lesson": 38,
+      "file": "Lesson38-Slides.pptx",
+      "bytes": 1262949
+    },
+    {
+      "lesson": 38,
+      "file": "Lesson38-Materials.zip",
+      "bytes": 14926152
+    },
+    {
+      "lesson": 39,
+      "file": "YXCourse39.aia",
+      "bytes": 1800976
+    },
+    {
+      "lesson": 39,
+      "file": "YXCourse39Class.aia",
+      "bytes": 1800218
+    },
+    {
+      "lesson": 39,
+      "file": "YXCourse39Starter.aia",
+      "bytes": 1797470
+    },
+    {
+      "lesson": 39,
+      "file": "Lesson39-Slides.pptx",
+      "bytes": 1501923
+    },
+    {
+      "lesson": 39,
+      "file": "Lesson39-Materials.zip",
+      "bytes": 15404364
+    },
+    {
+      "lesson": 40,
+      "file": "YXCourse40.aia",
+      "bytes": 1800567
+    },
+    {
+      "lesson": 40,
+      "file": "YXCourse40Class.aia",
+      "bytes": 1799372
+    },
+    {
+      "lesson": 40,
+      "file": "YXCourse40Starter.aia",
+      "bytes": 1797572
+    },
+    {
+      "lesson": 40,
+      "file": "Lesson40-Slides.pptx",
+      "bytes": 1431718
+    },
+    {
+      "lesson": 40,
+      "file": "Lesson40-Materials.zip",
+      "bytes": 15088670
+    },
+    {
+      "lesson": 41,
+      "file": "YXCourse41.aia",
+      "bytes": 1802550
+    },
+    {
+      "lesson": 41,
+      "file": "YXCourse41Class.aia",
+      "bytes": 1801720
+    },
+    {
+      "lesson": 41,
+      "file": "YXCourse41Starter.aia",
+      "bytes": 1797610
+    },
+    {
+      "lesson": 41,
+      "file": "Lesson41-Slides.pptx",
+      "bytes": 1518727
+    },
+    {
+      "lesson": 41,
+      "file": "Lesson41-Materials.zip",
+      "bytes": 15444410
+    },
+    {
+      "lesson": 42,
+      "file": "YXCourse42.aia",
+      "bytes": 1802139
+    },
+    {
+      "lesson": 42,
+      "file": "YXCourse42Class.aia",
+      "bytes": 1801765
+    },
+    {
+      "lesson": 42,
+      "file": "YXCourse42Starter.aia",
+      "bytes": 1797632
+    },
+    {
+      "lesson": 42,
+      "file": "Lesson42-Slides.pptx",
+      "bytes": 1315395
+    },
+    {
+      "lesson": 42,
+      "file": "Lesson42-Materials.zip",
+      "bytes": 15024913
+    },
+    {
+      "lesson": 43,
+      "file": "YXCourse43.aia",
+      "bytes": 1800103
+    },
+    {
+      "lesson": 43,
+      "file": "YXCourse43Class.aia",
+      "bytes": 1798718
+    },
+    {
+      "lesson": 43,
+      "file": "YXCourse43Starter.aia",
+      "bytes": 1797284
+    },
+    {
+      "lesson": 43,
+      "file": "Lesson43-Slides.pptx",
+      "bytes": 1004348
+    },
+    {
+      "lesson": 43,
+      "file": "Lesson43-Materials.zip",
+      "bytes": 14232911
+    },
+    {
+      "lesson": 44,
+      "file": "YXCourse44.aia",
+      "bytes": 1802365
+    },
+    {
+      "lesson": 44,
+      "file": "YXCourse44Class.aia",
+      "bytes": 1802008
+    },
+    {
+      "lesson": 44,
+      "file": "YXCourse44Starter.aia",
+      "bytes": 1797458
+    },
+    {
+      "lesson": 44,
+      "file": "Lesson44-Slides.pptx",
+      "bytes": 1030453
+    },
+    {
+      "lesson": 44,
+      "file": "Lesson44-Materials.zip",
+      "bytes": 14237510
+    },
+    {
+      "lesson": 45,
+      "file": "YXCourse45.aia",
+      "bytes": 1802964
+    },
+    {
+      "lesson": 45,
+      "file": "YXCourse45Class.aia",
+      "bytes": 1801742
+    },
+    {
+      "lesson": 45,
+      "file": "YXCourse45Starter.aia",
+      "bytes": 1797624
+    },
+    {
+      "lesson": 45,
+      "file": "Lesson45-Slides.pptx",
+      "bytes": 1343461
+    },
+    {
+      "lesson": 45,
+      "file": "Lesson45-Materials.zip",
+      "bytes": 14864602
+    },
+    {
+      "lesson": 46,
+      "file": "YXCourse46.aia",
+      "bytes": 2000650
+    },
+    {
+      "lesson": 46,
+      "file": "YXCourse46Class.aia",
+      "bytes": 2000198
+    },
+    {
+      "lesson": 46,
+      "file": "YXCourse46Starter.aia",
+      "bytes": 1997076
+    },
+    {
+      "lesson": 46,
+      "file": "Lesson46-Slides.pptx",
+      "bytes": 998627
+    },
+    {
+      "lesson": 46,
+      "file": "Lesson46-Materials.zip",
+      "bytes": 15028889
+    },
+    {
+      "lesson": 47,
+      "file": "YXCourse47.aia",
+      "bytes": 1820647
+    },
+    {
+      "lesson": 47,
+      "file": "YXCourse47Class.aia",
+      "bytes": 1819774
+    },
+    {
+      "lesson": 47,
+      "file": "YXCourse47Starter.aia",
+      "bytes": 1815312
+    },
+    {
+      "lesson": 47,
+      "file": "Lesson47-Slides.pptx",
+      "bytes": 1270109
+    },
+    {
+      "lesson": 47,
+      "file": "Lesson47-Materials.zip",
+      "bytes": 14802356
+    },
+    {
+      "lesson": 48,
+      "file": "YXCourse48.aia",
+      "bytes": 1821121
+    },
+    {
+      "lesson": 48,
+      "file": "YXCourse48Class.aia",
+      "bytes": 1819718
+    },
+    {
+      "lesson": 48,
+      "file": "YXCourse48Starter.aia",
+      "bytes": 1815464
+    },
+    {
+      "lesson": 48,
+      "file": "Lesson48-Slides.pptx",
+      "bytes": 1213859
+    },
+    {
+      "lesson": 48,
+      "file": "Lesson48-Materials.zip",
+      "bytes": 14682131
+    },
+    {
+      "lesson": 49,
+      "file": "YXCourse49.aia",
+      "bytes": 1822196
+    },
+    {
+      "lesson": 49,
+      "file": "YXCourse49Class.aia",
+      "bytes": 1821475
+    },
+    {
+      "lesson": 49,
+      "file": "YXCourse49Starter.aia",
+      "bytes": 1815334
+    },
+    {
+      "lesson": 49,
+      "file": "Lesson49-Slides.pptx",
+      "bytes": 1533046
+    },
+    {
+      "lesson": 49,
+      "file": "Lesson49-Materials.zip",
+      "bytes": 15328383
+    },
+    {
+      "lesson": 50,
+      "file": "YXCourse50.aia",
+      "bytes": 1823506
+    },
+    {
+      "lesson": 50,
+      "file": "YXCourse50Class.aia",
+      "bytes": 1822149
+    },
+    {
+      "lesson": 50,
+      "file": "YXCourse50Starter.aia",
+      "bytes": 1815604
+    },
+    {
+      "lesson": 50,
+      "file": "Lesson50-Slides.pptx",
+      "bytes": 1398185
+    },
+    {
+      "lesson": 50,
+      "file": "Lesson50-Materials.zip",
+      "bytes": 15060508
+    },
+    {
+      "lesson": 51,
+      "file": "YXCourse51.aia",
+      "bytes": 1798623
+    },
+    {
+      "lesson": 51,
+      "file": "YXCourse51Class.aia",
+      "bytes": 1797873
+    },
+    {
+      "lesson": 51,
+      "file": "YXCourse51Starter.aia",
+      "bytes": 1797192
+    },
+    {
+      "lesson": 51,
+      "file": "Lesson51-Slides.pptx",
+      "bytes": 980946
+    },
+    {
+      "lesson": 51,
+      "file": "Lesson51-Materials.zip",
+      "bytes": 14172104
+    },
+    {
+      "lesson": 52,
+      "file": "YXCourse52.aia",
+      "bytes": 1799611
+    },
+    {
+      "lesson": 52,
+      "file": "YXCourse52Class.aia",
+      "bytes": 1799362
+    },
+    {
+      "lesson": 52,
+      "file": "YXCourse52Starter.aia",
+      "bytes": 1797506
+    },
+    {
+      "lesson": 52,
+      "file": "Lesson52-Slides.pptx",
+      "bytes": 856254
+    },
+    {
+      "lesson": 52,
+      "file": "Lesson52-Materials.zip",
+      "bytes": 13911554
+    },
+    {
+      "lesson": 53,
+      "file": "YXCourse53.aia",
+      "bytes": 1801145
+    },
+    {
+      "lesson": 53,
+      "file": "YXCourse53Class.aia",
+      "bytes": 1800718
+    },
+    {
+      "lesson": 53,
+      "file": "YXCourse53Starter.aia",
+      "bytes": 1797625
+    },
+    {
+      "lesson": 53,
+      "file": "Lesson53-Slides.pptx",
+      "bytes": 1033784
+    },
+    {
+      "lesson": 53,
+      "file": "Lesson53-Materials.zip",
+      "bytes": 14456474
+    },
+    {
+      "lesson": 54,
+      "file": "YXCourse54.aia",
+      "bytes": 1802729
+    },
+    {
+      "lesson": 54,
+      "file": "YXCourse54Class.aia",
+      "bytes": 1802314
+    },
+    {
+      "lesson": 54,
+      "file": "YXCourse54Starter.aia",
+      "bytes": 1797755
+    },
+    {
+      "lesson": 54,
+      "file": "Lesson54-Slides.pptx",
+      "bytes": 1069815
+    },
+    {
+      "lesson": 54,
+      "file": "Lesson54-Materials.zip",
+      "bytes": 14517500
+    },
+    {
+      "lesson": 55,
+      "file": "YXCourse55.aia",
+      "bytes": 1804364
+    },
+    {
+      "lesson": 55,
+      "file": "YXCourse55Class.aia",
+      "bytes": 1804120
+    },
+    {
+      "lesson": 55,
+      "file": "YXCourse55Starter.aia",
+      "bytes": 1797847
+    },
+    {
+      "lesson": 55,
+      "file": "Lesson55-Slides.pptx",
+      "bytes": 1175968
+    },
+    {
+      "lesson": 55,
+      "file": "Lesson55-Materials.zip",
+      "bytes": 14732116
+    },
+    {
+      "lesson": 56,
+      "file": "YXCourse56.aia",
+      "bytes": 1805431
+    },
+    {
+      "lesson": 56,
+      "file": "YXCourse56Class.aia",
+      "bytes": 1805200
+    },
+    {
+      "lesson": 56,
+      "file": "YXCourse56Starter.aia",
+      "bytes": 1798025
+    },
+    {
+      "lesson": 56,
+      "file": "Lesson56-Slides.pptx",
+      "bytes": 995304
+    },
+    {
+      "lesson": 56,
+      "file": "Lesson56-Materials.zip",
+      "bytes": 14367949
+    }
+  ],
+  "folders": [
+    {
+      "name": "课程验收文件夹1792368219935",
+      "created": true
+    }
+  ],
+  "toolbarLabelVisible": true,
+  "folderCollapse": true,
+  "nativeSorting": true,
+  "passed": true
+}

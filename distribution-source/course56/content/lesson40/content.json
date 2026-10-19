@@ -1,0 +1,713 @@
+{
+  "lesson": 40,
+  "title": "把数据提交出去",
+  "projectName": "YXCourse40",
+  "exampleTitle": "URL编码反馈表单与201回执",
+  "durationMinutes": 90,
+  "goals": [
+    "表单字段有名称与值。",
+    "点击发送不等于服务器收到。",
+    "用测试记录验证把数据提交出去的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "课堂反馈箱：提交不含个人身份的信息，收到服务生成的编号后才显示成功。",
+    "scope": "使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 POST发送教学意见，不要求真实姓名或联系方式。超时表示结果未确认，本例不自动重发。",
+    "components": [
+      {
+        "name": "HostBox",
+        "type": "TextBox",
+        "role": "教师电脑局域网IPv4地址"
+      },
+      {
+        "name": "RequestButton",
+        "type": "Button",
+        "role": "发起本课请求"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "请求与错误状态"
+      },
+      {
+        "name": "KindPicker",
+        "type": "ListPicker",
+        "role": "选择反馈类型"
+      },
+      {
+        "name": "MessageBox",
+        "type": "TextBox",
+        "role": "反馈正文"
+      },
+      {
+        "name": "ReceiptLabel",
+        "type": "Label",
+        "role": "接收编号"
+      },
+      {
+        "name": "Http",
+        "type": "Web",
+        "role": "教学HTTP客户端"
+      }
+    ],
+    "logic": [
+      {
+        "event": "KindPicker.BeforePicking",
+        "actions": [
+          "列表建议、问题、表扬"
+        ]
+      },
+      {
+        "event": "KindPicker.AfterPicking",
+        "actions": [
+          "类型←Selection"
+        ]
+      },
+      {
+        "event": "RequestButton.Click",
+        "actions": [
+          "若未请求中则提交反馈"
+        ]
+      },
+      {
+        "event": "Http.GotText",
+        "actions": [
+          "201时解码id并显示已接收，清正文；400显示校验信息保留正文；其他码显示失败；结束提交"
+        ]
+      },
+      {
+        "event": "Http.TimedOut",
+        "actions": [
+          "提示结果未确认，请先检查再重试；保留正文；结束提交"
+        ]
+      }
+    ],
+    "procedures": {
+      "提交反馈": "验证长度；RequestHeaders←Content-Type:application/x-www-form-urlencoded；Body←BuildRequestData([[kind,类型],[message,文字]])；Url←/api/v1/feedback；PostText",
+      "结束提交": "恢复按钮与请求中false"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse40.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse40Class.aia：保留类型选择与变量、结束请求/结束提交及超时错误恢复、提交反馈与GotText占位；校验trim正文长度1～200，设置表单Content-Type；BuildRequestData封装kind和message并PostText；201解析有效id后清稿，400/超时保留草稿。",
+    "starter": "YXCourse40Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补校验与请求头，先问再示范。",
+      "students": "按任务单完成：补校验与请求头。",
+      "checkpoint": "为什么不能把空输入发给服务器再说？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补表单编码与成功回执，先问再示范。",
+      "students": "按任务单完成：补表单编码与成功回执。",
+      "checkpoint": "只检查HTTP 201就能忽略回执结构吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：保留失败草稿，先问再示范。",
+      "students": "按任务单完成：保留失败草稿。",
+      "checkpoint": "超时为何不能直接说提交失败？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补校验与请求头",
+      "steps": [
+        "trim正文，长度须为1到200。",
+        "设置RequestHeaders的Content-Type为application/x-www-form-urlencoded。",
+        "请求中真并禁用发送按钮。"
+      ],
+      "question": "为什么不能把空输入发给服务器再说？",
+      "answer": "客户端先反馈可减少无效请求，服务端仍需独立校验。"
+    },
+    {
+      "title": "补表单编码与成功回执",
+      "steps": [
+        "BuildRequestData处理kind和message两组键值。",
+        "PostText发送到/api/v1/feedback。",
+        "GotText只在201且回执id有效时显示已接收并清正文。",
+        "编号可能已增长，不硬编码F0001。"
+      ],
+      "question": "只检查HTTP 201就能忽略回执结构吗？",
+      "answer": "不应，还要确认返回数据含有效id再显示本次成功。"
+    },
+    {
+      "title": "保留失败草稿",
+      "steps": [
+        "400和其他失败只显示原因、恢复按钮。",
+        "超时保留正文并提示结果未确认。",
+        "重新提交前先核对服务记录，不自动再次Post。"
+      ],
+      "question": "超时为何不能直接说提交失败？",
+      "answer": "请求可能已被服务器保存，只是回执没及时回来。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "提交建议：增加阅读角",
+      "expected": "201，显示回执编号，正文清空"
+    },
+    {
+      "action": "空格正文发送",
+      "expected": "客户端拦截，不发送"
+    },
+    {
+      "action": "服务返回400",
+      "expected": "显示失败，原正文保留"
+    }
+  ],
+  "misconceptions": [
+    [
+      "中文变乱码",
+      "核对UTF-8与表单编码"
+    ],
+    [
+      "一点击就提示成功",
+      "移到GotText且状态码201分支"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "增加200字剩余字数提示。"
+    },
+    {
+      "level": "拓展",
+      "task": "设计一条不泄露身份的课堂反馈。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "BuildRequestData的作用是什么？",
+      "a": "按表单规则编码键值，保护中文和特殊字符。"
+    },
+    {
+      "q": "何时清草稿？",
+      "a": "成功201且有效回执确认之后。"
+    },
+    {
+      "q": "POST超时为何不自动重试？",
+      "a": "可能造成同一意见重复提交。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#Web 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#Web",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT dictionaries.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/dictionaries.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT http.server.html 官方参考",
+      "url": "https://docs.python.org/3/library/http.server.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "把数据提交出去",
+      "body": [
+        "URL编码反馈表单与201回执",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "课堂反馈箱：提交不含个人身份的信息，收到服务生成的编号后才显示成功。 使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 POST发送教学意见，不要求真实姓名或联系方式。超时表示结果未确认，本例不自动重发。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "反馈内容去空格后1到200字符，类型从建议、问题、表扬中选择。",
+        "用表单编码POST，不在URL中拼长正文。",
+        "201和返回编号代表服务已接收；错误不清空用户输入。"
+      ],
+      "notes": "演示：提交建议：增加阅读角。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "表单字段有名称与值。",
+        "点击发送不等于服务器收到。",
+        "用测试记录验证把数据提交出去的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "课堂反馈箱：提交不含个人身份的信息，收到服务生成的编号后才显示成功。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "反馈内容去空格后1到200字符，类型从建议、问题、表扬中选择。",
+        "用表单编码POST，不在URL中拼长正文。",
+        "201和返回编号代表服务已接收；错误不清空用户输入。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "教师电脑局域网IPv4地址",
+        "发起本课请求",
+        "请求与错误状态",
+        "选择反馈类型"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "HostBox",
+          "TextBox",
+          "教师电脑局域网IPv4地址"
+        ],
+        [
+          "RequestButton",
+          "Button",
+          "发起本课请求"
+        ],
+        [
+          "StatusLabel",
+          "Label",
+          "请求与错误状态"
+        ],
+        [
+          "KindPicker",
+          "ListPicker",
+          "选择反馈类型"
+        ],
+        [
+          "MessageBox",
+          "TextBox",
+          "反馈正文"
+        ],
+        [
+          "ReceiptLabel",
+          "Label",
+          "接收编号"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "请求中",
+          "假；一次只发一个请求"
+        ],
+        [
+          "当前URL",
+          "发起时保存；回调需核对"
+        ],
+        [
+          "HostBox",
+          "只填IP，端口8765由积木拼接"
+        ],
+        [
+          "类型",
+          "建议／问题／表扬"
+        ],
+        [
+          "正文",
+          "trim后1到200字符"
+        ]
+      ]
+    },
+    {
+      "title": "POST把数据放在请求正文",
+      "body": [
+        "表单字段有名称与值。",
+        "BuildRequestData处理中文、空格和符号。",
+        "Content-Type应与正文编码对应。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "成功提示需要服务证据",
+      "body": [
+        "点击发送不等于服务器收到。",
+        "201和回执编号才是本课成功依据。",
+        "超时可能已被接收，不盲目自动重发。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "校验正文，设置表单Content-Type",
+        "BuildRequestData编码kind和message后PostText",
+        "201有效回执才清稿，400或超时保留草稿"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：类型选择与变量；结束请求/结束提交及超时错误恢复；提交反馈与GotText占位。学生任务：校验trim正文长度1～200，设置表单Content-Type；BuildRequestData封装kind和message并PostText；201解析有效id后清稿，400/超时保留草稿。",
+      "layout": "text"
+    },
+    {
+      "title": "输入与类型",
+      "body": [
+        "校验正文，再创建表单。",
+        "空正文不发送。"
+      ],
+      "notes": "输入校验先于请求状态切换；表单头与编码方式一致。 实际截图对应：提交反馈。使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 POST发送教学意见，不要求真实姓名或联系方式。超时表示结果未确认，本例不自动重发。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "提交反馈"
+    },
+    {
+      "title": "补校验与请求头",
+      "body": [
+        "trim正文，长度须为1到200。",
+        "Content-Type设为 application/x-www-form-urlencoded。",
+        "请求中真并禁用发送按钮。"
+      ],
+      "notes": "实践15分钟。为什么不能把空输入发给服务器再说？ 教师参考：客户端先反馈可减少无效请求，服务端仍需独立校验。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "POST与回执",
+      "body": [
+        "有效201回执才显示编号、清正文。",
+        "得到F0001等回执编号。"
+      ],
+      "notes": "201分支解码id，错误分支保留输入。 实际截图对应：Http.GotText。使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 POST发送教学意见，不要求真实姓名或联系方式。超时表示结果未确认，本例不自动重发。",
+      "layout": "blocksTall",
+      "blockIndex": 2,
+      "captureTarget": "Http.GotText"
+    },
+    {
+      "title": "补表单编码与成功回执",
+      "body": [
+        "BuildRequestData处理kind和message两组键值。",
+        "PostText发送到/api/v1/feedback。",
+        "GotText只在201且回执id有效时显示已接收并清正文。"
+      ],
+      "notes": "实践15分钟。只检查HTTP 201就能忽略回执结构吗？ 教师参考：不应，还要确认返回数据含有效id再显示本次成功。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "失败保留草稿",
+      "body": [
+        "400与超时保留输入并恢复按钮。",
+        "非法类型可读提示，不显示假成功。"
+      ],
+      "notes": "超时处理报告未确认并恢复操作，不调用PostText。 实际截图对应：Http.TimedOut。使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 POST发送教学意见，不要求真实姓名或联系方式。超时表示结果未确认，本例不自动重发。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "Http.TimedOut"
+    },
+    {
+      "title": "保留失败草稿",
+      "body": [
+        "400和其他失败只显示原因、恢复按钮。",
+        "超时保留正文并提示结果未确认。",
+        "重新提交前先核对服务记录，不自动再次Post。"
+      ],
+      "notes": "实践15分钟。超时为何不能直接说提交失败？ 教师参考：请求可能已被服务器保存，只是回执没及时回来。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "提交建议：增加阅读角",
+          "201，显示回执编号，正文清空"
+        ],
+        [
+          "空格正文发送",
+          "客户端拦截，不发送"
+        ],
+        [
+          "服务返回400",
+          "显示失败，原正文保留"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "中文变乱码",
+          "核对UTF-8与表单编码"
+        ],
+        [
+          "一点击就提示成功",
+          "移到GotText且状态码201分支"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "提交建议：增加阅读角",
+          "201，显示回执编号，正文清空"
+        ],
+        [
+          "空格正文发送",
+          "客户端拦截，不发送"
+        ],
+        [
+          "服务返回400",
+          "显示失败，原正文保留"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加200字剩余字数提示。",
+        "设计一条不泄露身份的课堂反馈。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“提交建议：增加阅读角”写下预测，再记录实际结果。",
+        "结合积木解释：POST把数据放在请求正文。",
+        "修改一条规则并添加一项边界测试：增加200字剩余字数提示。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：服务返回400。",
+        "说明：成功提示需要服务证据。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "BuildRequestData的作用是什么？",
+        "何时清草稿？",
+        "POST超时为何不自动重试？"
+      ],
+      "notes": "1. 按表单规则编码键值，保护中文和特殊字符。\n2. 成功201且有效回执确认之后。\n3. 可能造成同一意见重复提交。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "TextBox": "15",
+    "ListPicker": "10",
+    "Button": "8",
+    "VerticalArrangement": "4",
+    "Web": "9",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "类型选择与变量",
+    "结束请求/结束提交及超时错误恢复",
+    "提交反馈与GotText占位"
+  ],
+  "actualClassroomTasks": [
+    "校验trim正文长度1～200，设置表单Content-Type",
+    "BuildRequestData封装kind和message并PostText",
+    "201解析有效id后清稿，400/超时保留草稿"
+  ],
+  "actualScreenshotGroups": [
+    "提交反馈",
+    "Http.GotText",
+    "Http.TimedOut"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "请求中",
+      "当前URL",
+      "类型",
+      "响应数据"
+    ],
+    "procedures": {
+      "结束请求": [
+        "提示"
+      ],
+      "提交反馈": [],
+      "结束提交": [
+        "提示"
+      ]
+    },
+    "events": [
+      "KindPicker.BeforePicking",
+      "KindPicker.AfterPicking",
+      "RequestButton.Click",
+      "Http.GotText",
+      "Http.TimedOut",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "set": {
+        "MessageBox.Text": "  "
+      },
+      "procedure": "提交反馈",
+      "expect": {
+        "global 请求中": false
+      },
+      "methodCounts": {
+        "Http.PostText": 0
+      }
+    },
+    {
+      "set": {
+        "MessageBox.Text": "增加阅读角"
+      },
+      "procedure": "提交反馈",
+      "expect": {
+        "global 请求中": true,
+        "RequestButton.Enabled": false
+      },
+      "methodCounts": {
+        "Http.PostText": 1,
+        "Http.BuildRequestData": 1
+      }
+    },
+    {
+      "set": {
+        "global 请求中": true,
+        "global 当前URL": "x",
+        "MessageBox.Text": "草稿"
+      },
+      "event": "Http.GotText",
+      "args": {
+        "url": "x",
+        "responseCode": 400,
+        "responseContent": "{\"error\":\"bad\"}"
+      },
+      "expect": {
+        "MessageBox.Text": "草稿",
+        "global 请求中": false
+      }
+    },
+    {
+      "set": {
+        "global 请求中": true,
+        "global 当前URL": "x",
+        "MessageBox.Text": "草稿"
+      },
+      "event": "Http.TimedOut",
+      "args": {
+        "url": "x"
+      },
+      "expect": {
+        "MessageBox.Text": "草稿",
+        "global 请求中": false
+      },
+      "contains": {
+        "StatusLabel.Text": [
+          "结果未确认"
+        ]
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson40/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

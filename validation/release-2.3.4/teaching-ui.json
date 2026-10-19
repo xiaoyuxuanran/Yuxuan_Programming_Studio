@@ -1,0 +1,668 @@
+{
+  "layouts": [
+    {
+      "width": 1600,
+      "view": "root",
+      "panel": {
+        "x": 14,
+        "y": 159,
+        "width": 1562,
+        "height": 715,
+        "top": 159,
+        "right": 1576,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 159,
+        "width": 781,
+        "height": 715,
+        "top": 159,
+        "right": 795,
+        "bottom": 874,
+        "left": 14
+      },
+      "right": {
+        "x": 795,
+        "y": 159,
+        "width": 781,
+        "height": 715,
+        "top": 159,
+        "right": 1576,
+        "bottom": 874,
+        "left": 795
+      },
+      "cut": []
+    },
+    {
+      "width": 1600,
+      "view": "lesson",
+      "panel": {
+        "x": 14,
+        "y": 159,
+        "width": 1562,
+        "height": 715,
+        "top": 159,
+        "right": 1576,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 159,
+        "width": 898.140625,
+        "height": 715,
+        "top": 159,
+        "right": 912.140625,
+        "bottom": 874,
+        "left": 14
+      },
+      "right": {
+        "x": 912.140625,
+        "y": 159,
+        "width": 663.859375,
+        "height": 715,
+        "top": 159,
+        "right": 1576,
+        "bottom": 874,
+        "left": 912.140625
+      },
+      "cut": []
+    },
+    {
+      "width": 1440,
+      "view": "root",
+      "panel": {
+        "x": 14,
+        "y": 159,
+        "width": 1402,
+        "height": 715,
+        "top": 159,
+        "right": 1416,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 159,
+        "width": 701,
+        "height": 715,
+        "top": 159,
+        "right": 715,
+        "bottom": 874,
+        "left": 14
+      },
+      "right": {
+        "x": 715,
+        "y": 159,
+        "width": 701,
+        "height": 715,
+        "top": 159,
+        "right": 1416,
+        "bottom": 874,
+        "left": 715
+      },
+      "cut": []
+    },
+    {
+      "width": 1440,
+      "view": "lesson",
+      "panel": {
+        "x": 14,
+        "y": 159,
+        "width": 1402,
+        "height": 715,
+        "top": 159,
+        "right": 1416,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 159,
+        "width": 806.140625,
+        "height": 715,
+        "top": 159,
+        "right": 820.140625,
+        "bottom": 874,
+        "left": 14
+      },
+      "right": {
+        "x": 820.140625,
+        "y": 159,
+        "width": 595.859375,
+        "height": 715,
+        "top": 159,
+        "right": 1416,
+        "bottom": 874,
+        "left": 820.140625
+      },
+      "cut": []
+    },
+    {
+      "width": 1100,
+      "view": "root",
+      "panel": {
+        "x": 14,
+        "y": 159,
+        "width": 1062,
+        "height": 715,
+        "top": 159,
+        "right": 1076,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 159,
+        "width": 531,
+        "height": 715,
+        "top": 159,
+        "right": 545,
+        "bottom": 874,
+        "left": 14
+      },
+      "right": {
+        "x": 545,
+        "y": 159,
+        "width": 531,
+        "height": 715,
+        "top": 159,
+        "right": 1076,
+        "bottom": 874,
+        "left": 545
+      },
+      "cut": []
+    },
+    {
+      "width": 1100,
+      "view": "lesson",
+      "panel": {
+        "x": 14,
+        "y": 159,
+        "width": 1062,
+        "height": 715,
+        "top": 159,
+        "right": 1076,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 159,
+        "width": 531,
+        "height": 715,
+        "top": 159,
+        "right": 545,
+        "bottom": 874,
+        "left": 14
+      },
+      "right": {
+        "x": 545,
+        "y": 159,
+        "width": 531,
+        "height": 715,
+        "top": 159,
+        "right": 1076,
+        "bottom": 874,
+        "left": 545
+      },
+      "cut": []
+    },
+    {
+      "width": 960,
+      "view": "root",
+      "panel": {
+        "x": 14,
+        "y": 159,
+        "width": 922,
+        "height": 715,
+        "top": 159,
+        "right": 936,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 159,
+        "width": 461,
+        "height": 715,
+        "top": 159,
+        "right": 475,
+        "bottom": 874,
+        "left": 14
+      },
+      "right": {
+        "x": 475,
+        "y": 159,
+        "width": 461,
+        "height": 715,
+        "top": 159,
+        "right": 936,
+        "bottom": 874,
+        "left": 475
+      },
+      "cut": []
+    },
+    {
+      "width": 960,
+      "view": "lesson",
+      "panel": {
+        "x": 14,
+        "y": 159,
+        "width": 922,
+        "height": 715,
+        "top": 159,
+        "right": 936,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 159,
+        "width": 461,
+        "height": 715,
+        "top": 159,
+        "right": 475,
+        "bottom": 874,
+        "left": 14
+      },
+      "right": {
+        "x": 475,
+        "y": 159,
+        "width": 461,
+        "height": 715,
+        "top": 159,
+        "right": 936,
+        "bottom": 874,
+        "left": 475
+      },
+      "cut": []
+    },
+    {
+      "width": 720,
+      "view": "root",
+      "panel": {
+        "x": 14,
+        "y": 158,
+        "width": 682,
+        "height": 716,
+        "top": 158,
+        "right": 696,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 158,
+        "width": 682,
+        "height": 795.390625,
+        "top": 158,
+        "right": 696,
+        "bottom": 953.390625,
+        "left": 14
+      },
+      "right": {
+        "x": 14,
+        "y": 953.390625,
+        "width": 682,
+        "height": 693.984375,
+        "top": 953.390625,
+        "right": 696,
+        "bottom": 1647.375,
+        "left": 14
+      },
+      "cut": []
+    },
+    {
+      "width": 720,
+      "view": "lesson",
+      "panel": {
+        "x": 14,
+        "y": 158,
+        "width": 682,
+        "height": 716,
+        "top": 158,
+        "right": 696,
+        "bottom": 874,
+        "left": 14
+      },
+      "left": {
+        "x": 14,
+        "y": 158,
+        "width": 682,
+        "height": 875.078125,
+        "top": 158,
+        "right": 696,
+        "bottom": 1033.078125,
+        "left": 14
+      },
+      "right": {
+        "x": 14,
+        "y": 1033.078125,
+        "width": 682,
+        "height": 693.984375,
+        "top": 1033.078125,
+        "right": 696,
+        "bottom": 1727.0625,
+        "left": 14
+      },
+      "cut": []
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 2,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 3,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 4,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 5,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 6,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 7,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 8,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 9,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 10,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 11,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 12,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 13,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 14,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 15,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 16,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 17,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 18,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 19,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 20,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 21,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 22,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 23,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 24,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 25,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 26,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 27,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 28,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 29,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 30,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 31,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 32,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 33,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 34,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 35,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 36,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 37,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 38,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 39,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 40,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 41,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 42,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 43,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 44,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 45,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 46,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 47,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 48,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 49,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 50,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 51,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 52,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 53,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 54,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 55,
+      "projects": 3,
+      "materials": 2
+    },
+    {
+      "id": 56,
+      "projects": 3,
+      "materials": 2
+    }
+  ],
+  "imports": [
+    {
+      "lesson": 1,
+      "kind": "starter",
+      "id": "5348024557502464",
+      "blocks": 0,
+      "sameCopyReopened": true
+    },
+    {
+      "lesson": 46,
+      "kind": "answer",
+      "id": "5233675348213760",
+      "blocks": 197,
+      "sameCopyReopened": true
+    },
+    {
+      "lesson": 56,
+      "kind": "class",
+      "id": "4635541022703616",
+      "blocks": 532,
+      "sameCopyReopened": true
+    }
+  ],
+  "errors": [],
+  "tabSize": {
+    "x": 132,
+    "y": 172,
+    "width": 96,
+    "height": 36
+  },
+  "hiddenInTrash": true,
+  "passed": true
+}

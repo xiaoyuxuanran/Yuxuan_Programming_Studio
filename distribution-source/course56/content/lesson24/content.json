@@ -1,0 +1,700 @@
+{
+  "lesson": 24,
+  "title": "我的声音工作室",
+  "projectName": "YXCourse24",
+  "exampleTitle": "录音留言与试听",
+  "durationMinutes": 90,
+  "goals": [
+    "Start提出录音请求。",
+    "AfterSoundRecorded返回sound路径。",
+    "用测试记录验证我的声音工作室的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "声音留言工具：录制一段留言，停止后试听，并显示录音状态。",
+    "scope": "保存的是录音组件返回的本次文件引用，不承诺卸载后、跨设备或长期管理。音频、麦克风权限和真实播放需课堂Android设备验证。",
+    "components": [
+      {
+        "name": "RecordButton",
+        "type": "Button",
+        "role": "开始录音"
+      },
+      {
+        "name": "StopButton",
+        "type": "Button",
+        "role": "停止录音或播放"
+      },
+      {
+        "name": "PlayButton",
+        "type": "Button",
+        "role": "试听最新留言"
+      },
+      {
+        "name": "StateLabel",
+        "type": "Label",
+        "role": "录音与播放状态"
+      },
+      {
+        "name": "Recorder",
+        "type": "SoundRecorder",
+        "role": "录制音频"
+      },
+      {
+        "name": "AudioPlayer",
+        "type": "Player",
+        "role": "播放录音"
+      }
+    ],
+    "logic": [
+      {
+        "event": "RecordButton.Click",
+        "actions": [
+          "停止播放器；状态准备录音；刷新按钮；Recorder.Start"
+        ]
+      },
+      {
+        "event": "Recorder.StartedRecording",
+        "actions": [
+          "状态录音中；刷新按钮"
+        ]
+      },
+      {
+        "event": "StopButton.Click",
+        "actions": [
+          "录音中则Recorder.Stop；播放中则AudioPlayer.Stop并回空闲"
+        ]
+      },
+      {
+        "event": "Recorder.AfterSoundRecorded",
+        "actions": [
+          "录音路径←sound；AudioPlayer.Source←sound；回到空闲(可试听)"
+        ]
+      },
+      {
+        "event": "PlayButton.Click",
+        "actions": [
+          "若录音路径非空且状态为空闲：状态←播放中；刷新按钮；AudioPlayer.Start"
+        ]
+      },
+      {
+        "event": "AudioPlayer.Completed",
+        "actions": [
+          "回到空闲(播放完成)"
+        ]
+      },
+      {
+        "event": "Screen1.PermissionDenied",
+        "actions": [
+          "停止录音；回到空闲(请在系统设置允许麦克风)"
+        ]
+      },
+      {
+        "event": "Screen1.ErrorOccurred",
+        "actions": [
+          "回到空闲(显示错误信息)"
+        ]
+      },
+      {
+        "event": "Recorder.StoppedRecording",
+        "actions": [
+          "若仍处于录音相关状态则恢复空闲；文件引用仍等待AfterSoundRecorded"
+        ]
+      }
+    ],
+    "procedures": {
+      "刷新按钮": "根据状态启用录制、停止和试听；无路径时禁用试听",
+      "回到空闲(提示)": "状态空闲；刷新按钮；显示提示"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse24.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse24Class.aia：保留全部变量和按钮状态过程、RecordButton、StartedRecording、StopButton、Completed、PermissionDenied、ErrorOccurred、StoppedRecording异常恢复；添加Recorder.AfterSoundRecorded，保存sound并设置AudioPlayer.Source；添加PlayButton.Click，有路径且空闲时启动试听；录第二段后检查播放源已更新。",
+    "starter": "YXCourse24Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：读懂已给的录音入口，先问再示范。",
+      "students": "按任务单完成：读懂已给的录音入口。",
+      "checkpoint": "点击开始时就写录音成功，会误导什么？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补录音结果与播放来源，先问再示范。",
+      "students": "按任务单完成：补录音结果与播放来源。",
+      "checkpoint": "为什么不能把一条电脑绝对路径写进Source？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补试听并核对恢复入口，先问再示范。",
+      "students": "按任务单完成：补试听并核对恢复入口。",
+      "checkpoint": "AfterSoundRecorded的sound是识别出的文字吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "读懂已给的录音入口",
+      "steps": [
+        "Class已含RecordButton、StartedRecording、StopButton和异常恢复。",
+        "沿RecordButton.Click追踪准备录音与Recorder.Start。",
+        "分别记录点击时、StartedRecording后和停止后的界面状态。"
+      ],
+      "question": "点击开始时就写录音成功，会误导什么？",
+      "answer": "Start只发起请求，权限或设备可能失败；应等StartedRecording确认。"
+    },
+    {
+      "title": "补录音结果与播放来源",
+      "steps": [
+        "添加Recorder.AfterSoundRecorded，使用事件参数sound。",
+        "录音路径←sound，AudioPlayer.Source←sound。",
+        "调用回到空闲并给出可试听提示。",
+        "录两段不同内容，检查第二次来源已更新。"
+      ],
+      "question": "为什么不能把一条电脑绝对路径写进Source？",
+      "answer": "录音位置由设备组件返回；硬编码电脑路径在手机上无效。"
+    },
+    {
+      "title": "补试听并核对恢复入口",
+      "steps": [
+        "添加PlayButton.Click：有录音路径且状态空闲时才开始。",
+        "设置播放中、刷新按钮，再AudioPlayer.Start。",
+        "核对已给的Completed、Stop、PermissionDenied和ErrorOccurred。",
+        "试听中停止，检查可以重新录制；无设备结果标待测。"
+      ],
+      "question": "AfterSoundRecorded的sound是识别出的文字吗？",
+      "answer": "不是，是音频文件路径；交给Player.Source后才能试听。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "首次拒绝麦克风权限",
+      "expected": "显示权限提示，可返回或重新操作"
+    },
+    {
+      "action": "录五秒停止并试听",
+      "expected": "播放刚录制的留言"
+    },
+    {
+      "action": "第二次录音后试听",
+      "expected": "试听新录音，按钮无状态冲突"
+    }
+  ],
+  "misconceptions": [
+    [
+      "停止后试听仍不可用",
+      "检查AfterSoundRecorded是否保存sound"
+    ],
+    [
+      "一边录一边播",
+      "开始录音前Stop播放器，并按状态禁用冲突操作"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "为留言增加标题输入和试听前的内容提示。"
+    },
+    {
+      "level": "拓展",
+      "task": "比较安静和嘈杂环境下录音效果，写一条使用建议。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "StartedRecording与AfterSoundRecorded分别提供什么？",
+      "a": "前者确认开始录制，后者给出录音文件引用。"
+    },
+    {
+      "q": "第二次录音后如何保证试听最新留言？",
+      "a": "每次回调同步更新录音路径与AudioPlayer.Source。"
+    },
+    {
+      "q": "为什么拒绝权限后要恢复按钮？",
+      "a": "失败也需要结束等待，使用者才能调整权限或继续操作。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT media.html#SoundRecorder 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/media.html#SoundRecorder",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT userinterface.html#Screen 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html#Screen",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "我的声音工作室",
+      "body": [
+        "录音留言与试听",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "声音留言工具：录制一段留言，停止后试听，并显示录音状态。 保存的是录音组件返回的本次文件引用，不承诺卸载后、跨设备或长期管理。音频、麦克风权限和真实播放需课堂Android设备验证。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "初次使用需要麦克风权限；拒绝权限时保留返回入口。",
+        "录音启动成功后才显示录音中。",
+        "收到录音文件路径后才允许试听；新录音替换当前试听来源。"
+      ],
+      "notes": "演示：首次拒绝麦克风权限。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "Start提出录音请求。",
+        "AfterSoundRecorded返回sound路径。",
+        "用测试记录验证我的声音工作室的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "声音留言工具：录制一段留言，停止后试听，并显示录音状态。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "初次使用需要麦克风权限；拒绝权限时保留返回入口。",
+        "录音启动成功后才显示录音中。",
+        "收到录音文件路径后才允许试听；新录音替换当前试听来源。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "开始录音",
+        "停止录音或播放",
+        "试听最新留言",
+        "录音与播放状态"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "RecordButton",
+          "Button",
+          "开始录音"
+        ],
+        [
+          "StopButton",
+          "Button",
+          "停止录音或播放"
+        ],
+        [
+          "PlayButton",
+          "Button",
+          "试听最新留言"
+        ],
+        [
+          "StateLabel",
+          "Label",
+          "录音与播放状态"
+        ],
+        [
+          "Recorder",
+          "SoundRecorder",
+          "录制音频"
+        ],
+        [
+          "AudioPlayer",
+          "Player",
+          "播放录音"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "状态",
+          "空闲／准备录音／录音中／播放中"
+        ],
+        [
+          "录音路径",
+          "初始为空；由sound回调提供"
+        ]
+      ]
+    },
+    {
+      "title": "开始请求与真正开始有区别",
+      "body": [
+        "Start提出录音请求。",
+        "StartedRecording确认已经开始。",
+        "拒绝权限或设备错误需要恢复界面。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "录音结果是文件路径",
+      "body": [
+        "AfterSoundRecorded返回sound路径。",
+        "把路径给Player.Source再播放。",
+        "这不是声音的文字识别结果。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "开始请求：先停播放，显示准备录音",
+        "StartedRecording才确认录音开始",
+        "sound到达后保存路径，空闲时才可试听"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：全部变量和按钮状态过程；RecordButton、StartedRecording、StopButton；Completed、PermissionDenied、ErrorOccurred、StoppedRecording异常恢复。学生任务：添加Recorder.AfterSoundRecorded，保存sound并设置AudioPlayer.Source；添加PlayButton.Click，有路径且空闲时启动试听；录第二段后检查播放源已更新。",
+      "layout": "text"
+    },
+    {
+      "title": "启动录音",
+      "body": [
+        "先停止已有播放，再等待StartedRecording。",
+        "开始成功后显示录音中。"
+      ],
+      "notes": "截图是Class已给的启动事件；读状态顺序，不把它重新布置为缺失任务。 实际截图对应：RecordButton.Click。保存的是录音组件返回的本次文件引用，不承诺卸载后、跨设备或长期管理。音频、麦克风权限和真实播放需课堂Android设备验证。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "RecordButton.Click"
+    },
+    {
+      "title": "读懂已给的录音入口",
+      "body": [
+        "Class已含RecordButton、StartedRecording、StopButton和异常恢复。",
+        "沿RecordButton.Click追踪准备录音与Recorder.Start。",
+        "分别记录点击时、StartedRecording后和停止后的界面状态。"
+      ],
+      "notes": "实践15分钟。点击开始时就写录音成功，会误导什么？ 教师参考：Start只发起请求，权限或设备可能失败；应等StartedRecording确认。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "保存本次来源",
+      "body": [
+        "接收sound，赋给路径变量和Player.Source。",
+        "停止录音后试听可用。"
+      ],
+      "notes": "Class缺此事件，学生保存sound并设置Source，之后回到空闲；StoppedRecording恢复已给出，不能假定它就是音频文件结果。 实际截图对应：Recorder.AfterSoundRecorded。保存的是录音组件返回的本次文件引用，不承诺卸载后、跨设备或长期管理。音频、麦克风权限和真实播放需课堂Android设备验证。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "Recorder.AfterSoundRecorded"
+    },
+    {
+      "title": "补录音结果与播放来源",
+      "body": [
+        "添加Recorder.AfterSoundRecorded，使用事件参数sound。",
+        "录音路径←sound，AudioPlayer.Source←sound。",
+        "调用回到空闲并给出可试听提示。"
+      ],
+      "notes": "实践15分钟。为什么不能把一条电脑绝对路径写进Source？ 教师参考：录音位置由设备组件返回；硬编码电脑路径在手机上无效。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "试听与异常恢复",
+      "body": [
+        "完成播放、停止、权限拒绝时恢复按钮。",
+        "无录音时不能试听，拒绝权限也不锁死。"
+      ],
+      "notes": "Class缺试听事件；Completed、停止、权限及错误恢复已有。播放仅在有路径且空闲时发起。 实际截图对应：PlayButton.Click。保存的是录音组件返回的本次文件引用，不承诺卸载后、跨设备或长期管理。音频、麦克风权限和真实播放需课堂Android设备验证。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "PlayButton.Click"
+    },
+    {
+      "title": "补试听并核对恢复入口",
+      "body": [
+        "添加PlayButton.Click：有录音路径且状态空闲时才开始。",
+        "设置播放中、刷新按钮，再AudioPlayer.Start。",
+        "核对已给的Completed、Stop、PermissionDenied和ErrorOccurred。"
+      ],
+      "notes": "实践15分钟。AfterSoundRecorded的sound是识别出的文字吗？ 教师参考：不是，是音频文件路径；交给Player.Source后才能试听。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "首次拒绝麦克风权限",
+          "显示权限提示，可返回或重新操作"
+        ],
+        [
+          "录五秒停止并试听",
+          "播放刚录制的留言"
+        ],
+        [
+          "第二次录音后试听",
+          "试听新录音，按钮无状态冲突"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "停止后试听仍不可用",
+          "检查AfterSoundRecorded是否保存sound"
+        ],
+        [
+          "一边录一边播",
+          "开始录音前Stop播放器，并按状态禁用冲突操作"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "首次拒绝麦克风权限",
+          "显示权限提示，可返回或重新操作"
+        ],
+        [
+          "录五秒停止并试听",
+          "播放刚录制的留言"
+        ],
+        [
+          "第二次录音后试听",
+          "试听新录音，按钮无状态冲突"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "为留言增加标题输入和试听前的内容提示。",
+        "比较安静和嘈杂环境下录音效果，写一条使用建议。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“首次拒绝麦克风权限”写下预测，再记录实际结果。",
+        "结合积木解释：开始请求与真正开始有区别。",
+        "修改一条规则并添加一项边界测试：为留言增加标题输入和试听前的内容提示。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：第二次录音后试听。",
+        "说明：录音结果是文件路径。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "StartedRecording与AfterSoundRecorded分别提供什么？",
+        "第二次录音后如何保证试听最新留言？",
+        "为什么拒绝权限后要恢复按钮？"
+      ],
+      "notes": "1. 前者确认开始录制，后者给出录音文件引用。\n2. 每次回调同步更新录音路径与AudioPlayer.Source。\n3. 失败也需要结束等待，使用者才能调整权限或继续操作。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Button": "8",
+    "VerticalArrangement": "4",
+    "SoundRecorder": "2",
+    "Player": "8",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "全部变量和按钮状态过程",
+    "RecordButton、StartedRecording、StopButton",
+    "Completed、PermissionDenied、ErrorOccurred、StoppedRecording异常恢复"
+  ],
+  "actualClassroomTasks": [
+    "添加Recorder.AfterSoundRecorded，保存sound并设置AudioPlayer.Source",
+    "添加PlayButton.Click，有路径且空闲时启动试听",
+    "录第二段后检查播放源已更新"
+  ],
+  "actualScreenshotGroups": [
+    "RecordButton.Click",
+    "Recorder.AfterSoundRecorded",
+    "PlayButton.Click"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "状态",
+      "录音路径"
+    ],
+    "procedures": {
+      "刷新按钮": [],
+      "回到空闲": [
+        "提示"
+      ]
+    },
+    "events": [
+      "RecordButton.Click",
+      "Recorder.StartedRecording",
+      "StopButton.Click",
+      "Recorder.AfterSoundRecorded",
+      "PlayButton.Click",
+      "AudioPlayer.Completed",
+      "Screen1.PermissionDenied",
+      "Screen1.ErrorOccurred",
+      "Recorder.StoppedRecording"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "event": "RecordButton.Click",
+      "expect": {
+        "global 状态": "准备录音",
+        "RecordButton.Enabled": false
+      },
+      "methods": [
+        "AudioPlayer.Stop",
+        "Recorder.Start"
+      ]
+    },
+    {
+      "event": "Recorder.StartedRecording",
+      "expect": {
+        "global 状态": "录音中"
+      }
+    },
+    {
+      "event": "Recorder.AfterSoundRecorded",
+      "args": {
+        "sound": "file:///recording-2.m4a"
+      },
+      "expect": {
+        "global 录音路径": "file:///recording-2.m4a",
+        "AudioPlayer.Source": "file:///recording-2.m4a",
+        "PlayButton.Enabled": true
+      }
+    },
+    {
+      "set": {
+        "global 录音路径": "file:///r.m4a"
+      },
+      "event": "PlayButton.Click",
+      "expect": {
+        "global 状态": "播放中"
+      },
+      "methods": [
+        "AudioPlayer.Start"
+      ]
+    },
+    {
+      "event": "Screen1.PermissionDenied",
+      "args": {
+        "permissionName": "android.permission.RECORD_AUDIO"
+      },
+      "expect": {
+        "global 状态": "空闲",
+        "RecordButton.Enabled": true
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson24/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

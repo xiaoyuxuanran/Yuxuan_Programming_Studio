@@ -1,0 +1,625 @@
+{
+  "lesson": 4,
+  "title": "我的故事小舞台",
+  "projectName": "Course04Story",
+  "exampleTitle": "海岛环保三场景故事",
+  "durationMinutes": 90,
+  "goals": [
+    "用VerticalArrangement把同一场景的图片、文字与按钮组织在一起。",
+    "通过三个场景的Visible属性切换内容，保证每次只显示一幕。",
+    "测试两条故事路线与两个返回按钮，记录场景状态。"
+  ],
+  "exampleSpec": {
+    "summary": "海滩发现垃圾与需要帮助的小海龟。用户可以先清理海滩，或请大人联系专业救助人员；每个分支都能返回开头，再体验另一条路线。",
+    "scope": "三个场景都在Screen1中，通过Visible切换；本课不新增Screen，也不使用变量或条件判断。两条路线是不同选择，不能把清理沙滩写成代替专业救助。",
+    "components": [
+      {
+        "name": "BeachScene",
+        "type": "VerticalArrangement",
+        "role": "开头与两个选择"
+      },
+      {
+        "name": "CleanupScene",
+        "type": "VerticalArrangement",
+        "role": "清理行动分支"
+      },
+      {
+        "name": "RescueScene",
+        "type": "VerticalArrangement",
+        "role": "专业救助分支"
+      },
+      {
+        "name": "CleanButton",
+        "type": "Button",
+        "role": "选择清理沙滩"
+      },
+      {
+        "name": "RescueButton",
+        "type": "Button",
+        "role": "选择联系救助"
+      },
+      {
+        "name": "CleanupRestartButton",
+        "type": "Button",
+        "role": "从清理路线返回"
+      },
+      {
+        "name": "RescueRestartButton",
+        "type": "Button",
+        "role": "从救助路线返回"
+      }
+    ],
+    "logic": [
+      {
+        "event": "CleanButton.Click",
+        "actions": [
+          "BeachScene.Visible ← False",
+          "CleanupScene.Visible ← True",
+          "RescueScene.Visible ← False"
+        ]
+      },
+      {
+        "event": "CleanupRestartButton.Click",
+        "actions": [
+          "BeachScene.Visible ← True",
+          "CleanupScene.Visible ← False",
+          "RescueScene.Visible ← False"
+        ]
+      },
+      {
+        "event": "RescueButton.Click",
+        "actions": [
+          "BeachScene.Visible ← False",
+          "CleanupScene.Visible ← False",
+          "RescueScene.Visible ← True"
+        ]
+      },
+      {
+        "event": "RescueRestartButton.Click",
+        "actions": [
+          "BeachScene.Visible ← True",
+          "CleanupScene.Visible ← False",
+          "RescueScene.Visible ← False"
+        ]
+      }
+    ]
+  },
+  "versions": {
+    "answer": "Course04Story.aia：完整参考答案，含本课全部交互。",
+    "class": "Course04StoryClass.aia：保留CleanButton.Click；完成 RescueButton.Click，显示 RescueScene 并隐藏其余场景；完成两个 Restart 按钮事件，回到 BeachScene。",
+    "starter": "Course04StoryStarter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–3",
+      "teacher": "展示两条路线，先让学生预测每次看见哪一幕。",
+      "students": "体验并复述一个选择及其结果。",
+      "checkpoint": "能指出返回后可以重新选择。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "4–8",
+      "teacher": "在组件树中解释嵌套容器与Visible。",
+      "students": "定位三个Scene，用真/假纸牌演示状态。",
+      "checkpoint": "知道容器隐藏会同时隐藏内部内容。"
+    },
+    {
+      "start": 25,
+      "end": 45,
+      "minutes": 20,
+      "slides": "9–12",
+      "teacher": "拆读已给出的清理事件，再让学生补救助。",
+      "students": "完成RescueButton.Click的三个设置。",
+      "checkpoint": "当前场景唯一。"
+    },
+    {
+      "start": 45,
+      "end": 60,
+      "minutes": 15,
+      "slides": "13–16",
+      "teacher": "只提示返回目标，不代做两个事件。",
+      "students": "给两条路线添加返回，填写状态表。",
+      "checkpoint": "两个返回入口均完整。"
+    },
+    {
+      "start": 60,
+      "end": 75,
+      "minutes": 15,
+      "slides": "17–20",
+      "teacher": "组织顺序测试，指导有目的的故事改编。",
+      "students": "走完整双路线，改写一段文字并复测。",
+      "checkpoint": "改编后仍有明确开头、选择和结果。"
+    },
+    {
+      "start": 75,
+      "end": 90,
+      "minutes": 15,
+      "slides": "21–24",
+      "teacher": "同伴体验与出口题，检查导出。",
+      "students": "解释Visible规则，提交AIA和测试记录。",
+      "checkpoint": "能用状态表说明作品行为。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "读取已有的一条路线",
+      "steps": [
+        "导入Course04StoryClass.aia，按组件树找到三个Scene容器。",
+        "在组件设计中查看三个Visible初始值，结束后恢复Beach真、其余假。",
+        "读CleanButton.Click的三个设置，用纸牌表示谁显示、谁隐藏。"
+      ],
+      "question": "为什么不能只设置CleanupScene.Visible为真？",
+      "answer": "BeachScene仍为真时开头也会显示，两幕可能同时排在屏幕中；切换要同时处理三个场景。"
+    },
+    {
+      "title": "完成联系救助路线",
+      "steps": [
+        "添加RescueButton.Click。",
+        "依次设置BeachScene.Visible为假、CleanupScene.Visible为假、RescueScene.Visible为真。",
+        "运行后选择联系救助，检查另外两幕是否完全隐藏。"
+      ],
+      "question": "RescueScene.Visible为假，是删除这个场景吗？",
+      "answer": "不是。组件和内容仍保留在工程中，只是当前不显示；再次设为真即可显示。"
+    },
+    {
+      "title": "给两个分支加返回入口",
+      "steps": [
+        "添加CleanupRestartButton.Click，设置Beach真、Cleanup假、Rescue假。",
+        "给RescueRestartButton.Click设置同样的三个值。",
+        "依次测试开头→清理→返回→救助→返回；把一个分支改写成自己的文明校园故事。"
+      ],
+      "question": "两个返回按钮代码相同，可以只做其中一个吗？",
+      "answer": "不可以。它们是两个不同组件的点击事件；两条路线都需要自己的返回入口。第13课再学习把重复动作封装为过程。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "启动",
+      "expected": "只显示海滩发现的开头和两个选择按钮。"
+    },
+    {
+      "action": "点击先清理沙滩",
+      "expected": "只显示CleanupScene，开头和救助场景隐藏。"
+    },
+    {
+      "action": "从清理场景返回",
+      "expected": "BeachScene重新显示，其余两幕隐藏。"
+    },
+    {
+      "action": "选择联系救助人员",
+      "expected": "只显示RescueScene及专业帮助的故事文字。"
+    },
+    {
+      "action": "从救助场景返回再走清理路线",
+      "expected": "每次都只有一幕，不留下旧分支。"
+    }
+  ],
+  "misconceptions": [
+    [
+      "两个场景同时出现",
+      "逐项检查三个Visible值，不只看目标场景。"
+    ],
+    [
+      "设计器看不到隐藏场景",
+      "临时选中对应容器查看Visible；查完恢复初始值，不误改答案初始状态。"
+    ],
+    [
+      "清理路线能返回，救助路线不能",
+      "检查RescueRestartButton是否有自己的Click事件。"
+    ],
+    [
+      "隐藏容器后仍看到旧图片",
+      "检查图片是否真放在该Scene内部，而不是Page的同级。"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成救助与两个返回按钮，四条事件都能解释。"
+    },
+    {
+      "level": "提高",
+      "task": "改写一个分支的文字，让人物动机和结果连贯；保留两个返回入口。"
+    },
+    {
+      "level": "拓展",
+      "task": "增加第四个场景，同时为所有切换事件补上第四个Visible值并扩充测试表。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "切换到救助场景时，三个Visible应是什么？",
+      "a": "Beach假、Cleanup假、Rescue真。"
+    },
+    {
+      "q": "Visible为假与删除组件有什么不同？",
+      "a": "隐藏保留组件和内容；删除会从工程中移除。"
+    },
+    {
+      "q": "怎样证明没有遗漏返回入口？",
+      "a": "分别从两个分支返回，再走另一条路线，记录每一步唯一显示的场景。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT布局组件参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/layout.html",
+      "use": "核对VerticalArrangement、Visible与嵌套布局。"
+    },
+    {
+      "title": "MIT界面组件参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html",
+      "use": "核对按钮Click和图片、标签属性。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "我的故事小舞台",
+      "body": [
+        "第4课 · 海岛环保三场景故事",
+        "90分钟：用一次选择切换下一幕"
+      ],
+      "notes": "演示前只展示开头。请学生说出自己想先做什么，并说明理由。示例中的野生动物需要专业帮助，不让学生直接处理受伤动物。",
+      "layout": "text"
+    },
+    {
+      "title": "同一个开头，两条路线",
+      "body": [
+        "先清理沙滩，看到合作行动",
+        "先联系救助，看到专业帮助",
+        "两条路线都能回到开头"
+      ],
+      "notes": "先让一名学生选择，再让另一名体验另一条。比较屏幕变化，暂不说“新页面”，因为实际工程只有一个Screen。",
+      "layout": "question"
+    },
+    {
+      "title": "今天的作品证据",
+      "body": [
+        "每次只显示一幕",
+        "两条故事路线都能返回",
+        "我能解释一组Visible值"
+      ],
+      "notes": "评价不以故事长短为主，而看切换规则、内容连贯和返回完整性。",
+      "layout": "text"
+    },
+    {
+      "title": "90分钟的学习路线",
+      "body": [
+        "先讲清场景，再制作路线"
+      ],
+      "notes": "Class版已有CleanButton.Click；把时间留给救助路线、双返回和测试。",
+      "layout": "table",
+      "table": [
+        [
+          "时间",
+          "学习活动"
+        ],
+        [
+          "0–10",
+          "体验与预测"
+        ],
+        [
+          "10–25",
+          "容器和Visible"
+        ],
+        [
+          "25–45",
+          "制作救助路线"
+        ],
+        [
+          "45–60",
+          "两个返回入口"
+        ],
+        [
+          "60–75",
+          "测试与故事改编"
+        ],
+        [
+          "75–90",
+          "体验、解释、导出"
+        ]
+      ]
+    },
+    {
+      "title": "一个场景有自己的容器",
+      "body": [
+        "图片、文字与按钮属于同一幕",
+        "VerticalArrangement按上下排列",
+        "隐藏容器会隐藏其中的内容"
+      ],
+      "notes": "让学生沿组件树缩进寻找BeachImage是否在BeachScene里面。如果放到同级，隐藏BeachScene后图片仍可能显示。",
+      "layout": "text"
+    },
+    {
+      "title": "实际工程中的三幕",
+      "body": [
+        "BeachScene：发现",
+        "CleanupScene：清理",
+        "RescueScene：救助"
+      ],
+      "notes": "展示真实设计视图，说明隐藏场景也在组件树中。截图表示组件设计，不是Android运行结果。",
+      "layout": "designer"
+    },
+    {
+      "title": "场景与按钮的分工",
+      "body": [],
+      "notes": "读英文名只为定位，不考拼写。把场景名、动作按钮与返回按钮对应到树中。",
+      "layout": "table",
+      "table": [
+        [
+          "组件",
+          "作用"
+        ],
+        [
+          "BeachScene",
+          "显示开头及两种选择"
+        ],
+        [
+          "CleanupScene",
+          "显示清理结果"
+        ],
+        [
+          "RescueScene",
+          "显示救助结果"
+        ],
+        [
+          "CleanupRestartButton",
+          "从清理路线返回"
+        ],
+        [
+          "RescueRestartButton",
+          "从救助路线返回"
+        ]
+      ]
+    },
+    {
+      "title": "Visible控制当前是否显示",
+      "body": [
+        "真：显示这幕",
+        "假：暂时隐藏这幕",
+        "隐藏不会删除内容"
+      ],
+      "notes": "用三张场景纸牌，正面朝上表示真。每次只翻开一张，帮助学生理解三个属性共同构成当前画面。",
+      "layout": "text"
+    },
+    {
+      "title": "清理路线已给出的事件",
+      "body": [
+        "CleanButton.Click",
+        "Beach假，Cleanup真，Rescue假",
+        "三个设置属于同一次点击"
+      ],
+      "notes": "沿连接自上而下读三个Visible。特别指出只有把开头隐藏，才不会把两个场景上下叠在一起。",
+      "layout": "blocks",
+      "blockIndex": 1
+    },
+    {
+      "title": "救助路线的目标状态",
+      "body": [
+        "目标是RescueScene",
+        "另外两幕都应该隐藏",
+        "先在纸上写真与假"
+      ],
+      "notes": "先预测再拖积木。学生常复制清理事件却忘记把Cleanup真改为假；让其对照纸牌而非靠颜色猜。",
+      "layout": "text"
+    },
+    {
+      "title": "救助按钮的学生任务",
+      "body": [
+        "添加RescueButton.Click",
+        "为三个Scene各设置一次Visible",
+        "用一次点击检查唯一场景"
+      ],
+      "notes": "给学生8分钟操作，再请同伴读组件名和布尔值。看不到变化时先确认运行环境，而非设计器点击。",
+      "layout": "text"
+    },
+    {
+      "title": "救助路线的对照逻辑",
+      "body": [
+        "BeachScene.Visible为假",
+        "CleanupScene.Visible为假",
+        "RescueScene.Visible为真"
+      ],
+      "notes": "完成任务后显示实际积木。不要把“联系救助人员”讲成真实网络联系功能；本课按钮展示故事分支。",
+      "layout": "blocks",
+      "blockIndex": 2
+    },
+    {
+      "title": "清理场景也需要出口",
+      "body": [
+        "CleanupRestartButton.Click",
+        "Beach真，Cleanup假，Rescue假",
+        "返回后重新看到两个选择"
+      ],
+      "notes": "先让学生说出目标，再呈现积木截图。返回是设置当前场景，不是撤销编辑，也不是重新打开工程。",
+      "layout": "blocks",
+      "blockIndex": 3
+    },
+    {
+      "title": "救助场景的返回任务",
+      "body": [
+        "给RescueRestartButton添加Click",
+        "复制的是动作思路，事件要属于新按钮",
+        "返回规则与清理路线一致"
+      ],
+      "notes": "让学生独立完成，再检查是否误做第二个CleanupRestartButton.Click。一个组件不应出现重复同名事件。",
+      "layout": "text"
+    },
+    {
+      "title": "第二个返回入口的对照",
+      "body": [
+        "从救助回到BeachScene",
+        "三个Visible仍要完整设置",
+        "不要只显示Beach而留下救助场景"
+      ],
+      "notes": "显示第四组实际积木。两段重复逻辑暂时保留，第13课将学习过程，当前重点是每条路线有完整出口。",
+      "layout": "blocks",
+      "blockIndex": 4
+    },
+    {
+      "title": "状态表能说明切换规则",
+      "body": [],
+      "notes": "遮住真/假列，请学生逐项填。明确每行只有一个真是本作品约定，不是Visible属性自动保证的。",
+      "layout": "table",
+      "table": [
+        [
+          "画面",
+          "Beach",
+          "Cleanup",
+          "Rescue"
+        ],
+        [
+          "开头",
+          "真",
+          "假",
+          "假"
+        ],
+        [
+          "清理结果",
+          "假",
+          "真",
+          "假"
+        ],
+        [
+          "救助结果",
+          "假",
+          "假",
+          "真"
+        ]
+      ]
+    },
+    {
+      "title": "两幕同时显示的排查",
+      "body": [
+        "目标幕是否显示？",
+        "上一幕是否隐藏？",
+        "内容是否放在正确容器里？"
+      ],
+      "notes": "教师可以临时遗漏Beach假复现重叠，修复后再演示。只说“显示错了”不足以定位，要求指出具体属性。",
+      "layout": "text"
+    },
+    {
+      "title": "顺序测试覆盖两条路线",
+      "body": [
+        "开头→清理→返回",
+        "开头→救助→返回",
+        "返回后再走另一条路线"
+      ],
+      "notes": "学生一人操作、一人记录当前唯一场景，再交换。未使用运行设备的记录标待测，不能用设计器手动切Visible代替程序验证。",
+      "layout": "text"
+    },
+    {
+      "title": "故事选择需要说得通",
+      "body": [
+        "人物为什么作出选择？",
+        "结果怎样回应这次选择？",
+        "返回入口是否容易找到？"
+      ],
+      "notes": "可改编为图书馆、校园文明或探险故事。先改一段文字，不急着增加第四幕，避免分支数量掩盖逻辑缺口。",
+      "layout": "text"
+    },
+    {
+      "title": "素材与内容一起检查",
+      "body": [
+        "图片和文字讲同一件事",
+        "替换图片要保留许可说明",
+        "按钮文字说明真实动作"
+      ],
+      "notes": "工程提供原创故事插画。改成个人素材时核对文件名与Picture，避免复制电脑绝对路径。",
+      "layout": "text"
+    },
+    {
+      "title": "同伴第一次读我的故事",
+      "body": [
+        "不解释，观察同伴怎样选择",
+        "请同伴找回到开头的办法",
+        "记录一处不清楚的文字"
+      ],
+      "notes": "观察者不提前提示；若同伴找不到返回，修改可见按钮文字或位置，再测。",
+      "layout": "text"
+    },
+    {
+      "title": "我的场景程序说明",
+      "body": [
+        "点击________按钮",
+        "让________显示",
+        "同时让________和________隐藏"
+      ],
+      "notes": "参考救助路线：RescueButton；RescueScene；BeachScene与CleanupScene。解释覆盖全部场景才完整。",
+      "layout": "text"
+    },
+    {
+      "title": "出口题：只显示下一幕够吗？",
+      "body": [
+        "开头没有隐藏，会发生什么？",
+        "Visible为假会丢失故事吗？",
+        "两个分支为什么都要测试返回？"
+      ],
+      "notes": "参考：可能同时显示两幕；不会删除；两个返回属于不同按钮，完成一个不能证明另一个也正确。",
+      "layout": "question"
+    },
+    {
+      "title": "下一课：让界面更清楚",
+      "body": [
+        "场景解决展示顺序",
+        "布局决定信息是否好找",
+        "参考：MIT界面与布局组件"
+      ],
+      "notes": "来源：https://ai2.appinventor.mit.edu/reference/components/userinterface.html；https://ai2.appinventor.mit.edu/reference/components/layout.html。提交自己导出的AIA，保留原创改编说明与双路线测试记录。",
+      "layout": "text"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Image": "8",
+    "Button": "8",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "artifactSpec": "work/course56/aia/lesson04/artifact-spec.json",
+  "actualScreenshotGroups": [
+    "CleanButton.Click",
+    "RescueButton.Click",
+    "CleanupRestartButton.Click",
+    "RescueRestartButton.Click"
+  ],
+  "actualExpectedOutputs": [
+    {
+      "event": "CleanButton.Click",
+      "expect": {
+        "BeachScene.Visible": false,
+        "CleanupScene.Visible": true,
+        "RescueScene.Visible": false
+      }
+    },
+    {
+      "event": "CleanupRestartButton.Click",
+      "expect": {
+        "BeachScene.Visible": true,
+        "CleanupScene.Visible": false,
+        "RescueScene.Visible": false
+      }
+    },
+    {
+      "event": "RescueButton.Click",
+      "expect": {
+        "BeachScene.Visible": false,
+        "CleanupScene.Visible": false,
+        "RescueScene.Visible": true
+      }
+    },
+    {
+      "event": "RescueRestartButton.Click",
+      "expect": {
+        "BeachScene.Visible": true,
+        "CleanupScene.Visible": false,
+        "RescueScene.Visible": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,736 @@
+{
+  "lesson": 15,
+  "title": "手机涂鸦板",
+  "projectName": "YXCourse15",
+  "exampleTitle": "可选颜色与粗细的涂鸦板",
+  "durationMinutes": 90,
+  "goals": [
+    "以画布左上为原点解释X向右、Y向下的坐标。",
+    "用Dragged的上一点与当前点绘制连续短线。",
+    "完成点按和清空，区分旧笔迹与当前画笔属性。"
+  ],
+  "exampleSpec": {
+    "summary": "在画布拖动画连续线，点按留圆点。可以选择天蓝或红色、2或10像素线宽；清空删除旧笔迹，但保留当前画笔设置。",
+    "scope": "Class版已给选择画笔过程和四个工具按钮事件，学生补Dragged、Touched及Clear。作品不包含保存图片功能，清空后的笔迹不能靠本工程恢复。",
+    "components": [
+      {
+        "name": "PaintCanvas",
+        "type": "Canvas",
+        "role": "手指绘画区域"
+      },
+      {
+        "name": "BlueButton",
+        "type": "Button",
+        "role": "选择天蓝画笔"
+      },
+      {
+        "name": "RedButton",
+        "type": "Button",
+        "role": "选择红色画笔"
+      },
+      {
+        "name": "ThinButton",
+        "type": "Button",
+        "role": "细线2像素"
+      },
+      {
+        "name": "ThickButton",
+        "type": "Button",
+        "role": "粗线10像素"
+      },
+      {
+        "name": "ClearButton",
+        "type": "Button",
+        "role": "清空画布"
+      },
+      {
+        "name": "ToolLabel",
+        "type": "Label",
+        "role": "显示当前画笔"
+      }
+    ],
+    "logic": [
+      {
+        "event": "PaintCanvas.Dragged",
+        "actions": [
+          "DrawLine(prevX,prevY,currentX,currentY)"
+        ]
+      },
+      {
+        "event": "PaintCanvas.Touched",
+        "actions": [
+          "DrawCircle(x,y,LineWidth/2,true)"
+        ]
+      },
+      {
+        "event": "BlueButton.Click",
+        "actions": [
+          "PaintColor←天蓝；刷新提示"
+        ]
+      },
+      {
+        "event": "RedButton.Click",
+        "actions": [
+          "PaintColor←红色；刷新提示"
+        ]
+      },
+      {
+        "event": "ThinButton.Click",
+        "actions": [
+          "LineWidth←2"
+        ]
+      },
+      {
+        "event": "ThickButton.Click",
+        "actions": [
+          "LineWidth←10"
+        ]
+      },
+      {
+        "event": "ClearButton.Click",
+        "actions": [
+          "PaintCanvas.Clear"
+        ]
+      }
+    ],
+    "procedures": {
+      "选择画笔(颜色,宽度)": "设置PaintColor与LineWidth；刷新ToolLabel"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse15.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse15Class.aia：保留选择画笔(颜色,宽度)、颜色与粗细四个按钮事件；添加PaintCanvas.Dragged，用prevX/prevY连接currentX/currentY；添加PaintCanvas.Touched，画线宽一半半径的实心圆；添加ClearButton.Click，调用Clear。",
+    "starter": "YXCourse15Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–3",
+      "teacher": "展示完整行为并收集预测，不先揭示全部答案。",
+      "students": "体验或纸面预测，列出本课规则。",
+      "checkpoint": "能描述输入、当前状态和反馈。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "4–10",
+      "teacher": "结合坐标属于画布及实际组件树做短示范。",
+      "students": "定位组件与变量，手算一个具体例子。",
+      "checkpoint": "能用本课数值解释两个核心概念。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "11–13",
+      "teacher": "组织任务1：连接连续画线，先让学生写预测。",
+      "students": "按任务单完成第一项并检查实际结果。",
+      "checkpoint": "线段连续，不呈从一个起点发散的扇形。"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务2：读懂已给的画笔工具，用问题提示而非代做。",
+      "students": "修改对应逻辑，记录一次前后差异。",
+      "checkpoint": "能指认自己改变的具体积木。"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务3：加入点按和清空及边界检查。",
+      "students": "补完规则，按测试表交换操作者。",
+      "checkpoint": "基础用例有结果或明确写待测。"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–21",
+      "teacher": "用常见故障帮助定位，再给个性改编时间。",
+      "students": "说明修改原因，以同一用例复测。",
+      "checkpoint": "改编不破坏基础规则。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "22–24",
+      "teacher": "组织一分钟展示、出口题和导出。",
+      "students": "提交个人AIA、任务单与测试证据。",
+      "checkpoint": "能解释一项规则和一条验证证据。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "连接连续画线",
+      "steps": [
+        "导入Class版，添加PaintCanvas.Dragged。",
+        "调用DrawLine：从prevX、prevY画到currentX、currentY。",
+        "画弯曲线，检查是否连续且不向同一点发散。"
+      ],
+      "question": "为什么不能一直用startX、startY当每条线的起点？",
+      "answer": "那会从最初触点向后续点画多条长线，容易形成扇形；应连接相邻两点。"
+    },
+    {
+      "title": "读懂已给的画笔工具",
+      "steps": [
+        "找到BlueButton、RedButton、ThinButton、ThickButton事件。",
+        "先画蓝色细线，再切红色粗线，观察旧笔迹与新笔迹。",
+        "检查ToolLabel的状态文字和文字颜色随当前画笔更新。"
+      ],
+      "question": "改变PaintColor会把所有旧线一起变红吗？",
+      "answer": "不会，画笔属性影响之后绘制的内容，已画出的旧笔迹保持原来颜色。"
+    },
+    {
+      "title": "加入点按和清空",
+      "steps": [
+        "添加PaintCanvas.Touched，调用DrawCircle(x,y,LineWidth/2,true)。",
+        "添加ClearButton.Click，调用PaintCanvas.Clear。",
+        "选红色粗笔，清空后点按，检查出现半径5的红色实心圆点。"
+      ],
+      "question": "清空后为什么仍然是刚才选择的画笔？",
+      "answer": "Clear清绘图，不会自动重置PaintColor与LineWidth；本作品规定保留工具选择。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "弯曲拖动",
+      "expected": "线段连续，不呈从一个起点发散的扇形。"
+    },
+    {
+      "action": "蓝色细线后切红色粗线",
+      "expected": "旧蓝线保留，新笔迹变红变粗。"
+    },
+    {
+      "action": "线宽10时点按",
+      "expected": "出现半径5的实心圆点。"
+    },
+    {
+      "action": "选红粗笔，清空，再点按",
+      "expected": "旧线消失，仍用红色粗笔留点。"
+    }
+  ],
+  "misconceptions": [
+    [
+      "弯线变成扇形",
+      "DrawLine起点应为prevX、prevY。"
+    ],
+    [
+      "点一下没有痕迹",
+      "补Touched与DrawCircle。"
+    ],
+    [
+      "点按圆太大",
+      "检查半径是否误用完整LineWidth。"
+    ],
+    [
+      "清空后工具显示不一致",
+      "Clear只清笔迹；不要只改ToolLabel而不改实际属性。"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成连续线、点按和清空，解释工具只影响新笔迹。"
+    },
+    {
+      "level": "提高",
+      "task": "设计一种新颜色工具，并保持ToolLabel与实际画笔同步。"
+    },
+    {
+      "level": "拓展",
+      "task": "增加橡皮工具前先定义它是画背景色还是删除笔迹，记录背景变化时的限制。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "画布X向右增大，Y向哪个方向增大？",
+      "a": "向下。"
+    },
+    {
+      "q": "Dragged画连续线要连接哪两组参数？",
+      "a": "prevX/prevY与currentX/currentY。"
+    },
+    {
+      "q": "选粗笔后，为什么旧细线不会变粗？",
+      "a": "LineWidth影响之后的绘图，旧笔迹已经绘制完成。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT animation 参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/animation.html",
+      "use": "核对本课相应积木或组件；具体接口以随课工程为准。"
+    },
+    {
+      "title": "MIT control 参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/control.html",
+      "use": "核对本课相应积木或组件；具体接口以随课工程为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "手机涂鸦板",
+      "body": [
+        "第15课 · 可选颜色与粗细的涂鸦板",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "在画布拖动画连续线，点按留圆点。可以选择天蓝或红色、2或10像素线宽；清空删除旧笔迹，但保留当前画笔设置。 开场先体验作品并提出可观察问题，Class版的空缺与故障需先在教师教案核对。",
+      "layout": "text"
+    },
+    {
+      "title": "这次操作，结果会是什么？",
+      "body": [
+        "弯曲拖动",
+        "蓝色细线后切红色粗线",
+        "先写预测，再观察实际"
+      ],
+      "notes": "线段连续，不呈从一个起点发散的扇形。；旧蓝线保留，新笔迹变红变粗。。先不展示积木。若无运行设备，保留纸面预测，实际运行栏明确写待测。",
+      "layout": "question"
+    },
+    {
+      "title": "今天的作品证据",
+      "body": [
+        "以画布左上为原点解释X向右、Y向下的坐标。",
+        "用Dragged的上一点与当前点绘制连续短线。",
+        "完成点按和清空，区分旧笔迹与当前画笔属性。"
+      ],
+      "notes": "把目标转为演示、解释与测试记录。基础规则优先，个人改编应在基础逻辑明确后进行。",
+      "layout": "text"
+    },
+    {
+      "title": "90分钟的学习路线",
+      "body": [
+        "每段示范后立即操作"
+      ],
+      "notes": "7段依次10、15、15、15、15、10、10分钟。根据设备轮换安排体验，不把无设备的预测写成实际运行成功。",
+      "layout": "table",
+      "table": [
+        [
+          "时间",
+          "活动"
+        ],
+        [
+          "0–10",
+          "体验与预测"
+        ],
+        [
+          "10–25",
+          "组件与核心概念"
+        ],
+        [
+          "25–40",
+          "任务一"
+        ],
+        [
+          "40–55",
+          "任务二"
+        ],
+        [
+          "55–70",
+          "任务三和边界"
+        ],
+        [
+          "70–80",
+          "排错、改编、互测"
+        ],
+        [
+          "80–90",
+          "展示与提交"
+        ]
+      ]
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "按钮事件改变文字和状态",
+        "画布还能提供触摸位置",
+        "把每次拖动的位置连起来形成线条"
+      ],
+      "notes": "把前课经验与本课新问题相连。请学生说出一个之前作品中的具体事件，再指出本课新增的数据或规则。",
+      "layout": "text"
+    },
+    {
+      "title": "本课工程的实际界面",
+      "body": [
+        "手指绘画区域",
+        "选择天蓝画笔",
+        "选择红色画笔",
+        "细线2像素"
+      ],
+      "notes": "展示完整答案的真实Designer截图，按组件名定位操作、输入与反馈。组件设计器只呈现布局，不执行按钮事件。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件的分工",
+      "body": [],
+      "notes": "不要求记住英文拼写，但制作时必须核对对象名。输入框、标签与按钮承担不同工作。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "工作"
+        ],
+        [
+          "PaintCanvas",
+          "Canvas",
+          "手指绘画区域"
+        ],
+        [
+          "BlueButton",
+          "Button",
+          "选择天蓝画笔"
+        ],
+        [
+          "RedButton",
+          "Button",
+          "选择红色画笔"
+        ],
+        [
+          "ThinButton",
+          "Button",
+          "细线2像素"
+        ],
+        [
+          "ThickButton",
+          "Button",
+          "粗线10像素"
+        ],
+        [
+          "ClearButton",
+          "Button",
+          "清空画布"
+        ],
+        [
+          "ToolLabel",
+          "Label",
+          "显示当前画笔"
+        ]
+      ]
+    },
+    {
+      "title": "程序需要记住或接收什么",
+      "body": [],
+      "notes": "区分运行变量、过程参数和界面文字。让学生在当前工程中找到每一项来源，不能把标签文字当作内部状态。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "含义"
+        ],
+        [
+          "PaintColor",
+          "之后绘图使用的颜色"
+        ],
+        [
+          "LineWidth",
+          "之后绘图使用的粗细"
+        ],
+        [
+          "prevX/prevY",
+          "本次拖动事件的上一点"
+        ],
+        [
+          "currentX/currentY",
+          "本次拖动事件的当前点"
+        ]
+      ]
+    },
+    {
+      "title": "坐标属于画布",
+      "body": [
+        "左上为(0,0)",
+        "X向右增大，Y向下增大",
+        "工具栏高度不计入画布坐标"
+      ],
+      "notes": "请学生用手指在纸面画布指出(10,20)。坐标来自事件参数，不是整个手机屏幕上的绝对位置。",
+      "layout": "text"
+    },
+    {
+      "title": "连续笔迹由短线连接",
+      "body": [
+        "从上一点画到当前点",
+        "下一次事件继续连接",
+        "起点不能一直固定在最初触点"
+      ],
+      "notes": "画出三点A、B、C，比较A-B、B-C与A-B、A-C。后者形成从起点发散的扇形，不是连续弯曲路径。",
+      "layout": "text"
+    },
+    {
+      "title": "从操作到结果的追踪",
+      "body": [],
+      "notes": "先遮住结果列让学生预测，再用当前规则逐步演算。Class版已给选择画笔过程和四个工具按钮事件，学生补Dragged、Touched及Clear。作品不包含保存图片功能，清空后的笔迹不能靠本工程恢复。",
+      "layout": "table",
+      "table": [
+        [
+          "操作",
+          "新笔迹",
+          "旧笔迹"
+        ],
+        [
+          "选天蓝、细线后画",
+          "天蓝，线宽2",
+          "保持"
+        ],
+        [
+          "改红、粗线后画",
+          "红色，线宽10",
+          "不变色不变粗"
+        ],
+        [
+          "清空",
+          "尚无新笔迹",
+          "全部删除"
+        ],
+        [
+          "点按",
+          "当前画笔实心圆",
+          "无法恢复旧线"
+        ]
+      ]
+    },
+    {
+      "title": "连接上一点与当前点",
+      "body": [
+        "DrawLine起点prevX、prevY",
+        "终点currentX、currentY",
+        "每次拖动事件画一小段"
+      ],
+      "notes": "四个输入槽顺序不能混淆。学生Class版没有Dragged事件，需要自己添加。 对应实际截图组：PaintCanvas.Dragged。",
+      "layout": "blocks",
+      "blockIndex": 1
+    },
+    {
+      "title": "连接连续画线",
+      "body": [
+        "导入Class版，添加PaintCanvas.Dragged。",
+        "调用DrawLine：从prevX、prevY画到currentX、currentY。",
+        "画弯曲线，检查是否连续且不向同一点发散。"
+      ],
+      "notes": "为什么不能一直用startX、startY当每条线的起点？ 参考：那会从最初触点向后续点画多条长线，容易形成扇形；应连接相邻两点。 练习中先让学生独立操作，再结对核对；已给出的结构只读和验证，不强行重复搭建。",
+      "layout": "text"
+    },
+    {
+      "title": "画笔选择已经提供",
+      "body": [
+        "按钮调用选择画笔",
+        "修改颜色时保留线宽",
+        "工具文字颜色也显示画笔色"
+      ],
+      "notes": "这张BlueButton.Click为阅读示范，不是待补任务。已有粗细按钮同样调用过程，在工具状态中观察两个属性。 对应实际截图组：BlueButton.Click。",
+      "layout": "blocks",
+      "blockIndex": 2
+    },
+    {
+      "title": "读懂已给的画笔工具",
+      "body": [
+        "找到BlueButton、RedButton、ThinButton、ThickButton事件。",
+        "先画蓝色细线，再切红色粗线，观察旧笔迹与新笔迹。",
+        "检查ToolLabel的状态文字和文字颜色随当前画笔更新。"
+      ],
+      "notes": "改变PaintColor会把所有旧线一起变红吗？ 参考：不会，画笔属性影响之后绘制的内容，已画出的旧笔迹保持原来颜色。 练习中先让学生独立操作，再结对核对；已给出的结构只读和验证，不强行重复搭建。",
+      "layout": "text"
+    },
+    {
+      "title": "点按留下实心圆",
+      "body": [
+        "圆心使用x、y",
+        "半径为LineWidth÷2",
+        "fill设置为真"
+      ],
+      "notes": "线宽是圆点直径的参考，因此半径取一半。触摸点按由Touched处理，不能只依赖Dragged。 对应实际截图组：PaintCanvas.Touched。",
+      "layout": "blocks",
+      "blockIndex": 3
+    },
+    {
+      "title": "加入点按和清空",
+      "body": [
+        "添加PaintCanvas.Touched，调用DrawCircle(x,y,LineWidth/2,true)。",
+        "添加ClearButton.Click，调用PaintCanvas.Clear。",
+        "选红色粗笔，清空后点按，检查出现半径5的红色实心圆点。"
+      ],
+      "notes": "清空后为什么仍然是刚才选择的画笔？ 参考：Clear清绘图，不会自动重置PaintColor与LineWidth；本作品规定保留工具选择。 练习中先让学生独立操作，再结对核对；已给出的结构只读和验证，不强行重复搭建。",
+      "layout": "text"
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "交换操作者和观察者。先写预期，再记实际；有差异时写复现步骤，不只画一个勾号。未测试Android的项目标注待测。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "弯曲拖动",
+          "线段连续，不呈从一个起点发散的扇形。"
+        ],
+        [
+          "蓝色细线后切红色粗线",
+          "旧蓝线保留，新笔迹变红变粗。"
+        ],
+        [
+          "线宽10时点按",
+          "出现半径5的实心圆点。"
+        ],
+        [
+          "选红粗笔，清空，再点按",
+          "旧线消失，仍用红色粗笔留点。"
+        ]
+      ]
+    },
+    {
+      "title": "故障的线索与定位",
+      "body": [],
+      "notes": "先复现一个具体差异，再检查表中对应位置，每次只改一项。Class版已给选择画笔过程和四个工具按钮事件，学生补Dragged、Touched及Clear。作品不包含保存图片功能，清空后的笔迹不能靠本工程恢复。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "先检查"
+        ],
+        [
+          "弯线变成扇形",
+          "DrawLine起点应为prevX、prevY。"
+        ],
+        [
+          "点一下没有痕迹",
+          "补Touched与DrawCircle。"
+        ],
+        [
+          "点按圆太大",
+          "检查半径是否误用完整LineWidth。"
+        ],
+        [
+          "清空后工具显示不一致",
+          "Clear只清笔迹；不要只改ToolLabel而不改实际属性。"
+        ]
+      ]
+    },
+    {
+      "title": "我的一次有目的的改编",
+      "body": [
+        "加入第三种颜色，先写工具状态应怎样变化，再观察新旧笔迹。",
+        "先写新规则，再改程序",
+        "用同一个测试比较修改前后"
+      ],
+      "notes": "提高组完成：设计一种新颜色工具，并保持ToolLabel与实际画笔同步。 拓展组：增加橡皮工具前先定义它是画背景色还是删除笔迹，记录背景变化时的限制。 基础规则与测试不能省略。",
+      "layout": "text"
+    },
+    {
+      "title": "规则、预测与证据",
+      "body": [
+        "我修改的规则是________",
+        "操作________时，我预测________",
+        "实际________，所以我检查________"
+      ],
+      "notes": "对应任务单的空位。要求至少一个具体输入与结果；只写“正常”无法说明规则。没有运行设备时把实际结果栏写待测。",
+      "layout": "question"
+    },
+    {
+      "title": "一分钟作品分享",
+      "body": [
+        "我的作品给谁使用？",
+        "演示一条完整规则与一个边界",
+        "说明一次修改的理由和证据"
+      ],
+      "notes": "每组选择一条最能说明理解的路径。作者先演示再解释，同伴围绕规则给出具体建议，不只评价外观。",
+      "layout": "text"
+    },
+    {
+      "title": "出口题：说出原因",
+      "body": [
+        "画布X向右增大，Y向哪个方向增大？",
+        "Dragged画连续线要连接哪两组参数？",
+        "选粗笔后，为什么旧细线不会变粗？"
+      ],
+      "notes": "1. 向下。\n2. prevX/prevY与currentX/currentY。\n3. LineWidth影响之后的绘图，旧笔迹已经绘制完成。",
+      "layout": "question"
+    },
+    {
+      "title": "本课保存与下一步",
+      "body": [
+        "导出自己的AIA，保留测试记录",
+        "说明参考来源与个人改动",
+        "第16课不靠手指轨迹，而让坐标规律自动生成图案。"
+      ],
+      "notes": "来源：https://ai2.appinventor.mit.edu/reference/components/animation.html；https://ai2.appinventor.mit.edu/reference/blocks/control.html。本课程为独立编写，不是MIT官方编号课件。AIA为可编辑工程，APK为安装程序；是否导入、编译或实机验证以最终验证说明为准。",
+      "layout": "text"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "Canvas": "15",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "选择画笔(颜色,宽度)",
+    "颜色与粗细四个按钮事件"
+  ],
+  "actualClassroomTasks": [
+    "添加PaintCanvas.Dragged，用prevX/prevY连接currentX/currentY",
+    "添加PaintCanvas.Touched，画线宽一半半径的实心圆",
+    "添加ClearButton.Click，调用Clear"
+  ],
+  "artifactSpec": "work/course56/aia/lesson15/artifact-spec.json",
+  "actualScreenshotGroups": [
+    "PaintCanvas.Dragged",
+    "BlueButton.Click",
+    "PaintCanvas.Touched"
+  ],
+  "actualExpectedOutputs": [
+    {
+      "event": "PaintCanvas.Dragged",
+      "args": {
+        "prevX": 10,
+        "prevY": 20,
+        "currentX": 35,
+        "currentY": 55
+      },
+      "methods": [
+        "PaintCanvas.DrawLine:10,20,35,55"
+      ]
+    },
+    {
+      "events": [
+        "RedButton.Click",
+        "ThickButton.Click"
+      ],
+      "expect": {
+        "PaintCanvas.PaintColor": -2396013,
+        "PaintCanvas.LineWidth": 10
+      }
+    },
+    {
+      "set": {
+        "PaintCanvas.LineWidth": 10
+      },
+      "event": "PaintCanvas.Touched",
+      "args": {
+        "x": 50,
+        "y": 60
+      },
+      "methods": [
+        "PaintCanvas.DrawCircle:50,60,5,true"
+      ]
+    },
+    {
+      "event": "ClearButton.Click",
+      "methods": [
+        "PaintCanvas.Clear"
+      ]
+    }
+  ]
+}

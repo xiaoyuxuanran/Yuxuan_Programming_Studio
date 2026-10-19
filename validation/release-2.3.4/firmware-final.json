@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "fqbn": "esp32:esp32:esp32",
+  "core": "2.0.17",
+  "realHardwareTested": false,
+  "builds": [
+    {
+      "sketch": "43-serial-protocol",
+      "exitCode": 0,
+      "seconds": 9.56,
+      "summary": "Sketch uses 288249 bytes (21%) of program storage space. Maximum is 1310720 bytes.\nGlobal variables use 21760 bytes (6%) of dynamic memory, leaving 305920 bytes for local variables. Maximum is 327680 bytes.\n\nUsed platform Version Path\nesp32:esp32   2.0.17  U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\n"
+    },
+    {
+      "sketch": "44-45-classic-spp",
+      "exitCode": 0,
+      "seconds": 21.0,
+      "summary": "Sketch uses 1100729 bytes (83%) of program storage space. Maximum is 1310720 bytes.\nGlobal variables use 40100 bytes (12%) of dynamic memory, leaving 287580 bytes for local variables. Maximum is 327680 bytes.\n\nUsed library    Version Path\nBluetoothSerial 2.0.0   U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\\libraries\\BluetoothSerial\n\nUsed platform Version Path\nesp32:esp32   2.0.17  U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\n"
+    },
+    {
+      "sketch": "46-ble-led",
+      "exitCode": 0,
+      "seconds": 48.19,
+      "summary": "Sketch uses 1115161 bytes (85%) of program storage space. Maximum is 1310720 bytes.\nGlobal variables use 38980 bytes (11%) of dynamic memory, leaving 288700 bytes for local variables. Maximum is 327680 bytes.\n\nUsed library      Version Path\nESP32 BLE Arduino 2.0.0   U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\\libraries\\BLE\n\nUsed platform Version Path\nesp32:esp32   2.0.17  U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\n"
+    },
+    {
+      "sketch": "47-tcp-ap",
+      "exitCode": 0,
+      "seconds": 25.12,
+      "summary": "Sketch uses 756641 bytes (57%) of program storage space. Maximum is 1310720 bytes.\nGlobal variables use 45080 bytes (13%) of dynamic memory, leaving 282600 bytes for local variables. Maximum is 327680 bytes.\n\nUsed library Version Path\nWiFi         2.0.0   U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\\libraries\\WiFi\n\nUsed platform Version Path\nesp32:esp32   2.0.17  U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\n"
+    },
+    {
+      "sketch": "48-tcp-sta",
+      "exitCode": 0,
+      "seconds": 25.76,
+      "summary": "Sketch uses 756281 bytes (57%) of program storage space. Maximum is 1310720 bytes.\nGlobal variables use 45088 bytes (13%) of dynamic memory, leaving 282592 bytes for local variables. Maximum is 327680 bytes.\n\nUsed library Version Path\nWiFi         2.0.0   U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\\libraries\\WiFi\n\nUsed platform Version Path\nesp32:esp32   2.0.17  U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\n"
+    },
+    {
+      "sketch": "49-50-tcp-reliable",
+      "exitCode": 0,
+      "seconds": 24.95,
+      "summary": "Sketch uses 756205 bytes (57%) of program storage space. Maximum is 1310720 bytes.\nGlobal variables use 45088 bytes (13%) of dynamic memory, leaving 282592 bytes for local variables. Maximum is 327680 bytes.\n\nUsed library Version Path\nWiFi         2.0.0   U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\\libraries\\WiFi\n\nUsed platform Version Path\nesp32:esp32   2.0.17  U:\\Arduino15\\packages\\esp32\\hardware\\esp32\\2.0.17\n"
+    }
+  ]
+}

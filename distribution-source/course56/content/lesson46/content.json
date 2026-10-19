@@ -1,0 +1,756 @@
+{
+  "lesson": 46,
+  "title": "BLE 应用体验",
+  "projectName": "YXCourse46",
+  "exampleTitle": "MIT BluetoothLE低功耗蓝牙",
+  "durationMinutes": 90,
+  "goals": [
+    "设备广播帮助APP发现。",
+    "StringsWritten表示BLE写入完成。",
+    "用测试记录验证BLE 应用体验的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "BLE灯控体验：扫描广播，连接服务，向特征写入0或1并订阅状态通知。",
+    "scope": "配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 BLE工程已内置完整MIT BluetoothLE扩展。服务6e400001…，RX写6e400002…，TX通知6e400003…，完整UUID见接线协议文档。写UTF-8列表中的单字符0或1，不附LF或NUL。",
+    "components": [
+      {
+        "name": "ScanButton",
+        "type": "Button",
+        "role": "开始5秒扫描"
+      },
+      {
+        "name": "OnButton",
+        "type": "Button",
+        "role": "写入开灯"
+      },
+      {
+        "name": "OffButton",
+        "type": "Button",
+        "role": "写入关灯"
+      },
+      {
+        "name": "DisconnectButton",
+        "type": "Button",
+        "role": "主动断开"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "连接与服务状态"
+      },
+      {
+        "name": "Ble",
+        "type": "BluetoothLE",
+        "role": "MIT BLE扩展"
+      },
+      {
+        "name": "ScanClock",
+        "type": "Clock",
+        "role": "扫描结束计时"
+      },
+      {
+        "name": "DevicePicker",
+        "type": "ListPicker",
+        "role": "按扫描序号选择设备"
+      }
+    ],
+    "logic": [
+      {
+        "event": "ScanButton.Click",
+        "actions": [
+          "StartScanning；ScanClock开；提示扫描中"
+        ]
+      },
+      {
+        "event": "Ble.DeviceFound",
+        "actions": [
+          "更新设备列表"
+        ]
+      },
+      {
+        "event": "ScanClock.Timer",
+        "actions": [
+          "StopScanning；自身关闭"
+        ]
+      },
+      {
+        "event": "Ble.Connected",
+        "actions": [
+          "RegisterForStrings(服务UUID,通知UUID,false)；控制启用"
+        ]
+      },
+      {
+        "event": "Ble.StringsReceived",
+        "actions": [
+          "核对两个UUID；遍历stringValues，匹配LED,0/1再显示"
+        ]
+      },
+      {
+        "event": "Ble.ConnectionFailed",
+        "actions": [
+          "清理并显示reason"
+        ]
+      },
+      {
+        "event": "Ble.Disconnected",
+        "actions": [
+          "清理连接界面"
+        ]
+      },
+      {
+        "event": "OnButton.Click",
+        "actions": [
+          "调用写入开关(文字1)"
+        ]
+      },
+      {
+        "event": "OffButton.Click",
+        "actions": [
+          "调用写入开关(文字0)"
+        ]
+      },
+      {
+        "event": "DisconnectButton.Click",
+        "actions": [
+          "Ble.Disconnect"
+        ]
+      }
+    ],
+    "procedures": {
+      "开始扫描": "停止旧扫描和连接、清状态，StartScanning并开启5秒计时",
+      "写入开关": "使用服务与RX UUID、utf16=false、单项文字列表写入",
+      "解析通知": "只接受LED,0/1两字段通知",
+      "清理连接": "禁用控制并设未连接"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse46.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse46Class.aia：保留所有组件与协议参数、连接状态清理、数值边界、非本课重点过程和完整事件入口、扩展完整原始包与真实事件签名；补齐开始扫描过程；补齐写入开关过程；补齐解析通知过程。",
+    "starter": "YXCourse46Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补扫描并阅读订阅，先问再示范。",
+      "students": "按任务单完成：补扫描并阅读订阅。",
+      "checkpoint": "BLE设备选择为什么用SelectionIndex连接？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补写入开关，先问再示范。",
+      "students": "按任务单完成：补写入开关。",
+      "checkpoint": "StringsWritten等于设备应用确认吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补通知解析，先问再示范。",
+      "students": "按任务单完成：补通知解析。",
+      "checkpoint": "为什么不是用BluetoothClient的配对列表？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补扫描并阅读订阅",
+      "steps": [
+        "补开始扫描：先停止旧扫描与连接、清状态和列表。",
+        "StartScanning并开5秒ScanClock。",
+        "DeviceFound与停止事件已给，DeviceList进入ElementsFromString。",
+        "阅读Connected中RegisterForStrings，区分扫描和通知订阅。"
+      ],
+      "question": "BLE设备选择为什么用SelectionIndex连接？",
+      "answer": "本扩展Connect接受扫描列表序号，显示列表必须与该索引一致。"
+    },
+    {
+      "title": "补写入开关",
+      "steps": [
+        "连接标志和IsDeviceConnected都真才写入。",
+        "WriteStringsWithResponse传服务UUID、RX UUID、false及单项文字列表。",
+        "参数只传0或1，不加LF，NullTerminateStrings为false。",
+        "等待设备通知，不把写完成当作灯已亮。"
+      ],
+      "question": "StringsWritten等于设备应用确认吗？",
+      "answer": "不等于，它只说明BLE写入操作完成，灯状态由TX通知协议确认。"
+    },
+    {
+      "title": "补通知解析",
+      "steps": [
+        "StringsReceived入口已给，先核对服务及TX UUID。",
+        "遍历stringValues，逐项交解析通知。",
+        "消息必须是LED,0或LED,1才更新。",
+        "LED,9或未知字段不覆盖原状态。"
+      ],
+      "question": "为什么不是用BluetoothClient的配对列表？",
+      "answer": "BLE围绕扫描、服务和特征通信，不是经典SPP配对通道。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "扫描5秒",
+      "expected": "停止扫描，列表可以选择"
+    },
+    {
+      "action": "连接后开灯",
+      "expected": "写入1，收到LED,1通知"
+    },
+    {
+      "action": "主动断开",
+      "expected": "控制禁用，可重新扫描连接"
+    }
+  ],
+  "misconceptions": [
+    [
+      "能连接但收不到状态",
+      "检查RegisterForStrings及通知UUID"
+    ],
+    [
+      "设备名可见却写不进",
+      "核对服务/写UUID及特征Write权限"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "为BLE设备修改易识别的广播名。"
+    },
+    {
+      "level": "拓展",
+      "task": "对比SPP串流与BLE特征，列出各自APP组件。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "RX与TX特征分别做什么？",
+      "a": "RX接收写入命令，TX提供设备状态通知。"
+    },
+    {
+      "q": "这里写1后附LF吗？",
+      "a": "不附，只写UTF-8单字符1。"
+    },
+    {
+      "q": "收到通知先检查什么？",
+      "a": "服务UUID与通知特征UUID，再校验消息内容。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#BluetoothClient 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetoothle 官方参考",
+      "url": "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetooth.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT wifi.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT gpio.html 官方参考",
+      "url": "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "BLE 应用体验",
+      "body": [
+        "MIT BluetoothLE低功耗蓝牙",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "BLE灯控体验：扫描广播，连接服务，向特征写入0或1并订阅状态通知。 配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 BLE工程已内置完整MIT BluetoothLE扩展。服务6e400001…，RX写6e400002…，TX通知6e400003…，完整UUID见接线协议文档。写UTF-8列表中的单字符0或1，不附LF或NUL。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "扫描最长5秒，显示发现设备；选中后停止扫描再连接。",
+        "固定服务与收发特征UUID必须与固件一致。",
+        "连接成功订阅通知；只有通知LED,0/1才更新设备状态。"
+      ],
+      "notes": "演示：扫描5秒。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "设备广播帮助APP发现。",
+        "StringsWritten表示BLE写入完成。",
+        "用测试记录验证BLE 应用体验的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "BLE灯控体验：扫描广播，连接服务，向特征写入0或1并订阅状态通知。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "扫描最长5秒，显示发现设备；选中后停止扫描再连接。",
+        "固定服务与收发特征UUID必须与固件一致。",
+        "连接成功订阅通知；只有通知LED,0/1才更新设备状态。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "开始5秒扫描",
+        "写入开灯",
+        "写入关灯",
+        "主动断开"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "ScanButton",
+          "Button",
+          "开始5秒扫描"
+        ],
+        [
+          "OnButton",
+          "Button",
+          "写入开灯"
+        ],
+        [
+          "OffButton",
+          "Button",
+          "写入关灯"
+        ],
+        [
+          "DisconnectButton",
+          "Button",
+          "主动断开"
+        ],
+        [
+          "StatusLabel",
+          "Label",
+          "连接与服务状态"
+        ],
+        [
+          "Ble",
+          "BluetoothLE",
+          "MIT BLE扩展"
+        ]
+      ],
+      "columnWidths": [
+        300,
+        330,
+        522
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "已连接",
+          "假；Connected回调才真"
+        ],
+        [
+          "DevicePicker",
+          "ElementsFromString接DeviceList"
+        ],
+        [
+          "ScanClock",
+          "5秒后停止扫描"
+        ],
+        [
+          "UTF-16／NUL",
+          "false／false"
+        ]
+      ]
+    },
+    {
+      "title": "BLE围绕服务和特征通信",
+      "body": [
+        "设备广播帮助APP发现。",
+        "服务把相关特征组织在一起。",
+        "写入和通知使用不同特征，UUID必须完全一致。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "通知与写入确认含义不同",
+      "body": [
+        "StringsWritten表示BLE写入完成。",
+        "LED,1通知表示应用协议的设备状态。",
+        "BLE不是SPP，不使用BluetoothClient配对列表。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "开始扫描并保持设备索引一致",
+        "Connected订阅TX通知",
+        "写RX后等LED,0/1通知确认"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：所有组件与协议参数；连接状态清理、数值边界、非本课重点过程和完整事件入口；扩展完整原始包与真实事件签名。学生任务：补齐开始扫描过程；补齐写入开关过程；补齐解析通知过程。",
+      "layout": "text"
+    },
+    {
+      "title": "连接后订阅通知",
+      "body": [
+        "Connected中RegisterForStrings。",
+        "订阅TX，写入使用另一个RX。"
+      ],
+      "notes": "截图为已给Connected；扫描过程是课堂任务一，不能把订阅当扫描。 实际截图对应：Ble.Connected。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 BLE工程已内置完整MIT BluetoothLE扩展。服务6e400001…，RX写6e400002…，TX通知6e400003…，完整UUID见接线协议文档。写UTF-8列表中的单字符0或1，不附LF或NUL。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "Ble.Connected"
+    },
+    {
+      "title": "补扫描并阅读订阅",
+      "body": [
+        "补开始扫描：先停止旧扫描与连接、清状态和列表。",
+        "StartScanning并开5秒ScanClock。",
+        "DeviceFound与停止事件已给，DeviceList进入ElementsFromString。"
+      ],
+      "notes": "实践15分钟。BLE设备选择为什么用SelectionIndex连接？ 教师参考：本扩展Connect接受扫描列表序号，显示列表必须与该索引一致。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "写入UTF-8开关",
+      "body": [
+        "写入列表只含0或1。",
+        "不带换行或NUL。"
+      ],
+      "notes": "写入开关待补；方法签名按包内真实扩展。 实际截图对应：写入开关。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 BLE工程已内置完整MIT BluetoothLE扩展。服务6e400001…，RX写6e400002…，TX通知6e400003…，完整UUID见接线协议文档。写UTF-8列表中的单字符0或1，不附LF或NUL。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "写入开关"
+    },
+    {
+      "title": "补写入开关",
+      "body": [
+        "连接标志和IsDeviceConnected都真才写入。",
+        "WriteStringsWithResponse传服务UUID、RX UUID、false及单项文字列表。",
+        "参数只传0或1，不加LF，NullTerminateStrings为false。"
+      ],
+      "notes": "实践15分钟。StringsWritten等于设备应用确认吗？ 教师参考：不等于，它只说明BLE写入操作完成，灯状态由TX通知协议确认。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "接收并校验通知",
+      "body": [
+        "核对UUID，遍历stringValues。",
+        "只接纳LED,0或LED,1。"
+      ],
+      "notes": "入口已给，解析通知过程待补。 实际截图对应：Ble.StringsReceived。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 BLE工程已内置完整MIT BluetoothLE扩展。服务6e400001…，RX写6e400002…，TX通知6e400003…，完整UUID见接线协议文档。写UTF-8列表中的单字符0或1，不附LF或NUL。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "Ble.StringsReceived"
+    },
+    {
+      "title": "补通知解析",
+      "body": [
+        "StringsReceived入口已给，先核对服务及TX UUID。",
+        "遍历stringValues，逐项交解析通知。",
+        "消息必须是LED,0或LED,1才更新。"
+      ],
+      "notes": "实践15分钟。为什么不是用BluetoothClient的配对列表？ 教师参考：BLE围绕扫描、服务和特征通信，不是经典SPP配对通道。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "扫描5秒",
+          "停止扫描，列表可以选择"
+        ],
+        [
+          "连接后开灯",
+          "写入1，收到LED,1通知"
+        ],
+        [
+          "主动断开",
+          "控制禁用，可重新扫描连接"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "能连接但收不到状态",
+          "检查RegisterForStrings及通知UUID"
+        ],
+        [
+          "设备名可见却写不进",
+          "核对服务/写UUID及特征Write权限"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "扫描5秒",
+          "停止扫描，列表可以选择"
+        ],
+        [
+          "连接后开灯",
+          "写入1，收到LED,1通知"
+        ],
+        [
+          "主动断开",
+          "控制禁用，可重新扫描连接"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "为BLE设备修改易识别的广播名。",
+        "对比SPP串流与BLE特征，列出各自APP组件。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“扫描5秒”写下预测，再记录实际结果。",
+        "结合积木解释：BLE围绕服务和特征通信。",
+        "修改一条规则并添加一项边界测试：为BLE设备修改易识别的广播名。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：主动断开。",
+        "说明：通知与写入确认含义不同。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "RX与TX特征分别做什么？",
+        "这里写1后附LF吗？",
+        "收到通知先检查什么？"
+      ],
+      "notes": "1. RX接收写入命令，TX提供设备状态通知。\n2. 不附，只写UTF-8单字符1。\n3. 服务UUID与通知特征UUID，再校验消息内容。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Button": "8",
+    "ListPicker": "10",
+    "VerticalArrangement": "4",
+    "BluetoothLE": "20230728",
+    "Clock": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "所有组件与协议参数",
+    "连接状态清理、数值边界、非本课重点过程和完整事件入口",
+    "扩展完整原始包与真实事件签名"
+  ],
+  "actualClassroomTasks": [
+    "补齐开始扫描过程",
+    "补齐写入开关过程",
+    "补齐解析通知过程"
+  ],
+  "actualScreenshotGroups": [
+    "Ble.Connected",
+    "写入开关",
+    "Ble.StringsReceived"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "已连接",
+      "通知字段",
+      "接收字段",
+      "有效应答",
+      "日志"
+    ],
+    "procedures": {
+      "整数范围": [
+        "值",
+        "下限",
+        "上限"
+      ],
+      "记录日志": [
+        "内容"
+      ],
+      "清理连接": [],
+      "开始扫描": [],
+      "停止扫描": [],
+      "写入开关": [
+        "值"
+      ],
+      "解析通知": [
+        "消息"
+      ]
+    },
+    "events": [
+      "ScanButton.Click",
+      "ScanClock.Timer",
+      "DevicePicker.BeforePicking",
+      "Ble.DeviceFound",
+      "DevicePicker.AfterPicking",
+      "Ble.Connected",
+      "Ble.StringsReceived",
+      "Ble.ConnectionFailed",
+      "Ble.Disconnected",
+      "DisconnectButton.Click",
+      "OnButton.Click",
+      "OffButton.Click",
+      "Screen1.PermissionDenied",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "procedure": "解析通知",
+      "args": [
+        "LED,1"
+      ],
+      "expect": {
+        "StateLabel.Text": "BLE设备确认：LED=1"
+      }
+    },
+    {
+      "procedure": "解析通知",
+      "args": [
+        "LED,0"
+      ],
+      "expect": {
+        "StateLabel.Text": "BLE设备确认：LED=0"
+      }
+    },
+    {
+      "set": {
+        "StateLabel.Text": "原状态"
+      },
+      "procedure": "解析通知",
+      "args": [
+        "LED,9"
+      ],
+      "expect": {
+        "StateLabel.Text": "原状态"
+      }
+    },
+    {
+      "procedure": "清理连接",
+      "expect": {
+        "global 已连接": false,
+        "OnButton.Enabled": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson46/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

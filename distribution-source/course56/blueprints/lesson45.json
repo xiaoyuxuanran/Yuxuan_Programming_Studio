@@ -1,0 +1,624 @@
+{
+  "schemaVersion": 1,
+  "id": 45,
+  "title": "蓝牙双向交互",
+  "lessonMinutes": 90,
+  "projectName": "YXCourse45",
+  "appDescription": "蓝牙调光面板：滑块设置LED亮度，读取电位器和按钮状态，并处理非法应答。",
+  "experience": "滑块0～255只预览目标亮度，点应用才发送PWM。",
+  "features": [
+    "滑块0～255只预览目标亮度，点应用才发送PWM。",
+    "GET返回STATE,led,pwm,adc,button，字段校验后更新。",
+    "连接丢失禁用发送，重新连接清空半行缓存。"
+  ],
+  "components": [
+    {
+      "name": "DevicePicker",
+      "type": "ListPicker",
+      "role": "选择SPP设备",
+      "keyProperties": {}
+    },
+    {
+      "name": "BrightnessSlider",
+      "type": "Slider",
+      "role": "目标亮度0到255",
+      "keyProperties": {
+        "MinValue": 0,
+        "MaxValue": 255
+      }
+    },
+    {
+      "name": "ApplyButton",
+      "type": "Button",
+      "role": "发送PWM",
+      "keyProperties": {}
+    },
+    {
+      "name": "ReadButton",
+      "type": "Button",
+      "role": "读取状态",
+      "keyProperties": {}
+    },
+    {
+      "name": "TargetLabel",
+      "type": "Label",
+      "role": "目标亮度",
+      "keyProperties": {}
+    },
+    {
+      "name": "ActualLabel",
+      "type": "Label",
+      "role": "设备确认亮度",
+      "keyProperties": {}
+    },
+    {
+      "name": "AdcLabel",
+      "type": "Label",
+      "role": "电位器原始值",
+      "keyProperties": {}
+    },
+    {
+      "name": "ButtonLabel",
+      "type": "Label",
+      "role": "实体按钮状态",
+      "keyProperties": {}
+    },
+    {
+      "name": "Bt",
+      "type": "BluetoothClient",
+      "role": "经典SPP",
+      "keyProperties": {}
+    },
+    {
+      "name": "PollClock",
+      "type": "Clock",
+      "role": "100ms接收组帧",
+      "keyProperties": {}
+    }
+  ],
+  "globals": {
+    "接收缓存": "",
+    "目标亮度": 0
+  },
+  "procedures": {
+    "发送行(内容)": "连接有效时SendText内容+LF；未连接只提示",
+    "处理状态(字段)": "STATE必须5列，led为0/1，pwm0..255，adc0..4095，button0/1；全部有效才更新界面",
+    "处理完整行": "OK,PWM,x确认亮度；STATE调用处理状态；ERR显示原因；未知行显示格式错误"
+  },
+  "events": {
+    "BrightnessSlider.PositionChanged": "目标亮度←round thumbPosition；更新目标标签，不立即连续发送",
+    "ApplyButton.Click": "发送行(PWM,+目标亮度)",
+    "ReadButton.Click": "发送行(GET)",
+    "PollClock.Timer": "沿用第44课非阻塞接收与组帧",
+    "DevicePicker.AfterPicking": "沿用44连接；连接成功清缓存后发送GET"
+  },
+  "learningObjectives": [
+    "拖动滑块改变目标。",
+    "检查字段数量与类型。",
+    "用测试记录验证蓝牙双向交互的核心规则。"
+  ],
+  "transfer": {
+    "title": "已有经验与新的问题",
+    "body": [
+      "本课在已学事件、变量和过程的基础上开展。",
+      "蓝牙调光面板：滑块设置LED亮度，读取电位器和按钮状态，并处理非法应答。"
+    ]
+  },
+  "concepts": [
+    {
+      "title": "目标值与设备确认值分开",
+      "body": [
+        "拖动滑块改变目标。",
+        "发送PWM提出设置请求。",
+        "OK返回才更新设备确认亮度。"
+      ]
+    },
+    {
+      "title": "多字段数据先校验后展示",
+      "body": [
+        "检查字段数量与类型。",
+        "ADC是原始读数，不称为摄氏度或电压。",
+        "按钮INPUT_PULLUP时0表示按下。"
+      ]
+    }
+  ],
+  "blockCaptures": [
+    {
+      "title": "预览与应用",
+      "target": "ApplyButton.Click",
+      "body": [
+        "把目标亮度取整并按PWM格式发送。",
+        "目标128得到OK,PWM,128后确认。"
+      ],
+      "notes": "用应用按钮减少滑块每像素都发送。"
+    },
+    {
+      "title": "状态解析",
+      "target": "处理状态",
+      "body": [
+        "检查五个字段后更新四个状态。",
+        "STATE,1,128,2048,0显示按下与ADC2048。"
+      ],
+      "notes": "未校准ADC不冒充精确物理量。"
+    },
+    {
+      "title": "断开与复位",
+      "target": "DevicePicker.AfterPicking",
+      "body": [
+        "连接切换清缓存，GET获取新设备状态。",
+        "旧半行不会拼到新连接。"
+      ],
+      "notes": "复用上课完整组帧，保持字段协议一致。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "制作任务1：预览与应用",
+      "task": "把目标亮度取整并按PWM格式发送。",
+      "checkpoint": "目标128得到OK,PWM,128后确认。"
+    },
+    {
+      "title": "制作任务2：状态解析",
+      "task": "检查五个字段后更新四个状态。",
+      "checkpoint": "STATE,1,128,2048,0显示按下与ADC2048。"
+    },
+    {
+      "title": "制作任务3：断开与复位",
+      "task": "连接切换清缓存，GET获取新设备状态。",
+      "checkpoint": "旧半行不会拼到新连接。"
+    }
+  ],
+  "trace": {
+    "title": "一次操作的结果与证据",
+    "table": [
+      [
+        "操作或输入",
+        "预期结果"
+      ],
+      [
+        "滑块128但未应用",
+        "只有目标改变，设备确认不变"
+      ],
+      [
+        "应用后读取STATE",
+        "确认亮度128，ADC与按钮字段正确"
+      ],
+      [
+        "收到STATE,1,abc,2048,0",
+        "提示格式错误，不部分更新旧状态"
+      ]
+    ]
+  },
+  "tests": [
+    {
+      "action": "滑块128但未应用",
+      "expected": "只有目标改变，设备确认不变"
+    },
+    {
+      "action": "应用后读取STATE",
+      "expected": "确认亮度128，ADC与按钮字段正确"
+    },
+    {
+      "action": "收到STATE,1,abc,2048,0",
+      "expected": "提示格式错误，不部分更新旧状态"
+    }
+  ],
+  "pitfalls": [
+    [
+      "滑块很卡",
+      "不要PositionChanged每次发送，使用应用按钮"
+    ],
+    [
+      "按钮状态反了",
+      "INPUT_PULLUP接地按下读0"
+    ]
+  ],
+  "remix": [
+    "把ADC读数转换成0～100%的旋钮位置并注明相对量。",
+    "加一个设备状态刷新时间，避免旧值看成实时值。"
+  ],
+  "worksheet": {
+    "title": "我的预测、实验与修改",
+    "prompts": [
+      "为“滑块128但未应用”写下预测，再记录实际结果。",
+      "结合积木解释：目标值与设备确认值分开。",
+      "修改一条规则并添加一项边界测试：把ADC读数转换成0～100%的旋钮位置并注明相对量。"
+    ]
+  },
+  "reflection": [
+    "用一个操作说明“目标值与设备确认值分开”。",
+    "哪一次测试帮助你发现了“滑块很卡”？",
+    "展示改编前后的区别，并指出对应积木。"
+  ],
+  "scaffold": "保留连接、组帧与发送过程；PWM命令、完整STATE校验和字段显示待完成。",
+  "assets": [
+    "本课实际界面和积木截图；使用原创、公共领域或明确获授权素材。"
+  ],
+  "sources": [
+    "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+    "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+    "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+    "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+    "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html"
+  ],
+  "versions": {
+    "answer": "含下述完整功能、变量、过程、事件及素材，满足本课测试表。",
+    "class": "保留连接、组帧与发送过程；PWM命令、完整STATE校验和字段显示待完成。",
+    "starter": "保留同名可视与非可视组件、布局、初始属性和素材；不含变量、过程、事件积木。"
+  },
+  "successCriteria": [
+    "只有目标改变，设备确认不变",
+    "确认亮度128，ADC与按钮字段正确",
+    "提示格式错误，不部分更新旧状态"
+  ],
+  "firmwareSpecification": "esp32-course-firmware-spec.md",
+  "deviceRequirements": [
+    "默认教学板为原始ESP32-WROOM DevKit，3.3V GPIO。经典蓝牙课不可使用C3/S3代替。",
+    "LED GPIO23经330Ω限流接地；电位器滑端GPIO34、两端3.3V/GND；按钮GPIO27接GND，INPUT_PULLUP。以配套指定板为准。",
+    "硬件连接与手机运行需要课堂真机联调；资料中的编译和脚本测试不得标为实物测试。"
+  ],
+  "timeline": [
+    {
+      "minutes": 10,
+      "activity": "作品体验与问题提出",
+      "task": "滑块0～255只预览目标亮度，点应用才发送PWM。"
+    },
+    {
+      "minutes": 15,
+      "activity": "概念观察与演示",
+      "task": "目标值与设备确认值分开；多字段数据先校验后展示"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务1",
+      "task": "把目标亮度取整并按PWM格式发送。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务2",
+      "task": "检查五个字段后更新四个状态。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务3",
+      "task": "连接切换清缓存，GET获取新设备状态。"
+    },
+    {
+      "minutes": 10,
+      "activity": "个人改编与同伴测试",
+      "task": "把ADC读数转换成0～100%的旋钮位置并注明相对量。"
+    },
+    {
+      "minutes": 10,
+      "activity": "展示与反思",
+      "task": "用一个操作说明“目标值与设备确认值分开”。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "第45课  蓝牙双向交互",
+      "body": [
+        "蓝牙调光面板：滑块设置LED亮度，读取电位器和按钮状态，并处理非法应答。",
+        "90分钟 · App Inventor 创意编程"
+      ],
+      "notes": "先展示本课作品行为；允许学生提出不同用途，基础制作仍遵循本课验收表。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "滑块0～255只预览目标亮度，点应用才发送PWM。",
+        "GET返回STATE,led,pwm,adc,button，字段校验后更新。",
+        "连接丢失禁用发送，重新连接清空半行缓存。"
+      ],
+      "notes": "演示：滑块128但未应用。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "拖动滑块改变目标。",
+        "检查字段数量与类型。",
+        "用测试记录验证蓝牙双向交互的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "蓝牙调光面板：滑块设置LED亮度，读取电位器和按钮状态，并处理非法应答。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "滑块0～255只预览目标亮度，点应用才发送PWM。",
+        "GET返回STATE,led,pwm,adc,button，字段校验后更新。",
+        "连接丢失禁用发送，重新连接清空半行缓存。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "选择SPP设备",
+        "目标亮度0到255",
+        "发送PWM",
+        "读取状态",
+        "目标亮度"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "DevicePicker",
+          "ListPicker",
+          "选择SPP设备"
+        ],
+        [
+          "BrightnessSlider",
+          "Slider",
+          "目标亮度0到255"
+        ],
+        [
+          "ApplyButton",
+          "Button",
+          "发送PWM"
+        ],
+        [
+          "ReadButton",
+          "Button",
+          "读取状态"
+        ],
+        [
+          "TargetLabel",
+          "Label",
+          "目标亮度"
+        ],
+        [
+          "ActualLabel",
+          "Label",
+          "设备确认亮度"
+        ],
+        [
+          "AdcLabel",
+          "Label",
+          "电位器原始值"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "区分运行中的状态与重启后仍保留的数据。",
+      "layout": "table",
+      "table": [
+        [
+          "变量",
+          "初值或意义"
+        ],
+        [
+          "接收缓存",
+          ""
+        ],
+        [
+          "目标亮度",
+          "0"
+        ]
+      ]
+    },
+    {
+      "title": "目标值与设备确认值分开",
+      "body": [
+        "拖动滑块改变目标。",
+        "发送PWM提出设置请求。",
+        "OK返回才更新设备确认亮度。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "多字段数据先校验后展示",
+      "body": [
+        "检查字段数量与类型。",
+        "ADC是原始读数，不称为摄氏度或电压。",
+        "按钮INPUT_PULLUP时0表示按下。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "BrightnessSlider.PositionChanged：目标亮度←round thumbPosition；更新目标标签，不立即连续发送",
+        "ApplyButton.Click：发送行(PWM,+目标亮度)",
+        "ReadButton.Click：发送行(GET)"
+      ],
+      "notes": "按事件触发、状态改变、界面反馈顺序讲解。传感器与网络结果事件均为异步。",
+      "layout": "text"
+    },
+    {
+      "title": "预览与应用",
+      "body": [
+        "把目标亮度取整并按PWM格式发送。",
+        "目标128得到OK,PWM,128后确认。"
+      ],
+      "notes": "用应用按钮减少滑块每像素都发送。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "ApplyButton.Click"
+    },
+    {
+      "title": "制作任务1：预览与应用",
+      "body": [
+        "把目标亮度取整并按PWM格式发送。",
+        "目标128得到OK,PWM,128后确认。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "状态解析",
+      "body": [
+        "检查五个字段后更新四个状态。",
+        "STATE,1,128,2048,0显示按下与ADC2048。"
+      ],
+      "notes": "未校准ADC不冒充精确物理量。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "处理状态"
+    },
+    {
+      "title": "制作任务2：状态解析",
+      "body": [
+        "检查五个字段后更新四个状态。",
+        "STATE,1,128,2048,0显示按下与ADC2048。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "断开与复位",
+      "body": [
+        "连接切换清缓存，GET获取新设备状态。",
+        "旧半行不会拼到新连接。"
+      ],
+      "notes": "复用上课完整组帧，保持字段协议一致。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "DevicePicker.AfterPicking"
+    },
+    {
+      "title": "制作任务3：断开与复位",
+      "body": [
+        "连接切换清缓存，GET获取新设备状态。",
+        "旧半行不会拼到新连接。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "滑块128但未应用",
+          "只有目标改变，设备确认不变"
+        ],
+        [
+          "应用后读取STATE",
+          "确认亮度128，ADC与按钮字段正确"
+        ],
+        [
+          "收到STATE,1,abc,2048,0",
+          "提示格式错误，不部分更新旧状态"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "滑块很卡",
+          "不要PositionChanged每次发送，使用应用按钮"
+        ],
+        [
+          "按钮状态反了",
+          "INPUT_PULLUP接地按下读0"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "滑块128但未应用",
+          "只有目标改变，设备确认不变"
+        ],
+        [
+          "应用后读取STATE",
+          "确认亮度128，ADC与按钮字段正确"
+        ],
+        [
+          "收到STATE,1,abc,2048,0",
+          "提示格式错误，不部分更新旧状态"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "把ADC读数转换成0～100%的旋钮位置并注明相对量。",
+        "加一个设备状态刷新时间，避免旧值看成实时值。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“滑块128但未应用”写下预测，再记录实际结果。",
+        "结合积木解释：目标值与设备确认值分开。",
+        "修改一条规则并添加一项边界测试：把ADC读数转换成0～100%的旋钮位置并注明相对量。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：收到STATE,1,abc,2048,0。",
+        "说明：多字段数据先校验后展示。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "用一个操作说明“目标值与设备确认值分开”。",
+        "哪一次测试帮助你发现了“滑块很卡”？",
+        "展示改编前后的区别，并指出对应积木。"
+      ],
+      "notes": "出口条包含一项会做的操作、一个测试结果和一个仍需解决的问题。",
+      "layout": "text"
+    }
+  ]
+}

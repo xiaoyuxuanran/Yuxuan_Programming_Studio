@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "version": 2,
+  "stressBlobs": 1400,
+  "legacyMigration": true,
+  "deleteWithoutResurrection": true,
+  "traversalRejection": true,
+  "sha256": "58bfafcc7d50879a9aea7fff9123060c871925243b41085bc17d81aaf3f20fae"
+}

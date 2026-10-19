@@ -1,0 +1,657 @@
+{
+  "lesson": 26,
+  "title": "摇一摇，触发新玩法",
+  "projectName": "YXCourse26",
+  "exampleTitle": "带一秒冷却的摇动骰子",
+  "durationMinutes": 90,
+  "goals": [
+    "一次手势可能触发多个Shaking。",
+    "每次随机范围是1到6。",
+    "用测试记录验证摇一摇，触发新玩法的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "摇摇骰子：摇动手机随机给出1～6点，防止连续抖动重复触发，并提供按钮替代。",
+    "scope": "按钮替代入口始终保留；加速度传感器是否可用与灵敏度取决于设备。一秒冷却由Clock安排，不作为精密计时；20次样本不能证明随机公平。",
+    "components": [
+      {
+        "name": "DiceLabel",
+        "type": "Label",
+        "role": "以大号数字显示骰子点数"
+      },
+      {
+        "name": "RollButton",
+        "type": "Button",
+        "role": "按钮替代摇动"
+      },
+      {
+        "name": "CountLabel",
+        "type": "Label",
+        "role": "投掷次数"
+      },
+      {
+        "name": "HintLabel",
+        "type": "Label",
+        "role": "可用与冷却状态"
+      },
+      {
+        "name": "Motion",
+        "type": "AccelerometerSensor",
+        "role": "检测摇动"
+      },
+      {
+        "name": "Cooldown",
+        "type": "Clock",
+        "role": "1000ms冷却"
+      }
+    ],
+    "logic": [
+      {
+        "event": "Motion.Shaking",
+        "actions": [
+          "掷骰"
+        ]
+      },
+      {
+        "event": "RollButton.Click",
+        "actions": [
+          "掷骰"
+        ]
+      },
+      {
+        "event": "Cooldown.Timer",
+        "actions": [
+          "恢复掷骰"
+        ]
+      },
+      {
+        "event": "Screen1.Initialize",
+        "actions": [
+          "若Motion.Available=false，提示使用按钮"
+        ]
+      }
+    ],
+    "procedures": {
+      "掷骰": "若可掷：可掷false；点数random1..6；次数+1；刷新；冷却Clock开",
+      "恢复掷骰": "可掷true；Clock关；更新提示；按钮启用"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse26.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse26Class.aia：保留全部变量、恢复掷骰、按钮、Clock、初始化入口、掷骰过程的固定1占位；将固定点数改成1..6随机整数并累计次数；可掷false阻止重复触发，启动Cooldown后由恢复过程重开；添加Motion.Shaking调用掷骰。",
+    "starter": "YXCourse26Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：修正支架中的固定结果，先问再示范。",
+      "students": "按任务单完成：修正支架中的固定结果。",
+      "checkpoint": "为什么随机6次不必恰好每面一次？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补完整冷却规则，先问再示范。",
+      "students": "按任务单完成：补完整冷却规则。",
+      "checkpoint": "为什么必须先关入口再随机？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：连接传感器并核对替代入口，先问再示范。",
+      "students": "按任务单完成：连接传感器并核对替代入口。",
+      "checkpoint": "没有传感器是否必须放弃作品？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "修正支架中的固定结果",
+      "steps": [
+        "在掷骰过程中找到固定点数1。",
+        "替换为1～6随机整数，并把次数加1。",
+        "更新DiceLabel与CountLabel。",
+        "连续观察多次，允许连续出现相同点数。"
+      ],
+      "question": "为什么随机6次不必恰好每面一次？",
+      "answer": "每次独立取范围内随机值，不要求短样本平均或不重复。"
+    },
+    {
+      "title": "补完整冷却规则",
+      "steps": [
+        "在掷骰入口检查可掷。",
+        "有效时先可掷←假，禁用按钮，再生成一次结果。",
+        "启动Cooldown，读取已给的恢复掷骰与Timer。",
+        "冷却内连续触发三次，次数应只增加1。"
+      ],
+      "question": "为什么必须先关入口再随机？",
+      "answer": "先关入口能让后续重复事件被保护；等到最后才关会留下重复处理机会。"
+    },
+    {
+      "title": "连接传感器并核对替代入口",
+      "steps": [
+        "添加Motion.Shaking并调用掷骰。",
+        "保留RollButton.Click和Screen1.Initialize的能力检查。",
+        "无传感器时用按钮完成冷却后再投掷的测试。",
+        "记录20次结果及是否越界，不宣称证明公平。"
+      ],
+      "question": "没有传感器是否必须放弃作品？",
+      "answer": "不必，按钮调用相同过程，可体验同样的随机和冷却规则。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "连续触发三次Shaking且不等冷却",
+      "expected": "次数只增加1"
+    },
+    {
+      "action": "冷却后点击按钮",
+      "expected": "次数再加1，点数在1到6"
+    },
+    {
+      "action": "连续投掷20次",
+      "expected": "没有越界值，重复点数允许出现"
+    }
+  ],
+  "misconceptions": [
+    [
+      "摇一次次数加很多",
+      "检查可掷标志是否在随机前设false"
+    ],
+    [
+      "第二次永远不能掷",
+      "检查Clock.Timer恢复标志"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "记录20次结果并用列表统计各点数次数。"
+    },
+    {
+      "level": "拓展",
+      "task": "改成故事灵感盒，随机组合角色和地点。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "一次摇动触发三次事件，为什么只计一次？",
+      "a": "可掷在第一轮先设为假，其余在冷却内被忽略。"
+    },
+    {
+      "q": "Cooldown恢复后为什么关闭自身？",
+      "a": "本次冷却已完成，关闭可避免无意义的连续Timer。"
+    },
+    {
+      "q": "连续两个6是否说明程序错误？",
+      "a": "不一定，合法随机允许重复；应先查范围和事件计数。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT sensors.html#AccelerometerSensor 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/sensors.html#AccelerometerSensor",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT sensors.html#Clock 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/sensors.html#Clock",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT math.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/math.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "摇一摇，触发新玩法",
+      "body": [
+        "带一秒冷却的摇动骰子",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "摇摇骰子：摇动手机随机给出1～6点，防止连续抖动重复触发，并提供按钮替代。 按钮替代入口始终保留；加速度传感器是否可用与灵敏度取决于设备。一秒冷却由Clock安排，不作为精密计时；20次样本不能证明随机公平。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "摇动或点击掷骰按钮调用同一过程。",
+        "同一轮1秒冷却内忽略重复摇动。",
+        "点数始终1到6，累计投掷次数与提示同步更新。"
+      ],
+      "notes": "演示：连续触发三次Shaking且不等冷却。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "一次手势可能触发多个Shaking。",
+        "每次随机范围是1到6。",
+        "用测试记录验证摇一摇，触发新玩法的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "摇动手机随机给出1～6点，以冷却状态防止重复触发；按钮提供另一种入口。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "摇动或点击掷骰按钮调用同一过程。",
+        "同一轮1秒冷却内忽略重复摇动。",
+        "点数始终1到6，累计投掷次数与提示同步更新。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "以大号数字显示骰子点数",
+        "按钮替代摇动",
+        "投掷次数",
+        "可用与冷却状态"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "DiceLabel",
+          "Label",
+          "以大号数字显示骰子点数"
+        ],
+        [
+          "RollButton",
+          "Button",
+          "按钮替代摇动"
+        ],
+        [
+          "CountLabel",
+          "Label",
+          "投掷次数"
+        ],
+        [
+          "HintLabel",
+          "Label",
+          "可用与冷却状态"
+        ],
+        [
+          "Motion",
+          "AccelerometerSensor",
+          "检测摇动"
+        ],
+        [
+          "Cooldown",
+          "Clock",
+          "1000ms冷却"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "可掷",
+          "真；过程入口的冷却开关"
+        ],
+        [
+          "点数",
+          "初始1；有效范围1～6"
+        ],
+        [
+          "次数",
+          "初始0；每次有效投掷加1"
+        ]
+      ]
+    },
+    {
+      "title": "传感器事件可能连续到来",
+      "body": [
+        "一次手势可能触发多个Shaking。",
+        "冷却状态把一次操作限制为一次结果。",
+        "没有传感器时提供按钮入口。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "随机结果不能用一两次判断公平",
+      "body": [
+        "每次随机范围是1到6。",
+        "上次结果不会强迫下次改变。",
+        "连续出现相同点数也是合理结果。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "按钮和摇动都调用掷骰",
+        "可掷为真才随机、累计并关闭入口",
+        "Cooldown到时恢复入口，并关闭自己"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：全部变量；恢复掷骰；按钮、Clock、初始化入口；掷骰过程的固定1占位。学生任务：将固定点数改成1..6随机整数并累计次数；可掷false阻止重复触发，启动Cooldown后由恢复过程重开；添加Motion.Shaking调用掷骰。",
+      "layout": "text"
+    },
+    {
+      "title": "统一掷骰逻辑",
+      "body": [
+        "让摇动与按钮都调用同一个过程。",
+        "两种输入得到相同类型的反馈。"
+      ],
+      "notes": "Class的掷骰过程含固定1占位，随机、累计和入口保护需学生补齐。 实际截图对应：掷骰。按钮替代入口始终保留；加速度传感器是否可用与灵敏度取决于设备。一秒冷却由Clock安排，不作为精密计时；20次样本不能证明随机公平。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "掷骰"
+    },
+    {
+      "title": "修正支架中的固定结果",
+      "body": [
+        "在掷骰过程中找到固定点数1。",
+        "替换为1～6随机整数，并把次数加1。",
+        "更新DiceLabel与CountLabel。"
+      ],
+      "notes": "实践15分钟。为什么随机6次不必恰好每面一次？ 教师参考：每次独立取范围内随机值，不要求短样本平均或不重复。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "冷却与恢复",
+      "body": [
+        "掷骰时关闭入口，1秒后恢复。",
+        "快速摇动不把次数一瞬间增加很多。"
+      ],
+      "notes": "Timer与恢复过程已给出，用于阅读验证；一秒为教学冷却设置，不宣称精密周期。 实际截图对应：Cooldown.Timer。按钮替代入口始终保留；加速度传感器是否可用与灵敏度取决于设备。一秒冷却由Clock安排，不作为精密计时；20次样本不能证明随机公平。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "Cooldown.Timer"
+    },
+    {
+      "title": "补完整冷却规则",
+      "body": [
+        "在掷骰入口检查可掷。",
+        "有效时先可掷←假，禁用按钮，再生成一次结果。",
+        "启动Cooldown，读取已给的恢复掷骰与Timer。"
+      ],
+      "notes": "实践15分钟。为什么必须先关入口再随机？ 教师参考：先关入口能让后续重复事件被保护；等到最后才关会留下重复处理机会。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "设备能力与统计",
+      "body": [
+        "检测Available并保留按钮替代。",
+        "无传感器时仍可完整体验。"
+      ],
+      "notes": "能力检查已给出；学生补Motion.Shaking后验证按钮与传感器走同一过程。 实际截图对应：Screen1.Initialize。按钮替代入口始终保留；加速度传感器是否可用与灵敏度取决于设备。一秒冷却由Clock安排，不作为精密计时；20次样本不能证明随机公平。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "Screen1.Initialize"
+    },
+    {
+      "title": "连接传感器并核对替代入口",
+      "body": [
+        "添加Motion.Shaking并调用掷骰。",
+        "保留RollButton.Click和Screen1.Initialize的能力检查。",
+        "无传感器时用按钮完成冷却后再投掷的测试。"
+      ],
+      "notes": "实践15分钟。没有传感器是否必须放弃作品？ 教师参考：不必，按钮调用相同过程，可体验同样的随机和冷却规则。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "连续触发三次Shaking且不等冷却",
+          "次数只增加1"
+        ],
+        [
+          "冷却后点击按钮",
+          "次数再加1，点数在1到6"
+        ],
+        [
+          "连续投掷20次",
+          "没有越界值，重复点数允许出现"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "摇一次次数加很多",
+          "检查可掷标志是否在随机前设false"
+        ],
+        [
+          "第二次永远不能掷",
+          "检查Clock.Timer恢复标志"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "连续触发三次Shaking且不等冷却",
+          "次数只增加1"
+        ],
+        [
+          "冷却后点击按钮",
+          "次数再加1，点数在1到6"
+        ],
+        [
+          "连续投掷20次",
+          "没有越界值，重复点数允许出现"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "记录20次结果并用列表统计各点数次数。",
+        "改成故事灵感盒，随机组合角色和地点。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“连续触发三次Shaking且不等冷却”写下预测，再记录实际结果。",
+        "结合积木解释：传感器事件可能连续到来。",
+        "修改一条规则并添加一项边界测试：记录20次结果并用列表统计各点数次数。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：连续投掷20次。",
+        "说明：随机结果不能用一两次判断公平。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "一次摇动触发三次事件，为什么只计一次？",
+        "Cooldown恢复后为什么关闭自身？",
+        "连续两个6是否说明程序错误？"
+      ],
+      "notes": "1. 可掷在第一轮先设为假，其余在冷却内被忽略。\n2. 本次冷却已完成，关闭可避免无意义的连续Timer。\n3. 不一定，合法随机允许重复；应先查范围和事件计数。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Button": "8",
+    "VerticalArrangement": "4",
+    "AccelerometerSensor": "6",
+    "Clock": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "全部变量",
+    "恢复掷骰",
+    "按钮、Clock、初始化入口",
+    "掷骰过程的固定1占位"
+  ],
+  "actualClassroomTasks": [
+    "将固定点数改成1..6随机整数并累计次数",
+    "可掷false阻止重复触发，启动Cooldown后由恢复过程重开",
+    "添加Motion.Shaking调用掷骰"
+  ],
+  "actualScreenshotGroups": [
+    "掷骰",
+    "Cooldown.Timer",
+    "Screen1.Initialize"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "可掷",
+      "点数",
+      "次数"
+    ],
+    "procedures": {
+      "恢复掷骰": [],
+      "掷骰": []
+    },
+    "events": [
+      "Motion.Shaking",
+      "RollButton.Click",
+      "Cooldown.Timer",
+      "Screen1.Initialize"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "events": [
+        "Motion.Shaking",
+        "Motion.Shaking",
+        "Motion.Shaking"
+      ],
+      "expect": {
+        "global 次数": 1,
+        "global 可掷": false,
+        "Cooldown.TimerEnabled": true
+      }
+    },
+    {
+      "events": [
+        "RollButton.Click",
+        "Cooldown.Timer",
+        "RollButton.Click"
+      ],
+      "expect": {
+        "global 次数": 2
+      }
+    },
+    {
+      "set": {
+        "Motion.Available": false
+      },
+      "event": "Screen1.Initialize",
+      "expect": {
+        "RollButton.Enabled": true,
+        "HintLabel.Text": "本设备无加速度传感器，请使用按钮投掷。"
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson26/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

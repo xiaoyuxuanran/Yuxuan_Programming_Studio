@@ -1,0 +1,759 @@
+{
+  "lesson": 48,
+  "title": "Wi-Fi TCP 局域网通信",
+  "projectName": "YXCourse48",
+  "exampleTitle": "同路由器STA TCP",
+  "durationMinutes": 90,
+  "goals": [
+    "ESP32与手机加入同一个可互通的网络。",
+    "连接地址由网络配置决定。",
+    "用测试记录验证Wi-Fi TCP 局域网通信的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "局域网设备台：ESP32和手机接入同一路由器，读取设备IP后进行调光和状态查询。",
+    "scope": "配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32与手机加入同一个可互通路由器网络，教师在STA固件填写SSID和密码，从串口读实际IP；不固定使用192.168.4.1。沿用v1行协议与TCP9000。",
+    "components": [
+      {
+        "name": "HostBox",
+        "type": "TextBox",
+        "role": "串口显示的ESP32局域网IP"
+      },
+      {
+        "name": "PortBox",
+        "type": "TextBox",
+        "role": "TCP端口"
+      },
+      {
+        "name": "ConnectButton",
+        "type": "Button",
+        "role": "连接设备"
+      },
+      {
+        "name": "DisconnectButton",
+        "type": "Button",
+        "role": "断开"
+      },
+      {
+        "name": "BrightnessSlider",
+        "type": "Slider",
+        "role": "目标亮度0到255"
+      },
+      {
+        "name": "ApplyButton",
+        "type": "Button",
+        "role": "设置亮度"
+      },
+      {
+        "name": "ReadButton",
+        "type": "Button",
+        "role": "查询STATE"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "网络与连接"
+      },
+      {
+        "name": "Socket",
+        "type": "ClientSocketAI2Ext",
+        "role": "TCP客户端扩展"
+      }
+    ],
+    "logic": [
+      {
+        "event": "ConnectButton.Click",
+        "actions": [
+          "连接设备"
+        ]
+      },
+      {
+        "event": "BrightnessSlider.PositionChanged",
+        "actions": [
+          "只更新目标亮度预览"
+        ]
+      },
+      {
+        "event": "ApplyButton.Click",
+        "actions": [
+          "调用发送命令(PWM,+待选PWM)"
+        ]
+      },
+      {
+        "event": "ReadButton.Click",
+        "actions": [
+          "发送指令(GET)"
+        ]
+      },
+      {
+        "event": "Socket.DataReceived",
+        "actions": [
+          "按LF组帧，解析OK与STATE"
+        ]
+      },
+      {
+        "event": "Socket.RemoteConnectionClosed",
+        "actions": [
+          "重置连接并提示"
+        ]
+      },
+      {
+        "event": "DisconnectButton.Click",
+        "actions": [
+          "重置连接"
+        ]
+      }
+    ],
+    "procedures": {
+      "连接设备": "校验IP非空与端口；Socket设置ServerAddress/ServerPort后Connect",
+      "发送命令": "核对当前连接，SendData(命令+LF)",
+      "处理应答": "完整校验OK与STATE，成功才更新确认字段"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse48.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse48Class.aia：保留所有组件与协议参数、连接状态清理、数值边界、非本课重点过程和完整事件入口、扩展完整原始包与真实事件签名；补齐处理应答过程；补齐发送命令过程。",
+    "starter": "YXCourse48Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：核对STA连接条件，先问再示范。",
+      "students": "按任务单完成：核对STA连接条件。",
+      "checkpoint": "连接同名Wi-Fi就一定互通吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补发送命令，先问再示范。",
+      "students": "按任务单完成：补发送命令。",
+      "checkpoint": "把路由器网关IP填成板子IP行吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补应答解析，先问再示范。",
+      "students": "按任务单完成：补应答解析。",
+      "checkpoint": "从AP改为STA后命令也必须重写吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "核对STA连接条件",
+      "steps": [
+        "连接过程已给；从教师串口读取设备实际IP。",
+        "手机与板子使用可互通网络，检查访客隔离。",
+        "连接状态真后再使用控制；错误端口可修改重试。"
+      ],
+      "question": "连接同名Wi-Fi就一定互通吗？",
+      "answer": "不一定，访客网络或客户端隔离可能阻止设备相互访问。"
+    },
+    {
+      "title": "补发送命令",
+      "steps": [
+        "应用入口已给，只把PWM和目标值交过程。",
+        "发送前核对当前连接。",
+        "Socket.SendData发送命令加LF，提示等待确认。",
+        "未连接时不调用SendData。"
+      ],
+      "question": "把路由器网关IP填成板子IP行吗？",
+      "answer": "不行，应使用串口打印的ESP32自身地址。"
+    },
+    {
+      "title": "补应答解析",
+      "steps": [
+        "沿用45课五字段完整校验规则。",
+        "OK与STATE有效才更新确认，ADC与按钮单位明确。",
+        "设置128再GET，检查目标与确认。",
+        "坏字段不部分覆盖旧状态。"
+      ],
+      "question": "从AP改为STA后命令也必须重写吗？",
+      "answer": "不需要，地址配置变化，应用层LED/PWM/GET协议可继续复用。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "输入串口实际IP连接",
+      "expected": "ConnectionState true"
+    },
+    {
+      "action": "设置128再GET",
+      "expected": "亮度确认128，STATE字段有效"
+    },
+    {
+      "action": "换成错误端口",
+      "expected": "不假报连接，能修改后再试"
+    }
+  ],
+  "misconceptions": [
+    [
+      "仍填192.168.4.1",
+      "Station需填写路由器分配的实际IP"
+    ],
+    [
+      "同一Wi-Fi仍连接失败",
+      "核对访客网络隔离、设备IP与端口"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "增加设备别名与IP保存，启动时仍标注可能过期。"
+    },
+    {
+      "level": "拓展",
+      "task": "画出手机、路由器、ESP32之间的请求与应答。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "STA地址从哪里得到？",
+      "a": "从ESP32连接路由器后的串口输出读取实际分配地址。"
+    },
+    {
+      "q": "端口仍是什么？",
+      "a": "本固件监听9000，APP必须一致。"
+    },
+    {
+      "q": "怎么区分连接错误和协议错误？",
+      "a": "先查ConnectionState与IP/端口，再检查完整行及字段格式。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#BluetoothClient 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetoothle 官方参考",
+      "url": "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetooth.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT wifi.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT gpio.html 官方参考",
+      "url": "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "Wi-Fi TCP 局域网通信",
+      "body": [
+        "同路由器STA TCP",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "局域网设备台：ESP32和手机接入同一路由器，读取设备IP后进行调光和状态查询。 配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32与手机加入同一个可互通路由器网络，教师在STA固件填写SSID和密码，从串口读实际IP；不固定使用192.168.4.1。沿用v1行协议与TCP9000。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "ESP32使用Station模式，串口输出路由器分配的IP。",
+        "APP输入实际IP，不能继续固定192.168.4.1。",
+        "PWM与STATE沿用同一协议，换网络不改业务指令。"
+      ],
+      "notes": "演示：输入串口实际IP连接。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "ESP32与手机加入同一个可互通的网络。",
+        "连接地址由网络配置决定。",
+        "用测试记录验证Wi-Fi TCP 局域网通信的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "局域网设备台：手机与ESP32接入同一路由器，读取设备IP，调光并查询状态。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "ESP32使用Station模式，串口输出路由器分配的IP。",
+        "APP输入实际IP，不能继续固定192.168.4.1。",
+        "PWM与STATE沿用同一协议，换网络不改业务指令。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "串口显示的ESP32局域网IP",
+        "TCP端口",
+        "连接设备",
+        "断开"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "HostBox",
+          "TextBox",
+          "串口显示的ESP32局域网IP"
+        ],
+        [
+          "PortBox",
+          "TextBox",
+          "TCP端口"
+        ],
+        [
+          "ConnectButton",
+          "Button",
+          "连接设备"
+        ],
+        [
+          "DisconnectButton",
+          "Button",
+          "断开"
+        ],
+        [
+          "BrightnessSlider",
+          "Slider",
+          "目标亮度0到255"
+        ],
+        [
+          "ApplyButton",
+          "Button",
+          "设置亮度"
+        ]
+      ],
+      "columnWidths": [
+        300,
+        330,
+        522
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "已连接",
+          "假；必须核对当前实际连接"
+        ],
+        [
+          "接收缓存",
+          "空；保留半行，最多512字符"
+        ],
+        [
+          "有效应答",
+          "校验完整格式后才真"
+        ],
+        [
+          "日志",
+          "最多保留最近20条"
+        ],
+        [
+          "待选PWM",
+          "0到255的目标值"
+        ]
+      ]
+    },
+    {
+      "title": "路由器分配IP，IP可能变化",
+      "body": [
+        "ESP32与手机加入同一个可互通的网络。",
+        "重启或换路由器后重新读取串口IP。",
+        "访客隔离会让同名Wi-Fi内设备仍无法互访。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "网络层与指令层可以分工",
+      "body": [
+        "连接地址由网络配置决定。",
+        "LED、PWM、GET业务命令继续复用。",
+        "错误先判断是连接问题还是协议问题。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "读取设备实际IP，复用已给连接过程",
+        "应用按钮把PWM命令交发送命令",
+        "合法OK或STATE才更新设备确认"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：所有组件与协议参数；连接状态清理、数值边界、非本课重点过程和完整事件入口；扩展完整原始包与真实事件签名。学生任务：补齐处理应答过程；补齐发送命令过程。",
+      "layout": "text"
+    },
+    {
+      "title": "读取实际IP再连接",
+      "body": [
+        "STA地址来自路由器分配。",
+        "9000端口与固件保持一致。"
+      ],
+      "notes": "连接设备已给；不同于47课固定AP地址。 实际截图对应：连接设备。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32与手机加入同一个可互通路由器网络，教师在STA固件填写SSID和密码，从串口读实际IP；不固定使用192.168.4.1。沿用v1行协议与TCP9000。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "连接设备"
+    },
+    {
+      "title": "核对STA连接条件",
+      "body": [
+        "连接过程已给；从教师串口读取设备实际IP。",
+        "手机与板子使用可互通网络，检查访客隔离。",
+        "连接状态真后再使用控制；错误端口可修改重试。"
+      ],
+      "notes": "实践15分钟。连接同名Wi-Fi就一定互通吗？ 教师参考：不一定，访客网络或客户端隔离可能阻止设备相互访问。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "应用才发送PWM",
+      "body": [
+        "ApplyButton调用发送命令。",
+        "拖滑块仅改变预览。"
+      ],
+      "notes": "发送命令为待补过程，入口已给。 实际截图对应：ApplyButton.Click。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32与手机加入同一个可互通路由器网络，教师在STA固件填写SSID和密码，从串口读实际IP；不固定使用192.168.4.1。沿用v1行协议与TCP9000。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "ApplyButton.Click"
+    },
+    {
+      "title": "补发送命令",
+      "body": [
+        "应用入口已给，只把PWM和目标值交过程。",
+        "发送前核对当前连接。",
+        "Socket.SendData发送命令加LF，提示等待确认。"
+      ],
+      "notes": "实践15分钟。把路由器网关IP填成板子IP行吗？ 教师参考：不行，应使用串口打印的ESP32自身地址。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "验证设备应答",
+      "body": [
+        "STATE字段全通过才显示。",
+        "ADC原始值不是温度。"
+      ],
+      "notes": "处理应答待补，保持与固件v1协议一致。 实际截图对应：处理应答。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32与手机加入同一个可互通路由器网络，教师在STA固件填写SSID和密码，从串口读实际IP；不固定使用192.168.4.1。沿用v1行协议与TCP9000。",
+      "layout": "blocksTall",
+      "blockIndex": 3,
+      "captureTarget": "处理应答"
+    },
+    {
+      "title": "补应答解析",
+      "body": [
+        "沿用45课五字段完整校验规则。",
+        "OK与STATE有效才更新确认，ADC与按钮单位明确。",
+        "设置128再GET，检查目标与确认。"
+      ],
+      "notes": "实践15分钟。从AP改为STA后命令也必须重写吗？ 教师参考：不需要，地址配置变化，应用层LED/PWM/GET协议可继续复用。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "输入串口实际IP连接",
+          "ConnectionState true"
+        ],
+        [
+          "设置128再GET",
+          "亮度确认128，STATE字段有效"
+        ],
+        [
+          "换成错误端口",
+          "不假报连接，能修改后再试"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "仍填192.168.4.1",
+          "Station需填写路由器分配的实际IP"
+        ],
+        [
+          "同一Wi-Fi仍连接失败",
+          "核对访客网络隔离、设备IP与端口"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "输入串口实际IP连接",
+          "ConnectionState true"
+        ],
+        [
+          "设置128再GET",
+          "亮度确认128，STATE字段有效"
+        ],
+        [
+          "换成错误端口",
+          "不假报连接，能修改后再试"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加设备别名与IP保存，启动时仍标注可能过期。",
+        "画出手机、路由器、ESP32之间的请求与应答。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“输入串口实际IP连接”写下预测，再记录实际结果。",
+        "结合积木解释：路由器分配IP，IP可能变化。",
+        "改编并测试：保存设备别名与IP，启动时提示地址可能过期。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：换成错误端口。",
+        "说明：网络层与指令层可以分工。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "STA地址从哪里得到？",
+        "端口仍是什么？",
+        "怎么区分连接错误和协议错误？"
+      ],
+      "notes": "1. 从ESP32连接路由器后的串口输出读取实际分配地址。\n2. 本固件监听9000，APP必须一致。\n3. 先查ConnectionState与IP/端口，再检查完整行及字段格式。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "TextBox": "15",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "Label": "6",
+    "Slider": "3",
+    "Clock": "4",
+    "ClientSocketAI2Ext": "4",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "所有组件与协议参数",
+    "连接状态清理、数值边界、非本课重点过程和完整事件入口",
+    "扩展完整原始包与真实事件签名"
+  ],
+  "actualClassroomTasks": [
+    "补齐处理应答过程",
+    "补齐发送命令过程"
+  ],
+  "actualScreenshotGroups": [
+    "连接设备",
+    "ApplyButton.Click",
+    "处理应答"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "已连接",
+      "连接中",
+      "连接开始",
+      "接收缓存",
+      "当前行",
+      "换行位置",
+      "最近命令",
+      "待选PWM",
+      "接收字段",
+      "有效应答",
+      "日志"
+    ],
+    "procedures": {
+      "整数范围": [
+        "值",
+        "下限",
+        "上限"
+      ],
+      "记录日志": [
+        "内容"
+      ],
+      "清理连接": [],
+      "处理应答": [
+        "一行"
+      ],
+      "发送命令": [
+        "命令"
+      ],
+      "接收分帧": [
+        "片段"
+      ],
+      "连接设备": []
+    },
+    "events": [
+      "OnButton.Click",
+      "OffButton.Click",
+      "DisconnectButton.Click",
+      "BrightnessSlider.PositionChanged",
+      "ApplyButton.Click",
+      "ReadButton.Click",
+      "ConnectButton.Click",
+      "PollClock.Timer",
+      "Socket.DataReceived",
+      "Socket.RemoteConnectionClosed",
+      "Screen1.PermissionDenied",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "procedure": "处理应答",
+      "args": [
+        "OK,LED,1"
+      ],
+      "expect": {
+        "StateLabel.Text": "设备确认：LED=1",
+        "global 有效应答": true
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "STATE,1,128,2048,0"
+      ],
+      "expect": {
+        "global 有效应答": true
+      },
+      "contains": {
+        "StateLabel.Text": [
+          "PWM=128",
+          "ADC原始值=2048",
+          "按钮=按下"
+        ]
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "STATE,1,128,9999,0"
+      ],
+      "expect": {
+        "global 有效应答": false
+      }
+    },
+    {
+      "procedure": "清理连接",
+      "expect": {
+        "global 已连接": false,
+        "global 接收缓存": "",
+        "OnButton.Enabled": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson48/artifact-spec.json",
+  "blueprintSlideOrder": true,
+  "coverTitle": "Wi-Fi TCP\n局域网通信"
+}

@@ -1,0 +1,590 @@
+{
+  "lesson": 3,
+  "title": "会发声的伙伴",
+  "projectName": "Course03Voice",
+  "exampleTitle": "伙伴声音盒",
+  "durationMinutes": 90,
+  "goals": [
+    "区分设置属性与调用方法：文字显示用Text，发声用Speak/Play。",
+    "参照小猫事件完成小狗事件，并能同时停止语音和短提示音。",
+    "记录声音资源路径、语音引擎前提与实际听觉测试结果。"
+  ],
+  "exampleSpec": {
+    "summary": "小猫或小狗按钮先停止上一段语音，播放本地操作提示音feedback.wav，更新StatusLabel并调用PetSpeech.Speak进行中文自我介绍；停止按钮同时停止语音与短音并显示停止提示。",
+    "components": [
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "显示当前伙伴及停止反馈"
+      },
+      {
+        "name": "CatButton",
+        "type": "Button",
+        "role": "小猫语音介绍"
+      },
+      {
+        "name": "DogButton",
+        "type": "Button",
+        "role": "小狗语音介绍"
+      },
+      {
+        "name": "StopButton",
+        "type": "Button",
+        "role": "停止发声"
+      },
+      {
+        "name": "PetSpeech",
+        "type": "TextToSpeech",
+        "role": "把中文文字交给设备语音引擎朗读"
+      },
+      {
+        "name": "FeedbackSound",
+        "type": "Sound",
+        "role": "播放工程中的短操作提示音feedback.wav"
+      }
+    ],
+    "logic": [
+      {
+        "event": "CatButton.Click",
+        "actions": [
+          "调用PetSpeech.Stop",
+          "调用FeedbackSound.Play",
+          "StatusLabel.Text ← 小猫：我是小猫，喵喵喵。",
+          "调用PetSpeech.Speak，message=我是小猫，喵喵喵"
+        ]
+      },
+      {
+        "event": "DogButton.Click",
+        "actions": [
+          "调用PetSpeech.Stop",
+          "调用FeedbackSound.Play",
+          "StatusLabel.Text ← 小狗：我是小狗，汪汪汪。",
+          "调用PetSpeech.Speak，message=我是小狗，汪汪汪"
+        ]
+      },
+      {
+        "event": "StopButton.Click",
+        "actions": [
+          "调用PetSpeech.Stop",
+          "调用FeedbackSound.Stop",
+          "StatusLabel.Text ← 声音已停止，再选一个伙伴吧。"
+        ]
+      }
+    ],
+    "scope": "本课的动物介绍由TextToSpeech合成，不是动物录音；feedback.wav是独立的短提示音。中文朗读依赖设备已安装并可用的中文TTS引擎，不能由AIA编译成功推断声音可听。可选真实动物音频需教师提前准备自录或有许可的文件。"
+  },
+  "versions": {
+    "answer": "Course03Voice.aia：Cat、Dog、Stop三组事件完整，带feedback.wav本地短提示音。",
+    "class": "Course03VoiceClass.aia：组件、素材与CatButton.Click示范已给出；学生完成DogButton.Click和StopButton.Click。",
+    "starter": "Course03VoiceStarter.aia：相同界面、非可视组件及短音资源，积木为空。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–3",
+      "teacher": "演示看得见和听得见的两种反馈，说明素材性质。",
+      "students": "先听，再区分提示音与合成语音。",
+      "checkpoint": "知道不是加载真实动物录音。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "4–8",
+      "teacher": "辨认非可视组件、Source路径、Speak方法与中文引擎。",
+      "students": "导入Class，找到PetSpeech和FeedbackSound。",
+      "checkpoint": "能说出Source=feedback.wav。"
+    },
+    {
+      "start": 25,
+      "end": 45,
+      "minutes": 20,
+      "slides": "9–12",
+      "teacher": "逐条解读Cat事件，示范调用与属性设置的差异。",
+      "students": "完成Dog事件，保持文字与语音一致。",
+      "checkpoint": "message插入的是文字值。"
+    },
+    {
+      "start": 45,
+      "end": 60,
+      "minutes": 15,
+      "slides": "13–15",
+      "teacher": "让学生独立设计停止事件，指导有序听觉测试。",
+      "students": "补Stop事件，小猫→停止→小狗，记录实际反馈。",
+      "checkpoint": "停止同时处理两个声音组件。"
+    },
+    {
+      "start": 60,
+      "end": 75,
+      "minutes": 15,
+      "slides": "16–19",
+      "teacher": "定位无声原因，组织短句改编与音量礼仪。",
+      "students": "检查媒体音量/资源/语音引擎，改编一段伙伴自我介绍。",
+      "checkpoint": "区分“标签变了”和“真的发声”。"
+    },
+    {
+      "start": 75,
+      "end": 90,
+      "minutes": 15,
+      "slides": "20–24",
+      "teacher": "同伴盲听、方法解释、出口题与导出。",
+      "students": "交替测试，两人记录版本、设备与听到的内容。",
+      "checkpoint": "未听到的结果标待测或问题，而非通过。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "找到两种声音来源",
+      "steps": [
+        "导入Course03VoiceClass.aia，选择非可视组件PetSpeech与FeedbackSound。",
+        "检查FeedbackSound.Source为feedback.wav，媒体区有同名文件。",
+        "确认教师测试环境中的中文语音引擎可用，媒体音量适中。"
+      ],
+      "question": "feedback.wav和Speak输入的文字是同一种资源吗？",
+      "answer": "不是；Sound播放已有音频文件，TextToSpeech把文字交给设备语音引擎合成。"
+    },
+    {
+      "title": "参照小猫制作小狗",
+      "steps": [
+        "阅读已提供的CatButton.Click，指出Stop、Play、标签设置和Speak。",
+        "添加DogButton.Click：先PetSpeech.Stop，再FeedbackSound.Play。",
+        "设置StatusLabel.Text为“小狗：我是小狗，汪汪汪。”，调用PetSpeech.Speak并传入“我是小狗，汪汪汪”。"
+      ],
+      "question": "为什么改了StatusLabel.Text，还不能保证听到声音？",
+      "answer": "标签只负责显示，声音需要Speak调用以及可工作的设备语音引擎与音量设置。"
+    },
+    {
+      "title": "停止发声并互测",
+      "steps": [
+        "添加StopButton.Click，依次调用PetSpeech.Stop和FeedbackSound.Stop。",
+        "把StatusLabel.Text设为“声音已停止，再选一个伙伴吧。”。",
+        "依次测试小猫→停止→小狗；避免多人同时高音量播放，再导出AIA。"
+      ],
+      "question": "为什么停止按钮不只改成“已经停止”的文字？",
+      "answer": "文字反馈不等于停止声音，必须调用对应声音组件的停止方法。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "点击小猫",
+      "expected": "状态显示小猫介绍；应听到短提示音及中文语音，实际结果分别记录。"
+    },
+    {
+      "action": "点击小狗",
+      "expected": "状态显示小狗介绍；Speak的内容与小狗一致。"
+    },
+    {
+      "action": "正在发声时点击停止",
+      "expected": "调用两个Stop方法，状态显示“声音已停止，再选一个伙伴吧。”；实际听觉另测。"
+    },
+    {
+      "action": "停止后再选小猫",
+      "expected": "仍可重新发声，不必重启App。"
+    },
+    {
+      "action": "在教师允许下将媒体音量调低再恢复",
+      "expected": "区分无声音量原因与程序事件原因，测试后恢复适中音量。"
+    }
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成Dog与Stop，准确解释显示和发声是不同动作。"
+    },
+    {
+      "level": "提高",
+      "task": "把语音改成一种原创伙伴的简短介绍，保持屏幕文字和朗读内容一致。"
+    },
+    {
+      "level": "拓展",
+      "task": "经教师确认许可后导入一段短录音，另建Sound播放；记录素材来源，不将提示音标成动物录音。"
+    }
+  ],
+  "misconceptions": [
+    [
+      "标签更新了，所以声音一定正常",
+      "标签与声音是两个证据；逐项记录短音、语音、停止效果。"
+    ],
+    [
+      "没有语音就反复拖Speak积木",
+      "先检查设备TTS引擎/中文语言包和媒体音量，再检查message输入及事件连接。"
+    ],
+    [
+      "Source填写电脑绝对路径",
+      "打包素材使用工程媒体中的feedback.wav；另一台设备不能读取教师电脑路径。"
+    ],
+    [
+      "用Sound播放很长背景音乐",
+      "较长音频可选Player；本课只用Sound短音，不包含Player组件。"
+    ]
+  ],
+  "exitQuestions": [
+    {
+      "q": "设置StatusLabel.Text与调用PetSpeech.Speak有什么区别？",
+      "a": "前者改变屏幕文字属性，后者请求语音引擎朗读文字。"
+    },
+    {
+      "q": "停止按钮应调用哪两个方法？",
+      "a": "PetSpeech.Stop和FeedbackSound.Stop。"
+    },
+    {
+      "q": "APK编译成功，能否证明每台设备一定能中文朗读？",
+      "a": "不能，还需设备中文TTS引擎、媒体音量等条件，并做实际声音测试。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT媒体组件参考：Sound、Player、TextToSpeech",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/media.html",
+      "use": "核对短音播放、语音合成及对应方法；本课仅使用Sound和TextToSpeech。"
+    },
+    {
+      "title": "MIT按钮和标签参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html",
+      "use": "核对按钮Click与标签Text。"
+    }
+  ],
+  "componentMetadata": {
+    "Button": "8",
+    "Label": "6",
+    "Sound": "4",
+    "TextToSpeech": "6",
+    "Player": "8（可选讲解，未加入本课工程）"
+  },
+  "slides": [
+    {
+      "title": "会发声的伙伴",
+      "body": [
+        "第3课 · 伙伴声音盒",
+        "一次点击，得到文字和声音两种反馈"
+      ],
+      "notes": "开场请同学先安静聆听。明确示例里的喵喵与汪汪是语音引擎朗读拟声文字，短提示音是操作反馈，两者都不是动物实录。",
+      "layout": "text"
+    },
+    {
+      "title": "听到的声音来自哪里？",
+      "body": [
+        "一声短提示音",
+        "一句中文自我介绍",
+        "屏幕也显示伙伴名称"
+      ],
+      "notes": "教师分两次展示：先指出短音，再听中文介绍。请学生区分声音文件与文字合成。没有可用设备时只讲机制，听觉结果写待测。",
+      "layout": "question"
+    },
+    {
+      "title": "今天的作品证据",
+      "body": [
+        "小猫与小狗各有自己的介绍",
+        "停止按钮能处理两个声音组件",
+        "我能区分显示和发声"
+      ],
+      "notes": "目标不要求所有人增加图片或动物录音。核心是事件里可以有多个动作，调用方法会请求组件执行任务。",
+      "layout": "text"
+    },
+    {
+      "title": "90分钟的学习路线",
+      "body": [
+        "先理解来源，再制作和听测"
+      ],
+      "notes": "声音课要保留排查环境时间，不让所有同学同时播放。根据班级设备数分组轮换听测。",
+      "layout": "table",
+      "table": [
+        [
+          "时间",
+          "任务"
+        ],
+        [
+          "0–10",
+          "体验两种反馈"
+        ],
+        [
+          "10–25",
+          "组件与资源"
+        ],
+        [
+          "25–45",
+          "制作小狗事件"
+        ],
+        [
+          "45–60",
+          "停止与听测"
+        ],
+        [
+          "60–75",
+          "排查与改编"
+        ],
+        [
+          "75–90",
+          "分享与导出"
+        ]
+      ]
+    },
+    {
+      "title": "可见组件与非可视组件",
+      "body": [
+        "按钮、标签放在界面上",
+        "声音组件不占界面位置",
+        "它们仍然属于同一个工程"
+      ],
+      "notes": "让学生在组件树里找到PetSpeech与FeedbackSound。非可视不是不存在；通过事件中的方法块才能请求它们工作。",
+      "layout": "text"
+    },
+    {
+      "title": "声音盒的实际界面",
+      "body": [
+        "小猫、小狗供用户选择",
+        "状态区说明当前内容",
+        "停止按钮用于结束声音"
+      ],
+      "notes": "展示真实Designer截图，指出底部非可视组件区。本页展示布局与组件，不证明声音已可播放。 若当前屏幕需要滚动才能看到停止按钮，示范滚动找到它；具体设备上的布局另行实测。",
+      "layout": "designer"
+    },
+    {
+      "title": "声音文件与语音合成",
+      "body": [
+        "Sound：播放已有短音文件",
+        "TextToSpeech：朗读传入的文字",
+        "Player：可用于较长音频，本课不使用"
+      ],
+      "notes": "按官方组件分类做简短比较。工程中的feedback.wav已随包提供；可选自录动物音频要说明来源和许可，不能假装本课已包含。",
+      "layout": "table",
+      "table": [
+        [
+          "组件",
+          "本课输入",
+          "触发方法"
+        ],
+        [
+          "FeedbackSound / Sound",
+          "feedback.wav",
+          "Play / Stop"
+        ],
+        [
+          "PetSpeech / TextToSpeech",
+          "中文文字",
+          "Speak / Stop"
+        ],
+        [
+          "Player（拓展）",
+          "较长音频",
+          "Start / Pause / Stop"
+        ]
+      ]
+    },
+    {
+      "title": "Source与message各指什么？",
+      "body": [
+        "Source指向工程里的feedback.wav",
+        "message是一段要朗读的文字",
+        "中文语音依赖设备引擎和语言支持"
+      ],
+      "notes": "先检查文件存在，再解释message输入槽。不要让学生把文件名写到Speak message然后误认为在播放文件；Speak只会尝试朗读该字符串。",
+      "layout": "text"
+    },
+    {
+      "title": "小猫事件的四个动作",
+      "body": [
+        "停止上一段语音",
+        "播放短提示音并更新标签",
+        "调用Speak传入小猫介绍"
+      ],
+      "notes": "截图对应CatButton.Click。Class版已提供。沿连接从上读到下，说明语音播放是组件异步工作，不承诺短音结束后才开始语音。",
+      "layout": "blocks",
+      "blockIndex": 1
+    },
+    {
+      "title": "设置属性与调用方法",
+      "body": [
+        "Text：屏幕上显示什么",
+        "Play：请Sound开始播放",
+        "Speak：请语音引擎开始朗读"
+      ],
+      "notes": "用“状态”和“动作”的生活比喻区分。课堂不要求掌握异步术语，只需知道调用开始声音，不等于程序等到整段朗读完才继续。",
+      "layout": "text"
+    },
+    {
+      "title": "小狗事件的学生任务",
+      "body": [
+        "事件必须属于DogButton",
+        "语音与标签都写小狗",
+        "保留先Stop再Speak的顺序"
+      ],
+      "notes": "给8至10分钟补事件。巡视时检查复制后是否仍写小猫、是否还在CatButton事件里。最少改动也要保持界面与声音语义一致。",
+      "layout": "text"
+    },
+    {
+      "title": "小狗事件的对照逻辑",
+      "body": [
+        "DogButton.Click",
+        "StatusLabel显示小狗介绍",
+        "PetSpeech.Speak：我是小狗，汪汪汪"
+      ],
+      "notes": "完成任务后显示实际截图。让学生指出文本显示有“小狗：”前缀，Speak输入只朗读介绍内容，说明两个文字值并不必逐字相同但意思需一致。",
+      "layout": "blocks",
+      "blockIndex": 2
+    },
+    {
+      "title": "停止按钮的对照逻辑",
+      "body": [
+        "PetSpeech.Stop停止语音",
+        "FeedbackSound.Stop停止短音",
+        "标签说明声音已停止"
+      ],
+      "notes": "先让学生提出设计，再显示答案截图。只改标签是常见假完成；必须找到两个Stop调用。",
+      "layout": "blocks",
+      "blockIndex": 3
+    },
+    {
+      "title": "听测时分别记录三件事",
+      "body": [
+        "短音有没有？",
+        "中文介绍有没有、内容对不对？",
+        "停止后的实际声音怎样？"
+      ],
+      "notes": "若没有中文引擎，可能短音正常而语音失败。请学生分别记录，不使用一个总勾号掩盖不同证据。",
+      "layout": "text"
+    },
+    {
+      "title": "切换伙伴的顺序实验",
+      "body": [
+        "小猫→停止→小狗",
+        "小狗→小猫",
+        "停止→停止→小猫"
+      ],
+      "notes": "本课先Stop可减少上一段语音继续占用的情况，实际队列行为仍由引擎处理。观察结果写实，不承诺所有设备响应时长相同。",
+      "layout": "text"
+    },
+    {
+      "title": "有文字却没有声音",
+      "body": [
+        "媒体音量是否合适？",
+        "feedback.wav是否存在？",
+        "中文语音引擎能否朗读？"
+      ],
+      "notes": "采用从环境到资源再到事件的顺序排查。先用设备已知可用声音确认媒体音量；不把网络打开作为所有问题的默认答案。",
+      "layout": "text"
+    },
+    {
+      "title": "让声音服务使用者",
+      "body": [
+        "短句比长段更适合按钮反馈",
+        "屏幕文字为听不到的同伴提供线索",
+        "课堂轮流播放、使用适中音量"
+      ],
+      "notes": "本课不以音量大和语速快作为趣味目标。提醒学生声音应该有停止入口，同时提供可读文字。",
+      "layout": "text"
+    },
+    {
+      "title": "可选录音的资源路径",
+      "body": [
+        "先取得录音的使用许可",
+        "上传到工程媒体区",
+        "Sound.Source使用准确文件名"
+      ],
+      "notes": "教师可在拓展环节播放自录短音。较长录音可另用Player，但当前工程没有Player，不能按这页误以为直接存在。素材清单写作者、来源与许可。",
+      "layout": "text"
+    },
+    {
+      "title": "我的伙伴改编",
+      "body": [
+        "它是谁？想说一句什么？",
+        "标签与朗读是否一致？",
+        "同伴能否随时停止？"
+      ],
+      "notes": "学生可将小狗改成机器人、图书管理员或原创动物伙伴。不要要求新增大量素材；改变角色、语气和使用场景也能形成有意义的改编。",
+      "layout": "text"
+    },
+    {
+      "title": "同伴盲听与看屏",
+      "body": [
+        "先听声音猜伙伴",
+        "再看标签核对内容",
+        "记录一次有证据的发现"
+      ],
+      "notes": "一人操作一人记录，再交换。若设备无声音，改做积木对照并明确待测，不设计虚假的“都听到了”反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "我的声音程序说明",
+      "body": [
+        "我用________显示文字",
+        "我用________发起语音",
+        "停止时我调用________"
+      ],
+      "notes": "参考：StatusLabel；PetSpeech.Speak；PetSpeech.Stop和FeedbackSound.Stop。鼓励学生指出非可视组件的位置。",
+      "layout": "text"
+    },
+    {
+      "title": "出口题：一句“停止”够不够？",
+      "body": [
+        "只把标签改成“已停止”，声音会停吗？",
+        "Sound.Source和Speak message有什么区别？",
+        "编译成功等于中文朗读正常吗？"
+      ],
+      "notes": "参考：不一定，必须调用Stop；Source指音频文件，message是待朗读文字；编译不能验证设备语音引擎和听觉效果。",
+      "layout": "question"
+    },
+    {
+      "title": "教师观察与分层",
+      "body": [
+        "功能：Dog与Stop结构完整",
+        "理解：显示、文件、合成语音能区分",
+        "证据：分别记录短音和语音测试"
+      ],
+      "notes": "设备功能评分依实际听觉结果。可给结构与概念分，不能把设备不可用的声音结果判为已通过。保存有待测说明的任务单也有价值。",
+      "layout": "text"
+    },
+    {
+      "title": "下一课：我的故事小舞台",
+      "body": [
+        "让画面和文字一起切换",
+        "一个屏幕可以放多个场景容器",
+        "技术参考：MIT媒体与界面组件"
+      ],
+      "notes": "来源：https://ai2.appinventor.mit.edu/reference/components/media.html；https://ai2.appinventor.mit.edu/reference/components/userinterface.html。交付的短音为操作提示，不是动物录音。下节沿用按钮事件，增加Visible属性来控制场景。",
+      "layout": "text"
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson03/artifact-spec.json",
+  "actualScreenshotGroups": [
+    "CatButton.Click",
+    "DogButton.Click",
+    "StopButton.Click"
+  ],
+  "actualExpectedOutputs": [
+    {
+      "event": "CatButton.Click",
+      "expect": {
+        "StatusLabel.Text": "小猫：我是小猫，喵喵喵。"
+      },
+      "methods": [
+        "PetSpeech.Stop",
+        "FeedbackSound.Play",
+        "PetSpeech.Speak:我是小猫，喵喵喵"
+      ]
+    },
+    {
+      "event": "DogButton.Click",
+      "expect": {
+        "StatusLabel.Text": "小狗：我是小狗，汪汪汪。"
+      },
+      "methods": [
+        "PetSpeech.Stop",
+        "FeedbackSound.Play",
+        "PetSpeech.Speak:我是小狗，汪汪汪"
+      ]
+    },
+    {
+      "event": "StopButton.Click",
+      "expect": {
+        "StatusLabel.Text": "声音已停止，再选一个伙伴吧。"
+      },
+      "methods": [
+        "PetSpeech.Stop",
+        "FeedbackSound.Stop"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>课程交互预览</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f1f9ff;color:#123e62;font-family:'Microsoft YaHei',sans-serif}header{padding:22px 5vw;background:white;border-bottom:1px solid #cde6f5}h1{font-size:24px;margin:0 0 9px}header p{font-size:14px;line-height:1.7;margin:0;color:#56758b}main{display:flex;gap:36px;align-items:flex-start;max-width:1080px;margin:28px auto;padding:0 20px}.phone{width:390px;min-height:650px;background:white;border:8px solid #123e62;border-radius:25px;padding:18px 10px;box-shadow:0 16px 40px #123e6218}.app{display:flex;flex-direction:column;width:100%;gap:4px;min-height:600px}aside{flex:1;font-size:16px;line-height:1.8}aside h2{font-size:20px}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:7px;padding:9px 10px;min-height:44px;white-space:normal}input,select,textarea{border:1px solid #b6d8ee;border-radius:5px;padding:9px;min-width:0}.component{max-width:100%;flex-shrink:0;overflow-wrap:anywhere}.label{white-space:pre-wrap;display:flex;align-items:center;padding:4px 7px}.vertical{display:flex;flex-direction:column;gap:4px}.horizontal{display:flex;flex-direction:row;gap:4px}.horizontal>.component{min-width:0}img{object-fit:contain;display:block}pre{background:#fff;border:1px solid #cde6f5;padding:14px;font-size:13px;white-space:pre-wrap;max-height:280px;overflow:auto}.tools button{background:#1388cc;color:white;margin:12px 0}@media(max-width:760px){main{flex-direction:column;align-items:center}.phone{width:min(390px,96vw)}aside{width:100%}}</style>
+<header><h1 id="heading"></h1><p>浏览器教学预览：读取配套 AIA 的组件与积木逻辑，方便课前审阅。界面由浏览器重现；声音使用浏览器语音引擎和音频，不能替代 Android 设备验收。</p></header>
+<main><div class="phone"><div class="app" id="app"></div></div><aside><h2>观察与体验</h2><p>点击应用内按钮，观察文字、图片或布局的变化。可以对照工程中的事件积木解释发生了什么。</p><div class="tools"><button onclick="location.reload()">恢复初始状态</button></div><h2>最近的事件</h2><pre id="log">等待操作</pre><p id="notice">网页预览不请求蓝牙、定位或相机等 Android 权限。</p></aside></main>
+<script>
+const DATA=__COURSE_DATA__, components={},nodes={},globals={},procedures={},events={},audio={},timers={};
+let budget=0;const logs=[];
+const log=s=>{logs.unshift(s);document.getElementById('log').textContent=logs.slice(0,10).join('\n')};
+function truth(v){return v===true||v==='True'||v==='true'}
+function color(v){if(typeof v==='number')return '#'+(v>>>0).toString(16).padStart(8,'0').slice(-6);return String(v||'').replace(/^&H(?:[a-f\d]{2})/i,'#')}
+function value(c,p){const v=components[c]?.[p];if(p==='Text'&&nodes[c]&&['INPUT','TEXTAREA'].includes(nodes[c].tagName))return nodes[c].value;return v}
+function set(c,p,v){if(!components[c])throw Error('未知组件 '+c);components[c][p]=v;render(c,p);}
+function render(c,p){const a=components[c],e=nodes[c];if(!e)return;
+ if(p==='Text')e.tagName==='INPUT'||e.tagName==='TEXTAREA'?e.value=a.Text:e.textContent=a.Text??'';
+ if(p==='Visible')e.style.display=truth(a.Visible)?(a.$Type.includes('Arrangement')?(a.$Type.startsWith('Horizontal')?'flex':'flex'):''):'none';
+ if(p==='Enabled')e.disabled=!truth(a.Enabled);
+ if(p==='Picture')e.src=DATA.assets[a.Picture]||'';
+ if(p==='BackgroundColor')e.style.backgroundColor=color(a.BackgroundColor);
+ if(p==='TextColor')e.style.color=color(a.TextColor);
+ if(p==='Elements'||p==='ElementsFromString'){const items=Array.isArray(a.Elements)?a.Elements:String(a.ElementsFromString||'').split(',');if(e.tagName==='SELECT'){e.replaceChildren(...items.map(x=>new Option(String(x),String(x))));}}
+}
+function dimensions(e,a){for(const [p,k]of [['Width','width'],['Height','height']]){let v=Number(a[p]??-1);if(v===-2){e.style[k]='100%';if(p==='Width')e.style.alignSelf='stretch'}else if(v<=-1000)e.style[k]=(-v-1000)+'%';else if(v>0)e.style[k]=v+'px'}if(a.FontSize)e.style.fontSize=Math.min(28,Number(a.FontSize))+'px';if(truth(a.FontBold))e.style.fontWeight='700';if(a.TextAlignment)e.style.justifyContent=['flex-start','center','flex-end'][Number(a.TextAlignment)]||'flex-start';}
+function mount(a,parent){components[a.$Name]={Visible:'True',Enabled:'True',...a};const c=a.$Name,t=a.$Type;let e;
+ if(t==='Form'){nodes[c]=parent;for(const x of a.$Components||[])mount(x,parent);return}
+ if(t.includes('Arrangement')){e=document.createElement('div');e.className=t.startsWith('Horizontal')?'horizontal':'vertical'}
+ else if(['Button','ListPicker'].includes(t)){e=document.createElement('button');e.onclick=()=>{if(t==='ListPicker'){let choices=value(c,'Elements')||String(value(c,'ElementsFromString')||'').split(',');let n=prompt('输入要选择的序号：\n'+choices.map((x,i)=>(i+1)+'. '+x).join('\n'));if(n&&choices[Number(n)-1]!==undefined){set(c,'Selection',choices[Number(n)-1]);set(c,'SelectionIndex',Number(n));fire(c,'AfterPicking')}}else fire(c,'Click')}}
+ else if(['TextBox','PasswordTextBox'].includes(t)){e=document.createElement(truth(a.MultiLine)?'textarea':'input');e.placeholder=a.Hint||'';e.oninput=()=>{components[c].Text=e.value;fire(c,'TextChanged')}}
+ else if(t==='Image'){e=document.createElement('img');e.alt=a.AlternateText||'课程图片'}
+ else if(t==='Spinner'){e=document.createElement('select');e.onchange=()=>{set(c,'Selection',e.value);set(c,'SelectionIndex',e.selectedIndex+1);fire(c,'AfterSelecting',{selection:e.value})}}
+ else if(t==='Label'){e=document.createElement('div');e.className='label'}
+ else if(t==='CheckBox'){e=document.createElement('input');e.type='checkbox';e.checked=truth(a.Checked);e.onchange=()=>{set(c,'Checked',e.checked);fire(c,'Changed')}}
+ else {if(['Clock','Sound','Player','TextToSpeech','Notifier','TinyDB','Web'].includes(t))return;e=document.createElement('div');e.textContent=t+'（在Android工程中体验）';e.style.fontSize='13px';}
+ e.classList.add('component');e.dataset.component=c;nodes[c]=e;dimensions(e,a);parent.append(e);
+ for(const p of ['Text','Visible','Picture','BackgroundColor','TextColor','ElementsFromString','Enabled'])if(a[p]!==undefined)render(c,p);
+ for(const x of a.$Components||[])mount(x,e);
+}
+function evalB(b,local={}){if(!b)return null;if(++budget>20000)throw Error('预览单次事件超过计算上限');const f=b.fields||{},m=b.mutation||{},v=n=>evalB(b.values?.[n],local),s=n=>run(b.statements?.[n],local),a=Object.keys(b.values||{}).sort((x,y)=>Number(x.match(/\d+/)?.[0]||0)-Number(y.match(/\d+/)?.[0]||0)).map(v),c=m.instance_name||f.COMPONENT_SELECTOR;
+ switch(b.type){
+ case 'text':return f.TEXT;case 'math_number':return Number(f.NUM);case 'logic_boolean':return f.BOOL==='TRUE';
+ case 'global_declaration':globals[f.NAME]=v('VALUE');return;
+ case 'lexical_variable_get':return f.VAR.startsWith('global ')?globals[f.VAR.slice(7)]:local[f.VAR];
+ case 'lexical_variable_set':if(f.VAR.startsWith('global '))globals[f.VAR.slice(7)]=v('VALUE');else local[f.VAR]=v('VALUE');return;
+ case 'component_set_get':return m.set_or_get==='set'?set(c,m.property_name||f.PROP,v('VALUE')):value(c,m.property_name||f.PROP);
+ case 'component_component_block':return c;
+ case 'component_method':return method(c,m.method_name,a,local);
+ case 'text_join':return a.map(x=>String(x??'')).join('');
+ case 'text_trim':return String(v('TEXT')).trim();case 'text_length':return String(v('VALUE')??v('TEXT')??'').length;
+ case 'text_isEmpty':return String(v('VALUE')??v('TEXT')??'').length===0;
+ case 'math_add':return a.reduce((x,y)=>Number(x)+Number(y),0);case 'math_multiply':return a.reduce((x,y)=>Number(x)*Number(y),1);
+ case 'math_subtract':return Number(v('A'))-Number(v('B'));case 'math_division':return Number(v('A'))/Number(v('B'));
+ case 'math_power':return Number(v('A'))**Number(v('B'));case 'math_floor':return Math.floor(Number(v('NUM')));case 'math_abs':return Math.abs(Number(v('NUM')));
+ case 'math_is_a_number':return String(a[0]??'').trim()!==''&&Number.isFinite(Number(a[0]));
+ case 'math_on_list':return f.OP==='MIN'?Math.min(...a):f.OP==='MAX'?Math.max(...a):a.reduce((x,y)=>x+Number(y),0);
+ case 'math_random_int':return Math.floor(Math.random()*(Number(v('TO'))-Number(v('FROM'))+1))+Number(v('FROM'));
+ case 'math_compare':case 'logic_compare':{const x=v('A'),y=v('B');return {EQ:()=>x==y,NEQ:()=>x!=y,LT:()=>Number(x)<Number(y),LTE:()=>Number(x)<=Number(y),GT:()=>Number(x)>Number(y),GTE:()=>Number(x)>=Number(y)}[f.OP]?.()}
+ case 'logic_operation':return f.OP==='AND'?a.every(Boolean):a.some(Boolean);case 'logic_negate':return !v('BOOL');
+ case 'controls_if':{for(let i=0;b.values?.['IF'+i];i++){if(v('IF'+i)){s('DO'+i);return}}s('ELSE');return}
+ case 'controls_forRange':for(let n=Number(v('START')),end=Number(v('END')),step=Number(v('STEP'));step&&((step>0&&n<=end)||(step<0&&n>=end));n+=step){local[f.VAR]=n;s('DO')}return;
+ case 'controls_forEach':for(const x of v('LIST')||[]){local[f.VAR]=x;s('DO')}return;
+ case 'procedures_callnoreturn':case 'procedures_callreturn':{let p=procedures[m.name||f.PROCNAME];if(!p)throw Error('找不到过程 '+(m.name||f.PROCNAME));let env={...local};(p.mutation?.args||[]).forEach((x,i)=>env[x]=v('ARG'+i));run(p.statements?.STACK,env);return evalB(p.values?.RETURN,env)}
+ case 'lists_create_with':return a;case 'lists_length':return (v('LIST')||[]).length;case 'lists_select_item':return v('LIST')[Number(v('NUM'))-1];
+ case 'lists_add_items':{let list=v('LIST');for(const [k,b]of Object.entries(b.values))if(k!=='LIST')list.push(evalB(b,local));return}
+ case 'lists_replace_item':v('LIST')[Number(v('NUM'))-1]=v('ITEM');return;
+ default:throw Error('此预览尚未实现积木 '+b.type+'，请在配套AIA/APK中体验');
+ }}
+function run(b,local={}){while(b){evalB(b,local);b=b.next}}
+function method(c,m,args){const t=components[c].$Type;if(t==='TextToSpeech'){if(m==='Stop')speechSynthesis.cancel();if(m==='Speak'){let u=new SpeechSynthesisUtterance(String(args[0]));u.lang='zh-CN';speechSynthesis.speak(u)}return}
+ if(t==='Sound'||t==='Player'){if(m==='Play'||m==='Start'){audio[c]?.pause();audio[c]=new Audio(DATA.assets[value(c,'Source')]);audio[c].play().catch(e=>log('音频：'+e.message))}if(m==='Stop'||m==='Pause'){audio[c]?.pause();if(m==='Stop'&&audio[c])audio[c].currentTime=0}return}
+ if(t==='Notifier'){if(m==='ShowAlert'||m==='ShowMessageDialog')log('提示：'+args.join(' '));return}
+ if(t==='TinyDB'){let key='course-preview-'+c+'-'+args[0];if(m==='StoreValue'){localStorage.setItem(key,JSON.stringify(args[1]));return}if(m==='GetValue'){let x=localStorage.getItem(key);return x===null?args[1]:JSON.parse(x)}}
+ throw Error('预览不调用Android组件 '+t+'.'+m+'，请使用配套工程测试');}
+function fire(c,e,local={}){budget=0;log(c+'.'+e);try{run(events[c+'.'+e]?.statements?.DO,local)}catch(err){log(err.message);document.getElementById('notice').textContent=err.message;throw err}}
+document.getElementById('heading').textContent=DATA.form.Title||DATA.form.AppName;
+mount(DATA.form,document.getElementById('app'));
+for(const b of DATA.blocks){if(b.type==='global_declaration'){budget=0;evalB(b)}else if(b.type.startsWith('procedures_def'))procedures[b.fields.NAME]=b;else if(b.type==='component_event')events[b.mutation.instance_name+'.'+b.mutation.event_name]=b}
+fire('Screen1','Initialize');window.coursePreview={components,globals,fire,evalB,DATA,set};
+</script></html>

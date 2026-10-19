@@ -1,0 +1,740 @@
+{
+  "lesson": 44,
+  "title": "蓝牙连接与设备控制",
+  "projectName": "YXCourse44",
+  "exampleTitle": "经典蓝牙SPP开关灯",
+  "durationMinutes": 90,
+  "goals": [
+    "系统配对建立设备关系。",
+    "按当前可用字节读取，避免等待分隔符阻塞。",
+    "用测试记录验证蓝牙连接与设备控制的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "蓝牙灯控：选择已配对的原始ESP32，连接SPP后发送开关指令并显示设备确认。",
+    "scope": "配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 经典蓝牙SPP只用于具备该能力的原始ESP32；C3/S3不适用此固件。系统先配对YX-ESP32-SPP，APP再Connect建立通道，BluetoothClient不同于BLE。",
+    "components": [
+      {
+        "name": "DevicePicker",
+        "type": "ListPicker",
+        "role": "选择已配对设备"
+      },
+      {
+        "name": "DisconnectButton",
+        "type": "Button",
+        "role": "断开"
+      },
+      {
+        "name": "OnButton",
+        "type": "Button",
+        "role": "请求开灯"
+      },
+      {
+        "name": "OffButton",
+        "type": "Button",
+        "role": "请求关灯"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "连接状态"
+      },
+      {
+        "name": "Bt",
+        "type": "BluetoothClient",
+        "role": "经典蓝牙SPP"
+      },
+      {
+        "name": "PollClock",
+        "type": "Clock",
+        "role": "读取已到达字节"
+      }
+    ],
+    "logic": [
+      {
+        "event": "DevicePicker.BeforePicking",
+        "actions": [
+          "检查Available与Enabled；Elements←AddressesAndNames"
+        ]
+      },
+      {
+        "event": "DevicePicker.AfterPicking",
+        "actions": [
+          "连接设备"
+        ]
+      },
+      {
+        "event": "OnButton.Click",
+        "actions": [
+          "调用发送命令(LED,1)"
+        ]
+      },
+      {
+        "event": "OffButton.Click",
+        "actions": [
+          "调用发送命令(LED,0)"
+        ]
+      },
+      {
+        "event": "PollClock.Timer",
+        "actions": [
+          "IsConnected且BytesAvailableToReceive>0则ReceiveText(精确可用字节数)；处理新文本；失联则清理"
+        ]
+      },
+      {
+        "event": "DisconnectButton.Click",
+        "actions": [
+          "断开清理"
+        ]
+      },
+      {
+        "event": "Screen1.PermissionDenied",
+        "actions": [
+          "显示蓝牙权限需要并禁用控制"
+        ]
+      }
+    ],
+    "procedures": {
+      "连接设备": "Connect(DevicePicker.Selection)返回true则开轮询和控制键，否则失败提示",
+      "发送命令": "核对已连接及IsConnected后SendText(命令+LF)，只显示等待应答",
+      "接收分帧": "追加片段，while提取所有LF完整行，保留半行，上限512字符",
+      "清理连接": "清连接标志和缓存、关闭轮询、禁用控制"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse44.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse44Class.aia：保留所有组件与协议参数、连接状态清理、数值边界、非本课重点过程和完整事件入口、扩展完整原始包与真实事件签名；补齐连接设备过程；补齐发送命令过程。",
+    "starter": "YXCourse44Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：阅读配对设备入口，先问再示范。",
+      "students": "按任务单完成：阅读配对设备入口。",
+      "checkpoint": "配对成功就等于APP已经连接吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补连接设备过程，先问再示范。",
+      "students": "按任务单完成：补连接设备过程。",
+      "checkpoint": "BluetoothClient有Connected事件吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补发送命令，先问再示范。",
+      "students": "按任务单完成：补发送命令。",
+      "checkpoint": "收到半行能用ReceiveText(-1)一直等吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "阅读配对设备入口",
+      "steps": [
+        "BeforePicking已给，读取Bt.AddressesAndNames。",
+        "教师课前在系统配对YX-ESP32-SPP。",
+        "指出配对列表与当前通道连接的区别。"
+      ],
+      "question": "配对成功就等于APP已经连接吗？",
+      "answer": "不是，还要APP调用Connect并检查返回值。"
+    },
+    {
+      "title": "补连接设备过程",
+      "steps": [
+        "先清理旧连接状态。",
+        "调用Bt.Connect(DevicePicker.Selection)。",
+        "返回真才设已连接、启用按钮和PollClock。",
+        "失败只提示，不把已连接强设为真。"
+      ],
+      "question": "BluetoothClient有Connected事件吗？",
+      "answer": "本地原生组件没有该事件；这里用Connect返回值及IsConnected。"
+    },
+    {
+      "title": "补发送命令",
+      "steps": [
+        "同时检查已连接与Bt.IsConnected。",
+        "命令附LF，再Bt.SendText。",
+        "只显示等待应答；已给轮询按可用字节读取并分帧。",
+        "主动断开后按钮禁用，重新选择可再连接。"
+      ],
+      "question": "收到半行能用ReceiveText(-1)一直等吗？",
+      "answer": "本例避免阻塞，按当前可用字节数读取，再交给缓存分帧。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "未连接点击开关",
+      "expected": "按钮禁用，不发送"
+    },
+    {
+      "action": "成功连接后开灯再关灯",
+      "expected": "对应OK应答后更新状态"
+    },
+    {
+      "action": "主动断开后再次选设备",
+      "expected": "状态恢复，可重新连接"
+    }
+  ],
+  "misconceptions": [
+    [
+      "列表找不到C3",
+      "经典SPP要求原始ESP32，C3仅BLE"
+    ],
+    [
+      "收半行界面卡住",
+      "避免ReceiveText(-1)在无完整分隔符时阻塞"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "把灯控改成明确的设备名称。"
+    },
+    {
+      "level": "拓展",
+      "task": "增加读取状态按钮，发送GET并显示STATE。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "C3为何不能用这份SPP固件？",
+      "a": "该芯片不支持此经典蓝牙SPP功能，不能用BLE代替同一通道。"
+    },
+    {
+      "q": "什么时候更新灯已开？",
+      "a": "合法OK或STATE应答到达并校验之后。"
+    },
+    {
+      "q": "断开要清什么？",
+      "a": "连接标志、轮询和半行缓存，并禁用控制。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#BluetoothClient 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetoothle 官方参考",
+      "url": "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetooth.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT wifi.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT gpio.html 官方参考",
+      "url": "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "蓝牙连接与设备控制",
+      "body": [
+        "经典蓝牙SPP开关灯",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "蓝牙灯控：选择已配对的原始ESP32，连接SPP后发送开关指令并显示设备确认。 配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 经典蓝牙SPP只用于具备该能力的原始ESP32；C3/S3不适用此固件。系统先配对YX-ESP32-SPP，APP再Connect建立通道，BluetoothClient不同于BLE。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "Android系统先与YX-ESP32-SPP配对，再从AddressesAndNames选择。",
+        "Connect返回成功后才启用开关按钮。",
+        "收取分段文本并按LF组帧，只在OK应答后显示灯状态。"
+      ],
+      "notes": "演示：未连接点击开关。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "系统配对建立设备关系。",
+        "按当前可用字节读取，避免等待分隔符阻塞。",
+        "用测试记录验证蓝牙连接与设备控制的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "蓝牙灯控：选择已配对的原始ESP32，连接SPP后发送开关指令并显示设备确认。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "Android系统先与YX-ESP32-SPP配对，再从AddressesAndNames选择。",
+        "Connect返回成功后才启用开关按钮。",
+        "收取分段文本并按LF组帧，只在OK应答后显示灯状态。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "选择已配对设备",
+        "断开",
+        "请求开灯",
+        "请求关灯"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "DevicePicker",
+          "ListPicker",
+          "选择已配对设备"
+        ],
+        [
+          "DisconnectButton",
+          "Button",
+          "断开"
+        ],
+        [
+          "OnButton",
+          "Button",
+          "请求开灯"
+        ],
+        [
+          "OffButton",
+          "Button",
+          "请求关灯"
+        ],
+        [
+          "StatusLabel",
+          "Label",
+          "连接状态"
+        ],
+        [
+          "Bt",
+          "BluetoothClient",
+          "经典蓝牙SPP"
+        ]
+      ],
+      "columnWidths": [
+        300,
+        330,
+        522
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "已连接",
+          "假；必须核对当前实际连接"
+        ],
+        [
+          "接收缓存",
+          "空；保留半行，最多512字符"
+        ],
+        [
+          "有效应答",
+          "校验完整格式后才真"
+        ],
+        [
+          "日志",
+          "最多保留最近20条"
+        ]
+      ]
+    },
+    {
+      "title": "配对与连接不是同一件事",
+      "body": [
+        "系统配对建立设备关系。",
+        "APP调用Connect建立SPP通道。",
+        "BluetoothClient不是BLE组件，C3/S3不能运行此经典SPP固件。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "收到数据不一定正好一行",
+      "body": [
+        "按当前可用字节读取，避免等待分隔符阻塞。",
+        "缓存按LF取完整应答。",
+        "只收到半行时继续等待下一段。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "BeforePicking读取系统已配对设备列表",
+        "Connect返回真才启用控制和轮询",
+        "发送命令加LF，合法回包才更新确认"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：所有组件与协议参数；连接状态清理、数值边界、非本课重点过程和完整事件入口；扩展完整原始包与真实事件签名。学生任务：补齐连接设备过程；补齐发送命令过程。",
+      "layout": "text"
+    },
+    {
+      "title": "读取配对设备",
+      "body": [
+        "BeforePicking取得AddressesAndNames。",
+        "配对与APP连接分开。"
+      ],
+      "notes": "本入口已给；查找目标经典SPP设备。 实际截图对应：DevicePicker.BeforePicking。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 经典蓝牙SPP只用于具备该能力的原始ESP32；C3/S3不适用此固件。系统先配对YX-ESP32-SPP，APP再Connect建立通道，BluetoothClient不同于BLE。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "DevicePicker.BeforePicking"
+    },
+    {
+      "title": "阅读配对设备入口",
+      "body": [
+        "BeforePicking已给，读取Bt.AddressesAndNames。",
+        "教师课前在系统配对YX-ESP32-SPP。",
+        "指出配对列表与当前通道连接的区别。"
+      ],
+      "notes": "实践15分钟。配对成功就等于APP已经连接吗？ 教师参考：不是，还要APP调用Connect并检查返回值。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "连接并核对结果",
+      "body": [
+        "Connect返回真才开放控制。",
+        "失败保持未连接。"
+      ],
+      "notes": "连接设备过程待补，清理与界面恢复结构可复用。 实际截图对应：连接设备。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 经典蓝牙SPP只用于具备该能力的原始ESP32；C3/S3不适用此固件。系统先配对YX-ESP32-SPP，APP再Connect建立通道，BluetoothClient不同于BLE。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "连接设备"
+    },
+    {
+      "title": "补连接设备过程",
+      "body": [
+        "先清理旧连接状态。",
+        "调用Bt.Connect(DevicePicker.Selection)。",
+        "返回真才设已连接、启用按钮和PollClock。"
+      ],
+      "notes": "实践15分钟。BluetoothClient有Connected事件吗？ 教师参考：本地原生组件没有该事件；这里用Connect返回值及IsConnected。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "发送请求并等待",
+      "body": [
+        "SendText发送命令加LF。",
+        "成功状态来自设备回包。"
+      ],
+      "notes": "发送命令待补；不是按键后直接显示成功。 实际截图对应：发送命令。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 经典蓝牙SPP只用于具备该能力的原始ESP32；C3/S3不适用此固件。系统先配对YX-ESP32-SPP，APP再Connect建立通道，BluetoothClient不同于BLE。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "发送命令"
+    },
+    {
+      "title": "补发送命令",
+      "body": [
+        "同时检查已连接与Bt.IsConnected。",
+        "命令附LF，再Bt.SendText。",
+        "只显示等待应答；已给轮询按可用字节读取并分帧。"
+      ],
+      "notes": "实践15分钟。收到半行能用ReceiveText(-1)一直等吗？ 教师参考：本例避免阻塞，按当前可用字节数读取，再交给缓存分帧。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "未连接点击开关",
+          "按钮禁用，不发送"
+        ],
+        [
+          "成功连接后开灯再关灯",
+          "对应OK应答后更新状态"
+        ],
+        [
+          "主动断开后再次选设备",
+          "状态恢复，可重新连接"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "列表找不到C3",
+          "经典SPP要求原始ESP32，C3仅BLE"
+        ],
+        [
+          "收半行界面卡住",
+          "避免ReceiveText(-1)在无完整分隔符时阻塞"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "未连接点击开关",
+          "按钮禁用，不发送"
+        ],
+        [
+          "成功连接后开灯再关灯",
+          "对应OK应答后更新状态"
+        ],
+        [
+          "主动断开后再次选设备",
+          "状态恢复，可重新连接"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "把灯控改成明确的设备名称。",
+        "增加读取状态按钮，发送GET并显示STATE。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“未连接点击开关”写下预测，再记录实际结果。",
+        "结合积木解释：配对与连接不是同一件事。",
+        "修改一条规则并添加一项边界测试：把灯控改成明确的设备名称。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：主动断开后再次选设备。",
+        "说明：收到数据不一定正好一行。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "C3为何不能用这份SPP固件？",
+        "什么时候更新灯已开？",
+        "断开要清什么？"
+      ],
+      "notes": "1. 该芯片不支持此经典蓝牙SPP功能，不能用BLE代替同一通道。\n2. 合法OK或STATE应答到达并校验之后。\n3. 连接标志、轮询和半行缓存，并禁用控制。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "ListPicker": "10",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "Label": "6",
+    "Clock": "4",
+    "BluetoothClient": "8",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "所有组件与协议参数",
+    "连接状态清理、数值边界、非本课重点过程和完整事件入口",
+    "扩展完整原始包与真实事件签名"
+  ],
+  "actualClassroomTasks": [
+    "补齐连接设备过程",
+    "补齐发送命令过程"
+  ],
+  "actualScreenshotGroups": [
+    "DevicePicker.BeforePicking",
+    "连接设备",
+    "发送命令"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "已连接",
+      "连接中",
+      "连接开始",
+      "接收缓存",
+      "当前行",
+      "换行位置",
+      "最近命令",
+      "待选PWM",
+      "接收字段",
+      "有效应答",
+      "日志"
+    ],
+    "procedures": {
+      "整数范围": [
+        "值",
+        "下限",
+        "上限"
+      ],
+      "记录日志": [
+        "内容"
+      ],
+      "清理连接": [],
+      "处理应答": [
+        "一行"
+      ],
+      "发送命令": [
+        "命令"
+      ],
+      "接收分帧": [
+        "片段"
+      ],
+      "连接设备": []
+    },
+    "events": [
+      "OnButton.Click",
+      "OffButton.Click",
+      "DisconnectButton.Click",
+      "DevicePicker.BeforePicking",
+      "DevicePicker.AfterPicking",
+      "PollClock.Timer",
+      "Screen1.PermissionDenied",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "procedure": "处理应答",
+      "args": [
+        "OK,LED,1"
+      ],
+      "expect": {
+        "StateLabel.Text": "设备确认：LED=1",
+        "global 有效应答": true
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "STATE,1,128,2048,0"
+      ],
+      "expect": {
+        "global 有效应答": true
+      },
+      "contains": {
+        "StateLabel.Text": [
+          "PWM=128",
+          "ADC原始值=2048",
+          "按钮=按下"
+        ]
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "STATE,1,128,9999,0"
+      ],
+      "expect": {
+        "global 有效应答": false
+      }
+    },
+    {
+      "procedure": "清理连接",
+      "expect": {
+        "global 已连接": false,
+        "global 接收缓存": "",
+        "OnButton.Enabled": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson44/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

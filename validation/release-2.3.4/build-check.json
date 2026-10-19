@@ -1,0 +1,37 @@
+{
+  "ok": true,
+  "deltas": [
+    {
+      "base": "2.2.0",
+      "files": 741,
+      "uncompressedBytes": 1296480041,
+      "installerBytes": 501006225,
+      "installerSHA256": "843573db2d239eac16c7e0d5e2953dd75da5e94bc1e5b9c2b5279b83b92e778d"
+    },
+    {
+      "base": "2.3.1",
+      "files": 11984,
+      "uncompressedBytes": 1720284485,
+      "installerBytes": 615593781,
+      "installerSHA256": "bf74d8663bd3429fc707afd175f0c0b622a97eee507aded3e7d83b4eba3cf39d"
+    },
+    {
+      "base": "2.3.2",
+      "files": 1775,
+      "uncompressedBytes": 1283851513,
+      "installerBytes": 505040687,
+      "installerSHA256": "d012644b9ba315bd224226ba804a79a23b47098e37baaed54e71c56117861de8"
+    },
+    {
+      "base": "2.3.3",
+      "files": 1765,
+      "uncompressedBytes": 1283716140,
+      "installerBytes": 505109161,
+      "installerSHA256": "f597b53b144ab7f22dfa3964552eed684de699089f09dd9fe7737be66d86123c"
+    }
+  ],
+  "lessons": 56,
+  "projects": 168,
+  "materialDownloads": 112,
+  "unrelatedComponentsUnchanged": true
+}

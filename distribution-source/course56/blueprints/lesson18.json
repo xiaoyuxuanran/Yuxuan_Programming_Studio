@@ -1,0 +1,594 @@
+{
+  "schemaVersion": 1,
+  "id": 18,
+  "title": "弹球与碰撞",
+  "lessonMinutes": 90,
+  "projectName": "YXCourse18",
+  "appDescription": "弹球练习场：小球碰边反弹，碰到目标后加分并移动目标。",
+  "experience": "小球以Speed=5、Interval=40、Heading=35开始运动。",
+  "features": [
+    "小球以Speed=5、Interval=40、Heading=35开始运动。",
+    "触及画布边缘时把edge参数传给Bounce。",
+    "碰到目标加1分并移动目标；暂停时不计分。"
+  ],
+  "components": [
+    {
+      "name": "GameCanvas",
+      "type": "Canvas",
+      "role": "弹球活动区域",
+      "keyProperties": {
+        "Width": -2,
+        "Height": 340
+      }
+    },
+    {
+      "name": "PlayBall",
+      "type": "Ball",
+      "role": "运动弹球",
+      "keyProperties": {
+        "Radius": 12,
+        "Speed": 0,
+        "Interval": 40,
+        "Heading": 35
+      }
+    },
+    {
+      "name": "TargetBall",
+      "type": "Ball",
+      "role": "静止目标",
+      "keyProperties": {
+        "Radius": 18,
+        "Speed": 0,
+        "PaintColor": "橙色"
+      }
+    },
+    {
+      "name": "StartButton",
+      "type": "Button",
+      "role": "开始暂停",
+      "keyProperties": {}
+    },
+    {
+      "name": "ResetButton",
+      "type": "Button",
+      "role": "归零重开",
+      "keyProperties": {}
+    },
+    {
+      "name": "ScoreLabel",
+      "type": "Label",
+      "role": "显示命中次数",
+      "keyProperties": {}
+    }
+  ],
+  "globals": {
+    "得分": 0,
+    "运行中": false
+  },
+  "procedures": {
+    "移动目标": "TargetBall.MoveTo(random整数20..Canvas.Width-50,random整数20..Canvas.Height-50)",
+    "刷新得分": "ScoreLabel.Text←命中次数与得分",
+    "重置": "Speed0；运行中false；得分0；Ball.MoveTo(30,60)；移动目标；刷新得分"
+  },
+  "events": {
+    "PlayBall.EdgeReached": "PlayBall.Bounce(edge)",
+    "PlayBall.CollidedWith": "若运行中且other=TargetBall：得分+1；刷新得分；移动目标",
+    "StartButton.Click": "运行中取反；Speed为5或0；更新按钮",
+    "ResetButton.Click": "重置"
+  },
+  "learningObjectives": [
+    "EdgeReached提供edge。",
+    "other是发生碰撞的组件引用。",
+    "用测试记录验证弹球与碰撞的核心规则。"
+  ],
+  "transfer": {
+    "title": "已有经验与新的问题",
+    "body": [
+      "本课在已学事件、变量和过程的基础上开展。",
+      "弹球练习场：小球碰边反弹，碰到目标后加分并移动目标。"
+    ]
+  },
+  "concepts": [
+    {
+      "title": "反弹使用实际碰到的边",
+      "body": [
+        "EdgeReached提供edge。",
+        "Bounce(edge)计算反射方向。",
+        "不要在所有边都固定Heading为180。"
+      ]
+    },
+    {
+      "title": "碰撞事件需要辨认对方",
+      "body": [
+        "other是发生碰撞的组件引用。",
+        "只有碰到TargetBall才计分。",
+        "目标移开后才允许下一次新碰撞。"
+      ]
+    }
+  ],
+  "blockCaptures": [
+    {
+      "title": "边缘反弹",
+      "target": "PlayBall.EdgeReached",
+      "body": [
+        "把事件参数edge连接到Bounce。",
+        "四条边都能反弹，不停在边缘。"
+      ],
+      "notes": "原生边缘编号由事件提供，不让学生硬背。"
+    },
+    {
+      "title": "命中计分",
+      "target": "PlayBall.CollidedWith",
+      "body": [
+        "同时检查运行状态与other目标。",
+        "撞目标加1，擦边反弹不加分。"
+      ],
+      "notes": "目标位置随机范围应留出自身尺寸。"
+    },
+    {
+      "title": "暂停与重置",
+      "target": "重置",
+      "body": [
+        "暂停将Speed置0，重置同步清零变量与位置。",
+        "暂停期间得分不变；重开显示0。"
+      ],
+      "notes": "Visible只改变显示，不代替停止运动。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "制作任务1：边缘反弹",
+      "task": "把事件参数edge连接到Bounce。",
+      "checkpoint": "四条边都能反弹，不停在边缘。"
+    },
+    {
+      "title": "制作任务2：命中计分",
+      "task": "同时检查运行状态与other目标。",
+      "checkpoint": "撞目标加1，擦边反弹不加分。"
+    },
+    {
+      "title": "制作任务3：暂停与重置",
+      "task": "暂停将Speed置0，重置同步清零变量与位置。",
+      "checkpoint": "暂停期间得分不变；重开显示0。"
+    }
+  ],
+  "trace": {
+    "title": "一次操作的结果与证据",
+    "table": [
+      [
+        "操作或输入",
+        "预期结果"
+      ],
+      [
+        "碰左、右、上、下边",
+        "反弹回画布内，得分不变"
+      ],
+      [
+        "运行中碰到目标",
+        "加1，目标换位置"
+      ],
+      [
+        "得分后暂停再重置",
+        "得分回0，小球停止并回到起点"
+      ]
+    ]
+  },
+  "tests": [
+    {
+      "action": "碰左、右、上、下边",
+      "expected": "反弹回画布内，得分不变"
+    },
+    {
+      "action": "运行中碰到目标",
+      "expected": "加1，目标换位置"
+    },
+    {
+      "action": "得分后暂停再重置",
+      "expected": "得分回0，小球停止并回到起点"
+    }
+  ],
+  "pitfalls": [
+    [
+      "到边缘粘住",
+      "检查EdgeReached是否调用Bounce(edge)"
+    ],
+    [
+      "一次碰撞重复加分",
+      "计分后立即把目标移开，并只处理指定other"
+    ]
+  ],
+  "remix": [
+    "给目标增加不同的半径，比较命中难度。",
+    "添加固定30秒倒计时，时间结束停止小球。"
+  ],
+  "worksheet": {
+    "title": "我的预测、实验与修改",
+    "prompts": [
+      "为“碰左、右、上、下边”写下预测，再记录实际结果。",
+      "结合积木解释：反弹使用实际碰到的边。",
+      "修改一条规则并添加一项边界测试：给目标增加不同的半径，比较命中难度。"
+    ]
+  },
+  "reflection": [
+    "用一个操作说明“反弹使用实际碰到的边”。",
+    "哪一次测试帮助你发现了“到边缘粘住”？",
+    "展示改编前后的区别，并指出对应积木。"
+  ],
+  "scaffold": "保留刷新得分、移动目标及按钮事件；Bounce、碰撞判断与重置的清零任务留空。",
+  "assets": [
+    "本课实际界面和积木截图；使用原创、公共领域或明确获授权素材。"
+  ],
+  "sources": [
+    "https://ai2.appinventor.mit.edu/reference/components/animation.html",
+    "https://ai2.appinventor.mit.edu/reference/blocks/control.html"
+  ],
+  "versions": {
+    "answer": "含下述完整功能、变量、过程、事件及素材，满足本课测试表。",
+    "class": "保留刷新得分、移动目标及按钮事件；Bounce、碰撞判断与重置的清零任务留空。",
+    "starter": "保留同名可视与非可视组件、布局、初始属性和素材；不含变量、过程、事件积木。"
+  },
+  "successCriteria": [
+    "反弹回画布内，得分不变",
+    "加1，目标换位置",
+    "得分回0，小球停止并回到起点"
+  ],
+  "timeline": [
+    {
+      "minutes": 10,
+      "activity": "作品体验与问题提出",
+      "task": "小球以Speed=5、Interval=40、Heading=35开始运动。"
+    },
+    {
+      "minutes": 15,
+      "activity": "概念观察与演示",
+      "task": "反弹使用实际碰到的边；碰撞事件需要辨认对方"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务1",
+      "task": "把事件参数edge连接到Bounce。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务2",
+      "task": "同时检查运行状态与other目标。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务3",
+      "task": "暂停将Speed置0，重置同步清零变量与位置。"
+    },
+    {
+      "minutes": 10,
+      "activity": "个人改编与同伴测试",
+      "task": "给目标增加不同的半径，比较命中难度。"
+    },
+    {
+      "minutes": 10,
+      "activity": "展示与反思",
+      "task": "用一个操作说明“反弹使用实际碰到的边”。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "第18课  弹球与碰撞",
+      "body": [
+        "弹球练习场：小球碰边反弹，碰到目标后加分并移动目标。",
+        "90分钟 · App Inventor 创意编程"
+      ],
+      "notes": "先展示本课作品行为；允许学生提出不同用途，基础制作仍遵循本课验收表。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "小球以Speed=5、Interval=40、Heading=35开始运动。",
+        "触及画布边缘时把edge参数传给Bounce。",
+        "碰到目标加1分并移动目标；暂停时不计分。"
+      ],
+      "notes": "演示：碰左、右、上、下边。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "EdgeReached提供edge。",
+        "other是发生碰撞的组件引用。",
+        "用测试记录验证弹球与碰撞的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "弹球练习场：小球碰边反弹，碰到目标后加分并移动目标。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "小球以Speed=5、Interval=40、Heading=35开始运动。",
+        "触及画布边缘时把edge参数传给Bounce。",
+        "碰到目标加1分并移动目标；暂停时不计分。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "弹球活动区域",
+        "运动弹球",
+        "静止目标",
+        "开始暂停",
+        "归零重开"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "GameCanvas",
+          "Canvas",
+          "弹球活动区域"
+        ],
+        [
+          "PlayBall",
+          "Ball",
+          "运动弹球"
+        ],
+        [
+          "TargetBall",
+          "Ball",
+          "静止目标"
+        ],
+        [
+          "StartButton",
+          "Button",
+          "开始暂停"
+        ],
+        [
+          "ResetButton",
+          "Button",
+          "归零重开"
+        ],
+        [
+          "ScoreLabel",
+          "Label",
+          "显示命中次数"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "区分运行中的状态与重启后仍保留的数据。",
+      "layout": "table",
+      "table": [
+        [
+          "变量",
+          "初值或意义"
+        ],
+        [
+          "得分",
+          "0"
+        ],
+        [
+          "运行中",
+          "False"
+        ]
+      ]
+    },
+    {
+      "title": "反弹使用实际碰到的边",
+      "body": [
+        "EdgeReached提供edge。",
+        "Bounce(edge)计算反射方向。",
+        "不要在所有边都固定Heading为180。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "碰撞事件需要辨认对方",
+      "body": [
+        "other是发生碰撞的组件引用。",
+        "只有碰到TargetBall才计分。",
+        "目标移开后才允许下一次新碰撞。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "PlayBall.EdgeReached：PlayBall.Bounce(edge)",
+        "PlayBall.CollidedWith：若运行中且other=TargetBall：得分+1；刷新得分；移动目标",
+        "StartButton.Click：运行中取反；Speed为5或0；更新按钮"
+      ],
+      "notes": "按事件触发、状态改变、界面反馈顺序讲解。传感器与网络结果事件均为异步。",
+      "layout": "text"
+    },
+    {
+      "title": "边缘反弹",
+      "body": [
+        "把事件参数edge连接到Bounce。",
+        "四条边都能反弹，不停在边缘。"
+      ],
+      "notes": "原生边缘编号由事件提供，不让学生硬背。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "PlayBall.EdgeReached"
+    },
+    {
+      "title": "制作任务1：边缘反弹",
+      "body": [
+        "把事件参数edge连接到Bounce。",
+        "四条边都能反弹，不停在边缘。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "命中计分",
+      "body": [
+        "同时检查运行状态与other目标。",
+        "撞目标加1，擦边反弹不加分。"
+      ],
+      "notes": "目标位置随机范围应留出自身尺寸。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "PlayBall.CollidedWith"
+    },
+    {
+      "title": "制作任务2：命中计分",
+      "body": [
+        "同时检查运行状态与other目标。",
+        "撞目标加1，擦边反弹不加分。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "暂停与重置",
+      "body": [
+        "暂停将Speed置0，重置同步清零变量与位置。",
+        "暂停期间得分不变；重开显示0。"
+      ],
+      "notes": "Visible只改变显示，不代替停止运动。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "重置"
+    },
+    {
+      "title": "制作任务3：暂停与重置",
+      "body": [
+        "暂停将Speed置0，重置同步清零变量与位置。",
+        "暂停期间得分不变；重开显示0。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "碰左、右、上、下边",
+          "反弹回画布内，得分不变"
+        ],
+        [
+          "运行中碰到目标",
+          "加1，目标换位置"
+        ],
+        [
+          "得分后暂停再重置",
+          "得分回0，小球停止并回到起点"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "到边缘粘住",
+          "检查EdgeReached是否调用Bounce(edge)"
+        ],
+        [
+          "一次碰撞重复加分",
+          "计分后立即把目标移开，并只处理指定other"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "碰左、右、上、下边",
+          "反弹回画布内，得分不变"
+        ],
+        [
+          "运行中碰到目标",
+          "加1，目标换位置"
+        ],
+        [
+          "得分后暂停再重置",
+          "得分回0，小球停止并回到起点"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "给目标增加不同的半径，比较命中难度。",
+        "添加固定30秒倒计时，时间结束停止小球。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“碰左、右、上、下边”写下预测，再记录实际结果。",
+        "结合积木解释：反弹使用实际碰到的边。",
+        "修改一条规则并添加一项边界测试：给目标增加不同的半径，比较命中难度。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：得分后暂停再重置。",
+        "说明：碰撞事件需要辨认对方。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "用一个操作说明“反弹使用实际碰到的边”。",
+        "哪一次测试帮助你发现了“到边缘粘住”？",
+        "展示改编前后的区别，并指出对应积木。"
+      ],
+      "notes": "出口条包含一项会做的操作、一个测试结果和一个仍需解决的问题。",
+      "layout": "text"
+    }
+  ]
+}

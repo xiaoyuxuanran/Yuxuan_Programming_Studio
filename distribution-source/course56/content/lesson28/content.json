@@ -1,0 +1,751 @@
+{
+  "lesson": 28,
+  "title": "手机知道我在哪里",
+  "projectName": "YXCourse28",
+  "exampleTitle": "经纬度、精度、速度与方位观察站",
+  "durationMinutes": 90,
+  "goals": [
+    "纬度约在-90到90，经度约在-180到180。",
+    "开始观察前不启用位置组件。",
+    "用测试记录验证手机知道我在哪里的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "位置观察站：显示经纬度、精度和移动速度，主动开始与停止观察。",
+    "scope": "本课只在本机观察位置，不反向地理编码或上传。室内等待和精度取决于设备服务。0,0可以是合法经纬度；是否有效由回调与有位置标志判断。",
+    "components": [
+      {
+        "name": "StartButton",
+        "type": "Button",
+        "role": "开始位置观察"
+      },
+      {
+        "name": "StopButton",
+        "type": "Button",
+        "role": "停止观察"
+      },
+      {
+        "name": "LatitudeLabel",
+        "type": "Label",
+        "role": "纬度"
+      },
+      {
+        "name": "LongitudeLabel",
+        "type": "Label",
+        "role": "经度"
+      },
+      {
+        "name": "AccuracyLabel",
+        "type": "Label",
+        "role": "精度与更新时间"
+      },
+      {
+        "name": "HeadingLabel",
+        "type": "Label",
+        "role": "方位角"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "等待权限和定位状态"
+      },
+      {
+        "name": "Location1",
+        "type": "LocationSensor",
+        "role": "获得位置"
+      },
+      {
+        "name": "Compass",
+        "type": "OrientationSensor",
+        "role": "提供方位角"
+      },
+      {
+        "name": "TimeClock",
+        "type": "Clock",
+        "role": "记录本地接收时刻"
+      },
+      {
+        "name": "SpeedLabel",
+        "type": "Label",
+        "role": "显示位置回调速度，单位m/s"
+      }
+    ],
+    "logic": [
+      {
+        "event": "StartButton.Click",
+        "actions": [
+          "开始观察"
+        ]
+      },
+      {
+        "event": "StopButton.Click",
+        "actions": [
+          "停止观察"
+        ]
+      },
+      {
+        "event": "Location1.LocationChanged",
+        "actions": [
+          "若观察中：保存latitude longitude；显示位置；速度标m/s"
+        ]
+      },
+      {
+        "event": "Location1.StatusChanged",
+        "actions": [
+          "仅显示provider与status，不设置有位置、不替换经纬度"
+        ]
+      },
+      {
+        "event": "Compass.OrientationChanged",
+        "actions": [
+          "观察中时显示azimuth方位角"
+        ]
+      },
+      {
+        "event": "Screen1.PermissionDenied",
+        "actions": [
+          "停止观察；提示需要位置权限，可在系统设置调整"
+        ]
+      }
+    ],
+    "procedures": {
+      "开始观察": "观察中true；有位置false；清旧提示；Location1与Compass.Enabled true",
+      "停止观察": "观察中false；两传感器Enabled false；标明最后一次位置而非实时",
+      "显示位置(纬度,经度,速度)": "更新数值；显示Accuracy与当前时间；有位置true"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse28.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse28Class.aia：保留全部变量、停止观察、显示位置完整过程、开始与停止按钮入口、位置服务状态、方位角回调、开始观察过程占位；开始观察设置状态、清旧提示并启用两个传感器；添加Location1.LocationChanged，仅观察中时保存并显示数据；添加Screen1.PermissionDenied，停止观察并提示权限设置。",
+    "starter": "YXCourse28Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补开始观察过程，先问再示范。",
+      "students": "按任务单完成：补开始观察过程。",
+      "checkpoint": "为什么开始时重设有位置为假？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补实际位置回调，先问再示范。",
+      "students": "按任务单完成：补实际位置回调。",
+      "checkpoint": "收到latitude=0、longitude=0能判定定位失败吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补权限恢复并核对停止，先问再示范。",
+      "students": "按任务单完成：补权限恢复并核对停止。",
+      "checkpoint": "Location1.StatusChanged能替代LocationChanged吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补开始观察过程",
+      "steps": [
+        "找到Class中开始观察占位过程。",
+        "观察中←真，有位置←假，清旧提示。",
+        "启用Location1和Compass，显示等待位置。",
+        "首次打开前不自动启用定位。"
+      ],
+      "question": "为什么开始时重设有位置为假？",
+      "answer": "防止旧数值被当作本次已经获得的新位置。"
+    },
+    {
+      "title": "补实际位置回调",
+      "steps": [
+        "添加Location1.LocationChanged。",
+        "仅观察中时保存latitude、longitude。",
+        "调用显示位置(latitude,longitude,speed)。",
+        "阅读已给过程：speed单位m/s；HasAccuracy假显示精度未知。"
+      ],
+      "question": "收到latitude=0、longitude=0能判定定位失败吗？",
+      "answer": "不能；0,0可能是合法位置，成功回调才是有位置的证据。"
+    },
+    {
+      "title": "补权限恢复并核对停止",
+      "steps": [
+        "添加Screen1.PermissionDenied，停止观察并提示权限设置。",
+        "阅读已给StatusChanged：它报告服务状态，不冒充新位置。",
+        "有效结果后停止，核对两组件Enabled都为假。",
+        "再来的位置回调应被忽略，页面标记最后结果。"
+      ],
+      "question": "Location1.StatusChanged能替代LocationChanged吗？",
+      "answer": "不能，服务状态变化没有提供本次经纬度，不应切成已定位。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "初次打开未开始",
+      "expected": "定位传感器关闭，显示未开始"
+    },
+    {
+      "action": "拒绝权限",
+      "expected": "提示原因且可继续操作界面"
+    },
+    {
+      "action": "有效定位后停止",
+      "expected": "保留最后结果，标记已停止，不追加新位置"
+    },
+    {
+      "action": "以0,0回调且HasAccuracy为假",
+      "expected": "标为有位置，显示0经纬度与精度未知"
+    }
+  ],
+  "misconceptions": [
+    [
+      "首次显示0,0",
+      "必须等LocationChanged再标记有效"
+    ],
+    [
+      "停止仍显示实时",
+      "关闭组件并明确最后更新时间"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "比较室内与室外定位精度，记录观察条件。"
+    },
+    {
+      "level": "拓展",
+      "task": "把经纬度格式从六位小数改成四位，讨论展示精度。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "Accuracy未知时为什么不能显示0米？",
+      "a": "0米会误导为极高精度；需检查HasAccuracy并写精度未知。"
+    },
+    {
+      "q": "速度与方位分别来自哪里？",
+      "a": "速度来自位置回调speed，单位m/s；方位角来自Compass。"
+    },
+    {
+      "q": "停止后保留旧数值为什么必须标记？",
+      "a": "避免使用者把最后一次位置误认为仍在实时更新。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT sensors.html#LocationSensor 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/sensors.html#LocationSensor",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT sensors.html#OrientationSensor 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/sensors.html#OrientationSensor",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "手机知道我在哪里",
+      "body": [
+        "经纬度、精度、速度与方位观察站",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "位置观察站：显示经纬度、精度和移动速度，主动开始与停止观察。 本课只在本机观察位置，不反向地理编码或上传。室内等待和精度取决于设备服务。0,0可以是合法经纬度；是否有效由回调与有位置标志判断。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "用户主动开始才启用LocationSensor；停止后不继续记录。",
+        "首次有效位置到达前显示等待，不把0,0当成当前位置。",
+        "显示精度与更新时间；设备方向由OrientationSensor单独提供。"
+      ],
+      "notes": "演示：初次打开未开始。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "纬度约在-90到90，经度约在-180到180。",
+        "开始观察前不启用位置组件。",
+        "用测试记录验证手机知道我在哪里的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "位置观察站：显示经纬度、精度和移动速度，主动开始与停止观察。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "用户主动开始才启用LocationSensor；停止后不继续记录。",
+        "首次有效位置到达前显示等待，不把0,0当成当前位置。",
+        "显示精度与更新时间；设备方向由OrientationSensor单独提供。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "开始位置观察",
+        "停止观察",
+        "纬度",
+        "经度"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "StartButton",
+          "Button",
+          "开始位置观察"
+        ],
+        [
+          "StopButton",
+          "Button",
+          "停止观察"
+        ],
+        [
+          "LatitudeLabel",
+          "Label",
+          "纬度"
+        ],
+        [
+          "LongitudeLabel",
+          "Label",
+          "经度"
+        ],
+        [
+          "AccuracyLabel",
+          "Label",
+          "精度与更新时间"
+        ],
+        [
+          "HeadingLabel",
+          "Label",
+          "方位角"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "观察中",
+          "假；控制是否接收更新"
+        ],
+        [
+          "有位置",
+          "假；收到LocationChanged才变真"
+        ],
+        [
+          "最近纬度、最近经度",
+          "初始0；数值0不代表无效"
+        ],
+        [
+          "HasAccuracy",
+          "决定显示数值精度或精度未知"
+        ]
+      ]
+    },
+    {
+      "title": "经纬度与精度一起解释位置",
+      "body": [
+        "纬度约在-90到90，经度约在-180到180。",
+        "精度是估计误差范围，不代表绝对准确。",
+        "室内定位可能等待较久或误差较大。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "位置信息需要主动控制",
+      "body": [
+        "开始观察前不启用位置组件。",
+        "停止后标明展示的是最后一次结果。",
+        "本课仅本机显示，不上传或公开同学位置。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "用户开始：清旧提示，启用位置与方位",
+        "LocationChanged到达才显示有效位置",
+        "停止后保留最后结果，标明不是实时"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：全部变量；停止观察、显示位置完整过程；开始与停止按钮入口；位置服务状态、方位角回调；开始观察过程占位。学生任务：开始观察设置状态、清旧提示并启用两个传感器；添加Location1.LocationChanged，仅观察中时保存并显示数据；添加Screen1.PermissionDenied，停止观察并提示权限设置。",
+      "layout": "text"
+    },
+    {
+      "title": "主动启停",
+      "body": [
+        "完成传感器Enabled与等待状态。",
+        "停止后页面保留最后位置并标记非实时。"
+      ],
+      "notes": "Class保留按钮入口但开始观察过程待补。位置与方位传感器都须按用户操作启停。 实际截图对应：开始观察。本课只在本机观察位置，不反向地理编码或上传。室内等待和精度取决于设备服务。0,0可以是合法经纬度；是否有效由回调与有位置标志判断。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "开始观察"
+    },
+    {
+      "title": "补开始观察过程",
+      "body": [
+        "找到Class中开始观察占位过程。",
+        "观察中←真，有位置←假，清旧提示。",
+        "启用Location1和Compass，显示等待位置。"
+      ],
+      "notes": "实践15分钟。为什么开始时重设有位置为假？ 教师参考：防止旧数值被当作本次已经获得的新位置。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "收到真实位置",
+      "body": [
+        "保存经纬度，显示精度、速度与接收时刻。",
+        "收到回调才从等待切换为有效位置。"
+      ],
+      "notes": "显示位置已给出；包含SpeedLabel与精度未知保护。接收时刻表示本机收到回调，不宣称测量绝对准确。 实际截图对应：Location1.LocationChanged。本课只在本机观察位置，不反向地理编码或上传。室内等待和精度取决于设备服务。0,0可以是合法经纬度；是否有效由回调与有位置标志判断。",
+      "layout": "blocksTall",
+      "blockIndex": 2,
+      "captureTarget": "Location1.LocationChanged"
+    },
+    {
+      "title": "补实际位置回调",
+      "body": [
+        "添加Location1.LocationChanged。",
+        "仅观察中时保存latitude、longitude。",
+        "调用显示位置(latitude,longitude,speed)。"
+      ],
+      "notes": "实践15分钟。收到latitude=0、longitude=0能判定定位失败吗？ 教师参考：不能；0,0可能是合法位置，成功回调才是有位置的证据。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "权限与状态",
+      "body": [
+        "权限拒绝与provider变化提供清楚提示。",
+        "拒绝后可以返回、调整权限再重试。"
+      ],
+      "notes": "权限拒绝后先停观察再提示，所有操作入口仍可继续。具体权限行为由Android课堂设备另验。 实际截图对应：Screen1.PermissionDenied。本课只在本机观察位置，不反向地理编码或上传。室内等待和精度取决于设备服务。0,0可以是合法经纬度；是否有效由回调与有位置标志判断。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "Screen1.PermissionDenied"
+    },
+    {
+      "title": "补权限恢复并核对停止",
+      "body": [
+        "添加Screen1.PermissionDenied，停止观察并提示权限设置。",
+        "阅读已给StatusChanged：它报告服务状态，不冒充新位置。",
+        "有效结果后停止，核对两组件Enabled都为假。"
+      ],
+      "notes": "实践15分钟。Location1.StatusChanged能替代LocationChanged吗？ 教师参考：不能，服务状态变化没有提供本次经纬度，不应切成已定位。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "初次打开未开始",
+          "定位传感器关闭，显示未开始"
+        ],
+        [
+          "拒绝权限",
+          "提示原因且可继续操作界面"
+        ],
+        [
+          "有效定位后停止",
+          "保留最后结果，标记已停止，不追加新位置"
+        ],
+        [
+          "以0,0回调且HasAccuracy为假",
+          "标为有位置，显示0经纬度与精度未知"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "首次显示0,0",
+          "必须等LocationChanged再标记有效"
+        ],
+        [
+          "停止仍显示实时",
+          "关闭组件并明确最后更新时间"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "初次打开未开始",
+          "定位传感器关闭，显示未开始"
+        ],
+        [
+          "拒绝权限",
+          "提示原因且可继续操作界面"
+        ],
+        [
+          "有效定位后停止",
+          "保留最后结果，标记已停止，不追加新位置"
+        ],
+        [
+          "以0,0回调且HasAccuracy为假",
+          "标为有位置，显示0经纬度与精度未知"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "比较室内与室外定位精度，记录观察条件。",
+        "把经纬度格式从六位小数改成四位，讨论展示精度。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“初次打开未开始”写下预测，再记录实际结果。",
+        "结合积木解释：经纬度与精度一起解释位置。",
+        "修改一条规则并添加一项边界测试：比较室内与室外定位精度，记录观察条件。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：有效定位后停止。",
+        "说明：位置信息需要主动控制。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "Accuracy未知时为什么不能显示0米？",
+        "速度与方位分别来自哪里？",
+        "停止后保留旧数值为什么必须标记？"
+      ],
+      "notes": "1. 0米会误导为极高精度；需检查HasAccuracy并写精度未知。\n2. 速度来自位置回调speed，单位m/s；方位角来自Compass。\n3. 避免使用者把最后一次位置误认为仍在实时更新。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "VerticalArrangement": "4",
+    "LocationSensor": "4",
+    "OrientationSensor": "2",
+    "Clock": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "全部变量",
+    "停止观察、显示位置完整过程",
+    "开始与停止按钮入口",
+    "位置服务状态、方位角回调",
+    "开始观察过程占位"
+  ],
+  "actualClassroomTasks": [
+    "开始观察设置状态、清旧提示并启用两个传感器",
+    "添加Location1.LocationChanged，仅观察中时保存并显示数据",
+    "添加Screen1.PermissionDenied，停止观察并提示权限设置"
+  ],
+  "actualScreenshotGroups": [
+    "开始观察",
+    "Location1.LocationChanged",
+    "Screen1.PermissionDenied"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "观察中",
+      "有位置",
+      "最近纬度",
+      "最近经度"
+    ],
+    "procedures": {
+      "开始观察": [],
+      "停止观察": [],
+      "显示位置": [
+        "纬度",
+        "经度",
+        "速度"
+      ]
+    },
+    "events": [
+      "StartButton.Click",
+      "StopButton.Click",
+      "Location1.LocationChanged",
+      "Location1.StatusChanged",
+      "Compass.OrientationChanged",
+      "Screen1.PermissionDenied"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "event": "StartButton.Click",
+      "expect": {
+        "global 观察中": true,
+        "Location1.Enabled": true,
+        "Compass.Enabled": true,
+        "global 有位置": false
+      }
+    },
+    {
+      "set": {
+        "global 观察中": true,
+        "Location1.HasAccuracy": false
+      },
+      "event": "Location1.LocationChanged",
+      "args": {
+        "latitude": 0,
+        "longitude": 0,
+        "speed": 0
+      },
+      "expect": {
+        "global 有位置": true,
+        "global 最近纬度": 0,
+        "LatitudeLabel.Text": "纬度：0"
+      },
+      "contains": {
+        "AccuracyLabel.Text": [
+          "精度未知"
+        ]
+      }
+    },
+    {
+      "set": {
+        "global 观察中": true,
+        "global 有位置": true
+      },
+      "event": "StopButton.Click",
+      "expect": {
+        "global 观察中": false,
+        "Location1.Enabled": false,
+        "Compass.Enabled": false,
+        "StatusLabel.Text": "已停止：以下为最后一次位置，不是实时位置。"
+      }
+    },
+    {
+      "set": {
+        "global 观察中": false,
+        "global 最近纬度": 31
+      },
+      "event": "Location1.LocationChanged",
+      "args": {
+        "latitude": 32,
+        "longitude": 120,
+        "speed": 1
+      },
+      "expect": {
+        "global 最近纬度": 31
+      }
+    },
+    {
+      "event": "Screen1.PermissionDenied",
+      "expect": {
+        "global 观察中": false,
+        "Location1.Enabled": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson28/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

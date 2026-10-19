@@ -1,0 +1,609 @@
+{
+  "schemaVersion": 1,
+  "id": 17,
+  "title": "让角色动起来",
+  "lessonMinutes": 90,
+  "projectName": "YXCourse17",
+  "appDescription": "运动实验场：小球按方向与速度移动，图片角色跟随触摸定位。",
+  "experience": "运行按钮使小球以固定速度运动，暂停保存位置。",
+  "features": [
+    "运行按钮使小球以固定速度运动，暂停保存位置。",
+    "右、上、左、下对应Heading为0、90、180、270。",
+    "点按画布把静态图片角色移到触点，并限制在边界内。"
+  ],
+  "components": [
+    {
+      "name": "StageCanvas",
+      "type": "Canvas",
+      "role": "角色活动区域",
+      "keyProperties": {
+        "Width": -2,
+        "Height": 340
+      }
+    },
+    {
+      "name": "RunnerBall",
+      "type": "Ball",
+      "role": "自动运动的小球",
+      "keyProperties": {
+        "Radius": 14,
+        "Speed": 0,
+        "Interval": 50,
+        "Heading": 0
+      }
+    },
+    {
+      "name": "Marker",
+      "type": "ImageSprite",
+      "role": "触摸定位的图片角色",
+      "keyProperties": {
+        "Width": 40,
+        "Height": 40,
+        "Speed": 0,
+        "Rotates": false
+      }
+    },
+    {
+      "name": "RunButton",
+      "type": "Button",
+      "role": "开始或暂停",
+      "keyProperties": {}
+    },
+    {
+      "name": "DirectionPicker",
+      "type": "ListPicker",
+      "role": "选择运动方向",
+      "keyProperties": {}
+    },
+    {
+      "name": "SpeedSlider",
+      "type": "Slider",
+      "role": "速度1到8",
+      "keyProperties": {}
+    },
+    {
+      "name": "ResetButton",
+      "type": "Button",
+      "role": "恢复起点",
+      "keyProperties": {}
+    },
+    {
+      "name": "StatusLabel",
+      "type": "Label",
+      "role": "显示运动参数",
+      "keyProperties": {}
+    }
+  ],
+  "globals": {
+    "运行中": false
+  },
+  "procedures": {
+    "刷新速度": "若运行中，RunnerBall.Speed←round(SpeedSlider.ThumbPosition)，否则Speed←0",
+    "定位图片(x,y)": "Marker.X←max(0,min(Canvas.Width-Marker.Width,x-Marker.Width/2))；Y同理",
+    "回到起点": "运行中false；Ball.MoveTo(30,80)；Speed0；Marker.MoveTo(120,150)"
+  },
+  "events": {
+    "RunButton.Click": "运行中取反；刷新速度；同步按钮文字",
+    "DirectionPicker.BeforePicking": "Elements←右、上、左、下",
+    "DirectionPicker.AfterPicking": "按SelectionIndex设Heading为0、90、180、270",
+    "SpeedSlider.PositionChanged": "刷新速度与状态标签",
+    "StageCanvas.Touched": "定位图片(x,y)",
+    "ResetButton.Click": "回到起点"
+  },
+  "learningObjectives": [
+    "Speed表示每次更新移动的距离。",
+    "Heading=0朝右，90朝上。",
+    "用测试记录验证让角色动起来的核心规则。"
+  ],
+  "transfer": {
+    "title": "已有经验与新的问题",
+    "body": [
+      "本课在已学事件、变量和过程的基础上开展。",
+      "运动实验场：小球按方向与速度移动，图片角色跟随触摸定位。"
+    ]
+  },
+  "concepts": [
+    {
+      "title": "速度和时间间隔一起决定运动",
+      "body": [
+        "Speed表示每次更新移动的距离。",
+        "Interval表示更新间隔的毫秒数。",
+        "本课固定Interval=50，只改变Speed比较快慢。"
+      ]
+    },
+    {
+      "title": "方向角与屏幕坐标不同",
+      "body": [
+        "Heading=0朝右，90朝上。",
+        "屏幕Y向下增大。",
+        "图片定位需减去宽高的一半。"
+      ]
+    }
+  ],
+  "blockCaptures": [
+    {
+      "title": "开始和暂停",
+      "target": "刷新速度",
+      "body": [
+        "根据运行中给Speed赋值。",
+        "暂停时位置保持不动，继续后接着移动。"
+      ],
+      "notes": "不需要再叠加Clock移动，否则速度双算。"
+    },
+    {
+      "title": "方向选择",
+      "target": "DirectionPicker.AfterPicking",
+      "body": [
+        "把四个选项映射到四个Heading。",
+        "向上时Y减少，向右时X增加。"
+      ],
+      "notes": "Heading的角度方向与画布Y轴不要混淆。"
+    },
+    {
+      "title": "触摸定位",
+      "target": "定位图片",
+      "body": [
+        "完成中心对齐与边界限制。",
+        "点按四角时角色仍完整可见。"
+      ],
+      "notes": "ImageSprite默认坐标是左上角。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "制作任务1：开始和暂停",
+      "task": "根据运行中给Speed赋值。",
+      "checkpoint": "暂停时位置保持不动，继续后接着移动。"
+    },
+    {
+      "title": "制作任务2：方向选择",
+      "task": "把四个选项映射到四个Heading。",
+      "checkpoint": "向上时Y减少，向右时X增加。"
+    },
+    {
+      "title": "制作任务3：触摸定位",
+      "task": "完成中心对齐与边界限制。",
+      "checkpoint": "点按四角时角色仍完整可见。"
+    }
+  ],
+  "trace": {
+    "title": "一次操作的结果与证据",
+    "table": [
+      [
+        "操作或输入",
+        "预期结果"
+      ],
+      [
+        "右向运行后暂停",
+        "X增大，暂停后不再变化"
+      ],
+      [
+        "改为向上运行",
+        "Y逐步减少"
+      ],
+      [
+        "点按画布右下角",
+        "图片仍完整位于画布内"
+      ]
+    ]
+  },
+  "tests": [
+    {
+      "action": "右向运行后暂停",
+      "expected": "X增大，暂停后不再变化"
+    },
+    {
+      "action": "改为向上运行",
+      "expected": "Y逐步减少"
+    },
+    {
+      "action": "点按画布右下角",
+      "expected": "图片仍完整位于画布内"
+    }
+  ],
+  "pitfalls": [
+    [
+      "滑块归零以外仍运动",
+      "暂停时必须把Speed设0"
+    ],
+    [
+      "角色只有角在触点",
+      "定位需减半宽高"
+    ]
+  ],
+  "remix": [
+    "增加45度方向并预测路径。",
+    "为角色选择自己的图片并注明来源。"
+  ],
+  "worksheet": {
+    "title": "我的预测、实验与修改",
+    "prompts": [
+      "为“右向运行后暂停”写下预测，再记录实际结果。",
+      "结合积木解释：速度和时间间隔一起决定运动。",
+      "修改一条规则并添加一项边界测试：增加45度方向并预测路径。"
+    ]
+  },
+  "reflection": [
+    "用一个操作说明“速度和时间间隔一起决定运动”。",
+    "哪一次测试帮助你发现了“滑块归零以外仍运动”？",
+    "展示改编前后的区别，并指出对应积木。"
+  ],
+  "scaffold": "保留回到起点和方向列表；刷新速度条件、方向映射和触摸定位表达式待完成。",
+  "assets": [
+    "复用已获授权的第19课apple.png作为定位角色；小球使用原生Ball，不依赖新图片。"
+  ],
+  "sources": [
+    "https://ai2.appinventor.mit.edu/reference/components/animation.html",
+    "https://ai2.appinventor.mit.edu/reference/blocks/control.html"
+  ],
+  "versions": {
+    "answer": "含下述完整功能、变量、过程、事件及素材，满足本课测试表。",
+    "class": "保留回到起点和方向列表；刷新速度条件、方向映射和触摸定位表达式待完成。",
+    "starter": "保留同名可视与非可视组件、布局、初始属性和素材；不含变量、过程、事件积木。"
+  },
+  "successCriteria": [
+    "X增大，暂停后不再变化",
+    "Y逐步减少",
+    "图片仍完整位于画布内"
+  ],
+  "timeline": [
+    {
+      "minutes": 10,
+      "activity": "作品体验与问题提出",
+      "task": "运行按钮使小球以固定速度运动，暂停保存位置。"
+    },
+    {
+      "minutes": 15,
+      "activity": "概念观察与演示",
+      "task": "速度和时间间隔一起决定运动；方向角与屏幕坐标不同"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务1",
+      "task": "根据运行中给Speed赋值。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务2",
+      "task": "把四个选项映射到四个Heading。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务3",
+      "task": "完成中心对齐与边界限制。"
+    },
+    {
+      "minutes": 10,
+      "activity": "个人改编与同伴测试",
+      "task": "增加45度方向并预测路径。"
+    },
+    {
+      "minutes": 10,
+      "activity": "展示与反思",
+      "task": "用一个操作说明“速度和时间间隔一起决定运动”。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "第17课  让角色动起来",
+      "body": [
+        "运动实验场：小球按方向与速度移动，图片角色跟随触摸定位。",
+        "90分钟 · App Inventor 创意编程"
+      ],
+      "notes": "先展示本课作品行为；允许学生提出不同用途，基础制作仍遵循本课验收表。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "运行按钮使小球以固定速度运动，暂停保存位置。",
+        "右、上、左、下对应Heading为0、90、180、270。",
+        "点按画布把静态图片角色移到触点，并限制在边界内。"
+      ],
+      "notes": "演示：右向运行后暂停。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "Speed表示每次更新移动的距离。",
+        "Heading=0朝右，90朝上。",
+        "用测试记录验证让角色动起来的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "运动实验场：小球按方向与速度移动，图片角色跟随触摸定位。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "运行按钮使小球以固定速度运动，暂停保存位置。",
+        "右、上、左、下对应Heading为0、90、180、270。",
+        "点按画布把静态图片角色移到触点，并限制在边界内。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "角色活动区域",
+        "自动运动的小球",
+        "触摸定位的图片角色",
+        "开始或暂停",
+        "选择运动方向"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "StageCanvas",
+          "Canvas",
+          "角色活动区域"
+        ],
+        [
+          "RunnerBall",
+          "Ball",
+          "自动运动的小球"
+        ],
+        [
+          "Marker",
+          "ImageSprite",
+          "触摸定位的图片角色"
+        ],
+        [
+          "RunButton",
+          "Button",
+          "开始或暂停"
+        ],
+        [
+          "DirectionPicker",
+          "ListPicker",
+          "选择运动方向"
+        ],
+        [
+          "SpeedSlider",
+          "Slider",
+          "速度1到8"
+        ],
+        [
+          "ResetButton",
+          "Button",
+          "恢复起点"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "区分运行中的状态与重启后仍保留的数据。",
+      "layout": "table",
+      "table": [
+        [
+          "变量",
+          "初值或意义"
+        ],
+        [
+          "运行中",
+          "False"
+        ]
+      ]
+    },
+    {
+      "title": "速度和时间间隔一起决定运动",
+      "body": [
+        "Speed表示每次更新移动的距离。",
+        "Interval表示更新间隔的毫秒数。",
+        "本课固定Interval=50，只改变Speed比较快慢。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "方向角与屏幕坐标不同",
+      "body": [
+        "Heading=0朝右，90朝上。",
+        "屏幕Y向下增大。",
+        "图片定位需减去宽高的一半。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "RunButton.Click：运行中取反；刷新速度；同步按钮文字",
+        "DirectionPicker.BeforePicking：Elements←右、上、左、下",
+        "DirectionPicker.AfterPicking：按SelectionIndex设Heading为0、90、180、270"
+      ],
+      "notes": "按事件触发、状态改变、界面反馈顺序讲解。传感器与网络结果事件均为异步。",
+      "layout": "text"
+    },
+    {
+      "title": "开始和暂停",
+      "body": [
+        "根据运行中给Speed赋值。",
+        "暂停时位置保持不动，继续后接着移动。"
+      ],
+      "notes": "不需要再叠加Clock移动，否则速度双算。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "刷新速度"
+    },
+    {
+      "title": "制作任务1：开始和暂停",
+      "body": [
+        "根据运行中给Speed赋值。",
+        "暂停时位置保持不动，继续后接着移动。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "方向选择",
+      "body": [
+        "把四个选项映射到四个Heading。",
+        "向上时Y减少，向右时X增加。"
+      ],
+      "notes": "Heading的角度方向与画布Y轴不要混淆。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "DirectionPicker.AfterPicking"
+    },
+    {
+      "title": "制作任务2：方向选择",
+      "body": [
+        "把四个选项映射到四个Heading。",
+        "向上时Y减少，向右时X增加。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "触摸定位",
+      "body": [
+        "完成中心对齐与边界限制。",
+        "点按四角时角色仍完整可见。"
+      ],
+      "notes": "ImageSprite默认坐标是左上角。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "定位图片"
+    },
+    {
+      "title": "制作任务3：触摸定位",
+      "body": [
+        "完成中心对齐与边界限制。",
+        "点按四角时角色仍完整可见。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "右向运行后暂停",
+          "X增大，暂停后不再变化"
+        ],
+        [
+          "改为向上运行",
+          "Y逐步减少"
+        ],
+        [
+          "点按画布右下角",
+          "图片仍完整位于画布内"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "滑块归零以外仍运动",
+          "暂停时必须把Speed设0"
+        ],
+        [
+          "角色只有角在触点",
+          "定位需减半宽高"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "右向运行后暂停",
+          "X增大，暂停后不再变化"
+        ],
+        [
+          "改为向上运行",
+          "Y逐步减少"
+        ],
+        [
+          "点按画布右下角",
+          "图片仍完整位于画布内"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加45度方向并预测路径。",
+        "为角色选择自己的图片并注明来源。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“右向运行后暂停”写下预测，再记录实际结果。",
+        "结合积木解释：速度和时间间隔一起决定运动。",
+        "修改一条规则并添加一项边界测试：增加45度方向并预测路径。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：点按画布右下角。",
+        "说明：方向角与屏幕坐标不同。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "用一个操作说明“速度和时间间隔一起决定运动”。",
+        "哪一次测试帮助你发现了“滑块归零以外仍运动”？",
+        "展示改编前后的区别，并指出对应积木。"
+      ],
+      "notes": "出口条包含一项会做的操作、一个测试结果和一个仍需解决的问题。",
+      "layout": "text"
+    }
+  ]
+}

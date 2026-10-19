@@ -1,0 +1,4453 @@
+{
+  "base": "2.2.0",
+  "version": "2.3.4",
+  "totalBytes": 1296480041,
+  "files": [
+    {
+      "path": "AppInventor.exe",
+      "oldSHA256": "853235b85ae6666e4e8518136ac099768d634f74780ced3095f5f1e438cc0021",
+      "sha256": "4dc4112f69cb16122d43e3633ed77550519351484df75722406d64a5e509af10",
+      "bytes": 241152
+    },
+    {
+      "path": "使用说明.txt",
+      "oldSHA256": null,
+      "sha256": "e8c34a7e01a6ac1b324403fc552a22c8bc453eb30834e624919160578217237e",
+      "bytes": 1442
+    },
+    {
+      "path": "mixly/UPSTREAM.json",
+      "oldSHA256": "0b837c034653213483ecea5983d61cc5fc75925d4788ec07b2d1dbc713834d53",
+      "sha256": "da0025cb8c75a78cd52432280958d03f1ff1449f6fcaa5d09bcd9ad4ecf18590",
+      "bytes": 1061
+    },
+    {
+      "path": "mixly/runtime/resources/app/compiler-paths.py",
+      "oldSHA256": "3aa95b6907c0b6753776a37e120c2dab659c898f963197ddef1926c3c7093b8a",
+      "sha256": "0316c2ad7a251dc2243610fcdac2b608cca6ae18cff782bbe83c4ab80c768402",
+      "bytes": 3239
+    },
+    {
+      "path": "mixly/runtime/resources/app/package.json",
+      "oldSHA256": "b577e91c1c9a7acf508a033214716b42ec62bcd4ee9fa39c3ba8ec0ce07bf64f",
+      "sha256": "899a02a73f1ad833cfe550059485c975e32fca9e5989f1ed7d6f43b6dae421de",
+      "bytes": 215
+    },
+    {
+      "path": "mixly/runtime/resources/app/sdk-junction.ps1",
+      "oldSHA256": "dfc6cd0bd70caa996a639aba48fc7f6189029ce7d4e0bdd71c1e6fbcab825912",
+      "sha256": "234bdff84ae905b5f02ccbc328ca1cd8d0c805b8b4c77b9c9a5316bbb3d41855",
+      "bytes": 930
+    },
+    {
+      "path": "mixly/runtime/resources/app/suite-main.js",
+      "oldSHA256": "8d6f9c6efded6b1af6aceaa4cb2b2a68d6a0cda8b225e64cc99189a3defaf212",
+      "sha256": "39cf5bd3a9311446dee454a15afaab39287f6cef5334fd69f84437ddb13e1eb5",
+      "bytes": 4996
+    },
+    {
+      "path": "mixly/src/yuxuan-recovery.js",
+      "oldSHA256": "87f979fd3ff70f29ac462f4544aa1d2dda700c4a2be8fb0aaa1dd4e8123c0ee9",
+      "sha256": "e1b6ae50d0c8016a69abe5e0824196f8988f0475083ba98e3a9e592a5cf09786",
+      "bytes": 2614
+    },
+    {
+      "path": "mixly/src/yuxuan-workspace.css",
+      "oldSHA256": "4ea43e0b69ca052ae182377839578902e3d4020bf290a97a486da23b3b8abfde",
+      "sha256": "ea0cf12bab4b0a44f91166ec40d6a770200386cf660dd621bf74150cbc27a9df",
+      "bytes": 1150
+    },
+    {
+      "path": "mixly/src/boards/default/arduino_esp32/blocks/communicate.js",
+      "oldSHA256": "1918c36e70c8ec06435951f0095800c6c9652ce75d24d427a5cec440df926fa6",
+      "sha256": "98cfe1d912991e56d0fe568df7af4d13055b5feadc60b6e96f543a658c2cc087",
+      "bytes": 2365
+    },
+    {
+      "path": "mixly/src/boards/default/arduino_esp32/generators/communicate.js",
+      "oldSHA256": "5ec34583a67074b5190f2bc9abd92616d0e5e107584746d87079d69de2439932",
+      "sha256": "b686d6a1860e43f028ecdc62717ea639ec7fa1db26b078209c55eb3fe28d3ea3",
+      "bytes": 2565
+    },
+    {
+      "path": "mixly/src/boards/default/arduino_esp32/xml/esp32.xml",
+      "oldSHA256": "ad431a2067ae3b132c90d4c88e96b8d5d39fc7a74cf85830b9da06efef82034a",
+      "sha256": "08542858edbb3fc3fdc83b7aa1852ed6d2d7b895c7f344ba88ebc5be75dee9f7",
+      "bytes": 93719
+    },
+    {
+      "path": "mixly/src/common/js/blockly_helper.js",
+      "oldSHA256": "ff4ee241ca8289e889e5e5db0c8b0aa780e466eac6f2ee708db9d155bd44e094",
+      "sha256": "eb06140a2248fc56078aad1c2847ae8ee0346d0fcb6ce4cfd8fbf6803fd8da0d",
+      "bytes": 30169
+    },
+    {
+      "path": "mixly/src/common/modules/mixly-modules/common/dom-operator.js",
+      "oldSHA256": "c5f683a37b51928cec97e7d48f70c5e9d439ac1dddda0713d22a73d13dda5e55",
+      "sha256": "abe39d5da46a70d9dce4edf836e3b4390b576b096374b84d69e2934116b1d7e1",
+      "bytes": 17302
+    },
+    {
+      "path": "mixly/src/common/modules/mixly-modules/electron/cloud-download.js",
+      "oldSHA256": "719f9f5af916a31793263f276e73e6fa9b41d09102438af3da32eb90f483fabe",
+      "sha256": "0ecbc0f6da88c67ac2a40f6d17fef9ba3b24eafa93e769bc799b709fec0a9b53",
+      "bytes": 4768
+    },
+    {
+      "path": "mixly/src/common/template/serial-tool.html",
+      "oldSHA256": "2d0a9fbf3b06515fa00583e5c4afa2a42414de1849cfcd06fd1e983d77a4380a",
+      "sha256": "abbc41ebe8c1ddc64f5fa26e41af6c7d6cd381a2ad00fcf009852a69aa1d59c5",
+      "bytes": 9304
+    },
+    {
+      "path": "resources/build-version.txt",
+      "oldSHA256": "899042bd0cd05e1a330a09b57d145d46009517560646de783c26279905cd0107",
+      "sha256": "7585bff3a8bd692df0965e700b7b671a1612fdb3fc28368cfd975fbe6436018b",
+      "bytes": 43
+    },
+    {
+      "path": "resources/CHANGELOG.txt",
+      "oldSHA256": null,
+      "sha256": "cf8c05b657412bf142bc9bfd4594e3f9965da5a5e67c7aceb9908f2eb511fb8a",
+      "bytes": 3752
+    },
+    {
+      "path": "resources/使用说明.txt",
+      "oldSHA256": "1833264b065fbf90e1766e5d00ef23bf5ad924e0ae35b21cf132411f1fd2ee0c",
+      "sha256": "e8c34a7e01a6ac1b324403fc552a22c8bc453eb30834e624919160578217237e",
+      "bytes": 1442
+    },
+    {
+      "path": "resources/distribution-source/index.jsp",
+      "oldSHA256": "a8d75833ef13767bec20334f080544032bfdd420d0c81ec76310d2de4cae459a",
+      "sha256": "a921e2b81964b6bda0cca7e113c92e48328ca31b993046f1fe7d325b14c5a29c",
+      "bytes": 8625
+    },
+    {
+      "path": "resources/distribution-source/Setup.iss",
+      "oldSHA256": "0523196157d1d9dacf3d154265072eda5b1a50501ae4f6935f57c8b6e7041ea9",
+      "sha256": "130a958299b98f621d1fd96bf79a6b90b7314ceb0c3365b61e40a450357b54a6",
+      "bytes": 1665
+    },
+    {
+      "path": "resources/distribution-source/SuiteLauncher.cs",
+      "oldSHA256": "90db2d82e6a370e83457f07a89c9d200c627d7b8444769ebf4eeef948efbbe83",
+      "sha256": "be5bfa494ea38cb86e5c7638148a5690ba552e81b8e2b552156bcfe7cb381bdb",
+      "bytes": 19702
+    },
+    {
+      "path": "resources/distribution-source/SuiteUpdates.cs",
+      "oldSHA256": null,
+      "sha256": "73ec0177e8312671cfab7da61b6e69a027d574ba55a592a46393bc0c0444e924",
+      "bytes": 11093
+    },
+    {
+      "path": "resources/distribution-source/course56/assets-source.json",
+      "oldSHA256": null,
+      "sha256": "85e694d38252feb559022601d27363393f256985d6ef50c50e22e475bb084826",
+      "bytes": 2013
+    },
+    {
+      "path": "resources/distribution-source/course56/init.py",
+      "oldSHA256": null,
+      "sha256": "d37ca2a0dd3644d4838af326fb628a1f9fedde82f12ccef897a5ae6c087d3697",
+      "bytes": 1172
+    },
+    {
+      "path": "resources/distribution-source/course56/progress.json",
+      "oldSHA256": null,
+      "sha256": "5c049b805c4663cebcba8fa6e6f61d0cf36867ca139c506e513bd2b05ec18cc9",
+      "bytes": 18799
+    },
+    {
+      "path": "resources/distribution-source/course56/README.md",
+      "oldSHA256": null,
+      "sha256": "7ea2d06231c59fd08b17ea7b43047f8d816f507357183d9e89e7a6a25801f517",
+      "bytes": 711
+    },
+    {
+      "path": "resources/distribution-source/course56/school-image-source.json",
+      "oldSHA256": null,
+      "sha256": "edc9ddcd54407e80c8a2ed5e638904c21c668a484229232737561a647acba047",
+      "bytes": 828
+    },
+    {
+      "path": "resources/distribution-source/course56/STATUS.md",
+      "oldSHA256": null,
+      "sha256": "4952b265790d5545055682f55c77f17734f54b958624edd9b00693c53f45cda5",
+      "bytes": 989
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/author_remaining.py",
+      "oldSHA256": null,
+      "sha256": "3095f4964e14d1b4ebeb9d622667cebecf0cb4905cf70c20a8140d948ab03f28",
+      "bytes": 133246
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/blueprint-validation.json",
+      "oldSHA256": null,
+      "sha256": "c4895454ad2c95e7048217c2c5ffe1e5c570b99dc08cb24aaa119689ab42616a",
+      "bytes": 14979
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/capstone-reading-buddy-spec.md",
+      "oldSHA256": null,
+      "sha256": "c7ad36ec2223c3cca9586236742218a4f45fdac08bf663cdf95c4efa938e6639",
+      "bytes": 5117
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/esp32-course-firmware-spec.md",
+      "oldSHA256": null,
+      "sha256": "f6b2026e38284a868c45cdea1a33d79397f21e94cfabd6c71106076b2a2c835b",
+      "bytes": 11572
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/extension-contracts.json",
+      "oldSHA256": null,
+      "sha256": "0f9a239b4b2c056bf334628ab065d58fdc94e2edf1c4d89e4af67a51b6c62664",
+      "bytes": 81080
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson07.json",
+      "oldSHA256": null,
+      "sha256": "9040df3d8f32e01382634f783c0cb22baf4ef5e95a35513b62f8cf203b90edcb",
+      "bytes": 15978
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson08.json",
+      "oldSHA256": null,
+      "sha256": "3cc44e11638e2fe77466c1a27fb6df8e31c0a7a2fedfe8b47c52e5f88269cc68",
+      "bytes": 16267
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson09.json",
+      "oldSHA256": null,
+      "sha256": "f0c2386dbfa8bcd9b79a99d16eb162b1dc0d4cd53edb859e7027ce6449092b71",
+      "bytes": 15796
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson10.json",
+      "oldSHA256": null,
+      "sha256": "01f6e06f4294fa08517f241e4debf15df41f890fab4465a796b4c530bb70f345",
+      "bytes": 17185
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson11.json",
+      "oldSHA256": null,
+      "sha256": "4c09568eac249e76d0ee9bac3803a0e8544042afa6c13397364d8da8625dad16",
+      "bytes": 16139
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson12.json",
+      "oldSHA256": null,
+      "sha256": "b5d095173138091bd7d0e4a0e3fc96c2ea8cfb6cb5a370a41a83f9ff869e3398",
+      "bytes": 17899
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson13.json",
+      "oldSHA256": null,
+      "sha256": "9a5e87657a06ba4889905e70b7978db6824f7617c8f9b906333f304a602a896d",
+      "bytes": 17655
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson14.json",
+      "oldSHA256": null,
+      "sha256": "cd928cb45fd9d77eb81fa4db77e287a31909807d3fa8c80bcc3f93f6fa98ec5b",
+      "bytes": 16424
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson15.json",
+      "oldSHA256": null,
+      "sha256": "01c4e7568c1b5d7563f54b62a60e419ae6648166d5436cb9770cea57e29645c2",
+      "bytes": 18669
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson16.json",
+      "oldSHA256": null,
+      "sha256": "0544b382fdbd6e62382c90041c793968715f6b0fb608f06a81b788c88e34507c",
+      "bytes": 17914
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson17.json",
+      "oldSHA256": null,
+      "sha256": "993321a6110e4e7603538ed8d4bfde52580101a3e09bfac691bf6fccd871007a",
+      "bytes": 19018
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson18.json",
+      "oldSHA256": null,
+      "sha256": "e3835823060b8a561311f691f936fb912aa19c83805f08bcc264506fa540e290",
+      "bytes": 18637
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson20.json",
+      "oldSHA256": null,
+      "sha256": "12160acc9e35e0cc2636fd405ada38d5bd085bc372999f799567bda995052b7b",
+      "bytes": 20170
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson21.json",
+      "oldSHA256": null,
+      "sha256": "ba79c83ea8f2a62b470aa1a35c74d587d6be26883e58567302e615ed4446046d",
+      "bytes": 18910
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson22.json",
+      "oldSHA256": null,
+      "sha256": "633366e7459720992a8cc41f58bafd2930aa152423e045858312714fc268aea6",
+      "bytes": 18712
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson23.json",
+      "oldSHA256": null,
+      "sha256": "e4b05d7c6b15a4c2bbcec1edb5e33b0770968d34895cbb83f79601020eb975d2",
+      "bytes": 18853
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson24.json",
+      "oldSHA256": null,
+      "sha256": "97a379c9989079da74156be4709baa81b99b4c70ed5447d3bdd27ff25d355484",
+      "bytes": 19647
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson25.json",
+      "oldSHA256": null,
+      "sha256": "c4c868075440e25c0395c62a539ae0269142c840386b3f1dbcd0e9d1bdc76d69",
+      "bytes": 19496
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson26.json",
+      "oldSHA256": null,
+      "sha256": "c1fecfc5d49cc4b75a5727ee164a1c99539aad03ac1cbff4dc293ac3a31bc5e2",
+      "bytes": 18709
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson27.json",
+      "oldSHA256": null,
+      "sha256": "b36c8122d5b883648ac45629b0b6b16e89d1a038e88b2b43c97ab236d4b2c798",
+      "bytes": 20043
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson28.json",
+      "oldSHA256": null,
+      "sha256": "9e285b68a0080c2e29d678b2e5990abdd488bd8db404a3834fc58c17cb2ab1bd",
+      "bytes": 20657
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson29.json",
+      "oldSHA256": null,
+      "sha256": "383b82999ed9125b356a96851bb2b5a5606c8895b304b8e11bb3b8aa0205c81a",
+      "bytes": 18124
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson30.json",
+      "oldSHA256": null,
+      "sha256": "3df27e96bd3dd1995e86672a795967023ba6231780e98aacd8ccb9f36e065bf1",
+      "bytes": 18860
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson31.json",
+      "oldSHA256": null,
+      "sha256": "034b53909a42c661d2990923d7413eb2e85fb8116405d29747b9f889f0cc9c20",
+      "bytes": 18938
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson32.json",
+      "oldSHA256": null,
+      "sha256": "6f120bef09f3135e6cd01c376ff7499051029691b370268b099cc5c93f322735",
+      "bytes": 18641
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson33.json",
+      "oldSHA256": null,
+      "sha256": "b0005662689d22ffa44c069d9de5cb8f7da6c34a0400bd23ab5dcdab615fc087",
+      "bytes": 18685
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson34.json",
+      "oldSHA256": null,
+      "sha256": "7308f5eb72fb857ec891c86cbb2d19862dc043f1cc1465f67637499364e407fd",
+      "bytes": 18870
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson35.json",
+      "oldSHA256": null,
+      "sha256": "7d2d9870f513709a3bb845aa220ff5f10edf8e550d0465393dcd34d5955ea7d6",
+      "bytes": 20285
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson36.json",
+      "oldSHA256": null,
+      "sha256": "59654240d656ce463b8170a420346efa18cf8949e7100dce2770b6c11805c5d0",
+      "bytes": 19099
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson37.json",
+      "oldSHA256": null,
+      "sha256": "8b3709def2c58366f20326763365c37519ecf1dd7e9712292a6afed1c5dd058f",
+      "bytes": 19689
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson38.json",
+      "oldSHA256": null,
+      "sha256": "d17c1b9e369469f928fa9741de2062d564a12a3c5d514d6efbe920580723b778",
+      "bytes": 19447
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson39.json",
+      "oldSHA256": null,
+      "sha256": "4b02f3b4ff07475d5e3179ca1858926fb488fe1048d895f5e41394b6445d3bac",
+      "bytes": 19229
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson40.json",
+      "oldSHA256": null,
+      "sha256": "712a01b423fc6d0ee92f5b5a4976bbcd13de6f370d779075bab1054c4408e893",
+      "bytes": 19594
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson41.json",
+      "oldSHA256": null,
+      "sha256": "7edb2b8b939d81fc88a3c0b03a64cf0a0a26b6eae0c5236971efd7fc5e40a1c8",
+      "bytes": 20159
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson42.json",
+      "oldSHA256": null,
+      "sha256": "1fd5b3317beae3b26e46261dcbc6dd3b98071c57ce6fe6f272a99ed4c4c048f2",
+      "bytes": 20826
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson43.json",
+      "oldSHA256": null,
+      "sha256": "6937df94cd7d5deb57d75410b4f4e4f2fb3474bd793e2d061cbc7a68fcf356e1",
+      "bytes": 19468
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson44.json",
+      "oldSHA256": null,
+      "sha256": "93e497773876d55ad9f7add6d9ee6905434ccb6991c2a8d4985e1418a52b2796",
+      "bytes": 20406
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson45.json",
+      "oldSHA256": null,
+      "sha256": "3f9fff14e1c7a22618fcc79673d5d266d2551fb7eb3c3e1e999f26a95dd9a6d1",
+      "bytes": 20289
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson46.json",
+      "oldSHA256": null,
+      "sha256": "b8ca9cefeb433081fafec5eae79d1ba62d76a42fdfd16318228637b2cc291b3b",
+      "bytes": 21048
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson47.json",
+      "oldSHA256": null,
+      "sha256": "b00cc3412c115fcc70132cfccd799a99dcd4d79f407a8586ea44d1153ea09af4",
+      "bytes": 20535
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson48.json",
+      "oldSHA256": null,
+      "sha256": "4fbc52bf043a2e0dc62e6a2a7b357a2bef1d99c5c14b57a9900b89af75c12485",
+      "bytes": 20621
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson49.json",
+      "oldSHA256": null,
+      "sha256": "068c44e6b7df47e0d4bb94d63f819c4de19287f3d530a38733b34dd33ca05456",
+      "bytes": 21678
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson50.json",
+      "oldSHA256": null,
+      "sha256": "7602a549b6d3b367cb28bd49e6e1dff8e132eab3cc94cf2d24027183c1596490",
+      "bytes": 22010
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson51.json",
+      "oldSHA256": null,
+      "sha256": "c2564c265ca4bc1de7efc5c2e58550ea57fdd855acb36b905f2810f31fea8e14",
+      "bytes": 19253
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson52.json",
+      "oldSHA256": null,
+      "sha256": "dcfc95ef8f5ba7d5cfdbdf58db850bf92cc8ac8d10b7fc8456b34e1a091e93b8",
+      "bytes": 20056
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson53.json",
+      "oldSHA256": null,
+      "sha256": "346a1a458d04bddd3fe51db7863af5b978b75eab398ba3f7ea651e367fcba6dd",
+      "bytes": 20817
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson54.json",
+      "oldSHA256": null,
+      "sha256": "b7fb2bcec405119c9717dc8dcbf003312a229ccbcc641a4381f33f0bf3e6e6e5",
+      "bytes": 21623
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson55.json",
+      "oldSHA256": null,
+      "sha256": "0b48a5693419493f509b89a38a1e8526ced366febeeab498f085226e89e840cb",
+      "bytes": 22765
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/lesson56.json",
+      "oldSHA256": null,
+      "sha256": "316805e523ca0a3bfe7eb0fa6a909132e1b75d0d3a45ce35fccb8fc29bb3107a",
+      "bytes": 23881
+    },
+    {
+      "path": "resources/distribution-source/course56/blueprints/teaching-http-api-spec.md",
+      "oldSHA256": null,
+      "sha256": "0027bacc8de8963b7041b429f130d548c0872363c6023a1cbb9230b3082aabd1",
+      "bytes": 5533
+    },
+    {
+      "path": "resources/distribution-source/course56/content/write_continue.py",
+      "oldSHA256": null,
+      "sha256": "b574575897d4841ef8633cebdf6371dc0bbb6aeab7385c7295dc0f3532c21a3c",
+      "bytes": 127907
+    },
+    {
+      "path": "resources/distribution-source/course56/content/write_data_lessons.py",
+      "oldSHA256": null,
+      "sha256": "91c026287c3772898b22b34e2146a2068f0a1e8f207f663e90d6ffd8f6687f89",
+      "bytes": 16039
+    },
+    {
+      "path": "resources/distribution-source/course56/content/write_graduation_lessons.py",
+      "oldSHA256": null,
+      "sha256": "69219cfee203432343c1171e653cc314a22a3af89e16e32b211c3372320b0b99",
+      "bytes": 17706
+    },
+    {
+      "path": "resources/distribution-source/course56/content/write_hardware_lessons.py",
+      "oldSHA256": null,
+      "sha256": "1bd0603ad4e1d91d585a4c54048a03d38d84dce6755e3f14a6d50a6c3418540e",
+      "bytes": 22464
+    },
+    {
+      "path": "resources/distribution-source/course56/content/write_media_data_network.py",
+      "oldSHA256": null,
+      "sha256": "3d0e31c1ce2577b60aa7bbf8305f5fc6c9b27d5534e28b67729a48b4d5b5e65b",
+      "bytes": 27031
+    },
+    {
+      "path": "resources/distribution-source/course56/content/write_network_lessons.py",
+      "oldSHA256": null,
+      "sha256": "11ef8b7f6ed911547f33d2826c90b4a7bc14fa98fe9122a379d80b41b0b06091",
+      "bytes": 12216
+    },
+    {
+      "path": "resources/distribution-source/course56/content/write_phase1.py",
+      "oldSHA256": null,
+      "sha256": "84984b03e5b95d067a413af404b21b0e54660e53cdff30b2c52a0ad10d7f669d",
+      "bytes": 52923
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson01/content.json",
+      "oldSHA256": null,
+      "sha256": "611a7c36822cb7972948c672f27c97ccb1c8b38c924ae3b0714517c4493d3a74",
+      "bytes": 20211
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson01/先读我.md",
+      "oldSHA256": null,
+      "sha256": "4e74122961cdea7070d22d33fed5ddf68221f83ca8af121b5fdd5e07fdf093c5",
+      "bytes": 1855
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson01/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "7841ae2665f66585786585b10399c15cac323965f1fbeb791d1dfae0ec721ba8",
+      "bytes": 3763
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson01/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "6f107786d2661fe58e855cf6211b351c7b11415d36ee1c0b45e2cb3f3dd69eb0",
+      "bytes": 6911
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson02/content.json",
+      "oldSHA256": null,
+      "sha256": "1217236825f4657ae12b39bec8f6ae670a217d9c313c15c2363b322388e8ec77",
+      "bytes": 22174
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson02/先读我.md",
+      "oldSHA256": null,
+      "sha256": "7603677649d2eb80feffdddc40c1e59709167273a0dec844f5934698b1682522",
+      "bytes": 2013
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson02/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "85c7d19ecb30d7e431cdc2dd5ce18e48c2baf03f498daadc1740a73c64394b02",
+      "bytes": 4220
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson02/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "dce1b08ae9cedbfbfe7c2ce6e26b492fb6f72dc68a58d39de702d0aa51345b99",
+      "bytes": 8317
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson03/content.json",
+      "oldSHA256": null,
+      "sha256": "11892d895f2bb3f70ca26190f2c8799a2f1370b80b35fb2f6eccaf7031001f3f",
+      "bytes": 22197
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson03/先读我.md",
+      "oldSHA256": null,
+      "sha256": "f06425a1e56a69ddbf40335bfabea48b1b1f031dcabd5c305e842a0143ca76fe",
+      "bytes": 2017
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson03/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "30036d8d49f480f7ba9fb0b2046cdd35916c1d56b999593f45bcbb2825eea5b7",
+      "bytes": 4251
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson03/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "851d9666698a05776fb6baa9677a7b4fd6cd8138bd09bc53c4b636cb72f347b3",
+      "bytes": 8650
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson04/content.json",
+      "oldSHA256": null,
+      "sha256": "070531a4a79b603aeabfd4f4dc5327487e8bb6a4a43258cf275adcaa957a1bb8",
+      "bytes": 21198
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson04/先读我.md",
+      "oldSHA256": null,
+      "sha256": "e5988e4e611a5df75d1bcc2860e6934ad6a9bc382ff7c3f0d982c62d70253903",
+      "bytes": 1945
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson04/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "72d45992e5291dc366289ff8fcf3659972dc195b42414847bf3f6d8e48d6aba7",
+      "bytes": 3977
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson04/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "360c443b262c90e6384aac3b480a08fe2581e3d84a55295235d4290b21931c2a",
+      "bytes": 7957
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson05/content.json",
+      "oldSHA256": null,
+      "sha256": "e06cab8b7e96c98f3837e27f65981e38733db7e0789fce561a766e1abfbb0106",
+      "bytes": 21814
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson05/先读我.md",
+      "oldSHA256": null,
+      "sha256": "ebe3ebfbdc3db4855d749678759a77512eea49e356c1a0b4b013504c6ea767b4",
+      "bytes": 1926
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson05/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "d8aa795a2d0e7fb45dea7ac5dfdd33d5c119084c9bb1ee017f99a06b7ce5378a",
+      "bytes": 4058
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson05/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "4283829707a3998d65dc906e684f9697b44d569ab054916f04bff686c0eaccbd",
+      "bytes": 8130
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson06/content.json",
+      "oldSHA256": null,
+      "sha256": "926b68d84c19aee319d3c7f6156b11aef387d721ab08449511f6f516da8a12aa",
+      "bytes": 22176
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson06/先读我.md",
+      "oldSHA256": null,
+      "sha256": "feb486ecd0d454eb12ede1339cfec3d40c14f30d457319c0fa06f97b9b5b1b82",
+      "bytes": 2052
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson06/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "545aedffef327968e9ada273bed9fc9ae3c5f0b71c9699704ef89491a5291a97",
+      "bytes": 4031
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson06/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "8aef27ff5abace119e1b00b2760bb38fc8eee01fb03c963e5e4aca37b61d87d9",
+      "bytes": 8364
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson07/content.json",
+      "oldSHA256": null,
+      "sha256": "02ffad124a92409ecf24eff6a4b8240e596ddee276025c11765991c315122b90",
+      "bytes": 22717
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson07/先读我.md",
+      "oldSHA256": null,
+      "sha256": "f95f37a7326b8951521dbe5a88aa70a22d7b2011600cf8e45a158ddae25a11cd",
+      "bytes": 1989
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson07/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "c9b7df5b96d76dcd384087f9c1c92a1696d4023bfc62e513d45b1ca233160d04",
+      "bytes": 3570
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson07/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "ae8df9a0330b93186104ab2712c7438482058a968d277da33a0310a8e7272902",
+      "bytes": 7192
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson08/content.json",
+      "oldSHA256": null,
+      "sha256": "eca80024e0f8e5103cb7e3959b6bd224574b9a87bfaae50b582dbdf267014140",
+      "bytes": 24295
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson08/先读我.md",
+      "oldSHA256": null,
+      "sha256": "d9ff515e7373b7c3c2a3d0eaa175190b6a4e072a3a45cb7b90677d04b90732eb",
+      "bytes": 2029
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson08/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "cdb79b7d80d8f8f8be3ac89186572200453f7144bf851baa5017b04483140ef7",
+      "bytes": 3681
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson08/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "8aeb7b371b655bd7175d1afcabfe56aa8653d5111d03866c014e5e0bd8a0da43",
+      "bytes": 7528
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson09/content.json",
+      "oldSHA256": null,
+      "sha256": "d562c3942f8dca9265c42366d03c7e3fb4544e04fe7dc01628fc2aa9a15596c0",
+      "bytes": 24017
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson09/先读我.md",
+      "oldSHA256": null,
+      "sha256": "d7d97545aa872f58bb346f08adf00a35c628f2a3c062a3a78178cd4b57436891",
+      "bytes": 2162
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson09/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "4164665fca63eaa8527105d2229fd51244085d6e765808e4bd9533b0072226ca",
+      "bytes": 3641
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson09/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "0761d01c83fa87f8bcd52ce3720f48db1c88f4121f93a4b04b9a841585eb4ad1",
+      "bytes": 7438
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson10/content.json",
+      "oldSHA256": null,
+      "sha256": "a2c7cccb32359fcd28e6f51e84ca24d8ba405dc944b2717ac3f15eaebc3184d8",
+      "bytes": 25450
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson10/先读我.md",
+      "oldSHA256": null,
+      "sha256": "6366545c84095ac8b7b9491eb1b67d90eea76ee1ef740002859c03873439233c",
+      "bytes": 2061
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson10/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "807d63bf073603eda822ea25449205566e980b1ea57bb6756a467b9b51f68460",
+      "bytes": 3907
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson10/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "6c8b13f3734f19c9accd2a5141837ab07d2655178f7c141d64583b6815327d5a",
+      "bytes": 7927
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson11/content.json",
+      "oldSHA256": null,
+      "sha256": "995099dd46baee8da181f73e0b7069f4b9adfc5cef5d8094b3044c2d6c3325ac",
+      "bytes": 23424
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson11/先读我.md",
+      "oldSHA256": null,
+      "sha256": "25d7fd0bdc95a253975164967b31bbbc53a903127f780f9978fcd3925196f768",
+      "bytes": 2056
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson11/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "edc48d8fe5f15a41c793ef4273907f9c6054b56ba73176587499c347992b65e3",
+      "bytes": 3618
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson11/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "11b089fb025bda9508cd727c16d7b0423bca3c7822732fd31f71e94e31cbab8a",
+      "bytes": 7360
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson12/content.json",
+      "oldSHA256": null,
+      "sha256": "0816f81335e8689de2782d5b6b60e84dc6b61b78c9ca72f7d44b757bc4423f84",
+      "bytes": 25414
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson12/先读我.md",
+      "oldSHA256": null,
+      "sha256": "cbeea45c7c071027930f7d131bc2221b71d4427cd445bb9f71401e6dcc2fc147",
+      "bytes": 2015
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson12/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "ceff59aceea8f9f4a9fd33170329a5603f0a9fa58d35b7d276e4bc105dc39dac",
+      "bytes": 3950
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson12/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "5fcf9e99419d95275266935dd2175c8644642b6ce9a98e6c82efcaa1932a38f2",
+      "bytes": 8080
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson13/content.json",
+      "oldSHA256": null,
+      "sha256": "309f2460c3ba7dd53216ea4193b846e48bec79e49c7eb152c0d5f1f726b6880e",
+      "bytes": 25041
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson13/先读我.md",
+      "oldSHA256": null,
+      "sha256": "eea4dbd33def1100ec70c8a01954769c8c46ef83c1a26881859aa5b67d732580",
+      "bytes": 1971
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson13/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "0ee2db146bd63d31ace6ccf904aa330b7a3a6ef28cb54be68f7f7b2451bb0d19",
+      "bytes": 3787
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson13/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "f70d4091aa434b117c62cb192a5f7f9f5bba406a8cb00b4bc09cee3c57e48c2e",
+      "bytes": 7848
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson14/content.json",
+      "oldSHA256": null,
+      "sha256": "e0999d62058b1beccf0ca0f51f148d99197f4d3acfb253997aa60ed024dbd723",
+      "bytes": 24448
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson14/先读我.md",
+      "oldSHA256": null,
+      "sha256": "85a00c48ad6f23632b95298bd334674ba853b2a56505cdbc2e3cc1443f0012a9",
+      "bytes": 2186
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson14/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "22e6b7f5b1c48b76ba04f65ad3632e749b1b91d7e4b0b490ad6b2c26a4b19145",
+      "bytes": 3706
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson14/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "ba5366f8eb34e70b63a5f61a341143115d1ec2189d6240355f1b3e0e31acc265",
+      "bytes": 8232
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson15/content.json",
+      "oldSHA256": null,
+      "sha256": "d778fe87f2a7274e297dcacc042b3581f97fa9460317142e055a1fc1a14d1401",
+      "bytes": 24800
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson15/先读我.md",
+      "oldSHA256": null,
+      "sha256": "4a5268846ea31b1c098055541de8f59f982fab5dde28b47fb318e948bb1092a6",
+      "bytes": 2040
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson15/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "1debadb61d835ecc8b723763901449b19f183d88a6ec3fa1fe953f92f032a931",
+      "bytes": 3696
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson15/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "1a29415e587259ecdacba8af7ea66e3f63d79ce2e44fa32d7e3fc2dd5a73ec81",
+      "bytes": 7770
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson16/content.json",
+      "oldSHA256": null,
+      "sha256": "e41fddf8eb9b62f2d6b21f530ec747605608af35bcdfa9517c15037adb41d75f",
+      "bytes": 23920
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson16/先读我.md",
+      "oldSHA256": null,
+      "sha256": "6f698f23d03fd87c9c6a3cd649f2e02a3faeeb5f6cb13e13979f611857df47f7",
+      "bytes": 2026
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson16/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "fa68a01cf7bf641b7cc0cb332624735a48a7115aaee7e1416542f9be1272b83e",
+      "bytes": 3741
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson16/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "9907f97a9f5a97b8159ceb29cfcee9d0cc581ef074a0aa44ae6f7ffaa2ea952e",
+      "bytes": 7623
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson17/content.json",
+      "oldSHA256": null,
+      "sha256": "b554eede43cfbd2cb15bb874b78e46b6da96e89dc0e4113152496f4ccbfaa37b",
+      "bytes": 25788
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson17/先读我.md",
+      "oldSHA256": null,
+      "sha256": "df4f2bac8dde6d0e332010e799021e46a9b80a70fc4f24fd94c128a087d4c549",
+      "bytes": 2098
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson17/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "310bdf3f6e927ce1f70eed2c62da79fff94b8789b8cf0378d48a16a4127d97ca",
+      "bytes": 3822
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson17/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "ff58d44277c2dcc7c26bc9234eb9372ad7a75b409c319697f618aed932e78790",
+      "bytes": 8196
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson18/content.json",
+      "oldSHA256": null,
+      "sha256": "0c5ba53d2ee237595547fc2b9b7f2947270e5bf6263d031b7a9962fa2d9d2a95",
+      "bytes": 24710
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson18/先读我.md",
+      "oldSHA256": null,
+      "sha256": "d1c8c70f975789f9808a5e9f5284003e6bcd1c0dd0b9d4988ca8613417f3a7ea",
+      "bytes": 2058
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson18/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "9bce903d69da1da447ca584fcfd310e907b60d4ef0a3e71961fbb0a2b7aeee8e",
+      "bytes": 3628
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson18/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "c18ccdd5eff48a0edebac4483686a3c48ee7d3e69ba581e4ed4996f00bcbd0b2",
+      "bytes": 7748
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson20/content.json",
+      "oldSHA256": null,
+      "sha256": "a084ab1e8a462a698908afae9c256cf28325cbcf35f05df6eb87553a29cd93e0",
+      "bytes": 26657
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson20/先读我.md",
+      "oldSHA256": null,
+      "sha256": "babef9efeef7f16da401da07e86a442b92f48a6d54cf9c05058a046b7ac7c2a1",
+      "bytes": 2189
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson20/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "e5426e45fad99097fb602be341dd5039c43c1aab69f9bcf5bbbca5de5217da6a",
+      "bytes": 3761
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson20/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "a94290e4b41db771648b3363e0313a5fa6a8f1a09713cf971f4241221aabad0d",
+      "bytes": 8485
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson21/content.json",
+      "oldSHA256": null,
+      "sha256": "ab4e7ec88507fe83f186789cda41063170d0affd574f8eb88135de71c6bbf9d5",
+      "bytes": 27043
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson21/先读我.md",
+      "oldSHA256": null,
+      "sha256": "b64a79881978737228e1c2f582daeef0d1c83c9e4bd25803a871184c7712ed88",
+      "bytes": 2334
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson21/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "61110e6d4c0db34df79abd520d0ad9455e66cc5a1e631014e620c1bae45f892a",
+      "bytes": 3950
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson21/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "ad49bf4d94436fd7cfabaace73a0afc233ce9898643c3f74a137ac6e77a76ae1",
+      "bytes": 8692
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson22/content.json",
+      "oldSHA256": null,
+      "sha256": "b7e23dae55245793a2662edfe28b7f5446728fd47e923fc670fd907517c97caa",
+      "bytes": 27601
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson22/先读我.md",
+      "oldSHA256": null,
+      "sha256": "f9b63e1531fbe3b1ee4ae43942bdcaafe0fee7ac03fc1122be527b98944aa4bf",
+      "bytes": 2177
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson22/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "116c8a6f381f1177c983bc87be989ed64eacbde7eb2efa2f96cbe25ef17fc774",
+      "bytes": 4041
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson22/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "994160278d3da6599deb075bc51e64f064139fbd7b2f23441235334d6d39b11f",
+      "bytes": 8683
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson23/content.json",
+      "oldSHA256": null,
+      "sha256": "8477f6fe8494b845d9d1d33afd09668aad48f33ac5bf4d580ac3bc54efa69471",
+      "bytes": 23886
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson23/先读我.md",
+      "oldSHA256": null,
+      "sha256": "b5990c7cf31feb69afc17dee9f52fba0ae0644c4d2b76d636af1d42a6c67694d",
+      "bytes": 1888
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson23/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "b4fd9f3c1273e21c7d1154753148b82594a5a5bac67dc6a561294a1c8029ff4f",
+      "bytes": 3614
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson23/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "bcf9c586649600a7ebd958e149838085739dfe27381db4647d9309ea06fd159e",
+      "bytes": 8739
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson24/content.json",
+      "oldSHA256": null,
+      "sha256": "a4d9c70ee07a20cebe34fbb70c00dfabd21222eb4c9b0e3207fb295fc7f95b52",
+      "bytes": 25490
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson24/先读我.md",
+      "oldSHA256": null,
+      "sha256": "321ce3d30014af8035b95372901b751ecb7993f3681ad188de6152db7a3e5bd4",
+      "bytes": 2182
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson24/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "af8dcb4cedc551143e0d11dac7cf834c847b9ccb8a5a782cb5eaefd8b3a8ddc6",
+      "bytes": 3612
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson24/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "d223d1c5422053bc94032441506555ae6ddb0406acd187f16e1fa580fb2b3783",
+      "bytes": 9549
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson25/content.json",
+      "oldSHA256": null,
+      "sha256": "85ac928a2c160ad0d6bf9eb67199b842e15224df33383cf3e783b2686e983f09",
+      "bytes": 25934
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson25/先读我.md",
+      "oldSHA256": null,
+      "sha256": "396475537938f773775222c1940fd02194ecb8b9a7538ab568930f1b17c84d02",
+      "bytes": 2339
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson25/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "7715bda21cc087eaab89a74337e731b908e0d2eed75746460ba8cda590715e16",
+      "bytes": 3570
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson25/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "26badd5f00706cd157b8fd992f7988af82acb446f0009dc7cf40d82a01d02f47",
+      "bytes": 9468
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson26/content.json",
+      "oldSHA256": null,
+      "sha256": "5d99f2b280f0268cd4f9c8c276320788a4f183893414e3d5d2769fa0937ea46f",
+      "bytes": 23383
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson26/先读我.md",
+      "oldSHA256": null,
+      "sha256": "88e6cfba75f71cbda76d237c023b252164580bc1496080797311cc47067d8417",
+      "bytes": 2328
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson26/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "97b424b9cc4215d357466ad020b46ba8b3bb0fee60a4c7e84f802a3a5375a313",
+      "bytes": 3460
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson26/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "a2b4fe1fb4a9653210ab6aa7948edf6ca856da67ec00550be7835b3b178c9608",
+      "bytes": 8569
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson27/content.json",
+      "oldSHA256": null,
+      "sha256": "e49ad31a3b5d2c8820513a5e3d0d2f232b9ebeaaeda242bef44f9ae1e5ddbcda",
+      "bytes": 24767
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson27/先读我.md",
+      "oldSHA256": null,
+      "sha256": "8a3227e5f95def3badc869d58be665dc0699e126f7e151b9fe191ce8c07e27a2",
+      "bytes": 2173
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson27/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "e32a6fcef9fabf2a34743e2dbd16e6bbec6932869c9a8e468c64f720410f3c4b",
+      "bytes": 3409
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson27/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "ee671cbf7c3381e3bc8aaa6de7cfdac31f9d3a6b245840d38f9573573838bf0c",
+      "bytes": 8907
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson28/content.json",
+      "oldSHA256": null,
+      "sha256": "a3c94c13671849ba1655f9dd13ae12dd23ca10e5551323d3f8d7193eeedd70e6",
+      "bytes": 26739
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson28/先读我.md",
+      "oldSHA256": null,
+      "sha256": "62c7559a9044f6c184cc4e50fe9650f3f0a181cd734512745d5634643ab264fe",
+      "bytes": 2251
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson28/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "32cf454d6301813879cbcf4f8800bf0620b3119fc7676f47e7d7ef264913bde1",
+      "bytes": 3686
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson28/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "aec2d758fb841617cb43e638d7944f3f1fa8ea9a5f91028910a692f97cac6d81",
+      "bytes": 9670
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson29/content.json",
+      "oldSHA256": null,
+      "sha256": "a6a25a66ad9cb68c2302aa393172d2b85367fe1fdee73000b47e9fc41ffc9439",
+      "bytes": 21710
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson29/先读我.md",
+      "oldSHA256": null,
+      "sha256": "e5ecb4e18822945b2b74d3525d4c1f24ad5f95e3e8747a93460825bd763354ad",
+      "bytes": 2052
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson29/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "ab830a5776a6fcea29299a1213e0e92050e8ff9ec0967113b81b7c0fb1614de6",
+      "bytes": 3233
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson29/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "535600cbaf7b9525660b0fe7329666ee1ca7720ab6ca6b9d9d0da0940c41ed27",
+      "bytes": 7528
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson30/content.json",
+      "oldSHA256": null,
+      "sha256": "e896afa0d104076bcb27af5ec5d9fcf6a36e3d52498d6c85d3f15c57bb611354",
+      "bytes": 22393
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson30/先读我.md",
+      "oldSHA256": null,
+      "sha256": "991d60afc342537cf5e4a62f52f1b8a129975216b1e96dfd8439ac2d2c938f96",
+      "bytes": 2072
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson30/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "8b4c179ad0eb6171e77e6929c7554e2a42b9be6e59ae08ae30595d0177117c6f",
+      "bytes": 3278
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson30/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "7d6e1d8dce2a6e027d13c0ea85cdd87adb556ca1260f29c4063426352ba86ad2",
+      "bytes": 7913
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson31/content.json",
+      "oldSHA256": null,
+      "sha256": "062146d23132e713ee70acbe7397e1961291504e4d0d98671959a7b137c2b45e",
+      "bytes": 22577
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson31/先读我.md",
+      "oldSHA256": null,
+      "sha256": "5dbf8770d4831a1b8a37c2f7c3b0795b19d7a072eb4bbc133cb8ee07fb4f1eec",
+      "bytes": 2278
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson31/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "40541b2f357757b8990dbc92dbc234d1ca4ceed95d101362c23aff927244a0b1",
+      "bytes": 3195
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson31/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "6b4f879768bdc66ffcbf42fd479936a9f5b5462426f7c84351de57463a09dc15",
+      "bytes": 8020
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson32/content.json",
+      "oldSHA256": null,
+      "sha256": "d84cc6ef88f7e21788e1cdbc692313cd87173c370dab9db66a24e7bf9f74a1cb",
+      "bytes": 22222
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson32/先读我.md",
+      "oldSHA256": null,
+      "sha256": "a4c5edc956369399d97dc7ec7baf08160f5fe1fef3f2aa60d7f5ba3dacbe9399",
+      "bytes": 2089
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson32/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "27c0cdf79c8eb4ca79489fe49ec70056b9c43b9a143bff2b450cf2e6610ac42a",
+      "bytes": 3213
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson32/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "4d6506f04b8e2ca5c3947bbb187412d1563d49cb155ea92af346294fa1e31738",
+      "bytes": 7819
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson33/content.json",
+      "oldSHA256": null,
+      "sha256": "b50f4979bc0f3581e16d098c6a35c3473dcc0dab23d4e32c4f812aabfabea988",
+      "bytes": 22492
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson33/先读我.md",
+      "oldSHA256": null,
+      "sha256": "8aab0901c31d5ebb192206e34a59154d08a74da0c74da9f48bbc1ae8d4bebd52",
+      "bytes": 2093
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson33/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "23201079860231f78dc2a0eeb9bc704d9dcb1d6ffc19e8c0ed5422c4b6eb0fbc",
+      "bytes": 3180
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson33/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "fed2360bc634797a75570cec1acdeac6be9fdbe9dba4a8cb8b2ee1e67e527235",
+      "bytes": 7926
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson34/content.json",
+      "oldSHA256": null,
+      "sha256": "3c7657bda6fedf6a13869b32586cad086b7d894b99d41f5dd499624280d00eda",
+      "bytes": 22617
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson34/先读我.md",
+      "oldSHA256": null,
+      "sha256": "19f4e189adc9a2a352bee99bdea5bf3bb6f6bea386f557aad6835e27083d8910",
+      "bytes": 2293
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson34/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "e5cfb5b887e292bf492bf14c21990da1b2ecb36efc198ef5c363bf9e39afc0ba",
+      "bytes": 3272
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson34/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "a652a67ecef5c5e792ac99f8678455c0a4d3fe5760a9d2990c546dab2bb7e1ba",
+      "bytes": 8043
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson35/content.json",
+      "oldSHA256": null,
+      "sha256": "8fe770686d3517c00a4a021ac30d67ff108d0a867f2f9bd7325dadf4b7929333",
+      "bytes": 25123
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson35/先读我.md",
+      "oldSHA256": null,
+      "sha256": "6918f15a76c59b146ef4952bcfab3c3814b1b573c3ee4b1a0f68de77ae9d2a5b",
+      "bytes": 2390
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson35/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "8e0f476906aad8caa8b14fce19a8755d9e24dbbd9d6a76399c73b02a446d4b23",
+      "bytes": 3413
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson35/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "e345e4c7b7806367bf12d9890d6f74e08f32ad4989b7d7731f5e60c4fdba9c1e",
+      "bytes": 9183
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson36/content.json",
+      "oldSHA256": null,
+      "sha256": "67d6b26ed686cd0acdeff5006224f619009876e1b0536f0122cc069f7f1917fb",
+      "bytes": 22927
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson36/先读我.md",
+      "oldSHA256": null,
+      "sha256": "253aed344acf076a513f3b60d097832a1129903ddda5f1d259d05c726f445ab0",
+      "bytes": 2293
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson36/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "062dfeec60bfddc046a0aff51e4e2986728d34d5f0b61cefac710bfc946c77ab",
+      "bytes": 3208
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson36/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "9e53bd8140b26bcccbdeff17be0858d678dbcd5fc502c101565d1b5faba662c3",
+      "bytes": 8234
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson37/content.json",
+      "oldSHA256": null,
+      "sha256": "22f0f8d0bba5acf2278e524e97bfc22ca7b98f4f77ed0c76a54cc8ede6c4fa50",
+      "bytes": 24740
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson37/先读我.md",
+      "oldSHA256": null,
+      "sha256": "4cf32c1678646f1318d96b3257f11517a8c0abdbec8017078c4d18d23954e398",
+      "bytes": 2286
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson37/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "5d0a15463e22282b5b2370783f256b10a8936b79880690cd3165553f6866faec",
+      "bytes": 3331
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson37/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "1d7c5996c9d11ccc05b688400c917ef737fd9674fcda3fedadbc793baae00000",
+      "bytes": 10007
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson38/content.json",
+      "oldSHA256": null,
+      "sha256": "bd0ba3e1f1e65d8eef2ef8998a4380582e45d854a63d2cede5df9af74e0f46df",
+      "bytes": 24678
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson38/先读我.md",
+      "oldSHA256": null,
+      "sha256": "59b0015536629b9242a53dc7f0a42df50aa02193f8224d07016b2fdde35a4343",
+      "bytes": 2303
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson38/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "8a08972117a65300f2b8f6199241d0e6fd2b2ace1738940513b5ddf3dcbb549d",
+      "bytes": 3305
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson38/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "0c5435a8b324a81e719bf1819615e8696a10d39acb4d252a8be7f777862d24db",
+      "bytes": 10130
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson39/content.json",
+      "oldSHA256": null,
+      "sha256": "833016e1b9afe37f971a5d4e8d3f563b68a7795032156cd27f080c972038c4da",
+      "bytes": 24678
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson39/先读我.md",
+      "oldSHA256": null,
+      "sha256": "200306d3a66ba61e046820e6aafe44c6ef787b9bb917710d579c28d61c6eee24",
+      "bytes": 2319
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson39/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "b9e5600bde695190fe2e3a3ba3775f6118f52f6f9fe86f111536bb5583d47a34",
+      "bytes": 3302
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson39/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "b7003a7fbe701354dd941981933a54c3ee97e7e591148d19ae76fb824cd39059",
+      "bytes": 9988
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson40/content.json",
+      "oldSHA256": null,
+      "sha256": "80b428f5ed73795d7a91cc0f0bbea8d63741a00b0ad7dc13b4fbfc9fe2b7e441",
+      "bytes": 24942
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson40/先读我.md",
+      "oldSHA256": null,
+      "sha256": "e6ec94b016a11085289193ea53a0984d56632a650396139b09d5940b3cdd6a11",
+      "bytes": 2299
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson40/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "6f4772508a09a7042b4b8459dc491eb32095e18dcff97d5b30f199c9e4710b14",
+      "bytes": 3256
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson40/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "07470f87131a5f8f103191ddd8025b8ad896836b30f77e5a2264e46037059fa1",
+      "bytes": 10068
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson41/content.json",
+      "oldSHA256": null,
+      "sha256": "72791c53627eb1601025f101b922007d1ac2e730a3bc967aa0eba8024c7dde5b",
+      "bytes": 25826
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson41/先读我.md",
+      "oldSHA256": null,
+      "sha256": "bbb61ec589962157c965052434e42520203724747bddb3eb96f09c1aa177c94b",
+      "bytes": 2352
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson41/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "3286dc53e8aea11d545e9f8ec95fd6db728844066512b3d3c8e191b67ca8d715",
+      "bytes": 3388
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson41/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "5bd75eac754a1833c15d364ea58750c0ed32089d203cd054e464014a41d0618c",
+      "bytes": 10445
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson42/content.json",
+      "oldSHA256": null,
+      "sha256": "0c2ddb8e1456a357e6bba62e69c7dc4ef26126e6149839b354005b1418bb28a0",
+      "bytes": 28338
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson42/先读我.md",
+      "oldSHA256": null,
+      "sha256": "1c3195fe8a66745f5f3f57ad878d75bca2edb25a46ab62ab58ab9fc4b53c0bd5",
+      "bytes": 2385
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson42/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "41c38f1de7d6e984714f0ce9272388012ca2ef71393f4abaa4a062d767142431",
+      "bytes": 3410
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson42/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "5a84b726f1785d8a59b024a73b2a2271c843a1daeb3ab6c5913e699a75487384",
+      "bytes": 10849
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson43/content.json",
+      "oldSHA256": null,
+      "sha256": "ffec8355ce0b5948d7cf3d00b4dfe5db0c814810744c5c5c016e8bcfe5b5f9b1",
+      "bytes": 25100
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson43/先读我.md",
+      "oldSHA256": null,
+      "sha256": "6fab1b25a34435aa4f0bcd116e1916be84b2841f4d8b96fbb76033427d2d7276",
+      "bytes": 2707
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson43/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "1da9557192e416ab1df80277aad5738358e12ad1d0c29705f10198365e6094c0",
+      "bytes": 3335
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson43/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "6298582274c2d53f3ed5f73f1ec4387ba4264d9eaa7097d003c612ea34b0b728",
+      "bytes": 10508
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson44/content.json",
+      "oldSHA256": null,
+      "sha256": "17fe5c33c36c62a9ccc295d7eaa2b4cb39c743bc02324202c325cc3e427f605e",
+      "bytes": 26513
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson44/先读我.md",
+      "oldSHA256": null,
+      "sha256": "5e7a343c1153fe8bf1c9b849555fa84b18ac333bf25a7341a21f3a73ea24d4db",
+      "bytes": 2701
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson44/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "f78c1b985285e9e8965a912a26d8c18fc07b6078dbabe55d4324ae69568e7e09",
+      "bytes": 3296
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson44/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "48a38212bc6b3ab5008117b2cc76eae48b1c56e314d65cb28ccca845a37617ca",
+      "bytes": 10947
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson45/content.json",
+      "oldSHA256": null,
+      "sha256": "9bcb7f8f99a341d747ce20f89b0254efa7bafb9fdd081ebabb8d06fb46c9624c",
+      "bytes": 25670
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson45/先读我.md",
+      "oldSHA256": null,
+      "sha256": "b9ac227142c8b614be871eca9524e90d65ca45eab822fc3848fbfedb9f12822e",
+      "bytes": 2666
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson45/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "80584d0c7bfb37bb66ddd9f2f379559a8142d474a2b4b828b2c8b1f5a4f1a9fd",
+      "bytes": 3303
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson45/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "31eb9afe526e95af180dc619da898c8d724d12ad6623a827041ae95af032eaa0",
+      "bytes": 10384
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson46/content.json",
+      "oldSHA256": null,
+      "sha256": "f814caf78372e179f1a6d4809640259caa4d55c78a9c221042dd43deabae249c",
+      "bytes": 26882
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson46/先读我.md",
+      "oldSHA256": null,
+      "sha256": "f5416d468c52ad17d58763eb9162ffc062b1beaff1f1a3b2291c5d688d95b2f3",
+      "bytes": 2714
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson46/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "db569b55b2fcf9ea579197369a34f6ee4d3b8f5437021579d1bdd047ccc8a5c2",
+      "bytes": 3416
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson46/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "f7223ee1e1e22b37634f3f07bed9f42e03c56e0235d9c54247f9b3438a67514f",
+      "bytes": 11131
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson47/content.json",
+      "oldSHA256": null,
+      "sha256": "ebcb6d4d0b50425fb65f7ac165e431d7235bf65de7c62466c34ae928d5978060",
+      "bytes": 26739
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson47/先读我.md",
+      "oldSHA256": null,
+      "sha256": "cbb5f5da2b4007d1aec358225f97127aa8de91a43048d8e9c1ad247e2102b75a",
+      "bytes": 2680
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson47/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "36727f0c74ecd1f0bb04d660ac6b0fa69c217972e8b7048b8d3316bfb183ad6e",
+      "bytes": 3313
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson47/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "220ed6d0ede7c6ce5cf497d412f7db9949c66c7aeec7586f3cfdf22a65a78cd5",
+      "bytes": 10897
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson48/content.json",
+      "oldSHA256": null,
+      "sha256": "1d8d19fe660be768a2f1ad4a0eecf94ae5858568df6c34d6d3ce6c13d5317c3d",
+      "bytes": 26787
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson48/先读我.md",
+      "oldSHA256": null,
+      "sha256": "d08e04ff28c0a0d08f9be69b3d70b27fe7ba7d87c07d463f84939d085128c746",
+      "bytes": 2699
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson48/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "ebd3faa60bb58c3086a53765dcc79dab7949973888aea9d360844643860ab761",
+      "bytes": 3314
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson48/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "a53cdccde8d910b1bfc23c2dbacf8c52e5a22039b58e4e65c7f99dde3dd31956",
+      "bytes": 10896
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson49/content.json",
+      "oldSHA256": null,
+      "sha256": "439e8c60125d11639ea689c40506b557408ca9c84e0aa926126fa26d84141799",
+      "bytes": 27253
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson49/先读我.md",
+      "oldSHA256": null,
+      "sha256": "a87fc41834d3f0e8c137a4ca14127dcf5a7cf54812e18b795e14dc0e6270bf1c",
+      "bytes": 2713
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson49/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "e2c9f40a8ddfc8a3425b4ff032b35485274e0ead6bab6c13a8aba9cf2994458f",
+      "bytes": 3435
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson49/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "0c6079fa3e2a977f57c13908101daa9345afcf5d15d7980972dbb2caae2e230d",
+      "bytes": 11096
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson50/content.json",
+      "oldSHA256": null,
+      "sha256": "48fc86af7b7cd11c35a966bfe31955f01ad221cb48ef588bf3ae19b46c84433b",
+      "bytes": 27785
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson50/先读我.md",
+      "oldSHA256": null,
+      "sha256": "ece201eb4420657f95b91a5e48eabbb568cbcfd0531c2bac1bb04690bf10d03d",
+      "bytes": 2696
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson50/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "9cb148aa28f32d52c20b6c7ac30e3ae39e94f7d21d567c5d3933e16714c085b7",
+      "bytes": 3437
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson50/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "242a88c5f16705af6c9d4b7434c330f555b0e5b8fef5795f3f3da77d762e7cea",
+      "bytes": 11291
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson51/content.json",
+      "oldSHA256": null,
+      "sha256": "a4ca107a77ec5469a73e06eb07a22f120339ecba94ab14b78743bc21a623ff3a",
+      "bytes": 24259
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson51/先读我.md",
+      "oldSHA256": null,
+      "sha256": "ed7f5c38a11fbad77122e4020124f1ffcb5d778f2a3b26ecdedff4d929c8adb3",
+      "bytes": 2405
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson51/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "541f830bb60ed391ed47deb840816c30d532dd601d688a3fc724ece4a4e8c83e",
+      "bytes": 3452
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson51/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "8550e7d6f19f3d73e932b8e8d07f37f24e1ce2afbae8700664cb6385225102fb",
+      "bytes": 8880
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson52/content.json",
+      "oldSHA256": null,
+      "sha256": "cda76a6cb365ae00ff8bb2d1c980c763eb50bd2775f8e326eee8a6d7e3beea9e",
+      "bytes": 25377
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson52/先读我.md",
+      "oldSHA256": null,
+      "sha256": "b764003995fb72971201061da47df9cfc64850c99132b5140133d3f64a16bf51",
+      "bytes": 2372
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson52/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "9a89e35d3017ddeebeebd70ef95e0c5488b89691df920f798960135a30ca59c9",
+      "bytes": 3448
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson52/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "9e35392100707846d10fd38b82feab8186f87087de3839e08101ee9a15f2905e",
+      "bytes": 9186
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson53/content.json",
+      "oldSHA256": null,
+      "sha256": "07ed9e59a1e73f50e2dca52ad4f9f8d979783ec1f68449dbe9dd75f2949ef058",
+      "bytes": 26738
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson53/先读我.md",
+      "oldSHA256": null,
+      "sha256": "d9a207655b676a80d9402cb601c2ee29cd2e6f142ae62be56e309665a64167a2",
+      "bytes": 2399
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson53/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "1b4979a6a078489c3be3322f5de66e3e2235c7e906a2bf3e07641e6df345ad96",
+      "bytes": 3347
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson53/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "ca9cce5534967a639961541cb70251d8e9595e8274c0fb6afea3887e4ae152cb",
+      "bytes": 9595
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson54/content.json",
+      "oldSHA256": null,
+      "sha256": "5199f74a1837cf16e2d737eeea72304be8fc8da50fb609360d8a34f2e6d68290",
+      "bytes": 28766
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson54/先读我.md",
+      "oldSHA256": null,
+      "sha256": "fc7ccb8d28427bffbc3530d51953d2acec7f9b8d0f725c62ef2ff07e89e2adf5",
+      "bytes": 2423
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson54/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "89a85973b6edc875087ec2c54008b1a2b916931cb69ca0940721a9d9975363b5",
+      "bytes": 3395
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson54/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "97a9f3f5ddcf2bb9dd2ca1e04a369702fc92ec61fdbfba010905143e614c7c2c",
+      "bytes": 10217
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson55/content.json",
+      "oldSHA256": null,
+      "sha256": "cb142dd8af94fa741330b0b75d7c78817409f13f9a453f2fe74a46ef607c9ff2",
+      "bytes": 30569
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson55/先读我.md",
+      "oldSHA256": null,
+      "sha256": "b33f694f80bdd4e3e0d436f571c66610691088a6d5a88c551a147c452d44ecce",
+      "bytes": 2396
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson55/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "6a483e5befe4ebac81ef85b1b9fd7c4e2cd71753d0b9578ac2b01684f01031da",
+      "bytes": 3518
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson55/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "7b74abdea00a4f87c020cb76c3fac5861b0b30292bfe51821617b925e5cab63c",
+      "bytes": 10531
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson56/content.json",
+      "oldSHA256": null,
+      "sha256": "32a0fb5d59f0240000bc845a97b8fdcbc1fdabded7b7672df14211eb5ab7d231",
+      "bytes": 31624
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson56/先读我.md",
+      "oldSHA256": null,
+      "sha256": "37b54010ae1ab08ac2a73238e473459eca45e28a995fadcbf64533cc3fd58446",
+      "bytes": 2396
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson56/学生任务单.md",
+      "oldSHA256": null,
+      "sha256": "b6f4d09f154947cd4af17600b9283a1971670e48f0141b54f8c6cb18452f009d",
+      "bytes": 3717
+    },
+    {
+      "path": "resources/distribution-source/course56/content/lesson56/教师教案.md",
+      "oldSHA256": null,
+      "sha256": "7891286bcf854e273bf6d945ef92d72a9dafafb0b891b91e434e741d259dcb75",
+      "bytes": 10639
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/prepare.py",
+      "oldSHA256": null,
+      "sha256": "43cd220d27128397c71f78e480091a7413adc305c830101a9da28da7c1c7165b",
+      "bytes": 476
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/tcp_lab_server.py",
+      "oldSHA256": null,
+      "sha256": "435181cdec4d8ed322a83d89651cf74203f02846139e1427e6fb022a4ff41cd0",
+      "bytes": 4052
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/协议与技术依据.md",
+      "oldSHA256": null,
+      "sha256": "d5ca2edd1524cd0ca26eafa537a95c27d66c1b1e752419411a5ec1fc4e02e9c7",
+      "bytes": 11566
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/接线与使用说明.md",
+      "oldSHA256": null,
+      "sha256": "426fa52fa3ee097454d094e69e85fd413f9580f48d79d4c1d2d7afe83d3c8fe8",
+      "bytes": 5557
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/43-serial-protocol/43-serial-protocol.ino",
+      "oldSHA256": null,
+      "sha256": "6734d97200ee1ce4b8711abc552019e1bf40ad36c089f5f780cc4614e70a0a6b",
+      "bytes": 491
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/43-serial-protocol/course_board.h",
+      "oldSHA256": null,
+      "sha256": "a218ecf89de0b0c427aa186d7f414164436b4eb4484d3f22fe1da425a881aee4",
+      "bytes": 1717
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/43-serial-protocol/course_protocol.h",
+      "oldSHA256": null,
+      "sha256": "eae7ed7b2a8759857ae584c1368309e0346fbafae3ad255d2f01d41f61947435",
+      "bytes": 3015
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/44-45-classic-spp/44-45-classic-spp.ino",
+      "oldSHA256": null,
+      "sha256": "da90bc200b9e1cf199c3446269232eee150ca2e7a7522bb0c36007dc96bacdee",
+      "bytes": 1231
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/44-45-classic-spp/course_board.h",
+      "oldSHA256": null,
+      "sha256": "a218ecf89de0b0c427aa186d7f414164436b4eb4484d3f22fe1da425a881aee4",
+      "bytes": 1717
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/44-45-classic-spp/course_protocol.h",
+      "oldSHA256": null,
+      "sha256": "eae7ed7b2a8759857ae584c1368309e0346fbafae3ad255d2f01d41f61947435",
+      "bytes": 3015
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/46-ble-led/46-ble-led.ino",
+      "oldSHA256": null,
+      "sha256": "2220079cd1b44c724c088de53fdc21bf74592dc8ce7bbb019e5dfe314002f965",
+      "bytes": 2441
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/47-tcp-ap/47-tcp-ap.ino",
+      "oldSHA256": null,
+      "sha256": "e1702cbaff5e53b7f867ec0ec133f41b7abba505a092f4da6483fb5c63cdc4f3",
+      "bytes": 576
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/47-tcp-ap/course_board.h",
+      "oldSHA256": null,
+      "sha256": "a218ecf89de0b0c427aa186d7f414164436b4eb4484d3f22fe1da425a881aee4",
+      "bytes": 1717
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/47-tcp-ap/course_protocol.h",
+      "oldSHA256": null,
+      "sha256": "eae7ed7b2a8759857ae584c1368309e0346fbafae3ad255d2f01d41f61947435",
+      "bytes": 3015
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/47-tcp-ap/course_tcp.h",
+      "oldSHA256": null,
+      "sha256": "ed3a79fa13f7b19e863c26aa6bbecefbdaee0eaf9a9c49ae272366c104f46da5",
+      "bytes": 1350
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/48-tcp-sta/48-tcp-sta.ino",
+      "oldSHA256": null,
+      "sha256": "1a46469d5efeb9465e6a3d4475daa99e5d097af8b20cc3821daad353d9927159",
+      "bytes": 941
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/48-tcp-sta/course_board.h",
+      "oldSHA256": null,
+      "sha256": "a218ecf89de0b0c427aa186d7f414164436b4eb4484d3f22fe1da425a881aee4",
+      "bytes": 1717
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/48-tcp-sta/course_protocol.h",
+      "oldSHA256": null,
+      "sha256": "eae7ed7b2a8759857ae584c1368309e0346fbafae3ad255d2f01d41f61947435",
+      "bytes": 3015
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/48-tcp-sta/course_tcp.h",
+      "oldSHA256": null,
+      "sha256": "ed3a79fa13f7b19e863c26aa6bbecefbdaee0eaf9a9c49ae272366c104f46da5",
+      "bytes": 1350
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/49-50-tcp-reliable/49-50-tcp-reliable.ino",
+      "oldSHA256": null,
+      "sha256": "3644b6ef1deccf95d6e6b86d519f6a2d3011685918095b4e1a057e7660c372f5",
+      "bytes": 1294
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/49-50-tcp-reliable/course_board.h",
+      "oldSHA256": null,
+      "sha256": "a218ecf89de0b0c427aa186d7f414164436b4eb4484d3f22fe1da425a881aee4",
+      "bytes": 1717
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/49-50-tcp-reliable/course_protocol.h",
+      "oldSHA256": null,
+      "sha256": "eae7ed7b2a8759857ae584c1368309e0346fbafae3ad255d2f01d41f61947435",
+      "bytes": 3015
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/49-50-tcp-reliable/course_tcp.h",
+      "oldSHA256": null,
+      "sha256": "ed3a79fa13f7b19e863c26aa6bbecefbdaee0eaf9a9c49ae272366c104f46da5",
+      "bytes": 1350
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/shared/course_board.h",
+      "oldSHA256": null,
+      "sha256": "a218ecf89de0b0c427aa186d7f414164436b4eb4484d3f22fe1da425a881aee4",
+      "bytes": 1717
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/shared/course_protocol.h",
+      "oldSHA256": null,
+      "sha256": "eae7ed7b2a8759857ae584c1368309e0346fbafae3ad255d2f01d41f61947435",
+      "bytes": 3015
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/shared/course_tcp.h",
+      "oldSHA256": null,
+      "sha256": "ed3a79fa13f7b19e863c26aa6bbecefbdaee0eaf9a9c49ae272366c104f46da5",
+      "bytes": 1350
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/tests/protocol_test.cpp",
+      "oldSHA256": null,
+      "sha256": "12081cc3f2b7bb0a7d46d5635eb13fb17b83de0f1e390cd3bf2c7a57740e69d5",
+      "bytes": 2410
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/tests/protocol_test.exe",
+      "oldSHA256": null,
+      "sha256": "77d45c6800f19840a40b20b9d2a354f743dccf21b2ab987812d064f8d0a7e1f2",
+      "bytes": 135680
+    },
+    {
+      "path": "resources/distribution-source/course56/firmware/tests/test_tcp_lab.py",
+      "oldSHA256": null,
+      "sha256": "b6c165362a4653f8410e5b0d6d09848f1f85d03f9852e8188576c7684768b922",
+      "bytes": 2558
+    },
+    {
+      "path": "resources/distribution-source/course56/storage-fix/build.py",
+      "oldSHA256": null,
+      "sha256": "aa0053e8a46b72d023fbbd46ebacb974b61f8ae8849ef4bcdb08ab178e2d3ffb",
+      "bytes": 2898
+    },
+    {
+      "path": "resources/distribution-source/course56/storage-fix/result.json",
+      "oldSHA256": null,
+      "sha256": "2a4501617ee394c043d728007d1d08c1bbcaf69aa9b69a8dc2d62e1c6ad05ae7",
+      "bytes": 241
+    },
+    {
+      "path": "resources/distribution-source/course56/storage-fix/src/PatchBlobStorage.java",
+      "oldSHA256": null,
+      "sha256": "b659d3486cc21ba4d8a862ca0dd7dc9ca179af49ef238dcc759a42fe1de37105",
+      "bytes": 2331
+    },
+    {
+      "path": "resources/distribution-source/course56/storage-fix/src/com/google/appengine/api/blobstore/dev/BlobFileNames.java",
+      "oldSHA256": null,
+      "sha256": "c2202eacfde633ed627ae02ce4f212ab7ae1e5de5da102b8bebcd55e91c9e1cd",
+      "bytes": 2603
+    },
+    {
+      "path": "resources/distribution-source/course56/storage-fix/src/com/google/appengine/api/blobstore/dev/StorageCheck.java",
+      "oldSHA256": null,
+      "sha256": "ef8aef88c816312837011921e8cba13070f6152af3f790f6f657f4c0454b95d6",
+      "bytes": 2919
+    },
+    {
+      "path": "resources/distribution-source/course56/teaching-api/teaching_server.py",
+      "oldSHA256": null,
+      "sha256": "befda590f9c7ace40d31fc6b607bc1ae6877d39ca004a8929e49374fb57a0aa2",
+      "bytes": 10831
+    },
+    {
+      "path": "resources/distribution-source/course56/teaching-api/test_teaching_server.py",
+      "oldSHA256": null,
+      "sha256": "8387f6c98bd0963d1866d5b8a4a5d9f4dac9711234ae5c84448fb00934528187",
+      "bytes": 5877
+    },
+    {
+      "path": "resources/distribution-source/course56/teaching-api/使用说明.md",
+      "oldSHA256": null,
+      "sha256": "3d90cec98504d631f3bd7d110c925059d5d7a8f591cf4d1d9a6dd2e2881b6bd0",
+      "bytes": 2159
+    },
+    {
+      "path": "resources/distribution-source/course56/teaching-api/启动手机课堂服务.cmd",
+      "oldSHA256": null,
+      "sha256": "133a35573eaf1b9a09653edcdd7eb07674d793b71e376db7ff2d8bc7575c4b7e",
+      "bytes": 421
+    },
+    {
+      "path": "resources/distribution-source/course56/teaching-api/接口规格.md",
+      "oldSHA256": null,
+      "sha256": "0027bacc8de8963b7041b429f130d548c0872363c6023a1cbb9230b3082aabd1",
+      "bytes": 5533
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_core.py",
+      "oldSHA256": null,
+      "sha256": "b9d100611951c6eb46e12186a7b57c3afd03e9808683ba5060fb23a7bfb25156",
+      "bytes": 15864
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_phase1.py",
+      "oldSHA256": null,
+      "sha256": "9d6f9464c90a03db86cb2135049b31e6eeedc425adc976ffdc4b839f99fc5235",
+      "bytes": 21022
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_phase2.py",
+      "oldSHA256": null,
+      "sha256": "059f3109a1357bb2ca6d410041023669eb7084391989e724ff55c7ccd61eed55",
+      "bytes": 30238
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_phase3.py",
+      "oldSHA256": null,
+      "sha256": "0236cd09d8a40cb26db43908b6e08e4c81b6d526d19dd9c395d4d458aa3f7168",
+      "bytes": 39018
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_phase4.py",
+      "oldSHA256": null,
+      "sha256": "3e585581710cd519515e3dc8c13f32126f1c76dc6bdf5241d8dfbd9eb11a4b58",
+      "bytes": 32781
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_phase5.py",
+      "oldSHA256": null,
+      "sha256": "54e352f72c4a3c11b01797cbebbe6fd255105fc243d887516cc5ec7d66e6b422",
+      "bytes": 40035
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_phase6.py",
+      "oldSHA256": null,
+      "sha256": "6c9f647273fa3a2b7a5a8ecdb1aa0895862c588a20c1071dd597328c5bf47e91",
+      "bytes": 38111
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_phase7.py",
+      "oldSHA256": null,
+      "sha256": "fd21ee00a2e8386d8e3b68ac3d3750a41f8ad22948aaa127e6f332dc6523843c",
+      "bytes": 31468
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/aia_phase8.py",
+      "oldSHA256": null,
+      "sha256": "685cb8fb7d58544401afc7cda2980eaf7021fb598a9bbdb278320c284580f644",
+      "bytes": 19844
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/capture-block.cjs",
+      "oldSHA256": null,
+      "sha256": "c28e6785f3d18ea1300be6b39726701aff10f7ac75b31d771b63e61c75d201b1",
+      "bytes": 2430
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/deck.mjs",
+      "oldSHA256": null,
+      "sha256": "77567fb22cec0e11765dcb03257165c6ec317cc3023cbd88622286dc68887fda",
+      "bytes": 7664
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/final-firmware.py",
+      "oldSHA256": null,
+      "sha256": "b9759aa5e87bc4bb36d659cf6b1220de4e9e00b5f431042581b76a6556ada229",
+      "bytes": 1364
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/final-ui-check.cjs",
+      "oldSHA256": null,
+      "sha256": "171d56cf8c3eda03720fb60807ea7f6edf217245373a51d6d9aca316d49f726a",
+      "bytes": 3930
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/package.py",
+      "oldSHA256": null,
+      "sha256": "f5c808910558afdf2a81f8aabbcdbe957d19bf2a1663d0300a5678edd323467b",
+      "bytes": 7284
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/preview.py",
+      "oldSHA256": null,
+      "sha256": "da54cb14dfe2579379d78dead2e0481e710866facbb4ebfa913c97ed90a50d87",
+      "bytes": 1609
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/preview.template.html",
+      "oldSHA256": null,
+      "sha256": "b73efcc3d2eb630f2b00097a0558fa45d1a9e83d8e05f1d6c7df19ebf69004a0",
+      "bytes": 11564
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/recapture.cjs",
+      "oldSHA256": null,
+      "sha256": "df8aff5a351552aab9f755bbb1453735c61e5d1a4d72f31f4f61f1759c101f7b",
+      "bytes": 3276
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/record-visual.py",
+      "oldSHA256": null,
+      "sha256": "ab8200210f8973438715433c7f231a1e65aea0cbacfdd0637f858907630881cf",
+      "bytes": 609
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/teaching-ui-check.cjs",
+      "oldSHA256": null,
+      "sha256": "ec3240604495a8a5ee178655587a07cb9aa1043d870981d0da0394263f511f63",
+      "bytes": 5985
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/test-preview.cjs",
+      "oldSHA256": null,
+      "sha256": "44a7a009b189e1e7aa060c278c8d7c88a5059a01a026977b823e391e52f8af13",
+      "bytes": 1825
+    },
+    {
+      "path": "resources/distribution-source/course56/tools/verify-native.cjs",
+      "oldSHA256": null,
+      "sha256": "7f43704a8737c5ed3108a9912547260ca53bbf93b8daf641a95378bd41df6643",
+      "bytes": 8315
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/cloud-fallback.js",
+      "oldSHA256": null,
+      "sha256": "4a5a9071cd754a66112caad26a15cbe8a55d9099c55a9886691d8d03e00a82a9",
+      "bytes": 1142
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/compiler-paths.py",
+      "oldSHA256": "3aa95b6907c0b6753776a37e120c2dab659c898f963197ddef1926c3c7093b8a",
+      "sha256": "0316c2ad7a251dc2243610fcdac2b608cca6ae18cff782bbe83c4ab80c768402",
+      "bytes": 3239
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/fix-desktop.py",
+      "oldSHA256": null,
+      "sha256": "b43c1a26c3338927afcb4556bd9c9951deaf7644625cab3d7cb99962a9a80088",
+      "bytes": 2801
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/prepare-mixly.py",
+      "oldSHA256": "35d65b5bea90fcdad1e1159452dc4ba85073d9a066f6358c4183d004266c9554",
+      "sha256": "166bab5b84321227bc25460955e57a780f34a929c6e14aa99462a03a0453f246",
+      "bytes": 10442
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/sdk-junction.ps1",
+      "oldSHA256": "dfc6cd0bd70caa996a639aba48fc7f6189029ce7d4e0bdd71c1e6fbcab825912",
+      "sha256": "234bdff84ae905b5f02ccbc328ca1cd8d0c805b8b4c77b9c9a5316bbb3d41855",
+      "bytes": 930
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/suite-main.js",
+      "oldSHA256": "8d6f9c6efded6b1af6aceaa4cb2b2a68d6a0cda8b225e64cc99189a3defaf212",
+      "sha256": "39cf5bd3a9311446dee454a15afaab39287f6cef5334fd69f84437ddb13e1eb5",
+      "bytes": 4996
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/workspace-recovery.js",
+      "oldSHA256": "87f979fd3ff70f29ac462f4544aa1d2dda700c4a2be8fb0aaa1dd4e8123c0ee9",
+      "sha256": "e1b6ae50d0c8016a69abe5e0824196f8988f0475083ba98e3a9e592a5cf09786",
+      "bytes": 2614
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/workspace-theme.css",
+      "oldSHA256": "4ea43e0b69ca052ae182377839578902e3d4020bf290a97a486da23b3b8abfde",
+      "sha256": "ea0cf12bab4b0a44f91166ec40d6a770200386cf660dd621bf74150cbc27a9df",
+      "bytes": 1150
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/bluetooth/blocks.js",
+      "oldSHA256": null,
+      "sha256": "98cfe1d912991e56d0fe568df7af4d13055b5feadc60b6e96f543a658c2cc087",
+      "bytes": 2365
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/bluetooth/generators.js",
+      "oldSHA256": null,
+      "sha256": "b686d6a1860e43f028ecdc62717ea639ec7fa1db26b078209c55eb3fe28d3ea3",
+      "bytes": 2565
+    },
+    {
+      "path": "resources/distribution-source/mixly-adaptation/bluetooth/toolbox.xml",
+      "oldSHA256": null,
+      "sha256": "0c4063a7a0316c3aca0674c2d399c63257d56301976ff5c8cf60800c2f78b347",
+      "bytes": 622
+    },
+    {
+      "path": "resources/distribution-source/mixly4/fix-bluetooth.py",
+      "oldSHA256": null,
+      "sha256": "85f1aa7c09449c498544ca44a8dad96eb00adb96a5a4886f68fa8a15ff775ae2",
+      "bytes": 4707
+    },
+    {
+      "path": "resources/distribution-source/mixly4/prepare-build.py",
+      "oldSHA256": null,
+      "sha256": "f0ab2f118d20f43ce4b6a250fb76f5bab35e2dd573ff2ac1a2aee045a8b23ea8",
+      "bytes": 3104
+    },
+    {
+      "path": "resources/distribution-source/mixly4/stage-web.py",
+      "oldSHA256": null,
+      "sha256": "e930fc2cbeef94a9f865797fe2cd1fa5d20a648a5bbbb9670e9420b3172d98da",
+      "bytes": 4539
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/BundledExtensions.java",
+      "oldSHA256": null,
+      "sha256": "c468f1aeac7a02c217dd2736385b1010116026eb55d36f57412bbc8d495726a3",
+      "bytes": 3119
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/CHANGELOG.txt",
+      "oldSHA256": null,
+      "sha256": "27852d668d68f95db7a338764c97bdb7f30fa4e4891169b362a9d8a1daa34ecb",
+      "bytes": 1165
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/patch-appinventor.py",
+      "oldSHA256": null,
+      "sha256": "0b8ce778308a033051e21baff4b585ecca11499513c0e78a9aad962446a207d3",
+      "bytes": 7332
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/prepare-extensions.py",
+      "oldSHA256": null,
+      "sha256": "d2a328c6dc03b4aaee48d759990d0c8bdbf22fdd88bf74f3cbfe131dd62b0240",
+      "bytes": 2551
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/prepare-package.py",
+      "oldSHA256": null,
+      "sha256": "d81056c0ba4aee032798052edcb0ecb75073fd8c4f2408b8f31e1951a6e74594",
+      "bytes": 5511
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/stage-appinventor.py",
+      "oldSHA256": null,
+      "sha256": "d6624748d14fe5c2612f592d95d2340846be89d71c2cf619c723f4fe32056994",
+      "bytes": 1020
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/AbstractPalettePanel.java",
+      "oldSHA256": null,
+      "sha256": "181077a4a6a8b111504baa35269e313d0e09b76e15729206f36a480b18bc8ce4",
+      "bytes": 21037
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/BaseComponentFactory.java",
+      "oldSHA256": null,
+      "sha256": "9741f7e917ad6cd652acd21d8487ad594a7c10ab9eac3d1261bd37b1c4b7c062",
+      "bytes": 14522
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/BlockSelectorBox.java",
+      "oldSHA256": null,
+      "sha256": "0ee6dfda05bad8d67a08359bff95b3b9e08776b1c9b7110b6351dfab94b2f5e4",
+      "bytes": 10502
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/workspace_svg.js",
+      "oldSHA256": null,
+      "sha256": "8eb2565d55e6e69845d434241386006fab406600f9ef3a429087d54fd7fa9d17",
+      "bytes": 31845
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/appinventor-source/YoungAndroidProjectService.java",
+      "oldSHA256": null,
+      "sha256": "8b921c75bbbefe623f6d38e2a36bec94fec05f73f400c0e90695b88e40fa984c",
+      "bytes": 47691
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/bundled-extensions/BluetoothLE.aix",
+      "oldSHA256": null,
+      "sha256": "f5980729638a46af14e8a79e2a7498026190d136167eaeb5e0789cc41a51cefb",
+      "bytes": 199357
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/bundled-extensions/catalog.json",
+      "oldSHA256": null,
+      "sha256": "66d54e0e572c0461e18974ac3e28f81bd7c73aa672d1464387c621c765708591",
+      "bytes": 697
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/bundled-extensions/ClientSocketAI2Ext.aix",
+      "oldSHA256": null,
+      "sha256": "ef085073d0991bb9644b68bd1a0faea8e9ab60131bb6e215cddc2c3a9a877815",
+      "bytes": 17536
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.1/bundled-extensions/MqttTCP.aix",
+      "oldSHA256": null,
+      "sha256": "4fb315d710b6c8511612ff3e66c192ebee927a6b8a5c63240c9b20ff0a26124f",
+      "bytes": 571599
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.2/CHANGELOG.txt",
+      "oldSHA256": null,
+      "sha256": "552823f98afa01e33dd0881b7d522481f64adb575c618710453099dd734642b7",
+      "bytes": 2094
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.2/prepare-package.py",
+      "oldSHA256": null,
+      "sha256": "0a091b7f35ca9de912a737057a48c94dd974a55bb2a66ec8a2e2d1b40f9ae927",
+      "bytes": 5325
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.2/snapshot-installed.py",
+      "oldSHA256": null,
+      "sha256": "17ec1e1c2bcdea968d8a7cdeac7b15e4f7b58f0ae0451a703aa2be7994961779",
+      "bytes": 716
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.3/CHANGELOG.txt",
+      "oldSHA256": null,
+      "sha256": "b9403a3e85c9e3945e3b3597e546b3084a068a4a95aac136fd158748e333ed78",
+      "bytes": 2791
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.3/prepare-package.py",
+      "oldSHA256": null,
+      "sha256": "87d07bf74c46ab5f9cabc184fd34f5b6a7951649db34e04a74fc01d9620906ca",
+      "bytes": 5770
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.4/CHANGELOG.txt",
+      "oldSHA256": null,
+      "sha256": "cf8c05b657412bf142bc9bfd4594e3f9965da5a5e67c7aceb9908f2eb511fb8a",
+      "bytes": 3752
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.4/prepare-package.py",
+      "oldSHA256": null,
+      "sha256": "4fcb21c54c6c5af44d6d14b0c77747247bfba615c5109c226b2df7d07881715f",
+      "bytes": 8292
+    },
+    {
+      "path": "resources/distribution-source/release-2.3.4/UPGRADE.md",
+      "oldSHA256": null,
+      "sha256": "97c0e76fb9b3ab598da540f2b53553898928c5f2ef08111f6f792d4bc3194d5e",
+      "bytes": 1702
+    },
+    {
+      "path": "resources/distribution-source/studio/index.html",
+      "oldSHA256": "3727b9e1cdaf39e62f52455b049ed609a89841197505313c7b0e04feb8e35cd7",
+      "sha256": "ac0db5e6680210aa09875c41e5d29fdc89693fd8d2166516394116d5314ff284",
+      "bytes": 5849
+    },
+    {
+      "path": "resources/distribution-source/studio/server.py",
+      "oldSHA256": "6a79acd7e4e4c01f0b82dd572fd64ceddb239242554d0fd9d916901f6f9376a3",
+      "sha256": "4870a0a1b5951e7d8cee7b6041c0d146bc5f63e76a49df11f670312a7c1f4456",
+      "bytes": 26051
+    },
+    {
+      "path": "resources/distribution-source/studio/studio.css",
+      "oldSHA256": "5389b7e9fadef81bf4379c79cb623943f0c6fa258e599761b624f58f1f46e522",
+      "sha256": "3baba29f15f6381933896f2b8c203387950b5c04c8bf2ab6d3570ccfd4b2dea3",
+      "bytes": 10456
+    },
+    {
+      "path": "resources/distribution-source/studio/studio.js",
+      "oldSHA256": "6ba80072134fb98c99a9a4080d4aa9394c03ae48c196c8bb964341a9987cb899",
+      "sha256": "f4d77649c3461d25e33f48c122a50fcc0571df7eb084e82f7356b124762daea3",
+      "bytes": 21050
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/catalog.json",
+      "oldSHA256": null,
+      "sha256": "511e241da73cd77ad5d6069bbd3e7a1cbed2c9ca2d54827304de720de079dbc5",
+      "bytes": 127169
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/catalog.py",
+      "oldSHA256": null,
+      "sha256": "47357237bb941d4115cf0bacd602466942ae6b6d3903c11483fa31e30b89ab1a",
+      "bytes": 5904
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/compile.py",
+      "oldSHA256": null,
+      "sha256": "076fb688902cc253c1a509ee2f8827f3e1bfcc2de74706f7c86f6d8364cc9a15",
+      "bytes": 1363
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/prepare.py",
+      "oldSHA256": null,
+      "sha256": "79a76fe6e7b997f57596a21ef198bb8618a7e30cd3818bf9aa43272e95841a6e",
+      "bytes": 4369
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/README.md",
+      "oldSHA256": null,
+      "sha256": "34f48dc599b1724047496735f778388a533841cf6ab831cad1d098da4d90b46a",
+      "bytes": 3266
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/teaching-projects.css",
+      "oldSHA256": null,
+      "sha256": "e2be385351de2e502d641a2b09d3863fb3a0875d90838d4b2f1d6ac8c35a649f",
+      "bytes": 13895
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/teaching-projects.js",
+      "oldSHA256": null,
+      "sha256": "4052cf80bf43cd0ec77d3d74b7f97b531d4f1b1706c24f72252fab001b5aae8b",
+      "bytes": 13849
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/TeachingProjectsAction.java",
+      "oldSHA256": null,
+      "sha256": "f74fbb538fd5b455252e3b09789654129f21b6e55bd759e9952813a6cb5e70d8",
+      "bytes": 2933
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/课程大纲.md",
+      "oldSHA256": null,
+      "sha256": "ad67e2064dac291e105f60ba47cb23a612125b430e6a96ae001595c5af8175e1",
+      "bytes": 8784
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/patches/NewFolderWizard.java.patch",
+      "oldSHA256": null,
+      "sha256": "1e3ea9cc4b6d17b7aca0f846f97e2b300431eff02f07ab63a10ad487d69432c7",
+      "bytes": 540
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/patches/ProjectListBox.java.patch",
+      "oldSHA256": null,
+      "sha256": "c1f8f863573700091f9545b451ff01497ff79e3995e10834c3bd51c1ec5e9881",
+      "bytes": 1277
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/patches/TextValidators.java.patch",
+      "oldSHA256": null,
+      "sha256": "61c7f26f3a359ee46e1bf515e54196dea859b3e6902e47fa61f26f14bfff1a49",
+      "bytes": 2304
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/patches/TopToolbar.java.patch",
+      "oldSHA256": null,
+      "sha256": "0481eee6070b971b5e8426a10810d998a81450051e4f70ed29eb8e40ab23d1f1",
+      "bytes": 378
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/projects/CatchApple19.aia",
+      "oldSHA256": null,
+      "sha256": "c88bf6fe429278535ddc87cf95001f1fc5b09f186d5783099164a390baaeff79",
+      "bytes": 61717
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/projects/CatchApple19Class.aia",
+      "oldSHA256": null,
+      "sha256": "6b4bac02e484cd877e00b2fee10b25539c930fde0013d79181dff4005c0b1911",
+      "bytes": 61013
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/projects/CatchApple19Starter.aia",
+      "oldSHA256": null,
+      "sha256": "e2d9cefff160ed19e7ca57f75101b3bf8a1e47717872074814a67fb651b46032",
+      "bytes": 58884
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/source/TopToolbar.java",
+      "oldSHA256": null,
+      "sha256": "9345026d71f462ce7ac33aa050e6d14917511b1be3ce14de72fbd475a140da60",
+      "bytes": 21502
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/source/actions/TeachingProjectsAction.java",
+      "oldSHA256": null,
+      "sha256": "f74fbb538fd5b455252e3b09789654129f21b6e55bd759e9952813a6cb5e70d8",
+      "bytes": 2933
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/source/boxes/ProjectListBox.java",
+      "oldSHA256": null,
+      "sha256": "47457e526242a779d5612d6335d9a2481b647da2a9a482869d234c738c5f4ca4",
+      "bytes": 2726
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/source/wizards/NewFolderWizard.java",
+      "oldSHA256": null,
+      "sha256": "d6415d938ca2025ce33c6eb72b1fc765e732dc7cfb0475859cad3d7bea53df98",
+      "bytes": 5749
+    },
+    {
+      "path": "resources/distribution-source/teaching-projects/source/youngandroid/TextValidators.java",
+      "oldSHA256": null,
+      "sha256": "d4ff14e692847d63b773b58bdd893bc967e1e1ba14a64c1397520c5b67b912a8",
+      "bytes": 11792
+    },
+    {
+      "path": "server/sdk/lib/impl/appengine-api-stubs.jar",
+      "oldSHA256": "690b6a20454d3314b2fcfbebdd258c606d8f96c7dcdf646e7b94657c3117b00b",
+      "sha256": "58bfafcc7d50879a9aea7fff9123060c871925243b41085bc17d81aaf3f20fae",
+      "bytes": 4375635
+    },
+    {
+      "path": "server/war/index.jsp",
+      "oldSHA256": "a8d75833ef13767bec20334f080544032bfdd420d0c81ec76310d2de4cae459a",
+      "sha256": "a921e2b81964b6bda0cca7e113c92e48328ca31b993046f1fe7d325b14c5a29c",
+      "bytes": 8625
+    },
+    {
+      "path": "server/war/ode/aiblockly-0.nocache.js",
+      "oldSHA256": "58a947677b6670cb57b24ccbb66f1b19d509330ea77d9841851ddcbb670000b7",
+      "sha256": "71f566a16ed17191b7bbacf400e9817a4f02326c7b8530487d3635d5c30aab8f",
+      "bytes": 2324150
+    },
+    {
+      "path": "server/war/ode/E97340308F1F48B574240B7028CF9424.cache.js",
+      "oldSHA256": null,
+      "sha256": "6dfdcc973fdd93ce381d8a778854b04edf4f0ad5bea19cc3f4c7309dd861de5c",
+      "bytes": 14194145
+    },
+    {
+      "path": "server/war/ode/FF5FE52608F614F3957AE03C315E267D.cache.js",
+      "oldSHA256": null,
+      "sha256": "856fc6e82d1a61bdfb72a478a3ee4b292f341ac7f44db1190b3f6231aba33d55",
+      "bytes": 14194644
+    },
+    {
+      "path": "server/war/ode/ode.nocache.js",
+      "oldSHA256": "50e6254ff9df8a596c83cadb1708e196996190bf8ad430a732dd75142bd94fb5",
+      "sha256": "f89db1441d398c27f26f3e47745f3e022c93dac02c8d2697871eb53f9e42bc9a",
+      "bytes": 14878
+    },
+    {
+      "path": "server/war/ode/deferredjs/E97340308F1F48B574240B7028CF9424/1.cache.js",
+      "oldSHA256": null,
+      "sha256": "4a146884d34bd78f07bd6bec1559fa68b3b5e4b3554ba3060f8d384451734d65",
+      "bytes": 43020
+    },
+    {
+      "path": "server/war/ode/deferredjs/E97340308F1F48B574240B7028CF9424/2.cache.js",
+      "oldSHA256": null,
+      "sha256": "cc82023739fd1464ea05c1d9bae1180f7117a68118058b8f9c46585af91e3a64",
+      "bytes": 631
+    },
+    {
+      "path": "server/war/ode/deferredjs/E97340308F1F48B574240B7028CF9424/3.cache.js",
+      "oldSHA256": null,
+      "sha256": "ce3468ebcfd152f19555d587074574fe6539bff1faf3b5145e28130460d0951c",
+      "bytes": 831059
+    },
+    {
+      "path": "server/war/ode/deferredjs/FF5FE52608F614F3957AE03C315E267D/1.cache.js",
+      "oldSHA256": null,
+      "sha256": "2caf68c056f0d1217e720afb0bfc162d6a2ccda88ab00ce773dd6f59bb6f8db7",
+      "bytes": 43020
+    },
+    {
+      "path": "server/war/ode/deferredjs/FF5FE52608F614F3957AE03C315E267D/2.cache.js",
+      "oldSHA256": null,
+      "sha256": "52c62cb5b9446383c7ff159275a318f3b26677d071b5321ae69ed2eba18c73de",
+      "bytes": 631
+    },
+    {
+      "path": "server/war/ode/deferredjs/FF5FE52608F614F3957AE03C315E267D/3.cache.js",
+      "oldSHA256": null,
+      "sha256": "61112309ad4061d689bfbc52baf468e38c3ad06f9ea6d7b709270302fc3e50ee",
+      "bytes": 829352
+    },
+    {
+      "path": "server/war/static/css/teaching-projects.css",
+      "oldSHA256": null,
+      "sha256": "e2be385351de2e502d641a2b09d3863fb3a0875d90838d4b2f1d6ac8c35a649f",
+      "bytes": 13895
+    },
+    {
+      "path": "server/war/static/images/quality/BluetoothLE.png",
+      "oldSHA256": null,
+      "sha256": "482b5b4bf752da9b2fd555ef6256ed2b789f5714733e2232a47954f3af983e07",
+      "bytes": 567
+    },
+    {
+      "path": "server/war/static/images/quality/ClientSocketAI2Ext.png",
+      "oldSHA256": null,
+      "sha256": "5937074ce1577ffb10a521b795509695ea78189b74d65fec0fd91033728d9760",
+      "bytes": 484
+    },
+    {
+      "path": "server/war/static/images/quality/MqttTCP.png",
+      "oldSHA256": null,
+      "sha256": "aa7b91c298c8a841e9563c068d346f4044326ad7e1f8b768a544f08ae26a0d02",
+      "bytes": 675
+    },
+    {
+      "path": "server/war/static/js/teaching-projects.js",
+      "oldSHA256": null,
+      "sha256": "4052cf80bf43cd0ec77d3d74b7f97b531d4f1b1706c24f72252fab001b5aae8b",
+      "bytes": 13849
+    },
+    {
+      "path": "server/war/static/teaching/catalog.json",
+      "oldSHA256": null,
+      "sha256": "511e241da73cd77ad5d6069bbd3e7a1cbed2c9ca2d54827304de720de079dbc5",
+      "bytes": 127169
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson01-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "3be2b947d0b98f5878a396735a0b40fd361c5c6fee4bf8e85e296f41623b753a",
+      "bytes": 15010386
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson01-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "ffa5d58a5fc8a9d03f2189ec63cd233c9926caff3e0483bb24e67bef12fdc736",
+      "bytes": 322869
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson02-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "5a26e5db7a8dc1a11b1cacb2a55a77dd5d9e1d16f04cd252982f12e321f4f18c",
+      "bytes": 15130649
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson02-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "c6cabfd65616b6ff3e5f425bfddc94fd77f060fd366c007710d7ddbc2c54cb8f",
+      "bytes": 405971
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson03-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "54a654e7ff9eecd832124ee605b00d09b0cf18dc40ae9ee2a442a2bc73cdf6e0",
+      "bytes": 15698325
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson03-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "e9031cbe82666e4f4d674f23f35c5b3dac6304c4f7ef4b99494a41234a396aac",
+      "bytes": 831753
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson04-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "f2eb32360e9e799991e9e8c1b3ca0f14d38ed02e033456666a63751b8360121c",
+      "bytes": 60585804
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson04-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "c832c8d73479f9074c41858efe63c8ff0c470e4f9d45427ea0b6a17324c587cf",
+      "bytes": 1233856
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson05-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "7c325bd905f5f83eea42e845d020e1609d073feb42ff3b7b78532f6e94f814f2",
+      "bytes": 15798684
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson05-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "aa09e63d9c0ac9b791340f6e101635f888cc87d58b1a9f7b72fe2af2738e3c50",
+      "bytes": 924483
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson06-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "61f1eff538974e3724e05726c183ab33be73d1b76035d76a0e744b0854fc1179",
+      "bytes": 15804144
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson06-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "a46926fb25ee4347ce31739ee049e3af870fd6598520f2bded424c9a5d42bb0b",
+      "bytes": 901180
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson07-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "333aa33d44a33b72802fc0c8cb44e6c3e35b228d867d71e4357cb26425a31964",
+      "bytes": 13678486
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson07-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "b770094352f65e0c9ab200f8cffbb5866c8180faef689d142c0f739091e9ea68",
+      "bytes": 736212
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson08-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "84e09defd4ad41b8a80a974d1dc066cda484becb786ba2883568ee327e1a9ce6",
+      "bytes": 13861540
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson08-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "e32cdb915a9d628d64507935cd067ec432e1d87d8735c9e8c6fc72da7802db15",
+      "bytes": 833945
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson09-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "a3627db5e816a6f0a1b946db2c10364310349cfce1d0172558cd93a96118d9b2",
+      "bytes": 13968261
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson09-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "841341f1ab8978255ad0c0709f2a1a37f9cdb57da88e6efc214d27699a01f198",
+      "bytes": 890309
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson10-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "e28298b9d3bcd2dde9008d9b2e664336dea048c5f8bd454219bec7637d3b69d5",
+      "bytes": 14171597
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson10-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "7f2ba41b4fd44d6fca319e218c8c39fd267fcfa87a651b322898fb394e41c672",
+      "bytes": 987680
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson11-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "518c6ad6512bc8bb722ad1aac9dde585f7a24fafa1b83eea8d31bb7825ffa628",
+      "bytes": 14182095
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson11-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "370d96a122b4367eb3642c34ddd46e2ee5395c71b24ed5c3d87b764a31c268a8",
+      "bytes": 912095
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson12-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "fab8398ac8df440457813faed03e33f110ee23f513fa9c1c44506b16e8686578",
+      "bytes": 14371891
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson12-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "1988548f08519446751eadd420cde8d1313651e4463dd2da2ac1ac84b2584318",
+      "bytes": 1089277
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson13-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "d570fbe2f5cd6bc3e49c71a86a0a2cf4130dcfa62ad3c4f12cd06b9657f3eea3",
+      "bytes": 13619582
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson13-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "39cc7409731bcd17168bbaa33688ad753505c9c416843629efc0c214d08152d6",
+      "bytes": 710832
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson14-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "4ee642b25ed82c73a8cc19b88e6e14d1990a2f91b30880bc6c3e298b4f99f414",
+      "bytes": 13751420
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson14-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "c456d8613afb4ee4943c93551a9972320d6c4389a4506fdf1cc06afeba9eaa7c",
+      "bytes": 774982
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson15-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "0d340477b36c3fb411f1b0a3918fd5676458f82811143895d5517e095cd8f1a1",
+      "bytes": 13824270
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson15-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "461bea0e53d8e193573d59861b1494c71aaf6f8826425293608bd1d30e551643",
+      "bytes": 818619
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson16-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "9649a2f0852f613b0e4d44f8693ce7e16a9bec52d51f8b21b222d7fd01bb1787",
+      "bytes": 14144466
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson16-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "dbc384216ebd9a065352845b67cde26e2d2d3e71dcb763bea0fb02be4e8b08ff",
+      "bytes": 963382
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson17-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "61dc0a50b2e5869ae5488149bc4833f0c99a531b618437bf00eb0bfa5b4a81ce",
+      "bytes": 14217383
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson17-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "9084e7454d682674a84692983524ce20525c1354446c5484cb53bc7cce28151c",
+      "bytes": 963101
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson18-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "8672849a21c218f7a2f90837791f9c80bbc30ed9fb18803178f0cca846382638",
+      "bytes": 13860372
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson18-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "494e8df8392bd025fb28b3df67fc2375f1800be4fa5dfb30954c978ecb22a45a",
+      "bytes": 827801
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson19-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "ba71e365a3ff603a5fbbab9dc9f712c64e1df5c56f1cd652bbc9bb23724ef3c2",
+      "bytes": 9508391
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson19-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "727cf681424a26d3ce541eb513893d49400a31e966ee975926c4acc3e615ba3b",
+      "bytes": 2730153
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson20-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "d473f04a6a0a394f6d3cd8b981014bd19178ca9ff829957f63e34f1a93cf34e4",
+      "bytes": 14360646
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson20-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "edb1cf715b5fbdfb51c5a16c0fe7c43de5929b10a6ab375f57cdf89901c3700f",
+      "bytes": 951023
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson21-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "00a56e8579f0e35bb6330da873fb51ba9d7b2c8966c3f6b6f10cce31c5c238fa",
+      "bytes": 27701979
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson21-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "35927b16c1938111d4da1bf59f86203b661c070d0ffaf29dabe20ca4b7b4c4b2",
+      "bytes": 1316180
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson22-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "04d1cceab935dee2d774b3621ee2be5bd1257ec5c94eb9eccf36308e5f92a9d5",
+      "bytes": 14382729
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson22-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "a41bf4f6318234a0ee5b7e6d721e518a5fb923952962ba8cee7fe98f9f9d3582",
+      "bytes": 1086891
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson23-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "628cef849728951bc08e6cf657384e6bc2cb41eaa42d4762f78f7397222257bd",
+      "bytes": 14084140
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson23-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "a45ab3d7c44e989a9e993eb5e02a1e9fdf2efbff3a46507eab647b5f76f2b875",
+      "bytes": 944550
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson24-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "f5ed9df409e761115f0c77aa5407c657f94a4ac9371156f61e3d8bb057ab0584",
+      "bytes": 13953631
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson24-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "f3dd69999138953df26879a139ec24201abb3e87a596210c29881ea7b860af24",
+      "bytes": 876423
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson25-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "cc4f6f9190865b318ea696235eb5ec4d39214914f70cfd9480816fe4f47b1e45",
+      "bytes": 13805601
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson25-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "d1a44f85c78f521faed113f443f837929dfb8d6785f7161be465fa7d566e1a50",
+      "bytes": 803598
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson26-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "1e7ef9b6c7da223394f8f94ea3050c148410d6ed0b690d2343b1039dbe0ca29f",
+      "bytes": 13831949
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson26-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "a73c4123d4d7430934a7771ac6ae1b1fc86d0cef5e5e3318413b753db229cabd",
+      "bytes": 810583
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson27-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "67115cff1192ce641374ed2db7fd5b1e2d5ec6330de4a66ac408d13a6756dc19",
+      "bytes": 14043167
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson27-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "35a1c70ddde1596386ae97cb25eec233a2255a8f70c6e32dfa874bd8c1b964ff",
+      "bytes": 921572
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson28-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "81cdefc72de6fe7cad5dfe2b2b0b21c9a7c09560ed7a8d16985ae3861feabe73",
+      "bytes": 14113725
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson28-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "2852637cd5532d67eba9f17c5de47e3ba6ba1125ec3ec5145acaaf3de9bed323",
+      "bytes": 971907
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson29-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "4eeeaee702301c02ddcd1ceead297bc412c095964b8fddb11aca6c9f33e498d1",
+      "bytes": 14184675
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson29-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "4c61b5cefdbaf2383c232ffe69dbca18155741f400cdffd052fc5ccf483daf4c",
+      "bytes": 887942
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson30-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "366907d070b281c8dde4e500b6f6d64829d69658f474ffcd14ea896b03bfbc77",
+      "bytes": 14333552
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson30-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "5e25bc47aeab49c280a6928baf4ce5bae022d081630c938970f8a6bbd712c8ff",
+      "bytes": 963216
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson31-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "d1489f865eb5cb30d88095a004abed33d055e0987a5331ffba0c179234888795",
+      "bytes": 13880254
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson31-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "5091c7d0ec3aa2994c8e7b474a15a347b347240c8f8822ea3a43d7c19dee4d7b",
+      "bytes": 838361
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson32-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "ecc3cb4ed98328f2812fb30a9030e9630dc451a0873182e20efba090d43549eb",
+      "bytes": 14636980
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson32-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "f3865e8cc94c2d2c77571c140ebaea04b65e0f447e9879e4d218d5d763b0d460",
+      "bytes": 1114988
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson33-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "e43ef7a822219a0ff726c1469e0cf706df09805f60262faa677723ee446fd1b7",
+      "bytes": 14240574
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson33-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "f68c7b72e096be8a3a51a3f595abf5aad092b4208cbaa4f16b8dd7a2f8e85cd2",
+      "bytes": 1026064
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson34-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "b35d3b16c95a3757b29681247e1ee504036de80b18c2f3c64348c8d457fac481",
+      "bytes": 14776717
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson34-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "45b569e6df10818399b13cbbc53dcafebd90d7c823d6e3ecd44605624fd649d6",
+      "bytes": 1189191
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson35-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "2bc3334d6681627d3ba9fe5accddfc2fb9f25d543b431d908e0b800d6a092940",
+      "bytes": 14917467
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson35-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "d4474646b96db67683f6f57bf310163bd6b7c36dc290077322e42092c265fac3",
+      "bytes": 1266184
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson36-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "f90d2cc2d8a80deb283965b1605de229ec87d82411c1ef3690e27231b73c3a52",
+      "bytes": 14303841
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson36-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "35e8691848695e935aed9fc82ec323f66282eda368fd757e12c02c0ba022a1fd",
+      "bytes": 963681
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson37-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "a9638f60972ea83b5c4bbfe0324021f1121f2631977969e7269ded25ff562968",
+      "bytes": 14338957
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson37-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "c88b1e7292ead7b3fd84d279e4e72f6b2d212534c2414a8b60ab118530194acf",
+      "bytes": 1056930
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson38-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "1d597cd961044ea847684a27ed72f1ccecba67f2209ad66a226d932004be3c63",
+      "bytes": 14926152
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson38-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "7cb544ccff4c9a38de604dc3db2eeddfdcd6ccd3ef6ca1ae04853e69f7283768",
+      "bytes": 1262949
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson39-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "c5624f4e0a7834715bd560470eb1654ed3ad643a4881028a4e5ac1a831db81ac",
+      "bytes": 15404364
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson39-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "e7947744b738a31261afea751668ba0e96986523b3b716c3cddaebb3bbeb3d90",
+      "bytes": 1501923
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson40-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "5bbf4f2b274e63fa99623e897badb6b73e79138766c881d445d3d9ed57b1f1af",
+      "bytes": 15088670
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson40-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "e3cf7172602418d08d3006410415f648225af7b752617694d65eae061d07bfdf",
+      "bytes": 1431718
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson41-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "bf4f6ce14c3d7d09818311d98411e858621b0d5d9f96bc1e027f5e97d12230fb",
+      "bytes": 15444410
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson41-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "ec3e2f51db13de5052d37aa74efd49ef365553105f7c9d0f47bb38ae05d37744",
+      "bytes": 1518727
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson42-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "e893f4798a44bf170962b67ef8f4e6d6100b07f787d8aa97322efc3cde155c61",
+      "bytes": 15024913
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson42-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "f0d49957912a2ae4bd9fe8c17db6f961bdb7d1244946f824c9a3a77b91389127",
+      "bytes": 1315395
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson43-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "e4db2083a9c334ffb1c1a12b7d87cf5618515389865706b87c6b8103b2d77a0a",
+      "bytes": 14232911
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson43-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "3ffcf74db1cc7d01e7aa163f1a8a6725350aff4f1a3f2aa2842fd7d0fd6f6052",
+      "bytes": 1004348
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson44-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "fb6daa8058749664f60e84b12df24119838c512d5c246dccca0153e37136f5d8",
+      "bytes": 14237510
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson44-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "c4a85d7c35366a40f372e32f1f4ba36967808913265f58b600355ee58d0bdf5a",
+      "bytes": 1030453
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson45-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "a34f786664d425c0947bb9886fc28b97de072134f816d8809466823a1d4f03c3",
+      "bytes": 14864602
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson45-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "7a9a87e570482e5ca43cac4833e0d24de08f9b250d5b3de86682c7e8f534db61",
+      "bytes": 1343461
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson46-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "299a81f6514cfe780250a7a9dcb1519c1726ee57d8941d054dd962c660935a15",
+      "bytes": 15028889
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson46-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "ddc5556c053033fdb7aa638adaa7c061ae7950baac1906567377a29d603ea2bf",
+      "bytes": 998627
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson47-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "22e0207800106bac50f57bb2b33576a4eb51e34d6bc8561e2083614bb8caf200",
+      "bytes": 14802356
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson47-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "590689592891ab171a4ebfb06c637d89960052be11424e61bd5f0a1b7d0aa0e9",
+      "bytes": 1270109
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson48-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "ebb23ad3056f14e048b4b8a5972604a6a217ef6e42733644c877f03209ffc7da",
+      "bytes": 14682131
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson48-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "ac81e28dae3466a874787a229f31ca174d5388dfad4acdf93a89e2947dcc1044",
+      "bytes": 1213859
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson49-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "02f84ab2bee7456b1a03a1376019142bcaa773a34233749643ed7a677bc12312",
+      "bytes": 15328383
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson49-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "9f93ca515105cafce41d8bffefc206f851f376ae22edf9e84507e814ebb91e2f",
+      "bytes": 1533046
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson50-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "1e6d958379dbc4766eb150f9494c61cf4dab45d989ab527b1c0def7fcce5bf01",
+      "bytes": 15060508
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson50-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "c0595c1a0e6fef54a1a98716046c2bc40073c113fe549a718e1875ae6898fa86",
+      "bytes": 1398185
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson51-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "cf558517a1fba25a3cf599ffa266c22317183d1e4f4014b1ad53de7c008440ca",
+      "bytes": 14172104
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson51-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "57446eaced32bb1f17712ad20399afb65f00f83a005b3b40cdb6543051089362",
+      "bytes": 980946
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson52-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "7eab3b61673463f340aa8eeb77e9ccfe9becc1ac898ae0a771c234a05157364f",
+      "bytes": 13911554
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson52-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "86629b2a591725e0e494732b564baea855a38dd8e436e40731004a145d74da9f",
+      "bytes": 856254
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson53-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "e35255ede9aa03d31d316d40e0460dab5eadb12af0e5b843ea10edd177de6225",
+      "bytes": 14456474
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson53-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "5a9fa6cc14f0276038c4d1749e59f749c23100bc01c096f97b0ad9a102681022",
+      "bytes": 1033784
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson54-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "412f71b6df4569fae42e32ec0c626ba1d9085f9afce9353bcb000a154ccc17e9",
+      "bytes": 14517500
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson54-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "e952c39388cdaee4adc8f3912785dcf94ba0989888668ee9469a6a4830a64960",
+      "bytes": 1069815
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson55-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "a3e5e19478c43e8c161b3f8dcad8ce6241b5bdbe543f7106f996687604dfd4c8",
+      "bytes": 14732116
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson55-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "80beebacd432a4ecd0b0e860225bf9e6c3c61ba2c867c7a7d26717e46ee8b198",
+      "bytes": 1175968
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson56-Materials.zip",
+      "oldSHA256": null,
+      "sha256": "03a87662cea1b1ad1c894ebf3417c72d0b792ee705d9ccf3db655eb12081b9c9",
+      "bytes": 14367949
+    },
+    {
+      "path": "server/war/static/teaching/materials/Lesson56-Slides.pptx",
+      "oldSHA256": null,
+      "sha256": "a009ecfa0bd1c184c22b2714148465c893ec8b286df669d4465db9723d217d7a",
+      "bytes": 995304
+    },
+    {
+      "path": "server/war/static/teaching/projects/CatchApple19.aia",
+      "oldSHA256": null,
+      "sha256": "c88bf6fe429278535ddc87cf95001f1fc5b09f186d5783099164a390baaeff79",
+      "bytes": 61717
+    },
+    {
+      "path": "server/war/static/teaching/projects/CatchApple19Class.aia",
+      "oldSHA256": null,
+      "sha256": "6b4bac02e484cd877e00b2fee10b25539c930fde0013d79181dff4005c0b1911",
+      "bytes": 61013
+    },
+    {
+      "path": "server/war/static/teaching/projects/CatchApple19Starter.aia",
+      "oldSHA256": null,
+      "sha256": "e2d9cefff160ed19e7ca57f75101b3bf8a1e47717872074814a67fb651b46032",
+      "bytes": 58884
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course01Hello.aia",
+      "oldSHA256": null,
+      "sha256": "965fc0c90b408207bb99ce524d21fe0fea53de964379ef44fd3511f84d920920",
+      "bytes": 1797695
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course01HelloClass.aia",
+      "oldSHA256": null,
+      "sha256": "46b9833c270afc530386d8990a07add6264392f999bc152674d731bf56842ff0",
+      "bytes": 1797571
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course01HelloStarter.aia",
+      "oldSHA256": null,
+      "sha256": "23d7590d33270236cf9c350562e16965fdeb8ef7ea87b3d5e7b2037740aa70ec",
+      "bytes": 1797140
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course02Card.aia",
+      "oldSHA256": null,
+      "sha256": "4dada661ccdce544940e1b0c808f5d3173a12ec0ed6f20be8588b78ab0fa2086",
+      "bytes": 1798055
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course02CardClass.aia",
+      "oldSHA256": null,
+      "sha256": "37359579455724012ea37c7150f11a73790aa6c724a4e541ef5d616cc71ed2ea",
+      "bytes": 1797862
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course02CardStarter.aia",
+      "oldSHA256": null,
+      "sha256": "8b42f82d0e3b78dbc7aaa2f2ce3b032b5eeee79e21d3489250e31ccdfa9f0350",
+      "bytes": 1797340
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course03Voice.aia",
+      "oldSHA256": null,
+      "sha256": "90953a87cffed4459e777b76d790fd37967a29750c529a75130177226e7d468a",
+      "bytes": 1804753
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course03VoiceClass.aia",
+      "oldSHA256": null,
+      "sha256": "67c7063f2a6eba38d257ba6485c84dba6663783acd3b92ef478b5861e742245e",
+      "bytes": 1804592
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course03VoiceStarter.aia",
+      "oldSHA256": null,
+      "sha256": "677d8a46fe8150ad2828b1f414dd53ca70b43ed6189b2f049971c59c6aa1b1ce",
+      "bytes": 1804023
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course04Story.aia",
+      "oldSHA256": null,
+      "sha256": "8d843cf4249b7628ef22dd8fb07409382912c3f483712e2b0997e5f92a687e89",
+      "bytes": 9194543
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course04StoryClass.aia",
+      "oldSHA256": null,
+      "sha256": "b0d9b32f16ff4a24cb7acaaa16fe67a13f26e3eb4ce3397983d5c314541691f4",
+      "bytes": 9194382
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course04StoryStarter.aia",
+      "oldSHA256": null,
+      "sha256": "988b6d22ce7d9b8c13636c89319fcf4672b90261f8e168242b3822418abbca1f",
+      "bytes": 9193917
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course05Festival.aia",
+      "oldSHA256": null,
+      "sha256": "20db615d81afb11a43968f51b7c1485e3008e191235e168e9a84ef22c3442ec9",
+      "bytes": 1798386
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course05FestivalClass.aia",
+      "oldSHA256": null,
+      "sha256": "8e68e3078b28ed6f63f146d7bbf28a0ea3111aa2d1e1df30a1ff08051a0c6d82",
+      "bytes": 1798011
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course05FestivalStarter.aia",
+      "oldSHA256": null,
+      "sha256": "9bd1affd24732628834e9a72bbd6c0fa86e6acb7bc2ac17caeb0569875711193",
+      "bytes": 1797500
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course06Clubs.aia",
+      "oldSHA256": null,
+      "sha256": "68a8f2984bbcd9e2c4c18c87764d69dba0ec4a000de0eb5e50f1a9dbc1d0918c",
+      "bytes": 1798359
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course06ClubsClass.aia",
+      "oldSHA256": null,
+      "sha256": "71c0dad7a79eade23821dbf448cad3a94adf79fc557e529a122037ff54180ed1",
+      "bytes": 1797965
+    },
+    {
+      "path": "server/war/static/teaching/projects/Course06ClubsStarter.aia",
+      "oldSHA256": null,
+      "sha256": "b24ade94b7a6d68778b96f546fdeb730dd7fe36b08eb31e6d4e8e84f33dbc690",
+      "bytes": 1797411
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse07.aia",
+      "oldSHA256": null,
+      "sha256": "f93d37193dd3e483ca6a4943ae6424ff1c79c9e1d782bfec13af9ae9342f06d9",
+      "bytes": 1797922
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse07Class.aia",
+      "oldSHA256": null,
+      "sha256": "480d3df1a125c3a9054d75038264fc44463327462c8f021bd632dbc7e568ae19",
+      "bytes": 1797728
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse07Starter.aia",
+      "oldSHA256": null,
+      "sha256": "ab4ca347ba779dc4e793a49b1bf50ce229211947728f91a7658c37c85787693f",
+      "bytes": 1797175
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse08.aia",
+      "oldSHA256": null,
+      "sha256": "730b00341a0528040f053ddcffbd13afa6ba6c5bb4f7c39467144e6fac829860",
+      "bytes": 1798271
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse08Class.aia",
+      "oldSHA256": null,
+      "sha256": "6221c3f6ef3383ee8158038d0450c8808882c83da9e0e1fb579cbf3941976719",
+      "bytes": 1798137
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse08Starter.aia",
+      "oldSHA256": null,
+      "sha256": "129538997cb115525c5f8c9900083a8234ac436baf3b072280d2a387ca274943",
+      "bytes": 1797283
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse09.aia",
+      "oldSHA256": null,
+      "sha256": "87ed1ad8745f6d93fdf5c9649d3e7f5d9f6d44c270464d904516cc9c8d00fca2",
+      "bytes": 1798198
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse09Class.aia",
+      "oldSHA256": null,
+      "sha256": "f86244de7dcabef1389098eadd1f8b4364b6a2fab4c217c7066474da9603420a",
+      "bytes": 1798172
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse09Starter.aia",
+      "oldSHA256": null,
+      "sha256": "0c188850ea7be66d76db98e214eae7ab6552173a23128d3a4ec4ba42dcba9215",
+      "bytes": 1797260
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse10.aia",
+      "oldSHA256": null,
+      "sha256": "e0f54e677a7dbd41082ae5e28fc43bbc45bf34b33dda1f00bfb88111c14f0dc6",
+      "bytes": 1798681
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse10Class.aia",
+      "oldSHA256": null,
+      "sha256": "13d5a082406dcfa8affcc2570f7b5a22ecc4e6144b675db751b8594c68fdd68c",
+      "bytes": 1798553
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse10Starter.aia",
+      "oldSHA256": null,
+      "sha256": "365db31d24f78371f95f0c88db9368746fd85d026ac1760aeb6981f0c7f6d57c",
+      "bytes": 1797198
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse11.aia",
+      "oldSHA256": null,
+      "sha256": "926c8b967d7ac5d5ad32c39bb74cf7db3b51e24d3a9bf2f820c7e8fad796e118",
+      "bytes": 1798436
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse11Class.aia",
+      "oldSHA256": null,
+      "sha256": "cdf504ca40035ddcfa14734ca521ef8e2cc3d8e5d8f83a621d0409bd25a30fe9",
+      "bytes": 1798432
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse11Starter.aia",
+      "oldSHA256": null,
+      "sha256": "82e20b76a6dbdab8306ba1e20b240a8ae118faec2f59d551137863cb80fe20da",
+      "bytes": 1797207
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse12.aia",
+      "oldSHA256": null,
+      "sha256": "385d724bdb7136137fe152079371e8c07e660cb73cd37ca77785e641d5443431",
+      "bytes": 1798894
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse12Class.aia",
+      "oldSHA256": null,
+      "sha256": "003e8d490d00c67b27f5e13cd0f730e89a523442f3748dc2b4777219c05cecec",
+      "bytes": 1798242
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse12Starter.aia",
+      "oldSHA256": null,
+      "sha256": "c182a9e66637dc7e13989d41d0f5c3679c0af71fce25224c7f9babb4ed4fb069",
+      "bytes": 1797282
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse13.aia",
+      "oldSHA256": null,
+      "sha256": "6ad1f13293b428e4a6210d4d2af34390b8d265dcffdb2be37f1ee761990fd1c5",
+      "bytes": 1798480
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse13Class.aia",
+      "oldSHA256": null,
+      "sha256": "7eb9df9bb7dd09571ff8096c064fe3b9372252f146ac98a8b4d979bbb41388e4",
+      "bytes": 1798600
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse13Starter.aia",
+      "oldSHA256": null,
+      "sha256": "d975f3e7e414707c8bc56a589b300700235495b6a4092efecc1c99e15ecb128d",
+      "bytes": 1797223
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse14.aia",
+      "oldSHA256": null,
+      "sha256": "4715db661a5c984827b794a8811427780085dbda3acde21e072e88b61fbcc885",
+      "bytes": 1797971
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse14Class.aia",
+      "oldSHA256": null,
+      "sha256": "7be24c6e0fed55714cadfa0735baabe2c4132df430ed4a70ea5971cf785ac065",
+      "bytes": 1798166
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse14Starter.aia",
+      "oldSHA256": null,
+      "sha256": "bbbe52ce7a2af8bfb56e344b45cbd9a34e7c9054297fe06f04cbe986df5605b6",
+      "bytes": 1797201
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse15.aia",
+      "oldSHA256": null,
+      "sha256": "b145ab531e799a90009a8cbb93f0c7a8cc50bbd3010f6cc94c2e5565b044fd54",
+      "bytes": 1798405
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse15Class.aia",
+      "oldSHA256": null,
+      "sha256": "ea4f3edde0a58b1c08fcab20663ea67f14034dac030d9099ebfef3bd65f63496",
+      "bytes": 1798016
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse15Starter.aia",
+      "oldSHA256": null,
+      "sha256": "22f4c6d6ad6c222c8b2e629117062173cec7dd05e68dfb7dd7d83f171c3c22ca",
+      "bytes": 1797204
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse16.aia",
+      "oldSHA256": null,
+      "sha256": "a99e5fd6e4c00ccdb7b891b26bf94ab336b5af41376f5994835ca225519f417c",
+      "bytes": 1798456
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse16Class.aia",
+      "oldSHA256": null,
+      "sha256": "f1424bf365c27264c274d8f5a1333db112487491ba2ef09dab0b20072e5a855b",
+      "bytes": 1798480
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse16Starter.aia",
+      "oldSHA256": null,
+      "sha256": "3e3e3ebe31f89b906ca7efd8827b270965fa7dd1d6f76995fcb032dbadf42b52",
+      "bytes": 1797216
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse17.aia",
+      "oldSHA256": null,
+      "sha256": "0ae4a746dc963ecf2bc99c0aff925d59c06530ca3981c621459749fe1280b8b9",
+      "bytes": 1817878
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse17Class.aia",
+      "oldSHA256": null,
+      "sha256": "50bce58ecae322d0042f3f6622919fe3fbb76fe382e1c23637652131f714fceb",
+      "bytes": 1817585
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse17Starter.aia",
+      "oldSHA256": null,
+      "sha256": "b069e9f95b5a8c150d0a49ecda80849f4c4f2baa00e8e0b22b9d5a8bfb973c30",
+      "bytes": 1815864
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse18.aia",
+      "oldSHA256": null,
+      "sha256": "e27af3df165cd479b9e9bcb96f77d4ca4a285e1cb96dfee94e0b0a8d2afe7a48",
+      "bytes": 1798767
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse18Class.aia",
+      "oldSHA256": null,
+      "sha256": "b7a22646fa1af10f3c3631637dc0112313a443bb172023430d592d5088192ee7",
+      "bytes": 1798603
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse18Starter.aia",
+      "oldSHA256": null,
+      "sha256": "fd5b7e45b6c1959cd3023930841ed34f65449a9312f036bdc585aaadf250867f",
+      "bytes": 1797256
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse20.aia",
+      "oldSHA256": null,
+      "sha256": "c247863aec3a78ac25faf2e121025fe951c776559b7f256e8da0050a641dd725",
+      "bytes": 1857007
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse20Class.aia",
+      "oldSHA256": null,
+      "sha256": "775f35f195466d6144695965e4f004c23f3eab25800ff9b6baed252bca351521",
+      "bytes": 1857029
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse20Starter.aia",
+      "oldSHA256": null,
+      "sha256": "74e802217af08201788504f7216d39e1146b16cfd8a505da4b7fbbea7953275d",
+      "bytes": 1854150
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse21.aia",
+      "oldSHA256": null,
+      "sha256": "29bbb0f6f76f63da6f07d61544e5f0aed2c15ae03462bd64371f2a4d058fed58",
+      "bytes": 4456385
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse21Class.aia",
+      "oldSHA256": null,
+      "sha256": "62e2a52968abddf6104e9d13cdd9581f6edda94c82ab7291d58c4336756b1603",
+      "bytes": 4456058
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse21Starter.aia",
+      "oldSHA256": null,
+      "sha256": "d9f6ab8985eeb965727647cbeb56cd668d8dcd34b1fb64ccc3dc2ccd0f6eb183",
+      "bytes": 4453991
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse22.aia",
+      "oldSHA256": null,
+      "sha256": "d1cdb57ac5ee721f718ba164e48b96da2665b912953a5f4c240a1ab0647b808a",
+      "bytes": 1799276
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse22Class.aia",
+      "oldSHA256": null,
+      "sha256": "66d33b536dd5fba2eb3465afbf949e7a71853e92c9778ddf34df55d618edc75a",
+      "bytes": 1798807
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse22Starter.aia",
+      "oldSHA256": null,
+      "sha256": "89b58697b803dabe089a2f89005ba9a66ad84eb04ea713af8758e3ca452aa90f",
+      "bytes": 1797339
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse23.aia",
+      "oldSHA256": null,
+      "sha256": "556bb401822a21a7a24c949d8e3bc9fcc03a306435b73ede1da733e176eacaa1",
+      "bytes": 1798791
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse23Class.aia",
+      "oldSHA256": null,
+      "sha256": "3584cdeedda7257960e3ef13a089b644729b233ac90aad0db53d847be0dff11d",
+      "bytes": 1798314
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse23Starter.aia",
+      "oldSHA256": null,
+      "sha256": "9653be4986b42a9b0f03f2a51896ce01df7bbcdb38513d3c111c1dcc29e29dec",
+      "bytes": 1797388
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse24.aia",
+      "oldSHA256": null,
+      "sha256": "3632595cbcbefe2664f94eaf4db1b9256c1ed63c12b02a1361ae27435c6437ab",
+      "bytes": 1799318
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse24Class.aia",
+      "oldSHA256": null,
+      "sha256": "452296a7ac6d13cb415aec093ead888c65ac12fc4d5876e2537ea799e2be9169",
+      "bytes": 1799024
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse24Starter.aia",
+      "oldSHA256": null,
+      "sha256": "bdead802485fb49746c7304abb1fe8b157e443cfdc7bba09221a0248013a15d5",
+      "bytes": 1797258
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse25.aia",
+      "oldSHA256": null,
+      "sha256": "b9d12ab9078cb7fae5e98af3513e0f4afb773886ecd92687dc97f1845c203180",
+      "bytes": 1798893
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse25Class.aia",
+      "oldSHA256": null,
+      "sha256": "4bd9da2076133f54a040d010b1adb535b8434e187a9ccadfb447def54f438d86",
+      "bytes": 1798528
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse25Starter.aia",
+      "oldSHA256": null,
+      "sha256": "d8c3afa8619c124f5e9002d27878aa6361d1542ee5e7ab398859c29e3fb3b181",
+      "bytes": 1797333
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse26.aia",
+      "oldSHA256": null,
+      "sha256": "342aa6d66ecf6837544bb6e5d62cacbe910fbcee8b62ce5ac887c572c74a5871",
+      "bytes": 1798513
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse26Class.aia",
+      "oldSHA256": null,
+      "sha256": "982c29a6467662d2f95ed1261246212304447509c26f104b4e57061ae7539ae7",
+      "bytes": 1798349
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse26Starter.aia",
+      "oldSHA256": null,
+      "sha256": "e4df6dffce00ce6897b2b69ca38e45a98ce368f8b481a3d68d0cb8c8dfe31b20",
+      "bytes": 1797271
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse27.aia",
+      "oldSHA256": null,
+      "sha256": "b7c347fe456ca54970c454fa0db6b52397e38af43bd37cc6a05166ccb7e3b62d",
+      "bytes": 1800256
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse27Class.aia",
+      "oldSHA256": null,
+      "sha256": "cc190d1677a1fa7e8f68e584c85b888d1ac8fcedcfc58a4772fb277324c4b1ed",
+      "bytes": 1799773
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse27Starter.aia",
+      "oldSHA256": null,
+      "sha256": "493058bd1cc7df91c24b436bb416d19995f13dbdf444a5d8b5f252e201983a73",
+      "bytes": 1797648
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse28.aia",
+      "oldSHA256": null,
+      "sha256": "1d6bd5403b6cdd608aba0baf12e4183f8f6ea0025a8e10684f561248f9b44a3a",
+      "bytes": 1799716
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse28Class.aia",
+      "oldSHA256": null,
+      "sha256": "87f7afbc7936759f135b0f48daaa9640641905cb83cfb837dbdaefc0b1394a87",
+      "bytes": 1799363
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse28Starter.aia",
+      "oldSHA256": null,
+      "sha256": "7ebbc5360b861d971f75b8f9505987ae55a05dbebafd4a06db00526157f31a54",
+      "bytes": 1797465
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse29.aia",
+      "oldSHA256": null,
+      "sha256": "6bb6f0059556a8d891c3185382aea5a4dffd8f40d7b7ab9f131c85491f73e26f",
+      "bytes": 1798427
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse29Class.aia",
+      "oldSHA256": null,
+      "sha256": "89598e16bee620ef55c23acc77503e77f419ef2cbb311f590a7d3a45477a998e",
+      "bytes": 1797964
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse29Starter.aia",
+      "oldSHA256": null,
+      "sha256": "dff38be32ea201c3f92d574d5bd2bc61c09fcb08f6f4cb0ddbd36c7d9cbb0277",
+      "bytes": 1797228
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse30.aia",
+      "oldSHA256": null,
+      "sha256": "30d7301fd060fb70fca382939885a6aa1338f50b7d3fe596f1b10ef299144f43",
+      "bytes": 1798972
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse30Class.aia",
+      "oldSHA256": null,
+      "sha256": "8e44310930921d2154cddb72242e20f600bf87ad403d13f089ceba3149309c9e",
+      "bytes": 1798471
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse30Starter.aia",
+      "oldSHA256": null,
+      "sha256": "8248c0052e1de5c01b9f75abba6445e584c5c63839b87600596ba65c1bc2fb84",
+      "bytes": 1797229
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse31.aia",
+      "oldSHA256": null,
+      "sha256": "5bcc596bc7ab0fa1f52778a7bd5a079668b0181724d5b5d794a38e71b3c70fbe",
+      "bytes": 1799378
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse31Class.aia",
+      "oldSHA256": null,
+      "sha256": "9e839eb00f0311071076e026bc2ba8a96bd72ae97c96bb8f918aa3251a057ebe",
+      "bytes": 1799073
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse31Starter.aia",
+      "oldSHA256": null,
+      "sha256": "93f110f7d17d90b70c5d9a56e4ff4e714beacc6aaa67ef332333cb7e1110c04c",
+      "bytes": 1797337
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse32.aia",
+      "oldSHA256": null,
+      "sha256": "7fbb7bd8037b155ebdd7bcc2d318fe9b4f33425d4071206e4c7d460e82ea7636",
+      "bytes": 1799162
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse32Class.aia",
+      "oldSHA256": null,
+      "sha256": "5df4f2b3c090ab7e71867cd026d36ad7e4506cccb2c7a91bb7ede93c72e98f4c",
+      "bytes": 1798621
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse32Starter.aia",
+      "oldSHA256": null,
+      "sha256": "b144060edddab880661f931d81b70f12a70b1670da22745752b34ef28a84e624",
+      "bytes": 1797214
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse33.aia",
+      "oldSHA256": null,
+      "sha256": "32a7e608b7bfe59d229545a8402039bfbe9cf76f7dda5d4a503d22d83dd217c4",
+      "bytes": 1799015
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse33Class.aia",
+      "oldSHA256": null,
+      "sha256": "9def9c0ba05161a78d379fcbed690a40b5d8921b56a2081addbde1d2d29d53df",
+      "bytes": 1798932
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse33Starter.aia",
+      "oldSHA256": null,
+      "sha256": "aba3775c10e1f55a478900a62141a99b632903771065bafa1ac906e5d0d76c30",
+      "bytes": 1797329
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse34.aia",
+      "oldSHA256": null,
+      "sha256": "31f2cbac080b030af1caf5eabd252f66fa6a3bac6d93598d7b710cbe4ed5363f",
+      "bytes": 1799309
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse34Class.aia",
+      "oldSHA256": null,
+      "sha256": "7e808d3b2b2cdfef956fd573d020e96c0a8d1329613275a560946bad286087ff",
+      "bytes": 1798587
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse34Starter.aia",
+      "oldSHA256": null,
+      "sha256": "dc430aacb51450eae54239daa27e3fd969a6fb1280aa482f2671a4ae57ac03de",
+      "bytes": 1797232
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse35.aia",
+      "oldSHA256": null,
+      "sha256": "41a0f19ad1271ca64c98a12282f24be4347ee6b6f603bf3de1cb4937eff5adae",
+      "bytes": 1801486
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse35Class.aia",
+      "oldSHA256": null,
+      "sha256": "aa20521c22e6f95bb0a4941c3a336372aba7db03b15322ed841be3e598f2c71a",
+      "bytes": 1799774
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse35Starter.aia",
+      "oldSHA256": null,
+      "sha256": "a31d99b4deaa4ad2b78d217c630a2f2fa7dcba4b8b936e84bcb6eb4a13bfb565",
+      "bytes": 1797707
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse36.aia",
+      "oldSHA256": null,
+      "sha256": "2500a9a423d4ddf239d889dcd2354a2fd5941dd48387d13b328c7ba3e59f2294",
+      "bytes": 1799720
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse36Class.aia",
+      "oldSHA256": null,
+      "sha256": "f52d0bad0374708da3f31439a5c1301eed04fd349994296d561739a00a84c89b",
+      "bytes": 1799308
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse36Starter.aia",
+      "oldSHA256": null,
+      "sha256": "3a8600574683af0b1d10f3bce58c34abcd94ef886f080f97fd5d2cee99725c78",
+      "bytes": 1797398
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse37.aia",
+      "oldSHA256": null,
+      "sha256": "2067991b864a6c2bda0b882f99dcdb752869a39611009ced949e5873e94fe6cb",
+      "bytes": 1799267
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse37Class.aia",
+      "oldSHA256": null,
+      "sha256": "6af7a1f4d8979bb35dce65dc0647cfd02ae4aaf6d5c62c8e4384dd90027c106d",
+      "bytes": 1798701
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse37Starter.aia",
+      "oldSHA256": null,
+      "sha256": "4259e04cbb8cea4e519d18863cd408b44380d1354e34d4332d2e273cc806b67a",
+      "bytes": 1797437
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse38.aia",
+      "oldSHA256": null,
+      "sha256": "4d2d1cca09ffb1746d2e0240fd37a6b8fdee204232d60bbd1dc9d7bb07d9b919",
+      "bytes": 1800153
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse38Class.aia",
+      "oldSHA256": null,
+      "sha256": "a3a8633df57fb416ca88762178e2632f0e20e31b182b79fd6945e77e551796c9",
+      "bytes": 1799429
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse38Starter.aia",
+      "oldSHA256": null,
+      "sha256": "6f7af5960d5826c3b35ebbfe1801a8bb4c65f9bf78ffaa497ef036bfe17bbbaa",
+      "bytes": 1797500
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse39.aia",
+      "oldSHA256": null,
+      "sha256": "34707b7fc7f9fac1ba4906b1282f0ee7c3179f30fb3ddf36b7df3564bd8f94f4",
+      "bytes": 1800976
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse39Class.aia",
+      "oldSHA256": null,
+      "sha256": "87cbffc1554d93fd2f206acde12df871a9d0114dd1a17472896f8f98e310da02",
+      "bytes": 1800218
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse39Starter.aia",
+      "oldSHA256": null,
+      "sha256": "4b39af20b0b73656f59408439f8a35d28d9565275c47f4eaa2f1e367449e2a3f",
+      "bytes": 1797470
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse40.aia",
+      "oldSHA256": null,
+      "sha256": "35109e7e69d0cf5f2a107e4fcb950188c628740a7de1ef2bbb29f3efd71f8854",
+      "bytes": 1800567
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse40Class.aia",
+      "oldSHA256": null,
+      "sha256": "1c9b7b219632835e56f514e3a0663a60009a1a48c1eeb2cb9793f89cd934006e",
+      "bytes": 1799372
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse40Starter.aia",
+      "oldSHA256": null,
+      "sha256": "66a5fee97c4f1de20b5fb2cb617f5ccf7f46295adbc346ca772fa2fc4d36585f",
+      "bytes": 1797572
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse41.aia",
+      "oldSHA256": null,
+      "sha256": "ff9001012b5bdbde2a645d09d0d6646f7a78c9a7eb1e73fcb86a6beb0eed98a4",
+      "bytes": 1802550
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse41Class.aia",
+      "oldSHA256": null,
+      "sha256": "067f10d98496cbbbec1cb0da7ab3d9909cf09333c4e1ff1afa3e39b0f4022546",
+      "bytes": 1801720
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse41Starter.aia",
+      "oldSHA256": null,
+      "sha256": "d44d40f15f24d038bc6763a423e74ac0618068ca805f98a08be094ca85d403a3",
+      "bytes": 1797610
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse42.aia",
+      "oldSHA256": null,
+      "sha256": "3d46a8f8104385003b62e8707ba7a564cf1a0ef8d3575bb12e6b65e52fe8fc8b",
+      "bytes": 1802139
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse42Class.aia",
+      "oldSHA256": null,
+      "sha256": "9fe4cf0e802e002901a41e51e91750e39920825a8244eeea170b09a957011a30",
+      "bytes": 1801765
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse42Starter.aia",
+      "oldSHA256": null,
+      "sha256": "b74b44911ac740da9ddbe3cde45452aaacf215cf53e105d445634bb38add3f66",
+      "bytes": 1797632
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse43.aia",
+      "oldSHA256": null,
+      "sha256": "fe738d9f936f93d4aba3ce89792eb2768bfd1e680c7658fe1584608202d14428",
+      "bytes": 1800103
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse43Class.aia",
+      "oldSHA256": null,
+      "sha256": "2ea06ff6e563ddd5d847db189e22558aff8e4b18c58b45b65dafa49a40b2406f",
+      "bytes": 1798718
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse43Starter.aia",
+      "oldSHA256": null,
+      "sha256": "88873a8df8ec4520aad6967cf43ad7bee9ff6df3bb90f3436aadd05ce7ae2940",
+      "bytes": 1797284
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse44.aia",
+      "oldSHA256": null,
+      "sha256": "f953e50e4e9f3d4b37418834201f6c9d89cdbcbc2e064a35a948ba5a438c7c1b",
+      "bytes": 1802365
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse44Class.aia",
+      "oldSHA256": null,
+      "sha256": "14a3d471598fedd14a1008fbbd1acbc54c74423b5cf2700a69400c1378fde2c7",
+      "bytes": 1802008
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse44Starter.aia",
+      "oldSHA256": null,
+      "sha256": "cec0a344943610fb1902d5fbb9a7d022b0c12575eb234fa409f5750266eca200",
+      "bytes": 1797458
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse45.aia",
+      "oldSHA256": null,
+      "sha256": "26a05d931da0a6184259da30470339c02d7a9dea361e99341358b26893da7b58",
+      "bytes": 1802964
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse45Class.aia",
+      "oldSHA256": null,
+      "sha256": "c9b9b421fdd95d92366476c5cbe9c8f778f28acb634487a9ae5cfda0aa50fccf",
+      "bytes": 1801742
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse45Starter.aia",
+      "oldSHA256": null,
+      "sha256": "68902c5a228095c1d2e0e3b2b8106909256a073fd07066aee4e7b6c671d427f4",
+      "bytes": 1797624
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse46.aia",
+      "oldSHA256": null,
+      "sha256": "a7dca97722698b6ea275915ea2bc792af5a0a2d2520d89e5535e8c74345befd3",
+      "bytes": 2000650
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse46Class.aia",
+      "oldSHA256": null,
+      "sha256": "69eb81aeacbfc92b9f8666e8fed9a34a47aa78db171906892dd86a36b3cdc3dc",
+      "bytes": 2000198
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse46Starter.aia",
+      "oldSHA256": null,
+      "sha256": "ae3924420e8d56b31518841e4dfbeaac124230ebced47fa3bccccf8a5959221a",
+      "bytes": 1997076
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse47.aia",
+      "oldSHA256": null,
+      "sha256": "42a2bc1327df279de4e7ef7ba74c7f0121a28c0ea98dae565547905dc3a81d45",
+      "bytes": 1820647
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse47Class.aia",
+      "oldSHA256": null,
+      "sha256": "0c1b5aa4ba77b89c8cd2b0dce735bb596fe3f30e5e047cd4cca66436a2984d60",
+      "bytes": 1819774
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse47Starter.aia",
+      "oldSHA256": null,
+      "sha256": "c5b28cc9b3fff822ad7d4b6bcde14f870b98e22046660fcfe12917ad8a211bad",
+      "bytes": 1815312
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse48.aia",
+      "oldSHA256": null,
+      "sha256": "804df4880f88e35d004cad4f7c52727ba85c36634a3105d085cf3aad42d74150",
+      "bytes": 1821121
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse48Class.aia",
+      "oldSHA256": null,
+      "sha256": "5ed355bdc264f9a994105357f537ee0c063e0372681efb047bcb72d31d231600",
+      "bytes": 1819718
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse48Starter.aia",
+      "oldSHA256": null,
+      "sha256": "d549230ce8368012419f061d3de5a5c033d492b6058cad521f6e3fd8c53a0487",
+      "bytes": 1815464
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse49.aia",
+      "oldSHA256": null,
+      "sha256": "bc7396d78accdadbe186066c528ff2b865a5b8b15a6363afc2c5df2a59e9aa15",
+      "bytes": 1822196
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse49Class.aia",
+      "oldSHA256": null,
+      "sha256": "e09be2dc3a56c1b36c05ea48e10b21553a7754cfbfc6645ccc89b8b73f7678cb",
+      "bytes": 1821475
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse49Starter.aia",
+      "oldSHA256": null,
+      "sha256": "475f3a0d960ed1440540812813382d9abe40aa62febd4a0751e159a0a61e7f91",
+      "bytes": 1815334
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse50.aia",
+      "oldSHA256": null,
+      "sha256": "0bced72e31bf791f52d01d09a7384da9252e813ae9702b78b1dedd8e0a0dac1e",
+      "bytes": 1823506
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse50Class.aia",
+      "oldSHA256": null,
+      "sha256": "cc2878a8cb6fe624dc49a244756b438133b13e082a33a53882b125a831460dfd",
+      "bytes": 1822149
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse50Starter.aia",
+      "oldSHA256": null,
+      "sha256": "ff3365b34c0a02d6dd57c55945ec219954da5644a13500e79e07b5b3155f8777",
+      "bytes": 1815604
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse51.aia",
+      "oldSHA256": null,
+      "sha256": "c01a111c78b824151bcf194359038856787268159cbed2bc3acc859aadf996c8",
+      "bytes": 1798623
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse51Class.aia",
+      "oldSHA256": null,
+      "sha256": "b0d7be1866a335ce978d4bdc70b7ad070ca91b404441590a11c898114535c49c",
+      "bytes": 1797873
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse51Starter.aia",
+      "oldSHA256": null,
+      "sha256": "a3574e17cbb85cf980a4604a4d606a6e1a54e877cd4b26ef302d64f865a4166b",
+      "bytes": 1797192
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse52.aia",
+      "oldSHA256": null,
+      "sha256": "69159febb4f1eaef52bc0c21a4b4ca78af7ca49e0f38b7e1bc4640a50a950237",
+      "bytes": 1799611
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse52Class.aia",
+      "oldSHA256": null,
+      "sha256": "fad84806bfb609a789d3d5f7902fbb031b13d066ca2e41cfae8275a014fde18b",
+      "bytes": 1799362
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse52Starter.aia",
+      "oldSHA256": null,
+      "sha256": "1982dbb4dec2a39b70d37b45ab9ebac507aaabe78b4e8b01d09cf6a86cc8cd04",
+      "bytes": 1797506
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse53.aia",
+      "oldSHA256": null,
+      "sha256": "9241dbd9eff73026432d9225c9b82c9710c7c0218852c71413761335e418b455",
+      "bytes": 1801145
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse53Class.aia",
+      "oldSHA256": null,
+      "sha256": "0652ea88ce5197b58b9aa1c4555035de2c7576894f08bbadcdef42505af77db5",
+      "bytes": 1800718
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse53Starter.aia",
+      "oldSHA256": null,
+      "sha256": "09e612967411996f45e4d88e56edf830bd7c03a6328da3411f7dca4b43962aaf",
+      "bytes": 1797625
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse54.aia",
+      "oldSHA256": null,
+      "sha256": "c099842ea10b68b1e05b85ac305c2506a9f036f845e77641649f417937ebb188",
+      "bytes": 1802729
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse54Class.aia",
+      "oldSHA256": null,
+      "sha256": "9105aecc95b5ea07eb8983af1536853175fe636a48389fb38ae07219db244ae5",
+      "bytes": 1802314
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse54Starter.aia",
+      "oldSHA256": null,
+      "sha256": "006080c88296987fee2f21fda72eb06ead77407963c1a539f082ffaaed07eebc",
+      "bytes": 1797755
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse55.aia",
+      "oldSHA256": null,
+      "sha256": "8a0e220bd016a95847b29dc286ddecfc0305cf082b0a0146890d6e5e0d4896ab",
+      "bytes": 1804364
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse55Class.aia",
+      "oldSHA256": null,
+      "sha256": "dae10d5f14beefa00e3971291b1edaa9ea6e527b48d61f0af584f174af91533d",
+      "bytes": 1804120
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse55Starter.aia",
+      "oldSHA256": null,
+      "sha256": "75119876ae4558bb11873e04c6b210ad664adaef84d948933553d11a391008cf",
+      "bytes": 1797847
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse56.aia",
+      "oldSHA256": null,
+      "sha256": "6a276a74a110cc63b127f041c607823ca716a4c45271cb3210be81548030ae25",
+      "bytes": 1805431
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse56Class.aia",
+      "oldSHA256": null,
+      "sha256": "4e198aed308df552e3b22a67145091723170116836a6a5d803e5421372ec1f0d",
+      "bytes": 1805200
+    },
+    {
+      "path": "server/war/static/teaching/projects/YXCourse56Starter.aia",
+      "oldSHA256": null,
+      "sha256": "7a13f7fb2ec932178fbc779dc65611a09a094d0d7f9592f6af484f3c0852299a",
+      "bytes": 1798025
+    },
+    {
+      "path": "server/war/WEB-INF/classes/bundled-extensions/BluetoothLE.aix",
+      "oldSHA256": null,
+      "sha256": "f5980729638a46af14e8a79e2a7498026190d136167eaeb5e0789cc41a51cefb",
+      "bytes": 199357
+    },
+    {
+      "path": "server/war/WEB-INF/classes/bundled-extensions/ClientSocketAI2Ext.aix",
+      "oldSHA256": null,
+      "sha256": "ef085073d0991bb9644b68bd1a0faea8e9ab60131bb6e215cddc2c3a9a877815",
+      "bytes": 17536
+    },
+    {
+      "path": "server/war/WEB-INF/classes/bundled-extensions/MqttTCP.aix",
+      "oldSHA256": null,
+      "sha256": "4fb315d710b6c8511612ff3e66c192ebee927a6b8a5c63240c9b20ff0a26124f",
+      "bytes": 571599
+    },
+    {
+      "path": "server/war/WEB-INF/classes/com/google/appinventor/server/BundledExtensions.class",
+      "oldSHA256": null,
+      "sha256": "ed0567d76f29a7c13631ff2e9a59793fe2b4ee4758f02b20996ab906c1cf354d",
+      "bytes": 5620
+    },
+    {
+      "path": "server/war/WEB-INF/classes/com/google/appinventor/server/project/youngandroid/YoungAndroidProjectService$1.class",
+      "oldSHA256": "49cfc3dad0719d965cfdebab1b9ba694da18e984f299671c58eaf15291df35d4",
+      "sha256": "5cc6b97cf7143f166e341e04365fb5f14d44ac40d816fa6028cb4ac4b0156618",
+      "bytes": 1163
+    },
+    {
+      "path": "server/war/WEB-INF/classes/com/google/appinventor/server/project/youngandroid/YoungAndroidProjectService.class",
+      "oldSHA256": "19b13d7a076d27528eab9cb00b0cc1c5d14274d09d65f2183364bac290518d93",
+      "sha256": "b1a748ce6481546c3fcd2515567c198a1e6f8db15b00f324c9630585c7f0ed6e",
+      "bytes": 28750
+    },
+    {
+      "path": "studio/index.html",
+      "oldSHA256": "3727b9e1cdaf39e62f52455b049ed609a89841197505313c7b0e04feb8e35cd7",
+      "sha256": "ac0db5e6680210aa09875c41e5d29fdc89693fd8d2166516394116d5314ff284",
+      "bytes": 5849
+    },
+    {
+      "path": "studio/server.py",
+      "oldSHA256": "6a79acd7e4e4c01f0b82dd572fd64ceddb239242554d0fd9d916901f6f9376a3",
+      "sha256": "4870a0a1b5951e7d8cee7b6041c0d146bc5f63e76a49df11f670312a7c1f4456",
+      "bytes": 26051
+    },
+    {
+      "path": "studio/studio.css",
+      "oldSHA256": "5389b7e9fadef81bf4379c79cb623943f0c6fa258e599761b624f58f1f46e522",
+      "sha256": "3baba29f15f6381933896f2b8c203387950b5c04c8bf2ab6d3570ccfd4b2dea3",
+      "bytes": 10456
+    },
+    {
+      "path": "studio/studio.js",
+      "oldSHA256": "6ba80072134fb98c99a9a4080d4aa9394c03ae48c196c8bb964341a9987cb899",
+      "sha256": "f4d77649c3461d25e33f48c122a50fcc0571df7eb084e82f7356b124762daea3",
+      "bytes": 21050
+    }
+  ]
+}

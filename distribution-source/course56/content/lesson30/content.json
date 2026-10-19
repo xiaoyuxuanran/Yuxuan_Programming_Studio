@@ -1,0 +1,652 @@
+{
+  "lesson": 30,
+  "title": "信息的增加、修改与删除",
+  "projectName": "YXCourse30",
+  "exampleTitle": "增改删待办列表",
+  "durationMinutes": 90,
+  "goals": [
+    "删去第1项，原第2项变为第1项。",
+    "新增不需要已有选择。",
+    "用测试记录验证信息的增加、修改与删除的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "待办编辑器：新增任务，选中后改名或删除，防止选错与空输入。",
+    "scope": "内存中的待办编辑示例，重开恢复原始两项；修改和删除只针对有效选择，不含撤销。",
+    "components": [
+      {
+        "name": "TodoView",
+        "type": "ListView",
+        "role": "任务列表"
+      },
+      {
+        "name": "TaskBox",
+        "type": "TextBox",
+        "role": "新增或修改内容"
+      },
+      {
+        "name": "AddButton",
+        "type": "Button",
+        "role": "新增"
+      },
+      {
+        "name": "UpdateButton",
+        "type": "Button",
+        "role": "修改选中项"
+      },
+      {
+        "name": "DeleteButton",
+        "type": "Button",
+        "role": "删除选中项"
+      },
+      {
+        "name": "HintLabel",
+        "type": "Label",
+        "role": "当前选择和提示"
+      }
+    ],
+    "logic": [
+      {
+        "event": "TodoView.AfterPicking",
+        "actions": [
+          "选中序号←SelectionIndex；输入框←select list item；修改删除启用"
+        ]
+      },
+      {
+        "event": "AddButton.Click",
+        "actions": [
+          "非空则追加；刷新并取消选择"
+        ]
+      },
+      {
+        "event": "UpdateButton.Click",
+        "actions": [
+          "选择有效且输入非空时replace list item；刷新并取消选择"
+        ]
+      },
+      {
+        "event": "DeleteButton.Click",
+        "actions": [
+          "选择有效时remove list item；刷新并取消选择"
+        ]
+      }
+    ],
+    "procedures": {
+      "刷新并取消选择": "TodoView.Elements←任务；选中序号0；TaskBox清空；修改删除禁用",
+      "选择有效": "返回1<=选中序号<=length任务"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse30.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse30Class.aia：保留全部变量、刷新并取消选择、选择有效、初始化和新增；TodoView.AfterPicking保存索引并载入内容，启用修改/删除；UpdateButton.Click校验后替换列表项；DeleteButton.Click删除后刷新并取消选择。",
+    "starter": "YXCourse30Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：选择并载入，先问再示范。",
+      "students": "按任务单完成：选择并载入。",
+      "checkpoint": "为什么保存序号而不只保存文字？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：修改所选任务，先问再示范。",
+      "students": "按任务单完成：修改所选任务。",
+      "checkpoint": "修改为什么不用add items？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：删除后取消选择，先问再示范。",
+      "students": "按任务单完成：删除后取消选择。",
+      "checkpoint": "删除后仍保存原序号有什么风险？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "选择并载入",
+      "steps": [
+        "添加TodoView.AfterPicking，保存SelectionIndex。",
+        "选择有效才select list item并填TaskBox。",
+        "启用修改与删除，选择第二项核对文字。"
+      ],
+      "question": "为什么保存序号而不只保存文字？",
+      "answer": "重名条目仍可通过位置区分，修改和删除需要指定位置。"
+    },
+    {
+      "title": "修改所选任务",
+      "steps": [
+        "添加UpdateButton.Click，先调用选择有效。",
+        "trim输入非空才replace list item。",
+        "调用刷新并取消选择；把读书20分钟改成30分钟。"
+      ],
+      "question": "修改为什么不用add items？",
+      "answer": "add会增加条目，replace才替换原位置且数量不变。"
+    },
+    {
+      "title": "删除后取消选择",
+      "steps": [
+        "添加DeleteButton.Click，检查索引有效。",
+        "remove list item后调用刷新并取消选择。",
+        "连点两次删除，第二次不应再删下一项。"
+      ],
+      "question": "删除后仍保存原序号有什么风险？",
+      "answer": "后面的项目移位，旧序号可能指向另一任务。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "未选择时点修改或删除",
+      "expected": "不改数据，提示先选择"
+    },
+    {
+      "action": "选第二项改为读书30分钟",
+      "expected": "第二项更新，仍两项"
+    },
+    {
+      "action": "删除第一项后再次删除",
+      "expected": "第一次删除成功，第二次不删除剩余项"
+    }
+  ],
+  "misconceptions": [
+    [
+      "改名变成新增",
+      "检查使用replace而不是add"
+    ],
+    [
+      "删除后一项也被删",
+      "修改后选中序号应归0"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "增加一个完成标记前缀，并避免重复添加前缀。"
+    },
+    {
+      "level": "拓展",
+      "task": "为删除设计确认对话框，取消时保持任务不变。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "选择有效检查哪两个边界？",
+      "a": "序号至少1且不大于列表长度。"
+    },
+    {
+      "q": "修改后为什么清选择？",
+      "a": "避免旧选择对后续编辑产生误导。"
+    },
+    {
+      "q": "如何证明连点不会误删？",
+      "a": "删除一次后核对序号0、按钮禁用，再尝试第二次。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT lists.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/lists.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT userinterface.html#ListView 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html#ListView",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "信息的增加、修改与删除",
+      "body": [
+        "增改删待办列表",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "待办编辑器：新增任务，选中后改名或删除，防止选错与空输入。 内存中的待办编辑示例，重开恢复原始两项；修改和删除只针对有效选择，不含撤销。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "新增条目追加到末尾，内容不能为空。",
+        "选择后把任务文字载入输入框，才能修改或删除。",
+        "修改或删除后清空选择，避免旧序号指向别的任务。"
+      ],
+      "notes": "演示：未选择时点修改或删除。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "删去第1项，原第2项变为第1项。",
+        "新增不需要已有选择。",
+        "用测试记录验证信息的增加、修改与删除的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "待办编辑器：新增任务，选中后改名或删除，防止选错与空输入。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "新增条目追加到末尾，内容不能为空。",
+        "选择后把任务文字载入输入框，才能修改或删除。",
+        "修改或删除后清空选择，避免旧序号指向别的任务。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "任务列表",
+        "新增或修改内容",
+        "新增",
+        "修改选中项"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "TodoView",
+          "ListView",
+          "任务列表"
+        ],
+        [
+          "TaskBox",
+          "TextBox",
+          "新增或修改内容"
+        ],
+        [
+          "AddButton",
+          "Button",
+          "新增"
+        ],
+        [
+          "UpdateButton",
+          "Button",
+          "修改选中项"
+        ],
+        [
+          "DeleteButton",
+          "Button",
+          "删除选中项"
+        ],
+        [
+          "HintLabel",
+          "Label",
+          "当前选择和提示"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "任务",
+          "整理书包、读书20分钟"
+        ],
+        [
+          "选中序号",
+          "0表示未选；删除后归0"
+        ]
+      ]
+    },
+    {
+      "title": "序号会随删除而改变",
+      "body": [
+        "删去第1项，原第2项变为第1项。",
+        "保存的旧序号不能一直复用。",
+        "每次修改后重新选择更清楚。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "增删改有不同前提",
+      "body": [
+        "新增不需要已有选择。",
+        "修改和删除需要有效选择。",
+        "修改还需要非空的新内容。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "选择任务，保存索引并载入文字",
+        "修改校验通过才替换指定项",
+        "删除后统一刷新，取消选择并禁用按钮"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：全部变量；刷新并取消选择、选择有效；初始化和新增。学生任务：TodoView.AfterPicking保存索引并载入内容，启用修改/删除；UpdateButton.Click校验后替换列表项；DeleteButton.Click删除后刷新并取消选择。",
+      "layout": "text"
+    },
+    {
+      "title": "选择与载入",
+      "body": [
+        "保存索引，将所选文字载入输入框。",
+        "选读书后输入框显示读书20分钟。"
+      ],
+      "notes": "SelectionIndex先校验再读取；选择文字只是反馈，序号才定位。 实际截图对应：TodoView.AfterPicking。内存中的待办编辑示例，重开恢复原始两项；修改和删除只针对有效选择，不含撤销。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "TodoView.AfterPicking"
+    },
+    {
+      "title": "选择并载入",
+      "body": [
+        "添加TodoView.AfterPicking，保存SelectionIndex。",
+        "选择有效才select list item并填TaskBox。",
+        "启用修改与删除，选择第二项核对文字。"
+      ],
+      "notes": "实践15分钟。为什么保存序号而不只保存文字？ 教师参考：重名条目仍可通过位置区分，修改和删除需要指定位置。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "修改条目",
+      "body": [
+        "校验索引和内容后替换列表对应项。",
+        "只改所选项，数量保持。"
+      ],
+      "notes": "替换前同时检查索引和非空内容，成功后统一刷新。 实际截图对应：UpdateButton.Click。内存中的待办编辑示例，重开恢复原始两项；修改和删除只针对有效选择，不含撤销。",
+      "layout": "blocksTall",
+      "blockIndex": 2,
+      "captureTarget": "UpdateButton.Click"
+    },
+    {
+      "title": "修改所选任务",
+      "body": [
+        "添加UpdateButton.Click，先调用选择有效。",
+        "trim输入非空才replace list item。",
+        "调用刷新并取消选择；把读书20分钟改成30分钟。"
+      ],
+      "notes": "实践15分钟。修改为什么不用add items？ 教师参考：add会增加条目，replace才替换原位置且数量不变。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "删除与复位",
+      "body": [
+        "删除有效索引，刷新并取消选择。",
+        "连续点击删除不会误删下一项。"
+      ],
+      "notes": "删除改变后续序号，取消选择是防止误删的关键。 实际截图对应：DeleteButton.Click。内存中的待办编辑示例，重开恢复原始两项；修改和删除只针对有效选择，不含撤销。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "DeleteButton.Click"
+    },
+    {
+      "title": "删除后取消选择",
+      "body": [
+        "添加DeleteButton.Click，检查索引有效。",
+        "remove list item后调用刷新并取消选择。",
+        "连点两次删除，第二次不应再删下一项。"
+      ],
+      "notes": "实践15分钟。删除后仍保存原序号有什么风险？ 教师参考：后面的项目移位，旧序号可能指向另一任务。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "未选择时点修改或删除",
+          "不改数据，提示先选择"
+        ],
+        [
+          "选第二项改为读书30分钟",
+          "第二项更新，仍两项"
+        ],
+        [
+          "删除第一项后再次删除",
+          "第一次删除成功，第二次不删除剩余项"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "改名变成新增",
+          "检查使用replace而不是add"
+        ],
+        [
+          "删除后一项也被删",
+          "修改后选中序号应归0"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "未选择时点修改或删除",
+          "不改数据，提示先选择"
+        ],
+        [
+          "选第二项改为读书30分钟",
+          "第二项更新，仍两项"
+        ],
+        [
+          "删除第一项后再次删除",
+          "第一次删除成功，第二次不删除剩余项"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加一个完成标记前缀，并避免重复添加前缀。",
+        "为删除设计确认对话框，取消时保持任务不变。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“未选择时点修改或删除”写下预测，再记录实际结果。",
+        "结合积木解释：序号会随删除而改变。",
+        "改编并测试：增加完成标记前缀，防止重复添加。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：删除第一项后再次删除。",
+        "说明：增删改有不同前提。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "选择有效检查哪两个边界？",
+        "修改后为什么清选择？",
+        "如何证明连点不会误删？"
+      ],
+      "notes": "1. 序号至少1且不大于列表长度。\n2. 避免旧选择对后续编辑产生误导。\n3. 删除一次后核对序号0、按钮禁用，再尝试第二次。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "ListView": "11",
+    "TextBox": "15",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "全部变量",
+    "刷新并取消选择、选择有效",
+    "初始化和新增"
+  ],
+  "actualClassroomTasks": [
+    "TodoView.AfterPicking保存索引并载入内容，启用修改/删除",
+    "UpdateButton.Click校验后替换列表项",
+    "DeleteButton.Click删除后刷新并取消选择"
+  ],
+  "actualScreenshotGroups": [
+    "TodoView.AfterPicking",
+    "UpdateButton.Click",
+    "DeleteButton.Click"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "任务",
+      "选中序号"
+    ],
+    "procedures": {
+      "刷新并取消选择": [],
+      "选择有效": []
+    },
+    "events": [
+      "Screen1.Initialize",
+      "TodoView.AfterPicking",
+      "AddButton.Click",
+      "UpdateButton.Click",
+      "DeleteButton.Click"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "event": "UpdateButton.Click",
+      "expect": {
+        "global 任务": [
+          "整理书包",
+          "读书20分钟"
+        ],
+        "HintLabel.Text": "请先选择有效任务"
+      }
+    },
+    {
+      "set": {
+        "global 选中序号": 2,
+        "TaskBox.Text": "读书30分钟"
+      },
+      "event": "UpdateButton.Click",
+      "expect": {
+        "global 任务": [
+          "整理书包",
+          "读书30分钟"
+        ],
+        "global 选中序号": 0
+      }
+    },
+    {
+      "set": {
+        "global 选中序号": 1
+      },
+      "events": [
+        "DeleteButton.Click",
+        "DeleteButton.Click"
+      ],
+      "expect": {
+        "global 任务": [
+          "读书20分钟"
+        ],
+        "global 选中序号": 0
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson30/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

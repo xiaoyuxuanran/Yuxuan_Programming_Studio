@@ -1,0 +1,2835 @@
+{
+  "schemaVersion": 1,
+  "id": "appinventor56-v2",
+  "name": "App Inventor 创意编程课程",
+  "lessonCount": 56,
+  "stageCount": 8,
+  "lessonMinutes": 90,
+  "hours": 84,
+  "stages": [
+    {
+      "id": "01",
+      "name": "第一阶段：创意启蒙与应用入门",
+      "title": "创意启蒙与应用入门",
+      "start": 1,
+      "end": 6,
+      "focus": "事件 · 角色 · 创意表达",
+      "lessons": [
+        {
+          "id": 1,
+          "title": "我的第一个手机 APP",
+          "name": "No.1我的第一个手机 APP",
+          "summary": "认识设计界面与积木界面，理解事件，制作点击问候应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "Course01Hello.aia",
+              "url": "static/teaching/projects/Course01Hello.aia",
+              "projectName": "Course01Hello",
+              "sha256": "965fc0c90b408207bb99ce524d21fe0fea53de964379ef44fd3511f84d920920"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "Course01HelloClass.aia",
+              "url": "static/teaching/projects/Course01HelloClass.aia",
+              "projectName": "Course01HelloClass",
+              "sha256": "46b9833c270afc530386d8990a07add6264392f999bc152674d731bf56842ff0"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "Course01HelloStarter.aia",
+              "url": "static/teaching/projects/Course01HelloStarter.aia",
+              "projectName": "Course01HelloStarter",
+              "sha256": "23d7590d33270236cf9c350562e16965fdeb8ef7ea87b3d5e7b2037740aa70ec"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson01-Slides.pptx",
+              "url": "static/teaching/materials/Lesson01-Slides.pptx",
+              "sha256": "ffa5d58a5fc8a9d03f2189ec63cd233c9926caff3e0483bb24e67bef12fdc736"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson01-Materials.zip",
+              "url": "static/teaching/materials/Lesson01-Materials.zip",
+              "sha256": "3be2b947d0b98f5878a396735a0b40fd361c5c6fee4bf8e85e296f41623b753a"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "会互动的数字名片",
+          "name": "No.2会互动的数字名片",
+          "summary": "标签、按钮、图片、属性修改，制作个人介绍应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "Course02Card.aia",
+              "url": "static/teaching/projects/Course02Card.aia",
+              "projectName": "Course02Card",
+              "sha256": "4dada661ccdce544940e1b0c808f5d3173a12ec0ed6f20be8588b78ab0fa2086"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "Course02CardClass.aia",
+              "url": "static/teaching/projects/Course02CardClass.aia",
+              "projectName": "Course02CardClass",
+              "sha256": "37359579455724012ea37c7150f11a73790aa6c724a4e541ef5d616cc71ed2ea"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "Course02CardStarter.aia",
+              "url": "static/teaching/projects/Course02CardStarter.aia",
+              "projectName": "Course02CardStarter",
+              "sha256": "8b42f82d0e3b78dbc7aaa2f2ce3b032b5eeee79e21d3489250e31ccdfa9f0350"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson02-Slides.pptx",
+              "url": "static/teaching/materials/Lesson02-Slides.pptx",
+              "sha256": "c6cabfd65616b6ff3e5f425bfddc94fd77f060fd366c007710d7ddbc2c54cb8f"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson02-Materials.zip",
+              "url": "static/teaching/materials/Lesson02-Materials.zip",
+              "sha256": "5a26e5db7a8dc1a11b1cacb2a55a77dd5d9e1d16f04cd252982f12e321f4f18c"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "会发声的伙伴",
+          "name": "No.3会发声的伙伴",
+          "summary": "声音素材、按钮事件、交互反馈，制作动物声音盒",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "Course03Voice.aia",
+              "url": "static/teaching/projects/Course03Voice.aia",
+              "projectName": "Course03Voice",
+              "sha256": "90953a87cffed4459e777b76d790fd37967a29750c529a75130177226e7d468a"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "Course03VoiceClass.aia",
+              "url": "static/teaching/projects/Course03VoiceClass.aia",
+              "projectName": "Course03VoiceClass",
+              "sha256": "67c7063f2a6eba38d257ba6485c84dba6663783acd3b92ef478b5861e742245e"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "Course03VoiceStarter.aia",
+              "url": "static/teaching/projects/Course03VoiceStarter.aia",
+              "projectName": "Course03VoiceStarter",
+              "sha256": "677d8a46fe8150ad2828b1f414dd53ca70b43ed6189b2f049971c59c6aa1b1ce"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson03-Slides.pptx",
+              "url": "static/teaching/materials/Lesson03-Slides.pptx",
+              "sha256": "e9031cbe82666e4f4d674f23f35c5b3dac6304c4f7ef4b99494a41234a396aac"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson03-Materials.zip",
+              "url": "static/teaching/materials/Lesson03-Materials.zip",
+              "sha256": "54a654e7ff9eecd832124ee605b00d09b0cf18dc40ae9ee2a442a2bc73cdf6e0"
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "title": "我的故事小舞台",
+          "name": "No.4我的故事小舞台",
+          "summary": "图片、文字、组件显示与隐藏，制作场景切换应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "Course04Story.aia",
+              "url": "static/teaching/projects/Course04Story.aia",
+              "projectName": "Course04Story",
+              "sha256": "8d843cf4249b7628ef22dd8fb07409382912c3f483712e2b0997e5f92a687e89"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "Course04StoryClass.aia",
+              "url": "static/teaching/projects/Course04StoryClass.aia",
+              "projectName": "Course04StoryClass",
+              "sha256": "b0d9b32f16ff4a24cb7acaaa16fe67a13f26e3eb4ce3397983d5c314541691f4"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "Course04StoryStarter.aia",
+              "url": "static/teaching/projects/Course04StoryStarter.aia",
+              "projectName": "Course04StoryStarter",
+              "sha256": "988b6d22ce7d9b8c13636c89319fcf4672b90261f8e168242b3822418abbca1f"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson04-Slides.pptx",
+              "url": "static/teaching/materials/Lesson04-Slides.pptx",
+              "sha256": "c832c8d73479f9074c41858efe63c8ff0c470e4f9d45427ea0b6a17324c587cf"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson04-Materials.zip",
+              "url": "static/teaching/materials/Lesson04-Materials.zip",
+              "sha256": "f2eb32360e9e799991e9e8c1b3ca0f14d38ed02e033456666a63751b8360121c"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "title": "给 APP 设计漂亮的界面",
+          "name": "No.5给 APP 设计漂亮的界面",
+          "summary": "水平与垂直布局、尺寸、配色、文字层级与操作提示",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "Course05Festival.aia",
+              "url": "static/teaching/projects/Course05Festival.aia",
+              "projectName": "Course05Festival",
+              "sha256": "20db615d81afb11a43968f51b7c1485e3008e191235e168e9a84ef22c3442ec9"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "Course05FestivalClass.aia",
+              "url": "static/teaching/projects/Course05FestivalClass.aia",
+              "projectName": "Course05FestivalClass",
+              "sha256": "8e68e3078b28ed6f63f146d7bbf28a0ea3111aa2d1e1df30a1ff08051a0c6d82"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "Course05FestivalStarter.aia",
+              "url": "static/teaching/projects/Course05FestivalStarter.aia",
+              "projectName": "Course05FestivalStarter",
+              "sha256": "9bd1affd24732628834e9a72bbd6c0fa86e6acb7bc2ac17caeb0569875711193"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson05-Slides.pptx",
+              "url": "static/teaching/materials/Lesson05-Slides.pptx",
+              "sha256": "aa09e63d9c0ac9b791340f6e101635f888cc87d58b1a9f7b72fe2af2738e3c50"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson05-Materials.zip",
+              "url": "static/teaching/materials/Lesson05-Materials.zip",
+              "sha256": "7c325bd905f5f83eea42e845d020e1609d073feb42ff3b7b78532f6e94f814f2"
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "title": "第一次创意改编",
+          "name": "No.6第一次创意改编",
+          "summary": "改编已有作品，添加个人主题，进行展示与同伴体验",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "Course06Clubs.aia",
+              "url": "static/teaching/projects/Course06Clubs.aia",
+              "projectName": "Course06Clubs",
+              "sha256": "68a8f2984bbcd9e2c4c18c87764d69dba0ec4a000de0eb5e50f1a9dbc1d0918c"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "Course06ClubsClass.aia",
+              "url": "static/teaching/projects/Course06ClubsClass.aia",
+              "projectName": "Course06ClubsClass",
+              "sha256": "71c0dad7a79eade23821dbf448cad3a94adf79fc557e529a122037ff54180ed1"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "Course06ClubsStarter.aia",
+              "url": "static/teaching/projects/Course06ClubsStarter.aia",
+              "projectName": "Course06ClubsStarter",
+              "sha256": "b24ade94b7a6d68778b96f546fdeb730dd7fe36b08eb31e6d4e8e84f33dbc690"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson06-Slides.pptx",
+              "url": "static/teaching/materials/Lesson06-Slides.pptx",
+              "sha256": "a46926fb25ee4347ce31739ee049e3af870fd6598520f2bded424c9a5d42bb0b"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson06-Materials.zip",
+              "url": "static/teaching/materials/Lesson06-Materials.zip",
+              "sha256": "61f1eff538974e3724e05726c183ab33be73d1b76035d76a0e744b0854fc1179"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "name": "第二阶段：编程思维与积木基础",
+      "title": "编程思维与积木基础",
+      "start": 7,
+      "end": 14,
+      "focus": "变量 · 判断 · 循环 · 过程",
+      "lessons": [
+        {
+          "id": 7,
+          "title": "会记数的 APP",
+          "name": "No.7会记数的 APP",
+          "summary": "变量、赋值、状态变化，制作计数器与积分器",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse07.aia",
+              "url": "static/teaching/projects/YXCourse07.aia",
+              "projectName": "YXCourse07",
+              "sha256": "f93d37193dd3e483ca6a4943ae6424ff1c79c9e1d782bfec13af9ae9342f06d9"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse07Class.aia",
+              "url": "static/teaching/projects/YXCourse07Class.aia",
+              "projectName": "YXCourse07Class",
+              "sha256": "480d3df1a125c3a9054d75038264fc44463327462c8f021bd632dbc7e568ae19"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse07Starter.aia",
+              "url": "static/teaching/projects/YXCourse07Starter.aia",
+              "projectName": "YXCourse07Starter",
+              "sha256": "ab4ca347ba779dc4e793a49b1bf50ce229211947728f91a7658c37c85787693f"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson07-Slides.pptx",
+              "url": "static/teaching/materials/Lesson07-Slides.pptx",
+              "sha256": "b770094352f65e0c9ab200f8cffbb5866c8180faef689d142c0f739091e9ea68"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson07-Materials.zip",
+              "url": "static/teaching/materials/Lesson07-Materials.zip",
+              "sha256": "333aa33d44a33b72802fc0c8cb44e6c3e35b228d867d71e4357cb26425a31964"
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "title": "随身计算小工具",
+          "name": "No.8随身计算小工具",
+          "summary": "数学运算、文本输入与类型转换，制作单位换算器",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse08.aia",
+              "url": "static/teaching/projects/YXCourse08.aia",
+              "projectName": "YXCourse08",
+              "sha256": "730b00341a0528040f053ddcffbd13afa6ba6c5bb4f7c39467144e6fac829860"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse08Class.aia",
+              "url": "static/teaching/projects/YXCourse08Class.aia",
+              "projectName": "YXCourse08Class",
+              "sha256": "6221c3f6ef3383ee8158038d0450c8808882c83da9e0e1fb579cbf3941976719"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse08Starter.aia",
+              "url": "static/teaching/projects/YXCourse08Starter.aia",
+              "projectName": "YXCourse08Starter",
+              "sha256": "129538997cb115525c5f8c9900083a8234ac436baf3b072280d2a387ca274943"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson08-Slides.pptx",
+              "url": "static/teaching/materials/Lesson08-Slides.pptx",
+              "sha256": "e32cdb915a9d628d64507935cd067ec432e1d87d8735c9e8c6fc72da7802db15"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson08-Materials.zip",
+              "url": "static/teaching/materials/Lesson08-Materials.zip",
+              "sha256": "84e09defd4ad41b8a80a974d1dc066cda484becb786ba2883568ee327e1a9ce6"
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "title": "让 APP 学会判断",
+          "name": "No.9让 APP 学会判断",
+          "summary": "条件分支、比较与逻辑运算，制作达标判断应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse09.aia",
+              "url": "static/teaching/projects/YXCourse09.aia",
+              "projectName": "YXCourse09",
+              "sha256": "87ed1ad8745f6d93fdf5c9649d3e7f5d9f6d44c270464d904516cc9c8d00fca2"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse09Class.aia",
+              "url": "static/teaching/projects/YXCourse09Class.aia",
+              "projectName": "YXCourse09Class",
+              "sha256": "f86244de7dcabef1389098eadd1f8b4364b6a2fab4c217c7066474da9603420a"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse09Starter.aia",
+              "url": "static/teaching/projects/YXCourse09Starter.aia",
+              "projectName": "YXCourse09Starter",
+              "sha256": "0c188850ea7be66d76db98e214eae7ab6552173a23128d3a4ec4ba42dcba9215"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson09-Slides.pptx",
+              "url": "static/teaching/materials/Lesson09-Slides.pptx",
+              "sha256": "841341f1ab8978255ad0c0709f2a1a37f9cdb57da88e6efc214d27699a01f198"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson09-Materials.zip",
+              "url": "static/teaching/materials/Lesson09-Materials.zip",
+              "sha256": "a3627db5e816a6f0a1b946db2c10364310349cfce1d0172558cd93a96118d9b2"
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "title": "随机数与猜数字",
+          "name": "No.10随机数与猜数字",
+          "summary": "随机数、条件组合、次数统计，制作猜数字游戏",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse10.aia",
+              "url": "static/teaching/projects/YXCourse10.aia",
+              "projectName": "YXCourse10",
+              "sha256": "e0f54e677a7dbd41082ae5e28fc43bbc45bf34b33dda1f00bfb88111c14f0dc6"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse10Class.aia",
+              "url": "static/teaching/projects/YXCourse10Class.aia",
+              "projectName": "YXCourse10Class",
+              "sha256": "13d5a082406dcfa8affcc2570f7b5a22ecc4e6144b675db751b8594c68fdd68c"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse10Starter.aia",
+              "url": "static/teaching/projects/YXCourse10Starter.aia",
+              "projectName": "YXCourse10Starter",
+              "sha256": "365db31d24f78371f95f0c88db9368746fd85d026ac1760aeb6981f0c7f6d57c"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson10-Slides.pptx",
+              "url": "static/teaching/materials/Lesson10-Slides.pptx",
+              "sha256": "7f2ba41b4fd44d6fca319e218c8c39fd267fcfa87a651b322898fb394e41c672"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson10-Materials.zip",
+              "url": "static/teaching/materials/Lesson10-Materials.zip",
+              "sha256": "e28298b9d3bcd2dde9008d9b2e664336dea048c5f8bd454219bec7637d3b69d5"
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "title": "重复任务交给程序",
+          "name": "No.11重复任务交给程序",
+          "summary": "循环、计数与累加，制作乘法练习或规律生成器",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse11.aia",
+              "url": "static/teaching/projects/YXCourse11.aia",
+              "projectName": "YXCourse11",
+              "sha256": "926c8b967d7ac5d5ad32c39bb74cf7db3b51e24d3a9bf2f820c7e8fad796e118"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse11Class.aia",
+              "url": "static/teaching/projects/YXCourse11Class.aia",
+              "projectName": "YXCourse11Class",
+              "sha256": "cdf504ca40035ddcfa14734ca521ef8e2cc3d8e5d8f83a621d0409bd25a30fe9"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse11Starter.aia",
+              "url": "static/teaching/projects/YXCourse11Starter.aia",
+              "projectName": "YXCourse11Starter",
+              "sha256": "82e20b76a6dbdab8306ba1e20b240a8ae118faec2f59d551137863cb80fe20da"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson11-Slides.pptx",
+              "url": "static/teaching/materials/Lesson11-Slides.pptx",
+              "sha256": "370d96a122b4367eb3642c34ddd46e2ee5395c71b24ed5c3d87b764a31c268a8"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson11-Materials.zip",
+              "url": "static/teaching/materials/Lesson11-Materials.zip",
+              "sha256": "518c6ad6512bc8bb722ad1aac9dde585f7a24fafa1b83eea8d31bb7825ffa628"
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "title": "和时间做游戏",
+          "name": "No.12和时间做游戏",
+          "summary": "Clock、计时与事件顺序，制作反应速度挑战",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse12.aia",
+              "url": "static/teaching/projects/YXCourse12.aia",
+              "projectName": "YXCourse12",
+              "sha256": "385d724bdb7136137fe152079371e8c07e660cb73cd37ca77785e641d5443431"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse12Class.aia",
+              "url": "static/teaching/projects/YXCourse12Class.aia",
+              "projectName": "YXCourse12Class",
+              "sha256": "003e8d490d00c67b27f5e13cd0f730e89a523442f3748dc2b4777219c05cecec"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse12Starter.aia",
+              "url": "static/teaching/projects/YXCourse12Starter.aia",
+              "projectName": "YXCourse12Starter",
+              "sha256": "c182a9e66637dc7e13989d41d0f5c3679c0af71fce25224c7f9babb4ed4fb069"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson12-Slides.pptx",
+              "url": "static/teaching/materials/Lesson12-Slides.pptx",
+              "sha256": "1988548f08519446751eadd420cde8d1313651e4463dd2da2ac1ac84b2584318"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson12-Materials.zip",
+              "url": "static/teaching/materials/Lesson12-Materials.zip",
+              "sha256": "fab8398ac8df440457813faed03e33f110ee23f513fa9c1c44506b16e8686578"
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "title": "把常用功能封装起来",
+          "name": "No.13把常用功能封装起来",
+          "summary": "过程、参数、返回值，整理计算、提示与重置功能",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse13.aia",
+              "url": "static/teaching/projects/YXCourse13.aia",
+              "projectName": "YXCourse13",
+              "sha256": "6ad1f13293b428e4a6210d4d2af34390b8d265dcffdb2be37f1ee761990fd1c5"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse13Class.aia",
+              "url": "static/teaching/projects/YXCourse13Class.aia",
+              "projectName": "YXCourse13Class",
+              "sha256": "7eb9df9bb7dd09571ff8096c064fe3b9372252f146ac98a8b4d979bbb41388e4"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse13Starter.aia",
+              "url": "static/teaching/projects/YXCourse13Starter.aia",
+              "projectName": "YXCourse13Starter",
+              "sha256": "d975f3e7e414707c8bc56a589b300700235495b6a4092efecc1c99e15ecb128d"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson13-Slides.pptx",
+              "url": "static/teaching/materials/Lesson13-Slides.pptx",
+              "sha256": "39cc7409731bcd17168bbaa33688ad753505c9c416843629efc0c214d08152d6"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson13-Materials.zip",
+              "url": "static/teaching/materials/Lesson13-Materials.zip",
+              "sha256": "d570fbe2f5cd6bc3e49c71a86a0a2cf4130dcfa62ad3c4f12cd06b9657f3eea3"
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "title": "程序侦探挑战",
+          "name": "No.14程序侦探挑战",
+          "summary": "跟踪变量、定位错误、设计测试，修复并升级一个小应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse14.aia",
+              "url": "static/teaching/projects/YXCourse14.aia",
+              "projectName": "YXCourse14",
+              "sha256": "4715db661a5c984827b794a8811427780085dbda3acde21e072e88b61fbcc885"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse14Class.aia",
+              "url": "static/teaching/projects/YXCourse14Class.aia",
+              "projectName": "YXCourse14Class",
+              "sha256": "7be24c6e0fed55714cadfa0735baabe2c4132df430ed4a70ea5971cf785ac065"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse14Starter.aia",
+              "url": "static/teaching/projects/YXCourse14Starter.aia",
+              "projectName": "YXCourse14Starter",
+              "sha256": "bbbe52ce7a2af8bfb56e344b45cbd9a34e7c9054297fe06f04cbe986df5605b6"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson14-Slides.pptx",
+              "url": "static/teaching/materials/Lesson14-Slides.pptx",
+              "sha256": "c456d8613afb4ee4943c93551a9972320d6c4389a4506fdf1cc06afeba9eaa7c"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson14-Materials.zip",
+              "url": "static/teaching/materials/Lesson14-Materials.zip",
+              "sha256": "4ee642b25ed82c73a8cc19b88e6e14d1990a2f91b30880bc6c3e298b4f99f414"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "name": "第三阶段：绘画、动画与游戏创作",
+      "title": "绘画、动画与游戏创作",
+      "start": 15,
+      "end": 22,
+      "focus": "坐标 · 动画 · 碰撞 · 规则",
+      "lessons": [
+        {
+          "id": 15,
+          "title": "手机涂鸦板",
+          "name": "No.15手机涂鸦板",
+          "summary": "Canvas、触摸与拖动事件、颜色和线宽",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse15.aia",
+              "url": "static/teaching/projects/YXCourse15.aia",
+              "projectName": "YXCourse15",
+              "sha256": "b145ab531e799a90009a8cbb93f0c7a8cc50bbd3010f6cc94c2e5565b044fd54"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse15Class.aia",
+              "url": "static/teaching/projects/YXCourse15Class.aia",
+              "projectName": "YXCourse15Class",
+              "sha256": "ea4f3edde0a58b1c08fcab20663ea67f14034dac030d9099ebfef3bd65f63496"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse15Starter.aia",
+              "url": "static/teaching/projects/YXCourse15Starter.aia",
+              "projectName": "YXCourse15Starter",
+              "sha256": "22f4c6d6ad6c222c8b2e629117062173cec7dd05e68dfb7dd7d83f171c3c22ca"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson15-Slides.pptx",
+              "url": "static/teaching/materials/Lesson15-Slides.pptx",
+              "sha256": "461bea0e53d8e193573d59861b1494c71aaf6f8826425293608bd1d30e551643"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson15-Materials.zip",
+              "url": "static/teaching/materials/Lesson15-Materials.zip",
+              "sha256": "0d340477b36c3fb411f1b0a3918fd5676458f82811143895d5517e095cd8f1a1"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "title": "用程序画出图案",
+          "name": "No.16用程序画出图案",
+          "summary": "坐标、循环与过程，绘制几何图形和规律图案",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse16.aia",
+              "url": "static/teaching/projects/YXCourse16.aia",
+              "projectName": "YXCourse16",
+              "sha256": "a99e5fd6e4c00ccdb7b891b26bf94ab336b5af41376f5994835ca225519f417c"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse16Class.aia",
+              "url": "static/teaching/projects/YXCourse16Class.aia",
+              "projectName": "YXCourse16Class",
+              "sha256": "f1424bf365c27264c274d8f5a1333db112487491ba2ef09dab0b20072e5a855b"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse16Starter.aia",
+              "url": "static/teaching/projects/YXCourse16Starter.aia",
+              "projectName": "YXCourse16Starter",
+              "sha256": "3e3e3ebe31f89b906ca7efd8827b270965fa7dd1d6f76995fcb032dbadf42b52"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson16-Slides.pptx",
+              "url": "static/teaching/materials/Lesson16-Slides.pptx",
+              "sha256": "dbc384216ebd9a065352845b67cde26e2d2d3e71dcb763bea0fb02be4e8b08ff"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson16-Materials.zip",
+              "url": "static/teaching/materials/Lesson16-Materials.zip",
+              "sha256": "9649a2f0852f613b0e4d44f8693ce7e16a9bec52d51f8b21b222d7fd01bb1787"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "title": "让角色动起来",
+          "name": "No.17让角色动起来",
+          "summary": "Ball、ImageSprite、位置、方向与速度",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse17.aia",
+              "url": "static/teaching/projects/YXCourse17.aia",
+              "projectName": "YXCourse17",
+              "sha256": "0ae4a746dc963ecf2bc99c0aff925d59c06530ca3981c621459749fe1280b8b9"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse17Class.aia",
+              "url": "static/teaching/projects/YXCourse17Class.aia",
+              "projectName": "YXCourse17Class",
+              "sha256": "50bce58ecae322d0042f3f6622919fe3fbb76fe382e1c23637652131f714fceb"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse17Starter.aia",
+              "url": "static/teaching/projects/YXCourse17Starter.aia",
+              "projectName": "YXCourse17Starter",
+              "sha256": "b069e9f95b5a8c150d0a49ecda80849f4c4f2baa00e8e0b22b9d5a8bfb973c30"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson17-Slides.pptx",
+              "url": "static/teaching/materials/Lesson17-Slides.pptx",
+              "sha256": "9084e7454d682674a84692983524ce20525c1354446c5484cb53bc7cce28151c"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson17-Materials.zip",
+              "url": "static/teaching/materials/Lesson17-Materials.zip",
+              "sha256": "61dc0a50b2e5869ae5488149bc4833f0c99a531b618437bf00eb0bfa5b4a81ce"
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "title": "弹球与碰撞",
+          "name": "No.18弹球与碰撞",
+          "summary": "边界反弹、碰撞检测、计时与得分",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse18.aia",
+              "url": "static/teaching/projects/YXCourse18.aia",
+              "projectName": "YXCourse18",
+              "sha256": "e27af3df165cd479b9e9bcb96f77d4ca4a285e1cb96dfee94e0b0a8d2afe7a48"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse18Class.aia",
+              "url": "static/teaching/projects/YXCourse18Class.aia",
+              "projectName": "YXCourse18Class",
+              "sha256": "b7a22646fa1af10f3c3631637dc0112313a443bb172023430d592d5088192ee7"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse18Starter.aia",
+              "url": "static/teaching/projects/YXCourse18Starter.aia",
+              "projectName": "YXCourse18Starter",
+              "sha256": "fd5b7e45b6c1959cd3023930841ed34f65449a9312f036bdc585aaadf250867f"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson18-Slides.pptx",
+              "url": "static/teaching/materials/Lesson18-Slides.pptx",
+              "sha256": "494e8df8392bd025fb28b3df67fc2375f1800be4fa5dfb30954c978ecb22a45a"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson18-Materials.zip",
+              "url": "static/teaching/materials/Lesson18-Materials.zip",
+              "sha256": "8672849a21c218f7a2f90837791f9c80bbc30ed9fb18803178f0cca846382638"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "title": "接物游戏：基本玩法",
+          "name": "No.19接物游戏：基本玩法",
+          "summary": "随机位置、角色控制、物体下落与接取判断",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整基本玩法：随机出现、接取计分、暂停和重置。",
+              "file": "CatchApple19.aia",
+              "url": "static/teaching/projects/CatchApple19.aia",
+              "projectName": "YXTeach19Answer",
+              "sha256": "c88bf6fe429278535ddc87cf95001f1fc5b09f186d5783099164a390baaeff79"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "界面与辅助过程已准备好，动手完成四个核心任务。",
+              "file": "CatchApple19Class.aia",
+              "url": "static/teaching/projects/CatchApple19Class.aia",
+              "projectName": "YXTeach19Class",
+              "sha256": "6b4bac02e484cd877e00b2fee10b25539c930fde0013d79181dff4005c0b1911"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "只含界面和素材，适合独立重建完整游戏。",
+              "file": "CatchApple19Starter.aia",
+              "url": "static/teaching/projects/CatchApple19Starter.aia",
+              "projectName": "YXTeach19Starter",
+              "sha256": "e2d9cefff160ed19e7ca57f75101b3bf8a1e47717872074814a67fb651b46032"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson19-Slides.pptx",
+              "url": "static/teaching/materials/Lesson19-Slides.pptx",
+              "sha256": "727cf681424a26d3ce541eb513893d49400a31e966ee975926c4acc3e615ba3b"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson19-Materials.zip",
+              "url": "static/teaching/materials/Lesson19-Materials.zip",
+              "sha256": "ba71e365a3ff603a5fbbab9dc9f712c64e1df5c56f1cd652bbc9bb23724ef3c2"
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "title": "接物游戏：完善规则",
+          "name": "No.20接物游戏：完善规则",
+          "summary": "生命值、难度变化、开始暂停与结束状态",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse20.aia",
+              "url": "static/teaching/projects/YXCourse20.aia",
+              "projectName": "YXCourse20",
+              "sha256": "c247863aec3a78ac25faf2e121025fe951c776559b7f256e8da0050a641dd725"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse20Class.aia",
+              "url": "static/teaching/projects/YXCourse20Class.aia",
+              "projectName": "YXCourse20Class",
+              "sha256": "775f35f195466d6144695965e4f004c23f3eab25800ff9b6baed252bca351521"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse20Starter.aia",
+              "url": "static/teaching/projects/YXCourse20Starter.aia",
+              "projectName": "YXCourse20Starter",
+              "sha256": "74e802217af08201788504f7216d39e1146b16cfd8a505da4b7fbbea7953275d"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson20-Slides.pptx",
+              "url": "static/teaching/materials/Lesson20-Slides.pptx",
+              "sha256": "edb1cf715b5fbdfb51c5a16c0fe7c43de5929b10a6ab375f57cdf89901c3700f"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson20-Materials.zip",
+              "url": "static/teaching/materials/Lesson20-Materials.zip",
+              "sha256": "d473f04a6a0a394f6d3cd8b981014bd19178ca9ff829957f63e34f1a93cf34e4"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "title": "可以选择结局的故事",
+          "name": "No.21可以选择结局的故事",
+          "summary": "场景状态、分支选择、图片与声音协作",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse21.aia",
+              "url": "static/teaching/projects/YXCourse21.aia",
+              "projectName": "YXCourse21",
+              "sha256": "29bbb0f6f76f63da6f07d61544e5f0aed2c15ae03462bd64371f2a4d058fed58"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse21Class.aia",
+              "url": "static/teaching/projects/YXCourse21Class.aia",
+              "projectName": "YXCourse21Class",
+              "sha256": "62e2a52968abddf6104e9d13cdd9581f6edda94c82ab7291d58c4336756b1603"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse21Starter.aia",
+              "url": "static/teaching/projects/YXCourse21Starter.aia",
+              "projectName": "YXCourse21Starter",
+              "sha256": "d9f6ab8985eeb965727647cbeb56cd668d8dcd34b1fb64ccc3dc2ccd0f6eb183"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson21-Slides.pptx",
+              "url": "static/teaching/materials/Lesson21-Slides.pptx",
+              "sha256": "35927b16c1938111d4da1bf59f86203b661c070d0ffaf29dabe20ca4b7b4c4b2"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson21-Materials.zip",
+              "url": "static/teaching/materials/Lesson21-Materials.zip",
+              "sha256": "00a56e8579f0e35bb6330da873fb51ba9d7b2c8966c3f6b6f10cce31c5c238fa"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "title": "我的原创小游戏或故事",
+          "name": "No.22我的原创小游戏或故事",
+          "summary": "自选主题、改编规则、同伴试玩与作品迭代",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse22.aia",
+              "url": "static/teaching/projects/YXCourse22.aia",
+              "projectName": "YXCourse22",
+              "sha256": "d1cdb57ac5ee721f718ba164e48b96da2665b912953a5f4c240a1ab0647b808a"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse22Class.aia",
+              "url": "static/teaching/projects/YXCourse22Class.aia",
+              "projectName": "YXCourse22Class",
+              "sha256": "66d33b536dd5fba2eb3465afbf949e7a71853e92c9778ddf34df55d618edc75a"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse22Starter.aia",
+              "url": "static/teaching/projects/YXCourse22Starter.aia",
+              "projectName": "YXCourse22Starter",
+              "sha256": "89b58697b803dabe089a2f89005ba9a66ad84eb04ea713af8758e3ca452aa90f"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson22-Slides.pptx",
+              "url": "static/teaching/materials/Lesson22-Slides.pptx",
+              "sha256": "a41bf4f6318234a0ee5b7e6d721e518a5fb923952962ba8cee7fe98f9f9d3582"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson22-Materials.zip",
+              "url": "static/teaching/materials/Lesson22-Materials.zip",
+              "sha256": "04d1cceab935dee2d774b3621ee2be5bd1257ec5c94eb9eccf36308e5f92a9d5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "name": "第四阶段：声音、影像与手机感知",
+      "title": "声音、影像与手机感知",
+      "start": 23,
+      "end": 28,
+      "focus": "声音 · 影像 · 手机传感器",
+      "lessons": [
+        {
+          "id": 23,
+          "title": "会说话的 APP",
+          "name": "No.23会说话的 APP",
+          "summary": "文本转语音、播报内容与交互设计，制作语音小助手",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse23.aia",
+              "url": "static/teaching/projects/YXCourse23.aia",
+              "projectName": "YXCourse23",
+              "sha256": "556bb401822a21a7a24c949d8e3bc9fcc03a306435b73ede1da733e176eacaa1"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse23Class.aia",
+              "url": "static/teaching/projects/YXCourse23Class.aia",
+              "projectName": "YXCourse23Class",
+              "sha256": "3584cdeedda7257960e3ef13a089b644729b233ac90aad0db53d847be0dff11d"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse23Starter.aia",
+              "url": "static/teaching/projects/YXCourse23Starter.aia",
+              "projectName": "YXCourse23Starter",
+              "sha256": "9653be4986b42a9b0f03f2a51896ce01df7bbcdb38513d3c111c1dcc29e29dec"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson23-Slides.pptx",
+              "url": "static/teaching/materials/Lesson23-Slides.pptx",
+              "sha256": "a45ab3d7c44e989a9e993eb5e02a1e9fdf2efbff3a46507eab647b5f76f2b875"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson23-Materials.zip",
+              "url": "static/teaching/materials/Lesson23-Materials.zip",
+              "sha256": "628cef849728951bc08e6cf657384e6bc2cb41eaa42d4762f78f7397222257bd"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "title": "我的声音工作室",
+          "name": "No.24我的声音工作室",
+          "summary": "录音、播放、音频资源与权限，制作声音留言工具",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse24.aia",
+              "url": "static/teaching/projects/YXCourse24.aia",
+              "projectName": "YXCourse24",
+              "sha256": "3632595cbcbefe2664f94eaf4db1b9256c1ed63c12b02a1361ae27435c6437ab"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse24Class.aia",
+              "url": "static/teaching/projects/YXCourse24Class.aia",
+              "projectName": "YXCourse24Class",
+              "sha256": "452296a7ac6d13cb415aec093ead888c65ac12fc4d5876e2537ea799e2be9169"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse24Starter.aia",
+              "url": "static/teaching/projects/YXCourse24Starter.aia",
+              "projectName": "YXCourse24Starter",
+              "sha256": "bdead802485fb49746c7304abb1fe8b157e443cfdc7bba09221a0248013a15d5"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson24-Slides.pptx",
+              "url": "static/teaching/materials/Lesson24-Slides.pptx",
+              "sha256": "f3dd69999138953df26879a139ec24201abb3e87a596210c29881ea7b860af24"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson24-Materials.zip",
+              "url": "static/teaching/materials/Lesson24-Materials.zip",
+              "sha256": "f5ed9df409e761115f0c77aa5407c657f94a4ac9371156f61e3d8bb057ab0584"
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "title": "拍照与图片创作",
+          "name": "No.25拍照与图片创作",
+          "summary": "相机、图片选择、图片显示，制作照片介绍应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse25.aia",
+              "url": "static/teaching/projects/YXCourse25.aia",
+              "projectName": "YXCourse25",
+              "sha256": "b9d12ab9078cb7fae5e98af3513e0f4afb773886ecd92687dc97f1845c203180"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse25Class.aia",
+              "url": "static/teaching/projects/YXCourse25Class.aia",
+              "projectName": "YXCourse25Class",
+              "sha256": "4bd9da2076133f54a040d010b1adb535b8434e187a9ccadfb447def54f438d86"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse25Starter.aia",
+              "url": "static/teaching/projects/YXCourse25Starter.aia",
+              "projectName": "YXCourse25Starter",
+              "sha256": "d8c3afa8619c124f5e9002d27878aa6361d1542ee5e7ab398859c29e3fb3b181"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson25-Slides.pptx",
+              "url": "static/teaching/materials/Lesson25-Slides.pptx",
+              "sha256": "d1a44f85c78f521faed113f443f837929dfb8d6785f7161be465fa7d566e1a50"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson25-Materials.zip",
+              "url": "static/teaching/materials/Lesson25-Materials.zip",
+              "sha256": "cc4f6f9190865b318ea696235eb5ec4d39214914f70cfd9480816fe4f47b1e45"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "title": "摇一摇，触发新玩法",
+          "name": "No.26摇一摇，触发新玩法",
+          "summary": "加速度传感器、摇动事件、随机反馈，制作摇摇骰子",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse26.aia",
+              "url": "static/teaching/projects/YXCourse26.aia",
+              "projectName": "YXCourse26",
+              "sha256": "342aa6d66ecf6837544bb6e5d62cacbe910fbcee8b62ce5ac887c572c74a5871"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse26Class.aia",
+              "url": "static/teaching/projects/YXCourse26Class.aia",
+              "projectName": "YXCourse26Class",
+              "sha256": "982c29a6467662d2f95ed1261246212304447509c26f104b4e57061ae7539ae7"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse26Starter.aia",
+              "url": "static/teaching/projects/YXCourse26Starter.aia",
+              "projectName": "YXCourse26Starter",
+              "sha256": "e4df6dffce00ce6897b2b69ca38e45a98ce368f8b481a3d68d0cb8c8dfe31b20"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson26-Slides.pptx",
+              "url": "static/teaching/materials/Lesson26-Slides.pptx",
+              "sha256": "a73c4123d4d7430934a7771ac6ae1b1fc86d0cef5e5e3318413b753db229cabd"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson26-Materials.zip",
+              "url": "static/teaching/materials/Lesson26-Materials.zip",
+              "sha256": "1e7ef9b6c7da223394f8f94ea3050c148410d6ed0b690d2343b1039dbe0ca29f"
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "title": "倾斜手机控制角色",
+          "name": "No.27倾斜手机控制角色",
+          "summary": "方向传感器、数值映射，制作重力迷宫",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse27.aia",
+              "url": "static/teaching/projects/YXCourse27.aia",
+              "projectName": "YXCourse27",
+              "sha256": "b7c347fe456ca54970c454fa0db6b52397e38af43bd37cc6a05166ccb7e3b62d"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse27Class.aia",
+              "url": "static/teaching/projects/YXCourse27Class.aia",
+              "projectName": "YXCourse27Class",
+              "sha256": "cc190d1677a1fa7e8f68e584c85b888d1ac8fcedcfc58a4772fb277324c4b1ed"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse27Starter.aia",
+              "url": "static/teaching/projects/YXCourse27Starter.aia",
+              "projectName": "YXCourse27Starter",
+              "sha256": "493058bd1cc7df91c24b436bb416d19995f13dbdf444a5d8b5f252e201983a73"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson27-Slides.pptx",
+              "url": "static/teaching/materials/Lesson27-Slides.pptx",
+              "sha256": "35a1c70ddde1596386ae97cb25eec233a2255a8f70c6e32dfa874bd8c1b964ff"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson27-Materials.zip",
+              "url": "static/teaching/materials/Lesson27-Materials.zip",
+              "sha256": "67115cff1192ce641374ed2db7fd5b1e2d5ec6330de4a66ac408d13a6756dc19"
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "title": "手机知道我在哪里",
+          "name": "No.28手机知道我在哪里",
+          "summary": "位置数据、经纬度、方向与状态提示，制作位置观察工具",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse28.aia",
+              "url": "static/teaching/projects/YXCourse28.aia",
+              "projectName": "YXCourse28",
+              "sha256": "1d6bd5403b6cdd608aba0baf12e4183f8f6ea0025a8e10684f561248f9b44a3a"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse28Class.aia",
+              "url": "static/teaching/projects/YXCourse28Class.aia",
+              "projectName": "YXCourse28Class",
+              "sha256": "87f7afbc7936759f135b0f48daaa9640641905cb83cfb837dbdaefc0b1394a87"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse28Starter.aia",
+              "url": "static/teaching/projects/YXCourse28Starter.aia",
+              "projectName": "YXCourse28Starter",
+              "sha256": "7ebbc5360b861d971f75b8f9505987ae55a05dbebafd4a06db00526157f31a54"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson28-Slides.pptx",
+              "url": "static/teaching/materials/Lesson28-Slides.pptx",
+              "sha256": "2852637cd5532d67eba9f17c5de47e3ba6ba1125ec3ec5145acaaf3de9bed323"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson28-Materials.zip",
+              "url": "static/teaching/materials/Lesson28-Materials.zip",
+              "sha256": "81cdefc72de6fe7cad5dfe2b2b0b21c9a7c09560ed7a8d16985ae3861feabe73"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "name": "第五阶段：列表、数据与生活工具",
+      "title": "列表、数据与生活工具",
+      "start": 29,
+      "end": 36,
+      "focus": "列表 · 字典 · 本地保存",
+      "lessons": [
+        {
+          "id": 29,
+          "title": "用列表管理信息",
+          "name": "No.29用列表管理信息",
+          "summary": "列表创建、读取与显示，制作购物清单",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse29.aia",
+              "url": "static/teaching/projects/YXCourse29.aia",
+              "projectName": "YXCourse29",
+              "sha256": "6bb6f0059556a8d891c3185382aea5a4dffd8f40d7b7ab9f131c85491f73e26f"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse29Class.aia",
+              "url": "static/teaching/projects/YXCourse29Class.aia",
+              "projectName": "YXCourse29Class",
+              "sha256": "89598e16bee620ef55c23acc77503e77f419ef2cbb311f590a7d3a45477a998e"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse29Starter.aia",
+              "url": "static/teaching/projects/YXCourse29Starter.aia",
+              "projectName": "YXCourse29Starter",
+              "sha256": "dff38be32ea201c3f92d574d5bd2bc61c09fcb08f6f4cb0ddbd36c7d9cbb0277"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson29-Slides.pptx",
+              "url": "static/teaching/materials/Lesson29-Slides.pptx",
+              "sha256": "4c61b5cefdbaf2383c232ffe69dbca18155741f400cdffd052fc5ccf483daf4c"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson29-Materials.zip",
+              "url": "static/teaching/materials/Lesson29-Materials.zip",
+              "sha256": "4eeeaee702301c02ddcd1ceead297bc412c095964b8fddb11aca6c9f33e498d1"
+            }
+          ]
+        },
+        {
+          "id": 30,
+          "title": "信息的增加、修改与删除",
+          "name": "No.30信息的增加、修改与删除",
+          "summary": "列表操作、选中项与输入校验，制作待办事项",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse30.aia",
+              "url": "static/teaching/projects/YXCourse30.aia",
+              "projectName": "YXCourse30",
+              "sha256": "30d7301fd060fb70fca382939885a6aa1338f50b7d3fe596f1b10ef299144f43"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse30Class.aia",
+              "url": "static/teaching/projects/YXCourse30Class.aia",
+              "projectName": "YXCourse30Class",
+              "sha256": "8e44310930921d2154cddb72242e20f600bf87ad403d13f089ceba3149309c9e"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse30Starter.aia",
+              "url": "static/teaching/projects/YXCourse30Starter.aia",
+              "projectName": "YXCourse30Starter",
+              "sha256": "8248c0052e1de5c01b9f75abba6445e584c5c63839b87600596ba65c1bc2fb84"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson30-Slides.pptx",
+              "url": "static/teaching/materials/Lesson30-Slides.pptx",
+              "sha256": "5e25bc47aeab49c280a6928baf4ce5bae022d081630c938970f8a6bbd712c8ff"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson30-Materials.zip",
+              "url": "static/teaching/materials/Lesson30-Materials.zip",
+              "sha256": "366907d070b281c8dde4e500b6f6d64829d69658f474ffcd14ea896b03bfbc77"
+            }
+          ]
+        },
+        {
+          "id": 31,
+          "title": "让题目组成一个题库",
+          "name": "No.31让题目组成一个题库",
+          "summary": "列表组织、随机抽题、答案判断与得分统计",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse31.aia",
+              "url": "static/teaching/projects/YXCourse31.aia",
+              "projectName": "YXCourse31",
+              "sha256": "5bcc596bc7ab0fa1f52778a7bd5a079668b0181724d5b5d794a38e71b3c70fbe"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse31Class.aia",
+              "url": "static/teaching/projects/YXCourse31Class.aia",
+              "projectName": "YXCourse31Class",
+              "sha256": "9e839eb00f0311071076e026bc2ba8a96bd72ae97c96bb8f918aa3251a057ebe"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse31Starter.aia",
+              "url": "static/teaching/projects/YXCourse31Starter.aia",
+              "projectName": "YXCourse31Starter",
+              "sha256": "93f110f7d17d90b70c5d9a56e4ff4e714beacc6aaa67ef332333cb7e1110c04c"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson31-Slides.pptx",
+              "url": "static/teaching/materials/Lesson31-Slides.pptx",
+              "sha256": "5091c7d0ec3aa2994c8e7b474a15a347b347240c8f8822ea3a43d7c19dee4d7b"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson31-Materials.zip",
+              "url": "static/teaching/materials/Lesson31-Materials.zip",
+              "sha256": "d1489f865eb5cb30d88095a004abed33d055e0987a5331ffba0c179234888795"
+            }
+          ]
+        },
+        {
+          "id": 32,
+          "title": "用字典描述一条记录",
+          "name": "No.32用字典描述一条记录",
+          "summary": "键值对应、结构化数据，制作卡片式信息管理应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse32.aia",
+              "url": "static/teaching/projects/YXCourse32.aia",
+              "projectName": "YXCourse32",
+              "sha256": "7fbb7bd8037b155ebdd7bcc2d318fe9b4f33425d4071206e4c7d460e82ea7636"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse32Class.aia",
+              "url": "static/teaching/projects/YXCourse32Class.aia",
+              "projectName": "YXCourse32Class",
+              "sha256": "5df4f2b3c090ab7e71867cd026d36ad7e4506cccb2c7a91bb7ede93c72e98f4c"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse32Starter.aia",
+              "url": "static/teaching/projects/YXCourse32Starter.aia",
+              "projectName": "YXCourse32Starter",
+              "sha256": "b144060edddab880661f931d81b70f12a70b1670da22745752b34ef28a84e624"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson32-Slides.pptx",
+              "url": "static/teaching/materials/Lesson32-Slides.pptx",
+              "sha256": "f3865e8cc94c2d2c77571c140ebaea04b65e0f447e9879e4d218d5d763b0d460"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson32-Materials.zip",
+              "url": "static/teaching/materials/Lesson32-Materials.zip",
+              "sha256": "ecc3cb4ed98328f2812fb30a9030e9630dc451a0873182e20efba090d43549eb"
+            }
+          ]
+        },
+        {
+          "id": 33,
+          "title": "关闭 APP 后还能记住",
+          "name": "No.33关闭 APP 后还能记住",
+          "summary": "TinyDB、本地持久化、默认设置与历史记录",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse33.aia",
+              "url": "static/teaching/projects/YXCourse33.aia",
+              "projectName": "YXCourse33",
+              "sha256": "32a7e608b7bfe59d229545a8402039bfbe9cf76f7dda5d4a503d22d83dd217c4"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse33Class.aia",
+              "url": "static/teaching/projects/YXCourse33Class.aia",
+              "projectName": "YXCourse33Class",
+              "sha256": "9def9c0ba05161a78d379fcbed690a40b5d8921b56a2081addbde1d2d29d53df"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse33Starter.aia",
+              "url": "static/teaching/projects/YXCourse33Starter.aia",
+              "projectName": "YXCourse33Starter",
+              "sha256": "aba3775c10e1f55a478900a62141a99b632903771065bafa1ac906e5d0d76c30"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson33-Slides.pptx",
+              "url": "static/teaching/materials/Lesson33-Slides.pptx",
+              "sha256": "f68c7b72e096be8a3a51a3f595abf5aad092b4208cbaa4f16b8dd7a2f8e85cd2"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson33-Materials.zip",
+              "url": "static/teaching/materials/Lesson33-Materials.zip",
+              "sha256": "e43ef7a822219a0ff726c1469e0cf706df09805f60262faa677723ee446fd1b7"
+            }
+          ]
+        },
+        {
+          "id": 34,
+          "title": "找到我需要的信息",
+          "name": "No.34找到我需要的信息",
+          "summary": "遍历、查找、筛选与空结果提示",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse34.aia",
+              "url": "static/teaching/projects/YXCourse34.aia",
+              "projectName": "YXCourse34",
+              "sha256": "31f2cbac080b030af1caf5eabd252f66fa6a3bac6d93598d7b710cbe4ed5363f"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse34Class.aia",
+              "url": "static/teaching/projects/YXCourse34Class.aia",
+              "projectName": "YXCourse34Class",
+              "sha256": "7e808d3b2b2cdfef956fd573d020e96c0a8d1329613275a560946bad286087ff"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse34Starter.aia",
+              "url": "static/teaching/projects/YXCourse34Starter.aia",
+              "projectName": "YXCourse34Starter",
+              "sha256": "dc430aacb51450eae54239daa27e3fd969a6fb1280aa482f2671a4ae57ac03de"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson34-Slides.pptx",
+              "url": "static/teaching/materials/Lesson34-Slides.pptx",
+              "sha256": "45b569e6df10818399b13cbbc53dcafebd90d7c823d6e3ecd44605624fd649d6"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson34-Materials.zip",
+              "url": "static/teaching/materials/Lesson34-Materials.zip",
+              "sha256": "b35d3b16c95a3757b29681247e1ee504036de80b18c2f3c64348c8d457fac481"
+            }
+          ]
+        },
+        {
+          "id": 35,
+          "title": "数据导入、导出与分享",
+          "name": "No.35数据导入、导出与分享",
+          "summary": "文件读写、CSV 基础、备份与分享",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse35.aia",
+              "url": "static/teaching/projects/YXCourse35.aia",
+              "projectName": "YXCourse35",
+              "sha256": "41a0f19ad1271ca64c98a12282f24be4347ee6b6f603bf3de1cb4937eff5adae"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse35Class.aia",
+              "url": "static/teaching/projects/YXCourse35Class.aia",
+              "projectName": "YXCourse35Class",
+              "sha256": "aa20521c22e6f95bb0a4941c3a336372aba7db03b15322ed841be3e598f2c71a"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse35Starter.aia",
+              "url": "static/teaching/projects/YXCourse35Starter.aia",
+              "projectName": "YXCourse35Starter",
+              "sha256": "a31d99b4deaa4ad2b78d217c630a2f2fa7dcba4b8b936e84bcb6eb4a13bfb565"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson35-Slides.pptx",
+              "url": "static/teaching/materials/Lesson35-Slides.pptx",
+              "sha256": "d4474646b96db67683f6f57bf310163bd6b7c36dc290077322e42092c265fac3"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson35-Materials.zip",
+              "url": "static/teaching/materials/Lesson35-Materials.zip",
+              "sha256": "2bc3334d6681627d3ba9fe5accddfc2fb9f25d543b431d908e0b800d6a092940"
+            }
+          ]
+        },
+        {
+          "id": 36,
+          "title": "让数据讲故事",
+          "name": "No.36让数据讲故事",
+          "summary": "简单统计与图表展示，完成阅读记录或生活记账应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse36.aia",
+              "url": "static/teaching/projects/YXCourse36.aia",
+              "projectName": "YXCourse36",
+              "sha256": "2500a9a423d4ddf239d889dcd2354a2fd5941dd48387d13b328c7ba3e59f2294"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse36Class.aia",
+              "url": "static/teaching/projects/YXCourse36Class.aia",
+              "projectName": "YXCourse36Class",
+              "sha256": "f52d0bad0374708da3f31439a5c1301eed04fd349994296d561739a00a84c89b"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse36Starter.aia",
+              "url": "static/teaching/projects/YXCourse36Starter.aia",
+              "projectName": "YXCourse36Starter",
+              "sha256": "3a8600574683af0b1d10f3bce58c34abcd94ef886f080f97fd5d2cee99725c78"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson36-Slides.pptx",
+              "url": "static/teaching/materials/Lesson36-Slides.pptx",
+              "sha256": "35e8691848695e935aed9fc82ec323f66282eda368fd757e12c02c0ba022a1fd"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson36-Materials.zip",
+              "url": "static/teaching/materials/Lesson36-Materials.zip",
+              "sha256": "f90d2cc2d8a80deb283965b1605de229ec87d82411c1ef3690e27231b73c3a52"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "name": "第六阶段：网络服务与协作应用",
+      "title": "网络服务与协作应用",
+      "start": 37,
+      "end": 42,
+      "focus": "Web · JSON · 数据共享",
+      "lessons": [
+        {
+          "id": 37,
+          "title": "APP 如何访问网络",
+          "name": "No.37APP 如何访问网络",
+          "summary": "Web 组件、请求与响应、状态码，获取一条网络信息",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse37.aia",
+              "url": "static/teaching/projects/YXCourse37.aia",
+              "projectName": "YXCourse37",
+              "sha256": "2067991b864a6c2bda0b882f99dcdb752869a39611009ced949e5873e94fe6cb"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse37Class.aia",
+              "url": "static/teaching/projects/YXCourse37Class.aia",
+              "projectName": "YXCourse37Class",
+              "sha256": "6af7a1f4d8979bb35dce65dc0647cfd02ae4aaf6d5c62c8e4384dd90027c106d"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse37Starter.aia",
+              "url": "static/teaching/projects/YXCourse37Starter.aia",
+              "projectName": "YXCourse37Starter",
+              "sha256": "4259e04cbb8cea4e519d18863cd408b44380d1354e34d4332d2e273cc806b67a"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson37-Slides.pptx",
+              "url": "static/teaching/materials/Lesson37-Slides.pptx",
+              "sha256": "c88b1e7292ead7b3fd84d279e4e72f6b2d212534c2414a8b60ab118530194acf"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson37-Materials.zip",
+              "url": "static/teaching/materials/Lesson37-Materials.zip",
+              "sha256": "a9638f60972ea83b5c4bbfe0324021f1121f2631977969e7269ded25ff562968"
+            }
+          ]
+        },
+        {
+          "id": 38,
+          "title": "读懂 JSON 数据",
+          "name": "No.38读懂 JSON 数据",
+          "summary": "字典与列表的组合，解析并展示结构化信息",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse38.aia",
+              "url": "static/teaching/projects/YXCourse38.aia",
+              "projectName": "YXCourse38",
+              "sha256": "4d2d1cca09ffb1746d2e0240fd37a6b8fdee204232d60bbd1dc9d7bb07d9b919"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse38Class.aia",
+              "url": "static/teaching/projects/YXCourse38Class.aia",
+              "projectName": "YXCourse38Class",
+              "sha256": "a3a8633df57fb416ca88762178e2632f0e20e31b182b79fd6945e77e551796c9"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse38Starter.aia",
+              "url": "static/teaching/projects/YXCourse38Starter.aia",
+              "projectName": "YXCourse38Starter",
+              "sha256": "6f7af5960d5826c3b35ebbfe1801a8bb4c65f9bf78ffaa497ef036bfe17bbbaa"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson38-Slides.pptx",
+              "url": "static/teaching/materials/Lesson38-Slides.pptx",
+              "sha256": "7cb544ccff4c9a38de604dc3db2eeddfdcd6ccd3ef6ca1ae04853e69f7283768"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson38-Materials.zip",
+              "url": "static/teaching/materials/Lesson38-Materials.zip",
+              "sha256": "1d597cd961044ea847684a27ed72f1ccecba67f2209ad66a226d932004be3c63"
+            }
+          ]
+        },
+        {
+          "id": 39,
+          "title": "制作信息查询工具",
+          "name": "No.39制作信息查询工具",
+          "summary": "输入参数、发送查询、整理结果与界面反馈",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse39.aia",
+              "url": "static/teaching/projects/YXCourse39.aia",
+              "projectName": "YXCourse39",
+              "sha256": "34707b7fc7f9fac1ba4906b1282f0ee7c3179f30fb3ddf36b7df3564bd8f94f4"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse39Class.aia",
+              "url": "static/teaching/projects/YXCourse39Class.aia",
+              "projectName": "YXCourse39Class",
+              "sha256": "87cbffc1554d93fd2f206acde12df871a9d0114dd1a17472896f8f98e310da02"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse39Starter.aia",
+              "url": "static/teaching/projects/YXCourse39Starter.aia",
+              "projectName": "YXCourse39Starter",
+              "sha256": "4b39af20b0b73656f59408439f8a35d28d9565275c47f4eaa2f1e367449e2a3f"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson39-Slides.pptx",
+              "url": "static/teaching/materials/Lesson39-Slides.pptx",
+              "sha256": "e7947744b738a31261afea751668ba0e96986523b3b716c3cddaebb3bbeb3d90"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson39-Materials.zip",
+              "url": "static/teaching/materials/Lesson39-Materials.zip",
+              "sha256": "c5624f4e0a7834715bd560470eb1654ed3ad643a4881028a4e5ac1a831db81ac"
+            }
+          ]
+        },
+        {
+          "id": 40,
+          "title": "把数据提交出去",
+          "name": "No.40把数据提交出去",
+          "summary": "表单、POST 请求、输入校验，制作意见反馈应用",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse40.aia",
+              "url": "static/teaching/projects/YXCourse40.aia",
+              "projectName": "YXCourse40",
+              "sha256": "35109e7e69d0cf5f2a107e4fcb950188c628740a7de1ef2bbb29f3efd71f8854"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse40Class.aia",
+              "url": "static/teaching/projects/YXCourse40Class.aia",
+              "projectName": "YXCourse40Class",
+              "sha256": "1c9b7b219632835e56f514e3a0663a60009a1a48c1eeb2cb9793f89cd934006e"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse40Starter.aia",
+              "url": "static/teaching/projects/YXCourse40Starter.aia",
+              "projectName": "YXCourse40Starter",
+              "sha256": "66a5fee97c4f1de20b5fb2cb617f5ccf7f46295adbc346ca772fa2fc4d36585f"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson40-Slides.pptx",
+              "url": "static/teaching/materials/Lesson40-Slides.pptx",
+              "sha256": "e3cf7172602418d08d3006410415f648225af7b752617694d65eae061d07bfdf"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson40-Materials.zip",
+              "url": "static/teaching/materials/Lesson40-Materials.zip",
+              "sha256": "5bbf4f2b274e63fa99623e897badb6b73e79138766c881d445d3d9ed57b1f1af"
+            }
+          ]
+        },
+        {
+          "id": 41,
+          "title": "多个用户共享信息",
+          "name": "No.41多个用户共享信息",
+          "summary": "使用教学接口读写共享数据，制作简易留言板",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse41.aia",
+              "url": "static/teaching/projects/YXCourse41.aia",
+              "projectName": "YXCourse41",
+              "sha256": "ff9001012b5bdbde2a645d09d0d6646f7a78c9a7eb1e73fcb86a6beb0eed98a4"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse41Class.aia",
+              "url": "static/teaching/projects/YXCourse41Class.aia",
+              "projectName": "YXCourse41Class",
+              "sha256": "067f10d98496cbbbec1cb0da7ab3d9909cf09333c4e1ff1afa3e39b0f4022546"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse41Starter.aia",
+              "url": "static/teaching/projects/YXCourse41Starter.aia",
+              "projectName": "YXCourse41Starter",
+              "sha256": "d44d40f15f24d038bc6763a423e74ac0618068ca805f98a08be094ca85d403a3"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson41-Slides.pptx",
+              "url": "static/teaching/materials/Lesson41-Slides.pptx",
+              "sha256": "ec3e2f51db13de5052d37aa74efd49ef365553105f7c9d0f47bb38ae05d37744"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson41-Materials.zip",
+              "url": "static/teaching/materials/Lesson41-Materials.zip",
+              "sha256": "bf4f6ce14c3d7d09818311d98411e858621b0d5d9f96bc1e027f5e97d12230fb"
+            }
+          ]
+        },
+        {
+          "id": 42,
+          "title": "完善一个网络应用",
+          "name": "No.42完善一个网络应用",
+          "summary": "加载状态、超时处理、本地缓存，完成班级信息台",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse42.aia",
+              "url": "static/teaching/projects/YXCourse42.aia",
+              "projectName": "YXCourse42",
+              "sha256": "3d46a8f8104385003b62e8707ba7a564cf1a0ef8d3575bb12e6b65e52fe8fc8b"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse42Class.aia",
+              "url": "static/teaching/projects/YXCourse42Class.aia",
+              "projectName": "YXCourse42Class",
+              "sha256": "9fe4cf0e802e002901a41e51e91750e39920825a8244eeea170b09a957011a30"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse42Starter.aia",
+              "url": "static/teaching/projects/YXCourse42Starter.aia",
+              "projectName": "YXCourse42Starter",
+              "sha256": "b74b44911ac740da9ddbe3cde45452aaacf215cf53e105d445634bb38add3f66"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson42-Slides.pptx",
+              "url": "static/teaching/materials/Lesson42-Slides.pptx",
+              "sha256": "f0d49957912a2ae4bd9fe8c17db6f961bdb7d1244946f824c9a3a77b91389127"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson42-Materials.zip",
+              "url": "static/teaching/materials/Lesson42-Materials.zip",
+              "sha256": "e893f4798a44bf170962b67ef8f4e6d6100b07f787d8aa97322efc3cde155c61"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "name": "第七阶段：ESP32 与物联网应用拓展",
+      "title": "ESP32 与物联网应用拓展",
+      "start": 43,
+      "end": 50,
+      "focus": "蓝牙 · BLE · Wi-Fi TCP",
+      "lessons": [
+        {
+          "id": 43,
+          "title": "认识设备与通信指令",
+          "name": "No.43认识设备与通信指令",
+          "summary": "ESP32 输入输出、串口观察、指令与应答格式",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse43.aia",
+              "url": "static/teaching/projects/YXCourse43.aia",
+              "projectName": "YXCourse43",
+              "sha256": "fe738d9f936f93d4aba3ce89792eb2768bfd1e680c7658fe1584608202d14428"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse43Class.aia",
+              "url": "static/teaching/projects/YXCourse43Class.aia",
+              "projectName": "YXCourse43Class",
+              "sha256": "2ea06ff6e563ddd5d847db189e22558aff8e4b18c58b45b65dafa49a40b2406f"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse43Starter.aia",
+              "url": "static/teaching/projects/YXCourse43Starter.aia",
+              "projectName": "YXCourse43Starter",
+              "sha256": "88873a8df8ec4520aad6967cf43ad7bee9ff6df3bb90f3436aadd05ce7ae2940"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson43-Slides.pptx",
+              "url": "static/teaching/materials/Lesson43-Slides.pptx",
+              "sha256": "3ffcf74db1cc7d01e7aa163f1a8a6725350aff4f1a3f2aa2842fd7d0fd6f6052"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson43-Materials.zip",
+              "url": "static/teaching/materials/Lesson43-Materials.zip",
+              "sha256": "e4db2083a9c334ffb1c1a12b7d87cf5618515389865706b87c6b8103b2d77a0a"
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "title": "蓝牙连接与设备控制",
+          "name": "No.44蓝牙连接与设备控制",
+          "summary": "经典蓝牙配对、设备选择、权限、连接与开关控制",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse44.aia",
+              "url": "static/teaching/projects/YXCourse44.aia",
+              "projectName": "YXCourse44",
+              "sha256": "f953e50e4e9f3d4b37418834201f6c9d89cdbcbc2e064a35a948ba5a438c7c1b"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse44Class.aia",
+              "url": "static/teaching/projects/YXCourse44Class.aia",
+              "projectName": "YXCourse44Class",
+              "sha256": "14a3d471598fedd14a1008fbbd1acbc54c74423b5cf2700a69400c1378fde2c7"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse44Starter.aia",
+              "url": "static/teaching/projects/YXCourse44Starter.aia",
+              "projectName": "YXCourse44Starter",
+              "sha256": "cec0a344943610fb1902d5fbb9a7d022b0c12575eb234fa409f5750266eca200"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson44-Slides.pptx",
+              "url": "static/teaching/materials/Lesson44-Slides.pptx",
+              "sha256": "c4a85d7c35366a40f372e32f1f4ba36967808913265f58b600355ee58d0bdf5a"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson44-Materials.zip",
+              "url": "static/teaching/materials/Lesson44-Materials.zip",
+              "sha256": "fb6daa8058749664f60e84b12df24119838c512d5c246dccca0153e37136f5d8"
+            }
+          ]
+        },
+        {
+          "id": 45,
+          "title": "蓝牙双向交互",
+          "name": "No.45蓝牙双向交互",
+          "summary": "参数调节、状态回传、数据解析与断开提示",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse45.aia",
+              "url": "static/teaching/projects/YXCourse45.aia",
+              "projectName": "YXCourse45",
+              "sha256": "26a05d931da0a6184259da30470339c02d7a9dea361e99341358b26893da7b58"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse45Class.aia",
+              "url": "static/teaching/projects/YXCourse45Class.aia",
+              "projectName": "YXCourse45Class",
+              "sha256": "c9b9b421fdd95d92366476c5cbe9c8f778f28acb634487a9ae5cfda0aa50fccf"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse45Starter.aia",
+              "url": "static/teaching/projects/YXCourse45Starter.aia",
+              "projectName": "YXCourse45Starter",
+              "sha256": "68902c5a228095c1d2e0e3b2b8106909256a073fd07066aee4e7b6c671d427f4"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson45-Slides.pptx",
+              "url": "static/teaching/materials/Lesson45-Slides.pptx",
+              "sha256": "7a9a87e570482e5ca43cac4833e0d24de08f9b250d5b3de86682c7e8f534db61"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson45-Materials.zip",
+              "url": "static/teaching/materials/Lesson45-Materials.zip",
+              "sha256": "a34f786664d425c0947bb9886fc28b97de072134f816d8809466823a1d4f03c3"
+            }
+          ]
+        },
+        {
+          "id": 46,
+          "title": "BLE 应用体验",
+          "name": "No.46BLE 应用体验",
+          "summary": "BluetoothLE 扩展、扫描、服务与特征、写入和通知",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse46.aia",
+              "url": "static/teaching/projects/YXCourse46.aia",
+              "projectName": "YXCourse46",
+              "sha256": "a7dca97722698b6ea275915ea2bc792af5a0a2d2520d89e5535e8c74345befd3"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse46Class.aia",
+              "url": "static/teaching/projects/YXCourse46Class.aia",
+              "projectName": "YXCourse46Class",
+              "sha256": "69eb81aeacbfc92b9f8666e8fed9a34a47aa78db171906892dd86a36b3cdc3dc"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse46Starter.aia",
+              "url": "static/teaching/projects/YXCourse46Starter.aia",
+              "projectName": "YXCourse46Starter",
+              "sha256": "ae3924420e8d56b31518841e4dfbeaac124230ebced47fa3bccccf8a5959221a"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson46-Slides.pptx",
+              "url": "static/teaching/materials/Lesson46-Slides.pptx",
+              "sha256": "ddc5556c053033fdb7aa638adaa7c061ae7950baac1906567377a29d603ea2bf"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson46-Materials.zip",
+              "url": "static/teaching/materials/Lesson46-Materials.zip",
+              "sha256": "299a81f6514cfe780250a7a9dcb1519c1726ee57d8941d054dd962c660935a15"
+            }
+          ]
+        },
+        {
+          "id": 47,
+          "title": "Wi-Fi TCP 热点直连",
+          "name": "No.47Wi-Fi TCP 热点直连",
+          "summary": "IP、端口、客户端与服务端，手机连接 ESP32 热点通信",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse47.aia",
+              "url": "static/teaching/projects/YXCourse47.aia",
+              "projectName": "YXCourse47",
+              "sha256": "42a2bc1327df279de4e7ef7ba74c7f0121a28c0ea98dae565547905dc3a81d45"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse47Class.aia",
+              "url": "static/teaching/projects/YXCourse47Class.aia",
+              "projectName": "YXCourse47Class",
+              "sha256": "0c1b5aa4ba77b89c8cd2b0dce735bb596fe3f30e5e047cd4cca66436a2984d60"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse47Starter.aia",
+              "url": "static/teaching/projects/YXCourse47Starter.aia",
+              "projectName": "YXCourse47Starter",
+              "sha256": "c5b28cc9b3fff822ad7d4b6bcde14f870b98e22046660fcfe12917ad8a211bad"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson47-Slides.pptx",
+              "url": "static/teaching/materials/Lesson47-Slides.pptx",
+              "sha256": "590689592891ab171a4ebfb06c637d89960052be11424e61bd5f0a1b7d0aa0e9"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson47-Materials.zip",
+              "url": "static/teaching/materials/Lesson47-Materials.zip",
+              "sha256": "22e0207800106bac50f57bb2b33576a4eb51e34d6bc8561e2083614bb8caf200"
+            }
+          ]
+        },
+        {
+          "id": 48,
+          "title": "Wi-Fi TCP 局域网通信",
+          "name": "No.48Wi-Fi TCP 局域网通信",
+          "summary": "手机与 ESP32 接入同一路由器，实现控制与数据回传",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse48.aia",
+              "url": "static/teaching/projects/YXCourse48.aia",
+              "projectName": "YXCourse48",
+              "sha256": "804df4880f88e35d004cad4f7c52727ba85c36634a3105d085cf3aad42d74150"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse48Class.aia",
+              "url": "static/teaching/projects/YXCourse48Class.aia",
+              "projectName": "YXCourse48Class",
+              "sha256": "5ed355bdc264f9a994105357f537ee0c063e0372681efb047bcb72d31d231600"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse48Starter.aia",
+              "url": "static/teaching/projects/YXCourse48Starter.aia",
+              "projectName": "YXCourse48Starter",
+              "sha256": "d549230ce8368012419f061d3de5a5c033d492b6058cad521f6e3fd8c53a0487"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson48-Slides.pptx",
+              "url": "static/teaching/materials/Lesson48-Slides.pptx",
+              "sha256": "ac81e28dae3466a874787a229f31ca174d5388dfad4acdf93a89e2947dcc1044"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson48-Materials.zip",
+              "url": "static/teaching/materials/Lesson48-Materials.zip",
+              "sha256": "ebb23ad3056f14e048b4b8a5972604a6a217ef6e42733644c877f03209ffc7da"
+            }
+          ]
+        },
+        {
+          "id": 49,
+          "title": "让 TCP 通信更稳定",
+          "name": "No.49让 TCP 通信更稳定",
+          "summary": "消息边界、接收缓存、应答、超时与重新连接",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse49.aia",
+              "url": "static/teaching/projects/YXCourse49.aia",
+              "projectName": "YXCourse49",
+              "sha256": "bc7396d78accdadbe186066c528ff2b865a5b8b15a6363afc2c5df2a59e9aa15"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse49Class.aia",
+              "url": "static/teaching/projects/YXCourse49Class.aia",
+              "projectName": "YXCourse49Class",
+              "sha256": "e09be2dc3a56c1b36c05ea48e10b21553a7754cfbfc6645ccc89b8b73f7678cb"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse49Starter.aia",
+              "url": "static/teaching/projects/YXCourse49Starter.aia",
+              "projectName": "YXCourse49Starter",
+              "sha256": "475f3a0d960ed1440540812813382d9abe40aa62febd4a0751e159a0a61e7f91"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson49-Slides.pptx",
+              "url": "static/teaching/materials/Lesson49-Slides.pptx",
+              "sha256": "9f93ca515105cafce41d8bffefc206f851f376ae22edf9e84507e814ebb91e2f"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson49-Materials.zip",
+              "url": "static/teaching/materials/Lesson49-Materials.zip",
+              "sha256": "02f84ab2bee7456b1a03a1376019142bcaa773a34233749643ed7a677bc12312"
+            }
+          ]
+        },
+        {
+          "id": 50,
+          "title": "我的物联网小应用",
+          "name": "No.50我的物联网小应用",
+          "summary": "完成一个设备控制或环境监测 APP，整理界面与通信逻辑",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse50.aia",
+              "url": "static/teaching/projects/YXCourse50.aia",
+              "projectName": "YXCourse50",
+              "sha256": "0bced72e31bf791f52d01d09a7384da9252e813ae9702b78b1dedd8e0a0dac1e"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse50Class.aia",
+              "url": "static/teaching/projects/YXCourse50Class.aia",
+              "projectName": "YXCourse50Class",
+              "sha256": "cc2878a8cb6fe624dc49a244756b438133b13e082a33a53882b125a831460dfd"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse50Starter.aia",
+              "url": "static/teaching/projects/YXCourse50Starter.aia",
+              "projectName": "YXCourse50Starter",
+              "sha256": "ff3365b34c0a02d6dd57c55945ec219954da5644a13500e79e07b5b3155f8777"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson50-Slides.pptx",
+              "url": "static/teaching/materials/Lesson50-Slides.pptx",
+              "sha256": "c0595c1a0e6fef54a1a98716046c2bc40073c113fe549a718e1875ae6898fa86"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson50-Materials.zip",
+              "url": "static/teaching/materials/Lesson50-Materials.zip",
+              "sha256": "1e6d958379dbc4766eb150f9494c61cf4dab45d989ab527b1c0def7fcce5bf01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "name": "第八阶段：自主选题与完整项目开发",
+      "title": "自主选题与完整项目开发",
+      "start": 51,
+      "end": 56,
+      "focus": "选题 · 开发 · 测试 · 展示",
+      "lessons": [
+        {
+          "id": 51,
+          "title": "发现问题，确定选题",
+          "name": "No.51发现问题，确定选题",
+          "summary": "观察使用场景、明确用户、筛选需求与项目范围",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse51.aia",
+              "url": "static/teaching/projects/YXCourse51.aia",
+              "projectName": "YXCourse51",
+              "sha256": "c01a111c78b824151bcf194359038856787268159cbed2bc3acc859aadf996c8"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse51Class.aia",
+              "url": "static/teaching/projects/YXCourse51Class.aia",
+              "projectName": "YXCourse51Class",
+              "sha256": "b0d7be1866a335ce978d4bdc70b7ad070ca91b404441590a11c898114535c49c"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse51Starter.aia",
+              "url": "static/teaching/projects/YXCourse51Starter.aia",
+              "projectName": "YXCourse51Starter",
+              "sha256": "a3574e17cbb85cf980a4604a4d606a6e1a54e877cd4b26ef302d64f865a4166b"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson51-Slides.pptx",
+              "url": "static/teaching/materials/Lesson51-Slides.pptx",
+              "sha256": "57446eaced32bb1f17712ad20399afb65f00f83a005b3b40cdb6543051089362"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson51-Materials.zip",
+              "url": "static/teaching/materials/Lesson51-Materials.zip",
+              "sha256": "cf558517a1fba25a3cf599ffa266c22317183d1e4f4014b1ad53de7c008440ca"
+            }
+          ]
+        },
+        {
+          "id": 52,
+          "title": "设计界面与操作流程",
+          "name": "No.52设计界面与操作流程",
+          "summary": "绘制界面草图、操作流程，准备图片、声音和数据",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse52.aia",
+              "url": "static/teaching/projects/YXCourse52.aia",
+              "projectName": "YXCourse52",
+              "sha256": "69159febb4f1eaef52bc0c21a4b4ca78af7ca49e0f38b7e1bc4640a50a950237"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse52Class.aia",
+              "url": "static/teaching/projects/YXCourse52Class.aia",
+              "projectName": "YXCourse52Class",
+              "sha256": "fad84806bfb609a789d3d5f7902fbb031b13d066ca2e41cfae8275a014fde18b"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse52Starter.aia",
+              "url": "static/teaching/projects/YXCourse52Starter.aia",
+              "projectName": "YXCourse52Starter",
+              "sha256": "1982dbb4dec2a39b70d37b45ab9ebac507aaabe78b4e8b01d09cf6a86cc8cd04"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson52-Slides.pptx",
+              "url": "static/teaching/materials/Lesson52-Slides.pptx",
+              "sha256": "86629b2a591725e0e494732b564baea855a38dd8e436e40731004a145d74da9f"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson52-Materials.zip",
+              "url": "static/teaching/materials/Lesson52-Materials.zip",
+              "sha256": "7eab3b61673463f340aa8eeb77e9ccfe9becc1ac898ae0a771c234a05157364f"
+            }
+          ]
+        },
+        {
+          "id": 53,
+          "title": "搭建项目基础版本",
+          "name": "No.53搭建项目基础版本",
+          "summary": "划分功能、组织变量与过程，完成主要界面及基础交互",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse53.aia",
+              "url": "static/teaching/projects/YXCourse53.aia",
+              "projectName": "YXCourse53",
+              "sha256": "9241dbd9eff73026432d9225c9b82c9710c7c0218852c71413761335e418b455"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse53Class.aia",
+              "url": "static/teaching/projects/YXCourse53Class.aia",
+              "projectName": "YXCourse53Class",
+              "sha256": "0652ea88ce5197b58b9aa1c4555035de2c7576894f08bbadcdef42505af77db5"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse53Starter.aia",
+              "url": "static/teaching/projects/YXCourse53Starter.aia",
+              "projectName": "YXCourse53Starter",
+              "sha256": "09e612967411996f45e4d88e56edf830bd7c03a6328da3411f7dca4b43962aaf"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson53-Slides.pptx",
+              "url": "static/teaching/materials/Lesson53-Slides.pptx",
+              "sha256": "5a9fa6cc14f0276038c4d1749e59f749c23100bc01c096f97b0ad9a102681022"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson53-Materials.zip",
+              "url": "static/teaching/materials/Lesson53-Materials.zip",
+              "sha256": "e35255ede9aa03d31d316d40e0460dab5eadb12af0e5b843ea10edd177de6225"
+            }
+          ]
+        },
+        {
+          "id": 54,
+          "title": "实现核心功能",
+          "name": "No.54实现核心功能",
+          "summary": "完成关键逻辑、数据处理或设备通信，形成可运行作品",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse54.aia",
+              "url": "static/teaching/projects/YXCourse54.aia",
+              "projectName": "YXCourse54",
+              "sha256": "c099842ea10b68b1e05b85ac305c2506a9f036f845e77641649f417937ebb188"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse54Class.aia",
+              "url": "static/teaching/projects/YXCourse54Class.aia",
+              "projectName": "YXCourse54Class",
+              "sha256": "9105aecc95b5ea07eb8983af1536853175fe636a48389fb38ae07219db244ae5"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse54Starter.aia",
+              "url": "static/teaching/projects/YXCourse54Starter.aia",
+              "projectName": "YXCourse54Starter",
+              "sha256": "006080c88296987fee2f21fda72eb06ead77407963c1a539f082ffaaed07eebc"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson54-Slides.pptx",
+              "url": "static/teaching/materials/Lesson54-Slides.pptx",
+              "sha256": "e952c39388cdaee4adc8f3912785dcf94ba0989888668ee9469a6a4830a64960"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson54-Materials.zip",
+              "url": "static/teaching/materials/Lesson54-Materials.zip",
+              "sha256": "412f71b6df4569fae42e32ec0c626ba1d9085f9afce9353bcb000a154ccc17e9"
+            }
+          ]
+        },
+        {
+          "id": 55,
+          "title": "同伴测试与迭代",
+          "name": "No.55同伴测试与迭代",
+          "summary": "依据测试记录修复问题，完善提示、布局和操作体验",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse55.aia",
+              "url": "static/teaching/projects/YXCourse55.aia",
+              "projectName": "YXCourse55",
+              "sha256": "8a0e220bd016a95847b29dc286ddecfc0305cf082b0a0146890d6e5e0d4896ab"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse55Class.aia",
+              "url": "static/teaching/projects/YXCourse55Class.aia",
+              "projectName": "YXCourse55Class",
+              "sha256": "dae10d5f14beefa00e3971291b1edaa9ea6e527b48d61f0af584f174af91533d"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse55Starter.aia",
+              "url": "static/teaching/projects/YXCourse55Starter.aia",
+              "projectName": "YXCourse55Starter",
+              "sha256": "75119876ae4558bb11873e04c6b210ad664adaef84d948933553d11a391008cf"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson55-Slides.pptx",
+              "url": "static/teaching/materials/Lesson55-Slides.pptx",
+              "sha256": "80beebacd432a4ecd0b0e860225bf9e6c3c61ba2c867c7a7d26717e46ee8b198"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson55-Materials.zip",
+              "url": "static/teaching/materials/Lesson55-Materials.zip",
+              "sha256": "a3e5e19478c43e8c161b3f8dcad8ce6241b5bdbe543f7106f996687604dfd4c8"
+            }
+          ]
+        },
+        {
+          "id": 56,
+          "title": "作品发布与成果展示",
+          "name": "No.56作品发布与成果展示",
+          "summary": "打包 APK、导出 AIA、说明素材来源，展示并反思开发过程",
+          "projects": [
+            {
+              "id": "answer",
+              "name": "完整答案",
+              "description": "完整界面和积木，供教师参考与对照。",
+              "file": "YXCourse56.aia",
+              "url": "static/teaching/projects/YXCourse56.aia",
+              "projectName": "YXCourse56",
+              "sha256": "6a276a74a110cc63b127f041c607823ca716a4c45271cb3210be81548030ae25"
+            },
+            {
+              "id": "class",
+              "name": "课堂支架",
+              "description": "保留界面和辅助逻辑，按任务单补全核心任务。",
+              "file": "YXCourse56Class.aia",
+              "url": "static/teaching/projects/YXCourse56Class.aia",
+              "projectName": "YXCourse56Class",
+              "sha256": "4e198aed308df552e3b22a67145091723170116836a6a5d803e5421372ec1f0d"
+            },
+            {
+              "id": "starter",
+              "name": "纯界面起始版",
+              "description": "保留界面和素材，适合独立搭建积木。",
+              "file": "YXCourse56Starter.aia",
+              "url": "static/teaching/projects/YXCourse56Starter.aia",
+              "projectName": "YXCourse56Starter",
+              "sha256": "7a13f7fb2ec932178fbc779dc65611a09a094d0d7f9592f6af484f3c0852299a"
+            }
+          ],
+          "materials": [
+            {
+              "name": "下载课件 PPT",
+              "file": "Lesson56-Slides.pptx",
+              "url": "static/teaching/materials/Lesson56-Slides.pptx",
+              "sha256": "a009ecfa0bd1c184c22b2714148465c893ec8b286df669d4465db9723d217d7a"
+            },
+            {
+              "name": "下载本课完整资料",
+              "file": "Lesson56-Materials.zip",
+              "url": "static/teaching/materials/Lesson56-Materials.zip",
+              "sha256": "03a87662cea1b1ad1c894ebf3417c72d0b792ee705d9ccf3db655eb12081b9c9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

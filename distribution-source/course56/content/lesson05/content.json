@@ -1,0 +1,638 @@
+{
+  "lesson": 5,
+  "title": "给 APP 设计漂亮的界面",
+  "projectName": "Course05Festival",
+  "exampleTitle": "校园创意节信息页",
+  "durationMinutes": 90,
+  "goals": [
+    "用水平与垂直布局组织标题、导航和正文，解释层级关系。",
+    "让分类按钮同步更新InfoTitle与InfoLabel。",
+    "以找得到、看得清、点得准评价界面，并修正一种真实问题。"
+  ],
+  "exampleSpec": {
+    "summary": "虚构校园创意节的信息页。时间、地点、报名三个按钮在同一行，点击后更新信息标题与正文，活动首页恢复欢迎内容。",
+    "scope": "报名仅展示课堂说明，不提交数据、不收集个人信息。界面练习使用现有事件，不新增变量、网页或登录。美观评价以可读与可操作为依据。",
+    "components": [
+      {
+        "name": "HeroRow",
+        "type": "HorizontalArrangement",
+        "role": "图标与主题语并排"
+      },
+      {
+        "name": "MenuRow",
+        "type": "HorizontalArrangement",
+        "role": "排列三项分类"
+      },
+      {
+        "name": "InfoCard",
+        "type": "VerticalArrangement",
+        "role": "组织标题与正文"
+      },
+      {
+        "name": "InfoTitle",
+        "type": "Label",
+        "role": "说明当前分类"
+      },
+      {
+        "name": "InfoLabel",
+        "type": "Label",
+        "role": "展示对应信息"
+      },
+      {
+        "name": "TimeButton",
+        "type": "Button",
+        "role": "时间"
+      },
+      {
+        "name": "PlaceButton",
+        "type": "Button",
+        "role": "地点"
+      },
+      {
+        "name": "SignupButton",
+        "type": "Button",
+        "role": "报名说明"
+      },
+      {
+        "name": "ResetButton",
+        "type": "Button",
+        "role": "恢复活动首页"
+      }
+    ],
+    "logic": [
+      {
+        "event": "TimeButton.Click",
+        "actions": [
+          "InfoTitle.Text ← 活动时间",
+          "InfoLabel.Text ← 示例时间：周五 15:00—16:30。\n先到展示区集合，再参加同伴体验。"
+        ]
+      },
+      {
+        "event": "PlaceButton.Click",
+        "actions": [
+          "InfoTitle.Text ← 活动地点",
+          "InfoLabel.Text ← 示例地点：学校创意教室。\n从教学楼一层入口进入，按现场指引到作品展示区。"
+        ]
+      },
+      {
+        "event": "SignupButton.Click",
+        "actions": [
+          "InfoTitle.Text ← 报名方式",
+          "InfoLabel.Text ← 课堂演示：向老师说明作品名称与展示方式。\n此按钮仅显示报名说明，不会提交任何资料。"
+        ]
+      },
+      {
+        "event": "ResetButton.Click",
+        "actions": [
+          "InfoTitle.Text ← 欢迎参加创意节",
+          "InfoLabel.Text ← 展示游戏、故事和生活小工具。点击上方的分类，查看活动信息。"
+        ]
+      }
+    ]
+  },
+  "versions": {
+    "answer": "Course05Festival.aia：完整参考答案，含本课全部交互。",
+    "class": "Course05FestivalClass.aia：保留TimeButton.Click；补齐 PlaceButton.Click 与 SignupButton.Click；补齐 ResetButton.Click 并检查标题、正文、提示的层级。",
+    "starter": "Course05FestivalStarter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–3",
+      "teacher": "给出找时间与地点的任务，记录查找过程。",
+      "students": "以访客身份体验信息页。",
+      "checkpoint": "能说出一个清楚和一个难找之处。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "4–8",
+      "teacher": "讲阅读层级、容器嵌套及百分比宽度。",
+      "students": "读树状结构，画纸面布局。",
+      "checkpoint": "能定位导航行与正文区。"
+    },
+    {
+      "start": 25,
+      "end": 45,
+      "minutes": 20,
+      "slides": "9–12",
+      "teacher": "拆读时间示范，让学生补地点。",
+      "students": "制作地点事件，同步标题与正文。",
+      "checkpoint": "分类与内容一致。"
+    },
+    {
+      "start": 45,
+      "end": 60,
+      "minutes": 15,
+      "slides": "13–16",
+      "teacher": "组织报名及首页事件练习。",
+      "students": "补说明与恢复事件，预测点击顺序。",
+      "checkpoint": "首页恢复两处内容。"
+    },
+    {
+      "start": 60,
+      "end": 75,
+      "minutes": 15,
+      "slides": "17–20",
+      "teacher": "组织窄屏、长文与同伴查找测试。",
+      "students": "只改一项布局，记录修改前后。",
+      "checkpoint": "改进有可观察证据。"
+    },
+    {
+      "start": 75,
+      "end": 90,
+      "minutes": 15,
+      "slides": "21–24",
+      "teacher": "展示可用性改进，出口题和导出。",
+      "students": "解释布局选择，提交AIA与记录。",
+      "checkpoint": "能联系用户任务说明设计。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "用组件树读布局",
+      "steps": [
+        "导入Course05FestivalClass.aia，依次展开Page、HeroRow、MenuRow和InfoCard。",
+        "找到三个分类按钮，查看Width的百分比设置。",
+        "用纸笔画出标题、导航、正文和提示的阅读顺序。"
+      ],
+      "question": "把三个按钮放入垂直布局，阅读顺序会怎样变化？",
+      "answer": "按钮会由上下排列；水平布局让同级导航并排。选择哪种取决于屏幕宽度和按钮文字长度。"
+    },
+    {
+      "title": "补全地点与报名说明",
+      "steps": [
+        "读取已给出的TimeButton.Click，找出两个属性设置。",
+        "补PlaceButton.Click，同时设置InfoTitle为活动地点、InfoLabel为示例地点说明。",
+        "补SignupButton.Click，同时更新标题与报名说明，明确没有真实提交。"
+      ],
+      "question": "只修改正文却不改InfoTitle，会有什么问题？",
+      "answer": "标题仍显示上一个分类，用户可能误读信息。分类标题与正文需要同步。"
+    },
+    {
+      "title": "恢复首页并做可用性修改",
+      "steps": [
+        "补ResetButton.Click，把InfoTitle与InfoLabel恢复初始欢迎内容。",
+        "请同伴不听说明找到时间、地点和报名方式，记录卡住的位置。",
+        "修改字号、留白或按钮文字中的一项；分别试长正文与较窄屏幕，再导出AIA。"
+      ],
+      "question": "文字被截住时，为什么不应马上把字号缩得很小？",
+      "answer": "小字可能难读。先检查容器宽高、自动高度和滚动，再决定合适字号；内容完整和可读都要兼顾。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "首次打开",
+      "expected": "欢迎标题、三项导航与说明层级清楚。"
+    },
+    {
+      "action": "点击时间，再点击地点",
+      "expected": "InfoTitle与InfoLabel同时切换到相应分类。"
+    },
+    {
+      "action": "点击报名",
+      "expected": "显示说明文字，不出现真实提交或个人资料输入。"
+    },
+    {
+      "action": "任意分类后点活动首页",
+      "expected": "标题和正文均恢复欢迎内容。"
+    },
+    {
+      "action": "放入较长说明，观察较窄屏幕",
+      "expected": "重要文字可完整读到；必要时页面能滚动，按钮仍易点。"
+    }
+  ],
+  "misconceptions": [
+    [
+      "导航按钮挤成一列",
+      "检查MenuRow是否为HorizontalArrangement，三个按钮是否放在其中。"
+    ],
+    [
+      "标题与正文不一致",
+      "每个分类事件都同步设置InfoTitle与InfoLabel。"
+    ],
+    [
+      "长文字被截断",
+      "检查标签高度、父容器和页面滚动，别只缩小字号。"
+    ],
+    [
+      "颜色多但重点不清楚",
+      "保留蓝白主色，用字号、粗细和间距区分层级。"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成三个分类和首页事件，同步显示标题与正文。"
+    },
+    {
+      "level": "提高",
+      "task": "根据同伴反馈调整一项布局，并用前后证据说明改善。"
+    },
+    {
+      "level": "拓展",
+      "task": "增加交通或作品须知分类；先检查窄屏导航是否仍可读，再决定换行或调整结构。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "HeroRow和InfoCard为什么使用不同布局？",
+      "a": "前者让图标和标语并排；后者让标题和正文上下阅读。"
+    },
+    {
+      "q": "地点按钮里至少需要更新哪两个组件？",
+      "a": "InfoTitle与InfoLabel。"
+    },
+    {
+      "q": "怎样证明界面比修改前更好用？",
+      "a": "给同伴同一项查找任务，比较完成情况和具体卡点；同时检查窄屏与长文本。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT布局组件参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/layout.html",
+      "use": "核对水平、垂直布局及尺寸属性。"
+    },
+    {
+      "title": "MIT界面组件参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html",
+      "use": "核对标签、按钮及文字显示属性。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "给 APP 设计漂亮的界面",
+      "body": [
+        "第5课 · 校园创意节信息页",
+        "90分钟：让信息看得清，也找得到"
+      ],
+      "notes": "以“查找创意节时间”开场。学生先做任务，再讨论漂亮不只是一张静态截图。",
+      "layout": "text"
+    },
+    {
+      "title": "活动时间在哪里？",
+      "body": [
+        "第一次打开，不听作者解释",
+        "找到时间，再找到地点",
+        "说出你先看了哪里"
+      ],
+      "notes": "教师不要用手指提前指按钮，观察学生的查找顺序。班级无运行设备时采用纸面查找并明确性质。",
+      "layout": "question"
+    },
+    {
+      "title": "今天的作品证据",
+      "body": [
+        "导航、标题与正文各有位置",
+        "分类变化时标题和正文一致",
+        "一次修改改善同伴的使用"
+      ],
+      "notes": "界面评价采用具体任务，不只用“好看”打分。三个证据分别对应布局、交互与测试。",
+      "layout": "text"
+    },
+    {
+      "title": "90分钟的学习路线",
+      "body": [
+        "布局与交互一起检查"
+      ],
+      "notes": "确保前半节并非纯讲配色。Class版保留时间事件，其他事件提供学生实践。",
+      "layout": "table",
+      "table": [
+        [
+          "时间",
+          "学习活动"
+        ],
+        [
+          "0–10",
+          "访客体验"
+        ],
+        [
+          "10–25",
+          "布局与层级"
+        ],
+        [
+          "25–45",
+          "地点事件"
+        ],
+        [
+          "45–60",
+          "报名与首页"
+        ],
+        [
+          "60–75",
+          "长文、窄屏、修改"
+        ],
+        [
+          "75–90",
+          "分享与导出"
+        ]
+      ]
+    },
+    {
+      "title": "界面有阅读顺序",
+      "body": [
+        "标题回答这是什么",
+        "导航回答可以找什么",
+        "正文回答当前具体内容"
+      ],
+      "notes": "让学生画三条阅读箭头。提示文字字号可以较小，但不能承载唯一的重要信息。",
+      "layout": "text"
+    },
+    {
+      "title": "实际工程的布局结构",
+      "body": [
+        "HeroRow并排图标与标语",
+        "MenuRow并排三个分类",
+        "InfoCard上下排列标题和正文"
+      ],
+      "notes": "使用真实Designer截图，配合组件树讲容器。页面可滚动不代表每个标签都能自动避免截字，仍需实测。",
+      "layout": "designer"
+    },
+    {
+      "title": "水平与垂直布局",
+      "body": [],
+      "notes": "让学生把纸卡排成相同结构，再去组件树定位。不要把“横向更高级”作为评价。",
+      "layout": "table",
+      "table": [
+        [
+          "容器",
+          "方向",
+          "本课用途"
+        ],
+        [
+          "HeroRow",
+          "水平",
+          "图标与主题语"
+        ],
+        [
+          "MenuRow",
+          "水平",
+          "时间、地点、报名"
+        ],
+        [
+          "InfoCard",
+          "垂直",
+          "信息标题与正文"
+        ]
+      ]
+    },
+    {
+      "title": "宽度需要留给真实文字",
+      "body": [
+        "导航按钮按百分比分配宽度",
+        "长按钮文字可能需要更多空间",
+        "用较窄屏幕检查，不只看电脑宽屏"
+      ],
+      "notes": "现有按钮比例为33%、33%、34%。说明百分比是相对于屏幕尺寸的设置，嵌套容器仍应检查整体是否装得下；不要教成自动平均布局保证。",
+      "layout": "text"
+    },
+    {
+      "title": "时间按钮的两个动作",
+      "body": [
+        "InfoTitle显示活动时间",
+        "InfoLabel显示具体说明",
+        "一次点击更新一个完整信息区"
+      ],
+      "notes": "沿真实事件读取两个设置。分类标题是用户判断正文含义的线索，不能遗漏。",
+      "layout": "blocks",
+      "blockIndex": 1
+    },
+    {
+      "title": "地点按钮要同步两处",
+      "body": [
+        "标题：活动地点",
+        "正文：示例地点与进入方式",
+        "按钮和正文应使用同一分类"
+      ],
+      "notes": "先在任务单写两处目标文字，再制作。虚构学校活动无需填写学生真实位置。",
+      "layout": "text"
+    },
+    {
+      "title": "地点事件的学生任务",
+      "body": [
+        "从PlaceButton取出Click",
+        "分别设置InfoTitle与InfoLabel",
+        "先点时间，再点地点检查切换"
+      ],
+      "notes": "给学生独立时间。若复制积木，检查事件外壳是否属于PlaceButton，避免产生重复时间事件。",
+      "layout": "text"
+    },
+    {
+      "title": "地点事件的对照逻辑",
+      "body": [
+        "不能保留上一个分类标题",
+        "正文应能帮助访客行动",
+        "换分类后仍保持可读布局"
+      ],
+      "notes": "完成后对照实际积木，读出示例地点。信息内容与可操作界面一起构成完整体验。",
+      "layout": "blocks",
+      "blockIndex": 2
+    },
+    {
+      "title": "报名按钮展示说明",
+      "body": [
+        "InfoTitle显示报名方式",
+        "正文说明课堂示例的操作",
+        "本工程没有真实资料提交"
+      ],
+      "notes": "明确按钮的实际能力，避免学生以为点击就已报名。可讨论按钮文字“报名说明”是否更准确。",
+      "layout": "blocks",
+      "blockIndex": 3
+    },
+    {
+      "title": "活动首页恢复完整内容",
+      "body": [
+        "ResetButton.Click",
+        "标题恢复欢迎参加创意节",
+        "正文恢复介绍和操作提示"
+      ],
+      "notes": "让学生先补首页事件。同步恢复不是仅清空标签，也不是关闭APP。",
+      "layout": "text"
+    },
+    {
+      "title": "首页事件的对照逻辑",
+      "body": [
+        "两处文字回到初始值",
+        "导航仍然可继续使用",
+        "恢复后再试另一个分类"
+      ],
+      "notes": "用第四张实际积木截图核对。改了初始文案也需要同步改重置事件，程序不会自动记住设计器原值。",
+      "layout": "blocks",
+      "blockIndex": 4
+    },
+    {
+      "title": "点击顺序与当前内容",
+      "body": [],
+      "notes": "先请学生预测最后画面，再运行验证。重点检查标题和正文是否来自同一事件。",
+      "layout": "table",
+      "table": [
+        [
+          "操作",
+          "当前标题"
+        ],
+        [
+          "启动",
+          "欢迎参加创意节"
+        ],
+        [
+          "时间→地点",
+          "活动地点"
+        ],
+        [
+          "地点→报名",
+          "报名方式"
+        ],
+        [
+          "报名→首页",
+          "欢迎参加创意节"
+        ]
+      ]
+    },
+    {
+      "title": "长文字被截住的线索",
+      "body": [
+        "标签是否给了足够高度？",
+        "父容器是否限制了内容？",
+        "页面能否滚动到完整说明？"
+      ],
+      "notes": "让学生把一段正文加长后检查，而非只凭短文猜测。优先排查尺寸与容器，再考虑精简措辞和字号。",
+      "layout": "text"
+    },
+    {
+      "title": "蓝白配色也需要层级",
+      "body": [
+        "主色强调可操作区域",
+        "标题用字号和粗细区分",
+        "留白让不同区域容易辨认"
+      ],
+      "notes": "不增加装饰图案。让学生一次只调整颜色、字号或间距中的一项，并解释修改目的。",
+      "layout": "text"
+    },
+    {
+      "title": "同一任务的前后比较",
+      "body": [
+        "修改前：同伴在哪卡住？",
+        "修改后：同伴能否独立完成？",
+        "记录证据，而不只写更好看"
+      ],
+      "notes": "例如把报名改为报名说明，可比较误解是否减少。若没有真实运行，标注为纸面可用性观察。",
+      "layout": "text"
+    },
+    {
+      "title": "窄屏与长文测试",
+      "body": [],
+      "notes": "测试不要求所有手机型号。选择一个较窄预览和一段较长文字，记录范围，避免声称全设备适配。",
+      "layout": "table",
+      "table": [
+        [
+          "检查对象",
+          "应关注的现象"
+        ],
+        [
+          "导航按钮",
+          "文字完整、不会难以点击"
+        ],
+        [
+          "标题",
+          "与正文分类一致"
+        ],
+        [
+          "正文",
+          "能读到全部重要信息"
+        ],
+        [
+          "首页",
+          "恢复后仍可继续查找"
+        ]
+      ]
+    },
+    {
+      "title": "我的一个界面决定",
+      "body": [
+        "我希望访客先看见________",
+        "所以我把________放在________",
+        "同伴测试表明________"
+      ],
+      "notes": "要求学生把理由与使用任务相连，如先看活动名，再看导航。不要只说因为喜欢蓝色。",
+      "layout": "text"
+    },
+    {
+      "title": "同伴反馈的具体句子",
+      "body": [
+        "我想找到________",
+        "我在________处停住",
+        "我建议把________改为________"
+      ],
+      "notes": "两人交换操作，作者先观察再解释。反馈不要要求所有人做同一风格，保留合理的个性设计。",
+      "layout": "text"
+    },
+    {
+      "title": "出口题：漂亮怎样被验证？",
+      "body": [
+        "水平布局和垂直布局各适合什么？",
+        "为什么标题也要随正文改变？",
+        "为什么截字时不应只把字号缩小？"
+      ],
+      "notes": "参考：并排与上下阅读；保持分类语义一致；需同时保证内容完整和可读，先检查容器尺寸与滚动。",
+      "layout": "question"
+    },
+    {
+      "title": "下一课：第一次创意改编",
+      "body": [
+        "保留已经学会的交互方法",
+        "换一个真实的用户与主题",
+        "参考：MIT布局与界面组件"
+      ],
+      "notes": "来源：https://ai2.appinventor.mit.edu/reference/components/layout.html；https://ai2.appinventor.mit.edu/reference/components/userinterface.html。收集AIA、前后观察和一句设计理由，不把美观等同装饰数量。",
+      "layout": "text"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Image": "8",
+    "HorizontalArrangement": "4",
+    "Button": "8",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "artifactSpec": "work/course56/aia/lesson05/artifact-spec.json",
+  "actualScreenshotGroups": [
+    "TimeButton.Click",
+    "PlaceButton.Click",
+    "SignupButton.Click",
+    "ResetButton.Click"
+  ],
+  "actualExpectedOutputs": [
+    {
+      "event": "TimeButton.Click",
+      "expect": {
+        "InfoTitle.Text": "活动时间",
+        "InfoLabel.Text": "示例时间：周五 15:00—16:30。\n先到展示区集合，再参加同伴体验。"
+      }
+    },
+    {
+      "event": "PlaceButton.Click",
+      "expect": {
+        "InfoTitle.Text": "活动地点",
+        "InfoLabel.Text": "示例地点：学校创意教室。\n从教学楼一层入口进入，按现场指引到作品展示区。"
+      }
+    },
+    {
+      "event": "SignupButton.Click",
+      "expect": {
+        "InfoTitle.Text": "报名方式",
+        "InfoLabel.Text": "课堂演示：向老师说明作品名称与展示方式。\n此按钮仅显示报名说明，不会提交任何资料。"
+      }
+    },
+    {
+      "event": "ResetButton.Click",
+      "expect": {
+        "InfoTitle.Text": "欢迎参加创意节",
+        "InfoLabel.Text": "展示游戏、故事和生活小工具。点击上方的分类，查看活动信息。"
+      }
+    }
+  ]
+}

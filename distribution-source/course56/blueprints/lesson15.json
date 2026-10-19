@@ -1,0 +1,592 @@
+{
+  "schemaVersion": 1,
+  "id": 15,
+  "title": "手机涂鸦板",
+  "lessonMinutes": 90,
+  "projectName": "YXCourse15",
+  "appDescription": "蓝白涂鸦板：手指拖动画线，切换颜色与粗细，清空后继续创作。",
+  "experience": "拖动时把前一点和当前点连接成连续线。",
+  "features": [
+    "拖动时把前一点和当前点连接成连续线。",
+    "点按留下圆点；颜色与线宽只影响之后的笔迹。",
+    "清空只删除绘图，不重置选择的画笔。"
+  ],
+  "components": [
+    {
+      "name": "PaintCanvas",
+      "type": "Canvas",
+      "role": "手指绘画区域",
+      "keyProperties": {
+        "Width": -2,
+        "Height": -2,
+        "LineWidth": 5
+      }
+    },
+    {
+      "name": "BlueButton",
+      "type": "Button",
+      "role": "选择天蓝画笔",
+      "keyProperties": {}
+    },
+    {
+      "name": "RedButton",
+      "type": "Button",
+      "role": "选择红色画笔",
+      "keyProperties": {}
+    },
+    {
+      "name": "ThinButton",
+      "type": "Button",
+      "role": "细线2像素",
+      "keyProperties": {}
+    },
+    {
+      "name": "ThickButton",
+      "type": "Button",
+      "role": "粗线10像素",
+      "keyProperties": {}
+    },
+    {
+      "name": "ClearButton",
+      "type": "Button",
+      "role": "清空画布",
+      "keyProperties": {}
+    },
+    {
+      "name": "ToolLabel",
+      "type": "Label",
+      "role": "显示当前画笔",
+      "keyProperties": {}
+    }
+  ],
+  "globals": {},
+  "procedures": {
+    "选择画笔(颜色,宽度)": "设置PaintColor与LineWidth；刷新ToolLabel"
+  },
+  "events": {
+    "PaintCanvas.Dragged": "DrawLine(prevX,prevY,currentX,currentY)",
+    "PaintCanvas.Touched": "DrawCircle(x,y,LineWidth/2,true)",
+    "BlueButton.Click": "PaintColor←天蓝；刷新提示",
+    "RedButton.Click": "PaintColor←红色；刷新提示",
+    "ThinButton.Click": "LineWidth←2",
+    "ThickButton.Click": "LineWidth←10",
+    "ClearButton.Click": "PaintCanvas.Clear"
+  },
+  "learningObjectives": [
+    "画布左上为(0,0)。",
+    "prevX、prevY表示上一点。",
+    "用测试记录验证手机涂鸦板的核心规则。"
+  ],
+  "transfer": {
+    "title": "已有经验与新的问题",
+    "body": [
+      "本课在第13课过程、第14课测试的基础上开展。",
+      "蓝白涂鸦板：手指拖动画线，切换颜色与粗细，清空后继续创作。"
+    ]
+  },
+  "concepts": [
+    {
+      "title": "坐标指出画布中的位置",
+      "body": [
+        "画布左上为(0,0)。",
+        "X向右增大，Y向下增大。",
+        "坐标以画布为准，不是整个手机屏幕。"
+      ]
+    },
+    {
+      "title": "拖动由许多短线段组成",
+      "body": [
+        "prevX、prevY表示上一点。",
+        "currentX、currentY表示当前点。",
+        "每次事件连接这两点，形成连续笔迹。"
+      ]
+    }
+  ],
+  "blockCaptures": [
+    {
+      "title": "连续画线",
+      "target": "PaintCanvas.Dragged",
+      "body": [
+        "连接上一点和当前点的四个坐标。",
+        "弯曲拖动得到连续线条。"
+      ],
+      "notes": "不能用startX代替prevX，否则线条像扇子。"
+    },
+    {
+      "title": "颜色与粗细",
+      "target": "BlueButton.Click",
+      "body": [
+        "连接颜色按钮与线宽按钮，显示工具状态。",
+        "先画蓝色细线，再画红色粗线，旧线不变。"
+      ],
+      "notes": "组件属性只影响后续绘图。"
+    },
+    {
+      "title": "点按与清空",
+      "target": "PaintCanvas.Touched",
+      "body": [
+        "画一个半径为线宽一半的实心圆，补齐清空事件。",
+        "点按有圆点，清空后画布空白。"
+      ],
+      "notes": "Clear不应重新加载应用。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "制作任务1：连续画线",
+      "task": "连接上一点和当前点的四个坐标。",
+      "checkpoint": "弯曲拖动得到连续线条。"
+    },
+    {
+      "title": "制作任务2：颜色与粗细",
+      "task": "连接颜色按钮与线宽按钮，显示工具状态。",
+      "checkpoint": "先画蓝色细线，再画红色粗线，旧线不变。"
+    },
+    {
+      "title": "制作任务3：点按与清空",
+      "task": "画一个半径为线宽一半的实心圆，补齐清空事件。",
+      "checkpoint": "点按有圆点，清空后画布空白。"
+    }
+  ],
+  "trace": {
+    "title": "一次操作的结果与证据",
+    "table": [
+      [
+        "操作或输入",
+        "预期结果"
+      ],
+      [
+        "弯曲拖动",
+        "连续笔迹，无辐射状长线"
+      ],
+      [
+        "切换红色粗笔后再画",
+        "旧线保留，新线颜色和粗细改变"
+      ],
+      [
+        "清空后点按",
+        "旧笔迹消失，出现当前画笔圆点"
+      ]
+    ]
+  },
+  "tests": [
+    {
+      "action": "弯曲拖动",
+      "expected": "连续笔迹，无辐射状长线"
+    },
+    {
+      "action": "切换红色粗笔后再画",
+      "expected": "旧线保留，新线颜色和粗细改变"
+    },
+    {
+      "action": "清空后点按",
+      "expected": "旧笔迹消失，出现当前画笔圆点"
+    }
+  ],
+  "pitfalls": [
+    [
+      "画出很多扇形线",
+      "DrawLine起点应使用prevX、prevY"
+    ],
+    [
+      "点按没有痕迹",
+      "Touched事件中添加DrawCircle"
+    ]
+  ],
+  "remix": [
+    "增加绿色按钮，并保持线宽选择不变。",
+    "设计一幅只用两种颜色的心情画。"
+  ],
+  "worksheet": {
+    "title": "我的预测、实验与修改",
+    "prompts": [
+      "为“弯曲拖动”写下预测，再记录实际结果。",
+      "结合积木解释：坐标指出画布中的位置。",
+      "修改一条规则并添加一项边界测试：增加绿色按钮，并保持线宽选择不变。"
+    ]
+  },
+  "reflection": [
+    "用一个操作说明“坐标指出画布中的位置”。",
+    "哪一次测试帮助你发现了“画出很多扇形线”？",
+    "展示改编前后的区别，并指出对应积木。"
+  ],
+  "scaffold": "保留颜色按钮事件和静态界面；Dragged、Touched与ClearButton事件待学生完成。",
+  "assets": [
+    "本课真实绘画截图；作品由学生手指绘制。"
+  ],
+  "sources": [
+    "https://ai2.appinventor.mit.edu/reference/components/animation.html",
+    "https://ai2.appinventor.mit.edu/reference/blocks/control.html"
+  ],
+  "versions": {
+    "answer": "含下述完整功能、变量、过程、事件及素材，满足本课测试表。",
+    "class": "保留颜色按钮事件和静态界面；Dragged、Touched与ClearButton事件待学生完成。",
+    "starter": "保留同名可视与非可视组件、布局、初始属性和素材；不含变量、过程、事件积木。"
+  },
+  "successCriteria": [
+    "连续笔迹，无辐射状长线",
+    "旧线保留，新线颜色和粗细改变",
+    "旧笔迹消失，出现当前画笔圆点"
+  ],
+  "prerequisite": "第13课过程、第14课测试",
+  "timeline": [
+    {
+      "minutes": 10,
+      "activity": "作品体验与问题提出",
+      "task": "拖动时把前一点和当前点连接成连续线。"
+    },
+    {
+      "minutes": 15,
+      "activity": "概念观察与演示",
+      "task": "坐标指出画布中的位置；拖动由许多短线段组成"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务1",
+      "task": "连接上一点和当前点的四个坐标。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务2",
+      "task": "连接颜色按钮与线宽按钮，显示工具状态。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务3",
+      "task": "画一个半径为线宽一半的实心圆，补齐清空事件。"
+    },
+    {
+      "minutes": 10,
+      "activity": "个人改编与同伴测试",
+      "task": "增加绿色按钮，并保持线宽选择不变。"
+    },
+    {
+      "minutes": 10,
+      "activity": "展示与反思",
+      "task": "用一个操作说明“坐标指出画布中的位置”。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "第15课  手机涂鸦板",
+      "body": [
+        "蓝白涂鸦板：手指拖动画线，切换颜色与粗细，清空后继续创作。",
+        "90分钟 · App Inventor 创意编程"
+      ],
+      "notes": "先展示本课作品行为；允许学生提出不同用途，基础制作仍遵循本课验收表。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "拖动时把前一点和当前点连接成连续线。",
+        "点按留下圆点；颜色与线宽只影响之后的笔迹。",
+        "清空只删除绘图，不重置选择的画笔。"
+      ],
+      "notes": "演示：弯曲拖动。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "画布左上为(0,0)。",
+        "prevX、prevY表示上一点。",
+        "用测试记录验证手机涂鸦板的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在第13课过程、第14课测试的基础上开展。",
+        "蓝白涂鸦板：手指拖动画线，切换颜色与粗细，清空后继续创作。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "拖动时把前一点和当前点连接成连续线。",
+        "点按留下圆点；颜色与线宽只影响之后的笔迹。",
+        "清空只删除绘图，不重置选择的画笔。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "手指绘画区域",
+        "选择天蓝画笔",
+        "选择红色画笔",
+        "细线2像素",
+        "粗线10像素"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "PaintCanvas",
+          "Canvas",
+          "手指绘画区域"
+        ],
+        [
+          "BlueButton",
+          "Button",
+          "选择天蓝画笔"
+        ],
+        [
+          "RedButton",
+          "Button",
+          "选择红色画笔"
+        ],
+        [
+          "ThinButton",
+          "Button",
+          "细线2像素"
+        ],
+        [
+          "ThickButton",
+          "Button",
+          "粗线10像素"
+        ],
+        [
+          "ClearButton",
+          "Button",
+          "清空画布"
+        ],
+        [
+          "ToolLabel",
+          "Label",
+          "显示当前画笔"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "区分运行中的状态与重启后仍保留的数据。",
+      "layout": "table",
+      "table": [
+        [
+          "信息",
+          "保存方式"
+        ],
+        [
+          "本课无全局变量",
+          "直接读取组件属性"
+        ]
+      ]
+    },
+    {
+      "title": "坐标指出画布中的位置",
+      "body": [
+        "画布左上为(0,0)。",
+        "X向右增大，Y向下增大。",
+        "坐标以画布为准，不是整个手机屏幕。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "拖动由许多短线段组成",
+      "body": [
+        "prevX、prevY表示上一点。",
+        "currentX、currentY表示当前点。",
+        "每次事件连接这两点，形成连续笔迹。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "PaintCanvas.Dragged：DrawLine(prevX,prevY,currentX,currentY)",
+        "PaintCanvas.Touched：DrawCircle(x,y,LineWidth/2,true)",
+        "BlueButton.Click：PaintColor←天蓝；刷新提示"
+      ],
+      "notes": "按事件触发、状态改变、界面反馈顺序讲解。传感器与网络结果事件均为异步。",
+      "layout": "text"
+    },
+    {
+      "title": "连续画线",
+      "body": [
+        "连接上一点和当前点的四个坐标。",
+        "弯曲拖动得到连续线条。"
+      ],
+      "notes": "不能用startX代替prevX，否则线条像扇子。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "PaintCanvas.Dragged"
+    },
+    {
+      "title": "制作任务1：连续画线",
+      "body": [
+        "连接上一点和当前点的四个坐标。",
+        "弯曲拖动得到连续线条。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "颜色与粗细",
+      "body": [
+        "连接颜色按钮与线宽按钮，显示工具状态。",
+        "先画蓝色细线，再画红色粗线，旧线不变。"
+      ],
+      "notes": "组件属性只影响后续绘图。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "BlueButton.Click"
+    },
+    {
+      "title": "制作任务2：颜色与粗细",
+      "body": [
+        "连接颜色按钮与线宽按钮，显示工具状态。",
+        "先画蓝色细线，再画红色粗线，旧线不变。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "点按与清空",
+      "body": [
+        "画一个半径为线宽一半的实心圆，补齐清空事件。",
+        "点按有圆点，清空后画布空白。"
+      ],
+      "notes": "Clear不应重新加载应用。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "PaintCanvas.Touched"
+    },
+    {
+      "title": "制作任务3：点按与清空",
+      "body": [
+        "画一个半径为线宽一半的实心圆，补齐清空事件。",
+        "点按有圆点，清空后画布空白。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "弯曲拖动",
+          "连续笔迹，无辐射状长线"
+        ],
+        [
+          "切换红色粗笔后再画",
+          "旧线保留，新线颜色和粗细改变"
+        ],
+        [
+          "清空后点按",
+          "旧笔迹消失，出现当前画笔圆点"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "画出很多扇形线",
+          "DrawLine起点应使用prevX、prevY"
+        ],
+        [
+          "点按没有痕迹",
+          "Touched事件中添加DrawCircle"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "弯曲拖动",
+          "连续笔迹，无辐射状长线"
+        ],
+        [
+          "切换红色粗笔后再画",
+          "旧线保留，新线颜色和粗细改变"
+        ],
+        [
+          "清空后点按",
+          "旧笔迹消失，出现当前画笔圆点"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加绿色按钮，并保持线宽选择不变。",
+        "设计一幅只用两种颜色的心情画。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“弯曲拖动”写下预测，再记录实际结果。",
+        "结合积木解释：坐标指出画布中的位置。",
+        "修改一条规则并添加一项边界测试：增加绿色按钮，并保持线宽选择不变。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：清空后点按。",
+        "说明：拖动由许多短线段组成。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "用一个操作说明“坐标指出画布中的位置”。",
+        "哪一次测试帮助你发现了“画出很多扇形线”？",
+        "展示改编前后的区别，并指出对应积木。"
+      ],
+      "notes": "出口条包含一项会做的操作、一个测试结果和一个仍需解决的问题。",
+      "layout": "text"
+    }
+  ]
+}

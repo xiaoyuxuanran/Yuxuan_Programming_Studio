@@ -1,0 +1,11 @@
+--- wizards/NewFolderWizard.java
++++ wizards/NewFolderWizard.java
+@@ -135,7 +135,7 @@
+   @UiHandler("addButton")
+   void addFolder(ClickEvent e) {
+     FolderTreeItem treeItem = (FolderTreeItem) tree.getSelectedItem();
+-    String folderName = input.getText().trim().replaceAll("( )+", " ").replace(" ", "_");
++    String folderName = input.getText().trim();
+     TextValidators.ProjectNameStatus status = TextValidators.checkNewFolderName(folderName, treeItem.getFolder());
+ 
+     if (status == TextValidators.ProjectNameStatus.SUCCESS) {

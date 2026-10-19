@@ -1,0 +1,891 @@
+{
+  "lesson": 55,
+  "title": "同伴测试与迭代",
+  "projectName": "YXCourse55",
+  "exampleTitle": "阅读搭子 0.5：删除确认与一次撤销",
+  "durationMinutes": 90,
+  "goals": [
+    "空输入、越界分钟、重复未完成计划。",
+    "保存被删记录和原始位置。",
+    "用测试记录验证同伴测试与迭代的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "阅读搭子第五步：改进输入与误删防护，删除需确认，并能撤销最近一次删除。",
+    "scope": "连续参考项目为“阅读搭子”。学生可以自选题，但须提交同样的需求、核心流程和测试证据。课堂支架只留本课缺口，前课结构已给；Starter无积木。未做Android真机测试，编译、设计器截图不代表持久化或系统分享已在手机验收。 0.5收紧书名至40字、分钟至1～180整数，拒绝同名未完成计划。一次撤销仅限当前运行最近删除，不跨重启。对话框确认前保存目标记录与序号。",
+    "components": [
+      {
+        "name": "TitleLabel",
+        "type": "Label",
+        "role": "阅读搭子标题"
+      },
+      {
+        "name": "BookBox",
+        "type": "TextBox",
+        "role": "书名或阅读内容"
+      },
+      {
+        "name": "TargetBox",
+        "type": "TextBox",
+        "role": "本次目标分钟"
+      },
+      {
+        "name": "PreviewButton",
+        "type": "Button",
+        "role": "预览阅读计划"
+      },
+      {
+        "name": "PlanLabel",
+        "type": "Label",
+        "role": "当前计划摘要"
+      },
+      {
+        "name": "HintLabel",
+        "type": "Label",
+        "role": "校验与状态提示"
+      },
+      {
+        "name": "HomeTab",
+        "type": "Button",
+        "role": "首页"
+      },
+      {
+        "name": "EditTab",
+        "type": "Button",
+        "role": "编辑计划"
+      },
+      {
+        "name": "AboutTab",
+        "type": "Button",
+        "role": "关于"
+      },
+      {
+        "name": "HomePanel",
+        "type": "VerticalArrangement",
+        "role": "首页与摘要"
+      },
+      {
+        "name": "EditPanel",
+        "type": "VerticalArrangement",
+        "role": "书名和分钟输入"
+      },
+      {
+        "name": "AboutPanel",
+        "type": "VerticalArrangement",
+        "role": "作品说明"
+      },
+      {
+        "name": "AboutLabel",
+        "type": "Label",
+        "role": "用途、版本与来源"
+      },
+      {
+        "name": "AddButton",
+        "type": "Button",
+        "role": "保存到计划列表"
+      },
+      {
+        "name": "PlansView",
+        "type": "ListView",
+        "role": "阅读计划"
+      },
+      {
+        "name": "DetailLabel",
+        "type": "Label",
+        "role": "选中计划详情"
+      },
+      {
+        "name": "CompleteButton",
+        "type": "Button",
+        "role": "标记已完成"
+      },
+      {
+        "name": "StatsLabel",
+        "type": "Label",
+        "role": "总计划、已完成、目标分钟"
+      },
+      {
+        "name": "LocalDB",
+        "type": "TinyDB",
+        "role": "保存计划"
+      },
+      {
+        "name": "DeleteButton",
+        "type": "Button",
+        "role": "删除所选计划"
+      },
+      {
+        "name": "UndoButton",
+        "type": "Button",
+        "role": "撤销最近一次删除"
+      },
+      {
+        "name": "Confirm",
+        "type": "Notifier",
+        "role": "确认删除"
+      }
+    ],
+    "logic": [
+      {
+        "event": "AddButton.Click",
+        "actions": [
+          "新校验成功才新增"
+        ]
+      },
+      {
+        "event": "DeleteButton.Click",
+        "actions": [
+          "有效选择时请求删除"
+        ]
+      },
+      {
+        "event": "Confirm.AfterChoosing",
+        "actions": [
+          "choice为删除才调用确认删除，否则提示取消；清待删序号并恢复界面"
+        ]
+      },
+      {
+        "event": "UndoButton.Click",
+        "actions": [
+          "撤销删除"
+        ]
+      },
+      {
+        "event": "PlansView.AfterPicking",
+        "actions": [
+          "显示详情并启用删除"
+        ]
+      },
+      {
+        "event": "CompleteButton.Click",
+        "actions": [
+          "沿用54完成逻辑"
+        ]
+      }
+    ],
+    "procedures": {
+      "请求删除": "保存待删序号；ShowChooseDialog含书名、删除/取消",
+      "确认删除": "合法待删序号下保存完整记录和原位置，删除、开启一次撤销并保存",
+      "撤销删除": "可撤销为真才插回合法位置，清可撤销并保存",
+      "校验输入": "trim书名非空且≤40字，分钟1～180整数",
+      "新增计划": "校验后遍历，拒绝title相同且done=false记录；其余按原流程追加"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse55.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse55Class.aia：保留前课已完成结构和非本课核心事件、本课所有同名组件、参数与过程调用；补齐确认删除过程；补齐撤销删除过程。",
+    "starter": "YXCourse55Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：阅读新增保护并设计回归表，先问再示范。",
+      "students": "按任务单完成：阅读新增保护并设计回归表。",
+      "checkpoint": "新规则是否禁止再次阅读同一本书？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补确认删除，先问再示范。",
+      "students": "按任务单完成：补确认删除。",
+      "checkpoint": "点击删除按钮为什么不能立即remove？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补一次撤销并同伴互测，先问再示范。",
+      "students": "按任务单完成：补一次撤销并同伴互测。",
+      "checkpoint": "只记书名能完整撤销吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "阅读新增保护并设计回归表",
+      "steps": [
+        "新增计划已给，追踪校验输入与未完成重名遍历。",
+        "同名未完成再次保存，数量不变。",
+        "同名已完成允许新建目标。",
+        "比较0、180、181及空白书名；写出实际结果。"
+      ],
+      "question": "新规则是否禁止再次阅读同一本书？",
+      "answer": "不是，只防止同名未完成任务重复，已完成可以创建新目标。"
+    },
+    {
+      "title": "补确认删除",
+      "steps": [
+        "请求删除和Confirm.AfterChoosing入口已给。",
+        "确认删除先验待删序号范围。",
+        "保存目标记录与原位置，remove该项。",
+        "可撤销←真，调用保存并刷新；取消不得改数据。"
+      ],
+      "question": "点击删除按钮为什么不能立即remove？",
+      "answer": "需等用户明确选择删除；取消和关闭应保留原计划。"
+    },
+    {
+      "title": "补一次撤销并同伴互测",
+      "steps": [
+        "仅可撤销为真时继续。",
+        "恢复位置限制在1到列表长度+1。",
+        "insert最近删除记录，再可撤销←假并保存。",
+        "删除第二条→取消、删除第二条→撤销分别记录；第二次撤销不可用。"
+      ],
+      "question": "只记书名能完整撤销吗？",
+      "answer": "不能，还要恢复整条记录与原位置，保留分钟和完成状态。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "添加已有未完成同名书",
+      "expected": "提示重复，数量不变"
+    },
+    {
+      "action": "删除选中项时取消",
+      "expected": "列表与统计保持"
+    },
+    {
+      "action": "删除第二条后撤销一次",
+      "expected": "原记录原位置恢复，第二次撤销不可用"
+    }
+  ],
+  "misconceptions": [
+    [
+      "取消也删了",
+      "判断AfterChoosing的choice文本再执行"
+    ],
+    [
+      "确认时删错项",
+      "确认期间禁止变更列表并复查待删序号"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "让同伴只看界面完成取消删除和撤销，记录误解。"
+    },
+    {
+      "level": "拓展",
+      "task": "为长书名调整显示，保证完整内容可查看。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "为什么保留待删记录？",
+      "a": "确认是异步回调，必须明确本次操作的目标。"
+    },
+    {
+      "q": "撤销为什么先限插入位置？",
+      "a": "列表长度可能改变，插入位置必须合法。"
+    },
+    {
+      "q": "重启后还能撤销旧删除吗？",
+      "a": "本版本不持久化撤销历史，重启后不能。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT userinterface.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT lists.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/lists.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT dictionaries.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/dictionaries.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT storage.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/storage.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "同伴测试与迭代",
+      "body": [
+        "阅读搭子 0.5：删除确认与一次撤销",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "阅读搭子第五步：改进输入与误删防护，删除需确认，并能撤销最近一次删除。 连续参考项目为“阅读搭子”。学生可以自选题，但须提交同样的需求、核心流程和测试证据。课堂支架只留本课缺口，前课结构已给；Starter无积木。未做Android真机测试，编译、设计器截图不代表持久化或系统分享已在手机验收。 0.5收紧书名至40字、分钟至1～180整数，拒绝同名未完成计划。一次撤销仅限当前运行最近删除，不跨重启。对话框确认前保存目标记录与序号。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "书名1～40字符，分钟1～180整数；未完成同名计划不重复添加。",
+        "删除前显示所选书名确认，取消不改数据。",
+        "确认删除后保留最近一次记录及原索引，可撤销一次并持久化。"
+      ],
+      "notes": "演示：添加已有未完成同名书。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "空输入、越界分钟、重复未完成计划。",
+        "保存被删记录和原始位置。",
+        "用测试记录验证同伴测试与迭代的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "阅读搭子第五步：改进输入与误删防护，删除需确认，并能撤销最近一次删除。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "书名1～40字符，分钟1～180整数；未完成同名计划不重复添加。",
+        "删除前显示所选书名确认，取消不改数据。",
+        "确认删除后保留最近一次记录及原索引，可撤销一次并持久化。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "阅读搭子标题",
+        "书名或阅读内容",
+        "本次目标分钟",
+        "预览阅读计划"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "TitleLabel",
+          "Label",
+          "阅读搭子标题"
+        ],
+        [
+          "BookBox",
+          "TextBox",
+          "书名或阅读内容"
+        ],
+        [
+          "TargetBox",
+          "TextBox",
+          "本次目标分钟"
+        ],
+        [
+          "PreviewButton",
+          "Button",
+          "预览阅读计划"
+        ],
+        [
+          "PlanLabel",
+          "Label",
+          "当前计划摘要"
+        ],
+        [
+          "HintLabel",
+          "Label",
+          "校验与状态提示"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "待删序号／记录",
+          "请求时保存的目标快照"
+        ],
+        [
+          "最近删除记录／位置",
+          "一次撤销需要的数据"
+        ],
+        [
+          "可撤销",
+          "初始假，撤销后变假"
+        ],
+        [
+          "输入范围",
+          "trim书名1～40字；分钟1～180整数"
+        ]
+      ]
+    },
+    {
+      "title": "测试用例来自真实风险",
+      "body": [
+        "空输入、越界分钟、重复未完成计划。",
+        "删除错项属于高影响操作。",
+        "先复现问题，再决定修改位置。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "撤销需要保存恢复所需信息",
+      "body": [
+        "保存被删记录和原始位置。",
+        "取消确认不能触碰正式数据。",
+        "本课只撤销最近一次删除，规则明示。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "新增入口增加未完成重名保护",
+        "请求删除保存目标，等待明确确认",
+        "确认删除后可撤销一次，并统一保存"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：前课已完成结构和非本课核心事件；本课所有同名组件、参数与过程调用。学生任务：补齐确认删除过程；补齐撤销删除过程。",
+      "layout": "text"
+    },
+    {
+      "title": "新增入口的规则升级",
+      "body": [
+        "1～180整数，书名≤40字。",
+        "已完成的同名计划可重建。"
+      ],
+      "notes": "新增计划已给；任务一通过边界测试检查新规则。 实际截图对应：新增计划。连续参考项目为“阅读搭子”。学生可以自选题，但须提交同样的需求、核心流程和测试证据。课堂支架只留本课缺口，前课结构已给；Starter无积木。未做Android真机测试，编译、设计器截图不代表持久化或系统分享已在手机验收。 0.5收紧书名至40字、分钟至1～180整数，拒绝同名未完成计划。一次撤销仅限当前运行最近删除，不跨重启。对话框确认前保存目标记录与序号。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "新增计划"
+    },
+    {
+      "title": "阅读新增保护并设计回归表",
+      "body": [
+        "新增计划已给，追踪校验输入与未完成重名遍历。",
+        "同名未完成再次保存，数量不变。",
+        "同名已完成允许新建目标。"
+      ],
+      "notes": "实践15分钟。新规则是否禁止再次阅读同一本书？ 教师参考：不是，只防止同名未完成任务重复，已完成可以创建新目标。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "明确确认才删除",
+      "body": [
+        "choice为删除才调用确认删除。",
+        "取消只恢复界面，不改数据。"
+      ],
+      "notes": "AfterChoosing已给，确认删除过程待补。 实际截图对应：Confirm.AfterChoosing。连续参考项目为“阅读搭子”。学生可以自选题，但须提交同样的需求、核心流程和测试证据。课堂支架只留本课缺口，前课结构已给；Starter无积木。未做Android真机测试，编译、设计器截图不代表持久化或系统分享已在手机验收。 0.5收紧书名至40字、分钟至1～180整数，拒绝同名未完成计划。一次撤销仅限当前运行最近删除，不跨重启。对话框确认前保存目标记录与序号。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "Confirm.AfterChoosing"
+    },
+    {
+      "title": "补确认删除",
+      "body": [
+        "请求删除和Confirm.AfterChoosing入口已给。",
+        "确认删除先验待删序号范围。",
+        "保存目标记录与原位置，remove该项。"
+      ],
+      "notes": "实践15分钟。点击删除按钮为什么不能立即remove？ 教师参考：需等用户明确选择删除；取消和关闭应保留原计划。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "恢复最近一条记录",
+      "body": [
+        "插回原位置，再保存刷新。",
+        "一次撤销后关闭入口。"
+      ],
+      "notes": "撤销删除待补；只撤销当前运行最近一次。 实际截图对应：撤销删除。连续参考项目为“阅读搭子”。学生可以自选题，但须提交同样的需求、核心流程和测试证据。课堂支架只留本课缺口，前课结构已给；Starter无积木。未做Android真机测试，编译、设计器截图不代表持久化或系统分享已在手机验收。 0.5收紧书名至40字、分钟至1～180整数，拒绝同名未完成计划。一次撤销仅限当前运行最近删除，不跨重启。对话框确认前保存目标记录与序号。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "撤销删除"
+    },
+    {
+      "title": "补一次撤销并同伴互测",
+      "body": [
+        "仅可撤销为真时继续。",
+        "恢复位置限制在1到列表长度+1。",
+        "insert最近删除记录，再可撤销←假并保存。"
+      ],
+      "notes": "实践15分钟。只记书名能完整撤销吗？ 教师参考：不能，还要恢复整条记录与原位置，保留分钟和完成状态。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "添加已有未完成同名书",
+          "提示重复，数量不变"
+        ],
+        [
+          "删除选中项时取消",
+          "列表与统计保持"
+        ],
+        [
+          "删除第二条后撤销一次",
+          "原记录原位置恢复，第二次撤销不可用"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "取消也删了",
+          "判断AfterChoosing的choice文本再执行"
+        ],
+        [
+          "确认时删错项",
+          "确认期间禁止变更列表并复查待删序号"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "添加已有未完成同名书",
+          "提示重复，数量不变"
+        ],
+        [
+          "删除选中项时取消",
+          "列表与统计保持"
+        ],
+        [
+          "删除第二条后撤销一次",
+          "原记录原位置恢复，第二次撤销不可用"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "让同伴只看界面完成取消删除和撤销，记录误解。",
+        "为长书名调整显示，保证完整内容可查看。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“添加已有未完成同名书”写下预测，再记录实际结果。",
+        "结合积木解释：测试用例来自真实风险。",
+        "改编并测试：让同伴独立取消删除、执行撤销，记录误解。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：删除第二条后撤销一次。",
+        "说明：撤销需要保存恢复所需信息。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "为什么保留待删记录？",
+        "撤销为什么先限插入位置？",
+        "重启后还能撤销旧删除吗？"
+      ],
+      "notes": "1. 确认是异步回调，必须明确本次操作的目标。\n2. 列表长度可能改变，插入位置必须合法。\n3. 本版本不持久化撤销历史，重启后不能。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "TextBox": "15",
+    "Button": "8",
+    "Label": "6",
+    "ListView": "11",
+    "VerticalArrangement": "4",
+    "HorizontalArrangement": "4",
+    "TinyDB": "3",
+    "Notifier": "7",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "前课已完成结构和非本课核心事件",
+    "本课所有同名组件、参数与过程调用"
+  ],
+  "actualClassroomTasks": [
+    "补齐确认删除过程",
+    "补齐撤销删除过程"
+  ],
+  "actualScreenshotGroups": [
+    "新增计划",
+    "Confirm.AfterChoosing",
+    "撤销删除"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "当前书名",
+      "目标分钟",
+      "输入有效",
+      "页面",
+      "计划",
+      "选中序号",
+      "显示标题",
+      "重复未完成",
+      "完成数",
+      "完成目标分钟",
+      "恢复临时",
+      "恢复有效",
+      "待删序号",
+      "待删记录",
+      "最近删除记录",
+      "最近删除位置",
+      "可撤销"
+    ],
+    "procedures": {
+      "校验输入": [],
+      "生成计划": [],
+      "切换页面": [
+        "名称"
+      ],
+      "刷新计划": [],
+      "显示详情": [],
+      "新增计划": [],
+      "刷新统计": [],
+      "保存并刷新": [],
+      "恢复计划": [],
+      "标记完成": [],
+      "请求删除": [],
+      "确认删除": [],
+      "撤销删除": []
+    },
+    "events": [
+      "PreviewButton.Click",
+      "HomeTab.Click",
+      "EditTab.Click",
+      "AboutTab.Click",
+      "AddButton.Click",
+      "PlansView.AfterPicking",
+      "CompleteButton.Click",
+      "DeleteButton.Click",
+      "Confirm.AfterChoosing",
+      "UndoButton.Click",
+      "Screen1.Initialize"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "set": {
+        "BookBox.Text": "小王子",
+        "TargetBox.Text": "20"
+      },
+      "event": "PreviewButton.Click",
+      "expect": {
+        "PlanLabel.Text": "我计划阅读《小王子》20分钟"
+      }
+    },
+    {
+      "set": {
+        "BookBox.Text": "   ",
+        "TargetBox.Text": "20"
+      },
+      "event": "PreviewButton.Click",
+      "expect": {
+        "HintLabel.Text": "请填写阅读内容"
+      }
+    },
+    {
+      "set": {
+        "BookBox.Text": "小王子",
+        "TargetBox.Text": "0"
+      },
+      "event": "PreviewButton.Click",
+      "expect": {
+        "global 输入有效": false
+      }
+    },
+    {
+      "event": "AboutTab.Click",
+      "expect": {
+        "HomePanel.Visible": false,
+        "EditPanel.Visible": false,
+        "AboutPanel.Visible": true
+      }
+    },
+    {
+      "set": {
+        "BookBox.Text": "神奇校车",
+        "TargetBox.Text": "15"
+      },
+      "event": "AddButton.Click",
+      "expect": {
+        "global 计划": [
+          {
+            "title": "神奇校车",
+            "target": 15,
+            "done": false
+          }
+        ],
+        "global 选中序号": 0
+      }
+    },
+    {
+      "set": {
+        "global 计划": [
+          {
+            "title": "小王子",
+            "target": 20,
+            "done": false
+          }
+        ],
+        "global 选中序号": 1
+      },
+      "event": "CompleteButton.Click",
+      "expect": {
+        "global 完成数": 1,
+        "global 完成目标分钟": 20
+      },
+      "stores": {
+        "plansV1": [
+          {
+            "title": "小王子",
+            "target": 20,
+            "done": true
+          }
+        ]
+      }
+    },
+    {
+      "set": {
+        "global 计划": [
+          {
+            "title": "小王子",
+            "target": 20,
+            "done": false
+          }
+        ],
+        "BookBox.Text": "小王子",
+        "TargetBox.Text": "20"
+      },
+      "event": "AddButton.Click",
+      "expect": {
+        "global 计划": [
+          {
+            "title": "小王子",
+            "target": 20,
+            "done": false
+          }
+        ],
+        "HintLabel.Text": "已有同名未完成计划，请先完成或修改书名"
+      }
+    },
+    {
+      "set": {
+        "global 计划": [],
+        "global 最近删除记录": {
+          "title": "小王子",
+          "target": 20,
+          "done": false
+        },
+        "global 最近删除位置": 1,
+        "global 可撤销": true
+      },
+      "event": "UndoButton.Click",
+      "expect": {
+        "global 计划": [
+          {
+            "title": "小王子",
+            "target": 20,
+            "done": false
+          }
+        ],
+        "global 可撤销": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson55/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

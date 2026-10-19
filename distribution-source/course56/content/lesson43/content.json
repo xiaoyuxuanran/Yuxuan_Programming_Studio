@@ -1,0 +1,673 @@
+{
+  "lesson": 43,
+  "title": "认识设备与通信指令",
+  "projectName": "YXCourse43",
+  "exampleTitle": "串口指令实验台",
+  "durationMinutes": 90,
+  "goals": [
+    "发送LED,1加LF表示请求开灯。",
+    "电脑使用115200波特率。",
+    "用测试记录验证认识设备与通信指令的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "指令实验台：APP生成LED命令并校验串口应答，电脑串口调试器与ESP32执行真实命令。",
+    "scope": "配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 本课APP生成命令并解析粘贴的应答；实际USB连接由电脑串口调试器完成，不是手机USB串口应用。LF表示一个换行字节，不能发送反斜线加n代替。",
+    "components": [
+      {
+        "name": "OnButton",
+        "type": "Button",
+        "role": "生成开灯指令"
+      },
+      {
+        "name": "OffButton",
+        "type": "Button",
+        "role": "生成关灯指令"
+      },
+      {
+        "name": "CommandLabel",
+        "type": "Label",
+        "role": "命令与LF说明"
+      },
+      {
+        "name": "ReplyBox",
+        "type": "TextBox",
+        "role": "粘贴真实串口应答"
+      },
+      {
+        "name": "ParseButton",
+        "type": "Button",
+        "role": "解析应答"
+      },
+      {
+        "name": "StateLabel",
+        "type": "Label",
+        "role": "设备报告状态"
+      }
+    ],
+    "logic": [
+      {
+        "event": "OnButton.Click",
+        "actions": [
+          "生成指令(1)"
+        ]
+      },
+      {
+        "event": "OffButton.Click",
+        "actions": [
+          "生成指令(0)"
+        ]
+      },
+      {
+        "event": "ParseButton.Click",
+        "actions": [
+          "处理应答(trim ReplyBox.Text)"
+        ]
+      }
+    ],
+    "procedures": {
+      "生成指令(值)": "最近命令←LED,+值+LF；CommandLabel显示可见转义标记与字符数",
+      "处理应答(一行)": "按逗号拆分；仅OK,LED,0/1更新确认状态；STATE需5列并校验数字；ERR显示错误"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse43.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse43Class.aia：保留所有组件与协议参数、连接状态清理、数值边界、非本课重点过程和完整事件入口、扩展完整原始包与真实事件签名；补齐生成指令过程；补齐处理应答过程。",
+    "starter": "YXCourse43Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补生成指令，先问再示范。",
+      "students": "按任务单完成：补生成指令。",
+      "checkpoint": "点开灯按钮就能说设备已经亮了吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补合法应答解析，先问再示范。",
+      "students": "按任务单完成：补合法应答解析。",
+      "checkpoint": "为什么不能读完第一个字段就更新界面？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：用已给按钮做协议互测，先问再示范。",
+      "students": "按任务单完成：用已给按钮做协议互测。",
+      "checkpoint": "ADC=2048能写成20.48摄氏度吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补生成指令",
+      "steps": [
+        "找到生成指令过程，参数只用0或1。",
+        "最近命令连接LED,、数值与真正LF。",
+        "更新CommandLabel中的可见说明。",
+        "观察字面\\n与换行字节的区别。"
+      ],
+      "question": "点开灯按钮就能说设备已经亮了吗？",
+      "answer": "不能，本课只生成请求，设备是否执行要看应答及现场观察。"
+    },
+    {
+      "title": "补合法应答解析",
+      "steps": [
+        "按逗号拆分，先校验字段数量。",
+        "OK,LED要求数值0或1；STATE要求五列且全数值范围有效。",
+        "LED为0/1、PWM为0～255、ADC为0～4095、按钮为0/1。",
+        "坏数据不修改已确认状态。"
+      ],
+      "question": "为什么不能读完第一个字段就更新界面？",
+      "answer": "后续字段可能非法，必须全部校验通过才提交整条状态。"
+    },
+    {
+      "title": "用已给按钮做协议互测",
+      "steps": [
+        "ParseButton.Click已给，追踪它怎样调用处理应答。",
+        "粘贴OK,LED,1与OK,LED,9，比较结果。",
+        "教师串口发送LED,1并记录回包；无设备时写待测。"
+      ],
+      "question": "ADC=2048能写成20.48摄氏度吗？",
+      "answer": "不能，它是原始ADC读数，没有温度传感器或换算标定。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "生成开灯命令并在串口发送",
+      "expected": "设备LED亮，回复OK,LED,1"
+    },
+    {
+      "action": "解析OK,LED,0",
+      "expected": "界面显示设备确认已关灯"
+    },
+    {
+      "action": "发送LED,2或解析乱序字段",
+      "expected": "设备ERR或APP格式错误，不误报成功"
+    }
+  ],
+  "misconceptions": [
+    [
+      "设备一直不执行",
+      "检查波特率与末尾LF"
+    ],
+    [
+      "按开灯即显示已亮",
+      "等待设备应答，区分请求和确认"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "增加PING指令并解析PONG。"
+    },
+    {
+      "level": "拓展",
+      "task": "为命令制作一张字段与换行说明表。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "命令末尾为什么要LF？",
+      "a": "设备以LF识别一条命令的结束。"
+    },
+    {
+      "q": "请求与确认有什么区别？",
+      "a": "请求表达想做的动作，应答确认设备处理结果。"
+    },
+    {
+      "q": "本课APP连接USB了吗？",
+      "a": "没有，USB串口由电脑调试器操作，APP做协议生成与解析。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#BluetoothClient 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetoothle 官方参考",
+      "url": "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetooth.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT wifi.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT gpio.html 官方参考",
+      "url": "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "认识设备与通信指令",
+      "body": [
+        "串口指令实验台",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "指令实验台：APP生成LED命令并校验串口应答，电脑串口调试器与ESP32执行真实命令。 配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 本课APP生成命令并解析粘贴的应答；实际USB连接由电脑串口调试器完成，不是手机USB串口应用。LF表示一个换行字节，不能发送反斜线加n代替。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "APP可生成LED,1与LED,0两种命令，显示必须携带的换行。",
+        "把串口调试器返回的一行应答粘贴到APP，解析OK、STATE或ERR。",
+        "先在电脑115200波特率串口测试设备，再进入下一课无线连接。"
+      ],
+      "notes": "演示：生成开灯命令并在串口发送。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "发送LED,1加LF表示请求开灯。",
+        "电脑使用115200波特率。",
+        "用测试记录验证认识设备与通信指令的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "指令实验台：APP生成LED命令并校验串口应答，电脑串口调试器与ESP32执行真实命令。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "APP可生成LED,1与LED,0两种命令，显示必须携带的换行。",
+        "把串口调试器返回的一行应答粘贴到APP，解析OK、STATE或ERR。",
+        "先在电脑115200波特率串口测试设备，再进入下一课无线连接。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "生成开灯指令",
+        "生成关灯指令",
+        "命令与LF说明",
+        "粘贴真实串口应答"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "OnButton",
+          "Button",
+          "生成开灯指令"
+        ],
+        [
+          "OffButton",
+          "Button",
+          "生成关灯指令"
+        ],
+        [
+          "CommandLabel",
+          "Label",
+          "命令与LF说明"
+        ],
+        [
+          "ReplyBox",
+          "TextBox",
+          "粘贴真实串口应答"
+        ],
+        [
+          "ParseButton",
+          "Button",
+          "解析应答"
+        ],
+        [
+          "StateLabel",
+          "Label",
+          "设备报告状态"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "最近命令",
+          "生成的LED,0/1与末尾LF"
+        ],
+        [
+          "有效应答",
+          "格式和范围全部正确才真"
+        ]
+      ]
+    },
+    {
+      "title": "指令需要共同约定格式",
+      "body": [
+        "发送LED,1加LF表示请求开灯。",
+        "设备返回OK,LED,1表示确认。",
+        "界面按钮点击不能代替设备确认。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "串口先验证设备一侧",
+      "body": [
+        "电脑使用115200波特率。",
+        "串口调试器选择发送LF换行。",
+        "APP本课为协议实验台，不声称已通过手机USB直连设备。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "按钮只生成请求，不宣称LED已改变",
+        "电脑115200串口发送含LF的指令",
+        "把真实应答粘贴到ReplyBox，解析后显示确认"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：所有组件与协议参数；连接状态清理、数值边界、非本课重点过程和完整事件入口；扩展完整原始包与真实事件签名。学生任务：补齐生成指令过程；补齐处理应答过程。",
+      "layout": "text"
+    },
+    {
+      "title": "生成一行命令",
+      "body": [
+        "LED,1后附真正LF。",
+        "只生成请求，等设备确认。"
+      ],
+      "notes": "生成指令待补；字面转义标记仅用于显示说明。 实际截图对应：生成指令。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 本课APP生成命令并解析粘贴的应答；实际USB连接由电脑串口调试器完成，不是手机USB串口应用。LF表示一个换行字节，不能发送反斜线加n代替。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "生成指令"
+    },
+    {
+      "title": "补生成指令",
+      "body": [
+        "找到生成指令过程，参数只用0或1。",
+        "最近命令连接LED,、数值与真正LF。",
+        "更新CommandLabel中的可见说明。"
+      ],
+      "notes": "实践15分钟。点开灯按钮就能说设备已经亮了吗？ 教师参考：不能，本课只生成请求，设备是否执行要看应答及现场观察。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "校验完整应答",
+      "body": [
+        "字段与范围全通过才更新。",
+        "OK,LED,9不能当成功。"
+      ],
+      "notes": "处理应答待补；无效帧不得部分覆盖旧状态。 实际截图对应：处理应答。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 本课APP生成命令并解析粘贴的应答；实际USB连接由电脑串口调试器完成，不是手机USB串口应用。LF表示一个换行字节，不能发送反斜线加n代替。",
+      "layout": "blocksTall",
+      "blockIndex": 2,
+      "captureTarget": "处理应答"
+    },
+    {
+      "title": "补合法应答解析",
+      "body": [
+        "按逗号拆分，先校验字段数量。",
+        "OK,LED要求数值0或1；STATE要求五列且全数值范围有效。",
+        "LED为0/1、PWM为0～255、ADC为0～4095、按钮为0/1。"
+      ],
+      "notes": "实践15分钟。为什么不能读完第一个字段就更新界面？ 教师参考：后续字段可能非法，必须全部校验通过才提交整条状态。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "粘贴解析入口",
+      "body": [
+        "ParseButton读取ReplyBox。",
+        "有效与无效应答成对测试。"
+      ],
+      "notes": "入口已给，用它追踪完整处理流程。 实际截图对应：ParseButton.Click。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 本课APP生成命令并解析粘贴的应答；实际USB连接由电脑串口调试器完成，不是手机USB串口应用。LF表示一个换行字节，不能发送反斜线加n代替。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "ParseButton.Click"
+    },
+    {
+      "title": "用已给按钮做协议互测",
+      "body": [
+        "ParseButton.Click已给，追踪它怎样调用处理应答。",
+        "粘贴OK,LED,1与OK,LED,9，比较结果。",
+        "教师串口发送LED,1并记录回包；无设备时写待测。"
+      ],
+      "notes": "实践15分钟。ADC=2048能写成20.48摄氏度吗？ 教师参考：不能，它是原始ADC读数，没有温度传感器或换算标定。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "生成开灯命令并在串口发送",
+          "设备LED亮，回复OK,LED,1"
+        ],
+        [
+          "解析OK,LED,0",
+          "界面显示设备确认已关灯"
+        ],
+        [
+          "发送LED,2或解析乱序字段",
+          "设备ERR或APP格式错误，不误报成功"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "设备一直不执行",
+          "检查波特率与末尾LF"
+        ],
+        [
+          "按开灯即显示已亮",
+          "等待设备应答，区分请求和确认"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "生成开灯命令并在串口发送",
+          "设备LED亮，回复OK,LED,1"
+        ],
+        [
+          "解析OK,LED,0",
+          "界面显示设备确认已关灯"
+        ],
+        [
+          "发送LED,2或解析乱序字段",
+          "设备ERR或APP格式错误，不误报成功"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加PING指令并解析PONG。",
+        "为命令制作一张字段与换行说明表。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“生成开灯命令并在串口发送”写下预测，再记录实际结果。",
+        "结合积木解释：指令需要共同约定格式。",
+        "修改一条规则并添加一项边界测试：增加PING指令并解析PONG。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：发送LED,2或解析乱序字段。",
+        "说明：串口先验证设备一侧。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "命令末尾为什么要LF？",
+        "请求与确认有什么区别？",
+        "本课APP连接USB了吗？"
+      ],
+      "notes": "1. 设备以LF识别一条命令的结束。\n2. 请求表达想做的动作，应答确认设备处理结果。\n3. 没有，USB串口由电脑调试器操作，APP做协议生成与解析。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Button": "8",
+    "TextBox": "15",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "所有组件与协议参数",
+    "连接状态清理、数值边界、非本课重点过程和完整事件入口",
+    "扩展完整原始包与真实事件签名"
+  ],
+  "actualClassroomTasks": [
+    "补齐生成指令过程",
+    "补齐处理应答过程"
+  ],
+  "actualScreenshotGroups": [
+    "生成指令",
+    "处理应答",
+    "ParseButton.Click"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "最近命令",
+      "接收字段",
+      "有效应答",
+      "日志"
+    ],
+    "procedures": {
+      "整数范围": [
+        "值",
+        "下限",
+        "上限"
+      ],
+      "记录日志": [
+        "内容"
+      ],
+      "生成指令": [
+        "值"
+      ],
+      "处理应答": [
+        "一行"
+      ]
+    },
+    "events": [
+      "OnButton.Click",
+      "OffButton.Click",
+      "ParseButton.Click"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "event": "OnButton.Click",
+      "expect": {
+        "global 最近命令": "LED,1\n"
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "OK,LED,1"
+      ],
+      "expect": {
+        "StateLabel.Text": "设备确认：LED=1",
+        "global 有效应答": true
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "OK,LED,9"
+      ],
+      "expect": {
+        "global 有效应答": false
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "STATE,1,128,2048,0"
+      ],
+      "expect": {
+        "global 有效应答": true
+      },
+      "contains": {
+        "StateLabel.Text": [
+          "ADC原始值=2048",
+          "按钮=按下"
+        ]
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson43/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

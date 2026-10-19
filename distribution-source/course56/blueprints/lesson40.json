@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "id": 40,
+  "title": "把数据提交出去",
+  "lessonMinutes": 90,
+  "projectName": "YXCourse40",
+  "appDescription": "课堂反馈箱：提交不含个人身份的信息，收到服务生成的编号后才显示成功。",
+  "experience": "反馈内容去空格后1到200字符，类型从建议、问题、表扬中选择。",
+  "features": [
+    "反馈内容去空格后1到200字符，类型从建议、问题、表扬中选择。",
+    "用表单编码POST，不在URL中拼长正文。",
+    "201和返回编号代表服务已接收；错误不清空用户输入。"
+  ],
+  "components": [
+    {
+      "name": "HostBox",
+      "type": "TextBox",
+      "role": "教师电脑局域网IPv4地址",
+      "keyProperties": {}
+    },
+    {
+      "name": "RequestButton",
+      "type": "Button",
+      "role": "发起本课请求",
+      "keyProperties": {}
+    },
+    {
+      "name": "StatusLabel",
+      "type": "Label",
+      "role": "请求与错误状态",
+      "keyProperties": {}
+    },
+    {
+      "name": "KindPicker",
+      "type": "ListPicker",
+      "role": "选择反馈类型",
+      "keyProperties": {}
+    },
+    {
+      "name": "MessageBox",
+      "type": "TextBox",
+      "role": "反馈正文",
+      "keyProperties": {
+        "MultiLine": true
+      }
+    },
+    {
+      "name": "ReceiptLabel",
+      "type": "Label",
+      "role": "接收编号",
+      "keyProperties": {}
+    },
+    {
+      "name": "Http",
+      "type": "Web",
+      "role": "教学HTTP客户端",
+      "keyProperties": {
+        "Timeout": 5000,
+        "SaveResponse": false,
+        "ResponseTextEncoding": "UTF-8"
+      }
+    }
+  ],
+  "globals": {
+    "类型": "建议",
+    "提交中": false
+  },
+  "procedures": {
+    "提交反馈": "验证长度；RequestHeaders←Content-Type:application/x-www-form-urlencoded；Body←BuildRequestData([[kind,类型],[message,文字]])；Url←/api/v1/feedback；PostText",
+    "结束提交": "恢复按钮与提交中false"
+  },
+  "events": {
+    "KindPicker.BeforePicking": "列表建议、问题、表扬",
+    "KindPicker.AfterPicking": "类型←Selection",
+    "RequestButton.Click": "若未提交中则提交反馈",
+    "Http.GotText": "201时解码id并显示已接收，清正文；400显示校验信息保留正文；其他码显示失败；结束提交",
+    "Http.TimedOut": "提示结果未确认，请先检查再重试；保留正文；结束提交"
+  },
+  "learningObjectives": [
+    "表单字段有名称与值。",
+    "点击发送不等于服务器收到。",
+    "用测试记录验证把数据提交出去的核心规则。"
+  ],
+  "transfer": {
+    "title": "已有经验与新的问题",
+    "body": [
+      "本课在已学事件、变量和过程的基础上开展。",
+      "课堂反馈箱：提交不含个人身份的信息，收到服务生成的编号后才显示成功。"
+    ]
+  },
+  "concepts": [
+    {
+      "title": "POST把数据放在请求正文",
+      "body": [
+        "表单字段有名称与值。",
+        "BuildRequestData处理中文、空格和符号。",
+        "Content-Type应与正文编码对应。"
+      ]
+    },
+    {
+      "title": "成功提示需要服务证据",
+      "body": [
+        "点击发送不等于服务器收到。",
+        "201和回执编号才是本课成功依据。",
+        "超时可能已被接收，不盲目自动重发。"
+      ]
+    }
+  ],
+  "blockCaptures": [
+    {
+      "title": "输入与类型",
+      "target": "提交反馈",
+      "body": [
+        "校验正文长度并生成kind、message表单。",
+        "空正文不发送，中文内容完整。"
+      ],
+      "notes": "真实姓名、手机号等不属于本课必填项。"
+    },
+    {
+      "title": "POST与回执",
+      "target": "Http.GotText",
+      "body": [
+        "仅201时显示服务id并清正文。",
+        "得到F0001等回执编号。"
+      ],
+      "notes": "测试编号具体值随已有提交变化，不硬编码首号。"
+    },
+    {
+      "title": "失败保留草稿",
+      "target": "Http.TimedOut",
+      "body": [
+        "400与超时保留输入并恢复按钮。",
+        "非法类型可读提示，不显示假成功。"
+      ],
+      "notes": "不用自动重试POST，避免重复意见。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "制作任务1：输入与类型",
+      "task": "校验正文长度并生成kind、message表单。",
+      "checkpoint": "空正文不发送，中文内容完整。"
+    },
+    {
+      "title": "制作任务2：POST与回执",
+      "task": "仅201时显示服务id并清正文。",
+      "checkpoint": "得到F0001等回执编号。"
+    },
+    {
+      "title": "制作任务3：失败保留草稿",
+      "task": "400与超时保留输入并恢复按钮。",
+      "checkpoint": "非法类型可读提示，不显示假成功。"
+    }
+  ],
+  "trace": {
+    "title": "一次操作的结果与证据",
+    "table": [
+      [
+        "操作或输入",
+        "预期结果"
+      ],
+      [
+        "提交建议：增加阅读角",
+        "201，显示回执编号，正文清空"
+      ],
+      [
+        "空格正文发送",
+        "客户端拦截，不发送"
+      ],
+      [
+        "服务返回400",
+        "显示失败，原正文保留"
+      ]
+    ]
+  },
+  "tests": [
+    {
+      "action": "提交建议：增加阅读角",
+      "expected": "201，显示回执编号，正文清空"
+    },
+    {
+      "action": "空格正文发送",
+      "expected": "客户端拦截，不发送"
+    },
+    {
+      "action": "服务返回400",
+      "expected": "显示失败，原正文保留"
+    }
+  ],
+  "pitfalls": [
+    [
+      "中文变乱码",
+      "核对UTF-8与表单编码"
+    ],
+    [
+      "一点击就提示成功",
+      "移到GotText且状态码201分支"
+    ]
+  ],
+  "remix": [
+    "增加200字剩余字数提示。",
+    "设计一条不泄露身份的课堂反馈。"
+  ],
+  "worksheet": {
+    "title": "我的预测、实验与修改",
+    "prompts": [
+      "为“提交建议：增加阅读角”写下预测，再记录实际结果。",
+      "结合积木解释：POST把数据放在请求正文。",
+      "修改一条规则并添加一项边界测试：增加200字剩余字数提示。"
+    ]
+  },
+  "reflection": [
+    "用一个操作说明“POST把数据放在请求正文”。",
+    "哪一次测试帮助你发现了“中文变乱码”？",
+    "展示改编前后的区别，并指出对应积木。"
+  ],
+  "scaffold": "保留类型选择和状态恢复；正文校验、BuildRequestData与201回执处理待完成。",
+  "assets": [
+    "本课实际界面和积木截图；使用原创、公共领域或明确获授权素材。"
+  ],
+  "sources": [
+    "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#Web",
+    "https://ai2.appinventor.mit.edu/reference/blocks/dictionaries.html",
+    "https://docs.python.org/3/library/http.server.html"
+  ],
+  "versions": {
+    "answer": "含下述完整功能、变量、过程、事件及素材，满足本课测试表。",
+    "class": "保留类型选择和状态恢复；正文校验、BuildRequestData与201回执处理待完成。",
+    "starter": "保留同名可视与非可视组件、布局、初始属性和素材；不含变量、过程、事件积木。"
+  },
+  "successCriteria": [
+    "201，显示回执编号，正文清空",
+    "客户端拦截，不发送",
+    "显示失败，原正文保留"
+  ],
+  "apiSpecification": "teaching-http-api-spec.md",
+  "deviceRequirements": [
+    "教师电脑运行配套Python标准库API，手机与电脑在可互通的同一局域网。",
+    "电脑本机可用127.0.0.1；手机必须填写教师电脑局域网IPv4，不能填127.0.0.1。",
+    "HTTP用于隔离的课堂教学数据，不填写真实个人资料；Android明文HTTP兼容性以本平台打包结果实测。"
+  ],
+  "timeline": [
+    {
+      "minutes": 10,
+      "activity": "作品体验与问题提出",
+      "task": "反馈内容去空格后1到200字符，类型从建议、问题、表扬中选择。"
+    },
+    {
+      "minutes": 15,
+      "activity": "概念观察与演示",
+      "task": "POST把数据放在请求正文；成功提示需要服务证据"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务1",
+      "task": "校验正文长度并生成kind、message表单。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务2",
+      "task": "仅201时显示服务id并清正文。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务3",
+      "task": "400与超时保留输入并恢复按钮。"
+    },
+    {
+      "minutes": 10,
+      "activity": "个人改编与同伴测试",
+      "task": "增加200字剩余字数提示。"
+    },
+    {
+      "minutes": 10,
+      "activity": "展示与反思",
+      "task": "用一个操作说明“POST把数据放在请求正文”。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "第40课  把数据提交出去",
+      "body": [
+        "课堂反馈箱：提交不含个人身份的信息，收到服务生成的编号后才显示成功。",
+        "90分钟 · App Inventor 创意编程"
+      ],
+      "notes": "先展示本课作品行为；允许学生提出不同用途，基础制作仍遵循本课验收表。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "反馈内容去空格后1到200字符，类型从建议、问题、表扬中选择。",
+        "用表单编码POST，不在URL中拼长正文。",
+        "201和返回编号代表服务已接收；错误不清空用户输入。"
+      ],
+      "notes": "演示：提交建议：增加阅读角。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "表单字段有名称与值。",
+        "点击发送不等于服务器收到。",
+        "用测试记录验证把数据提交出去的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "课堂反馈箱：提交不含个人身份的信息，收到服务生成的编号后才显示成功。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "反馈内容去空格后1到200字符，类型从建议、问题、表扬中选择。",
+        "用表单编码POST，不在URL中拼长正文。",
+        "201和返回编号代表服务已接收；错误不清空用户输入。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "教师电脑局域网IPv4地址",
+        "发起本课请求",
+        "请求与错误状态",
+        "选择反馈类型",
+        "反馈正文"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "HostBox",
+          "TextBox",
+          "教师电脑局域网IPv4地址"
+        ],
+        [
+          "RequestButton",
+          "Button",
+          "发起本课请求"
+        ],
+        [
+          "StatusLabel",
+          "Label",
+          "请求与错误状态"
+        ],
+        [
+          "KindPicker",
+          "ListPicker",
+          "选择反馈类型"
+        ],
+        [
+          "MessageBox",
+          "TextBox",
+          "反馈正文"
+        ],
+        [
+          "ReceiptLabel",
+          "Label",
+          "接收编号"
+        ],
+        [
+          "Http",
+          "Web",
+          "教学HTTP客户端"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "区分运行中的状态与重启后仍保留的数据。",
+      "layout": "table",
+      "table": [
+        [
+          "变量",
+          "初值或意义"
+        ],
+        [
+          "类型",
+          "建议"
+        ],
+        [
+          "提交中",
+          "False"
+        ]
+      ]
+    },
+    {
+      "title": "POST把数据放在请求正文",
+      "body": [
+        "表单字段有名称与值。",
+        "BuildRequestData处理中文、空格和符号。",
+        "Content-Type应与正文编码对应。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "成功提示需要服务证据",
+      "body": [
+        "点击发送不等于服务器收到。",
+        "201和回执编号才是本课成功依据。",
+        "超时可能已被接收，不盲目自动重发。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "KindPicker.BeforePicking：列表建议、问题、表扬",
+        "KindPicker.AfterPicking：类型←Selection",
+        "RequestButton.Click：若未提交中则提交反馈"
+      ],
+      "notes": "按事件触发、状态改变、界面反馈顺序讲解。传感器与网络结果事件均为异步。",
+      "layout": "text"
+    },
+    {
+      "title": "输入与类型",
+      "body": [
+        "校验正文长度并生成kind、message表单。",
+        "空正文不发送，中文内容完整。"
+      ],
+      "notes": "真实姓名、手机号等不属于本课必填项。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "提交反馈"
+    },
+    {
+      "title": "制作任务1：输入与类型",
+      "body": [
+        "校验正文长度并生成kind、message表单。",
+        "空正文不发送，中文内容完整。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "POST与回执",
+      "body": [
+        "仅201时显示服务id并清正文。",
+        "得到F0001等回执编号。"
+      ],
+      "notes": "测试编号具体值随已有提交变化，不硬编码首号。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "Http.GotText"
+    },
+    {
+      "title": "制作任务2：POST与回执",
+      "body": [
+        "仅201时显示服务id并清正文。",
+        "得到F0001等回执编号。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "失败保留草稿",
+      "body": [
+        "400与超时保留输入并恢复按钮。",
+        "非法类型可读提示，不显示假成功。"
+      ],
+      "notes": "不用自动重试POST，避免重复意见。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "Http.TimedOut"
+    },
+    {
+      "title": "制作任务3：失败保留草稿",
+      "body": [
+        "400与超时保留输入并恢复按钮。",
+        "非法类型可读提示，不显示假成功。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "提交建议：增加阅读角",
+          "201，显示回执编号，正文清空"
+        ],
+        [
+          "空格正文发送",
+          "客户端拦截，不发送"
+        ],
+        [
+          "服务返回400",
+          "显示失败，原正文保留"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "中文变乱码",
+          "核对UTF-8与表单编码"
+        ],
+        [
+          "一点击就提示成功",
+          "移到GotText且状态码201分支"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "提交建议：增加阅读角",
+          "201，显示回执编号，正文清空"
+        ],
+        [
+          "空格正文发送",
+          "客户端拦截，不发送"
+        ],
+        [
+          "服务返回400",
+          "显示失败，原正文保留"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加200字剩余字数提示。",
+        "设计一条不泄露身份的课堂反馈。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“提交建议：增加阅读角”写下预测，再记录实际结果。",
+        "结合积木解释：POST把数据放在请求正文。",
+        "修改一条规则并添加一项边界测试：增加200字剩余字数提示。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：服务返回400。",
+        "说明：成功提示需要服务证据。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "用一个操作说明“POST把数据放在请求正文”。",
+        "哪一次测试帮助你发现了“中文变乱码”？",
+        "展示改编前后的区别，并指出对应积木。"
+      ],
+      "notes": "出口条包含一项会做的操作、一个测试结果和一个仍需解决的问题。",
+      "layout": "text"
+    }
+  ]
+}

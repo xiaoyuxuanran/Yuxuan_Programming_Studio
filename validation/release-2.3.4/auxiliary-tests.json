@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "python": "3.8.9",
+      "suite": "teaching-api",
+      "passed": true,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 3.632s\n\nOK\n"
+    },
+    {
+      "python": "3.8.9",
+      "suite": "firmware",
+      "passed": true,
+      "output": "127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 2|STATE,1,255,2048,1\n127.0.0.1 -> 0|ERR,TOO_LONG\n127.0.0.1 -> 3|STATE,1,255,2048,1\n127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 2|OK,LED,0\n127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 1|OK,LED,1\n...\n----------------------------------------------------------------------\nRan 3 tests in 2.545s\n\nOK\n"
+    },
+    {
+      "python": "3.13.16",
+      "suite": "teaching-api",
+      "passed": true,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 3.573s\n\nOK\n"
+    },
+    {
+      "python": "3.13.16",
+      "suite": "firmware",
+      "passed": true,
+      "output": "127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 2|STATE,1,255,2048,1\n127.0.0.1 -> 0|ERR,TOO_LONG\n127.0.0.1 -> 3|STATE,1,255,2048,1\n127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 2|OK,LED,0\n127.0.0.1 -> 1|OK,LED,1\n127.0.0.1 -> 1|OK,LED,1\n...\n----------------------------------------------------------------------\nRan 3 tests in 2.586s\n\nOK\n"
+    },
+    {
+      "suite": "protocol",
+      "passed": true,
+      "output": "PASS 46 protocol assertions (host only; no hardware)\n"
+    }
+  ]
+}

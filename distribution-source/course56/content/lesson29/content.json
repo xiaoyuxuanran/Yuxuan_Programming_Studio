@@ -1,0 +1,632 @@
+{
+  "lesson": 29,
+  "title": "用列表管理信息",
+  "projectName": "YXCourse29",
+  "exampleTitle": "可追加和选择的购物清单",
+  "durationMinutes": 90,
+  "goals": [
+    "列表是一份数据，不是多个分散变量。",
+    "先向购物清单追加。",
+    "用测试记录验证用列表管理信息的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "野餐购物清单：查看三项预置物品，选择后显示序号与名称，再添加自己需要的物品。",
+    "scope": "清单只保存在本次运行的变量中，重开恢复三个示例；本课允许重名物品，不含持久化。",
+    "components": [
+      {
+        "name": "ItemsView",
+        "type": "ListView",
+        "role": "展示购物物品"
+      },
+      {
+        "name": "ItemBox",
+        "type": "TextBox",
+        "role": "输入新增物品"
+      },
+      {
+        "name": "AddButton",
+        "type": "Button",
+        "role": "追加物品"
+      },
+      {
+        "name": "SelectionLabel",
+        "type": "Label",
+        "role": "显示选择结果"
+      },
+      {
+        "name": "CountLabel",
+        "type": "Label",
+        "role": "显示物品数"
+      }
+    ],
+    "logic": [
+      {
+        "event": "Screen1.Initialize",
+        "actions": [
+          "刷新清单"
+        ]
+      },
+      {
+        "event": "ItemsView.AfterPicking",
+        "actions": [
+          "若SelectionIndex>0显示序号和Selection"
+        ]
+      },
+      {
+        "event": "AddButton.Click",
+        "actions": [
+          "trim输入非空则add items to list；刷新清单；输入清空，否则提示先填写"
+        ]
+      }
+    ],
+    "procedures": {
+      "刷新清单": "ItemsView.Elements←购物清单；CountLabel显示length；SelectionLabel清空"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse29.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse29Class.aia：保留global 购物清单、刷新清单、Screen1.Initialize；添加ItemsView.AfterPicking，检查有效索引后显示序号和名称；添加AddButton.Click，非空时追加、刷新、清输入。",
+    "starter": "YXCourse29Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：阅读刷新清单，先问再示范。",
+      "students": "按任务单完成：阅读刷新清单。",
+      "checkpoint": "把水、面包、苹果连接成一串文字能代替列表吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：显示选择结果，先问再示范。",
+      "students": "按任务单完成：显示选择结果。",
+      "checkpoint": "第一个列表项的序号是多少？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：追加并刷新，先问再示范。",
+      "students": "按任务单完成：追加并刷新。",
+      "checkpoint": "新增后只修改CountLabel够吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "阅读刷新清单",
+      "steps": [
+        "找到Class已给过程，核对Elements连接的是列表。",
+        "追踪length得到3，SelectionIndex重置为0。",
+        "区分列表数据与SelectionLabel中的文字。"
+      ],
+      "question": "把水、面包、苹果连接成一串文字能代替列表吗？",
+      "answer": "不能，列表保留独立项目和位置，文本只有一串字符。"
+    },
+    {
+      "title": "显示选择结果",
+      "steps": [
+        "添加ItemsView.AfterPicking。",
+        "确认索引在1到清单长度范围内。",
+        "连接第、序号、项和Selection；选择面包检查第2项。"
+      ],
+      "question": "第一个列表项的序号是多少？",
+      "answer": "1；0不能传给select list item。"
+    },
+    {
+      "title": "追加并刷新",
+      "steps": [
+        "添加AddButton.Click，trim输入。",
+        "非空才add items to list，再调用刷新清单并清输入。",
+        "空格只提示；追加牛奶后检查数量4和末项。"
+      ],
+      "question": "新增后只修改CountLabel够吗？",
+      "answer": "不够，先更新数据列表，再统一刷新Elements、数量和选择提示。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "选择第二项",
+      "expected": "显示2和面包"
+    },
+    {
+      "action": "添加牛奶",
+      "expected": "末尾新增牛奶，共4项"
+    },
+    {
+      "action": "输入三个空格再添加",
+      "expected": "列表不变，提示填写内容"
+    }
+  ],
+  "misconceptions": [
+    [
+      "列表显示整串逗号",
+      "Elements需要真正的列表值"
+    ],
+    [
+      "数据加了但界面没变",
+      "添加后调用刷新清单"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "为野餐实际添加三件物品并说明顺序。"
+    },
+    {
+      "level": "拓展",
+      "task": "增加恢复默认清单按钮，并明确它会替换哪些数据。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "列表的顺序有什么作用？",
+      "a": "同一位置可对应选择序号和项目。"
+    },
+    {
+      "q": "输入空格为什么不新增？",
+      "a": "trim为空，不是有效物品名称。"
+    },
+    {
+      "q": "重开清单为何恢复三个项目？",
+      "a": "这里只用变量，还未使用本地存储。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT lists.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/lists.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT userinterface.html#ListView 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html#ListView",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "用列表管理信息",
+      "body": [
+        "可追加和选择的购物清单",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "野餐购物清单：查看三项预置物品，选择后显示序号与名称，再添加自己需要的物品。 清单只保存在本次运行的变量中，重开恢复三个示例；本课允许重名物品，不含持久化。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "初始列表为水、面包、苹果，按原顺序显示。",
+        "选择任一项显示其序号与内容；序号从1开始。",
+        "新增非空物品追加到末尾，允许同名物品；清空输入不清空列表。"
+      ],
+      "notes": "演示：选择第二项。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "列表是一份数据，不是多个分散变量。",
+        "先向购物清单追加。",
+        "用测试记录验证用列表管理信息的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "野餐购物清单：查看三项预置物品，选择后显示序号与名称，再追加所需物品。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "初始列表为水、面包、苹果，按原顺序显示。",
+        "选择任一项显示其序号与内容；序号从1开始。",
+        "新增非空物品追加到末尾，允许同名物品；清空输入不清空列表。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "展示购物物品",
+        "输入新增物品",
+        "追加物品",
+        "显示选择结果"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "ItemsView",
+          "ListView",
+          "展示购物物品"
+        ],
+        [
+          "ItemBox",
+          "TextBox",
+          "输入新增物品"
+        ],
+        [
+          "AddButton",
+          "Button",
+          "追加物品"
+        ],
+        [
+          "SelectionLabel",
+          "Label",
+          "显示选择结果"
+        ],
+        [
+          "CountLabel",
+          "Label",
+          "显示物品数"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "购物清单",
+          "水、面包、苹果；有顺序的列表"
+        ],
+        [
+          "SelectionIndex",
+          "从1开始；0表示没有选择"
+        ]
+      ]
+    },
+    {
+      "title": "列表把许多数据按顺序放在一起",
+      "body": [
+        "列表是一份数据，不是多个分散变量。",
+        "App Inventor列表序号从1开始。",
+        "length给出元素数量，不是最后一项的文字。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "数据显示与数据本身需要同步",
+      "body": [
+        "先向购物清单追加。",
+        "再把整份清单赋给Elements。",
+        "选择索引0表示尚未选择。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "初始化调用已给的刷新清单",
+        "选择时先检查索引，再显示序号与名称",
+        "新增非空内容，刷新数量并清输入"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：global 购物清单；刷新清单；Screen1.Initialize。学生任务：添加ItemsView.AfterPicking，检查有效索引后显示序号和名称；添加AddButton.Click，非空时追加、刷新、清输入。",
+      "layout": "text"
+    },
+    {
+      "title": "初始化与显示",
+      "body": [
+        "把全局清单连接到ListView.Elements。",
+        "初次显示三项，数量3。"
+      ],
+      "notes": "刷新清单已给出；Elements接列表，不接逗号长文本。 实际截图对应：刷新清单。清单只保存在本次运行的变量中，重开恢复三个示例；本课允许重名物品，不含持久化。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "刷新清单"
+    },
+    {
+      "title": "阅读刷新清单",
+      "body": [
+        "找到Class已给过程，核对Elements连接的是列表。",
+        "追踪length得到3，SelectionIndex重置为0。",
+        "区分列表数据与SelectionLabel中的文字。"
+      ],
+      "notes": "实践15分钟。把水、面包、苹果连接成一串文字能代替列表吗？ 教师参考：不能，列表保留独立项目和位置，文本只有一串字符。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "选择项目",
+      "body": [
+        "显示SelectionIndex和Selection。",
+        "点第二项显示2、面包。"
+      ],
+      "notes": "AfterPicking为待补入口；有效索引检查先于读取。 实际截图对应：ItemsView.AfterPicking。清单只保存在本次运行的变量中，重开恢复三个示例；本课允许重名物品，不含持久化。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "ItemsView.AfterPicking"
+    },
+    {
+      "title": "显示选择结果",
+      "body": [
+        "添加ItemsView.AfterPicking。",
+        "确认索引在1到清单长度范围内。",
+        "连接第、序号、项和Selection；选择面包检查第2项。"
+      ],
+      "notes": "实践15分钟。第一个列表项的序号是多少？ 教师参考：1；0不能传给select list item。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "新增物品",
+      "body": [
+        "去空格、追加、刷新并清空输入。",
+        "加牛奶后第四项是牛奶，数量4。"
+      ],
+      "notes": "追加只处理非空输入；本课不去重，新增后刷新并清输入。 实际截图对应：AddButton.Click。清单只保存在本次运行的变量中，重开恢复三个示例；本课允许重名物品，不含持久化。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "AddButton.Click"
+    },
+    {
+      "title": "追加并刷新",
+      "body": [
+        "添加AddButton.Click，trim输入。",
+        "非空才add items to list，再调用刷新清单并清输入。",
+        "空格只提示；追加牛奶后检查数量4和末项。"
+      ],
+      "notes": "实践15分钟。新增后只修改CountLabel够吗？ 教师参考：不够，先更新数据列表，再统一刷新Elements、数量和选择提示。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "选择第二项",
+          "显示2和面包"
+        ],
+        [
+          "添加牛奶",
+          "末尾新增牛奶，共4项"
+        ],
+        [
+          "输入三个空格再添加",
+          "列表不变，提示填写内容"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "列表显示整串逗号",
+          "Elements需要真正的列表值"
+        ],
+        [
+          "数据加了但界面没变",
+          "添加后调用刷新清单"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "选择第二项",
+          "显示2和面包"
+        ],
+        [
+          "添加牛奶",
+          "末尾新增牛奶，共4项"
+        ],
+        [
+          "输入三个空格再添加",
+          "列表不变，提示填写内容"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "为野餐实际添加三件物品并说明顺序。",
+        "增加恢复默认清单按钮，并明确它会替换哪些数据。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“选择第二项”写下预测，再记录实际结果。",
+        "结合积木解释：列表把许多数据按顺序放在一起。",
+        "修改一条规则并添加一项边界测试：为野餐实际添加三件物品并说明顺序。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：输入三个空格再添加。",
+        "说明：数据显示与数据本身需要同步。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "列表的顺序有什么作用？",
+        "输入空格为什么不新增？",
+        "重开清单为何恢复三个项目？"
+      ],
+      "notes": "1. 同一位置可对应选择序号和项目。\n2. trim为空，不是有效物品名称。\n3. 这里只用变量，还未使用本地存储。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "ListView": "11",
+    "TextBox": "15",
+    "Button": "8",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "global 购物清单",
+    "刷新清单",
+    "Screen1.Initialize"
+  ],
+  "actualClassroomTasks": [
+    "添加ItemsView.AfterPicking，检查有效索引后显示序号和名称",
+    "添加AddButton.Click，非空时追加、刷新、清输入"
+  ],
+  "actualScreenshotGroups": [
+    "刷新清单",
+    "ItemsView.AfterPicking",
+    "AddButton.Click"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "购物清单"
+    ],
+    "procedures": {
+      "刷新清单": []
+    },
+    "events": [
+      "Screen1.Initialize",
+      "ItemsView.AfterPicking",
+      "AddButton.Click"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "event": "Screen1.Initialize",
+      "expect": {
+        "CountLabel.Text": "物品数：3"
+      }
+    },
+    {
+      "set": {
+        "ItemsView.SelectionIndex": 2,
+        "ItemsView.Selection": "面包"
+      },
+      "event": "ItemsView.AfterPicking",
+      "expect": {
+        "SelectionLabel.Text": "第2项：面包"
+      }
+    },
+    {
+      "set": {
+        "ItemBox.Text": "牛奶"
+      },
+      "event": "AddButton.Click",
+      "expect": {
+        "global 购物清单": [
+          "水",
+          "面包",
+          "苹果",
+          "牛奶"
+        ],
+        "ItemBox.Text": "",
+        "CountLabel.Text": "物品数：4"
+      }
+    },
+    {
+      "set": {
+        "ItemBox.Text": "   "
+      },
+      "event": "AddButton.Click",
+      "expect": {
+        "CountLabel.Text": "物品数：3",
+        "SelectionLabel.Text": "请先填写物品名称"
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson29/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

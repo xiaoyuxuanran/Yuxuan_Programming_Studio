@@ -1,0 +1,729 @@
+{
+  "lesson": 27,
+  "title": "倾斜手机控制角色",
+  "projectName": "YXCourse27",
+  "exampleTitle": "倾斜与触摸双模式迷宫",
+  "durationMinutes": 90,
+  "goals": [
+    "角度变化不等于像素变化。",
+    "OrientationChanged保存最新角度对应速度。",
+    "用测试记录验证倾斜手机控制角色的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "重力迷宫入门：倾斜手机驱动小球，避开中央障碍，抵达终点。",
+    "scope": "倾斜roll/pitch轴向和符号需在目标竖屏手机校准。wall.png为原创纯色障碍资源。触摸替代用于验证游戏规则，不用传感器也能先做逻辑检查。",
+    "components": [
+      {
+        "name": "MazeCanvas",
+        "type": "Canvas",
+        "role": "迷宫区域"
+      },
+      {
+        "name": "PlayerBall",
+        "type": "Ball",
+        "role": "受控球"
+      },
+      {
+        "name": "Wall",
+        "type": "ImageSprite",
+        "role": "中央障碍"
+      },
+      {
+        "name": "Goal",
+        "type": "Ball",
+        "role": "终点"
+      },
+      {
+        "name": "Sensor",
+        "type": "OrientationSensor",
+        "role": "读取roll与pitch"
+      },
+      {
+        "name": "MoveClock",
+        "type": "Clock",
+        "role": "40ms更新"
+      },
+      {
+        "name": "StartButton",
+        "type": "Button",
+        "role": "开始重开"
+      },
+      {
+        "name": "ModeButton",
+        "type": "Button",
+        "role": "切换倾斜与触摸"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "模式及结果"
+      }
+    ],
+    "logic": [
+      {
+        "event": "Sensor.OrientationChanged",
+        "actions": [
+          "vx←映射(roll)；vy←映射(-pitch)；具体符号按竖屏安装方向校准"
+        ]
+      },
+      {
+        "event": "MoveClock.Timer",
+        "actions": [
+          "运行且倾斜模式时移动球(X+vx,Y+vy)"
+        ]
+      },
+      {
+        "event": "MazeCanvas.Dragged",
+        "actions": [
+          "运行且触摸模式时移动球(currentX,currentY)"
+        ]
+      },
+      {
+        "event": "PlayerBall.CollidedWith",
+        "actions": [
+          "碰Wall触障复位；碰Goal关闭Clock并显示胜利"
+        ]
+      },
+      {
+        "event": "ModeButton.Click",
+        "actions": [
+          "倾斜/触摸互换；清零速度"
+        ]
+      },
+      {
+        "event": "StartButton.Click",
+        "actions": [
+          "开始"
+        ]
+      }
+    ],
+    "procedures": {
+      "映射(角度)": "绝对值<2返回0，否则返回max(-6,min(6,角度/5))",
+      "移动球(x,y)": "中心坐标限制到半径..宽高减半径",
+      "开始": "Player放左下；Goal右上；运行中true；计时开；vx vy清0",
+      "触障复位": "回到起点；vx vy清0"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse27.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse27Class.aia：保留全部变量、移动球边界限制、触障复位、开始、方向回调与触摸模式入口、模式切换和设备能力检查、映射过程返回0占位；映射实现2°死区、除5缩放、±6上限；添加MoveClock.Timer的X+vx、Y+vy移动；添加PlayerBall.CollidedWith：碰墙复位，碰目标停止并胜利。",
+    "starter": "YXCourse27Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补映射过程的返回值，先问再示范。",
+      "students": "按任务单完成：补映射过程的返回值。",
+      "checkpoint": "死区与上限分别解决什么？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补Clock移动，先问再示范。",
+      "students": "按任务单完成：补Clock移动。",
+      "checkpoint": "为何不同时设置Ball.Speed为非零？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补碰撞并比较两种输入，先问再示范。",
+      "students": "按任务单完成：补碰撞并比较两种输入。",
+      "checkpoint": "到达目标后只显示胜利文字够吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补映射过程的返回值",
+      "steps": [
+        "找到Class中返回0的映射过程。",
+        "绝对角度小于2时返回0。",
+        "其余返回max(-6,min(6,角度/5))。",
+        "手算0、1、30、-100的结果，再检查积木。"
+      ],
+      "question": "死区与上限分别解决什么？",
+      "answer": "死区减少近水平时微小漂移；上限限制单次位移过大。"
+    },
+    {
+      "title": "补Clock移动",
+      "steps": [
+        "添加MoveClock.Timer。",
+        "仅运行中且为倾斜模式时调用移动球。",
+        "x为PlayerBall.X+vx，y为PlayerBall.Y+vy。",
+        "保持Ball.Speed为0，由过程限制中心坐标。"
+      ],
+      "question": "为何不同时设置Ball.Speed为非零？",
+      "answer": "会叠加另一套自动运动，难以解释每次位移及碰撞规则。"
+    },
+    {
+      "title": "补碰撞并比较两种输入",
+      "steps": [
+        "添加PlayerBall.CollidedWith。",
+        "other为Wall时调用触障复位；other为Goal时运行中←假并停Clock。",
+        "切到触摸模式验证碰墙和胜利，再测试重开。",
+        "传感器方向若相反，先记录设备方向再校准符号。"
+      ],
+      "question": "到达目标后只显示胜利文字够吗？",
+      "answer": "不够，还应停止运行和Clock，防止胜利后继续移动。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "输入角度0、1、30、-100到映射",
+      "expected": "分别为0、0、6、-6"
+    },
+    {
+      "action": "小球碰障碍",
+      "expected": "返回起点，仍可继续"
+    },
+    {
+      "action": "抵达目标后倾斜",
+      "expected": "结果保持胜利，小球不继续移动"
+    }
+  ],
+  "misconceptions": [
+    [
+      "水平放置仍缓慢移动",
+      "检查2度死区和速度复位"
+    ],
+    [
+      "碰墙穿过很远",
+      "限制每帧位移，并保持障碍宽度大于单帧移动距离"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "设计一条更长但能通过的路线。"
+    },
+    {
+      "level": "拓展",
+      "task": "记录不同手机倾斜方向，增加反向控制设置。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "映射(-100)为什么是-6？",
+      "a": "先除5得到-20，再受下限-6限制。"
+    },
+    {
+      "q": "OrientationChanged和Timer各做什么？",
+      "a": "前者采样并保存速度，后者按节奏把速度加到位置。"
+    },
+    {
+      "q": "触摸模式能证明倾斜轴方向正确吗？",
+      "a": "不能，只能先验游戏规则；轴向需要真机校准。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT sensors.html#OrientationSensor 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/sensors.html#OrientationSensor",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT animation.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/animation.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "倾斜手机控制角色",
+      "body": [
+        "倾斜与触摸双模式迷宫",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "重力迷宫入门：倾斜手机驱动小球，避开中央障碍，抵达终点。 倾斜roll/pitch轴向和符号需在目标竖屏手机校准。wall.png为原创纯色障碍资源。触摸替代用于验证游戏规则，不用传感器也能先做逻辑检查。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "方向传感器只更新速度变量，Clock每40ms更新位置。",
+        "设置2度死区并限制每帧最大移动6像素。",
+        "触障返回起点，碰终点停止；按钮可切换触摸替代模式。"
+      ],
+      "notes": "演示：输入角度0、1、30、-100到映射。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "角度变化不等于像素变化。",
+        "OrientationChanged保存最新角度对应速度。",
+        "用测试记录验证倾斜手机控制角色的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "重力迷宫入门：倾斜手机驱动小球，避开中央障碍，抵达终点。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "方向传感器只更新速度变量，Clock每40ms更新位置。",
+        "设置2度死区并限制每帧最大移动6像素。",
+        "触障返回起点，碰终点停止；按钮可切换触摸替代模式。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "迷宫区域",
+        "受控球",
+        "中央障碍",
+        "终点"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "MazeCanvas",
+          "Canvas",
+          "迷宫区域"
+        ],
+        [
+          "PlayerBall",
+          "Ball",
+          "受控球"
+        ],
+        [
+          "Wall",
+          "ImageSprite",
+          "中央障碍"
+        ],
+        [
+          "Goal",
+          "Ball",
+          "终点"
+        ],
+        [
+          "Sensor",
+          "OrientationSensor",
+          "读取roll与pitch"
+        ],
+        [
+          "MoveClock",
+          "Clock",
+          "40ms更新"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "运行中",
+          "假；限制胜利后的移动"
+        ],
+        [
+          "模式",
+          "倾斜／触摸"
+        ],
+        [
+          "vx、vy",
+          "初始0；每次移动的像素量"
+        ],
+        [
+          "映射(角度)",
+          "死区2°，除5缩放，限于±6"
+        ]
+      ]
+    },
+    {
+      "title": "测量值需要映射成移动量",
+      "body": [
+        "角度变化不等于像素变化。",
+        "用除法缩小，再限制最大移动量。",
+        "死区让手机近似水平时不轻微漂移。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "采样与移动分工不同",
+      "body": [
+        "OrientationChanged保存最新角度对应速度。",
+        "Clock按照固定节奏应用速度。",
+        "触摸替代模式有助于先测试游戏规则。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "方向回调保存vx、vy，Clock按节奏应用",
+        "触摸模式使用另一入口，同样限制边界",
+        "碰墙复位；碰Goal停止并显示胜利"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：全部变量；移动球边界限制、触障复位、开始；方向回调与触摸模式入口；模式切换和设备能力检查；映射过程返回0占位。学生任务：映射实现2°死区、除5缩放、±6上限；添加MoveClock.Timer的X+vx、Y+vy移动；添加PlayerBall.CollidedWith：碰墙复位，碰目标停止并胜利。",
+      "layout": "text"
+    },
+    {
+      "title": "速度映射",
+      "body": [
+        "实现死区、缩放与上下限。",
+        "角度0对应0，绝对值很大也不超过6。"
+      ],
+      "notes": "映射是带返回值过程，Class返0占位。角度恰为2不在小于2的死区内。 实际截图对应：映射。倾斜roll/pitch轴向和符号需在目标竖屏手机校准。wall.png为原创纯色障碍资源。触摸替代用于验证游戏规则，不用传感器也能先做逻辑检查。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "映射"
+    },
+    {
+      "title": "补映射过程的返回值",
+      "body": [
+        "找到Class中返回0的映射过程。",
+        "绝对角度小于2时返回0。",
+        "其余返回max(-6,min(6,角度/5))。"
+      ],
+      "notes": "实践15分钟。死区与上限分别解决什么？ 教师参考：死区减少近水平时微小漂移；上限限制单次位移过大。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "固定节奏移动",
+      "body": [
+        "把vx、vy分别加到当前位置。",
+        "倾斜方向与移动一致，球不越界。"
+      ],
+      "notes": "速度由方向回调保存。移动球过程已给边界限制，不要在两个入口重复写不同边界规则。 实际截图对应：MoveClock.Timer。倾斜roll/pitch轴向和符号需在目标竖屏手机校准。wall.png为原创纯色障碍资源。触摸替代用于验证游戏规则，不用传感器也能先做逻辑检查。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "MoveClock.Timer"
+    },
+    {
+      "title": "补Clock移动",
+      "body": [
+        "添加MoveClock.Timer。",
+        "仅运行中且为倾斜模式时调用移动球。",
+        "x为PlayerBall.X+vx，y为PlayerBall.Y+vy。"
+      ],
+      "notes": "实践15分钟。为何不同时设置Ball.Speed为非零？ 教师参考：会叠加另一套自动运动，难以解释每次位移及碰撞规则。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "碰撞与替代模式",
+      "body": [
+        "触障复位；抵达终点停止并可重开。",
+        "触摸模式也能验证同样的胜负规则。"
+      ],
+      "notes": "Wall为实际1×1纯色PNG拉伸的障碍；不是品牌图标。触摸模式已给入口，胜利和重开仍须按规则检查。 实际截图对应：PlayerBall.CollidedWith。倾斜roll/pitch轴向和符号需在目标竖屏手机校准。wall.png为原创纯色障碍资源。触摸替代用于验证游戏规则，不用传感器也能先做逻辑检查。",
+      "layout": "blocksTall",
+      "blockIndex": 3,
+      "captureTarget": "PlayerBall.CollidedWith"
+    },
+    {
+      "title": "补碰撞并比较两种输入",
+      "body": [
+        "添加PlayerBall.CollidedWith。",
+        "other为Wall时调用触障复位；other为Goal时运行中←假并停Clock。",
+        "切到触摸模式验证碰墙和胜利，再测试重开。"
+      ],
+      "notes": "实践15分钟。到达目标后只显示胜利文字够吗？ 教师参考：不够，还应停止运行和Clock，防止胜利后继续移动。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "输入角度0、1、30、-100到映射",
+          "分别为0、0、6、-6"
+        ],
+        [
+          "小球碰障碍",
+          "返回起点，仍可继续"
+        ],
+        [
+          "抵达目标后倾斜",
+          "结果保持胜利，小球不继续移动"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "水平放置仍缓慢移动",
+          "检查2度死区和速度复位"
+        ],
+        [
+          "碰墙穿过很远",
+          "限制每帧位移，并保持障碍宽度大于单帧移动距离"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "输入角度0、1、30、-100到映射",
+          "分别为0、0、6、-6"
+        ],
+        [
+          "小球碰障碍",
+          "返回起点，仍可继续"
+        ],
+        [
+          "抵达目标后倾斜",
+          "结果保持胜利，小球不继续移动"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "设计一条更长但能通过的路线。",
+        "记录不同手机倾斜方向，增加反向控制设置。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“输入角度0、1、30、-100到映射”写下预测，再记录实际结果。",
+        "结合积木解释：测量值需要映射成移动量。",
+        "修改一条规则并添加一项边界测试：设计一条更长但能通过的路线。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：抵达目标后倾斜。",
+        "说明：采样与移动分工不同。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "映射(-100)为什么是-6？",
+        "OrientationChanged和Timer各做什么？",
+        "触摸模式能证明倾斜轴方向正确吗？"
+      ],
+      "notes": "1. 先除5得到-20，再受下限-6限制。\n2. 前者采样并保存速度，后者按节奏把速度加到位置。\n3. 不能，只能先验游戏规则；轴向需要真机校准。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Ball": "8",
+    "ImageSprite": "11",
+    "Canvas": "15",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "VerticalArrangement": "4",
+    "OrientationSensor": "2",
+    "Clock": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "全部变量",
+    "移动球边界限制、触障复位、开始",
+    "方向回调与触摸模式入口",
+    "模式切换和设备能力检查",
+    "映射过程返回0占位"
+  ],
+  "actualClassroomTasks": [
+    "映射实现2°死区、除5缩放、±6上限",
+    "添加MoveClock.Timer的X+vx、Y+vy移动",
+    "添加PlayerBall.CollidedWith：碰墙复位，碰目标停止并胜利"
+  ],
+  "actualScreenshotGroups": [
+    "映射",
+    "MoveClock.Timer",
+    "PlayerBall.CollidedWith"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "运行中",
+      "模式",
+      "vx",
+      "vy"
+    ],
+    "procedures": {
+      "映射": [
+        "角度"
+      ],
+      "移动球": [
+        "x",
+        "y"
+      ],
+      "触障复位": [],
+      "开始": []
+    },
+    "events": [
+      "Sensor.OrientationChanged",
+      "MoveClock.Timer",
+      "MazeCanvas.Dragged",
+      "PlayerBall.CollidedWith",
+      "ModeButton.Click",
+      "StartButton.Click",
+      "Screen1.Initialize"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "procedure": "映射",
+      "args": [
+        0
+      ],
+      "returns": 0
+    },
+    {
+      "procedure": "映射",
+      "args": [
+        1
+      ],
+      "returns": 0
+    },
+    {
+      "procedure": "映射",
+      "args": [
+        30
+      ],
+      "returns": 6
+    },
+    {
+      "procedure": "映射",
+      "args": [
+        -100
+      ],
+      "returns": -6
+    },
+    {
+      "set": {
+        "global 运行中": true,
+        "MazeCanvas.Height": 360
+      },
+      "event": "PlayerBall.CollidedWith",
+      "args": {
+        "other": {
+          "component": "Wall"
+        }
+      },
+      "expect": {
+        "PlayerBall.X": 35,
+        "PlayerBall.Y": 325,
+        "global 运行中": true
+      }
+    },
+    {
+      "set": {
+        "global 运行中": true
+      },
+      "event": "PlayerBall.CollidedWith",
+      "args": {
+        "other": {
+          "component": "Goal"
+        }
+      },
+      "expect": {
+        "global 运行中": false,
+        "MoveClock.TimerEnabled": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson27/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

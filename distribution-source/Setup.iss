@@ -2,7 +2,7 @@
 [Setup]
 AppId={{D394BCE3-729B-427F-A3EB-52885E97ED62}
 AppName={#AppName}
-AppVersion=2.3.3
+AppVersion=2.3.4
 SetupArchitecture=x64
 AppPublisher=Yuxuan Programming Studio
 DefaultDirName={userpf}\AppInventorOffline
@@ -31,7 +31,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts:"
 
 [Files]
-Source: "native\*"; DestDir: "{app}"; Excludes: "server\war\WEB-INF\authkey\*,server\war\WEB-INF\keystore\*,server\war\WEB-INF\appengine-generated\*,mixly\web\*,AppInventor-2.*-*.exe,LayoutCheck.exe,*\__pycache__\*"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "native\*"; DestDir: "{app}"; Excludes: "mixly\arduino-cli\Arduino15\inventory.yaml,server\war\WEB-INF\authkey\*,server\war\WEB-INF\keystore\*,server\war\WEB-INF\appengine-generated\*,mixly\web\*,AppInventor-2.*-*.exe,LayoutCheck.exe,*\__pycache__\*"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\AppInventor.exe"; WorkingDir: "{app}"

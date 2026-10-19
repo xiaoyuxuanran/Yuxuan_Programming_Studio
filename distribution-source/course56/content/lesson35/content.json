@@ -1,0 +1,725 @@
+{
+  "lesson": 35,
+  "title": "数据导入、导出与分享",
+  "projectName": "YXCourse35",
+  "exampleTitle": "CSV原子导入、App文件备份与分享",
+  "durationMinutes": 90,
+  "goals": [
+    "地球,我们的家应是一整本书名。",
+    "先放入临时列表检查。",
+    "用测试记录验证数据导入、导出与分享的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "阅读备份工具：把书名和分钟数导出CSV，再从文本导入并分享备份文件。",
+    "scope": "导入来自预览文本框的CSV文本，不是任意文件浏览器。导出写入App作用域reading.csv，真实文件与系统分享需课堂设备验证。",
+    "components": [
+      {
+        "name": "PreviewBox",
+        "type": "TextBox",
+        "role": "显示或粘贴CSV"
+      },
+      {
+        "name": "ExportButton",
+        "type": "Button",
+        "role": "生成CSV并写文件"
+      },
+      {
+        "name": "ImportButton",
+        "type": "Button",
+        "role": "验证并导入CSV文本"
+      },
+      {
+        "name": "ShareButton",
+        "type": "Button",
+        "role": "分享已写好的备份"
+      },
+      {
+        "name": "RowsView",
+        "type": "ListView",
+        "role": "当前记录"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "导入导出结果"
+      },
+      {
+        "name": "BackupFile",
+        "type": "File",
+        "role": "App作用域备份"
+      },
+      {
+        "name": "Share1",
+        "type": "Sharing",
+        "role": "系统分享面板"
+      }
+    ],
+    "logic": [
+      {
+        "event": "ExportButton.Click",
+        "actions": [
+          "导出CSV"
+        ]
+      },
+      {
+        "event": "BackupFile.AfterFileSaved",
+        "actions": [
+          "写入中时用MakeFullPath(App,reading.csv)保存完整路径；导出完成真，恢复导出并启用分享"
+        ]
+      },
+      {
+        "event": "ImportButton.Click",
+        "actions": [
+          "list from csv table解析PreviewBox；验证成功才替换记录并刷新；失败保留旧数据"
+        ]
+      },
+      {
+        "event": "ShareButton.Click",
+        "actions": [
+          "导出完成时Sharing.ShareFile(BackupFile.MakeFullPath(App,reading.csv))"
+        ]
+      },
+      {
+        "event": "Screen1.ErrorOccurred",
+        "actions": [
+          "显示格式或文件错误，保留原数据"
+        ]
+      }
+    ],
+    "procedures": {
+      "导出CSV": "在表头后追加记录；list to csv table；PreviewBox显示；导出完成false；SaveFile文本到reading.csv",
+      "验证导入(表)": "表头完全匹配；至少表头；每数据行恰好两列，title非空，minutes为1..240整数；在临时表中转换数值；全部成功返回临时表",
+      "刷新记录": "将每行转成书名+分钟的显示列表"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse35.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse35Class.aia：保留示例记录、辅助变量与刷新记录、全部操作入口、导入提交的类型保护和分享保护、导出CSV与验证导入占位；错误恢复；用原生CSV转换而非手工逗号分割；验证导入使用局部临时表，全部成功才返回列表；补BackupFile.AfterFileSaved，MakeFullPath后启用分享。",
+    "starter": "YXCourse35Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补原生CSV导出，先问再示范。",
+      "students": "按任务单完成：补原生CSV导出。",
+      "checkpoint": "书名地球,我们的家能直接按逗号切开吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补整表验证，先问再示范。",
+      "students": "按任务单完成：补整表验证。",
+      "checkpoint": "第一行有效、第二行错误能先导入第一行吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补保存回调和分享准备，先问再示范。",
+      "students": "按任务单完成：补保存回调和分享准备。",
+      "checkpoint": "SaveFile调用后为何不能立刻分享？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补原生CSV导出",
+      "steps": [
+        "找到导出CSV占位过程。",
+        "建表头title、minutes并追加各条记录。",
+        "list to csv table得到文本，显示并SaveFile。",
+        "先设导出完成假、写入中真，禁用分享。"
+      ],
+      "question": "书名地球,我们的家能直接按逗号切开吗？",
+      "answer": "不能，CSV引号规则由原生转换处理。"
+    },
+    {
+      "title": "补整表验证",
+      "steps": [
+        "检查表头完全匹配，每行两列。",
+        "标题trim非空，分钟为1到240整数。",
+        "在局部临时表转换；全部通过才返回列表。",
+        "坏行返回原因，只有表头返回空列表。"
+      ],
+      "question": "第一行有效、第二行错误能先导入第一行吗？",
+      "answer": "本课整次导入作为一个操作，失败时不提交任何部分。"
+    },
+    {
+      "title": "补保存回调和分享准备",
+      "steps": [
+        "添加BackupFile.AfterFileSaved。",
+        "用App作用域和reading.csv调用MakeFullPath。",
+        "记录完整路径，恢复导出键并启用分享。",
+        "保存前点击分享不能调用ShareFile。"
+      ],
+      "question": "SaveFile调用后为何不能立刻分享？",
+      "answer": "写入异步完成，应在AfterFileSaved后确认可分享。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "导出再导入含逗号书名",
+      "expected": "两条记录无损恢复"
+    },
+    {
+      "action": "导入第2行分钟abc",
+      "expected": "提示行错误，旧记录不变"
+    },
+    {
+      "action": "导出未完成时尝试分享",
+      "expected": "按钮禁用；完成后可打开分享"
+    }
+  ],
+  "misconceptions": [
+    [
+      "书名被切成两列",
+      "用内置CSV解析而非split逗号"
+    ],
+    [
+      "坏表导入后旧数据丢了",
+      "先验证临时表，成功才替换"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "增加日期列并升级表头规则。"
+    },
+    {
+      "level": "拓展",
+      "task": "和同伴交换一份不含个人隐私的阅读备份。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "CSV字段内有逗号怎么办？",
+      "a": "使用原生CSV编码和解析，不手动split逗号。"
+    },
+    {
+      "q": "临时表的作用是什么？",
+      "a": "隔离未验证数据，全部成功才替换正式记录。"
+    },
+    {
+      "q": "分享按钮什么时候可用？",
+      "a": "成功写入回调后，已取得App作用域完整路径时。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT lists.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/lists.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT storage.html#File 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/storage.html#File",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT connectivity.html#Sharing 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#Sharing",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "数据导入、导出与分享",
+      "body": [
+        "CSV原子导入、App文件备份与分享",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "阅读备份工具：把书名和分钟数导出CSV，再从文本导入并分享备份文件。 导入来自预览文本框的CSV文本，不是任意文件浏览器。导出写入App作用域reading.csv，真实文件与系统分享需课堂设备验证。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "第一行固定为title,minutes，每行两列。",
+        "用内置CSV转换处理逗号与引号，不手工split逗号。",
+        "导入先验证整表，全部有效才替换旧数据；取消或出错不清空记录。"
+      ],
+      "notes": "演示：导出再导入含逗号书名。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "地球,我们的家应是一整本书名。",
+        "先放入临时列表检查。",
+        "用测试记录验证数据导入、导出与分享的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "阅读备份工具：把书名和分钟数导出CSV，再从文本导入并分享备份文件。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "第一行固定为title,minutes，每行两列。",
+        "用内置CSV转换处理逗号与引号，不手工split逗号。",
+        "导入先验证整表，全部有效才替换旧数据；取消或出错不清空记录。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "显示或粘贴CSV",
+        "生成CSV并写文件",
+        "验证并导入CSV文本",
+        "分享已写好的备份"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "PreviewBox",
+          "TextBox",
+          "显示或粘贴CSV"
+        ],
+        [
+          "ExportButton",
+          "Button",
+          "生成CSV并写文件"
+        ],
+        [
+          "ImportButton",
+          "Button",
+          "验证并导入CSV文本"
+        ],
+        [
+          "ShareButton",
+          "Button",
+          "分享已写好的备份"
+        ],
+        [
+          "RowsView",
+          "ListView",
+          "当前记录"
+        ],
+        [
+          "StatusLabel",
+          "Label",
+          "导入导出结果"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "记录",
+          "两列：书名、整数分钟"
+        ],
+        [
+          "写入中",
+          "假；防止同时导出"
+        ],
+        [
+          "导出完成",
+          "假；保存回调后才真"
+        ],
+        [
+          "临时导入表",
+          "局部变量；全部成功才提交"
+        ]
+      ]
+    },
+    {
+      "title": "CSV的逗号可能属于字段内容",
+      "body": [
+        "地球,我们的家应是一整本书名。",
+        "内置CSV块处理带逗号、引号和换行的字段。",
+        "表头说明各列含义，不当作普通数据。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "导入是先验证再提交",
+      "body": [
+        "先放入临时列表检查。",
+        "任一行不合法就不替换旧记录。",
+        "写文件完成后才启用分享。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "原生CSV转换保护字段里的逗号和引号",
+        "验证整张表，失败保留旧数据",
+        "文件保存回调生成完整路径，再允许分享"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：示例记录、辅助变量与刷新记录；全部操作入口、导入提交的类型保护和分享保护；导出CSV与验证导入占位；错误恢复。学生任务：用原生CSV转换而非手工逗号分割；验证导入使用局部临时表，全部成功才返回列表；补BackupFile.AfterFileSaved，MakeFullPath后启用分享。",
+      "layout": "text"
+    },
+    {
+      "title": "生成CSV",
+      "body": [
+        "用list to csv table处理表头和记录。",
+        "含逗号的书名导出后可正确还原。"
+      ],
+      "notes": "原生list to csv table生成文本；写入开始先撤销旧分享许可。 实际截图对应：导出CSV。导入来自预览文本框的CSV文本，不是任意文件浏览器。导出写入App作用域reading.csv，真实文件与系统分享需课堂设备验证。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "导出CSV"
+    },
+    {
+      "title": "补原生CSV导出",
+      "body": [
+        "找到导出CSV占位过程。",
+        "建表头title、minutes并追加各条记录。",
+        "list to csv table得到文本，显示并SaveFile。"
+      ],
+      "notes": "实践15分钟。书名地球,我们的家能直接按逗号切开吗？ 教师参考：不能，CSV引号规则由原生转换处理。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "验证导入",
+      "body": [
+        "检查表头、列数、非空书名与整数分钟。",
+        "有效表替换；坏行让整次导入失败。"
+      ],
+      "notes": "验证导入返回列表或错误说明，调用者按返回类型决定是否提交。 实际截图对应：验证导入。导入来自预览文本框的CSV文本，不是任意文件浏览器。导出写入App作用域reading.csv，真实文件与系统分享需课堂设备验证。",
+      "layout": "blocksTall",
+      "blockIndex": 2,
+      "captureTarget": "验证导入"
+    },
+    {
+      "title": "补整表验证",
+      "body": [
+        "检查表头完全匹配，每行两列。",
+        "标题trim非空，分钟为1到240整数。",
+        "在局部临时表转换；全部通过才返回列表。"
+      ],
+      "notes": "实践15分钟。第一行有效、第二行错误能先导入第一行吗？ 教师参考：本课整次导入作为一个操作，失败时不提交任何部分。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "文件与分享",
+      "body": [
+        "在保存完成后启用分享，并使用App作用域完整路径。",
+        "可在系统面板分享CSV文件。"
+      ],
+      "notes": "回调才恢复状态；完整路径通过MakeFullPath取得，不硬编码Android目录。 实际截图对应：BackupFile.AfterFileSaved。导入来自预览文本框的CSV文本，不是任意文件浏览器。导出写入App作用域reading.csv，真实文件与系统分享需课堂设备验证。",
+      "layout": "blocksTall",
+      "blockIndex": 3,
+      "captureTarget": "BackupFile.AfterFileSaved"
+    },
+    {
+      "title": "补保存回调和分享准备",
+      "body": [
+        "添加BackupFile.AfterFileSaved。",
+        "用App作用域和reading.csv调用MakeFullPath。",
+        "记录完整路径，恢复导出键并启用分享。"
+      ],
+      "notes": "实践15分钟。SaveFile调用后为何不能立刻分享？ 教师参考：写入异步完成，应在AfterFileSaved后确认可分享。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "导出再导入含逗号书名",
+          "两条记录无损恢复"
+        ],
+        [
+          "导入第2行分钟abc",
+          "提示行错误，旧记录不变"
+        ],
+        [
+          "导出未完成时尝试分享",
+          "按钮禁用；完成后可打开分享"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "书名被切成两列",
+          "用内置CSV解析而非split逗号"
+        ],
+        [
+          "坏表导入后旧数据丢了",
+          "先验证临时表，成功才替换"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "导出再导入含逗号书名",
+          "两条记录无损恢复"
+        ],
+        [
+          "导入第2行分钟abc",
+          "提示行错误，旧记录不变"
+        ],
+        [
+          "导出未完成时尝试分享",
+          "按钮禁用；完成后可打开分享"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加日期列并升级表头规则。",
+        "和同伴交换一份不含个人隐私的阅读备份。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“导出再导入含逗号书名”写下预测，再记录实际结果。",
+        "结合积木解释：CSV的逗号可能属于字段内容。",
+        "修改一条规则并添加一项边界测试：增加日期列并升级表头规则。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：导出未完成时尝试分享。",
+        "说明：导入是先验证再提交。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "CSV字段内有逗号怎么办？",
+        "临时表的作用是什么？",
+        "分享按钮什么时候可用？"
+      ],
+      "notes": "1. 使用原生CSV编码和解析，不手动split逗号。\n2. 隔离未验证数据，全部成功才替换正式记录。\n3. 成功写入回调后，已取得App作用域完整路径时。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "ListView": "11",
+    "TextBox": "15",
+    "Button": "8",
+    "VerticalArrangement": "4",
+    "File": "4",
+    "Sharing": "2",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "示例记录、辅助变量与刷新记录",
+    "全部操作入口、导入提交的类型保护和分享保护",
+    "导出CSV与验证导入占位；错误恢复"
+  ],
+  "actualClassroomTasks": [
+    "用原生CSV转换而非手工逗号分割",
+    "验证导入使用局部临时表，全部成功才返回列表",
+    "补BackupFile.AfterFileSaved，MakeFullPath后启用分享"
+  ],
+  "actualScreenshotGroups": [
+    "导出CSV",
+    "验证导入",
+    "BackupFile.AfterFileSaved"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "记录",
+      "导出完成",
+      "写入中",
+      "备份路径",
+      "显示记录",
+      "导出表",
+      "导入结果"
+    ],
+    "procedures": {
+      "刷新记录": [],
+      "导出CSV": [],
+      "验证导入": [
+        "表"
+      ]
+    },
+    "events": [
+      "Screen1.Initialize",
+      "ExportButton.Click",
+      "ImportButton.Click",
+      "BackupFile.AfterFileSaved",
+      "ShareButton.Click",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "procedure": "验证导入",
+      "args": [
+        [
+          [
+            "title",
+            "minutes"
+          ],
+          [
+            "地球,我们的家",
+            "15"
+          ]
+        ]
+      ],
+      "returns": [
+        [
+          "地球,我们的家",
+          15
+        ]
+      ]
+    },
+    {
+      "procedure": "验证导入",
+      "args": [
+        [
+          [
+            "title",
+            "minutes"
+          ],
+          [
+            "坏记录",
+            "abc"
+          ]
+        ]
+      ],
+      "returns": "第2行：分钟须为1～240整数"
+    },
+    {
+      "procedure": "验证导入",
+      "args": [
+        [
+          [
+            "title",
+            "minutes"
+          ]
+        ]
+      ],
+      "returns": []
+    },
+    {
+      "event": "ShareButton.Click",
+      "methodCounts": {
+        "Share1.ShareFile": 0
+      }
+    },
+    {
+      "set": {
+        "global 写入中": true
+      },
+      "event": "BackupFile.AfterFileSaved",
+      "args": {
+        "fileName": "reading.csv"
+      },
+      "expect": {
+        "global 导出完成": true,
+        "ShareButton.Enabled": true,
+        "ExportButton.Enabled": true
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson35/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

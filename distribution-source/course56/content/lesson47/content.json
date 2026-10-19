@@ -1,0 +1,756 @@
+{
+  "lesson": 47,
+  "title": "Wi-Fi TCP 热点直连",
+  "projectName": "YXCourse47",
+  "exampleTitle": "ESP32 AP局域网TCP",
+  "durationMinutes": 90,
+  "goals": [
+    "192.168.4.1是此固件明确配置的AP地址。",
+    "手机加入YX-ESP32-AP。",
+    "用测试记录验证Wi-Fi TCP 热点直连的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "热点灯控：手机接入ESP32创建的Wi-Fi，TCP连接192.168.4.1:9000并控制LED。",
+    "scope": "配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32创建YX-ESP32-AP，示例口令YXclass88，手机主动加入此局域网，TCP地址192.168.4.1:9000。ClientSocketAI2Ext没有Connected事件，以ConnectionState轮询判断；不是HTTP。",
+    "components": [
+      {
+        "name": "HostBox",
+        "type": "TextBox",
+        "role": "设备IP"
+      },
+      {
+        "name": "PortBox",
+        "type": "TextBox",
+        "role": "端口"
+      },
+      {
+        "name": "ConnectButton",
+        "type": "Button",
+        "role": "连接TCP"
+      },
+      {
+        "name": "DisconnectButton",
+        "type": "Button",
+        "role": "断开"
+      },
+      {
+        "name": "OnButton",
+        "type": "Button",
+        "role": "开灯"
+      },
+      {
+        "name": "OffButton",
+        "type": "Button",
+        "role": "关灯"
+      },
+      {
+        "name": "ReadButton",
+        "type": "Button",
+        "role": "读取状态"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "连接与设备反馈"
+      },
+      {
+        "name": "Socket",
+        "type": "ClientSocketAI2Ext",
+        "role": "TCP客户端扩展"
+      }
+    ],
+    "logic": [
+      {
+        "event": "ConnectButton.Click",
+        "actions": [
+          "调用连接设备"
+        ]
+      },
+      {
+        "event": "Socket.DataReceived",
+        "actions": [
+          "当前ConnectionState为真时调用接收分帧(data)"
+        ]
+      },
+      {
+        "event": "Socket.RemoteConnectionClosed",
+        "actions": [
+          "清缓存并显示远端关闭"
+        ]
+      },
+      {
+        "event": "OnButton.Click",
+        "actions": [
+          "发送行(LED,1)"
+        ]
+      },
+      {
+        "event": "OffButton.Click",
+        "actions": [
+          "发送行(LED,0)"
+        ]
+      },
+      {
+        "event": "ReadButton.Click",
+        "actions": [
+          "发送行(GET)"
+        ]
+      },
+      {
+        "event": "DisconnectButton.Click",
+        "actions": [
+          "Socket.Disconnect并清理"
+        ]
+      }
+    ],
+    "procedures": {
+      "连接设备": "校验地址和端口，设置Socket属性，Connect并轮询实际状态",
+      "接收分帧": "追加片段并循环提取LF行，保留尾部半行",
+      "清理连接": "清连接标志与缓存、禁用控制"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse47.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse47Class.aia：保留所有组件与协议参数、连接状态清理、数值边界、非本课重点过程和完整事件入口、扩展完整原始包与真实事件签名；补齐连接设备过程；补齐接收分帧过程。",
+    "starter": "YXCourse47Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补连接设备，先问再示范。",
+      "students": "按任务单完成：补连接设备。",
+      "checkpoint": "Connect调用结束就代表通道建立了吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：阅读数据回调，先问再示范。",
+      "students": "按任务单完成：阅读数据回调。",
+      "checkpoint": "扩展里有Socket.Connected事件可用吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补LF组帧，先问再示范。",
+      "students": "按任务单完成：补LF组帧。",
+      "checkpoint": "为什么使用while而不是一个if？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补连接设备",
+      "steps": [
+        "非空HostBox，端口须为1到65535整数。",
+        "设置ServerAddress与文本ServerPort，再Connect。",
+        "开PollClock检查ConnectionState，不立即显示连接成功。",
+        "AP填192.168.4.1和9000。"
+      ],
+      "question": "Connect调用结束就代表通道建立了吗？",
+      "answer": "不代表，实际状态由ConnectionState轮询决定。"
+    },
+    {
+      "title": "阅读数据回调",
+      "steps": [
+        "Socket.DataReceived已经给出。",
+        "连接有效时将data原样交接收分帧。",
+        "不在回调中假定片段就是完整应答。"
+      ],
+      "question": "扩展里有Socket.Connected事件可用吗？",
+      "answer": "本包没有；有DataReceived和RemoteConnectionClosed，并可读ConnectionState。"
+    },
+    {
+      "title": "补LF组帧",
+      "steps": [
+        "把片段追加到接收缓存。",
+        "while存在LF：取前面一行、删除已处理部分、调用处理应答。",
+        "保留无LF尾部，缓存超过512字符清空并提示。",
+        "纸面推演OK,LE与D,1加LF，以及一次两条行。"
+      ],
+      "question": "为什么使用while而不是一个if？",
+      "answer": "一个片段可能包含多条完整行，需要全部提取。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "加入AP后连接192.168.4.1:9000",
+      "expected": "连接状态true"
+    },
+    {
+      "action": "开灯并GET",
+      "expected": "得到OK,LED,1与STATE"
+    },
+    {
+      "action": "接收OK,LE和D,1加LF两段",
+      "expected": "只形成一条正确完整应答"
+    }
+  ],
+  "misconceptions": [
+    [
+      "手机自动切走热点",
+      "确认保留无互联网Wi-Fi，必要时关闭智能切网"
+    ],
+    [
+      "端口填9000但无响应",
+      "确认固件TCP服务已启动且不是HTTP路径"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "给热点起一个小组专用名称，防止连接错板。"
+    },
+    {
+      "level": "拓展",
+      "task": "把GET结果拆成独立的LED、ADC与按钮标签。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "192.168.4.1和9000分别是什么？",
+      "a": "本固件AP的IP与TCP服务端口。"
+    },
+    {
+      "q": "加入热点一定有互联网吗？",
+      "a": "不一定，此实验只需要手机与ESP32的局域网通信。"
+    },
+    {
+      "q": "原始TCP能直接用Web.Get吗？",
+      "a": "不能，这份固件使用自定义TCP行协议，不是HTTP接口。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#BluetoothClient 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetoothle 官方参考",
+      "url": "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT bluetooth.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT wifi.html 官方参考",
+      "url": "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT gpio.html 官方参考",
+      "url": "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "Wi-Fi TCP 热点直连",
+      "body": [
+        "ESP32 AP局域网TCP",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "热点灯控：手机接入ESP32创建的Wi-Fi，TCP连接192.168.4.1:9000并控制LED。 配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32创建YX-ESP32-AP，示例口令YXclass88，手机主动加入此局域网，TCP地址192.168.4.1:9000。ClientSocketAI2Ext没有Connected事件，以ConnectionState轮询判断；不是HTTP。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "ESP32为SoftAP与TCP服务端，手机APP为TCP客户端。",
+        "本地热点可没有互联网，手机仍需保持此Wi-Fi连接。",
+        "TCP连接成功后才允许发送LED与GET，接收文本按LF组帧。"
+      ],
+      "notes": "演示：加入AP后连接192.168.4.1:9000。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "192.168.4.1是此固件明确配置的AP地址。",
+        "手机加入YX-ESP32-AP。",
+        "用测试记录验证Wi-Fi TCP 热点直连的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "热点灯控：手机接入ESP32创建的Wi-Fi，TCP连接192.168.4.1:9000并控制LED。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "ESP32为SoftAP与TCP服务端，手机APP为TCP客户端。",
+        "本地热点可没有互联网，手机仍需保持此Wi-Fi连接。",
+        "TCP连接成功后才允许发送LED与GET，接收文本按LF组帧。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "设备IP",
+        "端口",
+        "连接TCP",
+        "断开"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "HostBox",
+          "TextBox",
+          "设备IP"
+        ],
+        [
+          "PortBox",
+          "TextBox",
+          "端口"
+        ],
+        [
+          "ConnectButton",
+          "Button",
+          "连接TCP"
+        ],
+        [
+          "DisconnectButton",
+          "Button",
+          "断开"
+        ],
+        [
+          "OnButton",
+          "Button",
+          "开灯"
+        ],
+        [
+          "OffButton",
+          "Button",
+          "关灯"
+        ]
+      ],
+      "columnWidths": [
+        300,
+        330,
+        522
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "已连接",
+          "假；必须核对当前实际连接"
+        ],
+        [
+          "接收缓存",
+          "空；保留半行，最多512字符"
+        ],
+        [
+          "有效应答",
+          "校验完整格式后才真"
+        ],
+        [
+          "日志",
+          "最多保留最近20条"
+        ],
+        [
+          "连接中",
+          "连接请求后的等待状态"
+        ]
+      ]
+    },
+    {
+      "title": "IP和端口共同找到服务",
+      "body": [
+        "192.168.4.1是此固件明确配置的AP地址。",
+        "9000是TCP监听端口。",
+        "同一IP可以运行不同服务，TCP端口不能省略。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "热点网络不要求接入互联网",
+      "body": [
+        "手机加入YX-ESP32-AP。",
+        "系统提示无互联网时仍选择保留连接。",
+        "本课是原始TCP协议，不用Web.Get代替。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "校验IP与端口后Connect，先显示连接中",
+        "轮询ConnectionState决定是否开放控制",
+        "DataReceived片段交给LF分帧，再解析完整行"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：所有组件与协议参数；连接状态清理、数值边界、非本课重点过程和完整事件入口；扩展完整原始包与真实事件签名。学生任务：补齐连接设备过程；补齐接收分帧过程。",
+      "layout": "text"
+    },
+    {
+      "title": "发起TCP连接",
+      "body": [
+        "设置IP和端口再Connect。",
+        "等待ConnectionState为真。"
+      ],
+      "notes": "连接设备待补，不能伪造扩展不存在的Connected事件。 实际截图对应：连接设备。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32创建YX-ESP32-AP，示例口令YXclass88，手机主动加入此局域网，TCP地址192.168.4.1:9000。ClientSocketAI2Ext没有Connected事件，以ConnectionState轮询判断；不是HTTP。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "连接设备"
+    },
+    {
+      "title": "补连接设备",
+      "body": [
+        "非空HostBox，端口须为1到65535整数。",
+        "设置ServerAddress与文本ServerPort，再Connect。",
+        "开PollClock检查ConnectionState，不立即显示连接成功。"
+      ],
+      "notes": "实践15分钟。Connect调用结束就代表通道建立了吗？ 教师参考：不代表，实际状态由ConnectionState轮询决定。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "收到的是片段",
+      "body": [
+        "DataReceived的data交接收分帧。",
+        "片段可能不是一整行。"
+      ],
+      "notes": "入口已给，实际边界由LF定义。 实际截图对应：Socket.DataReceived。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32创建YX-ESP32-AP，示例口令YXclass88，手机主动加入此局域网，TCP地址192.168.4.1:9000。ClientSocketAI2Ext没有Connected事件，以ConnectionState轮询判断；不是HTTP。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "Socket.DataReceived"
+    },
+    {
+      "title": "阅读数据回调",
+      "body": [
+        "Socket.DataReceived已经给出。",
+        "连接有效时将data原样交接收分帧。",
+        "不在回调中假定片段就是完整应答。"
+      ],
+      "notes": "实践15分钟。扩展里有Socket.Connected事件可用吗？ 教师参考：本包没有；有DataReceived和RemoteConnectionClosed，并可读ConnectionState。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "提取全部完整行",
+      "body": [
+        "while取LF之前的行。",
+        "半行保留，缓存有上限。"
+      ],
+      "notes": "接收分帧待补；清理连接也清半行缓存。 实际截图对应：接收分帧。配套固件及接线表见firmware。参考板为原始ESP32-WROOM DevKit；LED GPIO23串330Ω，ADC1 GPIO34只接0～3.3V电位器滑端，GPIO27按钮接地，0为按下。工程导入、APK编译和桌面协议测试不能代替Android与ESP32实物联调；本次未做真机测试。 ESP32创建YX-ESP32-AP，示例口令YXclass88，手机主动加入此局域网，TCP地址192.168.4.1:9000。ClientSocketAI2Ext没有Connected事件，以ConnectionState轮询判断；不是HTTP。",
+      "layout": "blocksTall",
+      "blockIndex": 3,
+      "captureTarget": "接收分帧"
+    },
+    {
+      "title": "补LF组帧",
+      "body": [
+        "把片段追加到接收缓存。",
+        "while存在LF：取前面一行、删除已处理部分、调用处理应答。",
+        "保留无LF尾部，缓存超过512字符清空并提示。"
+      ],
+      "notes": "实践15分钟。为什么使用while而不是一个if？ 教师参考：一个片段可能包含多条完整行，需要全部提取。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "加入AP后连接192.168.4.1:9000",
+          "连接状态true"
+        ],
+        [
+          "开灯并GET",
+          "得到OK,LED,1与STATE"
+        ],
+        [
+          "接收OK,LE和D,1加LF两段",
+          "只形成一条正确完整应答"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "手机自动切走热点",
+          "确认保留无互联网Wi-Fi，必要时关闭智能切网"
+        ],
+        [
+          "端口填9000但无响应",
+          "确认固件TCP服务已启动且不是HTTP路径"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "加入AP后连接192.168.4.1:9000",
+          "连接状态true"
+        ],
+        [
+          "开灯并GET",
+          "得到OK,LED,1与STATE"
+        ],
+        [
+          "接收OK,LE和D,1加LF两段",
+          "只形成一条正确完整应答"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "给热点起一个小组专用名称，防止连接错板。",
+        "把GET结果拆成独立的LED、ADC与按钮标签。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“加入AP后连接192.168.4.1:9000”写下预测，再记录实际结果。",
+        "结合积木解释：IP和端口共同找到服务。",
+        "修改一条规则并添加一项边界测试：给热点起一个小组专用名称，防止连接错板。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：接收OK,LE和D,1加LF两段。",
+        "说明：热点网络不要求接入互联网。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "192.168.4.1和9000分别是什么？",
+        "加入热点一定有互联网吗？",
+        "原始TCP能直接用Web.Get吗？"
+      ],
+      "notes": "1. 本固件AP的IP与TCP服务端口。\n2. 不一定，此实验只需要手机与ESP32的局域网通信。\n3. 不能，这份固件使用自定义TCP行协议，不是HTTP接口。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "TextBox": "15",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "Label": "6",
+    "Clock": "4",
+    "ClientSocketAI2Ext": "4",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "所有组件与协议参数",
+    "连接状态清理、数值边界、非本课重点过程和完整事件入口",
+    "扩展完整原始包与真实事件签名"
+  ],
+  "actualClassroomTasks": [
+    "补齐连接设备过程",
+    "补齐接收分帧过程"
+  ],
+  "actualScreenshotGroups": [
+    "连接设备",
+    "Socket.DataReceived",
+    "接收分帧"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "已连接",
+      "连接中",
+      "连接开始",
+      "接收缓存",
+      "当前行",
+      "换行位置",
+      "最近命令",
+      "待选PWM",
+      "接收字段",
+      "有效应答",
+      "日志"
+    ],
+    "procedures": {
+      "整数范围": [
+        "值",
+        "下限",
+        "上限"
+      ],
+      "记录日志": [
+        "内容"
+      ],
+      "清理连接": [],
+      "处理应答": [
+        "一行"
+      ],
+      "发送命令": [
+        "命令"
+      ],
+      "接收分帧": [
+        "片段"
+      ],
+      "连接设备": []
+    },
+    "events": [
+      "OnButton.Click",
+      "OffButton.Click",
+      "DisconnectButton.Click",
+      "ReadButton.Click",
+      "ConnectButton.Click",
+      "PollClock.Timer",
+      "Socket.DataReceived",
+      "Socket.RemoteConnectionClosed",
+      "Screen1.PermissionDenied",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "procedure": "处理应答",
+      "args": [
+        "OK,LED,1"
+      ],
+      "expect": {
+        "StateLabel.Text": "设备确认：LED=1",
+        "global 有效应答": true
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "STATE,1,128,2048,0"
+      ],
+      "expect": {
+        "global 有效应答": true
+      },
+      "contains": {
+        "StateLabel.Text": [
+          "PWM=128",
+          "ADC原始值=2048",
+          "按钮=按下"
+        ]
+      }
+    },
+    {
+      "procedure": "处理应答",
+      "args": [
+        "STATE,1,128,9999,0"
+      ],
+      "expect": {
+        "global 有效应答": false
+      }
+    },
+    {
+      "procedure": "清理连接",
+      "expect": {
+        "global 已连接": false,
+        "global 接收缓存": "",
+        "OnButton.Enabled": false
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson47/artifact-spec.json",
+  "blueprintSlideOrder": true,
+  "coverTitle": "Wi-Fi TCP\n热点直连"
+}

@@ -1,0 +1,655 @@
+{
+  "lesson": 34,
+  "title": "找到我需要的信息",
+  "projectName": "YXCourse34",
+  "exampleTitle": "大小写无关的关键词筛选与结果索引映射",
+  "durationMinutes": 90,
+  "goals": [
+    "原始图书表保留不动。",
+    "搜Scratch时，结果第1项来自原表第3项。",
+    "用测试记录验证找到我需要的信息的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "图书查找器：按书名关键词筛选本地图书表，空关键词显示全部，未找到明确提示。",
+    "scope": "本地三条图书的书名包含搜索；trim后忽略英文大小写，空关键词显示全部。不是全文检索或网络查询。",
+    "components": [
+      {
+        "name": "SearchBox",
+        "type": "TextBox",
+        "role": "书名关键词"
+      },
+      {
+        "name": "SearchButton",
+        "type": "Button",
+        "role": "查找"
+      },
+      {
+        "name": "ResultsView",
+        "type": "ListView",
+        "role": "匹配书名"
+      },
+      {
+        "name": "DetailLabel",
+        "type": "Label",
+        "role": "分类与编号"
+      },
+      {
+        "name": "CountLabel",
+        "type": "Label",
+        "role": "结果数量"
+      }
+    ],
+    "logic": [
+      {
+        "event": "Screen1.Initialize",
+        "actions": [
+          "筛选空字符串"
+        ]
+      },
+      {
+        "event": "SearchButton.Click",
+        "actions": [
+          "筛选SearchBox.Text；清空旧详情"
+        ]
+      },
+      {
+        "event": "ResultsView.AfterPicking",
+        "actions": [
+          "选择有效时显示结果详情"
+        ]
+      }
+    ],
+    "procedures": {
+      "筛选(关键词)": "结果索引清空；遍历原表序号；若lower书名包含lower(trim关键词)则保存原序号；生成结果书名列表；刷新数量",
+      "显示结果详情": "由SelectionIndex查结果索引，再查图书记录，显示分类与编号"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse34.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse34Class.aia：保留三条图书字典和辅助变量、初始化、搜索、选择事件入口、筛选与显示详情占位；筛选过程实现trim/lower、contains和原序号收集；详情先读取结果索引再查原表；数量0时清旧详情并提示未找到。",
+    "starter": "YXCourse34Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补筛选过程，先问再示范。",
+      "students": "按任务单完成：补筛选过程。",
+      "checkpoint": "连续搜索时为何清旧结果？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补结果详情映射，先问再示范。",
+      "students": "按任务单完成：补结果详情映射。",
+      "checkpoint": "结果第一项为何不能直接读原表第一项？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：核对零结果反馈，先问再示范。",
+      "students": "按任务单完成：核对零结果反馈。",
+      "checkpoint": "能把未找到作为一条可选图书吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补筛选过程",
+      "steps": [
+        "每次调用先清结果索引和显示列表。",
+        "遍历原表序号，lower书名包含lower(trim关键词)则收集。",
+        "同步Elements与数量；空关键词显示全部。"
+      ],
+      "question": "连续搜索时为何清旧结果？",
+      "answer": "新集合必须重建，否则上一轮项目会重复累积。"
+    },
+    {
+      "title": "补结果详情映射",
+      "steps": [
+        "用ResultsView.SelectionIndex先查结果索引。",
+        "再用得到的原序号取得图书字典。",
+        "搜索scratch后点第1项，应显示编程和C03。"
+      ],
+      "question": "结果第一项为何不能直接读原表第一项？",
+      "answer": "筛选后第一项可能来自原表第三项，必须经过映射。"
+    },
+    {
+      "title": "核对零结果反馈",
+      "steps": [
+        "阅读已给SearchButton.Click入口。",
+        "在筛选中保证零结果时清旧详情并提示。",
+        "先选一本书，再搜不存在，确认不留旧编号。"
+      ],
+      "question": "能把未找到作为一条可选图书吗？",
+      "answer": "不宜，提示不是原始记录，放进列表会破坏索引映射。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "搜索scratch",
+      "expected": "找到Scratch创意编程，编号C03"
+    },
+    {
+      "action": "搜索空格",
+      "expected": "显示全部三本书"
+    },
+    {
+      "action": "搜索不存在书名",
+      "expected": "0项，详情清空，提示未找到"
+    }
+  ],
+  "misconceptions": [
+    [
+      "连续搜索结果越来越多",
+      "每次筛选先清空结果集合"
+    ],
+    [
+      "书名正确但编号错误",
+      "检查结果索引到原始索引映射"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "加入分类条件，与关键词同时筛选。"
+    },
+    {
+      "level": "拓展",
+      "task": "允许搜索编号，并明确多个条件用或还是且。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "结果索引[3]是什么意思？",
+      "a": "结果第1项对应原表第3项。"
+    },
+    {
+      "q": "空白关键词为何显示全部？",
+      "a": "本课明确采用空关键词全表规则。"
+    },
+    {
+      "q": "小写scratch能匹配大写开头吗？",
+      "a": "可以，比较前对两边都转小写。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT lists.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/lists.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT text.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/text.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT dictionaries.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/dictionaries.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "找到我需要的信息",
+      "body": [
+        "大小写无关的关键词筛选与结果索引映射",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "图书查找器：按书名关键词筛选本地图书表，空关键词显示全部，未找到明确提示。 本地三条图书的书名包含搜索；trim后忽略英文大小写，空关键词显示全部。不是全文检索或网络查询。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "图书数据包含书名、分类、编号。",
+        "按书名包含关系筛选，英文忽略大小写。",
+        "结果选择映射回原记录，不能把结果序号当原始序号。"
+      ],
+      "notes": "演示：搜索scratch。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "原始图书表保留不动。",
+        "搜Scratch时，结果第1项来自原表第3项。",
+        "用测试记录验证找到我需要的信息的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "图书查找器：按书名筛选本地图书，空关键词显示全部，无匹配时给出提示。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "图书数据包含书名、分类、编号。",
+        "按书名包含关系筛选，英文忽略大小写。",
+        "结果选择映射回原记录，不能把结果序号当原始序号。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "书名关键词",
+        "查找",
+        "匹配书名",
+        "分类与编号"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "SearchBox",
+          "TextBox",
+          "书名关键词"
+        ],
+        [
+          "SearchButton",
+          "Button",
+          "查找"
+        ],
+        [
+          "ResultsView",
+          "ListView",
+          "匹配书名"
+        ],
+        [
+          "DetailLabel",
+          "Label",
+          "分类与编号"
+        ],
+        [
+          "CountLabel",
+          "Label",
+          "结果数量"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "图书",
+          "三份字典，保留原始顺序"
+        ],
+        [
+          "结果索引",
+          "原表序号列表，初始空"
+        ],
+        [
+          "搜索关键词",
+          "trim并转小写后比较"
+        ]
+      ]
+    },
+    {
+      "title": "筛选得到的是新集合",
+      "body": [
+        "原始图书表保留不动。",
+        "每次搜索先清空旧结果。",
+        "空关键词可以定义为显示全部。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "显示序号不一定是原始序号",
+      "body": [
+        "搜Scratch时，结果第1项来自原表第3项。",
+        "结果索引保存两者对应关系。",
+        "选项详情必须沿对应关系读取。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "新搜索先重建结果索引和显示列表",
+        "匹配书名则记录原表序号",
+        "选择结果先映射到原表，再按键显示详情"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：三条图书字典和辅助变量；初始化、搜索、选择事件入口；筛选与显示详情占位。学生任务：筛选过程实现trim/lower、contains和原序号收集；详情先读取结果索引再查原表；数量0时清旧详情并提示未找到。",
+      "layout": "text"
+    },
+    {
+      "title": "关键词匹配",
+      "body": [
+        "trim并统一大小写，遍历书名做包含判断。",
+        "scratch可找到Scratch创意编程。"
+      ],
+      "notes": "筛选从空结果重新构造，原表保持不变。 实际截图对应：筛选。本地三条图书的书名包含搜索；trim后忽略英文大小写，空关键词显示全部。不是全文检索或网络查询。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "筛选"
+    },
+    {
+      "title": "补筛选过程",
+      "body": [
+        "每次调用先清结果索引和显示列表。",
+        "遍历原表序号，lower书名包含lower(trim关键词)则收集。",
+        "同步Elements与数量；空关键词显示全部。"
+      ],
+      "notes": "实践15分钟。连续搜索时为何清旧结果？ 教师参考：新集合必须重建，否则上一轮项目会重复累积。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "结果映射",
+      "body": [
+        "先读取结果索引，再取原始字典。",
+        "搜Scratch后点第一项显示C03。"
+      ],
+      "notes": "双重索引是本课重点，先结果位置再原表位置。 实际截图对应：显示结果详情。本地三条图书的书名包含搜索；trim后忽略英文大小写，空关键词显示全部。不是全文检索或网络查询。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "显示结果详情"
+    },
+    {
+      "title": "补结果详情映射",
+      "body": [
+        "用ResultsView.SelectionIndex先查结果索引。",
+        "再用得到的原序号取得图书字典。",
+        "搜索scratch后点第1项，应显示编程和C03。"
+      ],
+      "notes": "实践15分钟。结果第一项为何不能直接读原表第一项？ 教师参考：筛选后第一项可能来自原表第三项，必须经过映射。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "空结果反馈",
+      "body": [
+        "搜索前清详情，搜索后显示数量与未找到提示。",
+        "搜不存在词时显示0项，无旧详情。"
+      ],
+      "notes": "搜索入口已给；空结果提示应由筛选统一产生，不留下旧详情。 实际截图对应：SearchButton.Click。本地三条图书的书名包含搜索；trim后忽略英文大小写，空关键词显示全部。不是全文检索或网络查询。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "SearchButton.Click"
+    },
+    {
+      "title": "核对零结果反馈",
+      "body": [
+        "阅读已给SearchButton.Click入口。",
+        "在筛选中保证零结果时清旧详情并提示。",
+        "先选一本书，再搜不存在，确认不留旧编号。"
+      ],
+      "notes": "实践15分钟。能把未找到作为一条可选图书吗？ 教师参考：不宜，提示不是原始记录，放进列表会破坏索引映射。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "搜索scratch",
+          "找到Scratch创意编程，编号C03"
+        ],
+        [
+          "搜索空格",
+          "显示全部三本书"
+        ],
+        [
+          "搜索不存在书名",
+          "0项，详情清空，提示未找到"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "连续搜索结果越来越多",
+          "每次筛选先清空结果集合"
+        ],
+        [
+          "书名正确但编号错误",
+          "检查结果索引到原始索引映射"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "搜索scratch",
+          "找到Scratch创意编程，编号C03"
+        ],
+        [
+          "搜索空格",
+          "显示全部三本书"
+        ],
+        [
+          "搜索不存在书名",
+          "0项，详情清空，提示未找到"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "加入分类条件，与关键词同时筛选。",
+        "允许搜索编号，并明确多个条件用或还是且。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“搜索scratch”写下预测，再记录实际结果。",
+        "结合积木解释：筛选得到的是新集合。",
+        "修改一条规则并添加一项边界测试：加入分类条件，与关键词同时筛选。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：搜索不存在书名。",
+        "说明：显示序号不一定是原始序号。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "结果索引[3]是什么意思？",
+        "空白关键词为何显示全部？",
+        "小写scratch能匹配大写开头吗？"
+      ],
+      "notes": "1. 结果第1项对应原表第3项。\n2. 本课明确采用空关键词全表规则。\n3. 可以，比较前对两边都转小写。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "TextBox": "15",
+    "Button": "8",
+    "ListView": "11",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "三条图书字典和辅助变量",
+    "初始化、搜索、选择事件入口",
+    "筛选与显示详情占位"
+  ],
+  "actualClassroomTasks": [
+    "筛选过程实现trim/lower、contains和原序号收集",
+    "详情先读取结果索引再查原表",
+    "数量0时清旧详情并提示未找到"
+  ],
+  "actualScreenshotGroups": [
+    "筛选",
+    "显示结果详情",
+    "SearchButton.Click"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "图书",
+      "结果索引",
+      "结果书名",
+      "原始序号"
+    ],
+    "procedures": {
+      "筛选": [
+        "关键词"
+      ],
+      "显示结果详情": []
+    },
+    "events": [
+      "Screen1.Initialize",
+      "SearchButton.Click",
+      "ResultsView.AfterPicking"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "set": {
+        "SearchBox.Text": "scratch"
+      },
+      "event": "SearchButton.Click",
+      "expect": {
+        "global 结果索引": [
+          3
+        ],
+        "CountLabel.Text": "结果：1 项"
+      }
+    },
+    {
+      "set": {
+        "global 结果索引": [
+          3
+        ],
+        "ResultsView.SelectionIndex": 1
+      },
+      "procedure": "显示结果详情",
+      "expect": {
+        "DetailLabel.Text": "分类：编程\n编号：C03"
+      }
+    },
+    {
+      "set": {
+        "SearchBox.Text": "   "
+      },
+      "event": "SearchButton.Click",
+      "expect": {
+        "global 结果索引": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "set": {
+        "SearchBox.Text": "不存在"
+      },
+      "event": "SearchButton.Click",
+      "expect": {
+        "global 结果索引": [],
+        "CountLabel.Text": "结果：0 项",
+        "DetailLabel.Text": "未找到匹配书名，请换一个关键词。"
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson34/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

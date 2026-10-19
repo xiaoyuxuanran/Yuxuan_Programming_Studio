@@ -1,0 +1,658 @@
+{
+  "lesson": 33,
+  "title": "关闭 APP 后还能记住",
+  "projectName": "YXCourse33",
+  "exampleTitle": "TinyDB阅读持久化",
+  "durationMinutes": 90,
+  "goals": [
+    "变量在运行时保存。",
+    "写入和读取必须使用同一个tag。",
+    "用测试记录验证关闭 APP 后还能记住的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "阅读打卡本：保存累计分钟数与最近一次阅读内容，重新打开仍能恢复。",
+    "scope": "TinyDB保存在当前应用的本机数据中；卸载或清除应用数据可能移除记录。本课仅清除自身两个标签，不使用ClearAll。",
+    "components": [
+      {
+        "name": "BookBox",
+        "type": "TextBox",
+        "role": "阅读内容"
+      },
+      {
+        "name": "MinutesBox",
+        "type": "TextBox",
+        "role": "本次分钟"
+      },
+      {
+        "name": "SaveButton",
+        "type": "Button",
+        "role": "打卡并保存"
+      },
+      {
+        "name": "ResetButton",
+        "type": "Button",
+        "role": "清空本课记录"
+      },
+      {
+        "name": "TotalLabel",
+        "type": "Label",
+        "role": "累计分钟"
+      },
+      {
+        "name": "LastLabel",
+        "type": "Label",
+        "role": "最近内容"
+      },
+      {
+        "name": "LocalDB",
+        "type": "TinyDB",
+        "role": "本地持久化"
+      }
+    ],
+    "logic": [
+      {
+        "event": "Screen1.Initialize",
+        "actions": [
+          "恢复阅读"
+        ]
+      },
+      {
+        "event": "SaveButton.Click",
+        "actions": [
+          "标题非空且分钟为1..240整数时累计增加；最近内容←标题；保存阅读"
+        ]
+      },
+      {
+        "event": "ResetButton.Click",
+        "actions": [
+          "ClearTag totalMinutes和lastBook；变量回初值；刷新阅读"
+        ]
+      }
+    ],
+    "procedures": {
+      "刷新阅读": "显示累计分钟与最近内容；保存成功提示",
+      "保存阅读": "StoreValue tag totalMinutes 与lastBook；刷新阅读",
+      "恢复阅读": "GetValue totalMinutes默认0；lastBook默认空；刷新阅读"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse33.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse33Class.aia：保留全部变量、刷新阅读、恢复阅读、输入校验与Save按钮调用、保存阅读占位仅刷新显示；保存阅读加入totalMinutes、lastBook的StoreValue；添加ResetButton.Click，ClearTag后重置变量与显示；模拟重开并比较首次默认和旧记录。",
+    "starter": "YXCourse33Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：追踪恢复默认与旧值，先问再示范。",
+      "students": "按任务单完成：追踪恢复默认与旧值。",
+      "checkpoint": "有旧标签时还会使用默认0吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：补持久化写入，先问再示范。",
+      "students": "按任务单完成：补持久化写入。",
+      "checkpoint": "为什么不能只保存标签文字？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补重置并测试，先问再示范。",
+      "students": "按任务单完成：补重置并测试。",
+      "checkpoint": "为什么不用ClearAll？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "追踪恢复默认与旧值",
+      "steps": [
+        "阅读已给恢复阅读。",
+        "区分变量初值和GetValue的默认值。",
+        "纸面记录无标签、已有20分钟两种启动结果。"
+      ],
+      "question": "有旧标签时还会使用默认0吗？",
+      "answer": "不会，默认值只在标签不存在时使用。"
+    },
+    {
+      "title": "补持久化写入",
+      "steps": [
+        "找到保存阅读，目前只有刷新显示。",
+        "分别StoreValue totalMinutes和lastBook。",
+        "打卡20再15分钟应为35；课堂重开后核对。"
+      ],
+      "question": "为什么不能只保存标签文字？",
+      "answer": "应保存实际数值变量和标题变量，界面标签只是显示结果。"
+    },
+    {
+      "title": "补重置并测试",
+      "steps": [
+        "添加ResetButton.Click，ClearTag两个指定键。",
+        "累计分钟归0、最近内容归空，再刷新。",
+        "重开后确认不会恢复旧记录，其他课程数据不受影响。"
+      ],
+      "question": "为什么不用ClearAll？",
+      "answer": "只清本课数据即可，ClearAll可能删去同一存储空间的其他标签。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "首次打开",
+      "expected": "0分钟，无最近内容"
+    },
+    {
+      "action": "打卡20再15分钟后重开",
+      "expected": "累计35，最近内容为第二次标题"
+    },
+    {
+      "action": "输入0或abc；清空后重开",
+      "expected": "非法值不保存；清空后仍0"
+    }
+  ],
+  "misconceptions": [
+    [
+      "关闭后丢失",
+      "检查StoreValue调用及tag一致"
+    ],
+    [
+      "清空又恢复旧值",
+      "除了清变量还要ClearTag"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "增加每日目标分钟并保存设置。"
+    },
+    {
+      "level": "拓展",
+      "task": "把单次阅读历史保存成字典列表。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "变量与TinyDB生命周期有什么差别？",
+      "a": "变量随进程重新初始化，TinyDB可跨应用重开保留。"
+    },
+    {
+      "q": "20和15如何变成35？",
+      "a": "先验证并转为数值，再进行加法。"
+    },
+    {
+      "q": "卸载后保证恢复吗？",
+      "a": "不保证；本机存储不是云备份。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT storage.html#TinyDB 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/storage.html#TinyDB",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT math.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/math.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "关闭 APP 后还能记住",
+      "body": [
+        "TinyDB阅读持久化",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "阅读打卡本：保存累计分钟数与最近一次阅读内容，重新打开仍能恢复。 TinyDB保存在当前应用的本机数据中；卸载或清除应用数据可能移除记录。本课仅清除自身两个标签，不使用ClearAll。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "首次没有数据时默认0分钟、空标题。",
+        "每次有效打卡累加分钟并写入TinyDB。",
+        "清空记录只删除本课标签，不影响其他项目数据。"
+      ],
+      "notes": "演示：首次打开。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "变量在运行时保存。",
+        "写入和读取必须使用同一个tag。",
+        "用测试记录验证关闭 APP 后还能记住的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "阅读打卡本：保存累计分钟数与最近一次阅读内容，重新打开仍能恢复。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "首次没有数据时默认0分钟、空标题。",
+        "每次有效打卡累加分钟并写入TinyDB。",
+        "清空记录只删除本课标签，不影响其他项目数据。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "阅读内容",
+        "本次分钟",
+        "打卡并保存",
+        "清空本课记录"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "BookBox",
+          "TextBox",
+          "阅读内容"
+        ],
+        [
+          "MinutesBox",
+          "TextBox",
+          "本次分钟"
+        ],
+        [
+          "SaveButton",
+          "Button",
+          "打卡并保存"
+        ],
+        [
+          "ResetButton",
+          "Button",
+          "清空本课记录"
+        ],
+        [
+          "TotalLabel",
+          "Label",
+          "累计分钟"
+        ],
+        [
+          "LastLabel",
+          "Label",
+          "最近内容"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "累计分钟",
+          "0；保存到totalMinutes"
+        ],
+        [
+          "最近内容",
+          "空文字；保存到lastBook"
+        ],
+        [
+          "分钟输入",
+          "1到240的整数"
+        ]
+      ]
+    },
+    {
+      "title": "变量与本地存储生命周期不同",
+      "body": [
+        "变量在运行时保存。",
+        "TinyDB在应用重开后仍可读取。",
+        "先从存储恢复，再刷新界面。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "标签为数据命名",
+      "body": [
+        "写入和读取必须使用同一个tag。",
+        "未存过的tag使用明确默认值。",
+        "清空本课数据用ClearTag，而不是ClearAll。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "初始化GetValue，首次使用默认值",
+        "校验标题和分钟，通过后累加并存两标签",
+        "重置只ClearTag本课标签并刷新界面"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：全部变量；刷新阅读、恢复阅读；输入校验与Save按钮调用；保存阅读占位仅刷新显示。学生任务：保存阅读加入totalMinutes、lastBook的StoreValue；添加ResetButton.Click，ClearTag后重置变量与显示；模拟重开并比较首次默认和旧记录。",
+      "layout": "text"
+    },
+    {
+      "title": "恢复默认与旧值",
+      "body": [
+        "读取两个标签并处理首次默认。",
+        "第一次为0，已有记录可恢复。"
+      ],
+      "notes": "恢复阅读已给；首次默认和旧记录分开推演。 实际截图对应：恢复阅读。TinyDB保存在当前应用的本机数据中；卸载或清除应用数据可能移除记录。本课仅清除自身两个标签，不使用ClearAll。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "恢复阅读"
+    },
+    {
+      "title": "追踪恢复默认与旧值",
+      "body": [
+        "阅读已给恢复阅读。",
+        "区分变量初值和GetValue的默认值。",
+        "纸面记录无标签、已有20分钟两种启动结果。"
+      ],
+      "notes": "实践15分钟。有旧标签时还会使用默认0吗？ 教师参考：不会，默认值只在标签不存在时使用。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "校验后保存",
+      "body": [
+        "检查分钟为1到240整数，再累加并StoreValue。",
+        "20与15分钟打卡累计35。"
+      ],
+      "notes": "Save入口已给校验与累计，学生补保存阅读中的StoreValue。 实际截图对应：SaveButton.Click。TinyDB保存在当前应用的本机数据中；卸载或清除应用数据可能移除记录。本课仅清除自身两个标签，不使用ClearAll。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "SaveButton.Click"
+    },
+    {
+      "title": "补持久化写入",
+      "body": [
+        "找到保存阅读，目前只有刷新显示。",
+        "分别StoreValue totalMinutes和lastBook。",
+        "打卡20再15分钟应为35；课堂重开后核对。"
+      ],
+      "notes": "实践15分钟。为什么不能只保存标签文字？ 教师参考：应保存实际数值变量和标题变量，界面标签只是显示结果。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "清空本课记录",
+      "body": [
+        "清除指定标签并重置变量和显示。",
+        "重开后仍为0，而不是恢复旧记录。"
+      ],
+      "notes": "重置待补，仅清两个标签，同时重置内存和显示。 实际截图对应：ResetButton.Click。TinyDB保存在当前应用的本机数据中；卸载或清除应用数据可能移除记录。本课仅清除自身两个标签，不使用ClearAll。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "ResetButton.Click"
+    },
+    {
+      "title": "补重置并测试",
+      "body": [
+        "添加ResetButton.Click，ClearTag两个指定键。",
+        "累计分钟归0、最近内容归空，再刷新。",
+        "重开后确认不会恢复旧记录，其他课程数据不受影响。"
+      ],
+      "notes": "实践15分钟。为什么不用ClearAll？ 教师参考：只清本课数据即可，ClearAll可能删去同一存储空间的其他标签。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "首次打开",
+          "0分钟，无最近内容"
+        ],
+        [
+          "打卡20再15分钟后重开",
+          "累计35，最近内容为第二次标题"
+        ],
+        [
+          "输入0或abc；清空后重开",
+          "非法值不保存；清空后仍0"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "关闭后丢失",
+          "检查StoreValue调用及tag一致"
+        ],
+        [
+          "清空又恢复旧值",
+          "除了清变量还要ClearTag"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "首次打开",
+          "0分钟，无最近内容"
+        ],
+        [
+          "打卡20再15分钟后重开",
+          "累计35，最近内容为第二次标题"
+        ],
+        [
+          "输入0或abc；清空后重开",
+          "非法值不保存；清空后仍0"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "增加每日目标分钟并保存设置。",
+        "把单次阅读历史保存成字典列表。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“首次打开”写下预测，再记录实际结果。",
+        "结合积木解释：变量与本地存储生命周期不同。",
+        "修改一条规则并添加一项边界测试：增加每日目标分钟并保存设置。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：输入0或abc；清空后重开。",
+        "说明：标签为数据命名。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "变量与TinyDB生命周期有什么差别？",
+        "20和15如何变成35？",
+        "卸载后保证恢复吗？"
+      ],
+      "notes": "1. 变量随进程重新初始化，TinyDB可跨应用重开保留。\n2. 先验证并转为数值，再进行加法。\n3. 不保证；本机存储不是云备份。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "TextBox": "15",
+    "Button": "8",
+    "VerticalArrangement": "4",
+    "TinyDB": "3",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "全部变量",
+    "刷新阅读、恢复阅读",
+    "输入校验与Save按钮调用",
+    "保存阅读占位仅刷新显示"
+  ],
+  "actualClassroomTasks": [
+    "保存阅读加入totalMinutes、lastBook的StoreValue",
+    "添加ResetButton.Click，ClearTag后重置变量与显示",
+    "模拟重开并比较首次默认和旧记录"
+  ],
+  "actualScreenshotGroups": [
+    "恢复阅读",
+    "SaveButton.Click",
+    "ResetButton.Click"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "累计分钟",
+      "最近内容"
+    ],
+    "procedures": {
+      "刷新阅读": [],
+      "保存阅读": [],
+      "恢复阅读": []
+    },
+    "events": [
+      "Screen1.Initialize",
+      "SaveButton.Click",
+      "ResetButton.Click"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "event": "Screen1.Initialize",
+      "expect": {
+        "global 累计分钟": 0,
+        "LastLabel.Text": "最近内容：暂无记录"
+      }
+    },
+    {
+      "set": {
+        "BookBox.Text": "第一本",
+        "MinutesBox.Text": "20"
+      },
+      "event": "SaveButton.Click",
+      "expect": {
+        "global 累计分钟": 20
+      },
+      "stores": {
+        "totalMinutes": 20,
+        "lastBook": "第一本"
+      }
+    },
+    {
+      "set": {
+        "BookBox.Text": "一本书",
+        "MinutesBox.Text": "0"
+      },
+      "event": "SaveButton.Click",
+      "expect": {
+        "global 累计分钟": 0
+      }
+    },
+    {
+      "event": "ResetButton.Click",
+      "expect": {
+        "global 累计分钟": 0,
+        "global 最近内容": ""
+      },
+      "clearedTags": [
+        "totalMinutes",
+        "lastBook"
+      ]
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson33/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

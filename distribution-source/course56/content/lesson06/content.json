@@ -1,0 +1,641 @@
+{
+  "lesson": 6,
+  "title": "第一次创意改编",
+  "projectName": "Course06Clubs",
+  "exampleTitle": "校园兴趣指南",
+  "durationMinutes": 90,
+  "goals": [
+    "区分保留的交互结构与自己改变的主题、内容和界面。",
+    "完成艺术、编程与重置事件，同步更新建议标题与理由。",
+    "根据同伴测试修改作品，并用AIA和改编说明表达学习过程。"
+  ],
+  "exampleSpec": {
+    "summary": "用户从运动、艺术、编程三个方向选择，APP显示固定的校园活动建议与理由；重新选择恢复提示。学生在此基础上改成自己的校园、家庭或阅读指南。",
+    "scope": "它不是兴趣测评，也不推断用户能力。建议由作者预先编写，点击只选择对应文案。本课整合前五课事件、属性与布局，不要求新增条件或变量。",
+    "components": [
+      {
+        "name": "ChoicesRow",
+        "type": "HorizontalArrangement",
+        "role": "并排呈现三个方向"
+      },
+      {
+        "name": "SportsButton",
+        "type": "Button",
+        "role": "选择运动"
+      },
+      {
+        "name": "ArtButton",
+        "type": "Button",
+        "role": "选择艺术"
+      },
+      {
+        "name": "CodeButton",
+        "type": "Button",
+        "role": "选择编程"
+      },
+      {
+        "name": "RecommendationLabel",
+        "type": "Label",
+        "role": "显示建议标题"
+      },
+      {
+        "name": "ReasonLabel",
+        "type": "Label",
+        "role": "说明为什么可以尝试"
+      },
+      {
+        "name": "ResetButton",
+        "type": "Button",
+        "role": "恢复重新选择的提示"
+      }
+    ],
+    "logic": [
+      {
+        "event": "SportsButton.Click",
+        "actions": [
+          "RecommendationLabel.Text ← 试试运动挑战站",
+          "ReasonLabel.Text ← 和同伴练习跳绳或投球。先确认场地安全，按老师的安排热身。"
+        ]
+      },
+      {
+        "event": "ArtButton.Click",
+        "actions": [
+          "RecommendationLabel.Text ← 试试创意美术角",
+          "ReasonLabel.Text ← 用纸笔设计一张作品海报。选择两种主色，把最重要的信息放大。"
+        ]
+      },
+      {
+        "event": "CodeButton.Click",
+        "actions": [
+          "RecommendationLabel.Text ← 试试创意编程社",
+          "ReasonLabel.Text ← 把一句问候变成互动名片，再给作品添加声音或新的故事场景。"
+        ]
+      },
+      {
+        "event": "ResetButton.Click",
+        "actions": [
+          "RecommendationLabel.Text ← 选择一个方向，看看参考建议。",
+          "ReasonLabel.Text ← 这是根据你点击的选项显示的固定建议。你可以修改文案，加入自己的校园活动。"
+        ]
+      }
+    ]
+  },
+  "versions": {
+    "answer": "Course06Clubs.aia：完整参考答案，含本课全部交互。",
+    "class": "Course06ClubsClass.aia：保留SportsButton.Click；完成 ArtButton.Click 与 CodeButton.Click；完成 ResetButton.Click；自选一种兴趣改写推荐内容。",
+    "starter": "Course06ClubsStarter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–3",
+      "teacher": "展示参考指南，辨别固定建议与能力判断。",
+      "students": "选择一个方向并解释结果来源。",
+      "checkpoint": "知道APP显示作者编写的建议。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "4–8",
+      "teacher": "回顾事件、属性、布局，组织改编计划。",
+      "students": "写用户与主题，列保留和改变。",
+      "checkpoint": "计划具体到一个完整选项。"
+    },
+    {
+      "start": 25,
+      "end": 45,
+      "minutes": 20,
+      "slides": "9–12",
+      "teacher": "读运动示范，巡视艺术事件制作。",
+      "students": "补ArtButton.Click并核对两个标签。",
+      "checkpoint": "标题理由一致。"
+    },
+    {
+      "start": 45,
+      "end": 60,
+      "minutes": 15,
+      "slides": "13–16",
+      "teacher": "组织编程与重置，先预测顺序。",
+      "students": "完成其余事件，填写路径测试。",
+      "checkpoint": "所有选择及恢复均完整。"
+    },
+    {
+      "start": 60,
+      "end": 75,
+      "minutes": 15,
+      "slides": "17–20",
+      "teacher": "给学生主题改编与互测时间。",
+      "students": "改完整选项，记录一次反馈和修改。",
+      "checkpoint": "改编能服务明确用户。"
+    },
+    {
+      "start": 75,
+      "end": 90,
+      "minutes": 15,
+      "slides": "21–24",
+      "teacher": "一分钟作品展示，检查来源说明和导出。",
+      "students": "演示、解释保留与改变，提交AIA。",
+      "checkpoint": "有实际作品与测试证据。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "读出参考作品的骨架",
+      "steps": [
+        "导入Course06ClubsClass.aia，体验或预测运动按钮。",
+        "在SportsButton.Click中找出RecommendationLabel.Text与ReasonLabel.Text。",
+        "在纸上写两列：保留的交互方法、准备改变的主题内容。"
+      ],
+      "question": "把运动按钮的文字改成阅读，就已经完成完整改编了吗？",
+      "answer": "还不够。建议标题、理由和相关界面提示也要与阅读主题对应，并测试点击后的实际结果。"
+    },
+    {
+      "title": "补齐两个选择和重置",
+      "steps": [
+        "添加ArtButton.Click，设置创意美术角及对应理由。",
+        "添加CodeButton.Click，设置创意编程社及对应理由。",
+        "添加ResetButton.Click，同时恢复两个标签的初始文字；按不同顺序测试。"
+      ],
+      "question": "为什么建议标题与理由需要一起设置？",
+      "answer": "它们表达同一个选项的结果；只改一个会留下上次选择的信息，产生前后不一致。"
+    },
+    {
+      "title": "制作自己的指南并留下证据",
+      "steps": [
+        "确定给谁使用，选校园活动、阅读或家庭协作中的一个主题。",
+        "至少改一个完整选项：按钮Text、建议标题、理由与首页提示保持一致。",
+        "请同伴不听解释使用，记录一条反馈并修改；导出个人AIA，写清保留与新增。"
+      ],
+      "question": "怎样说明作品既使用了参考工程，又有自己的设计？",
+      "answer": "如实写明来源与保留的结构，指出自己修改的用户、文案、布局或行为，并提供前后测试证据；不把参考工程原样当原创提交。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "启动",
+      "expected": "显示选择提示，三个方向含义明确。"
+    },
+    {
+      "action": "运动→艺术",
+      "expected": "建议标题与理由同时变成艺术内容，不残留运动理由。"
+    },
+    {
+      "action": "艺术→编程",
+      "expected": "显示编程建议与相应理由。"
+    },
+    {
+      "action": "任一选择后点重新选择",
+      "expected": "两个标签同时恢复首页提示。"
+    },
+    {
+      "action": "点击自己改编的选项，再点其他选项和重置",
+      "expected": "按钮、标题、理由语义一致；所有原有路径仍可用。"
+    }
+  ],
+  "misconceptions": [
+    [
+      "只改按钮文字，结果仍是旧主题",
+      "同时核对该按钮事件里的两个文本值及初始提示。"
+    ],
+    [
+      "重置只清了推荐标题",
+      "ReasonLabel也必须恢复初始解释。"
+    ],
+    [
+      "把固定建议称为智能分析",
+      "本工程没有个人数据分析，只按按钮显示预写建议。"
+    ],
+    [
+      "改编过程中覆盖原文件",
+      "先另存个人工程，保留参考来源与自己的导出文件。"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成所有选择与重置事件，标题、理由成对变化。"
+    },
+    {
+      "level": "提高",
+      "task": "完成一项有用户理由的主题改编，并根据同伴反馈修改一次。"
+    },
+    {
+      "level": "拓展",
+      "task": "添加一个新方向，或结合第4课容器切换做详细介绍；同步补齐对应测试。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "本课的建议来自哪里？",
+      "a": "来自作者预先写入按钮事件的固定文案；不是APP自动测出能力。"
+    },
+    {
+      "q": "一次选择为什么要更新两个标签？",
+      "a": "让建议标题与理由对应同一选项，避免上次内容残留。"
+    },
+    {
+      "q": "一份诚实的改编说明应包括什么？",
+      "a": "参考来源、保留结构、自改部分、修改理由和至少一条测试证据。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT界面组件参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html",
+      "use": "核对按钮、标签与Text属性。"
+    },
+    {
+      "title": "MIT布局组件参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/layout.html",
+      "use": "核对横向布局。"
+    },
+    {
+      "title": "MIT教学资源",
+      "url": "https://appinventor.mit.edu/explore/teach",
+      "use": "参考体验、制作、改编与分享的组织方式，非官方课次复刻。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "第一次创意改编",
+      "body": [
+        "第6课 · 校园兴趣指南",
+        "90分钟：把学会的方法变成自己的作品"
+      ],
+      "notes": "先展示参考作品，再说明本课交付不要求人人复制同一套文案。原结构是学习起点，自己的用户与理由需要清楚。",
+      "layout": "text"
+    },
+    {
+      "title": "点运动，为什么出现运动建议？",
+      "body": [
+        "用户选择了一个按钮",
+        "作者提前写好了建议",
+        "本作品不自动判断个人能力"
+      ],
+      "notes": "请学生找到建议的来源。避免把固定按钮映射讲成智能推荐或兴趣测评。",
+      "layout": "question"
+    },
+    {
+      "title": "今天的作品证据",
+      "body": [
+        "选择和重置全部完整",
+        "一个选项有自己的主题与理由",
+        "我能说明保留什么、改变什么"
+      ],
+      "notes": "学生不必新增很多功能。改写面向真实用户的内容并验证一致性，也是一项有效改编。",
+      "layout": "text"
+    },
+    {
+      "title": "90分钟的学习路线",
+      "body": [
+        "先补全骨架，再改编主题"
+      ],
+      "notes": "提醒Class版只给运动示范，其余事件是基础任务。把最后15分钟留给来源说明和成果表达。",
+      "layout": "table",
+      "table": [
+        [
+          "时间",
+          "学习活动"
+        ],
+        [
+          "0–10",
+          "体验与辨别"
+        ],
+        [
+          "10–25",
+          "回顾与改编计划"
+        ],
+        [
+          "25–45",
+          "艺术事件"
+        ],
+        [
+          "45–60",
+          "编程与重置"
+        ],
+        [
+          "60–75",
+          "主题改编、互测"
+        ],
+        [
+          "75–90",
+          "展示、说明、导出"
+        ]
+      ]
+    },
+    {
+      "title": "五课经验可以组合使用",
+      "body": [
+        "按钮用Click触发动作",
+        "属性决定当前文字与外观",
+        "布局让选择和结果清楚分开"
+      ],
+      "notes": "让学生各举一项前课作品对应关系。保持具体到组件和事件，不用抽象术语替代观察。",
+      "layout": "text"
+    },
+    {
+      "title": "参考工程的实际界面",
+      "body": [
+        "上方提出选择问题",
+        "中间三个按钮并排",
+        "下方建议和理由成对展示"
+      ],
+      "notes": "展示真实Designer截图。请学生辨认静态问题区与运行中变化的两个标签。",
+      "layout": "designer"
+    },
+    {
+      "title": "选择与结果的组件",
+      "body": [],
+      "notes": "指认RecommendationLabel与ReasonLabel。这两个长英文名称只用于准确定位，学生口头可说建议标题与理由。",
+      "layout": "table",
+      "table": [
+        [
+          "组件",
+          "工作"
+        ],
+        [
+          "SportsButton",
+          "选择运动"
+        ],
+        [
+          "ArtButton",
+          "选择艺术"
+        ],
+        [
+          "CodeButton",
+          "选择编程"
+        ],
+        [
+          "RecommendationLabel",
+          "当前建议"
+        ],
+        [
+          "ReasonLabel",
+          "建议的理由"
+        ],
+        [
+          "ResetButton",
+          "重新选择"
+        ]
+      ]
+    },
+    {
+      "title": "改编计划的两列",
+      "body": [],
+      "notes": "学生先写而不是立刻随机换色。来源说明保留参考名称和课程来源，自己的部分可包含内容和行为。",
+      "layout": "table",
+      "table": [
+        [
+          "我保留的",
+          "我改变的"
+        ],
+        [
+          "按钮触发事件",
+          "面向的用户"
+        ],
+        [
+          "两个标签共同更新",
+          "主题和建议文字"
+        ],
+        [
+          "重新选择入口",
+          "布局或操作提示"
+        ]
+      ]
+    },
+    {
+      "title": "运动按钮的参考事件",
+      "body": [
+        "RecommendationLabel显示运动挑战站",
+        "ReasonLabel解释可以怎样参与",
+        "两处内容属于同一个选项"
+      ],
+      "notes": "从已给出的SportsButton.Click提取结构。不是把所有按钮都连到同一条事件，而是每个按钮有自己的Click。",
+      "layout": "blocks",
+      "blockIndex": 1
+    },
+    {
+      "title": "艺术选项要表达完整",
+      "body": [
+        "按钮：艺术",
+        "建议：创意美术角",
+        "理由：纸笔、主色与重点信息"
+      ],
+      "notes": "让学生用自己的话先说完整建议，再放入两个文本输入槽。不能仅把变量名当文字写在标签里。",
+      "layout": "text"
+    },
+    {
+      "title": "艺术按钮的学生任务",
+      "body": [
+        "添加ArtButton.Click",
+        "设置建议标题",
+        "设置相应理由并测试"
+      ],
+      "notes": "独立制作后同伴按运动→艺术切换，重点看旧理由是否残留。",
+      "layout": "text"
+    },
+    {
+      "title": "艺术事件的对照逻辑",
+      "body": [
+        "新标题与新理由同时出现",
+        "保留原来清楚的布局",
+        "再切回运动检查双向切换"
+      ],
+      "notes": "展示实际截图。把代码结构类比第2课名片与第5课分类，不引入尚未学习的条件判断。",
+      "layout": "blocks",
+      "blockIndex": 2
+    },
+    {
+      "title": "编程选项的对照逻辑",
+      "body": [
+        "CodeButton.Click",
+        "建议创意编程社",
+        "理由连接前几课的作品经验"
+      ],
+      "notes": "学生先完成再看截图。提示按钮名CodeButton与用户可见文字编程不是同一个属性。",
+      "layout": "blocks",
+      "blockIndex": 3
+    },
+    {
+      "title": "重新选择不等于清空一切",
+      "body": [
+        "保留按钮与布局",
+        "两个标签恢复操作提示",
+        "用户可以继续下一次选择"
+      ],
+      "notes": "给学生补ResetButton.Click，要求恢复明确文字，不能把界面变成难懂的空白。",
+      "layout": "text"
+    },
+    {
+      "title": "重置事件的对照逻辑",
+      "body": [
+        "恢复RecommendationLabel",
+        "恢复ReasonLabel",
+        "所有选择入口仍然可用"
+      ],
+      "notes": "显示第四组截图。若学生改了首页提示，其重置文本也要同步修改。",
+      "layout": "blocks",
+      "blockIndex": 4
+    },
+    {
+      "title": "每个选择的成对结果",
+      "body": [],
+      "notes": "一人读按钮名，另一人说应出现的标题与理由主题。测试时不要求背诵文案，但语义应匹配。",
+      "layout": "table",
+      "table": [
+        [
+          "选择",
+          "建议标题",
+          "理由主题"
+        ],
+        [
+          "运动",
+          "运动挑战站",
+          "场地、热身与合作"
+        ],
+        [
+          "艺术",
+          "创意美术角",
+          "海报、主色与重点"
+        ],
+        [
+          "编程",
+          "创意编程社",
+          "名片、声音与故事"
+        ],
+        [
+          "重新选择",
+          "初始提示",
+          "固定建议的说明"
+        ]
+      ]
+    },
+    {
+      "title": "自己的主题从用户开始",
+      "body": [
+        "谁会用这个指南？",
+        "他需要作出哪几种选择？",
+        "每种建议能给出什么具体帮助？"
+      ],
+      "notes": "可选阅读、课间活动、家庭协作。主题只选一个，避免把不相干建议拼在一起。",
+      "layout": "text"
+    },
+    {
+      "title": "一个选项的完整改编",
+      "body": [
+        "修改按钮上的可见文字",
+        "修改建议标题和理由",
+        "检查首页与说明是否仍然准确"
+      ],
+      "notes": "举例把运动改为阅读：只改按钮而留下热身理由会自相矛盾。每改一项进行一次点击检查。",
+      "layout": "text"
+    },
+    {
+      "title": "同伴反馈后的修改",
+      "body": [
+        "请同伴独立尝试一个任务",
+        "记录他实际停住的位置",
+        "修改后用同一任务再测"
+      ],
+      "notes": "反馈可针对按钮含义、理由是否具体、重置是否清楚。不要把作者解释后的成功当作界面独立可用的证据。",
+      "layout": "text"
+    },
+    {
+      "title": "我的来源与改编说明",
+      "body": [
+        "参考了本课校园兴趣指南",
+        "保留________的交互结构",
+        "改变________，因为________"
+      ],
+      "notes": "把说明写入任务单。强调公开说明借鉴不削弱创意，能准确说明自己的判断才是本课目标。",
+      "layout": "text"
+    },
+    {
+      "title": "一分钟作品展示",
+      "body": [
+        "我的用户和主题",
+        "一次完整选择与重新选择",
+        "一条反馈和修改结果"
+      ],
+      "notes": "展示时间可按班级人数分组，避免所有学生排队导致操作时间不足。每组给出可观察的运行或待测证据。",
+      "layout": "text"
+    },
+    {
+      "title": "我的交付检查",
+      "body": [
+        "个人工程内部名可辨认",
+        "导出的AIA能在文件夹找到",
+        "任务单含保留、改变和测试记录"
+      ],
+      "notes": "提交自己的版本，不把完整答案改个文件名当个人成果。没有设备时明确标注实际运行待测。",
+      "layout": "text"
+    },
+    {
+      "title": "出口题：改编发生在哪里？",
+      "body": [
+        "固定建议能说明用户能力吗？",
+        "为什么不能只改按钮文字？",
+        "怎样证明自己的改编服务了用户？"
+      ],
+      "notes": "参考：不能；结果与提示也要同步；用明确用户任务和修改前后测试记录说明。",
+      "layout": "question"
+    },
+    {
+      "title": "下一阶段：APP开始记住信息",
+      "body": [
+        "前六课主要改变固定内容",
+        "第7课用变量累计分数",
+        "方法会复用，作品会继续生长"
+      ],
+      "notes": "来源：https://ai2.appinventor.mit.edu/reference/components/userinterface.html；https://ai2.appinventor.mit.edu/reference/components/layout.html；https://appinventor.mit.edu/explore/teach。本课程为独立整合的App Inventor创作课，借鉴体验、制作、改编与分享的学习方式。",
+      "layout": "text"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "VerticalArrangement": "4",
+    "Form": "32"
+  },
+  "artifactSpec": "work/course56/aia/lesson06/artifact-spec.json",
+  "actualScreenshotGroups": [
+    "SportsButton.Click",
+    "ArtButton.Click",
+    "CodeButton.Click",
+    "ResetButton.Click"
+  ],
+  "actualExpectedOutputs": [
+    {
+      "event": "SportsButton.Click",
+      "expect": {
+        "RecommendationLabel.Text": "试试运动挑战站",
+        "ReasonLabel.Text": "和同伴练习跳绳或投球。先确认场地安全，按老师的安排热身。"
+      }
+    },
+    {
+      "event": "ArtButton.Click",
+      "expect": {
+        "RecommendationLabel.Text": "试试创意美术角",
+        "ReasonLabel.Text": "用纸笔设计一张作品海报。选择两种主色，把最重要的信息放大。"
+      }
+    },
+    {
+      "event": "CodeButton.Click",
+      "expect": {
+        "RecommendationLabel.Text": "试试创意编程社",
+        "ReasonLabel.Text": "把一句问候变成互动名片，再给作品添加声音或新的故事场景。"
+      }
+    },
+    {
+      "event": "ResetButton.Click",
+      "expect": {
+        "RecommendationLabel.Text": "选择一个方向，看看参考建议。",
+        "ReasonLabel.Text": "这是根据你点击的选项显示的固定建议。你可以修改文案，加入自己的校园活动。"
+      }
+    }
+  ]
+}

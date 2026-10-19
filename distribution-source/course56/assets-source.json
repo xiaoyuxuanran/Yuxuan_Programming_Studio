@@ -1,0 +1,20 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "name": "scene_beach",
+      "prompt": "A bright children's educational story illustration, landscape 4:3 composition, a friendly young green sea turtle on a sunny sandy beach beside blue ocean. A few pieces of litter on the sand establish a choice for a simple environmental story, no distress or danger. Soft clean picture-book gouache style, sky blue and warm white daylight, inviting friendly expression. No text, no typography, no UI, no logo, no border. Standalone image for an App Inventor beginner classroom app.",
+      "path": "C:\\Users\\Yuxuan\\.codex\\generated_images\\01a0f832-f95b-77d2-88cd-83954ce3a94a\\exec-3c784c28-f4fa-4a34-9bdc-0d69eca24c92.png"
+    },
+    {
+      "name": "scene_cleanup",
+      "prompt": "A bright children's educational story illustration, landscape 4:3 composition, a friendly young green sea turtle on a sunny beach beside blue ocean, two school-age children with gloves collecting a few pieces of litter into a reusable bucket, safe gentle uplifting action. Soft clean picture-book gouache style, sky blue and warm white daylight. No text, no typography, no UI, no logo, no border. Standalone image for an App Inventor beginner classroom app.",
+      "path": "C:\\Users\\Yuxuan\\.codex\\generated_images\\01a0f832-f95b-77d2-88cd-83954ce3a94a\\exec-bb595cef-c27a-430e-8247-d5de6c8c4ece.png"
+    },
+    {
+      "name": "scene_turtle",
+      "prompt": "A bright children's educational story illustration, landscape 4:3 composition, a friendly young green sea turtle happily entering clear blue ocean from a now clean sunny sandy beach. Soft clean picture-book gouache style, sky blue and warm white daylight, calm uplifting conclusion. No text, no typography, no UI, no logo, no border. Standalone image for an App Inventor beginner classroom app.",
+      "path": "C:\\Users\\Yuxuan\\.codex\\generated_images\\01a0f832-f95b-77d2-88cd-83954ce3a94a\\exec-f77d5933-729b-4494-b873-374a6df53dcd.png"
+    }
+  ]
+}

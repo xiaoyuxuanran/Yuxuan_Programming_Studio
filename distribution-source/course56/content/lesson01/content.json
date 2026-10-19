@@ -1,0 +1,553 @@
+{
+  "lesson": 1,
+  "title": "我的第一个手机 APP",
+  "projectName": "Course01Hello",
+  "exampleTitle": "点击问候",
+  "durationMinutes": 90,
+  "goals": [
+    "区分组件设计与逻辑设计，指出按钮和标签各自的作用。",
+    "用 HelloButton.Click 改变 GreetingLabel.Text。",
+    "通过两种点击顺序检查问候与重置，并导出可编辑 AIA。"
+  ],
+  "exampleSpec": {
+    "summary": "初始显示“我准备好和你打招呼了！”；点击问候显示“你好！这是我做的第一个手机 APP。”；点击重置恢复初始文本。",
+    "components": [
+      {
+        "name": "GreetingLabel",
+        "type": "Label",
+        "role": "显示问候和初始提示"
+      },
+      {
+        "name": "HelloButton",
+        "type": "Button",
+        "role": "触发问候"
+      },
+      {
+        "name": "ResetButton",
+        "type": "Button",
+        "role": "恢复初始文字"
+      }
+    ],
+    "logic": [
+      {
+        "event": "HelloButton.Click",
+        "actions": [
+          "GreetingLabel.Text ← 你好！这是我做的第一个手机 APP。"
+        ]
+      },
+      {
+        "event": "ResetButton.Click",
+        "actions": [
+          "GreetingLabel.Text ← 我准备好和你打招呼了！"
+        ]
+      }
+    ],
+    "scope": "不使用变量、条件、输入框、语音和联网；本课先把一个事件与一个属性连接清楚。"
+  },
+  "versions": {
+    "answer": "Course01Hello.aia：两个按钮事件均完整。",
+    "class": "Course01HelloClass.aia：保留界面及 ResetButton.Click 演示，学生添加 HelloButton.Click 的问候逻辑。",
+    "starter": "Course01HelloStarter.aia：只有组件设计与素材，没有积木；用于课后重新搭建。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–3",
+      "teacher": "演示问候与重置，先不展示积木。",
+      "students": "说出点击前后发生了什么。",
+      "checkpoint": "学生能描述一次输入和一次输出。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "4–8",
+      "teacher": "带学生辨认设计界面、组件树和属性。",
+      "students": "导入Class工程，指出按钮、标签和Text属性。",
+      "checkpoint": "能选中GreetingLabel而不是Screen1。"
+    },
+    {
+      "start": 25,
+      "end": 45,
+      "minutes": 20,
+      "slides": "9–11",
+      "teacher": "短示范事件容器与设置属性积木，然后巡视。",
+      "students": "制作问候事件，修改为自己的文明问候。",
+      "checkpoint": "Click内有一条连好的Text设置。"
+    },
+    {
+      "start": 45,
+      "end": 60,
+      "minutes": 15,
+      "slides": "12–14",
+      "teacher": "解读已给出的重置事件，示范测试顺序。",
+      "students": "完成问候→重置→问候和重复点击测试。",
+      "checkpoint": "重置确实恢复初始提示。"
+    },
+    {
+      "start": 60,
+      "end": 75,
+      "minutes": 15,
+      "slides": "15–19",
+      "teacher": "引导排查组件选错、文字块未连接，再做小改编。",
+      "students": "修复一个问题，修改按钮文字与问候内容并导出。",
+      "checkpoint": "界面文字变化不破坏按钮作用。"
+    },
+    {
+      "start": 75,
+      "end": 90,
+      "minutes": 15,
+      "slides": "20–24",
+      "teacher": "组织双人体验、出口题和作品提交。",
+      "students": "互测、解释“当……就……”，提交AIA和任务单。",
+      "checkpoint": "能找到导出的AIA并口头解释自己的事件。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "找到屏幕上的角色",
+      "steps": [
+        "导入 Course01HelloClass.aia，切到组件设计。",
+        "点选 GreetingLabel，找到 Text；再点 HelloButton，比较两者的属性。",
+        "把按钮可见文字改为“向你问好”。"
+      ],
+      "question": "为什么按钮和标签都有Text，却承担不同工作？",
+      "answer": "Text都是文字属性；按钮用于触发点击事件，标签主要负责展示信息。"
+    },
+    {
+      "title": "完成点击问候",
+      "steps": [
+        "在逻辑设计中展开 HelloButton，拖出 Click 事件。",
+        "展开 GreetingLabel，放入“设置 GreetingLabel.Text 为”。",
+        "连接一个文字块，写“你好！这是我做的第一个手机 APP。”或自己的问候。"
+      ],
+      "question": "属性设置积木放在事件外面，会在点击时执行吗？",
+      "answer": "不会成为该Click事件的动作；需要把它连接在事件的do区域。"
+    },
+    {
+      "title": "理解重置与保存",
+      "steps": [
+        "找到已提供的 ResetButton.Click，读出恢复的文字。",
+        "按问候→重置→问候测试，再连续点问候三次。",
+        "项目→导出项目(.aia)，以英文项目名保存可编辑工程。"
+      ],
+      "question": "连续点三次问候，屏幕会出现三行问候吗？",
+      "answer": "不会；设置Text是把标签文字替换为同一段文字，本课没有追加文字。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "刚启动",
+      "expected": "标签显示初始提示，两个按钮可见。"
+    },
+    {
+      "action": "点击问候",
+      "expected": "标签变成完整问候文字。"
+    },
+    {
+      "action": "连续点击问候三次",
+      "expected": "文字保持一份，不自动累加。"
+    },
+    {
+      "action": "问候后点击重置",
+      "expected": "恢复初始提示。"
+    },
+    {
+      "action": "重置后再次问候",
+      "expected": "仍可显示问候，事件没有失效。"
+    }
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成问候、重置两条路径，能解释一次点击触发什么。"
+    },
+    {
+      "level": "提高",
+      "task": "只改变问候内容和按钮文字，让同伴无需说明就会用。"
+    },
+    {
+      "level": "拓展",
+      "task": "增加晚安按钮并设置另一句文字；保留重置，测试每个按钮。"
+    }
+  ],
+  "misconceptions": [
+    [
+      "设计器里点击按钮没有运行",
+      "设计器主要用于安排界面；运行需课堂已配置的Android环境。"
+    ],
+    [
+      "积木选成HelloButton.Text",
+      "问候应显示在GreetingLabel，检查属性块的组件名。"
+    ],
+    [
+      "文字块悬空",
+      "文字块必须插入设置Text的输入槽。"
+    ]
+  ],
+  "exitQuestions": [
+    {
+      "q": "“当HelloButton.Click，就设置GreetingLabel.Text”中，哪一段是事件？",
+      "a": "HelloButton.Click是事件，设置Text是事件发生后执行的动作。"
+    },
+    {
+      "q": "想改开机时就出现的文字，先在哪设置？",
+      "a": "组件设计中选GreetingLabel并修改Text；本课重置事件也要与新的初始文字一致。"
+    },
+    {
+      "q": "AIA和APK有什么不同？",
+      "a": "AIA保存可编辑工程；APK用于在Android环境安装。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT组件参考：Button与Label",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/userinterface.html",
+      "use": "核对Click事件与Text属性。"
+    },
+    {
+      "title": "MIT教学资源",
+      "url": "https://appinventor.mit.edu/explore/teach",
+      "use": "参考体验、创作、分享的组织方式；本课为独立编写课程。"
+    }
+  ],
+  "componentMetadata": {
+    "Button": "8",
+    "Label": "6",
+    "VerticalArrangement": "4"
+  },
+  "slides": [
+    {
+      "title": "我的第一个手机 APP",
+      "body": [
+        "第1课 · 点击问候",
+        "90分钟：让一次点击产生看得见的回应"
+      ],
+      "notes": "先让学生描述熟悉的APP按钮，再展示本课作品。不要先讲所有区域的名字；今天只需要按钮、标签和一个事件。",
+      "layout": "text"
+    },
+    {
+      "title": "一次点击带来的变化",
+      "body": [
+        "初始：我准备好和你打招呼了！",
+        "点击问候：出现欢迎语",
+        "点击重置：回到初始提示"
+      ],
+      "notes": "教师运行完整例子。先点问候，再点重置，最后连续点两次问候。请学生说“我点了什么、屏幕哪一处变了”，不用要求术语。",
+      "layout": "question"
+    },
+    {
+      "title": "今天的作品证据",
+      "body": [
+        "按钮能触发问候",
+        "标签能恢复初始文字",
+        "我能说清事件与动作"
+      ],
+      "notes": "把目标转为可观察证据：学生能演示、能解释、能保存。按钮漂不漂亮不是本课首要评分项。",
+      "layout": "text"
+    },
+    {
+      "title": "90分钟的学习路线",
+      "body": [
+        "每次短示范后立即操作"
+      ],
+      "notes": "前10分钟体验，15分钟认界面，20分钟做问候，15分钟测试重置，15分钟改编保存，15分钟分享。快组先做互测而非盲目增加功能。",
+      "layout": "table",
+      "table": [
+        [
+          "时间",
+          "任务"
+        ],
+        [
+          "0–10",
+          "体验问候与重置"
+        ],
+        [
+          "10–25",
+          "认识组件和属性"
+        ],
+        [
+          "25–45",
+          "制作点击问候"
+        ],
+        [
+          "45–60",
+          "测试重置"
+        ],
+        [
+          "60–75",
+          "排错、改编、保存"
+        ],
+        [
+          "75–90",
+          "互测与展示"
+        ]
+      ]
+    },
+    {
+      "title": "事件像门铃",
+      "body": [
+        "有人按门铃，铃声才响",
+        "有人点按钮，动作才开始",
+        "当……发生，就……"
+      ],
+      "notes": "让学生分别扮演按钮和标签，按按钮卡片时标签同学举起问候牌。强调程序并非每条积木一直执行，本课动作由Click事件触发。",
+      "layout": "text"
+    },
+    {
+      "title": "组件设计中的按钮与标签",
+      "body": [
+        "按钮负责接收点击",
+        "标签负责展示文字",
+        "右侧属性决定初始外观"
+      ],
+      "notes": "展示本课实际组件设计截图。指认GreetingLabel、HelloButton与ResetButton。设计器的外观预览不是正在运行的APP。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件名与屏幕文字",
+      "body": [
+        "组件名帮助我们找到对象",
+        "Text是用户看见的文字",
+        "修改Text不会自动改组件名"
+      ],
+      "notes": "本课保留英文组件名，方便对照积木与资料。中文可用于标签和按钮的可见文字；不要把整个项目命名限制误认为中文显示受限。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作用"
+        ],
+        [
+          "GreetingLabel",
+          "标签",
+          "显示提示与问候"
+        ],
+        [
+          "HelloButton",
+          "按钮",
+          "发出问候"
+        ],
+        [
+          "ResetButton",
+          "按钮",
+          "恢复初始提示"
+        ]
+      ]
+    },
+    {
+      "title": "初始画面从属性开始",
+      "body": [
+        "选中GreetingLabel，再改Text",
+        "按钮文字让人看懂用途",
+        "文字不应被固定高度截住"
+      ],
+      "notes": "让学生点选组件树中的标签，确认属性面板对应同一组件。若修改后屏幕没有变化，先检查是否选中了Screen1。适量放大字体，避免只为美观缩小可读文字。",
+      "layout": "text"
+    },
+    {
+      "title": "问候按钮的点击事件",
+      "body": [
+        "事件：HelloButton.Click",
+        "动作：设置GreetingLabel.Text",
+        "内容：一段文字"
+      ],
+      "notes": "依次指认外层事件、内层属性设置与文字块。截图对应完整工程的问候按钮事件；学生Class版需要补上它。",
+      "layout": "blocks",
+      "blockIndex": 1
+    },
+    {
+      "title": "文字块需要插入输入槽",
+      "body": [
+        "设置的是哪一个组件？",
+        "改变的是哪一项属性？",
+        "新的值是什么？"
+      ],
+      "notes": "用三个问题读一条属性设置：GreetingLabel、Text、欢迎语。演示把文字块暂时拿开，让学生观察空输入槽，再立刻接回。不要把不完整积木作为可交作业。",
+      "layout": "text"
+    },
+    {
+      "title": "我的第一条事件",
+      "body": [
+        "给问候按钮连接Click事件",
+        "把文字设置到问候标签",
+        "先实现，再改写一句自己的问候"
+      ],
+      "notes": "给学生8至10分钟独立/结对完成。巡视时只问“点哪个按钮、改哪个标签”，避免替学生拖完。要求文字文明友好且同伴能读懂。",
+      "layout": "text"
+    },
+    {
+      "title": "重置按钮恢复初始状态",
+      "body": [
+        "ResetButton.Click已在Class版中提供",
+        "它设置同一个标签的Text",
+        "它把文字恢复为最初的提示"
+      ],
+      "notes": "截图对应重置按钮。让学生对照问候事件，只找出按钮名与文字值两个差别。重置不是重新导入工程，也不是撤销最近一次编辑。",
+      "layout": "blocks",
+      "blockIndex": 2
+    },
+    {
+      "title": "按顺序预测屏幕文字",
+      "body": [
+        "先预测，再操作"
+      ],
+      "notes": "让学生读动作序列，逐步说出最后屏幕文字。强调“设置”覆盖当前文字，而非追加。参考：问候→问候仍是一份欢迎语；问候→重置为初始提示。",
+      "layout": "table",
+      "table": [
+        [
+          "动作顺序",
+          "最后显示"
+        ],
+        [
+          "启动",
+          "我准备好和你打招呼了！"
+        ],
+        [
+          "问候→问候",
+          "一份欢迎语"
+        ],
+        [
+          "问候→重置",
+          "初始提示"
+        ],
+        [
+          "重置→问候",
+          "欢迎语"
+        ]
+      ]
+    },
+    {
+      "title": "测试不只点一次",
+      "body": [
+        "问候按钮至少点三次",
+        "问候后重置，再问候",
+        "记录实际看到的文字"
+      ],
+      "notes": "为同伴分配操作者和记录者。记录者不能只打钩，还要读出实际文字。若班级暂无运行设备，先完成积木核对，并将实际运行栏明确标为待测。",
+      "layout": "text"
+    },
+    {
+      "title": "小故障的线索",
+      "body": [
+        "没变化：看事件是否连好",
+        "错地方：看组件名是否选对",
+        "没文字：看输入槽是否为空"
+      ],
+      "notes": "只演示一个可逆故障，例如把设置目标临时换为按钮Text。让学生预测效果，再恢复。排错从看得见的现象回到具体事件。",
+      "layout": "text"
+    },
+    {
+      "title": "组件设计与逻辑设计",
+      "body": [
+        "组件设计：摆放对象、设置初始值",
+        "逻辑设计：事件发生后改变什么",
+        "两处描述的是同一个APP"
+      ],
+      "notes": "让学生用左右手分别表示两个界面：一只手搭舞台，一只手决定互动。不要引入复杂架构术语；将“属性初始值”和“运行中设置”通过标签文字连接起来。",
+      "layout": "text"
+    },
+    {
+      "title": "AIA与APK的用途",
+      "body": [
+        "AIA：以后还能打开修改",
+        "APK：在Android环境安装运行",
+        "两种文件不互相代替"
+      ],
+      "notes": "演示导出入口，不强制本节所有学生等待编译。AIA应与本课作品一起保存。APK运行与设备安装按教师已配置的课堂方式进行。",
+      "layout": "text"
+    },
+    {
+      "title": "保存后的检查",
+      "body": [
+        "找到刚导出的AIA文件",
+        "名称能分清课次和作者",
+        "不要只保留下载列表里的临时记录"
+      ],
+      "notes": "让学生在文件夹中找到AIA，确认大小非0。工程内部名采用英文与数字，以兼容现有编译和导入规则；电脑上的课程文件夹可以用中文。",
+      "layout": "text"
+    },
+    {
+      "title": "一句问候也有设计选择",
+      "body": [
+        "面向新同学，还是家人？",
+        "按钮文字能否说明用途？",
+        "每次只改一项，再测试"
+      ],
+      "notes": "学生改编欢迎语和按钮Text。提醒修改GreetingLabel初始文字后，重置事件也应同步，否则重置会恢复旧提示。提高组增加一个晚安按钮即可。",
+      "layout": "text"
+    },
+    {
+      "title": "同伴第一次打开作品",
+      "body": [
+        "不解释，让同伴先试用",
+        "问：你知道该点哪里吗？",
+        "把一个建议写在任务单上"
+      ],
+      "notes": "两人交换操作者。记录一句具体建议，如“把按钮改成向你问好”，避免只写好看、好玩。课堂评价关注是否达成意图。",
+      "layout": "text"
+    },
+    {
+      "title": "我的事件说明",
+      "body": [
+        "当________发生",
+        "程序设置________的________",
+        "屏幕上的变化是________"
+      ],
+      "notes": "邀请两组用完整句展示。参考：当HelloButton被点击，程序设置GreetingLabel的Text，屏幕显示欢迎语。学生也可先用中文描述，再补组件名。",
+      "layout": "text"
+    },
+    {
+      "title": "出口题：哪里需要修改？",
+      "body": [
+        "想让问候出现在标签上，却改了按钮上的字。",
+        "你会先检查哪一个积木？",
+        "连续点三次问候，为什么不会有三份文字？"
+      ],
+      "notes": "参考答案：检查属性设置的组件选择，应为GreetingLabel；设置Text替换原文字，程序没有做追加。学生能说出原因比记住英文更重要。",
+      "layout": "question"
+    },
+    {
+      "title": "教师观察与分层",
+      "body": [
+        "基础：问候和重置都可解释",
+        "提高：完成一次有目的的文字改编",
+        "证据：AIA、互测记录、口头说明"
+      ],
+      "notes": "量规建议功能4分、事件解释2分、测试2分、保存2分。若无运行设备，功能运行部分保持待评，不能用设计器截图替代运行验证。",
+      "layout": "text"
+    },
+    {
+      "title": "下一课：会互动的数字名片",
+      "body": [
+        "把一条问候扩展为多种介绍",
+        "按钮可以改变文字，也可以改变图片",
+        "本课资料来自MIT官方组件参考"
+      ],
+      "notes": "来源：https://ai2.appinventor.mit.edu/reference/components/userinterface.html；https://appinventor.mit.edu/explore/teach。这是羽轩独立编写的课程序列，不是MIT官方课次。下课前确认AIA已保存，不把完整答案替代学生作业。",
+      "layout": "text"
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson01/artifact-spec.json",
+  "actualScreenshotGroups": [
+    "HelloButton.Click",
+    "ResetButton.Click"
+  ],
+  "actualExpectedOutputs": [
+    {
+      "event": "HelloButton.Click",
+      "expect": {
+        "GreetingLabel.Text": "你好！这是我做的第一个手机 APP。"
+      }
+    },
+    {
+      "event": "ResetButton.Click",
+      "expect": {
+        "GreetingLabel.Text": "我准备好和你打招呼了！"
+      }
+    }
+  ]
+}

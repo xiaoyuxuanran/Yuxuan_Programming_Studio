@@ -1,0 +1,679 @@
+{
+  "schemaVersion": 1,
+  "id": 50,
+  "title": "我的物联网小应用",
+  "lessonMinutes": 90,
+  "projectName": "YXCourse50",
+  "appDescription": "桌面灯控观察台：可靠TCP控制LED亮度，读取旋钮与按钮，保存设备地址并显示最近确认状态。",
+  "experience": "复用49课v2可靠协议，主页区分目标值与设备确认值。",
+  "features": [
+    "复用49课v2可靠协议，主页区分目标值与设备确认值。",
+    "设备IP保存在本地，启动只填入地址，不自动冒充已连接。",
+    "查询后展示ADC相对百分比和按钮状态，超过10秒无确认显示资料可能过时。"
+  ],
+  "components": [
+    {
+      "name": "HostBox",
+      "type": "TextBox",
+      "role": "设备地址",
+      "keyProperties": {}
+    },
+    {
+      "name": "ConnectButton",
+      "type": "Button",
+      "role": "连接",
+      "keyProperties": {}
+    },
+    {
+      "name": "DisconnectButton",
+      "type": "Button",
+      "role": "断开",
+      "keyProperties": {}
+    },
+    {
+      "name": "BrightnessSlider",
+      "type": "Slider",
+      "role": "目标亮度",
+      "keyProperties": {}
+    },
+    {
+      "name": "ApplyButton",
+      "type": "Button",
+      "role": "应用",
+      "keyProperties": {}
+    },
+    {
+      "name": "ReadButton",
+      "type": "Button",
+      "role": "更新状态",
+      "keyProperties": {}
+    },
+    {
+      "name": "ActualLabel",
+      "type": "Label",
+      "role": "确认亮度",
+      "keyProperties": {}
+    },
+    {
+      "name": "KnobLabel",
+      "type": "Label",
+      "role": "旋钮相对位置",
+      "keyProperties": {}
+    },
+    {
+      "name": "ButtonLabel",
+      "type": "Label",
+      "role": "实体按键",
+      "keyProperties": {}
+    },
+    {
+      "name": "FreshLabel",
+      "type": "Label",
+      "role": "最近确认时间和过时状态",
+      "keyProperties": {}
+    },
+    {
+      "name": "Socket",
+      "type": "ClientSocketAI2Ext",
+      "role": "可靠TCP",
+      "keyProperties": {}
+    },
+    {
+      "name": "CheckClock",
+      "type": "Clock",
+      "role": "超时与状态年龄",
+      "keyProperties": {}
+    },
+    {
+      "name": "LocalDB",
+      "type": "TinyDB",
+      "role": "保存地址",
+      "keyProperties": {
+        "Namespace": "YXCourse50"
+      }
+    }
+  ],
+  "globals": {
+    "目标亮度": 0,
+    "最近确认时刻": 0,
+    "下个序号": 1,
+    "等待序号": 0,
+    "等待原文": "",
+    "发送时刻": 0,
+    "重试次数": 0,
+    "接收缓存": ""
+  },
+  "procedures": {
+    "显示STATE(字段)": "完整校验后设置确认亮度；旋钮百分比←round(adc/4095*100)；button0为按下；更新时间",
+    "发送可靠命令(命令)": "复用49课序号、等待与最多一次重试",
+    "更新资料年龄": "有确认且当前时刻-确认时刻>10000时标记可能过时；未连接显示未连接",
+    "保存地址": "连接请求前保存有效的非空IP"
+  },
+  "events": {
+    "Screen1.Initialize": "读取地址但保持未连接",
+    "ConnectButton.Click": "保存地址；Connect",
+    "ApplyButton.Click": "发送可靠命令(PWM,+round滑块值)",
+    "ReadButton.Click": "发送可靠命令(GET)",
+    "Socket.DataReceived": "v2组帧；匹配STATE后显示STATE",
+    "CheckClock.Timer": "应答超时处理；更新资料年龄",
+    "DisconnectButton.Click": "关闭连接并清等待，不抹掉最后确认数据但标注非实时"
+  },
+  "learningObjectives": [
+    "目标亮度是用户愿望。",
+    "断开后不把旧数据标为实时。",
+    "用测试记录验证我的物联网小应用的核心规则。"
+  ],
+  "transfer": {
+    "title": "已有经验与新的问题",
+    "body": [
+      "本课在已学事件、变量和过程的基础上开展。",
+      "桌面灯控观察台：可靠TCP控制LED亮度，读取旋钮与按钮，保存设备地址并显示最近确认状态。"
+    ]
+  },
+  "concepts": [
+    {
+      "title": "综合作品把数据含义讲清楚",
+      "body": [
+        "目标亮度是用户愿望。",
+        "确认亮度来自设备应答。",
+        "旋钮百分比是相对ADC量，不是准确电压。"
+      ]
+    },
+    {
+      "title": "完成度包含异常和说明",
+      "body": [
+        "断开后不把旧数据标为实时。",
+        "地址可以保存，连接状态不能直接保存为真。",
+        "测试记录包含正常、边界与异常。"
+      ]
+    }
+  ],
+  "blockCaptures": [
+    {
+      "title": "统一设备面板",
+      "target": "显示STATE",
+      "body": [
+        "把完整状态校验与标签含义对应。",
+        "状态字段有单位和来源。"
+      ],
+      "notes": "不加入未接入的温湿度传感器假值。"
+    },
+    {
+      "title": "保存配置",
+      "target": "Screen1.Initialize",
+      "body": [
+        "只恢复IP配置，不恢复连接成功。",
+        "重开地址仍在，状态未连接。"
+      ],
+      "notes": "复用TinyDB，不保存课堂Wi-Fi密码。"
+    },
+    {
+      "title": "完整体验与测试",
+      "target": "更新资料年龄",
+      "body": [
+        "增加更新时间和10秒旧值提示。",
+        "最后数据保留但清楚标记过时。"
+      ],
+      "notes": "硬件综合验收由教师课前实物联调，不把脚本模拟当作设备实测。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "制作任务1：统一设备面板",
+      "task": "把完整状态校验与标签含义对应。",
+      "checkpoint": "状态字段有单位和来源。"
+    },
+    {
+      "title": "制作任务2：保存配置",
+      "task": "只恢复IP配置，不恢复连接成功。",
+      "checkpoint": "重开地址仍在，状态未连接。"
+    },
+    {
+      "title": "制作任务3：完整体验与测试",
+      "task": "增加更新时间和10秒旧值提示。",
+      "checkpoint": "最后数据保留但清楚标记过时。"
+    }
+  ],
+  "trace": {
+    "title": "一次操作的结果与证据",
+    "table": [
+      [
+        "操作或输入",
+        "预期结果"
+      ],
+      [
+        "连接、PWM128、GET",
+        "确认128，旋钮与按钮字段有效"
+      ],
+      [
+        "保存地址后重启APP",
+        "地址恢复，状态仍未连接"
+      ],
+      [
+        "10秒没有新确认",
+        "显示资料可能过时，旧值不消失"
+      ]
+    ]
+  },
+  "tests": [
+    {
+      "action": "连接、PWM128、GET",
+      "expected": "确认128，旋钮与按钮字段有效"
+    },
+    {
+      "action": "保存地址后重启APP",
+      "expected": "地址恢复，状态仍未连接"
+    },
+    {
+      "action": "10秒没有新确认",
+      "expected": "显示资料可能过时，旧值不消失"
+    }
+  ],
+  "pitfalls": [
+    [
+      "开机直接显示已连接",
+      "连接状态必须来自当前Socket.ConnectionState"
+    ],
+    [
+      "旧数据显示实时",
+      "按最近确认时刻计算资料年龄"
+    ]
+  ],
+  "remix": [
+    "为一个真实使用者重新设计面板，解释每个字段。",
+    "在不增加硬件的条件下增加亮度预设按钮。"
+  ],
+  "worksheet": {
+    "title": "我的预测、实验与修改",
+    "prompts": [
+      "为“连接、PWM128、GET”写下预测，再记录实际结果。",
+      "结合积木解释：综合作品把数据含义讲清楚。",
+      "修改一条规则并添加一项边界测试：为一个真实使用者重新设计面板，解释每个字段。"
+    ]
+  },
+  "reflection": [
+    "用一个操作说明“综合作品把数据含义讲清楚”。",
+    "哪一次测试帮助你发现了“开机直接显示已连接”？",
+    "展示改编前后的区别，并指出对应积木。"
+  ],
+  "scaffold": "保留49课通信底层与地址恢复；状态面板、资料年龄与预设功能由学生完成。",
+  "assets": [
+    "本课实际界面和积木截图；使用原创、公共领域或明确获授权素材。"
+  ],
+  "sources": [
+    "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#BluetoothClient",
+    "https://iot.appinventor.mit.edu/iot/reference/bluetoothle",
+    "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/bluetooth.html",
+    "https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html",
+    "https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/gpio.html"
+  ],
+  "versions": {
+    "answer": "含下述完整功能、变量、过程、事件及素材，满足本课测试表。",
+    "class": "保留49课通信底层与地址恢复；状态面板、资料年龄与预设功能由学生完成。",
+    "starter": "保留同名可视与非可视组件、布局、初始属性和素材；不含变量、过程、事件积木。"
+  },
+  "successCriteria": [
+    "确认128，旋钮与按钮字段有效",
+    "地址恢复，状态仍未连接",
+    "显示资料可能过时，旧值不消失"
+  ],
+  "extension": {
+    "type": "com.gmail.at.moicjarod.ClientSocketAI2Ext",
+    "version": "4",
+    "sourceAix": "work/native/server/war/WEB-INF/classes/bundled-extensions/ClientSocketAI2Ext.aix"
+  },
+  "firmwareSpecification": "esp32-course-firmware-spec.md",
+  "deviceRequirements": [
+    "默认教学板为原始ESP32-WROOM DevKit，3.3V GPIO。经典蓝牙课不可使用C3/S3代替。",
+    "LED GPIO23经330Ω限流接地；电位器滑端GPIO34、两端3.3V/GND；按钮GPIO27接GND，INPUT_PULLUP。以配套指定板为准。",
+    "硬件连接与手机运行需要课堂真机联调；资料中的编译和脚本测试不得标为实物测试。"
+  ],
+  "timeline": [
+    {
+      "minutes": 10,
+      "activity": "作品体验与问题提出",
+      "task": "复用49课v2可靠协议，主页区分目标值与设备确认值。"
+    },
+    {
+      "minutes": 15,
+      "activity": "概念观察与演示",
+      "task": "综合作品把数据含义讲清楚；完成度包含异常和说明"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务1",
+      "task": "把完整状态校验与标签含义对应。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务2",
+      "task": "只恢复IP配置，不恢复连接成功。"
+    },
+    {
+      "minutes": 15,
+      "activity": "制作任务3",
+      "task": "增加更新时间和10秒旧值提示。"
+    },
+    {
+      "minutes": 10,
+      "activity": "个人改编与同伴测试",
+      "task": "为一个真实使用者重新设计面板，解释每个字段。"
+    },
+    {
+      "minutes": 10,
+      "activity": "展示与反思",
+      "task": "用一个操作说明“综合作品把数据含义讲清楚”。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "第50课  我的物联网小应用",
+      "body": [
+        "桌面灯控观察台：可靠TCP控制LED亮度，读取旋钮与按钮，保存设备地址并显示最近确认状态。",
+        "90分钟 · App Inventor 创意编程"
+      ],
+      "notes": "先展示本课作品行为；允许学生提出不同用途，基础制作仍遵循本课验收表。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "复用49课v2可靠协议，主页区分目标值与设备确认值。",
+        "设备IP保存在本地，启动只填入地址，不自动冒充已连接。",
+        "查询后展示ADC相对百分比和按钮状态，超过10秒无确认显示资料可能过时。"
+      ],
+      "notes": "演示：连接、PWM128、GET。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "目标亮度是用户愿望。",
+        "断开后不把旧数据标为实时。",
+        "用测试记录验证我的物联网小应用的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "桌面灯控观察台：可靠TCP控制LED亮度，读取旋钮与按钮，保存设备地址并显示最近确认状态。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "复用49课v2可靠协议，主页区分目标值与设备确认值。",
+        "设备IP保存在本地，启动只填入地址，不自动冒充已连接。",
+        "查询后展示ADC相对百分比和按钮状态，超过10秒无确认显示资料可能过时。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "设备地址",
+        "连接",
+        "断开",
+        "目标亮度",
+        "应用"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "HostBox",
+          "TextBox",
+          "设备地址"
+        ],
+        [
+          "ConnectButton",
+          "Button",
+          "连接"
+        ],
+        [
+          "DisconnectButton",
+          "Button",
+          "断开"
+        ],
+        [
+          "BrightnessSlider",
+          "Slider",
+          "目标亮度"
+        ],
+        [
+          "ApplyButton",
+          "Button",
+          "应用"
+        ],
+        [
+          "ReadButton",
+          "Button",
+          "更新状态"
+        ],
+        [
+          "ActualLabel",
+          "Label",
+          "确认亮度"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "区分运行中的状态与重启后仍保留的数据。",
+      "layout": "table",
+      "table": [
+        [
+          "变量",
+          "初值或意义"
+        ],
+        [
+          "目标亮度",
+          "0"
+        ],
+        [
+          "最近确认时刻",
+          "0"
+        ],
+        [
+          "下个序号",
+          "1"
+        ],
+        [
+          "等待序号",
+          "0"
+        ],
+        [
+          "等待原文",
+          ""
+        ],
+        [
+          "发送时刻",
+          "0"
+        ],
+        [
+          "重试次数",
+          "0"
+        ],
+        [
+          "接收缓存",
+          ""
+        ]
+      ]
+    },
+    {
+      "title": "综合作品把数据含义讲清楚",
+      "body": [
+        "目标亮度是用户愿望。",
+        "确认亮度来自设备应答。",
+        "旋钮百分比是相对ADC量，不是准确电压。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "完成度包含异常和说明",
+      "body": [
+        "断开后不把旧数据标为实时。",
+        "地址可以保存，连接状态不能直接保存为真。",
+        "测试记录包含正常、边界与异常。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "Screen1.Initialize：读取地址但保持未连接",
+        "ConnectButton.Click：保存地址；Connect",
+        "ApplyButton.Click：发送可靠命令(PWM,+round滑块值)"
+      ],
+      "notes": "按事件触发、状态改变、界面反馈顺序讲解。传感器与网络结果事件均为异步。",
+      "layout": "text"
+    },
+    {
+      "title": "统一设备面板",
+      "body": [
+        "把完整状态校验与标签含义对应。",
+        "状态字段有单位和来源。"
+      ],
+      "notes": "不加入未接入的温湿度传感器假值。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "显示STATE"
+    },
+    {
+      "title": "制作任务1：统一设备面板",
+      "body": [
+        "把完整状态校验与标签含义对应。",
+        "状态字段有单位和来源。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "保存配置",
+      "body": [
+        "只恢复IP配置，不恢复连接成功。",
+        "重开地址仍在，状态未连接。"
+      ],
+      "notes": "复用TinyDB，不保存课堂Wi-Fi密码。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "Screen1.Initialize"
+    },
+    {
+      "title": "制作任务2：保存配置",
+      "body": [
+        "只恢复IP配置，不恢复连接成功。",
+        "重开地址仍在，状态未连接。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "完整体验与测试",
+      "body": [
+        "增加更新时间和10秒旧值提示。",
+        "最后数据保留但清楚标记过时。"
+      ],
+      "notes": "硬件综合验收由教师课前实物联调，不把脚本模拟当作设备实测。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "更新资料年龄"
+    },
+    {
+      "title": "制作任务3：完整体验与测试",
+      "body": [
+        "增加更新时间和10秒旧值提示。",
+        "最后数据保留但清楚标记过时。"
+      ],
+      "notes": "实践15分钟。先完成一次可运行的最小步骤，再按检查点记录结果。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "连接、PWM128、GET",
+          "确认128，旋钮与按钮字段有效"
+        ],
+        [
+          "保存地址后重启APP",
+          "地址恢复，状态仍未连接"
+        ],
+        [
+          "10秒没有新确认",
+          "显示资料可能过时，旧值不消失"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "开机直接显示已连接",
+          "连接状态必须来自当前Socket.ConnectionState"
+        ],
+        [
+          "旧数据显示实时",
+          "按最近确认时刻计算资料年龄"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "连接、PWM128、GET",
+          "确认128，旋钮与按钮字段有效"
+        ],
+        [
+          "保存地址后重启APP",
+          "地址恢复，状态仍未连接"
+        ],
+        [
+          "10秒没有新确认",
+          "显示资料可能过时，旧值不消失"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "为一个真实使用者重新设计面板，解释每个字段。",
+        "在不增加硬件的条件下增加亮度预设按钮。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“连接、PWM128、GET”写下预测，再记录实际结果。",
+        "结合积木解释：综合作品把数据含义讲清楚。",
+        "修改一条规则并添加一项边界测试：为一个真实使用者重新设计面板，解释每个字段。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：10秒没有新确认。",
+        "说明：完成度包含异常和说明。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "用一个操作说明“综合作品把数据含义讲清楚”。",
+        "哪一次测试帮助你发现了“开机直接显示已连接”？",
+        "展示改编前后的区别，并指出对应积木。"
+      ],
+      "notes": "出口条包含一项会做的操作、一个测试结果和一个仍需解决的问题。",
+      "layout": "text"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+[data-yuxuan-teaching-host]{min-width:0;max-width:calc(100vw - 38px);font-family:'Segoe UI','Microsoft YaHei',sans-serif;color:#173e5a}
+[data-yuxuan-teaching-host] [hidden]{display:none!important}
+.yx-project-view-switch{display:flex;align-items:center;gap:8px;padding:14px 18px;background:#fff;border-bottom:1px solid #d5e9f5;box-sizing:border-box}
+.yx-view-tab{font:600 15px 'Microsoft YaHei',sans-serif;cursor:pointer;border:1px solid transparent;background:transparent;border-radius:7px;padding:10px 22px;color:#53728a;line-height:1.4}
+.yx-view-tab:hover{background:#eef8ff}
+.yx-view-tab[aria-pressed=true]{background:#e4f3ff;border-color:#b5def7;color:#067ab9}
+.yx-view-count{margin-left:auto;font-size:13px;color:#6c879b;padding-right:4px}
+.yx-teaching-browser{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;box-sizing:border-box;background:#f3f9fd;min-height:360px}
+.yx-library-pane,.yx-curriculum-pane{min-width:0;overflow:auto;box-sizing:border-box;scrollbar-gutter:stable;padding:24px 28px}
+.yx-library-pane{background:#fff;border-right:1px solid #d9eaf4}
+.yx-curriculum-pane{background:linear-gradient(150deg,#eef8ff,#f8fcff);padding:28px 36px}
+.yx-teaching-breadcrumb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;line-height:1.5;color:#92abba;margin-bottom:16px}
+.yx-crumb,.yx-back-link{background:transparent;border:0;color:#2785b7;cursor:pointer;font:inherit;padding:0;line-height:1.8;text-align:left}
+.yx-crumb:hover,.yx-back-link:hover{text-decoration:underline}
+.yx-crumb-current{color:#526f83}
+.yx-library-heading h1{font-size:24px;line-height:1.45;margin:0 0 9px;color:#123d5d;font-weight:700;overflow-wrap:anywhere}
+.yx-library-heading>p{font-size:14px;line-height:1.75;color:#70899b;margin:0 0 24px}
+.yx-library-items{display:flex;flex-direction:column;gap:10px}
+.yx-folder-row{display:flex;align-items:center;gap:15px;width:100%;border:1px solid #dceaf3;border-radius:9px;background:#fff;color:#1f435d;text-align:left;padding:10px 16px;cursor:pointer;box-sizing:border-box;transition:background .15s,border-color .15s}
+.yx-folder-row:hover{background:#f0f9ff;border-color:#8fcbed}
+.yx-folder-icon{display:inline-flex;flex-shrink:0;width:31px;height:31px;align-items:center;justify-content:center}
+.yx-folder-icon svg{width:30px;height:30px}
+.yx-folder-body{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
+.yx-folder-name{font-size:15px;font-weight:600;line-height:1.5;overflow-wrap:anywhere}
+.yx-folder-detail{font-size:12px;color:#7992a3;line-height:1.5}
+.yx-folder-arrow{font:26px 'Segoe UI',sans-serif;color:#7fa4ba;flex-shrink:0}
+.yx-back-link{font-size:13px;margin:0 0 6px;align-self:flex-start}
+.yx-eyebrow{color:#1687c1;font-size:12px;letter-spacing:2px;margin:0 0 9px;font-weight:600}
+.yx-route-heading h2{margin:0 0 8px;font-size:27px;line-height:1.4;color:#123d5d}
+.yx-route-stats{font-size:13px;color:#708ca0;line-height:1.6;margin:0}
+.yx-route-list{list-style:none;position:relative;padding:0;margin:24px 0 16px;display:flex;flex-direction:column;gap:11px}
+.yx-route-list:before{content:'';position:absolute;left:21px;top:21px;bottom:25px;width:2px;background:#b9ddef}
+.yx-route-step{position:relative;margin:0;min-width:0}
+.yx-route-node{width:100%;display:flex;align-items:center;gap:15px;background:transparent;border:0;border-radius:9px;text-align:left;cursor:pointer;padding:7px 6px 7px 0;color:#274c66;box-sizing:border-box}
+.yx-route-node:hover{background:#e0f1fc}
+.yx-route-number{display:flex;flex-shrink:0;align-items:center;justify-content:center;width:43px;height:43px;border:1px solid #b3d8ec;border-radius:50%;background:#f3faff;color:#2488bc;font-size:14px;font-weight:700;box-sizing:border-box}
+.yx-route-text{display:flex;flex-direction:column;gap:5px;min-width:0}
+.yx-route-title{font-weight:600;font-size:15px;line-height:1.5;overflow-wrap:anywhere}
+.yx-route-detail{font-size:12px;color:#6d8aa0;line-height:1.5;overflow-wrap:anywhere}
+.yx-route-step.is-current .yx-route-number{background:#1688c5;color:white;border-color:#1688c5;box-shadow:0 0 0 4px #d7edf9}
+.yx-route-step.is-current .yx-route-title{color:#087bb4}
+.yx-route-footer{font-size:12px;line-height:1.7;color:#7b98ab;margin:14px 0 0;padding-left:57px}
+.yx-sample-note{color:#4782a3;font-size:13px;margin:0 0 4px;line-height:1.5}
+.yx-template{border:1px solid #cfe5f2;border-radius:10px;padding:20px 20px 18px;background:#fbfdff}
+.yx-template-heading{display:flex;align-items:center;gap:11px;margin-bottom:10px}
+.yx-project-index{font-size:12px;color:#2a87b8;background:#e5f3fc;border-radius:5px;padding:5px 7px}
+.yx-template h2{margin:0;font-size:19px;color:#214c69;line-height:1.5}
+.yx-template-description{font-size:13px;color:#6b879b;line-height:1.8;margin:0 0 16px}
+.yx-template-actions{display:flex;gap:20px;align-items:center}
+.yx-primary-button{border:1px solid #1283c1;border-radius:6px;background:#1287c7;color:#fff;font:600 13px 'Microsoft YaHei',sans-serif;cursor:pointer;line-height:1.4;padding:9px 18px}
+.yx-primary-button:hover{background:#0578b5}
+.yx-primary-button:disabled{opacity:.6;cursor:wait}
+.yx-download-link{font-size:13px;color:#2187ba;line-height:1.5;text-decoration:none}
+.yx-download-link:hover{text-decoration:underline}
+.yx-copy-note{font-size:12px;color:#7992a4;line-height:1.8;margin:6px 0 0}
+.yx-teaching-status{color:#b34e33;font-size:13px;line-height:1.7;margin:14px 0;overflow-wrap:anywhere;min-height:0}
+.yx-teaching-status:empty{display:none}
+.yx-teaching-empty{text-align:center;padding:54px 18px 36px;border:1px dashed #c2deef;border-radius:9px;margin-top:10px}
+.yx-teaching-empty>.yx-folder-icon{width:55px;height:55px}
+.yx-teaching-empty>.yx-folder-icon svg{width:52px;height:52px}
+.yx-teaching-empty h2{font-size:18px;line-height:1.5;margin:18px 0 8px}
+.yx-teaching-empty p{font-size:13px;color:#7892a4;line-height:1.8;margin:0 0 24px}
+.yx-loading{padding:30px;color:#6c8799;line-height:1.8}
+.yx-library-pane::-webkit-scrollbar,.yx-curriculum-pane::-webkit-scrollbar{width:8px}
+.yx-library-pane::-webkit-scrollbar-thumb,.yx-curriculum-pane::-webkit-scrollbar-thumb{background:#bcd9eb;border:2px solid #f7fbff;border-radius:8px}
+[data-yuxuan-project-box].yx-is-teaching{height:auto!important}
+[data-yuxuan-project-box].yx-is-teaching .ode-Box-content{overflow:visible!important;height:auto!important}
+@media(max-width:1100px){.yx-library-pane,.yx-curriculum-pane{padding:20px}.yx-folder-row{padding:12px;gap:10px}.yx-folder-name,.yx-route-title{font-size:14px}.yx-route-node{gap:11px}.yx-route-heading h2{font-size:24px}.yx-route-detail{font-size:11px}}
+@media(max-width:760px){.yx-teaching-browser{grid-template-columns:minmax(0,1fr);overflow:auto}.yx-library-pane,.yx-curriculum-pane{overflow:visible}.yx-library-pane{border-right:0;border-bottom:1px solid #d9eaf4}.yx-view-tab{padding:9px 15px}.yx-view-count{font-size:11px}}
+
+/* Project workspace: one visual scale for native lists and teaching resources. */
+[data-yuxuan-project-toolbar]{background:#fff!important;border:1px solid #d7e7f1;border-radius:10px;box-sizing:border-box;min-height:52px;height:auto!important;padding:8px 16px!important;margin:0 0 8px;box-shadow:0 3px 16px #174c6b08}
+[data-yuxuan-project-toolbar]>.left{display:flex;align-items:center;flex-wrap:wrap;gap:8px;float:none}
+[data-yuxuan-project-toolbar] .ya-ProjectName{font:600 17px/1.6 'Microsoft YaHei',sans-serif;color:#215373;padding:0 8px 0 0;margin:0}
+[data-yuxuan-project-toolbar] .ode-TextButton{font:13px/20px 'Microsoft YaHei',sans-serif;min-height:32px;padding:5px 12px!important;box-sizing:border-box;border:1px solid #c9deec!important;border-radius:6px!important;background:#f7fbfe!important;color:#30617f!important;box-shadow:none!important;margin:0!important}
+[data-yuxuan-project-toolbar] .ode-TextButton-up:hover{background:#e6f4ff!important;border-color:#91c9e9!important}
+[data-yuxuan-project-toolbar] .ode-TextButton:focus-visible,.yx-view-tab:focus-visible,.yx-folder-row:focus-visible,.yx-primary-button:focus-visible,.yx-material-link:focus-visible{outline:2px solid #1388cc;outline-offset:2px}
+[data-yuxuan-project-toolbar] .ode-TextButton-up-disabled{opacity:.45}
+[data-yuxuan-project-toolbar] .left>.ode-TextButton:nth-child(3){background:#1388cc!important;border-color:#1388cc!important;color:#fff!important}
+[data-yuxuan-project-box]{box-sizing:border-box;border:1px solid #d7e7f1!important;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 3px 16px #174c6b08}
+[data-yuxuan-project-box] .ode-Box-header{background:#f5faff!important;border-bottom:1px solid #deebf3!important;min-height:36px;box-sizing:border-box}
+[data-yuxuan-project-box] .ode-Box-header-caption{font:600 14px/1.5 'Microsoft YaHei',sans-serif;color:#365f7c;padding:9px 18px}
+[data-yuxuan-project-box] .ode-Box-body-padding{padding:0!important}
+.yx-project-view-switch{gap:4px;padding:10px 18px;min-height:56px;background:#fff}
+.yx-view-tab{font-size:14px;line-height:20px;padding:7px 18px;border-radius:6px;min-width:96px;min-height:36px;box-sizing:border-box}
+.yx-view-tab[aria-pressed=true]{background:#e8f5ff;border-color:#c3e5fb;color:#087bb8}
+.yx-view-count{font-size:12px;color:#7893a6;background:#f2f8fc;border-radius:20px;padding:5px 12px}
+[data-yuxuan-personal-projects]{font:14px/1.6 'Segoe UI','Microsoft YaHei',sans-serif;border-radius:0;box-sizing:border-box}
+[data-yuxuan-personal-projects] .ode-ProjectHeaderRow{min-height:42px;background:#f3f8fc;border-bottom:1px solid #dceaf3;box-sizing:border-box;padding:0 18px;gap:12px;position:sticky;top:0;z-index:2}
+[data-yuxuan-personal-projects] .ode-ProjectHeaderLabel{font-size:12px;color:#668197;background:none}
+[data-yuxuan-personal-projects] .ode-ProjectRow{min-height:48px;gap:12px;padding:8px 18px;box-sizing:border-box;border-bottom:1px solid #edf3f7;transition:background .12s}
+[data-yuxuan-personal-projects] .ode-ProjectRow:hover{background:#f3faff}
+[data-yuxuan-personal-projects] .ode-ProjectRowHidden{display:none!important}
+[data-yuxuan-personal-projects] .ode-ProjectRow-Highlighted{background:#e3f3ff;border-bottom-color:#cbe7f8}
+[data-yuxuan-personal-projects] .ode-ProjectRow>.gwt-CheckBox,[data-yuxuan-personal-projects] .ode-ProjectHeaderRow>.gwt-CheckBox{flex:0 0 20px;display:flex;align-items:center}
+[data-yuxuan-personal-projects] input[type=checkbox]{width:15px;height:15px;accent-color:#1388cc;margin:0;cursor:pointer}
+[data-yuxuan-personal-projects] .ode-ProjectNameFocusPanel,[data-yuxuan-personal-projects] .ode-NameFocusPanel{flex:1;min-width:0}
+[data-yuxuan-personal-projects] .ode-ProjectNameLabel{font-size:14px;font-weight:600;line-height:1.6;white-space:normal;overflow-wrap:anywhere;padding:0;cursor:pointer}
+[data-yuxuan-personal-projects] .ode-ProjectListDate,[data-yuxuan-personal-projects] .ode-CreateDateFocusPanel,[data-yuxuan-personal-projects] .ode-ModifiedDateFocusPanel{flex:0 0 220px;width:220px;min-width:0;box-sizing:border-box}
+[data-yuxuan-personal-projects] .ode-ProjectFieldLabel{font-size:12px;line-height:1.6;color:#7890a1;font-weight:400}
+.yx-library-pane{padding:24px 28px}
+.yx-curriculum-pane{padding:26px 34px;background:linear-gradient(140deg,#edf8ff,#f7fbfe)}
+.yx-library-heading h1{font-size:24px;line-height:1.5;letter-spacing:.2px}
+.yx-library-heading>p{margin-bottom:20px}
+.yx-folder-row{min-height:70px;padding:12px 16px;border-color:#e1ebf3;border-radius:9px}
+.yx-folder-body{gap:4px}
+.yx-folder-name{font-size:14px;line-height:1.6}
+.yx-folder-icon{width:30px;height:30px}
+.yx-folder-arrow{font-size:22px}
+.yx-route-heading h2{font-size:25px}
+.yx-route-list{gap:9px;margin-top:22px}
+.yx-route-number{width:40px;height:40px;font-size:13px}
+.yx-route-list:before{left:20px}
+.yx-route-node{min-height:56px;gap:16px;padding-top:6px;padding-bottom:6px}
+.yx-route-title{font-size:14px}
+.yx-route-text{gap:3px}
+.yx-template{background:#fff;border-radius:9px;padding:18px 20px;border-color:#dce9f2}
+.yx-template h2{font-size:17px}
+.yx-template-heading{margin-bottom:8px}
+.yx-template-description{margin-bottom:12px;line-height:1.75}
+.yx-primary-button{min-height:36px;padding:8px 18px;box-sizing:border-box}
+.yx-template-actions{gap:18px;flex-wrap:wrap}
+.yx-lesson-materials{padding:18px 20px;background:#edf7ff;border:1px solid #d5eafa;border-radius:9px;margin-bottom:6px}
+.yx-lesson-materials h2{margin:0 0 6px;font-size:16px;line-height:1.5;color:#215373}
+.yx-lesson-materials p{margin:0 0 12px;font-size:12px;line-height:1.7;color:#6b879b}
+.yx-material-links{display:flex;flex-wrap:wrap;gap:8px}
+.yx-material-link{display:inline-flex;align-items:center;min-height:34px;padding:6px 12px;background:#fff;border:1px solid #bfdef2;border-radius:6px;color:#087bb8;font-size:12px;line-height:1.5;text-decoration:none;box-sizing:border-box}
+.yx-material-link:hover{background:#dcf0ff;border-color:#80bee3}
+@media(min-width:1200px){.yx-teaching-browser.is-lesson{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+@media(max-width:1100px){[data-yuxuan-personal-projects] .ode-ProjectListDate,[data-yuxuan-personal-projects] .ode-CreateDateFocusPanel,[data-yuxuan-personal-projects] .ode-ModifiedDateFocusPanel{flex-basis:178px;width:178px}.yx-library-pane,.yx-curriculum-pane{padding:20px}.yx-route-heading h2{font-size:22px}.yx-route-node{gap:12px}.yx-folder-row{padding:11px 12px}}
+@media(max-width:760px){.yx-view-tab{min-width:86px;padding:7px 12px}.yx-project-view-switch{padding:9px 12px}.yx-view-count{font-size:11px;padding:5px 8px}[data-yuxuan-personal-projects]{min-width:620px}[data-yuxuan-project-box]{overflow:auto}.yx-library-heading h1{font-size:21px}.yx-teaching-browser.is-lesson{grid-template-columns:minmax(0,1fr)}}
+
+[data-yuxuan-project-toolbar] .ya-ProjectName,[data-yuxuan-project-toolbar] .ya-ProjectName *{color:#215373!important;text-shadow:none!important}

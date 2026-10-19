@@ -1,0 +1,670 @@
+{
+  "lesson": 23,
+  "title": "会说话的 APP",
+  "projectName": "YXCourse23",
+  "exampleTitle": "带语速和完成反馈的语音助手",
+  "durationMinutes": 90,
+  "goals": [
+    "Speak接收文字，不接收音频文件。",
+    "调用Speak后不会等待整段话结束。",
+    "用测试记录验证会说话的 APP的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "语音提示小助手：输入一段文字，选择语速并朗读，结束后恢复按钮。",
+    "scope": "语音由Android系统TTS引擎提供；中文离线朗读取决于已安装的语音数据。本课不生成音频文件。",
+    "components": [
+      {
+        "name": "MessageBox",
+        "type": "TextBox",
+        "role": "输入待朗读文字"
+      },
+      {
+        "name": "RateSlider",
+        "type": "Slider",
+        "role": "设置0.5到1.5倍语速"
+      },
+      {
+        "name": "SpeakButton",
+        "type": "Button",
+        "role": "朗读"
+      },
+      {
+        "name": "StopButton",
+        "type": "Button",
+        "role": "停止"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "播报状态"
+      },
+      {
+        "name": "Voice",
+        "type": "TextToSpeech",
+        "role": "系统语音引擎"
+      },
+      {
+        "name": "RateLabel",
+        "type": "Label",
+        "role": "显示当前语速倍率"
+      }
+    ],
+    "logic": [
+      {
+        "event": "SpeakButton.Click",
+        "actions": [
+          "若trim(MessageBox.Text)为空则提示；否则SpeechRate←滑块值；播报中true；按钮禁用；Speak(trim文字)"
+        ]
+      },
+      {
+        "event": "Voice.AfterSpeaking",
+        "actions": [
+          "先恢复按钮；若手动停止则显示已停止，否则result真显示朗读完成，假显示语音不可用"
+        ]
+      },
+      {
+        "event": "StopButton.Click",
+        "actions": [
+          "手动停止←真；Voice.Stop；恢复按钮；状态已停止"
+        ]
+      },
+      {
+        "event": "RateSlider.PositionChanged",
+        "actions": [
+          "显示round(thumbPosition*10)/10倍率"
+        ]
+      }
+    ],
+    "procedures": {
+      "恢复按钮": "播报中←假；SpeakButton.Enabled←真；停止按钮恢复相应状态；提示由调用入口决定"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse23.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse23Class.aia：保留全部变量、恢复按钮、StopButton.Click、RateSlider.PositionChanged；添加SpeakButton.Click，检查空白并调用Speak；添加Voice.AfterSpeaking，按result恢复并反馈；保留手动停止标志，避免停止后误报引擎故障。",
+    "starter": "YXCourse23Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补校验与朗读，先问再示范。",
+      "students": "按任务单完成：补校验与朗读。",
+      "checkpoint": "为什么不能在Speak后立刻写“朗读完成”？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：用已有语速事件做对照实验，先问再示范。",
+      "students": "按任务单完成：用已有语速事件做对照实验。",
+      "checkpoint": "语速标签更新，为什么还要在朗读时设置SpeechRate？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补完成反馈并检查停止，先问再示范。",
+      "students": "按任务单完成：补完成反馈并检查停止。",
+      "checkpoint": "停止后result=false，应直接判定引擎坏了吗？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补校验与朗读",
+      "steps": [
+        "找到Class已给的恢复按钮、Stop与滑块事件。",
+        "添加SpeakButton.Click：trim后为空只提示。",
+        "有效时先手动停止←假、播报中←真，禁用SpeakButton。",
+        "设置Voice.SpeechRate为滑块值，再Speak去空格后的文字。"
+      ],
+      "question": "为什么不能在Speak后立刻写“朗读完成”？",
+      "answer": "Speak是开始请求，整段结束由Voice.AfterSpeaking通知；调用返回不代表播放完成。"
+    },
+    {
+      "title": "用已有语速事件做对照实验",
+      "steps": [
+        "保留RateSlider.PositionChanged，并核对RateLabel。",
+        "同一句分别用0.5、1、1.5倍朗读，记录听到的变化。",
+        "检查SpeechRate在开始朗读时读取滑块，而非把显示文字当数值。"
+      ],
+      "question": "语速标签更新，为什么还要在朗读时设置SpeechRate？",
+      "answer": "标签只显示反馈；SpeechRate属性才控制引擎，本工程开始时读取当前滑块值。"
+    },
+    {
+      "title": "补完成反馈并检查停止",
+      "steps": [
+        "添加Voice.AfterSpeaking，先恢复按钮。",
+        "手动停止为真时显示已停止；否则按result显示完成或语音不可用。",
+        "长句中停止，再朗读，检查按钮可恢复。",
+        "无语音设备只做事件追踪，听测栏写待测。"
+      ],
+      "question": "停止后result=false，应直接判定引擎坏了吗？",
+      "answer": "不应。先检查手动停止标志；停止引发的回调应保留已停止提示。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "输入三个空格后朗读",
+      "expected": "只提示先输入文字"
+    },
+    {
+      "action": "同一句分别用0.5和1.5倍朗读",
+      "expected": "速度可辨别地改变"
+    },
+    {
+      "action": "长文本朗读中停止再朗读",
+      "expected": "按钮恢复，能够重新开始"
+    }
+  ],
+  "misconceptions": [
+    [
+      "没有声音",
+      "检查媒体音量、系统TTS语言数据与AfterSpeaking结果"
+    ],
+    [
+      "朗读后按钮永久禁用",
+      "检查完成事件和停止事件的恢复逻辑"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "添加一条课堂提醒快捷语句。"
+    },
+    {
+      "level": "拓展",
+      "task": "为视力不便的使用者设计清楚的按钮文字。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "三个空格会请求朗读吗？",
+      "a": "不会，trim为空时只提示请先输入文字。"
+    },
+    {
+      "q": "AfterSpeaking的result有什么用？",
+      "a": "表示引擎报告的成功与否；需结合手动停止标志解释。"
+    },
+    {
+      "q": "没有中文语音包时编译成功能证明会说话吗？",
+      "a": "不能，需在具备相应语言数据的设备听测。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT media.html#TextToSpeech 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/media.html#TextToSpeech",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "会说话的 APP",
+      "body": [
+        "带语速和完成反馈的语音助手",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "语音提示小助手：输入一段文字，选择语速并朗读，结束后恢复按钮。 语音由Android系统TTS引擎提供；中文离线朗读取决于已安装的语音数据。本课不生成音频文件。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "空白文字不朗读，界面提示先输入。",
+        "语速从0.5到1.5，显示当前倍率。",
+        "播报期间禁止重复开始，停止或完成后恢复。"
+      ],
+      "notes": "演示：输入三个空格后朗读。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "Speak接收文字，不接收音频文件。",
+        "调用Speak后不会等待整段话结束。",
+        "用测试记录验证会说话的 APP的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "语音提示小助手：输入一段文字，选择语速并朗读，结束后恢复按钮。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "空白文字不朗读，界面提示先输入。",
+        "语速从0.5到1.5，显示当前倍率。",
+        "播报期间禁止重复开始，停止或完成后恢复。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "输入待朗读文字",
+        "设置0.5到1.5倍语速",
+        "朗读",
+        "停止"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "MessageBox",
+          "TextBox",
+          "输入待朗读文字"
+        ],
+        [
+          "RateSlider",
+          "Slider",
+          "设置0.5到1.5倍语速"
+        ],
+        [
+          "SpeakButton",
+          "Button",
+          "朗读"
+        ],
+        [
+          "StopButton",
+          "Button",
+          "停止"
+        ],
+        [
+          "StatusLabel",
+          "Label",
+          "播报状态"
+        ],
+        [
+          "Voice",
+          "TextToSpeech",
+          "系统语音引擎"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "播报中",
+          "假；限制重复朗读"
+        ],
+        [
+          "手动停止",
+          "假；区分停止与引擎失败"
+        ],
+        [
+          "RateSlider",
+          "0.5～1.5；开始时读取语速"
+        ]
+      ]
+    },
+    {
+      "title": "文本是语音引擎的输入",
+      "body": [
+        "Speak接收文字，不接收音频文件。",
+        "语音语言、音色由手机已安装的引擎提供。",
+        "中文离线播报取决于是否安装对应语音数据。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "完成通知来自另一个事件",
+      "body": [
+        "调用Speak后不会等待整段话结束。",
+        "AfterSpeaking提供成功与否。",
+        "通过按钮状态避免重复触发。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "空白输入：只提示，不发起Speak",
+        "有效文字：锁定开始键，再请求朗读",
+        "完成或停止：恢复按钮并显示原因"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：全部变量；恢复按钮；StopButton.Click；RateSlider.PositionChanged。学生任务：添加SpeakButton.Click，检查空白并调用Speak；添加Voice.AfterSpeaking，按result恢复并反馈；保留手动停止标志，避免停止后误报引擎故障。",
+      "layout": "text"
+    },
+    {
+      "title": "校验与朗读",
+      "body": [
+        "先去除首尾空格，再调用Speak。",
+        "空格输入只提示，不播报。"
+      ],
+      "notes": "Class中SpeakButton.Click待补。空白分支不能禁用后不恢复；有效分支先更新状态再Speak。 实际截图对应：SpeakButton.Click。语音由Android系统TTS引擎提供；中文离线朗读取决于已安装的语音数据。本课不生成音频文件。",
+      "layout": "blocks",
+      "blockIndex": 1,
+      "captureTarget": "SpeakButton.Click"
+    },
+    {
+      "title": "补校验与朗读",
+      "body": [
+        "找到Class已给的恢复按钮、Stop与滑块事件。",
+        "添加SpeakButton.Click：trim后为空只提示。",
+        "有效时先手动停止←假、播报中←真，禁用SpeakButton。"
+      ],
+      "notes": "实践15分钟。为什么不能在Speak后立刻写“朗读完成”？ 教师参考：Speak是开始请求，整段结束由Voice.AfterSpeaking通知；调用返回不代表播放完成。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "语速实验",
+      "body": [
+        "把滑块值连接SpeechRate并更新倍率标签。",
+        "同一句话在0.5、1、1.5倍速度不同。"
+      ],
+      "notes": "这一事件在Class中已经给出，用来阅读、实验并核对RateLabel；不要求重复搭建。SpeechRate在开始朗读时赋值。 实际截图对应：RateSlider.PositionChanged。语音由Android系统TTS引擎提供；中文离线朗读取决于已安装的语音数据。本课不生成音频文件。",
+      "layout": "blocks",
+      "blockIndex": 2,
+      "captureTarget": "RateSlider.PositionChanged"
+    },
+    {
+      "title": "用已有语速事件做对照实验",
+      "body": [
+        "保留RateSlider.PositionChanged，并核对RateLabel。",
+        "同一句分别用0.5、1、1.5倍朗读，记录听到的变化。",
+        "检查SpeechRate在开始朗读时读取滑块，而非把显示文字当数值。"
+      ],
+      "notes": "实践15分钟。语速标签更新，为什么还要在朗读时设置SpeechRate？ 教师参考：标签只显示反馈；SpeechRate属性才控制引擎，本工程开始时读取当前滑块值。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "完成与停止",
+      "body": [
+        "将完成与手动停止都连接恢复按钮。",
+        "结束或停止后可再次朗读。"
+      ],
+      "notes": "截图对应完成事件；StopButton.Click及恢复过程已给出。手动停止标志防止把正常停止误报为引擎故障。 实际截图对应：Voice.AfterSpeaking。语音由Android系统TTS引擎提供；中文离线朗读取决于已安装的语音数据。本课不生成音频文件。",
+      "layout": "blocks",
+      "blockIndex": 3,
+      "captureTarget": "Voice.AfterSpeaking"
+    },
+    {
+      "title": "补完成反馈并检查停止",
+      "body": [
+        "添加Voice.AfterSpeaking，先恢复按钮。",
+        "手动停止为真时显示已停止；否则按result显示完成或语音不可用。",
+        "长句中停止，再朗读，检查按钮可恢复。"
+      ],
+      "notes": "实践15分钟。停止后result=false，应直接判定引擎坏了吗？ 教师参考：不应。先检查手动停止标志；停止引发的回调应保留已停止提示。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "输入三个空格后朗读",
+          "只提示先输入文字"
+        ],
+        [
+          "同一句分别用0.5和1.5倍朗读",
+          "速度可辨别地改变"
+        ],
+        [
+          "长文本朗读中停止再朗读",
+          "按钮恢复，能够重新开始"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "没有声音",
+          "检查媒体音量、系统TTS语言数据与AfterSpeaking结果"
+        ],
+        [
+          "朗读后按钮永久禁用",
+          "检查完成事件和停止事件的恢复逻辑"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "输入三个空格后朗读",
+          "只提示先输入文字"
+        ],
+        [
+          "同一句分别用0.5和1.5倍朗读",
+          "速度可辨别地改变"
+        ],
+        [
+          "长文本朗读中停止再朗读",
+          "按钮恢复，能够重新开始"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "添加一条课堂提醒快捷语句。",
+        "为视力不便的使用者设计清楚的按钮文字。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“输入三个空格后朗读”写下预测，再记录实际结果。",
+        "结合积木解释：文本是语音引擎的输入。",
+        "修改一条规则并添加一项边界测试：添加一条课堂提醒快捷语句。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：长文本朗读中停止再朗读。",
+        "说明：完成通知来自另一个事件。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "三个空格会请求朗读吗？",
+        "AfterSpeaking的result有什么用？",
+        "没有中文语音包时编译成功能证明会说话吗？"
+      ],
+      "notes": "1. 不会，trim为空时只提示请先输入文字。\n2. 表示引擎报告的成功与否；需结合手动停止标志解释。\n3. 不能，需在具备相应语言数据的设备听测。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "TextBox": "15",
+    "Slider": "3",
+    "Button": "8",
+    "HorizontalArrangement": "4",
+    "VerticalArrangement": "4",
+    "TextToSpeech": "6",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "全部变量",
+    "恢复按钮",
+    "StopButton.Click",
+    "RateSlider.PositionChanged"
+  ],
+  "actualClassroomTasks": [
+    "添加SpeakButton.Click，检查空白并调用Speak",
+    "添加Voice.AfterSpeaking，按result恢复并反馈",
+    "保留手动停止标志，避免停止后误报引擎故障"
+  ],
+  "actualScreenshotGroups": [
+    "SpeakButton.Click",
+    "RateSlider.PositionChanged",
+    "Voice.AfterSpeaking"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "播报中",
+      "手动停止"
+    ],
+    "procedures": {
+      "恢复按钮": []
+    },
+    "events": [
+      "SpeakButton.Click",
+      "Voice.AfterSpeaking",
+      "StopButton.Click",
+      "RateSlider.PositionChanged"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "set": {
+        "MessageBox.Text": "   "
+      },
+      "event": "SpeakButton.Click",
+      "expect": {
+        "StatusLabel.Text": "请先输入文字",
+        "global 播报中": false
+      }
+    },
+    {
+      "event": "SpeakButton.Click",
+      "expect": {
+        "global 播报中": true,
+        "SpeakButton.Enabled": false
+      },
+      "methods": [
+        "Voice.Speak"
+      ]
+    },
+    {
+      "set": {
+        "global 手动停止": false
+      },
+      "event": "Voice.AfterSpeaking",
+      "args": {
+        "result": true
+      },
+      "expect": {
+        "SpeakButton.Enabled": true,
+        "StatusLabel.Text": "朗读完成"
+      }
+    },
+    {
+      "event": "StopButton.Click",
+      "expect": {
+        "SpeakButton.Enabled": true,
+        "StatusLabel.Text": "已停止"
+      }
+    },
+    {
+      "set": {
+        "global 手动停止": true
+      },
+      "event": "Voice.AfterSpeaking",
+      "args": {
+        "result": false
+      },
+      "expect": {
+        "StatusLabel.Text": "已停止"
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson23/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

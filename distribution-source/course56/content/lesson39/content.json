@@ -1,0 +1,709 @@
+{
+  "lesson": 39,
+  "title": "制作信息查询工具",
+  "projectName": "YXCourse39",
+  "exampleTitle": "中文编码查询与地点详情",
+  "durationMinutes": 90,
+  "goals": [
+    "路径选择服务功能。",
+    "等待时禁用重复请求。",
+    "用测试记录验证制作信息查询工具的核心规则。"
+  ],
+  "exampleSpec": {
+    "summary": "校园地点查询：输入关键词查找教室与活动地点，显示名称、楼层和开放提示。",
+    "scope": "使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 查询教师提供的校园地点示例，不访问真实地图或采集位置。显示名称与原始字典保持同序。",
+    "components": [
+      {
+        "name": "HostBox",
+        "type": "TextBox",
+        "role": "教师电脑局域网IPv4地址"
+      },
+      {
+        "name": "RequestButton",
+        "type": "Button",
+        "role": "发起本课请求"
+      },
+      {
+        "name": "StatusLabel",
+        "type": "Label",
+        "role": "请求与错误状态"
+      },
+      {
+        "name": "QueryBox",
+        "type": "TextBox",
+        "role": "地点关键词"
+      },
+      {
+        "name": "PlacesView",
+        "type": "ListView",
+        "role": "匹配地点名称"
+      },
+      {
+        "name": "DetailLabel",
+        "type": "Label",
+        "role": "楼层及开放提示"
+      },
+      {
+        "name": "Http",
+        "type": "Web",
+        "role": "教学HTTP客户端"
+      }
+    ],
+    "logic": [
+      {
+        "event": "RequestButton.Click",
+        "actions": [
+          "查询地点"
+        ]
+      },
+      {
+        "event": "Http.GotText",
+        "actions": [
+          "200时解码并读取items；显示地点结果；400则提示关键词；其他码报告错误；恢复按钮"
+        ]
+      },
+      {
+        "event": "PlacesView.AfterPicking",
+        "actions": [
+          "使用SelectionIndex读取地点字典的name、floor、note"
+        ]
+      },
+      {
+        "event": "Http.TimedOut",
+        "actions": [
+          "恢复并显示超时"
+        ]
+      }
+    ],
+    "procedures": {
+      "查询地点": "校验q非空；Url←/api/v1/places?q=UriEncode(trim输入)；禁用请求；Get",
+      "显示地点结果(列表)": "保存地点结果；生成name显示列表；清详情；显示数量"
+    }
+  },
+  "versions": {
+    "answer": "YXCourse39.aia：完整参考答案，含本课全部交互。",
+    "class": "YXCourse39Class.aia：保留请求响应解码与items类型验证、显示地点结果主体列表生成、结束请求和错误恢复；查询与详情占位；查询地点添加非空检查和UriEncode参数；详情校验SelectionIndex后按键显示；空结果清旧详情、取消选择并显示0项。",
+    "starter": "YXCourse39Starter.aia：组件、初始属性与素材齐全，没有积木。"
+  },
+  "agenda": [
+    {
+      "start": 0,
+      "end": 10,
+      "minutes": 10,
+      "slides": "1–5",
+      "teacher": "展示作品、收集预测，区分演示与实测。",
+      "students": "观察现象，预测一个正常输入与一个边界。",
+      "checkpoint": "能用输入、状态与反馈描述作品。"
+    },
+    {
+      "start": 10,
+      "end": 25,
+      "minutes": 15,
+      "slides": "6–11",
+      "teacher": "结合组件树与两条核心概念做短示范。",
+      "students": "定位状态与事件，手工追踪一个具体输入。",
+      "checkpoint": "能指出一个回调参数或状态的来源。"
+    },
+    {
+      "start": 25,
+      "end": 40,
+      "minutes": 15,
+      "slides": "12–13",
+      "teacher": "组织任务：补查询编码，先问再示范。",
+      "students": "按任务单完成：补查询编码。",
+      "checkpoint": "可以把整个URL都UriEncode吗？"
+    },
+    {
+      "start": 40,
+      "end": 55,
+      "minutes": 15,
+      "slides": "14–15",
+      "teacher": "组织任务：核对结果刷新与空表，先问再示范。",
+      "students": "按任务单完成：核对结果刷新与空表。",
+      "checkpoint": "名称列表能单独排序而不调整原数据吗？"
+    },
+    {
+      "start": 55,
+      "end": 70,
+      "minutes": 15,
+      "slides": "16–18",
+      "teacher": "组织任务：补选择详情，先问再示范。",
+      "students": "按任务单完成：补选择详情。",
+      "checkpoint": "SelectionIndex=0时为何不取记录？"
+    },
+    {
+      "start": 70,
+      "end": 80,
+      "minutes": 10,
+      "slides": "19–22",
+      "teacher": "用具体故障引导排查，组织微改编和同伴复测。",
+      "students": "交换操作者，记录修改前后的同一用例。",
+      "checkpoint": "基础规则保留，测试记录含预期和实际。"
+    },
+    {
+      "start": 80,
+      "end": 90,
+      "minutes": 10,
+      "slides": "23–24",
+      "teacher": "围绕规则、结果与修改证据组织展示和出口题。",
+      "students": "导出个人AIA、提交任务单并说明来源。",
+      "checkpoint": "一项规则、一条证据和一个待解决问题。"
+    }
+  ],
+  "tasks": [
+    {
+      "title": "补查询编码",
+      "steps": [
+        "在查询地点中校验trim关键词非空。",
+        "只对参数值调用Http.UriEncode。",
+        "拼接/api/v1/places?q=与编码结果，再Get。",
+        "中文图书前后加空格仍应查询图书角。"
+      ],
+      "question": "可以把整个URL都UriEncode吗？",
+      "answer": "不应，协议和路径分隔符要保留，只编码查询参数值。"
+    },
+    {
+      "title": "核对结果刷新与空表",
+      "steps": [
+        "阅读已给显示地点结果主体。",
+        "新结果先清详情、取消旧选择。",
+        "确认名称列表与地点字典列表顺序一致。",
+        "0项时显示数量0，不继续显示旧地点。"
+      ],
+      "question": "名称列表能单独排序而不调整原数据吗？",
+      "answer": "不能直接这样做，否则同一索引会指向不同地点。"
+    },
+    {
+      "title": "补选择详情",
+      "steps": [
+        "添加PlacesView.AfterPicking，校验索引。",
+        "按同一位置取地点字典。",
+        "读name、floor、note并组成详情。",
+        "先选正常结果，再查不存在，核对详情清空。"
+      ],
+      "question": "SelectionIndex=0时为何不取记录？",
+      "answer": "0表示无有效选择，读取会越界。"
+    }
+  ],
+  "tests": [
+    {
+      "action": "查询图书",
+      "expected": "返回图书角，楼层2"
+    },
+    {
+      "action": "查询创客",
+      "expected": "返回创客教室，楼层3"
+    },
+    {
+      "action": "查询不存在的月球教室",
+      "expected": "0项，无上次地点详情"
+    }
+  ],
+  "misconceptions": [
+    [
+      "中文请求参数不完整",
+      "使用UriEncode"
+    ],
+    [
+      "空结果还显示上次地址",
+      "请求开始和新结果到达时清旧详情"
+    ]
+  ],
+  "challenges": [
+    {
+      "level": "基础",
+      "task": "完成课堂支架中的关键逻辑，记录一个正常和一个边界结果。"
+    },
+    {
+      "level": "提高",
+      "task": "给查询加入楼层条件，并明确筛选规则。"
+    },
+    {
+      "level": "拓展",
+      "task": "使用课堂实际地点替换服务端示例数据。"
+    }
+  ],
+  "exitQuestions": [
+    {
+      "q": "UriEncode解决什么问题？",
+      "a": "把中文及特殊字符安全放入参数值。"
+    },
+    {
+      "q": "空关键词是否发请求？",
+      "a": "本例不发，先提示输入查询内容。"
+    },
+    {
+      "q": "空结果时旧详情怎么办？",
+      "a": "清空并显示0项，避免误导。"
+    }
+  ],
+  "sources": [
+    {
+      "title": "MIT connectivity.html#Web 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/components/connectivity.html#Web",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT dictionaries.html 官方参考",
+      "url": "https://ai2.appinventor.mit.edu/reference/blocks/dictionaries.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    },
+    {
+      "title": "MIT http.server.html 官方参考",
+      "url": "https://docs.python.org/3/library/http.server.html",
+      "use": "核对本课使用的组件、属性和事件；实际接口以随课AIA和元数据为准。"
+    }
+  ],
+  "slides": [
+    {
+      "title": "制作信息查询工具",
+      "body": [
+        "中文编码查询与地点详情",
+        "90分钟 · App Inventor创意编程"
+      ],
+      "notes": "校园地点查询：输入关键词查找教室与活动地点，显示名称、楼层和开放提示。 使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 查询教师提供的校园地点示例，不访问真实地图或采集位置。显示名称与原始字典保持同序。 完整答案用于体验；课堂先发Class版。实际导入、编译或设备验证以最终验证说明为准。",
+      "layout": "text"
+    },
+    {
+      "title": "今天体验的作品",
+      "body": [
+        "查询参数q经过UriEncode，能包含中文与空格。",
+        "每次清理旧结果，成功后显示匹配地点数量。",
+        "选中结果按原始字典显示详情，找不到时不残留旧地点。"
+      ],
+      "notes": "演示：查询图书。让学生先描述现象，再预测下一次操作。",
+      "layout": "text"
+    },
+    {
+      "title": "本课可以做到",
+      "body": [
+        "路径选择服务功能。",
+        "等待时禁用重复请求。",
+        "用测试记录验证制作信息查询工具的核心规则。"
+      ],
+      "notes": "用作品中的可观察操作判断是否达成目标。",
+      "layout": "text"
+    },
+    {
+      "title": "已有经验与新的问题",
+      "body": [
+        "本课在已学事件、变量和过程的基础上开展。",
+        "校园地点查询：输入关键词查找教室与活动地点，显示名称、楼层和开放提示。"
+      ],
+      "notes": "把学生已经会的操作与本课新增能力分别指出。",
+      "layout": "text"
+    },
+    {
+      "title": "作品的基本规则",
+      "body": [
+        "查询参数q经过UriEncode，能包含中文与空格。",
+        "每次清理旧结果，成功后显示匹配地点数量。",
+        "选中结果按原始字典显示详情，找不到时不残留旧地点。"
+      ],
+      "notes": "这些是共同完成的基础规则；自由改编不能掩盖基础问题。",
+      "layout": "text"
+    },
+    {
+      "title": "界面与操作区域",
+      "body": [
+        "教师电脑局域网IPv4地址",
+        "发起本课请求",
+        "请求与错误状态",
+        "地点关键词"
+      ],
+      "notes": "展示本课真实设计视图；按组件名称定位输入、处理、反馈。 Designer截图表示组件设计，不能当作按钮逻辑或Android硬件运行证据。",
+      "layout": "designer"
+    },
+    {
+      "title": "组件分工",
+      "body": [],
+      "notes": "其余组件在教师教案中列出；重点辨认本课新增组件。 完整组件表见教师教案，英文名用于准确定位。",
+      "layout": "table",
+      "table": [
+        [
+          "组件名",
+          "类型",
+          "作品中的任务"
+        ],
+        [
+          "HostBox",
+          "TextBox",
+          "教师电脑局域网IPv4地址"
+        ],
+        [
+          "RequestButton",
+          "Button",
+          "发起本课请求"
+        ],
+        [
+          "StatusLabel",
+          "Label",
+          "请求与错误状态"
+        ],
+        [
+          "QueryBox",
+          "TextBox",
+          "地点关键词"
+        ],
+        [
+          "PlacesView",
+          "ListView",
+          "匹配地点名称"
+        ],
+        [
+          "DetailLabel",
+          "Label",
+          "楼层及开放提示"
+        ]
+      ]
+    },
+    {
+      "title": "程序记住的信息",
+      "body": [],
+      "notes": "以实际AIA变量和组件为准。先分清持久数据、运行状态、回调参数和可见标签；辅助变量详见教师核对。",
+      "layout": "table",
+      "table": [
+        [
+          "名称",
+          "初值或意义"
+        ],
+        [
+          "请求中",
+          "假；一次只发一个请求"
+        ],
+        [
+          "当前URL",
+          "发起时保存；回调需核对"
+        ],
+        [
+          "HostBox",
+          "只填IP，端口8765由积木拼接"
+        ],
+        [
+          "地点结果",
+          "响应items列表；新查询会替换旧结果"
+        ]
+      ]
+    },
+    {
+      "title": "查询参数是一条输入规则",
+      "body": [
+        "路径选择服务功能。",
+        "q参数传入用户关键词。",
+        "UriEncode避免空格等字符破坏URL。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "查询反馈覆盖整个过程",
+      "body": [
+        "等待时禁用重复请求。",
+        "结果为0也属于成功响应。",
+        "新请求和空结果要清除旧详情。"
+      ],
+      "notes": "选用测试表中的具体输入进行手工演算，不要求背诵定义。",
+      "layout": "text"
+    },
+    {
+      "title": "一次交互怎样完成",
+      "body": [
+        "trim非空关键词，用UriEncode编码参数值",
+        "200解码items后重建名称列表并清旧详情",
+        "有效选择读取对应地点的楼层与说明"
+      ],
+      "notes": "按事件→状态→反馈追踪一次操作。 Class保留：请求响应解码与items类型验证；显示地点结果主体列表生成；结束请求和错误恢复；查询与详情占位。学生任务：查询地点添加非空检查和UriEncode参数；详情校验SelectionIndex后按键显示；空结果清旧详情、取消选择并显示0项。",
+      "layout": "text"
+    },
+    {
+      "title": "编码查询参数",
+      "body": [
+        "trim并UriEncode关键词后拼接URL。",
+        "搜图书能得到图书角。"
+      ],
+      "notes": "编码的是trim后的参数值，不是整个URL。 实际截图对应：查询地点。使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 查询教师提供的校园地点示例，不访问真实地图或采集位置。显示名称与原始字典保持同序。",
+      "layout": "blocksTall",
+      "blockIndex": 1,
+      "captureTarget": "查询地点"
+    },
+    {
+      "title": "补查询编码",
+      "body": [
+        "在查询地点中校验trim关键词非空。",
+        "只对参数值调用Http.UriEncode。",
+        "拼接/api/v1/places?q=与编码结果，再Get。"
+      ],
+      "notes": "实践15分钟。可以把整个URL都UriEncode吗？ 教师参考：不应，协议和路径分隔符要保留，只编码查询参数值。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "结果列表",
+      "body": [
+        "保存返回items并显示name。",
+        "找到多处时可选择不同结果。"
+      ],
+      "notes": "保留完整字典列表，仅取name生成显示列表。 实际截图对应：显示地点结果。使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 查询教师提供的校园地点示例，不访问真实地图或采集位置。显示名称与原始字典保持同序。",
+      "layout": "blocksTall",
+      "blockIndex": 2,
+      "captureTarget": "显示地点结果"
+    },
+    {
+      "title": "核对结果刷新与空表",
+      "body": [
+        "阅读已给显示地点结果主体。",
+        "新结果先清详情、取消旧选择。",
+        "确认名称列表与地点字典列表顺序一致。"
+      ],
+      "notes": "实践15分钟。名称列表能单独排序而不调整原数据吗？ 教师参考：不能直接这样做，否则同一索引会指向不同地点。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "详情与空结果",
+      "body": [
+        "按索引显示楼层与开放提示。",
+        "搜不存在地点后详情为空。"
+      ],
+      "notes": "有效索引先于取字典，空结果不沿用旧详情。 实际截图对应：PlacesView.AfterPicking。使用随课Python课堂服务，HostBox只填电脑局域网IPv4。示例不是公网服务；手机上的127.0.0.1指手机自身。服务的自动测试不等于Android客户端真机联调。 查询教师提供的校园地点示例，不访问真实地图或采集位置。显示名称与原始字典保持同序。",
+      "layout": "blocksTall",
+      "blockIndex": 3,
+      "captureTarget": "PlacesView.AfterPicking"
+    },
+    {
+      "title": "补选择详情",
+      "body": [
+        "添加PlacesView.AfterPicking，校验索引。",
+        "按同一位置取地点字典。",
+        "读name、floor、note并组成详情。"
+      ],
+      "notes": "实践15分钟。SelectionIndex=0时为何不取记录？ 教师参考：0表示无有效选择，读取会越界。 先让学生独立尝试，再对照积木；已经给出的结构用于阅读和测试。",
+      "layout": "text"
+    },
+    {
+      "title": "一次操作的结果与证据",
+      "body": [],
+      "notes": "遮住结果列，学生先预测，再运行核对；至少验证一个边界情况。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "预期结果"
+        ],
+        [
+          "查询图书",
+          "返回图书角，楼层2"
+        ],
+        [
+          "查询创客",
+          "返回创客教室，楼层3"
+        ],
+        [
+          "查询不存在的月球教室",
+          "0项，无上次地点详情"
+        ]
+      ]
+    },
+    {
+      "title": "常见问题与定位",
+      "body": [],
+      "notes": "一次只修改一个位置；保留复现步骤与修改前后的结果。",
+      "layout": "table",
+      "table": [
+        [
+          "现象",
+          "优先检查"
+        ],
+        [
+          "中文请求参数不完整",
+          "使用UriEncode"
+        ],
+        [
+          "空结果还显示上次地址",
+          "请求开始和新结果到达时清旧详情"
+        ]
+      ]
+    },
+    {
+      "title": "同伴测试记录",
+      "body": [],
+      "notes": "由同伴按表操作，记录平台与设备；未进行真机测试须注明。",
+      "layout": "table",
+      "table": [
+        [
+          "操作或输入",
+          "应观察到"
+        ],
+        [
+          "查询图书",
+          "返回图书角，楼层2"
+        ],
+        [
+          "查询创客",
+          "返回创客教室，楼层3"
+        ],
+        [
+          "查询不存在的月球教室",
+          "0项，无上次地点详情"
+        ]
+      ]
+    },
+    {
+      "title": "我的改编方向",
+      "body": [
+        "给查询加入楼层条件，并明确筛选规则。",
+        "使用课堂实际地点替换服务端示例数据。"
+      ],
+      "notes": "先写新的行为规则，再改积木；用一项新增测试证明修改有效。",
+      "layout": "text"
+    },
+    {
+      "title": "我的预测、实验与修改",
+      "body": [
+        "为“查询图书”写下预测，再记录实际结果。",
+        "结合积木解释：查询参数是一条输入规则。",
+        "修改一条规则并添加一项边界测试：给查询加入楼层条件，并明确筛选规则。"
+      ],
+      "notes": "任务单记录预测、实测与解释；引用具体变量、事件或界面反馈。",
+      "layout": "question"
+    },
+    {
+      "title": "作品分享的证据",
+      "body": [
+        "演示：查询不存在的月球教室。",
+        "说明：查询反馈覆盖整个过程。",
+        "展示一处个人改编及其测试记录。"
+      ],
+      "notes": "每组一分钟，围绕作品行为和证据反馈。",
+      "layout": "text"
+    },
+    {
+      "title": "本课回看",
+      "body": [
+        "UriEncode解决什么问题？",
+        "空关键词是否发请求？",
+        "空结果时旧详情怎么办？"
+      ],
+      "notes": "1. 把中文及特殊字符安全放入参数值。\n2. 本例不发，先提示输入查询内容。\n3. 清空并显示0项，避免误导。 留下一项具体测试结果和仍需解决的问题。",
+      "layout": "question"
+    }
+  ],
+  "componentMetadata": {
+    "Label": "6",
+    "TextBox": "15",
+    "Button": "8",
+    "ListView": "11",
+    "VerticalArrangement": "4",
+    "Web": "9",
+    "Form": "32"
+  },
+  "actualClassroomKept": [
+    "请求响应解码与items类型验证",
+    "显示地点结果主体列表生成",
+    "结束请求和错误恢复；查询与详情占位"
+  ],
+  "actualClassroomTasks": [
+    "查询地点添加非空检查和UriEncode参数",
+    "详情校验SelectionIndex后按键显示",
+    "空结果清旧详情、取消选择并显示0项"
+  ],
+  "actualScreenshotGroups": [
+    "查询地点",
+    "显示地点结果",
+    "PlacesView.AfterPicking"
+  ],
+  "actualProgramIndex": {
+    "globals": [
+      "请求中",
+      "当前URL",
+      "地点结果",
+      "地点名称",
+      "响应数据"
+    ],
+    "procedures": {
+      "结束请求": [
+        "提示"
+      ],
+      "查询地点": [],
+      "显示地点结果": [
+        "列表"
+      ]
+    },
+    "events": [
+      "RequestButton.Click",
+      "Http.GotText",
+      "PlacesView.AfterPicking",
+      "Http.TimedOut",
+      "Screen1.ErrorOccurred"
+    ]
+  },
+  "actualExpectedOutputs": [
+    {
+      "set": {
+        "QueryBox.Text": "  图书  "
+      },
+      "procedure": "查询地点",
+      "contains": {
+        "Http.Url": [
+          "/api/v1/places?q="
+        ]
+      },
+      "methodCounts": {
+        "Http.UriEncode": 1,
+        "Http.Get": 1
+      }
+    },
+    {
+      "procedure": "显示地点结果",
+      "args": [
+        [
+          {
+            "name": "图书角",
+            "floor": 2,
+            "note": "课间可借阅"
+          }
+        ]
+      ],
+      "expect": {
+        "PlacesView.Elements": [
+          "图书角"
+        ],
+        "DetailLabel.Text": ""
+      }
+    },
+    {
+      "set": {
+        "global 地点结果": [
+          {
+            "name": "创客教室",
+            "floor": 3,
+            "note": "在教师陪同下使用"
+          }
+        ],
+        "PlacesView.SelectionIndex": 1
+      },
+      "event": "PlacesView.AfterPicking",
+      "expect": {
+        "DetailLabel.Text": "创客教室\n楼层：3\n提示：在教师陪同下使用"
+      }
+    },
+    {
+      "set": {
+        "DetailLabel.Text": "旧地点"
+      },
+      "procedure": "显示地点结果",
+      "args": [
+        []
+      ],
+      "expect": {
+        "DetailLabel.Text": "",
+        "PlacesView.Elements": []
+      },
+      "contains": {
+        "StatusLabel.Text": [
+          "0项"
+        ]
+      }
+    }
+  ],
+  "artifactSpec": "work/course56/aia/lesson39/artifact-spec.json",
+  "blueprintSlideOrder": true
+}

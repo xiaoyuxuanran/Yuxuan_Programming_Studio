@@ -1,0 +1,2926 @@
+{
+  "lessons": [
+    {
+      "lesson": 1,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "Course01Hello",
+          "blocks": 6,
+          "bad": []
+        },
+        {
+          "name": "Course01HelloClass",
+          "blocks": 3,
+          "bad": []
+        },
+        {
+          "name": "Course01HelloStarter",
+          "blocks": 0,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张查看全部1280×720渲染图。无文字裁切、重叠或表格越界；真实积木与工程字符串相符。早期积木截图分辨率较低，但可读。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 2,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "Course02Card",
+          "blocks": 15,
+          "bad": []
+        },
+        {
+          "name": "Course02CardClass",
+          "blocks": 5,
+          "bad": []
+        },
+        {
+          "name": "Course02CardStarter",
+          "blocks": 0,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页查看了24张1280×720完整渲染，不是只看联系表。未见标题裁切、文字溢出、表格溢出或积木截图裁边。9/12/13页积木与Course02Card的Intro/Hobby/Reset事件匹配，正文与NameLabel更新一致。设计器为全界面概览，不作为Android运行证据。已阅读全部24页内容源教师备注和题目；发现以上内容对齐项，待修复后复核相关页。 修订后再次全尺寸复查第1/8/22页：第8页补齐NameLabel且统一我的介绍，表格7行完整可读；第22页信息区措辞准确；封面及教师备注已更新。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 3,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "Course03Voice",
+          "blocks": 19,
+          "bad": []
+        },
+        {
+          "name": "Course03VoiceClass",
+          "blocks": 7,
+          "bad": []
+        },
+        {
+          "name": "Course03VoiceStarter",
+          "blocks": 0,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页查看24张1280×720完整渲染，未见标题、正文、表格或真实积木截图裁切及溢出。第9/12/13页分别对应Course03Voice的CatButton.Click、DogButton.Click、StopButton.Click；StatusLabel、PetSpeech、FeedbackSound和两种Stop方法名称一致，feedback.wav被明确描述为短提示音而非真实动物录音。已通读全部24页教师备注与题目，声音引擎和Android实测边界表述准确。第6页图文一致性待修，其他页通过。 修订后再次全尺寸复查第6页：停止按钮用于结束声音与截图含义一致，教师备注及教案说明必要时滚动且设备布局另验。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 4,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "Course04StoryClass",
+          "blocks": 7,
+          "bad": []
+        },
+        {
+          "name": "Course04StoryStarter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "Course04Story",
+          "blocks": 28,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页以1280×720完整尺寸查看24张渲染，并通读对应教师备注、题目和Course04Story的实际事件。标题、正文、表格和四组积木完整可读，未见裁切或溢出。第9/12/13/15页分别对应CleanButton、RescueButton、CleanupRestartButton、RescueRestartButton的Click；三场景Visible值与第16页状态表一致。第6页为Designer概览，显示初始BeachScene，隐藏场景列在组件树；未将其当作Android运行证据。Class已给清理路线、学生补救助和双返回的教学分工一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 5,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "Course05FestivalClass",
+          "blocks": 5,
+          "bad": []
+        },
+        {
+          "name": "Course05FestivalStarter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "Course05Festival",
+          "blocks": 20,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页查看24张1280×720完整渲染并通读教师备注和题目。文字、表格及第9/12/13/15页四组积木完整，无裁切或溢出；较长的积木文本在原尺寸可读。TimeButton、PlaceButton、SignupButton、ResetButton与Course05Festival实际事件一致，均同步设置InfoTitle与InfoLabel，第16页顺序表对应正确。第6页Designer作为布局概览，与HeroRow/MenuRow/InfoCard说明匹配，未当作Android运行或完整屏幕适配证据。百分比宽度、窄屏检查与报名仅展示说明的边界已在内容及备注中明确。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 6,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "Course06ClubsClass",
+          "blocks": 5,
+          "bad": []
+        },
+        {
+          "name": "Course06ClubsStarter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "Course06Clubs",
+          "blocks": 20,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页以1280×720完整尺寸查看24张渲染，并对照全部教师备注和题目。未见标题、正文、表格、积木截图裁切或溢出。第9/12/13/15页分别对应Course06Clubs的SportsButton、ArtButton、CodeButton、ResetButton点击事件，RecommendationLabel和ReasonLabel成对设置；第7页组件表与第16页结果表一致。Class给出运动事件，学生补艺术、编程和重置，与任务分工一致。Designer仅用作参考工程概览；内容准确说明固定按钮建议，不将其宣称为个人能力判断。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 7,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse07Class",
+          "blocks": 9,
+          "bad": []
+        },
+        {
+          "name": "YXCourse07Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse07",
+          "blocks": 25,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张查看24页全尺寸渲染；积木与变量/显示、最低0分、支架缺口和测试表一致，无裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 8,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse08Class",
+          "blocks": 30,
+          "bad": []
+        },
+        {
+          "name": "YXCourse08Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse08",
+          "blocks": 41,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张查看24页全尺寸渲染；cm与m换算、非负输入保护、两组有返回值过程与Class支架对应，无文字裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 9,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse09Class",
+          "blocks": 27,
+          "bad": []
+        },
+        {
+          "name": "YXCourse09Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse09",
+          "blocks": 38,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张查看24页全尺寸渲染；19/20/21边界、>=规则、目标减输入、重置与实际积木一致，无文字裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 10,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse10Class",
+          "blocks": 59,
+          "bad": []
+        },
+        {
+          "name": "YXCourse10Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse10",
+          "blocks": 83,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "本轮复查已修订第14和18页；其余22页此前逐张检查。完整积木截图与测试表换行已修复。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 11,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse11Class",
+          "blocks": 52,
+          "bad": []
+        },
+        {
+          "name": "YXCourse11Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse11",
+          "blocks": 67,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张查看24页全尺寸渲染，乘法行1到9、清空与累加、135和45的测试、234改编与实际积木一致；无文字裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 12,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse12Class",
+          "blocks": 36,
+          "bad": []
+        },
+        {
+          "name": "YXCourse12Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse12",
+          "blocks": 91,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张查看24页全尺寸渲染，四状态、随机等待、SystemTime时刻差和结束保护一致；组件与表格无裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 13,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse13Class",
+          "blocks": 61,
+          "bad": []
+        },
+        {
+          "name": "YXCourse13Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse13",
+          "blocks": 63,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张查看24页全尺寸渲染，参数、返回值、提示过程、重置回归测试与实际工程一致。表格的长调用文字自然换行，仍完整可读。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 14,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse14Class",
+          "blocks": 28,
+          "bad": []
+        },
+        {
+          "name": "YXCourse14Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse14",
+          "blocks": 29,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张查看24页全尺寸渲染，三项故障和修复顺序、8/10/12等号边界与清源变量的回归一致；积木和表格无裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 15,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse15Class",
+          "blocks": 28,
+          "bad": []
+        },
+        {
+          "name": "YXCourse15Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse15",
+          "blocks": 44,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张检查24页；第13页压缩参数表述后再次检查。Dragged相邻点、半径线宽一半、保留工具选择一致；截图完整无裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 16,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse16Class",
+          "blocks": 57,
+          "bad": []
+        },
+        {
+          "name": "YXCourse16Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse16",
+          "blocks": 87,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张检查24页；第14页改为左右布局并复查，四边完整、横线公式及同心圆表格清晰。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 17,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse17Class",
+          "blocks": 61,
+          "bad": []
+        },
+        {
+          "name": "YXCourse17Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse17",
+          "blocks": 102,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐张检查，Speed/Interval、四方向映射、40像素图片限边和测试期望对应；截图完整、文字无裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 18,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse18Class",
+          "blocks": 58,
+          "bad": []
+        },
+        {
+          "name": "YXCourse18Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse18",
+          "blocks": 76,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张检查24页；反弹参数、运行和目标对象双重条件、归零顺序与测试表一致，无文字裁切。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 19,
+      "preservedOriginalCase": true,
+      "slides": 27
+    },
+    {
+      "lesson": 20,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse20Class",
+          "blocks": 174,
+          "bad": []
+        },
+        {
+          "name": "YXCourse20Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse20",
+          "blocks": 205,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐张检查24页；生命3到0、暂停继续、难度封顶12、结束和重新开始区分正确；文字和截图完整。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 21,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse21Class",
+          "blocks": 103,
+          "bad": []
+        },
+        {
+          "name": "YXCourse21Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse21",
+          "blocks": 141,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页完整检查；第12页长分派积木改左右版式，第17页朗读检查说明缩短后重看无孤立标点；五场景双结局、互斥跳转、重读恢复、测试表一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 22,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse22Class",
+          "blocks": 53,
+          "bad": []
+        },
+        {
+          "name": "YXCourse22Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse22",
+          "blocks": 112,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页查看24张全尺寸渲染：Ball中心与半径留边、每轴18像素限制、运行态碰撞互斥、重开恢复与测试表一致；长积木已用左右布局完整展示。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 23,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse23Class",
+          "blocks": 31,
+          "bad": []
+        },
+        {
+          "name": "YXCourse23Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse23",
+          "blocks": 63,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页检查24页：文字、表格、真实积木图完整清晰；空白校验、0.5到1.5语速、AfterSpeaking及手动停止状态一致，设备听觉效果没有误标实测。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 24,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse24Class",
+          "blocks": 85,
+          "bad": []
+        },
+        {
+          "name": "YXCourse24Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse24",
+          "blocks": 113,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页检查24页，无裁切溢出；StartedRecording确认、AfterSoundRecorded路径、播放守卫、权限与错误恢复在流程图和真实积木中一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 25,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse25Class",
+          "blocks": 40,
+          "bad": []
+        },
+        {
+          "name": "YXCourse25Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse25",
+          "blocks": 62,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页全尺寸查看；相机与相册共用过程、取消保留原图、空标题校验及清空流程一致；已根据MIT组件文档修正图片拉伸处理，并复看第19页。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 26,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse26Class",
+          "blocks": 30,
+          "bad": []
+        },
+        {
+          "name": "YXCourse26Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse26",
+          "blocks": 52,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页全尺寸查看；1至6随机、1秒冷却与按钮替代入口一致；第4页缩短说明后已复看，无孤立标点。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 27,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse27Class",
+          "blocks": 110,
+          "bad": []
+        },
+        {
+          "name": "YXCourse27Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse27",
+          "blocks": 160,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页检查24页；倾斜速度映射、2度死区、40ms移动、触障复位与终点停止说明一致；第16页长积木已放大并复核。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 28,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse28Class",
+          "blocks": 76,
+          "bad": []
+        },
+        {
+          "name": "YXCourse28Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse28",
+          "blocks": 109,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页检查24页；首次位置等待、0坐标、HasAccuracy、停止观察与权限恢复说明一致；第14页长积木已放大并复核。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 29,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse29Class",
+          "blocks": 19,
+          "bad": []
+        },
+        {
+          "name": "YXCourse29Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse29",
+          "blocks": 49,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页检查24页；列表1起始索引、追加与刷新、空格输入、选择显示与测试一致；第4页孤字换行已改写并复核。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 30,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse30Class",
+          "blocks": 46,
+          "bad": []
+        },
+        {
+          "name": "YXCourse30Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse30",
+          "blocks": 94,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页检查24页；索引有效判断、修改删除后取消选择、防止连删与三版任务一致。第22页孤立句号已精简并复核。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 31,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse31Class",
+          "blocks": 77,
+          "bad": []
+        },
+        {
+          "name": "YXCourse31Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse31",
+          "blocks": 119,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "逐页检查24页；三份列表共用题号、随机边界、提交状态、空输入及抽题复位与三版任务一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 32,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse32Class",
+          "blocks": 56,
+          "bad": []
+        },
+        {
+          "name": "YXCourse32Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse32",
+          "blocks": 114,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页完成；第16页已放大复核，独立字典的字段修改与列表选择边界、缺省值及三版任务对应。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 33,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse33Class",
+          "blocks": 77,
+          "bad": []
+        },
+        {
+          "name": "YXCourse33Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse33",
+          "blocks": 95,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；TinyDB两标签读写、默认值、分钟整数边界、清理指定标签及重开测试对应。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 34,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse34Class",
+          "blocks": 60,
+          "bad": []
+        },
+        {
+          "name": "YXCourse34Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse34",
+          "blocks": 134,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；修正第4页孤立标点，筛选时清空旧结果、大小写归一、结果序号映射及无匹配分支对应。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 35,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse35Class",
+          "blocks": 96,
+          "bad": []
+        },
+        {
+          "name": "YXCourse35Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse35",
+          "blocks": 287,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；分享说明缩短后复核，CSV原生转义、整表验证、坏行不提交以及保存回调后分享与任务一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 36,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse36Class",
+          "blocks": 96,
+          "bad": []
+        },
+        {
+          "name": "YXCourse36Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse36",
+          "blocks": 152,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；柱状图说明换行修正，七日总计140与平均20、周三修改后160与22.9、清空重绘及最高并列规则一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 37,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse37Class",
+          "blocks": 45,
+          "bad": []
+        },
+        {
+          "name": "YXCourse37Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse37",
+          "blocks": 89,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页已逐页检查；状态码与正文说明缩短，文字和完整积木图显示正常。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 38,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse38Class",
+          "blocks": 83,
+          "bad": []
+        },
+        {
+          "name": "YXCourse38Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse38",
+          "blocks": 148,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页已逐页检查；公告首项说明改用中文，嵌套字典积木完整显示。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 39,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse39Class",
+          "blocks": 139,
+          "bad": []
+        },
+        {
+          "name": "YXCourse39Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse39",
+          "blocks": 228,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页已逐页检查；地点详情文字缩短避免孤立标点，查询参数、索引与空结果说明一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 40,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse40Class",
+          "blocks": 75,
+          "bad": []
+        },
+        {
+          "name": "YXCourse40Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse40",
+          "blocks": 171,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页已逐页检查；缩短表单与回执旁注，未拆断英文标识，布局完整。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 41,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse41Class",
+          "blocks": 289,
+          "bad": []
+        },
+        {
+          "name": "YXCourse41Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse41",
+          "blocks": 392,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页已逐页检查；共享读取旁注已缩短，GET与POST响应区分、详情说明一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 42,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse42Class",
+          "blocks": 280,
+          "bad": []
+        },
+        {
+          "name": "YXCourse42Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse42",
+          "blocks": 325,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页已逐页检查；缓存与时间说明一致，改编任务缩短避免零碎尾行。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 43,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse43Class",
+          "blocks": 58,
+          "bad": []
+        },
+        {
+          "name": "YXCourse43Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse43",
+          "blocks": 218,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页已逐页检查；完整应答旁注缩短，LF命令与串口手动验证步骤清楚。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 44,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse44Class",
+          "blocks": 329,
+          "bad": []
+        },
+        {
+          "name": "YXCourse44Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse44",
+          "blocks": 361,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；组件表首列加宽，DisconnectButton完整显示。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 45,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse45Class",
+          "blocks": 234,
+          "bad": []
+        },
+        {
+          "name": "YXCourse45Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse45",
+          "blocks": 386,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；调光目标与设备确认、LF分帧和异常数据说明一致，改编说明已缩短。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 46,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse46Class",
+          "blocks": 151,
+          "bad": []
+        },
+        {
+          "name": "YXCourse46Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse46",
+          "blocks": 197,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；组件名完整，BLE服务/特征、UTF-8单项列表及通知校验与程序一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 47,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse47Class",
+          "blocks": 321,
+          "bad": []
+        },
+        {
+          "name": "YXCourse47Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse47",
+          "blocks": 399,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；封面按完整词组换行，组件表、请求流程和状态校验说明已核对。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 48,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse48Class",
+          "blocks": 251,
+          "bad": []
+        },
+        {
+          "name": "YXCourse48Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse48",
+          "blocks": 417,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；封面按完整词组换行，组件表、请求流程和状态校验说明已核对。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 49,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse49Class",
+          "blocks": 456,
+          "bad": []
+        },
+        {
+          "name": "YXCourse49Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse49",
+          "blocks": 543,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；序号匹配、载荷校验、1500ms最多一次重发与程序一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 50,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse50Class",
+          "blocks": 444,
+          "bad": []
+        },
+        {
+          "name": "YXCourse50Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse50",
+          "blocks": 612,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；旁注和任务说明换行已修复，完整流程、输入范围与对应积木已核对。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 51,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse51Class",
+          "blocks": 14,
+          "bad": []
+        },
+        {
+          "name": "YXCourse51Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse51",
+          "blocks": 75,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；旁注和任务说明换行已修复，完整流程、输入范围与对应积木已核对。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 52,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse52Class",
+          "blocks": 94,
+          "bad": []
+        },
+        {
+          "name": "YXCourse52Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse52",
+          "blocks": 127,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；单Screen三面板可见性与返回流程明确，长句已缩短。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 53,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse53Class",
+          "blocks": 181,
+          "bad": []
+        },
+        {
+          "name": "YXCourse53Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse53",
+          "blocks": 239,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；字典列表、刷新和选择详情与三版本项目一致。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 54,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse54Class",
+          "blocks": 314,
+          "bad": []
+        },
+        {
+          "name": "YXCourse54Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse54",
+          "blocks": 370,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；完成标志、目标分钟统计、TinyDB恢复及结构校验说明正确。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 55,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse55Class",
+          "blocks": 471,
+          "bad": []
+        },
+        {
+          "name": "YXCourse55Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse55",
+          "blocks": 506,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；删除确认、一次撤销、重名输入保护与项目一致，旁注已修正。"
+      },
+      "slides": 24
+    },
+    {
+      "lesson": 56,
+      "nativeImportPassed": true,
+      "projects": [
+        {
+          "name": "YXCourse56Class",
+          "blocks": 532,
+          "bad": []
+        },
+        {
+          "name": "YXCourse56Starter",
+          "blocks": 0,
+          "bad": []
+        },
+        {
+          "name": "YXCourse56",
+          "blocks": 564,
+          "bad": []
+        }
+      ],
+      "visualReview": {
+        "passed": true,
+        "slidesReviewed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "issues": [],
+        "notes": "24页逐页检查；CSV三列、写入回调后分享、发布范围和交付说明已核对，长句已修正。"
+      },
+      "slides": 24
+    }
+  ],
+  "realAndroidDeviceTested": false,
+  "totalSlides": 1347
+}
