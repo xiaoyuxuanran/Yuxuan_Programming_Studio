@@ -3,7 +3,7 @@
   "tag_name": "v2.3.4",
   "draft": false,
   "prerelease": false,
-  "body": "羽轩编程工作台 **2.3.4**，Windows x64。\n\n### 56课教学项目与页面调整\n\n新增完整8阶段56课，每课90分钟。每课含完整答案、课堂支架、纯界面起始版，共168个可直接打开的工程；软件内可下载PPT及完整资料，含教案、任务单、素材、积木参考图和答案APK。第19课保留原案例。\n\n教学首页右侧显示课程路线；优化教学/个人项目切换、列表、文件夹和资料按钮的比例与窄窗口布局。中文课程目录和资料名可用，内部工程名沿用英文数字以兼容Android编译链。修复Windows本地项目存储中的长键名/NTFS流问题，支持旧数据迁移和删除。\n\n网络课附标准库Python课堂服务，ESP32课附串口、经典蓝牙、BLE和Wi-Fi TCP固件与接线资料。56份PPT共1347页逐页渲染检查；168个AIA导入/坏块检查通过，56份完整答案APK编译。课堂API双Python版本验证，ESP32六种固件核心2.0.17编译通过。未做Android真机或实物硬件联调。\n\n### 更新方式\n\n提供 **2.2.0、2.3.1、2.3.2、2.3.3 → 2.3.4** 四种直升包，选择与当前版本匹配的包，退出软件后安装到原目录。含教学预览的2.3.3可升级。首次安装先装完整2.2.0，2.3.0先升到2.3.1。\n\n本次包含全部课程本地资料，体积大于普通小补丁；保留个人项目、依赖及授权，支持重复覆盖与合并卸载。Mixly仍为桌面版，无仿真；保留前版Python/C++缩放与侧栏等功能。\n\n附件包含四个更新包、8个阶段独立课程资料包、源码与补丁、使用/升级说明、更新日志、SHA256及更新清单。Gitee保留版本页面和可用镜像，完整大附件由GitHub提供；只把已验证的镜像写入自动更新清单。\n\n[Gitee发布页](https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.3.4) · [GitHub完整附件](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.3.4)\n",
+  "body": "羽轩编程工作台 **2.3.4**，Windows x64。\n\n### 56课教学项目与页面调整\n\n新增完整8阶段56课，每课90分钟。每课含完整答案、课堂支架、纯界面起始版，共168个可直接打开的工程；软件内可下载PPT及完整资料，含教案、任务单、素材、积木参考图和答案APK。第19课保留原案例。\n\n教学首页右侧显示课程路线；优化教学/个人项目切换、列表、文件夹和资料按钮的比例与窄窗口布局。中文课程目录和资料名可用，内部工程名沿用英文数字以兼容Android编译链。修复Windows本地项目存储中的长键名/NTFS流问题，支持旧数据迁移和删除。\n\n网络课附标准库Python课堂服务，ESP32课附串口、经典蓝牙、BLE和Wi-Fi TCP固件与接线资料。56份PPT共1347页逐页渲染检查；168个AIA导入/坏块检查通过，56份完整答案APK编译。课堂API双Python版本验证，ESP32六种固件核心2.0.17编译通过。未做Android真机或实物硬件联调。\n\n### 更新方式\n\n提供 **2.2.0、2.3.1、2.3.2、2.3.3 → 2.3.4** 四种直升包，选择与当前版本匹配的包，退出软件后安装到原目录。含教学预览的2.3.3可升级。首次安装先装完整2.2.0，2.3.0先升到2.3.1。\n\n本次包含全部课程本地资料，体积大于普通小补丁；保留个人项目、依赖及授权，支持重复覆盖与合并卸载。Mixly仍为桌面版，无仿真；保留前版Python/C++缩放与侧栏等功能。\n\n附件包含四个更新包、8个阶段独立课程资料包、源码与补丁、使用/升级说明、更新日志、SHA256及更新清单。Gitee保留版本页面和可用镜像，完整大附件由GitHub提供；只把已验证的镜像写入自动更新清单。\n\n[Gitee发布页](https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.3.4) · [GitHub完整附件](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.3.4)\n\n### 更新包直接下载\n\n- [2.2.0 → 2.3.4](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Yuxuan-Programming-Studio-Update-2.2.0-to-2.3.4.exe)\n- [2.3.1 → 2.3.4](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Yuxuan-Programming-Studio-Update-2.3.1-to-2.3.4.exe)\n- [2.3.2 → 2.3.4](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Yuxuan-Programming-Studio-Update-2.3.2-to-2.3.4.exe)\n- [2.3.3 → 2.3.4](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Yuxuan-Programming-Studio-Update-2.3.3-to-2.3.4.exe)\n",
   "html_url": "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.3.4",
   "assets": [
     {
@@ -11,21 +11,27 @@
       "size": 3752,
       "digest": "sha256:cf8c05b657412bf142bc9bfd4594e3f9965da5a5e67c7aceb9908f2eb511fb8a",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/CHANGELOG.txt",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.4/CHANGELOG.txt"
+      ]
     },
     {
       "name": "Course-Index.md",
       "size": 7166,
       "digest": "sha256:516c2eef939b21c64025be9326ef9655362fb1d0bf519e4a655beab155bfda12",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Course-Index.md",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.4/Course-Index.md"
+      ]
     },
     {
       "name": "Source-and-Patches.zip",
       "size": 27057092,
       "digest": "sha256:cb9b12e4f18bcdcb8a8ca5530f8c1ace87e91965676786a592ddaaf8864ab6de",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Source-and-Patches.zip",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.4/Source-and-Patches.zip"
+      ]
     },
     {
       "name": "Stage01-Lessons01-06.zip",
@@ -53,7 +59,9 @@
       "size": 83837789,
       "digest": "sha256:b0fd4758355e683a86a44b1d3ceafe01bf549a5bcede604859e4d4e0e565a174",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Stage04-Lessons23-28.zip",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.4/Stage04-Lessons23-28.zip"
+      ]
     },
     {
       "name": "Stage05-Lessons29-36.zip",
@@ -67,7 +75,9 @@
       "size": 90234674,
       "digest": "sha256:173b5291daeab173f3c234c59cdf736df7216a053c28bfd3eb1877546ec0fa46",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Stage06-Lessons37-42.zip",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.4/Stage06-Lessons37-42.zip"
+      ]
     },
     {
       "name": "Stage07-Lessons43-50.zip",
@@ -81,21 +91,27 @@
       "size": 86163571,
       "digest": "sha256:70bb897625d1ec2fea7b15f80738995debe72792be25038ca2b4a4e652e4127c",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/Stage08-Lessons51-56.zip",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.4/Stage08-Lessons51-56.zip"
+      ]
     },
     {
       "name": "UPGRADE.md",
       "size": 1702,
       "digest": "sha256:97c0e76fb9b3ab598da540f2b53553898928c5f2ef08111f6f792d4bc3194d5e",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/UPGRADE.md",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.4/UPGRADE.md"
+      ]
     },
     {
       "name": "User-Guide.txt",
       "size": 1442,
       "digest": "sha256:e8c34a7e01a6ac1b324403fc552a22c8bc453eb30834e624919160578217237e",
       "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.3.4/User-Guide.txt",
-      "mirrors": []
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.3.4/User-Guide.txt"
+      ]
     },
     {
       "name": "Yuxuan-Programming-Studio-Update-2.2.0-to-2.3.4.exe",
