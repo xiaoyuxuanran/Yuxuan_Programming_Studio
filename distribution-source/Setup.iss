@@ -2,7 +2,8 @@
 [Setup]
 AppId={{D394BCE3-729B-427F-A3EB-52885E97ED62}
 AppName={#AppName}
-AppVersion=2.3.4
+AppVersion=2.4.5
+UninstallLogMode=append
 SetupArchitecture=x64
 AppPublisher=Yuxuan Programming Studio
 DefaultDirName={userpf}\AppInventorOffline
@@ -13,9 +14,10 @@ ArchitecturesInstallIn64BitMode=x64compatible
 MinVersion=10.0
 OutputDir=..\outputs
 OutputBaseFilename=AppInventor-Offline-Setup-x64
-Compression=lzma2/normal
+Compression=lzma2/ultra64
+LZMADictionarySize=131072
 SolidCompression=yes
-LZMANumBlockThreads=8
+LZMANumBlockThreads=4
 WizardStyle=modern
 SetupIconFile=native\resources\brand.ico
 DisableProgramGroupPage=yes
