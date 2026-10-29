@@ -1,4 +1,4 @@
-羽轩编程工作台 2.4.5 完整安装版
+羽轩编程工作台 2.4.6 完整安装版
 
 适用于Windows 10/11 x64。直接运行AppInventor-Offline-Setup-x64.exe安装，无需先安装任何旧版本，也无需另装WSL、Java、Python或C++编译器。
 
@@ -12,4 +12,6 @@ Mixly仍为桌面版，保留Arduino AVR、Arduino ESP8266、Python ESP32、Ardu
 
 已验证的课程资料来自2.3.4：168个AIA通过导入与积木检查，56份答案APK编译完成，56份PPT共1347页逐页渲染检查。未做Android真机或实物开发板联调。
 
-SHA256SUMS.txt提供附件校验值。正式版与下载地址见GitHub的v2.4.5发布页。
+SHA256SUMS.txt提供附件校验值。正式版与下载地址见GitHub的v2.4.6发布页。
+
+启动动画约 7 秒自动结束；按 Esc 或右上角按钮可跳过。快捷方式参数 --no-startup-animation 可禁用，--preview-startup-animation 仅预览动画后退出。

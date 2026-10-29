@@ -1,28 +1,26 @@
 # 羽轩编程工作台 · Yuxuan Programming Studio
 
-Windows x64 本地编程平台，集成 App Inventor、Mixly 桌面编程、Python 和 C++。当前版本 **2.4.5 完整安装版**。
+Windows x64 本地编程平台，集成 App Inventor、Mixly、Python 和 C++。当前版本 **2.4.6**。
 
-## 直接下载与安装
+## 下载与安装
 
-**[下载2.4.5完整安装包](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/AppInventor-Offline-Setup-x64.exe)** · [GitHub发布页](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.4.5) · [Gitee版本页](https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.4.5)
+- [完整安装包](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.6/AppInventor-Offline-Setup-x64.exe)：可直接全新安装，默认全选；也可只安装四个项目中的一个或任意多个。
+- [2.4.5 → 2.4.6 增量包](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.6/Yuxuan-Programming-Studio-Update-2.4.5-to-2.4.6.exe)：兼容原版及已安装启动动画补丁的 2.4.5，没有组件选择页。
+- [GitHub 发布页](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.4.6) · [Gitee 版本页](https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.4.6)。软件优先使用 Gitee 更新清单和可用附件，完整大安装包由 GitHub 提供。
 
-本版可在新电脑直接安装，无需先装2.2.0或其他旧版。完整包包含四类编辑器、Java/Python/C++运行及编译环境、Mixly四类硬件支持、全部56课本地教学资料；不需要另装WSL。
+已有版本请保存项目、退出软件后安装到原目录。更早版本使用完整包覆盖升级。再次运行完整包可以添加项目，不删除已经安装的项目。共享启动器和授权运行依赖自动安装；仅安装 C++ 也会包含用于启动器和后台服务的私有 Python 3.13 运行时。
 
-已有版本请保存工程、退出工作台及代码窗口，再安装到原目录。覆盖安装保留个人项目、第三方依赖和授权信息；原有客户端的“检查更新”也能获取本版完整安装包。[安装与升级说明](docs/UPGRADE-2.4.5.md)。
+## 新增启动动画
 
-首次使用仍需联网激活，之后可在授权有效期内离线使用；联网时校验授权。公开附件不包含激活码或已激活凭证。
+羽轩 Logo、蓝白配色、环形刻度、五段标题、英文逐字显示和揭幕转场，约 7 秒后自动进入启动器。Esc 或右上角按钮可随时跳过；快捷方式添加 `--no-startup-animation` 可关闭。动画之后仍按原流程校验授权，首次使用需联网激活，之后在有效期内允许离线使用。
 
-本次为完整安装分发，功能沿用2.3.4。大安装包由GitHub提供；Gitee同步源码、版本说明、更新清单及可容纳的附件。软件优先读取Gitee清单，安装包校验大小与SHA256。
+完整包可选择 App Inventor、Mixly、Python、C++ 中的一项或多项。未安装入口明确标记并禁用；Python/C++ 工作区仅允许切换到已安装的语言。[安装与升级说明](docs/UPGRADE-2.4.6.md)。
 
-## 包含56课教学项目
+![启动动画](docs/images/2.4.6-startup.png)
 
-8阶段、56课，每课90分钟，共84小时。每课含完整答案、课堂支架、纯界面起始版，共168个工程；本地资料含可编辑PPT及备注、教案、任务单、素材、积木参考图及答案APK。网络课附Python课堂服务，ESP32课附串口、经典蓝牙、BLE、Wi-Fi TCP固件和接线说明。
+App Inventor 包含 8 阶段 56 课、168 个 AIA、PPT、教案、任务单和配套素材。课程内容沿用 2.3.4；[独立阶段课程包](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.3.4)仍然可用。
 
-App Inventor → 我的项目 → 教学项目，即可按阶段与课次使用；中文课程目录可用。课程内容与2.3.4相同，[独立阶段课程包仍可从2.3.4下载](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.3.4)。
-
-![教学项目与课程路线](docs/images/2.3.4-teaching.png)
-
-168个AIA通过平台导入与积木检查，56份完整答案APK编译完成，56份PPT共1347页逐页渲染检查。未进行Android真机或实物开发板联调。
+首次激活、离线有效期及联网校验规则保留。公开附件不含激活码或已激活凭证。
 
 ## 功能与文档
 
@@ -35,7 +33,7 @@ App Inventor 默认经典布局、蓝白主题，支持本机 APK 构建下载�
 - `distribution-source/`：平台源码与适配脚本；`upstream-overlays/`：上游修改；`validation/`：验收脚本。
 - [历史 Mixly 网页版说明](docs/Mixly网页版迁移说明.md)，仅对应 2.3.0 / 2.3.1。
 
-本仓库不包含全部预构建依赖。2.4.5 的 `Source-and-Patches.zip` 提供本次源码与补丁；完整上游源码基线沿用 2.2.0 / 2.3.0 发布附件，目录准备见构建说明。
+本仓库不包含全部预构建依赖。2.4.6 的 `Source-and-Patches.zip` 提供本次源码与补丁；完整上游源码基线沿用 2.2.0 / 2.3.0 发布附件，目录准备见构建说明。
 
 ## 许可与验证范围
 

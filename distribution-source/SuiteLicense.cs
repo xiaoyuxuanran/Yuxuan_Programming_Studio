@@ -50,7 +50,7 @@ internal static partial class Suite {
       if(form!=null&&form.IsHandleCreated&&!closing)form.BeginInvoke((Action)(()=>{
         licenseInfo.Text=licensed?ExpiryText(result)+" · "+LicenseMessage(result):"未通过授权验证";
         licenseInfo.ForeColor=licensed?Color.FromArgb(37,127,178):Color.FromArgb(185,94,63);
-        foreach(var choice in choices)choice.Enabled=licensed;
+        EnableInstalledChoices();
         status.Text=licensed?"授权有效 · 选择任意工具开始":LicenseMessage(result);
       }));
       if(licensed&&licenseTimer==null){licenseTimer=new System.Threading.Timer(_=>QueueLicenseCheck(false),null,60000,60000);if(!networkSubscribed){NetworkChange.NetworkAvailabilityChanged+=NetworkRestored;NetworkChange.NetworkAddressChanged+=NetworkAddressChanged;networkSubscribed=true;}}

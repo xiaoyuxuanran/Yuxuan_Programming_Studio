@@ -8,6 +8,12 @@ from runtime_support import seed_environment, https_context, ca_bundle
 
 ROOT = Path(__file__).resolve().parent.parent
 VERSIONS = {'3.8.9': ROOT/'runtime/python3.8.9/python.exe', '3.13.16': ROOT/'runtime/python3.13.16/python.exe'}
+def installed_modes():
+    modes=[]
+    if all(path.is_file() for path in VERSIONS.values()):modes.append('python')
+    if (ROOT/'runtime/llvm-mingw/bin/clang++.exe').is_file():modes.append('cpp')
+    return modes
+
 INDEX = 'https://pypi.tuna.tsinghua.edu.cn/simple'
 MAX_OUTPUT = 4*1024*1024
 PY_SAMPLE = 'import sys\n\nprint("你好，羽轩 Python 工作室！")\nprint("Python 版本：", sys.version.split()[0])\n\nfor i in range(1, 4):\n    print(f"第 {i} 次运行")\n'
@@ -45,7 +51,7 @@ def location(p, rel='', allow_root=False):
     return path
 
 def add_project(name, mode, existing=None):
-    if mode not in {'python','cpp'}: raise ValueError('不支持的语言')
+    if mode not in installed_modes(): raise ValueError('此编程项目尚未安装，请运行完整安装包添加')
     if not name or len(name)>60 or any(c in name for c in '/\\:*?"<>|') or name in {'.','..'}: raise ValueError('项目名称无效')
     path=Path(existing).expanduser().resolve() if existing else (DATA/'projects'/name).resolve()
     if not existing and not path.is_relative_to((DATA/'projects').resolve()): raise ValueError('项目路径无效')
@@ -159,6 +165,7 @@ def package_env(exe):
     return env
 
 def run(p, rel, version, arguments):
+    if p['mode'] not in installed_modes():raise ValueError('此编程项目尚未安装，请运行完整安装包添加')
     file=location(p,rel)
     if not file.is_file():raise ValueError('请先保存并选择代码文件')
     args=arguments if isinstance(arguments,list) else []
@@ -257,7 +264,7 @@ class Handler(BaseHTTPRequestHandler):
             if not self.authorized():self.response(403,{'error':'请从启动器打开工作区'});return
             try:
                 if url.path=='/api/state':
-                    with LOCK:result={**STATE,'versions':list(VERSIONS),'pipIndex':INDEX}
+                    with LOCK:result={**STATE,'versions':list(VERSIONS),'pipIndex':INDEX,'installedModes':installed_modes()}
                 elif url.path=='/api/tree':result=tree(project(q['project']))
                 elif url.path=='/api/file':
                     path=location(project(q['project']),q['path'])
@@ -364,7 +371,7 @@ def main():
     file=DATA/'studio.json'
     STATE=json.loads(file.read_text(encoding='utf-8-sig')) if file.exists() else {'theme':'light','projects':[]}
     if not STATE['projects']:
-        add_project('Python 入门','python');add_project('C++ 入门','cpp')
+        for mode in installed_modes():add_project('Python 入门' if mode=='python' else 'C++ 入门',mode)
     HTTP=ThreadingHTTPServer(('127.0.0.1',args.port),Handler);HTTP.daemon_threads=True
     (DATA/'studio-running.json').write_text(json.dumps({'port':HTTP.server_port,'pid':os.getpid()}),encoding='utf-8')
     print(f'YuxuanStudio http://127.0.0.1:{HTTP.server_port}',flush=True)

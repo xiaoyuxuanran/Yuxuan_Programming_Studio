@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "cases": [
+    {
+      "components": "ai",
+      "ok": true
+    },
+    {
+      "components": "mixly",
+      "ok": true
+    },
+    {
+      "components": "python",
+      "ok": true
+    },
+    {
+      "components": "python,cpp",
+      "ok": true
+    },
+    {
+      "components": "cpp",
+      "ok": true
+    }
+  ],
+  "userStateRestored": true
+}

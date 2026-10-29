@@ -1,0 +1,132 @@
+{
+  "ok": true,
+  "installerSHA256": "C520F9824A308748E3636807CFD4681E2E6471E02E44304060357A4B03B7D3D3",
+  "freshExit": 0,
+  "reinstallExit": 0,
+  "uninstallExit": 0,
+  "preservedFiles": 1160,
+  "userStateRestored": true,
+  "mergedUninstallVerified": true,
+  "fullInstallerVerified": true,
+  "payload": {
+    "ok": true,
+    "verifiedFiles": 59341,
+    "longPathFiles": 1217,
+    "fullManifest": true,
+    "privateFilesExcluded": true
+  },
+  "smokeTests": [
+    {
+      "test": "unactivated installed executable",
+      "ok": true,
+      "exitCode": 4
+    },
+    {
+      "test": "activated Core/AppEngine health",
+      "ok": true,
+      "startupSeconds": 8.919
+    },
+    {
+      "test": "installed same-origin authenticated USB enumeration",
+      "ok": true,
+      "deviceCount": 0,
+      "realDeviceInstallTested": false
+    },
+    {
+      "test": "installed managed BuildServer health",
+      "ok": true
+    },
+    {
+      "test": "installed teaching library and real starter import",
+      "ok": true
+    },
+    {
+      "test": "installed activated launcher graceful stop",
+      "ok": true,
+      "exitCode": 0
+    },
+    {
+      "test": "fresh environment/run 3.8.9",
+      "ok": true,
+      "seconds": 2.779
+    },
+    {
+      "test": "repeated run 3.8.9",
+      "ok": true,
+      "seconds": 0.108
+    },
+    {
+      "test": "installed Tkinter/Turtle/Pygame native windows 3.8.9",
+      "ok": true,
+      "seconds": 1.875
+    },
+    {
+      "test": "fresh environment/run 3.13.16",
+      "ok": true,
+      "seconds": 3.588
+    },
+    {
+      "test": "repeated run 3.13.16",
+      "ok": true,
+      "seconds": 0.138
+    },
+    {
+      "test": "installed Tkinter/Turtle/Pygame native windows 3.13.16",
+      "ok": true,
+      "seconds": 1.332
+    },
+    {
+      "test": "fresh C++ compile/run",
+      "ok": true,
+      "seconds": 0.882
+    },
+    {
+      "test": "C++ unchanged dependency cache run",
+      "ok": true,
+      "seconds": 0.324
+    },
+    {
+      "test": "installed verified HTTPS package search",
+      "ok": true
+    },
+    {
+      "test": "installed Python3.8 pip HTTPS via Tsinghua",
+      "ok": true,
+      "seconds": 3.107
+    },
+    {
+      "test": "installed Python3.13 pip HTTPS via Tsinghua",
+      "ok": true,
+      "seconds": 2.699
+    },
+    {
+      "test": "project dependency prepared for reinstall preservation",
+      "ok": true
+    },
+    {
+      "test": "installed editor view controls and persistence",
+      "ok": true
+    }
+  ],
+  "preservationTests": [
+    {
+      "test": "reinstalled 3.8 project/custom dependencies still import",
+      "ok": true,
+      "seconds": 0.216
+    },
+    {
+      "test": "installed/runtime data paths only; no development interpreter dependency 3.8.9",
+      "ok": true,
+      "seconds": 0.801
+    },
+    {
+      "test": "installed/runtime data paths only; no development interpreter dependency 3.13.16",
+      "ok": true,
+      "seconds": 0.563
+    },
+    {
+      "test": "retained editor view settings and unchanged Mixly component",
+      "ok": true
+    }
+  ]
+}

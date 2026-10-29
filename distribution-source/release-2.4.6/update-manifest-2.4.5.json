@@ -1,0 +1,24 @@
+{
+  "base": "2.4.5",
+  "version": "2.4.6",
+  "files": [
+    "AppInventor.exe",
+    "resources/CHANGELOG.txt",
+    "resources/build-version.txt",
+    "resources/distribution-source/Setup.iss",
+    "resources/distribution-source/SuiteLauncher.cs",
+    "resources/distribution-source/SuiteLicense.cs",
+    "resources/distribution-source/SuiteUpdates.cs",
+    "resources/distribution-source/release-2.4.6/CHANGELOG.txt",
+    "resources/distribution-source/release-2.4.6/UPGRADE.md",
+    "resources/distribution-source/release-2.4.6/User-Guide.txt",
+    "resources/distribution-source/release-2.4.6/prepare.py",
+    "resources/distribution-source/studio/server.py",
+    "resources/distribution-source/studio/studio.js",
+    "resources/\u4f7f\u7528\u8bf4\u660e.txt",
+    "studio/server.py",
+    "studio/studio.js",
+    "\u4f7f\u7528\u8bf4\u660e.txt"
+  ],
+  "bytes": 425694
+}
