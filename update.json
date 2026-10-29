@@ -1,52 +1,61 @@
 {
   "schema": 1,
-  "tag_name": "v2.4.5",
+  "tag_name": "v2.4.6",
   "draft": false,
   "prerelease": false,
-  "body": "羽轩编程工作台 **2.4.5 完整安装版**，Windows x64。\n\n### 可直接安装\n\n本版是全量安装包，**不需要先安装2.2.0或任何中间版本**。内含App Inventor、Mixly桌面版、Python3.8.9/3.13.16、C++及全部运行/编译环境；无需另装WSL、Java、Python或C++工具链。\n\n完整保留2.3.4功能与8阶段56课教学资料：168个工程、PPT、教案、任务单、素材、参考图和答案APK；保留Python/C++双主题、字号与侧栏控制、图形库、Mixly四类硬件/云端库/串口调试和驱动入口。\n\n### 下载与升级\n\n**[下载完整安装包](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/AppInventor-Offline-Setup-x64.exe)**\n\n新用户直接安装。已有版本保存项目并退出软件，再安装到原目录；保留个人项目、依赖及授权信息。原有“检查更新”入口也可获取完整安装包。首次使用仍须联网激活，之后按授权有效期允许离线使用。\n\nGitee同步版本页面、源码与可用的小附件，完整安装包由GitHub提供；软件优先读取Gitee更新清单，下载校验大小和SHA256。\n\n课程内容与2.3.4相同；如仅需独立课程资料，可继续下载[2.3.4的8阶段资料包](https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/tag/v2.3.4)。未进行Android真机或实物开发板联调。\n",
-  "html_url": "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.4.5",
+  "body": "羽轩编程工作台 **2.4.6**，Windows x64。\n\n### 本次更新\n\n- 整合蓝白启动动画：羽轩 Logo、旋转刻度、逐字标题、五段展示和揭幕转场。\n- 约 7 秒自动结束，支持 **Esc / 跳过动画按钮**；`--no-startup-animation` 可禁用。\n- **仅完整安装包**提供四个项目多选：App Inventor、Mixly、Python、C++；默认全部，也可单独安装。\n- 未安装的入口标记并禁用；代码工作区只允许使用已安装的语言。共享授权/服务依赖自动安装。\n\n### 两种安装包\n\n- **完整包**：`AppInventor-Offline-Setup-x64.exe`，无需旧版。再次运行可以添加项目，不会删除已安装项目。\n- **增量包**：`Yuxuan-Programming-Studio-Update-2.4.5-to-2.4.6.exe`，适用原版 2.4.5 和装过启动动画补丁的 2.4.5，无组件选择页。\n\n更早版本请用完整包覆盖原目录。安装前保存工程并退出软件；个人项目、第三方依赖和激活信息保留。首次使用仍需联网激活，动画不能跳过授权检查。\n\n四类环境和全部 56 课资料保留；App Inventor 教学资料随其项目组件安装。未进行 Android 真机或实物开发板联调。\n\nGitee 同步源码、版本说明、增量包和更新清单；完整大安装包由 GitHub 提供。\n",
+  "html_url": "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/tag/v2.4.6",
   "assets": [
     {
       "name": "AppInventor-Offline-Setup-x64.exe",
-      "size": 1627798143,
-      "digest": "sha256:a917e0d6204f9599e3e99e2b54b2f43d8bbdb4ae41de6b0bbba04635c8106506",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/AppInventor-Offline-Setup-x64.exe",
+      "size": 1711393275,
+      "digest": "sha256:c520f9824a308748e3636807cfd4681e2e6471e02e44304060357a4b03b7d3d3",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.6/AppInventor-Offline-Setup-x64.exe",
       "mirrors": []
     },
     {
       "name": "CHANGELOG.txt",
-      "size": 4450,
-      "digest": "sha256:96b7b1ce64c461b6d5bd69df4d95a73f02dd5c42da34d50385a70c88abece590",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/CHANGELOG.txt",
+      "size": 5179,
+      "digest": "sha256:e8082b93aed1ea821fefdf19998a46550dc72d1e6a6384d07f1a50195478765f",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.6/CHANGELOG.txt",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.5/CHANGELOG.txt"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.6/CHANGELOG.txt"
       ]
     },
     {
       "name": "Source-and-Patches.zip",
-      "size": 30364847,
-      "digest": "sha256:1e7d0c809732b0d0aa811f8a10826b176835c9441fe4f3dc189323f419cbead5",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/Source-and-Patches.zip",
+      "size": 34156444,
+      "digest": "sha256:9ad72e8e30aad854b2bcc98125de6a8aea652fce60a3a17b7cf08a0b38d7b10a",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.6/Source-and-Patches.zip",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.5/Source-and-Patches.zip"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.6/Source-and-Patches.zip"
       ]
     },
     {
       "name": "UPGRADE.md",
-      "size": 727,
-      "digest": "sha256:cea0596e8e672ffe7c0ed89c129b17eafd1a81e098141120b0fcad55da047ca3",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/UPGRADE.md",
+      "size": 811,
+      "digest": "sha256:07829a0ee606eaa4afe0dbe799c9616744cd52da1f015e0d93e15667f86ff389",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.6/UPGRADE.md",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.5/UPGRADE.md"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.6/UPGRADE.md"
       ]
     },
     {
       "name": "User-Guide.txt",
-      "size": 1408,
-      "digest": "sha256:142b5dc1297fa8ead6a6a477dd4ed2666ea78c06caeace0ec9adf1e741b3487d",
-      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.5/User-Guide.txt",
+      "size": 1595,
+      "digest": "sha256:30f5c6670b044e307cc53293f2b0f4ccf70aa18abd9037ae1d0710b729609a1a",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.6/User-Guide.txt",
       "mirrors": [
-        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.5/User-Guide.txt"
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.6/User-Guide.txt"
+      ]
+    },
+    {
+      "name": "Yuxuan-Programming-Studio-Update-2.4.5-to-2.4.6.exe",
+      "size": 3419435,
+      "digest": "sha256:9f4720aea5a2b65871f685c2d409b5d46ad8d30f2402bf2a95a287276aa21afc",
+      "browser_download_url": "https://github.com/xiaoyuxuanran/Yuxuan_Programming_Studio/releases/download/v2.4.6/Yuxuan-Programming-Studio-Update-2.4.5-to-2.4.6.exe",
+      "mirrors": [
+        "https://gitee.com/studentcodeone/yuxuan_-programming_-studio/releases/download/v2.4.6/Yuxuan-Programming-Studio-Update-2.4.5-to-2.4.6.exe"
       ]
     }
   ]
